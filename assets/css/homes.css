@@ -113,6 +113,8 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .brand b { font-weight: 600; }
 .brand .bang { color: var(--gold); }
 .brand small { display:block; font-family: var(--sans); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color: var(--text-mut); font-weight:600; }
+.brand-logo { display: block; height: 30px; width: auto; }
+@media (min-width: 720px) { .brand-logo { height: 34px; } }
 .header-nav { display: none; gap: 2rem; font-size: .93rem; font-weight: 500; color: var(--text-soft); }
 .header-nav a:hover { color: var(--ink); }
 .header-cta { display: none; }
@@ -230,18 +232,25 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 }
 
 /* ---------- Search panel ---------- */
-.search-shell { position: relative; z-index: 20; margin-top: clamp(-92px, -9vw, -68px); }
+.search-shell { position: relative; z-index: 20; margin-top: clamp(-118px, -11vw, -88px); }
 .search-panel {
   position: relative;
   background: linear-gradient(180deg, #ffffff, #fdfbf6);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: clamp(22px, 3.4vw, 34px);
+  box-shadow: 0 40px 90px -34px rgba(12,26,43,.42), 0 12px 34px -20px rgba(12,26,43,.28);
+  padding: clamp(24px, 3.6vw, 38px);
+}
+/* gold top accent — draws the eye to the search */
+.search-panel::after {
+  content: ""; position: absolute; left: clamp(24px, 3.6vw, 38px); right: clamp(24px, 3.6vw, 38px); top: 0;
+  height: 3px; border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold-2) 50%, var(--gold) 80%, transparent);
+  opacity: .9;
 }
 /* soft gold ring */
 .search-panel::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
-  background: linear-gradient(160deg, rgba(198,163,90,.55), rgba(198,163,90,.06) 40%, rgba(12,26,43,.08));
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.4px; pointer-events: none;
+  background: linear-gradient(160deg, rgba(198,163,90,.75), rgba(198,163,90,.1) 42%, rgba(12,26,43,.1));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor; mask-composite: exclude;
 }
@@ -297,6 +306,31 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .chip[aria-pressed="true"] .ic { color: var(--gold-2); }
 .chip[aria-pressed="true"] .chip-x { opacity: 1; width: .8em; margin-left: .1rem; }
 .chip .chip-x { opacity: 0; width: 0; overflow: hidden; transition: opacity .15s; }
+
+/* Live results bar — real-time proof the tabs/search/refine chips filter */
+.search-results {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  margin-top: 1.25rem; padding: .85rem 1rem .85rem 1.2rem; border-radius: 16px;
+  background: linear-gradient(150deg, rgba(198,163,90,.14), rgba(198,163,90,.05));
+  border: 1px solid rgba(198,163,90,.35);
+}
+.search-results__count { font-size: 1rem; font-weight: 500; color: var(--ink-soft); display: inline-flex; align-items: baseline; gap: .4rem; }
+.search-results__count b { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--ink); line-height: 1; }
+.search-results__btn { flex: none; border-radius: 12px; padding: .6rem 1.15rem; font-size: .9rem; }
+.search-results__btn svg { width: 1.05em; height: 1.05em; }
+.search-results.is-empty {
+  background: linear-gradient(150deg, rgba(200,60,60,.1), rgba(200,60,60,.04));
+  border-color: rgba(200,60,60,.32);
+}
+.search-results.is-empty .search-results__count b { color: #b23b3b; }
+.search-results.is-empty .search-results__btn { display: none; }
+.search-results.pulse { animation: wahPulse .5s ease; }
+@keyframes wahPulse {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.018); box-shadow: 0 10px 26px -14px rgba(198,163,90,.6); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .search-results.pulse { animation: none; } }
 
 .search-trust { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line-2); }
 .search-trust span { display: inline-flex; align-items: center; gap: .5rem; font-size: .82rem; font-weight: 500; color: var(--text-soft); }

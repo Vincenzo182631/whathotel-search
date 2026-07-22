@@ -42,8 +42,8 @@
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a class="brand" href="https://www.whatahotel.com/" aria-label="WhataHotel home">
-      <span><b>WhataHotel</b><span class="bang">!</span></span>
+    <a class="brand" href="https://www.whatahotel.com/" aria-label="WhataHotel! by Lorraine Travel — home">
+      <img class="brand-logo" src="https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a237895da24932f122f104e.png&amp;h=88&amp;output=webp" alt="WhataHotel!" width="150" height="34" decoding="async">
     </a>
     <nav class="header-nav" aria-label="Primary">
       <a href="#why">Why a Home?</a>
@@ -94,6 +94,15 @@
     </form>
 
     <div class="chip-row" id="feature-chips" role="group" aria-label="Refine by feature"></div>
+
+    <!-- Live results — updates as you type, tab, or refine -->
+    <div class="search-results" id="search-results" aria-live="polite">
+      <span class="search-results__count"><b id="search-count">113</b> <span id="search-count-label">stays match</span></span>
+      <button class="btn btn-primary search-results__btn" type="button" data-scroll="#directory" data-cta="search-view">
+        View stays
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </button>
+    </div>
 
     <div class="search-trust">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9 12l2 2 4-4"/></svg>Secure booking</span>

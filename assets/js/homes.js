@@ -332,6 +332,7 @@
     var grid = $("#directory-grid");
     var count = $("#directory-count");
     if (count) count.innerHTML = "<b>" + list.length + "</b> " + (list.length === 1 ? "property" : "properties");
+    updateSearchCount(list.length);
     if (!grid) return;
     if (!list.length) {
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1">' + searchSVG() +
@@ -647,6 +648,45 @@
       track("filter_selected", { filter_type: "sort", filter_value: sort.value });
       renderDirectory();
     });
+  }
+
+  /* Live results counter in the search panel — proves the type tabs, search
+     and refine chips are actually filtering (updated from renderDirectory). */
+  var lastCount = -1;
+  function updateSearchCount(n) {
+    var el = $("#search-count"), label = $("#search-count-label"), bar = $("#search-results");
+    if (!el) return;
+    el.textContent = n;
+    if (label) label.textContent = n === 1 ? "stay matches" : "stays match";
+    if (bar) {
+      bar.classList.toggle("is-empty", n === 0);
+      if (n !== lastCount) { bar.classList.remove("pulse"); void bar.offsetWidth; bar.classList.add("pulse"); }
+    }
+    lastCount = n;
+  }
+
+  /* Typewriter placeholder — cycles example searches until the field is used. */
+  function wireTypewriter() {
+    var input = $("#search-input");
+    if (!input || prefersReduced()) return;
+    var samples = ["“Maldives”", "“villa in Anguilla”", "“Ritz-Carlton”", "“Lake Como”", "“beachfront in Turks & Caicos”", "“ski residence in Aspen”"];
+    var si = 0, ci = 0, deleting = false, active = true, tId;
+    var PRE = "Try ", SUF = "…";
+    function stop() { active = false; clearTimeout(tId); }
+    input.addEventListener("focus", stop);
+    input.addEventListener("input", stop);
+    function tick() {
+      if (!active) return;
+      if (input.value) { stop(); return; }
+      var word = samples[si];
+      ci += deleting ? -1 : 1;
+      input.setAttribute("placeholder", PRE + word.slice(0, ci) + (ci < word.length || deleting ? "" : SUF));
+      var delay = deleting ? 45 : 85;
+      if (!deleting && ci >= word.length) { deleting = false; delay = 1500; deleting = true; }
+      else if (deleting && ci <= 0) { deleting = false; si = (si + 1) % samples.length; delay = 350; }
+      tId = setTimeout(tick, delay);
+    }
+    tId = setTimeout(tick, 900);
   }
 
   /* -----------------------------------------------------------------
@@ -1043,6 +1083,7 @@
     renderFeatured();
     renderDirectory();
     wireSearch();
+    wireTypewriter();
     wireDelegation();
     wireScrollLinks();
     wireVideo();
