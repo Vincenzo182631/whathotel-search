@@ -476,49 +476,32 @@
             '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
             '<ul class="hslide__meta">' + meta + '</ul>' +
             '<div class="hslide__actions">' +
+              '<button class="hslide__save" type="button" data-hero-fav data-id="' + p.id + '" aria-pressed="false" aria-label="Save ' + esc(p.name) + '">' + bookmarkSVG() + '</button>' +
               '<button class="btn btn-primary btn-lg" type="button" data-action="detail" data-id="' + p.id + '">Explore Property' + arrowSVG() + '</button>' +
-              '<a class="btn btn-ghost btn-lg" href="#directory" data-scroll="#directory" data-cta="hero-browse">Browse all stays</a>' +
+              '<a class="hslide__browse" href="#directory" data-scroll="#directory" data-cta="hero-browse">Browse all stays</a>' +
             '</div>' +
           '</div>' +
         '</div>' +
       '</article>';
     }).join("");
 
-    var thumbs = hero.slides.map(function (s, i) {
-      var timg = imageFor(s.p, 260);
-      return '<button class="hthumb" type="button" data-go="' + i + '" aria-label="' + esc(s.p.name) + '">' +
-        (timg ? '<img src="' + timg + '" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">' : '<span class="scene">' + sceneSVG(s.p.scene) + '</span>') +
-        '<span class="hthumb__label">' + esc(s.p.name) + '</span>' +
-      '</button>';
-    }).join("");
-
-    var segs = hero.slides.map(function (s, i) {
-      return '<button class="hseg" type="button" data-go="' + i + '" aria-label="Go to slide ' + (i + 1) + '"><span class="hseg__fill"></span></button>';
-    }).join("");
-
     root.innerHTML =
       '<div class="hero-track">' + slidesHTML + '</div>' +
-      '<div class="hero-progress" aria-hidden="true"><span class="hero-progress__bar" id="hero-bar"></span></div>' +
+      '<div class="hero-deck" id="hero-deck" aria-label="Upcoming destinations"></div>' +
       '<div class="wrap hero-controls">' +
-        '<div class="hero-controls__left">' +
-          '<div class="hero-count"><b id="hero-index">01</b><span>/ ' + pad(hero.slides.length) + '</span></div>' +
-          '<div class="hero-segs">' + segs + '</div>' +
-        '</div>' +
-        '<div class="hero-controls__right">' +
+        '<div class="hero-nav">' +
           '<button class="hero-arrow" id="hero-prev" type="button" aria-label="Previous property">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>' +
           '<button class="hero-arrow" id="hero-next" type="button" aria-label="Next property">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
+          '<div class="hero-line" aria-hidden="true"><span class="hero-line__fill" id="hero-bar"></span></div>' +
         '</div>' +
-      '</div>' +
-      '<div class="hero-thumbs" aria-hidden="true">' + thumbs + '</div>';
+        '<div class="hero-bignum" id="hero-bignum" aria-hidden="true">1</div>' +
+      '</div>';
 
     // wire controls
     $("#hero-prev").addEventListener("click", function () { go(hero.i - 1, true); });
     $("#hero-next").addEventListener("click", function () { go(hero.i + 1, true); });
-    $$(".hseg, .hthumb", root).forEach(function (b) {
-      b.addEventListener("click", function () { go(+b.getAttribute("data-go"), true); });
-    });
     // pause on hover / focus / touch
     ["mouseenter", "focusin", "touchstart"].forEach(function (ev) { root.addEventListener(ev, pause, { passive: true }); });
     ["mouseleave", "focusout"].forEach(function (ev) { root.addEventListener(ev, resume); });
@@ -553,15 +536,43 @@
       el.classList.toggle("is-active", on);
       el.setAttribute("aria-hidden", on ? "false" : "true");
     });
-    $$("#hero-carousel .hseg").forEach(function (el, i) { el.classList.toggle("is-active", i === hero.i); });
-    $$("#hero-carousel .hthumb").forEach(function (el, i) { el.setAttribute("aria-current", i === hero.i ? "true" : "false"); });
-    var idxEl = $("#hero-index"); if (idxEl) idxEl.textContent = pad(hero.i + 1);
+    var num = $("#hero-bignum"); if (num) num.textContent = pad(hero.i + 1);
+    renderHeroDeck(hero.i);
     // reset autoplay progress
     hero.elapsed = 0; hero.start = 0;
     setBar(0);
     if (userInitiated) {
       track("hero_slide_change", { property_id: hero.slides[hero.i].p.id, property_name: hero.slides[hero.i].p.name, source: "user" });
     }
+  }
+
+  /* The right-hand "deck" — a fanned stack of the next upcoming destinations,
+     each clickable to jump to that slide (rebuilt as the carousel advances). */
+  function renderHeroDeck(cur) {
+    var deck = $("#hero-deck");
+    if (!deck) return;
+    var n = hero.slides.length;
+    var show = Math.min(3, n - 1);
+    var html = "";
+    for (var k = 1; k <= show; k++) {
+      var j = (cur + k) % n;
+      var s = hero.slides[j], p = s.p;
+      var bg = imageFor(p, 520);
+      html +=
+        '<button class="hero-deck__card" type="button" data-go="' + j + '" style="--k:' + (k - 1) + '" aria-label="View ' + esc(p.name) + '">' +
+          (bg ? '<span class="hero-deck__img" style="background-image:url(\'' + bg + '\')"></span>'
+              : '<span class="hero-deck__img hero-deck__img--scene">' + sceneSVG(p.scene) + '</span>') +
+          '<span class="hero-deck__grad"></span>' +
+          '<span class="hero-deck__meta">' +
+            (p.loc ? '<span class="hero-deck__loc">' + esc(p.loc) + '</span>' : '') +
+            '<span class="hero-deck__title">' + esc(p.name) + '</span>' +
+          '</span>' +
+        '</button>';
+    }
+    deck.innerHTML = html;
+    $$(".hero-deck__card", deck).forEach(function (b) {
+      b.addEventListener("click", function () { go(+b.getAttribute("data-go"), true); });
+    });
   }
   function setBar(p) { var b = $("#hero-bar"); if (b) b.style.width = (p * 100).toFixed(2) + "%"; }
 
@@ -755,6 +766,14 @@
      ----------------------------------------------------------------- */
   function wireDelegation() {
     document.addEventListener("click", function (e) {
+      var hfav = e.target.closest && e.target.closest("[data-hero-fav]");
+      if (hfav) {
+        var hid = hfav.getAttribute("data-id");
+        var hon = hfav.getAttribute("aria-pressed") !== "true";
+        hfav.setAttribute("aria-pressed", hon);
+        if (hid) state.favs[hid] = hon;
+        return;
+      }
       var fav = e.target.closest && e.target.closest(".pcard__fav");
       if (fav) {
         var card = fav.closest(".pcard");
@@ -1134,6 +1153,7 @@
   function heartSVG() { return '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7.5-4.6-10-9.3C.7 8.9 2 5.5 5.2 5.1 7.2 4.8 9 6 12 9c3-3 4.8-4.2 6.8-3.9C22 5.5 23.3 8.9 22 11.7 19.5 16.4 12 21 12 21z"/></svg>'; }
   function pinSVG() { return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>'; }
   function arrowSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'; }
+  function bookmarkSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z"/></svg>'; }
   function searchSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'; }
   function zoomSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg>'; }
   function checkSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>'; }
