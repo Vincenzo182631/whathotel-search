@@ -370,6 +370,41 @@
   <a class="btn btn-primary" href="#directory" data-scroll="#directory" data-cta="mobile-browse">Browse Homes</a>
 </div>
 
+<!-- ============================ AI CONCIERGE (LiveAvatar) ============================ -->
+<div class="concierge" id="concierge">
+  <div class="concierge-panel" id="concierge-panel" role="dialog" aria-modal="false" aria-label="WhataHotel AI Concierge" aria-hidden="true">
+    <div class="concierge-panel__head">
+      <span class="concierge-panel__avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+      </span>
+      <span class="concierge-panel__title"><b>Ava · Travel Concierge</b><span>Online now</span></span>
+      <button class="concierge-panel__close" type="button" id="concierge-close" aria-label="Close concierge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="concierge-media" id="concierge-media">
+      <!-- LiveAvatar embed — lazy-loaded on first open so the mic prompt and
+           stream only start when the visitor asks for the concierge. -->
+      <iframe id="concierge-iframe"
+              data-src="https://embed.liveavatar.com/v1/91b5ac3a-10a0-4f5d-97be-04252c63658f?orientation=vertical"
+              allow="microphone; autoplay"
+              title="WhataHotel AI Travel Concierge"
+              loading="lazy"></iframe>
+      <div class="concierge-media__loading" id="concierge-loading">
+        <span class="spin" aria-hidden="true"></span>
+        <span>Connecting you with Ava…</span>
+      </div>
+    </div>
+  </div>
+  <button class="concierge-launch" type="button" id="concierge-launch" aria-expanded="false" aria-controls="concierge-panel">
+    <span class="concierge-launch__orb" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 01-4 4H8l-5 3V6a4 4 0 014-4h9a4 4 0 014 4z"/><circle cx="9" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="12.5" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="10.5" r="1" fill="currentColor" stroke="none"/></svg>
+      <span class="concierge-launch__dot"></span>
+    </span>
+    <span class="concierge-launch__label"><b>Ask our AI Concierge</b><span>Find your perfect home</span></span>
+  </button>
+</div>
+
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/details.js"></script>

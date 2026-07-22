@@ -884,6 +884,46 @@
   }
 
   /* -----------------------------------------------------------------
+     AI Concierge (LiveAvatar) — lazy-loaded on first open so the embed
+     and microphone prompt only start when the visitor asks for it.
+     ----------------------------------------------------------------- */
+  function wireConcierge() {
+    var root = $("#concierge"), launch = $("#concierge-launch"),
+        close = $("#concierge-close"), iframe = $("#concierge-iframe"),
+        loading = $("#concierge-loading"), panel = $("#concierge-panel");
+    if (!root || !launch) return;
+    var loaded = false;
+
+    function open() {
+      root.classList.add("is-open");
+      launch.setAttribute("aria-expanded", "true");
+      if (panel) panel.setAttribute("aria-hidden", "false");
+      if (!loaded && iframe && iframe.getAttribute("data-src")) {
+        loaded = true;
+        iframe.addEventListener("load", function () { if (loading) loading.style.display = "none"; });
+        iframe.src = iframe.getAttribute("data-src");
+      }
+      track("concierge_opened", {});
+    }
+    function shut() {
+      root.classList.remove("is-open");
+      launch.setAttribute("aria-expanded", "false");
+      if (panel) panel.setAttribute("aria-hidden", "true");
+    }
+    launch.addEventListener("click", function () {
+      if (root.classList.contains("is-open")) { shut(); } else { open(); }
+    });
+    if (close) close.addEventListener("click", shut);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && root.classList.contains("is-open")) shut();
+    });
+    // Clicking outside the widget closes it.
+    document.addEventListener("click", function (e) {
+      if (root.classList.contains("is-open") && !root.contains(e.target)) shut();
+    });
+  }
+
+  /* -----------------------------------------------------------------
      Hero + video poster scenes
      ----------------------------------------------------------------- */
   function paintStaticScenes() {
@@ -917,6 +957,7 @@
     wireScrollLinks();
     wireVideo();
     wireMobileCta();
+    wireConcierge();
     observeReveals(document);
   }
 

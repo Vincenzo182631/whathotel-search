@@ -131,6 +131,19 @@ back to `gtag` if present). Events:
 
 Set `window.WAH_DEBUG = true` to log events to the console.
 
+## AI Concierge (LiveAvatar)
+
+A floating **AI Concierge** launcher (bottom-right) expands into a panel that
+embeds the LiveAvatar virtual host. The `<iframe>` is **lazy-loaded on first
+open** (via `data-src`), so the embed and its microphone permission prompt only
+start when a visitor actually opens the concierge — it never slows initial page
+load. Open/close via the launcher, the ✕, `Escape`, or an outside click; fires
+`concierge_opened` for analytics. To change the avatar, edit the `data-src` on
+`#concierge-iframe` in `index.html`.
+
+> Note: the claude.ai artifact preview blocks third-party iframes (CSP), so the
+> avatar only renders on the deployed site or the downloaded standalone file.
+
 ## Adding the video
 
 The video is lazy-loaded (nothing is fetched until the visitor clicks play, so it
