@@ -218,7 +218,7 @@
      Resolution order: explicit p.image → offline-preview data URI (optional
      window.WAH_IMAGE_DATAURI[id]) → real WhataHotel hero → null (scene only).
      ----------------------------------------------------------------- */
-  function imageFor(p) {
+  function rawImageFor(p) {
     if (p.image) return p.image;
     var over = window.WAH_IMAGE_DATAURI;
     if (over && over[p.id]) return over[p.id];
@@ -226,26 +226,50 @@
     if (wi && wi[p.id] && wi[p.id].hero) return wi[p.id].hero;
     return null;
   }
-  // A representative real image for a category card: first featured (else any)
-  // property of that type that has a hero.
-  function categoryImage(catKey) {
+
+  /* On-the-fly image optimization: WhataHotel serves full-res JPEGs (~300–400 KB
+     each), far larger than a card needs. We route them through a free image CDN
+     (weserv.nl) that resizes + serves WebP, cutting weight ~80–94%. Disable with
+     window.WAH_IMG_OPT = false; override the proxy with window.WAH_IMG_PROXY. */
+  var IMG_OPT = (window.WAH_IMG_OPT !== false);
+  var IMG_PROXY = window.WAH_IMG_PROXY || "https://wsrv.nl/?url=";
+  var IMG_Q = window.WAH_IMG_QUALITY || 72;
+  function optImg(url, width) {
+    if (!IMG_OPT || !url) return url;
+    if (/^data:/.test(url) || url.indexOf("wsrv.nl") !== -1) return url; // already inline/optimized
+    var clean = url.replace(/^https?:\/\//, "");
+    return IMG_PROXY + encodeURIComponent(clean) + "&w=" + width + "&output=webp&q=" + IMG_Q + "&we=1";
+  }
+  // Optimized URL for a property at a given render width.
+  function imageFor(p, width) {
+    var b = rawImageFor(p);
+    return b && width ? optImg(b, width) : b;
+  }
+  // Full <img> for a property: optimized src, raw WhataHotel URL as a first
+  // fallback, then the CSS scene if even that fails.
+  function imgTag(p, width, cls, extra) {
+    var raw = rawImageFor(p);
+    if (!raw) return "";
+    var alt = esc(p.name) + (p.loc ? ", " + esc(p.loc) : "");
+    return '<img class="' + cls + '" src="' + optImg(raw, width) + '" data-raw="' + esc(raw) + '" ' +
+      'alt="' + alt + '" ' + (extra || "") + ' decoding="async" ' +
+      'onerror="if(this.dataset.fb){this.remove()}else{this.dataset.fb=1;this.src=this.dataset.raw}">';
+  }
+  // Representative property (with an image) for a category card.
+  function categoryPick(catKey) {
     var list = PROPS.filter(function (p) { return propMatchesCat(p, catKey); });
-    var withImg = list.filter(function (p) { return imageFor(p); });
-    var pick = withImg.filter(function (p) { return p.featured; })[0] || withImg[0] || list[0];
-    return pick ? imageFor(pick) : null;
+    var withImg = list.filter(function (p) { return rawImageFor(p); });
+    return withImg.filter(function (p) { return p.featured; })[0] || withImg[0] || list[0] || null;
   }
 
   /* -----------------------------------------------------------------
      Card rendering
      ----------------------------------------------------------------- */
   function renderMedia(p) {
-    // Scene sits behind; the photo overlays it and is removed on error so the
-    // scene shows through — never a broken image.
-    var img = imageFor(p);
+    // Scene sits behind; the optimized photo overlays it, and if it fails it
+    // falls back to the raw WhataHotel image, then the scene — never blank.
     return '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
-      (img ? '<img class="pcard__photo" src="' + img + '" ' +
-        'alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
-        'loading="lazy" decoding="async" onerror="this.remove()">' : "");
+      imgTag(p, 640, "pcard__photo", 'loading="lazy"');
   }
 
   function typeBadge(p) {
@@ -381,8 +405,7 @@
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
           '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
-          (imageFor(p) ? '<img class="hslide__photo" src="' + imageFor(p) + '" alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
-            (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" onerror="this.remove()">' : "") +
+          imgTag(p, 1600, "hslide__photo", (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"')) +
         '</div>' +
         '<div class="hslide__scrim"></div>' +
         '<div class="wrap hslide__inner">' +
@@ -401,7 +424,7 @@
     }).join("");
 
     var thumbs = hero.slides.map(function (s, i) {
-      var timg = imageFor(s.p);
+      var timg = imageFor(s.p, 260);
       return '<button class="hthumb" type="button" data-go="' + i + '" aria-label="' + esc(s.p.name) + '">' +
         (timg ? '<img src="' + timg + '" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">' : '<span class="scene">' + sceneSVG(s.p.scene) + '</span>') +
         '<span class="hthumb__label">' + esc(s.p.name) + '</span>' +
@@ -504,10 +527,10 @@
     if (!wrap) return;
     wrap.innerHTML = CATEGORIES.map(function (c, i) {
       var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
-      var img = categoryImage(c.key);
+      var pick = categoryPick(c.key);
       return '<button class="cat-card reveal" data-anim="zoom" style="--d:' + i + '" type="button" data-cat="' + c.key + '">' +
         '<div class="scene">' + sceneSVG(c.scene) + '</div>' +
-        (img ? '<img class="cat-card__photo" src="' + img + '" alt="" loading="lazy" decoding="async" onerror="this.remove()">' : "") +
+        (pick ? imgTag(pick, 800, "cat-card__photo", 'loading="lazy"') : "") +
         '<span class="cat-card__count">' + iconFor(c.key) + n + ' stays</span>' +
         '<div class="cat-card__body"><h3>' + esc(c.label) + '</h3><p>' + esc(c.blurb) + '</p></div>' +
       '</button>';
@@ -724,7 +747,7 @@
     var body =
       '<div class="pmodal__media">' +
         '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
-        (imageFor(p) ? '<img class="pmodal__photo" src="' + imageFor(p) + '" alt="' + esc(p.name) + '" decoding="async" onerror="this.remove()">' : "") +
+        imgTag(p, 1000, "pmodal__photo", "") +
         '<span class="pmodal__typebadge">' + esc(typeLine) + '</span>' +
       '</div>' +
       '<div class="pmodal__content">' +
