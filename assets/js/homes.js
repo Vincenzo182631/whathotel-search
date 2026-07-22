@@ -896,6 +896,11 @@
     if (!root || !launch) return;
 
     var CFG = window.WAH_AVATAR || {};
+    // Disabled for now — the whole widget stays hidden and inert. Set
+    // window.WAH_AVATAR.enabled = true (in index.html) to switch it back on.
+    if (!CFG.enabled) { root.setAttribute("hidden", ""); return; }
+    root.removeAttribute("hidden");
+
     var started = false, session = null, listening = true;
 
     function hideLoading() { if (loading) loading.classList.add("hide"); }
