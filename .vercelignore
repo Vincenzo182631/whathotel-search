@@ -1,0 +1,10 @@
+# Keep the Vercel deploy lean and avoid serving other hosts' function source.
+# Vercel serves index.html + assets statically and runs api/liveavatar-token.js.
+node_modules
+netlify
+netlify.toml
+functions
+scripts
+.env
+.env.*
+**/*.map

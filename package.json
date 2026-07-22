@@ -4,6 +4,9 @@
   "private": true,
   "description": "WhataHotel! Homes / Villas & Residences landing page",
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "@heygen/liveavatar-web-sdk": "^0.0.18"
   }
