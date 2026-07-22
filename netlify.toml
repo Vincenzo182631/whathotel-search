@@ -10,3 +10,7 @@
   from = "/api/liveavatar-token"
   to = "/.netlify/functions/liveavatar-token"
   status = 200
+
+# "Deploy to Netlify" button prompts for this env var during setup.
+[template.environment]
+  LIVEAVATAR_API_KEY = "Your (rotated) LiveAvatar API key from app.liveavatar.com/developers"

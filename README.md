@@ -10,6 +10,22 @@ inspiration → search → discovery → property selection → live availabilit
 > User journey: **Google Ad → this Homes landing page → search / filter →
 > select a property → the property's existing WhataHotel page → check availability**
 
+## Deploy (with the AI concierge live)
+
+One click, then paste your **rotated** `LIVEAVATAR_API_KEY` when prompted — that's
+the only setup. Both hosts serve the static site *and* the serverless token
+function, so the SDK avatar streams on your live https URL.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Vincenzo182631/whathotel-search)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FVincenzo182631%2Fwhathotel-search&env=LIVEAVATAR_API_KEY&envDescription=Rotated%20LiveAvatar%20API%20key&envLink=https%3A%2F%2Fapp.liveavatar.com%2Fdevelopers)
+
+> **Branch note:** these buttons deploy the repo's **default branch**. This work
+> currently lives on `claude/whatahot-homes-landing-redesign-9ihk9d` — either
+> merge it to your default branch first, or, in the host's import screen, set the
+> production branch to `claude/whatahot-homes-landing-redesign-9ihk9d` before
+> deploying. See [AI Concierge](#ai-concierge-liveavatar) for details and the
+> iframe fallback.
+
 ## Quick start
 
 It's a static site — no build step. Open `index.html`, or serve the folder:
