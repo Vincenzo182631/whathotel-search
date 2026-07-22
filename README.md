@@ -39,18 +39,22 @@ index.html                          The landing page (all sections + SEO/JSON-LD
 favicon.svg                         Brand favicon
 assets/
   css/homes.css                     Mobile-first premium design system
-  js/data.js                        GENERATED property directory (do not hand-edit)
-  js/homes.js                       Rendering, search, filters, analytics, video
-  js/homes-inventory-filter.js      Residential-inventory keyword logic (for the property page)
+  js/data.js                        GENERATED directory: the 271 Homes properties (do not hand-edit)
+  js/images.js                      GENERATED real hero images (og:image per property)
+  js/descriptions.js                GENERATED factual descriptions (per property)
+  js/homes.js                       Rendering, search, region/collection filters, analytics, video
+  js/homes-inventory-filter.js      Residential-inventory keyword logic (documents the availability behavior)
 scripts/
-  build-data.mjs                    Generates data.js from the real WhataHotel search results
+  source-homes.json                 AUTHORITATIVE list of the 271 properties on whatahotel.com/homes/
+  build-data.mjs                    Generates data.js from source-homes.json
+  fetch-images.mjs                  Scrapes each property's og:image + description
 ```
 
 ## Page sections
 
 1. **Hero** — a full-bleed, cinematic **property carousel** (villas · residences · homes · estates). Each slide: high-res image with a slow Ken-Burns drift, a location kicker, the property name, an editorial description, detail pills, and an "Explore Property" CTA. Autoplay (pauses on hover/focus), prev/next arrows, a slide counter with clickable gold progress segments, a desktop thumbnail rail, keyboard arrows, touch-swipe, and full `prefers-reduced-motion` support. Slides are configured in `homes.js` (`HERO`)
 2. **Search** — prominent search (destination / city / country / hotel / property) with type & feature filter chips
-3. **Categories** — Villas · Residences · Homes · Estates (with live counts; condos/apartments fold into related filters)
+3. **Explore by region** — 6 regions derived from each property's real country (with live counts)
 4. **Why a Home?** — six space/comfort/flexibility benefits
 5. **Hotel room vs. home-style stay** — visual comparison
 6. **Featured collection** — curated standout stays
@@ -62,39 +66,43 @@ scripts/
 
 ## Property data & preserved links
 
-`assets/js/data.js` is **generated** by `scripts/build-data.mjs` from the real
-WhataHotel category search results (Homes / Residences / Villas / Condos /
-Estate). Every property is a real WhataHotel property and each card links to the
-site's **canonical** individual page:
+The property collection is the **authoritative list of the 271 properties on the
+live WhataHotel Homes page** (`https://whatahotel.com/homes/`), captured verbatim
+in `scripts/source-homes.json` (each property's real name, collection/brand, city,
+country, hotelID and URL slug). **`assets/js/data.js` is generated from that file
+by `scripts/build-data.mjs`** — none added, none removed, none re-classified by
+name. Every card links to the site's **canonical** individual page:
 
 ```
 https://whatahotel.com/hotels/<hotelID>/<slug>.html
 ```
 
-`homes.js` appends `?stayType=homes` (plus UTM params for paid-traffic
-attribution) so the traveler's "Homes" intent is carried through to the property
-page.
+`homes.js` appends UTM params for paid-traffic attribution.
 
-### Curation: removing the search's false positives
+### No name-keyword classification
 
-WhataHotel's own keyword search **substring-matches**, so it returns false
-positives that the brief explicitly warns against. The build script drops them by
-classifying each property on **whole-word** name keywords. Examples removed:
+This build **does not** decide inclusion or accommodation type from hotel names.
+The 271 are taken exactly as they appear on the Homes page. Categorisation for the
+UI is derived only from **authoritative fields**:
 
-| Search | False positives dropped |
-|---|---|
-| Homes | the 9 **Domes** resorts, **Omni Homestead**, **Holmes Beach** |
-| Condos | **Condesa** / **Las Condes** (0 real condos remained) |
-| Villas | "**Village**" hotels (Standard East Village, Westlake Village, Niseko Village) |
-| Estate | ~125 city hotels that aren't estates (1 Hotel, Aman, Marriott Marquis…) |
+- **Region** — from each property's real *country*, grouped into 6 regions
+  (North America 76 · Latin America & Caribbean 74 · Asia 52 · Europe 34 ·
+  Middle East & Africa 20 · Pacific & Indian Ocean 15).
+- **Collection / brand** — from each property's real *collection* field
+  (Four Seasons, Hyatt, Leading Hotels of the World, Aman, Belmond, Rosewood…).
 
-Result: **113** genuine residential properties (68 villas, 34 residences, 10
-estates, 4 homes, 1 condo). A small allowlist re-includes genuinely residential
-properties whose names lack a keyword (e.g. Viceroy Snowmass, Beach Village at
-The Del, Kona Village).
+A hotel's name is **never** used as evidence that it has residential-style
+inventory — that is decided per-unit by the availability system below.
 
-**To add / edit properties or tune the rules,** edit `scripts/build-data.mjs`
-and re-run `node scripts/build-data.mjs`.
+**To change the list,** edit `scripts/source-homes.json` (or re-scrape the Homes
+page) and re-run `node scripts/build-data.mjs`.
+
+### Property descriptions
+
+`assets/js/descriptions.js` (`window.WAH_DESC`) holds each property's own
+**factual description**, scraped from its WhataHotel page by
+`scripts/fetch-images.mjs`. Where a page has no usable paragraph, the card falls
+back to the property's location line — nothing is invented.
 
 ### Property images (real WhataHotel photos)
 
@@ -108,12 +116,28 @@ is missing or blocked, so a card is never broken. Per-property override: add an
 
 ## Availability filtering (Homes-only inventory)
 
-The brief requires that a visitor who arrives via Homes sees **homes-related
-inventory** when they check availability — not standard hotel rooms.
+A visitor who checks availability must see **homes-related inventory** — not
+standard hotel rooms. This is handled by WhataHotel's **existing** system, not
+reimplemented here. Every "Check Availability" button opens the property's live
+availability endpoint with `type=homes`:
 
-`assets/js/homes-inventory-filter.js` (`window.WAHHomesFilter`) implements the
-keyword logic to run **on the individual property page** when it detects the
-`?stayType=homes` flag this landing page adds to every link:
+```
+https://whatahotel.com/booking/showRates.cfm?hotelID=<id>&checkIn=…&checkOut=…&type=homes
+```
+
+This is the same entry point the live Homes page uses ("View Rates"): the server
+searches the property's Amadeus inventory and returns only units whose **actual
+room/unit description** matches the approved residential keywords (residence,
+home, villa, …). Eligibility is decided **per unit**, never from the hotel name.
+
+> **Property eligibility** (which hotels appear) comes from the curated 271-item
+> list. **Unit eligibility** (which rooms show under Check Availability) comes
+> from the Amadeus keyword filtering. The two are kept separate, exactly as on
+> the existing page.
+
+`assets/js/homes-inventory-filter.js` (`window.WAHHomesFilter`) documents that
+keyword logic (and is unit-testable), mirroring what the server applies when
+`type=homes` is present:
 
 ```js
 // On browse_offers.cfm, when stayType=homes is present:

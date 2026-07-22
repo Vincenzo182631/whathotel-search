@@ -78,8 +78,8 @@
       <p class="search-panel__hint">Destination · city · country · hotel or property name</p>
     </div>
 
-    <!-- Accommodation type — segmented tabs with hotel icons -->
-    <div class="type-tabs" id="type-tabs" role="group" aria-label="Filter by accommodation type"></div>
+    <!-- Region — segmented tabs -->
+    <div class="type-tabs" id="type-tabs" role="group" aria-label="Filter by region"></div>
 
     <form id="search-form" class="search-row" role="search" autocomplete="off">
       <label class="search-field">
@@ -93,11 +93,11 @@
       </button>
     </form>
 
-    <div class="chip-row" id="feature-chips" role="group" aria-label="Refine by feature"></div>
+    <div class="chip-row" id="feature-chips" role="group" aria-label="Refine by collection"></div>
 
     <!-- Live results — updates as you type, tab, or refine -->
     <div class="search-results" id="search-results" aria-live="polite">
-      <span class="search-results__count"><b id="search-count">113</b> <span id="search-count-label">stays match</span></span>
+      <span class="search-results__count"><b id="search-count">271</b> <span id="search-count-label">stays match</span></span>
       <button class="btn btn-primary search-results__btn" type="button" data-scroll="#directory" data-cta="search-view">
         View stays
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -107,7 +107,7 @@
     <div class="search-trust">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9 12l2 2 4-4"/></svg>Secure booking</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>Live availability</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/></svg>110+ properties worldwide</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/></svg>270+ properties worldwide</span>
     </div>
   </div>
 </section>
@@ -116,9 +116,9 @@
 <section class="section" id="categories">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow center">Ways to stay</span>
-      <h2>Room to spread out — your way</h2>
-      <p>From private villas to multi-bedroom residences, choose the style of space that fits your trip.</p>
+      <span class="eyebrow center">Explore by region</span>
+      <h2>Find your place in the world</h2>
+      <p>From the Caribbean to the Mediterranean to the Indian Ocean — browse the collection by region.</p>
     </div>
     <div class="cat-grid" id="category-grid"></div>
   </div>
@@ -452,6 +452,7 @@
 </script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/images.js"></script>
+<script src="assets/js/descriptions.js"></script>
 <script src="assets/js/details.js"></script>
 <script src="assets/js/homes-inventory-filter.js"></script>
 <script src="assets/js/homes.js" defer></script>

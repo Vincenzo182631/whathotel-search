@@ -1,0 +1,2170 @@
+[
+ {
+  "id": 935,
+  "slug": "sandy-lane",
+  "name": "Sandy Lane",
+  "collection": "Leading Hotels of the World",
+  "city": "St. James (Barbados)",
+  "country": "Barbados"
+ },
+ {
+  "id": 940,
+  "slug": "cambridge-beaches-resort-spa",
+  "name": "Cambridge Beaches Resort & Spa",
+  "collection": "The Signature Collection",
+  "city": "Sandys",
+  "country": "Bermuda"
+ },
+ {
+  "id": 946,
+  "slug": "belmond-villa-san-michele",
+  "name": "Belmond Villa San Michele",
+  "collection": "Belmond Bellini Club",
+  "city": "Florence",
+  "country": "Italy"
+ },
+ {
+  "id": 951,
+  "slug": "the-ritz-carlton-kapalua",
+  "name": "The Ritz Carlton Kapalua",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Maui",
+  "country": "United States"
+ },
+ {
+  "id": 952,
+  "slug": "hotel-arts-barcelona",
+  "name": "Hotel Arts Barcelona",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Barcelona",
+  "country": "Spain"
+ },
+ {
+  "id": 956,
+  "slug": "grace-bay-club",
+  "name": "Grace Bay Club",
+  "collection": "Leading Hotels of the World",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 985,
+  "slug": "las-ventanas-al-paraiso",
+  "name": "Las Ventanas Al Paraiso",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 988,
+  "slug": "half-moon",
+  "name": "Half Moon",
+  "collection": "The Signature Collection",
+  "city": "Montego Bay",
+  "country": "Jamaica"
+ },
+ {
+  "id": 989,
+  "slug": "round-hill-hotel-villas",
+  "name": "Round Hill Hotel & Villas",
+  "collection": "The Signature Collection",
+  "city": "Montego Bay",
+  "country": "Jamaica"
+ },
+ {
+  "id": 993,
+  "slug": "villa-d-este",
+  "name": "Villa d'Este",
+  "collection": "Leading Hotels of the World",
+  "city": "Lake Como",
+  "country": "Italy"
+ },
+ {
+  "id": 1014,
+  "slug": "grand-hyatt-doha",
+  "name": "Grand Hyatt Doha",
+  "collection": "Grand Hyatt under The Hyatt Prive' Prorgam",
+  "city": "Doha",
+  "country": "Qatar"
+ },
+ {
+  "id": 1031,
+  "slug": "one-only-palmilla",
+  "name": "One&Only Palmilla",
+  "collection": "One & Only",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 1040,
+  "slug": "raffles-grand-hotel-d-angkor",
+  "name": "Raffles Grand Hotel d'Angkor",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Siem Reap",
+  "country": "Cambodia"
+ },
+ {
+  "id": 1045,
+  "slug": "mandarin-oriental-bangkok-",
+  "name": "Mandarin Oriental, Bangkok",
+  "collection": "Mandarin Oriental",
+  "city": "Bangkok",
+  "country": "Thailand"
+ },
+ {
+  "id": 1051,
+  "slug": "raffles-hotel-singapore",
+  "name": "Raffles Hotel Singapore",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Singapore",
+  "country": "Singapore"
+ },
+ {
+  "id": 1055,
+  "slug": "villa-la-massa",
+  "name": "Villa La Massa",
+  "collection": "Leading Hotels of the World",
+  "city": "Florence",
+  "country": "Italy"
+ },
+ {
+  "id": 1057,
+  "slug": "como-parrot-cay-turks-caicos",
+  "name": "COMO Parrot Cay, Turks & Caicos",
+  "collection": "The Signature Collection",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 1066,
+  "slug": "maroma-a-belmond-hotel",
+  "name": "Maroma, A Belmond Hotel",
+  "collection": "Belmond Bellini Club",
+  "city": "Cancun",
+  "country": "Mexico"
+ },
+ {
+  "id": 1073,
+  "slug": "belmond-la-residencia",
+  "name": "Belmond La Residencia",
+  "collection": "Belmond Bellini Club",
+  "city": "Mallorca",
+  "country": "Spain"
+ },
+ {
+  "id": 1124,
+  "slug": "jumby-bay-island-resort",
+  "name": "Jumby Bay Island Resort",
+  "collection": "Oetker Collection",
+  "city": "St. Johns (Antigua)",
+  "country": "Antigua"
+ },
+ {
+  "id": 1125,
+  "slug": "casa-de-campo-resort-villas-",
+  "name": "Casa de Campo Resort & Villas",
+  "collection": "Leading Hotels of the World",
+  "city": "La Romana",
+  "country": "Dominican Republic"
+ },
+ {
+  "id": 1165,
+  "slug": "jumeirah-beach-hotel",
+  "name": "Jumeirah Beach Hotel",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 1210,
+  "slug": "sanctuary-on-camelback-mountain",
+  "name": "Sanctuary on Camelback Mountain",
+  "collection": "The Signature Collection",
+  "city": "Paradise Valley",
+  "country": "United States"
+ },
+ {
+  "id": 1215,
+  "slug": "esperanza-auberge-collection",
+  "name": "Esperanza, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 1223,
+  "slug": "fairmont-kea-lani-maui",
+  "name": "Fairmont Kea Lani, Maui",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "Maui",
+  "country": "United States"
+ },
+ {
+  "id": 1253,
+  "slug": "montage-laguna-beach-",
+  "name": "Montage Laguna Beach",
+  "collection": "Montage Hotels & Resorts",
+  "city": "Laguna Beach",
+  "country": "United States"
+ },
+ {
+  "id": 1268,
+  "slug": "grand-hotel-excelsior-vittoria",
+  "name": "Grand Hotel Excelsior Vittoria",
+  "collection": "Leading Hotels of the World",
+  "city": "Sorrento",
+  "country": "Italy"
+ },
+ {
+  "id": 1271,
+  "slug": "four-seasons-resort-costa-rica-",
+  "name": "Four Seasons Resort Costa Rica",
+  "collection": "Four Seasons",
+  "city": "Peninsula Papagayo",
+  "country": "Costa Rica"
+ },
+ {
+  "id": 1325,
+  "slug": "four-seasons-resort-jackson-hole",
+  "name": "Four Seasons Resort Jackson Hole",
+  "collection": "Four Seasons",
+  "city": "Jackson Hole",
+  "country": "United States"
+ },
+ {
+  "id": 1328,
+  "slug": "the-langham-huntington-pasadena-los-angeles",
+  "name": "The Langham Huntington, Pasadena, Los Angeles",
+  "collection": "Langham Hotels under Langham's Couture Program",
+  "city": "Pasadena",
+  "country": "United States"
+ },
+ {
+  "id": 1346,
+  "slug": "le-taha-a-island-resort-spa",
+  "name": "Le Taha'a Island Resort & Spa",
+  "collection": "Relais & Châteaux",
+  "city": "Taha'a",
+  "country": "French Polynesia (Tahiti)"
+ },
+ {
+  "id": 1354,
+  "slug": "four-seasons-resort-whistler",
+  "name": "Four Seasons Resort Whistler",
+  "collection": "Four Seasons",
+  "city": "Whistler",
+  "country": "Canada"
+ },
+ {
+  "id": 1389,
+  "slug": "four-seasons-resort-chiang-mai",
+  "name": "Four Seasons Resort Chiang Mai",
+  "collection": "Four Seasons",
+  "city": "Chiang Mai",
+  "country": "Thailand"
+ },
+ {
+  "id": 1399,
+  "slug": "one-only-reethi-rah",
+  "name": "One&Only Reethi Rah",
+  "collection": "One & Only",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 1408,
+  "slug": "phaea-blue-palace",
+  "name": "Phaea Blue Palace",
+  "collection": "The Signature Collection",
+  "city": "Elounda",
+  "country": "Greece"
+ },
+ {
+  "id": 1414,
+  "slug": "four-seasons-resort-punta-mita",
+  "name": "Four Seasons Resort Punta Mita",
+  "collection": "Four Seasons",
+  "city": "Punta Mita",
+  "country": "Mexico"
+ },
+ {
+  "id": 1422,
+  "slug": "four-seasons-resort-nevis",
+  "name": "Four Seasons Resort Nevis",
+  "collection": "Four Seasons",
+  "city": "St. Kitts & Nevis",
+  "country": "St. Kitts and Nevis"
+ },
+ {
+  "id": 1427,
+  "slug": "the-peninsula-beverly-hills",
+  "name": "The Peninsula Beverly Hills",
+  "collection": "Peninsula Hotels under the Peninsula Pen Club Program",
+  "city": "Beverly Hills",
+  "country": "United States"
+ },
+ {
+  "id": 1438,
+  "slug": "four-seasons-resort-bali-at-jimbaran-bay",
+  "name": "Four Seasons Resort Bali at Jimbaran Bay",
+  "collection": "Four Seasons",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 1441,
+  "slug": "la-samanna",
+  "name": "La Samanna",
+  "collection": "Belmond Bellini Club",
+  "city": "Marigot",
+  "country": "St. Martin"
+ },
+ {
+  "id": 1449,
+  "slug": "rancho-valencia",
+  "name": "Rancho Valencia",
+  "collection": "The Signature Collection",
+  "city": "Rancho Santa Fe",
+  "country": "United States"
+ },
+ {
+  "id": 1459,
+  "slug": "the-fairmont-jasper-park-lodge",
+  "name": "The Fairmont Jasper Park Lodge",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "Jasper",
+  "country": "Canada"
+ },
+ {
+  "id": 1475,
+  "slug": "the-resort-at-paws-up-",
+  "name": "The Resort at Paws Up",
+  "collection": "The Signature Collection",
+  "city": "Greenough",
+  "country": "United States"
+ },
+ {
+  "id": 1500,
+  "slug": "park-hyatt-zurich",
+  "name": "Park Hyatt Zurich",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Zurich",
+  "country": "Switzerland"
+ },
+ {
+  "id": 1512,
+  "slug": "ritz-carlton-grand-cayman-",
+  "name": "Ritz Carlton, Grand Cayman",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Grand Cayman",
+  "country": "Grand Cayman"
+ },
+ {
+  "id": 1523,
+  "slug": "amanyara",
+  "name": "Amanyara",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 1527,
+  "slug": "amandari",
+  "name": "Amandari",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Ubud",
+  "country": "Indonesia"
+ },
+ {
+  "id": 1532,
+  "slug": "amanpulo",
+  "name": "Amanpulo",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Pamalican Island",
+  "country": "Philippines"
+ },
+ {
+  "id": 1533,
+  "slug": "amanpuri",
+  "name": "Amanpuri",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Phuket",
+  "country": "Thailand"
+ },
+ {
+  "id": 1569,
+  "slug": "montage-palmetto-bluff",
+  "name": "Montage Palmetto Bluff",
+  "collection": "Montage Hotels & Resorts",
+  "city": "Bluffton",
+  "country": "United States"
+ },
+ {
+  "id": 1636,
+  "slug": "carneros-resort-spa",
+  "name": "Carneros Resort & Spa",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Napa Valley",
+  "country": "United States"
+ },
+ {
+  "id": 1650,
+  "slug": "tortuga-bay",
+  "name": "Tortuga Bay",
+  "collection": "Leading Hotels of the World",
+  "city": "Punta Cana",
+  "country": "Dominican Republic"
+ },
+ {
+  "id": 1736,
+  "slug": "bvlgari-resort-bali-",
+  "name": "Bvlgari Resort Bali",
+  "collection": "Bvlgari under The Marriott STARS Program",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 1771,
+  "slug": "lizard-island-resort-br-all-inclusive",
+  "name": "Lizard Island Resort All-Inclusive",
+  "collection": "The Signature Collection",
+  "city": "Lizard Island",
+  "country": "Australia"
+ },
+ {
+  "id": 1783,
+  "slug": "chatham-bars-inn",
+  "name": "Chatham Bars Inn",
+  "collection": "Leading Hotels of the World",
+  "city": "Cape Cod",
+  "country": "United States"
+ },
+ {
+  "id": 1803,
+  "slug": "four-seasons-resort-the-nam-hai",
+  "name": "Four Seasons Resort the Nam Hai",
+  "collection": "Four Seasons",
+  "city": "Hoi An",
+  "country": "Vietnam"
+ },
+ {
+  "id": 1815,
+  "slug": "hotel-esencia-",
+  "name": "Hotel Esencia",
+  "collection": "The Signature Collection",
+  "city": "Cancun",
+  "country": "Mexico"
+ },
+ {
+  "id": 1836,
+  "slug": "ritz-carlton-dallas-las-colinas-resort-",
+  "name": "Ritz Carlton Dallas, Las Colinas Resort",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Dallas",
+  "country": "United States"
+ },
+ {
+  "id": 1846,
+  "slug": "four-seasons-resort-sharm-el-sheikh",
+  "name": "Four Seasons Resort Sharm El Sheikh",
+  "collection": "Four Seasons",
+  "city": "Sharm El Sheikh",
+  "country": "Egypt"
+ },
+ {
+  "id": 1896,
+  "slug": "rosewood-mayakoba",
+  "name": "Rosewood Mayakoba",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Mayakoba",
+  "country": "Mexico"
+ },
+ {
+  "id": 1911,
+  "slug": "four-seasons-resort-koh-samui",
+  "name": "Four Seasons Resort Koh Samui",
+  "collection": "Four Seasons",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
+  "id": 1954,
+  "slug": "the-ritz-carlton-bal-harbour",
+  "name": "The Ritz-Carlton, Bal Harbour",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Miami Beach",
+  "country": "United States"
+ },
+ {
+  "id": 1970,
+  "slug": "intercontinental-bora-bora-thalasso-",
+  "name": "InterContinental Bora Bora & Thalasso",
+  "collection": "InterContinental Hotels & Resorts under The IHG Destined Program",
+  "city": "Bora Bora",
+  "country": "French Polynesia (Tahiti)"
+ },
+ {
+  "id": 2133,
+  "slug": "fairmont-miramar-hotel-bungalows-",
+  "name": "Fairmont Miramar Hotel & Bungalows",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "Los Angeles",
+  "country": "United States"
+ },
+ {
+  "id": 2135,
+  "slug": "the-fairmont-royal-pavilion",
+  "name": "The Fairmont Royal Pavilion",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "St. James (Barbados)",
+  "country": "Barbados"
+ },
+ {
+  "id": 2141,
+  "slug": "ritz-carlton-oahu-turtle-bay-",
+  "name": "Ritz Carlton Oahu, Turtle Bay",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Honolulu",
+  "country": "United States"
+ },
+ {
+  "id": 2174,
+  "slug": "grand-hotel-des-bains-kempinski-st-moritz",
+  "name": "Grand Hotel des Bains Kempinski St. Moritz",
+  "collection": "Kempinski Hotels under The Kempinski Club 1897 Program",
+  "city": "St. Moritz",
+  "country": "Switzerland"
+ },
+ {
+  "id": 2194,
+  "slug": "hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course",
+  "name": "Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course",
+  "collection": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+  "city": "Monterey",
+  "country": "United States"
+ },
+ {
+  "id": 2212,
+  "slug": "the-st-regis-punta-mita-resort",
+  "name": "The St. Regis Punta Mita Resort",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "Punta Mita",
+  "country": "Mexico"
+ },
+ {
+  "id": 2257,
+  "slug": "the-arrabelle-vail-square",
+  "name": "The Arrabelle, Vail Square",
+  "collection": "The Signature Collection",
+  "city": "Vail",
+  "country": "United States"
+ },
+ {
+  "id": 2262,
+  "slug": "waldorf-astoria-los-cabos-pedregal",
+  "name": "Waldorf Astoria Los Cabos Pedregal",
+  "collection": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 2265,
+  "slug": "rosewood-castiglion-del-bosco",
+  "name": "Rosewood Castiglion del Bosco",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Tuscany",
+  "country": "Italy"
+ },
+ {
+  "id": 2280,
+  "slug": "four-seasons-resort-bora-bora",
+  "name": "Four Seasons Resort Bora Bora",
+  "collection": "Four Seasons",
+  "city": "Bora Bora",
+  "country": "French Polynesia (Tahiti)"
+ },
+ {
+  "id": 2281,
+  "slug": "four-seasons-resort-mauritius",
+  "name": "Four Seasons Resort Mauritius",
+  "collection": "Four Seasons",
+  "city": "Mauritius",
+  "country": "Mauritius"
+ },
+ {
+  "id": 2287,
+  "slug": "four-seasons-resort-seychelles",
+  "name": "Four Seasons Resort Seychelles",
+  "collection": "Four Seasons",
+  "city": "Seychelles",
+  "country": "Seychelles"
+ },
+ {
+  "id": 2293,
+  "slug": "terranea-resort",
+  "name": "Terranea Resort",
+  "collection": "The Signature Collection",
+  "city": "Los Angeles",
+  "country": "United States"
+ },
+ {
+  "id": 2314,
+  "slug": "banyan-tree-mayakoba",
+  "name": "Banyan Tree Mayakoba",
+  "collection": "Banyan Tree",
+  "city": "Mayakoba",
+  "country": "Mexico"
+ },
+ {
+  "id": 2349,
+  "slug": "the-st-regis-deer-valley",
+  "name": "The St. Regis Deer Valley",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "Deer Valley",
+  "country": "United States"
+ },
+ {
+  "id": 2390,
+  "slug": "four-seasons-resort-vail",
+  "name": "Four Seasons Resort Vail",
+  "collection": "Four Seasons",
+  "city": "Vail",
+  "country": "United States"
+ },
+ {
+  "id": 2394,
+  "slug": "montage-deer-valley",
+  "name": "Montage Deer Valley",
+  "collection": "Montage Hotels & Resorts",
+  "city": "Deer Valley",
+  "country": "United States"
+ },
+ {
+  "id": 2401,
+  "slug": "the-ritz-carlton-fort-lauderdale-",
+  "name": "The Ritz-Carlton, Fort Lauderdale",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Fort Lauderdale",
+  "country": "United States"
+ },
+ {
+  "id": 2402,
+  "slug": "the-ritz-carlton-lake-tahoe",
+  "name": "The Ritz-Carlton, Lake Tahoe",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Lake Tahoe",
+  "country": "United States"
+ },
+ {
+  "id": 2426,
+  "slug": "the-st-regis-bahia-beach-resort-",
+  "name": "The St. Regis Bahia Beach Resort",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "Rio Grande",
+  "country": "Puerto Rico"
+ },
+ {
+  "id": 2441,
+  "slug": "ventana-big-sur",
+  "name": "Ventana Big Sur",
+  "collection": "ALiLa",
+  "city": "Big Sur",
+  "country": "United States"
+ },
+ {
+  "id": 2442,
+  "slug": "viceroy-snowmass-",
+  "name": "Viceroy Snowmass",
+  "collection": "Viceroy Hotels",
+  "city": "Snowmass Village",
+  "country": "United States"
+ },
+ {
+  "id": 2461,
+  "slug": "belmond-hotel-rio-sagrado",
+  "name": "Belmond Hotel Rio Sagrado",
+  "collection": "Belmond Bellini Club",
+  "city": "Cusco",
+  "country": "Peru"
+ },
+ {
+  "id": 2462,
+  "slug": "the-ranch-at-rock-creek-br-all-inclusive-",
+  "name": "The Ranch at Rock Creek **All Inclusive**",
+  "collection": "The Signature Collection",
+  "city": "Philipsburg",
+  "country": "United States"
+ },
+ {
+  "id": 2493,
+  "slug": "saxon-hotel-villas-spa-",
+  "name": "Saxon Hotel, Villas & Spa",
+  "collection": "Leading Hotels of the World",
+  "city": "Johannesburg",
+  "country": "South Africa"
+ },
+ {
+  "id": 2513,
+  "slug": "belmond-napasai-",
+  "name": "Belmond Napasai",
+  "collection": "Belmond Bellini Club",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
+  "id": 2520,
+  "slug": "fairmont-heritage-place-ghirardelli-sq-",
+  "name": "Fairmont Heritage Place, Ghirardelli Sq.",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "San Francisco",
+  "country": "United States"
+ },
+ {
+  "id": 2543,
+  "slug": "four-seasons-aviara-residence-club",
+  "name": "Four Seasons Aviara Residence Club",
+  "collection": "Four Seasons",
+  "city": "San Diego, Aviara",
+  "country": "United States"
+ },
+ {
+  "id": 2545,
+  "slug": "mandarin-oriental-canouan-",
+  "name": "Mandarin Oriental, Canouan",
+  "collection": "Mandarin Oriental",
+  "city": "Canouan Island",
+  "country": "Saint Vincent and the Grenadines"
+ },
+ {
+  "id": 2563,
+  "slug": "belmond-cap-juluca",
+  "name": "Belmond Cap Juluca",
+  "collection": "Belmond Bellini Club",
+  "city": "Anguilla",
+  "country": "Anguilla, BWI"
+ },
+ {
+  "id": 2568,
+  "slug": "sugar-beach-a-viceroy-resort",
+  "name": "Sugar Beach, A Viceroy Resort",
+  "collection": "Viceroy Hotels",
+  "city": "Soufriere",
+  "country": "Saint Lucia"
+ },
+ {
+  "id": 2600,
+  "slug": "the-little-nell",
+  "name": "The Little Nell",
+  "collection": "The Signature Collection",
+  "city": "Aspen",
+  "country": "United States"
+ },
+ {
+  "id": 2674,
+  "slug": "the-resort-at-pelican-hill-",
+  "name": "The Resort at Pelican Hill",
+  "collection": "The Signature Collection",
+  "city": "Newport Beach",
+  "country": "United States"
+ },
+ {
+  "id": 2683,
+  "slug": "mauna-lani-resort-auberge-collection",
+  "name": "Mauna Lani Resort, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Big Island",
+  "country": "United States"
+ },
+ {
+  "id": 2706,
+  "slug": "andaz-maui-at-wailea",
+  "name": "Andaz Maui at Wailea",
+  "collection": "Andaz Hotels under the Hyatt Prive' Program",
+  "city": "Maui",
+  "country": "United States"
+ },
+ {
+  "id": 2728,
+  "slug": "borgo-egnazia-",
+  "name": "Borgo Egnazia",
+  "collection": "Leading Hotels of the World",
+  "city": "Savelletri di Fasano",
+  "country": "Italy"
+ },
+ {
+  "id": 2738,
+  "slug": "jumeirah-at-etihad-towers-",
+  "name": "Jumeirah at Etihad Towers",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Abu Dhabi",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 2741,
+  "slug": "jumeirah-zabeel-saray",
+  "name": "Jumeirah Zabeel Saray",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 2753,
+  "slug": "jumeirah-mallorca",
+  "name": "Jumeirah Mallorca",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Mallorca",
+  "country": "Spain"
+ },
+ {
+  "id": 2760,
+  "slug": "andaz-costa-rica-resort-at-peninsula-papagayo",
+  "name": "Andaz Costa Rica Resort at Peninsula Papagayo",
+  "collection": "Andaz Hotels under the Hyatt Prive' Program",
+  "city": "Peninsula Papagayo",
+  "country": "Costa Rica"
+ },
+ {
+  "id": 2811,
+  "slug": "pine-cliffs-residence-luxury-collection",
+  "name": "Pine Cliffs Residence, Luxury Collection",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Algarve",
+  "country": "Portugal"
+ },
+ {
+  "id": 2849,
+  "slug": "nizuc-resort-spa-",
+  "name": "Nizuc Resort & Spa",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Cancun",
+  "country": "Mexico"
+ },
+ {
+  "id": 2879,
+  "slug": "the-resort-at-kapalua-bay",
+  "name": "The Resort at Kapalua Bay",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "Maui",
+  "country": "United States"
+ },
+ {
+  "id": 2894,
+  "slug": "sonora-resort-br-all-inclusive",
+  "name": "Sonora Resort All-Inclusive",
+  "collection": "Relais & Châteaux",
+  "city": "Richmond, BC",
+  "country": "Canada"
+ },
+ {
+  "id": 2920,
+  "slug": "rosewood-villa-magna",
+  "name": "Rosewood Villa Magna",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Madrid",
+  "country": "Spain"
+ },
+ {
+  "id": 2944,
+  "slug": "amanoi",
+  "name": "Amanoi",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Vinh Hy",
+  "country": "Vietnam"
+ },
+ {
+  "id": 2946,
+  "slug": "amanzoe",
+  "name": "Amanzoe",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Kranidi",
+  "country": "Greece"
+ },
+ {
+  "id": 2962,
+  "slug": "the-miami-beach-edition",
+  "name": "The Miami Beach EDITION",
+  "collection": "EDITION Hotels under The Marriott STARS Program",
+  "city": "Miami Beach",
+  "country": "United States"
+ },
+ {
+  "id": 2972,
+  "slug": "w-bali-seminyak",
+  "name": "W Bali - Seminyak",
+  "collection": "W Hotels under the Marriott Luminous Program",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 2982,
+  "slug": "rosewood-baha-mar",
+  "name": "Rosewood Baha Mar",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Nassau",
+  "country": "Bahamas"
+ },
+ {
+  "id": 2987,
+  "slug": "the-brando",
+  "name": "The Brando",
+  "collection": "The Signature Collection",
+  "city": "Papeete",
+  "country": "French Polynesia (Tahiti)"
+ },
+ {
+  "id": 3013,
+  "slug": "the-cape",
+  "name": "The Cape",
+  "collection": "Thompson Hotels, under Hyatt Prive' Prorgam",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 3022,
+  "slug": "villa-dubrovnik",
+  "name": "Villa Dubrovnik",
+  "collection": "Leading Hotels of the World",
+  "city": "Dubrovnik",
+  "country": "Croatia"
+ },
+ {
+  "id": 3060,
+  "slug": "alila-villas-uluwatu",
+  "name": "Alila Villas Uluwatu",
+  "collection": "ALiLa",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 3061,
+  "slug": "alila-ubud",
+  "name": "Alila Ubud",
+  "collection": "ALiLa",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 3107,
+  "slug": "four-seasons-hotel-kyoto",
+  "name": "Four Seasons Hotel Kyoto",
+  "collection": "Four Seasons",
+  "city": "Kyoto",
+  "country": "Japan"
+ },
+ {
+  "id": 3108,
+  "slug": "park-hyatt-st-kitts",
+  "name": "Park Hyatt St. Kitts",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "St. Kitts & Nevis",
+  "country": "St. Kitts and Nevis"
+ },
+ {
+  "id": 3109,
+  "slug": "four-seasons-hotel-at-the-surf-club",
+  "name": "Four Seasons Hotel at the Surf Club",
+  "collection": "Four Seasons",
+  "city": "Miami Beach",
+  "country": "United States"
+ },
+ {
+  "id": 3118,
+  "slug": "four-seasons-london-at-tower-bridge",
+  "name": "Four Seasons London at Tower Bridge",
+  "collection": "Four Seasons",
+  "city": "London",
+  "country": "United Kingdom"
+ },
+ {
+  "id": 3133,
+  "slug": "four-seasons-resort-anguilla-",
+  "name": "Four Seasons Resort Anguilla",
+  "collection": "Four Seasons",
+  "city": "Anguilla",
+  "country": "Anguilla, BWI"
+ },
+ {
+  "id": 3174,
+  "slug": "las-terrazas-resort",
+  "name": "Las Terrazas Resort",
+  "collection": "The Signature Collection",
+  "city": "San Pedro",
+  "country": "Belize"
+ },
+ {
+  "id": 3176,
+  "slug": "the-temple-house",
+  "name": "The Temple House",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Chengdu",
+  "country": "China"
+ },
+ {
+  "id": 3180,
+  "slug": "castello-di-casole",
+  "name": "Castello di Casole",
+  "collection": "Belmond Bellini Club",
+  "city": "Tuscany",
+  "country": "Italy"
+ },
+ {
+  "id": 3214,
+  "slug": "kimpton-seafire-resort-",
+  "name": "Kimpton Seafire Resort",
+  "collection": "Kimpton Hotels under IHG's Destined Program",
+  "city": "Grand Cayman",
+  "country": "Grand Cayman"
+ },
+ {
+  "id": 3231,
+  "slug": "andaz-scottsdale-resort-spa",
+  "name": "Andaz Scottsdale Resort & Spa",
+  "collection": "Andaz Hotels under the Hyatt Prive' Program",
+  "city": "Scottsdale",
+  "country": "United States"
+ },
+ {
+  "id": 3255,
+  "slug": "jw-marriott-scottsdale-camelback-inn-resort-and-spa",
+  "name": "JW Marriott Scottsdale Camelback Inn Resort and Spa",
+  "collection": "JW Marriott Hotel under Marriott's Luminous Progam",
+  "city": "Scottsdale",
+  "country": "United States"
+ },
+ {
+  "id": 3270,
+  "slug": "renaissance-orlando-at-seaworld",
+  "name": "Renaissance Orlando at SeaWorld",
+  "collection": "Renaissance Hotels under The Marriott Luminous Program",
+  "city": "Orlando and Disney World",
+  "country": "United States"
+ },
+ {
+  "id": 3287,
+  "slug": "the-ritz-carlton-residences-waikiki-beach",
+  "name": "The Ritz-Carlton Residences, Waikiki Beach",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Honolulu",
+  "country": "United States"
+ },
+ {
+  "id": 3289,
+  "slug": "four-seasons-resort-seychelles-at-desroches-island",
+  "name": "Four Seasons Resort Seychelles at Desroches Island",
+  "collection": "Four Seasons",
+  "city": "Seychelles",
+  "country": "Seychelles"
+ },
+ {
+  "id": 3333,
+  "slug": "conrad-fort-lauderdale-beach",
+  "name": "Conrad Fort Lauderdale Beach",
+  "collection": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+  "city": "Fort Lauderdale",
+  "country": "United States"
+ },
+ {
+  "id": 3337,
+  "slug": "montage-los-cabos-mexico",
+  "name": "Montage Los Cabos, Mexico",
+  "collection": "Montage Hotels & Resorts",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 3352,
+  "slug": "chileno-bay-resort-auberge-collection",
+  "name": "Chileno Bay Resort, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 3360,
+  "slug": "elounda-gulf-villas-suites",
+  "name": "Elounda Gulf Villas & Suites",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Elounda",
+  "country": "Greece"
+ },
+ {
+  "id": 3362,
+  "slug": "intercontinental-koh-samui",
+  "name": "Intercontinental Koh Samui",
+  "collection": "InterContinental Hotels & Resorts under The IHG Destined Program",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
+  "id": 3371,
+  "slug": "the-bodrum-edition",
+  "name": "The Bodrum EDITION",
+  "collection": "EDITION Hotels under The Marriott STARS Program",
+  "city": "Bodrum",
+  "country": "Turkey"
+ },
+ {
+  "id": 3395,
+  "slug": "hyatt-regency-danang-resort-spa",
+  "name": "Hyatt Regency Danang Resort & Spa",
+  "collection": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+  "city": "Da Nang",
+  "country": "Vietnam"
+ },
+ {
+  "id": 3397,
+  "slug": "grand-hyatt-baha-mar-",
+  "name": "Grand Hyatt Baha Mar",
+  "collection": "Grand Hyatt under The Hyatt Prive' Prorgam",
+  "city": "Nassau",
+  "country": "Bahamas"
+ },
+ {
+  "id": 3399,
+  "slug": "grand-hyatt-bali",
+  "name": "Grand Hyatt Bali",
+  "collection": "Grand Hyatt under The Hyatt Prive' Prorgam",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 3445,
+  "slug": "park-hyatt-zanzibar",
+  "name": "Park Hyatt Zanzibar",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Stone Town",
+  "country": "Tanzania"
+ },
+ {
+  "id": 3446,
+  "slug": "park-hyatt-sanya-sunny-bay-",
+  "name": "Park Hyatt Sanya Sunny Bay",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Sanya",
+  "country": "China"
+ },
+ {
+  "id": 3449,
+  "slug": "park-hyatt-maldives-hadahaa",
+  "name": "Park Hyatt Maldives Hadahaa",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 3450,
+  "slug": "park-hyatt-hyderabad",
+  "name": "Park Hyatt Hyderabad",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Hyderabad",
+  "country": "India"
+ },
+ {
+  "id": 3463,
+  "slug": "four-seasons-kuala-lumpur",
+  "name": "Four Seasons Kuala Lumpur",
+  "collection": "Four Seasons",
+  "city": "Kuala Lumpur",
+  "country": "Malaysia"
+ },
+ {
+  "id": 3468,
+  "slug": "the-abu-dhabi-edition",
+  "name": "The Abu Dhabi EDITION",
+  "collection": "EDITION Hotels under The Marriott STARS Program",
+  "city": "Abu Dhabi",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 3479,
+  "slug": "rosewood-san-miguel-allende",
+  "name": "Rosewood San Miguel Allende",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "San Miguel de Allende",
+  "country": "Mexico"
+ },
+ {
+  "id": 3487,
+  "slug": "the-ritz-carlton-koh-samui",
+  "name": "The Ritz-Carlton Koh Samui",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
+  "id": 3488,
+  "slug": "the-sanya-edition",
+  "name": "The Sanya EDITION",
+  "collection": "EDITION Hotels under The Marriott STARS Program",
+  "city": "Sanya",
+  "country": "China"
+ },
+ {
+  "id": 3492,
+  "slug": "bvlgari-hotel-dubai",
+  "name": "Bvlgari Hotel, Dubai",
+  "collection": "Bvlgari under The Marriott STARS Program",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 3497,
+  "slug": "sls-baha-mar",
+  "name": "SLS Baha Mar",
+  "collection": "SLS Hotels & Resorts under Accor HERA Program",
+  "city": "Nassau",
+  "country": "Bahamas"
+ },
+ {
+  "id": 3539,
+  "slug": "solaz",
+  "name": "Solaz",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 3564,
+  "slug": "six-senses-fiji",
+  "name": "Six Senses Fiji",
+  "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "Fiji",
+  "country": "Fiji Islands"
+ },
+ {
+  "id": 3577,
+  "slug": "aurora-anguilla-resort-golf-club-",
+  "name": "Aurora Anguilla Resort & Golf Club",
+  "collection": "Leading Hotels of the World",
+  "city": "Anguilla",
+  "country": "Anguilla, BWI"
+ },
+ {
+  "id": 3597,
+  "slug": "amanemu",
+  "name": "Amanemu",
+  "collection": "Aman Hotels & Resorts",
+  "city": "Shima",
+  "country": "Japan"
+ },
+ {
+  "id": 3609,
+  "slug": "intercontinental-hayman-island-resort",
+  "name": "InterContinental Hayman Island Resort",
+  "collection": "InterContinental Hotels & Resorts under The IHG Destined Program",
+  "city": "Hayman Island",
+  "country": "Australia"
+ },
+ {
+  "id": 3614,
+  "slug": "four-seasons-los-cabos-at-costa-palmas",
+  "name": "Four Seasons Los Cabos at Costa Palmas",
+  "collection": "Four Seasons",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 3617,
+  "slug": "four-seasons-napa-valley",
+  "name": "Four Seasons Napa Valley",
+  "collection": "Four Seasons",
+  "city": "Napa Valley",
+  "country": "United States"
+ },
+ {
+  "id": 3676,
+  "slug": "banyan-tree-cabo-marques",
+  "name": "Banyan Tree Cabo Marques",
+  "collection": "Banyan Tree",
+  "city": "Acapulco",
+  "country": "Mexico"
+ },
+ {
+  "id": 3682,
+  "slug": "-four-seasons-les-chalets-du-mont-d-arbois-megeve-",
+  "name": "Four Seasons Les Chalets du Mont d’Arbois , Megeve",
+  "collection": "Four Seasons",
+  "city": "Megeve",
+  "country": "France"
+ },
+ {
+  "id": 3685,
+  "slug": "mountain-shadows",
+  "name": "Mountain Shadows",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Paradise Valley",
+  "country": "United States"
+ },
+ {
+  "id": 3703,
+  "slug": "zadun-a-ritz-carlton-reserve-",
+  "name": "Zadun, a Ritz-Carlton Reserve",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 3705,
+  "slug": "mandarin-oriental-lago-di-como",
+  "name": "Mandarin Oriental, Lago di Como",
+  "collection": "Mandarin Oriental",
+  "city": "Lake Como",
+  "country": "Italy"
+ },
+ {
+  "id": 3723,
+  "slug": "jw-marriott-khao-lak-resort-spa",
+  "name": "JW Marriott Khao Lak Resort & Spa",
+  "collection": "JW Marriott Hotel under Marriott's Luminous Progam",
+  "city": "Khao Lak",
+  "country": "Thailand"
+ },
+ {
+  "id": 3725,
+  "slug": "jw-marriott-phuket-resort-spa",
+  "name": "JW Marriott Phuket Resort & Spa",
+  "collection": "JW Marriott Hotel under Marriott's Luminous Progam",
+  "city": "Phuket",
+  "country": "Thailand"
+ },
+ {
+  "id": 3759,
+  "slug": "w-koh-samui",
+  "name": "W Koh Samui",
+  "collection": "W Hotels under the Marriott Luminous Program",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
+  "id": 3797,
+  "slug": "scrub-island-resort-spa-marina",
+  "name": "Scrub Island Resort, Spa & Marina",
+  "collection": "The Signature Collection",
+  "city": "Scrub Island",
+  "country": "British Virgin Islands"
+ },
+ {
+  "id": 3808,
+  "slug": "playa-largo-resort-spa",
+  "name": "Playa Largo Resort & Spa",
+  "collection": "Autograph Collection under the Marriott Luminous Program",
+  "city": "Key Largo",
+  "country": "United States"
+ },
+ {
+  "id": 3834,
+  "slug": "waterline-marina-resort-beach-club-autograph-collection",
+  "name": "Waterline Marina Resort & Beach Club, Autograph Collection",
+  "collection": "Autograph Collection under the Marriott Luminous Program",
+  "city": "Holmes Beach",
+  "country": "United States"
+ },
+ {
+  "id": 3870,
+  "slug": "jw-marriott-phu-quoc-emerald-bay-resort-spa",
+  "name": "JW Marriott Phu Quoc Emerald Bay Resort & Spa",
+  "collection": "JW Marriott Hotel under Marriott's Luminous Progam",
+  "city": "Phu Quoc",
+  "country": "Vietnam"
+ },
+ {
+  "id": 3879,
+  "slug": "the-ritz-carlton-residences-at-dorado-beach",
+  "name": "The Ritz Carlton Residences at Dorado Beach",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Dorado",
+  "country": "Puerto Rico"
+ },
+ {
+  "id": 3887,
+  "slug": "lido-house-autograph-collection",
+  "name": "Lido House, Autograph Collection",
+  "collection": "Autograph Collection under the Marriott Luminous Program",
+  "city": "Newport Beach",
+  "country": "United States"
+ },
+ {
+  "id": 3890,
+  "slug": "jw-marriott-maldives-resort-spa-",
+  "name": "JW Marriott Maldives Resort & Spa",
+  "collection": "JW Marriott Hotel under Marriott's Luminous Progam",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 3901,
+  "slug": "wymara-resort-turks-and-caicos",
+  "name": "Wymara Resort, Turks and Caicos",
+  "collection": "The Signature Collection",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 3902,
+  "slug": "park-hyatt-abu-dhabi-hotel-and-villas",
+  "name": "Park Hyatt Abu Dhabi Hotel and Villas",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Abu Dhabi",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 3938,
+  "slug": "rosewood-little-dix-bay",
+  "name": "Rosewood Little Dix Bay",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Virgin Gorda",
+  "country": "British Virgin Islands"
+ },
+ {
+  "id": 3939,
+  "slug": "eden-roc-cap-cana-",
+  "name": "Eden Roc Cap Cana",
+  "collection": "Relais & Châteaux",
+  "city": "Punta Cana",
+  "country": "Dominican Republic"
+ },
+ {
+  "id": 3943,
+  "slug": "grace-bay-club-villa-seascape",
+  "name": "Grace Bay Club Villa Seascape",
+  "collection": "Leading Hotels of the World",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 3944,
+  "slug": "grace-bay-club-villa-seaclusion",
+  "name": "Grace Bay Club Villa Seaclusion",
+  "collection": "Leading Hotels of the World",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 3953,
+  "slug": "the-ranch-at-laguna-beach",
+  "name": "The Ranch at Laguna Beach",
+  "collection": "The Signature Collection",
+  "city": "Laguna Beach",
+  "country": "United States"
+ },
+ {
+  "id": 3963,
+  "slug": "alila-seminyak",
+  "name": "Alila Seminyak",
+  "collection": "ALiLa",
+  "city": "Kerobokan",
+  "country": "Indonesia"
+ },
+ {
+  "id": 3975,
+  "slug": "park-hyatt-kyoto",
+  "name": "Park Hyatt Kyoto",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Kyoto",
+  "country": "Japan"
+ },
+ {
+  "id": 3985,
+  "slug": "intercontinental-resort-bali-",
+  "name": "InterContinental Resort Bali",
+  "collection": "InterContinental Hotels & Resorts under The IHG Destined Program",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 4031,
+  "slug": "hotel-indigo-bali-seminyak-beach-",
+  "name": "Hotel Indigo Bali Seminyak Beach",
+  "collection": "Hotel Indigo under IHG'S Destined Program",
+  "city": "Seminyak",
+  "country": "Indonesia"
+ },
+ {
+  "id": 4121,
+  "slug": "park-hyatt-niseko-hanazono",
+  "name": "Park Hyatt Niseko Hanazono",
+  "collection": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+  "city": "Niseko",
+  "country": "Japan"
+ },
+ {
+  "id": 4132,
+  "slug": "conrad-maldives-rangali-island",
+  "name": "Conrad Maldives Rangali Island",
+  "collection": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 4138,
+  "slug": "ho-olei-at-grand-wailea",
+  "name": "Ho’olei at Grand Wailea",
+  "collection": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+  "city": "Maui",
+  "country": "United States"
+ },
+ {
+  "id": 4139,
+  "slug": "conrad-punta-de-mita",
+  "name": "Conrad Punta de Mita",
+  "collection": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+  "city": "Punta Mita",
+  "country": "Mexico"
+ },
+ {
+  "id": 4165,
+  "slug": "jumeirah-bali",
+  "name": "Jumeirah Bali",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 4177,
+  "slug": "sea-palms-private-beachfront-estate",
+  "name": "Sea Palms Private Beachfront Estate",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Captiva Island",
+  "country": "United States"
+ },
+ {
+  "id": 4178,
+  "slug": "sea-oats-private-estate",
+  "name": "Sea Oats Private Estate",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Captiva Island",
+  "country": "United States"
+ },
+ {
+  "id": 4180,
+  "slug": "villa-mani",
+  "name": "Villa Mani",
+  "collection": "The Signature Collection",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 4184,
+  "slug": "chable-yucatan",
+  "name": "Chable Yucatan",
+  "collection": "Leading Hotels of the World",
+  "city": "Merida",
+  "country": "Mexico"
+ },
+ {
+  "id": 4215,
+  "slug": "sonnenalp-hotel",
+  "name": "Sonnenalp Hotel",
+  "collection": "Leading Hotels of the World",
+  "city": "Vail",
+  "country": "United States"
+ },
+ {
+  "id": 4226,
+  "slug": "madeline-hotel-residences-auberge-collection",
+  "name": "Madeline Hotel & Residences, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Telluride",
+  "country": "United States"
+ },
+ {
+  "id": 4247,
+  "slug": "one-only-mandarina",
+  "name": "One&Only Mandarina",
+  "collection": "One & Only",
+  "city": "Puerto Vallarta",
+  "country": "Mexico"
+ },
+ {
+  "id": 4252,
+  "slug": "one-only-portonovi-montenegro",
+  "name": "One&Only Portonovi, Montenegro",
+  "collection": "One & Only",
+  "city": "Boka Bay",
+  "country": "Montenegro"
+ },
+ {
+  "id": 4411,
+  "slug": "eagles-villas",
+  "name": "Eagles Villas",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Halkidiki",
+  "country": "Greece"
+ },
+ {
+  "id": 4510,
+  "slug": "nemacolin-woodlands-resort",
+  "name": "Nemacolin Woodlands Resort",
+  "collection": "The Signature Collection",
+  "city": "Farmington",
+  "country": "United States"
+ },
+ {
+  "id": 4575,
+  "slug": "montage-healdsburg",
+  "name": "Montage Healdsburg",
+  "collection": "Montage Hotels & Resorts",
+  "city": "Healdsburg",
+  "country": "United States"
+ },
+ {
+  "id": 4628,
+  "slug": "vail-residences-at-cascade-village",
+  "name": "Vail Residences at Cascade Village",
+  "collection": "Hyatt",
+  "city": "Vail",
+  "country": "United States"
+ },
+ {
+  "id": 4657,
+  "slug": "jumeirah-dar-al-masyaf",
+  "name": "Jumeirah Dar Al Masyaf",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 4658,
+  "slug": "jumeirah-at-saadiyat-island-resort",
+  "name": "Jumeirah at Saadiyat Island Resort",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Abu Dhabi",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 4664,
+  "slug": "jumeirah-living-guangzhou",
+  "name": "Jumeirah Living Guangzhou",
+  "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+  "city": "Guangzhou",
+  "country": "China"
+ },
+ {
+  "id": 4746,
+  "slug": "four-seasons-resort-tamarindo",
+  "name": "Four Seasons Resort Tamarindo",
+  "collection": "Four Seasons",
+  "city": "Tamarindo",
+  "country": "Mexico"
+ },
+ {
+  "id": 4751,
+  "slug": "regent-phu-quoc",
+  "name": "Regent Phu Quoc",
+  "collection": "Regent Hotels",
+  "city": "Phu Quoc",
+  "country": "Vietnam"
+ },
+ {
+  "id": 4823,
+  "slug": "fairmont-heritage-place-mayakoba",
+  "name": "Fairmont Heritage Place Mayakoba",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "Mayakoba",
+  "country": "Mexico"
+ },
+ {
+  "id": 4839,
+  "slug": "blackberry-farm",
+  "name": "Blackberry Farm",
+  "collection": "Relais & Châteaux",
+  "city": "Walland",
+  "country": "United States"
+ },
+ {
+  "id": 4898,
+  "slug": "raffles-seychelles",
+  "name": "Raffles Seychelles",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Seychelles",
+  "country": "Seychelles"
+ },
+ {
+  "id": 4910,
+  "slug": "raffles-hainan",
+  "name": "Raffles Hainan",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Sanya",
+  "country": "China"
+ },
+ {
+  "id": 4937,
+  "slug": "raffles-bali",
+  "name": "Raffles Bali",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Jimbaran",
+  "country": "Indonesia"
+ },
+ {
+  "id": 4945,
+  "slug": "raffles-maldives-meradhoo-resort",
+  "name": "Raffles Maldives Meradhoo Resort",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 4968,
+  "slug": "raffles-makati",
+  "name": "Raffles Makati",
+  "collection": "Raffles Hotels under The Accor HERA Program",
+  "city": "Luzon Island",
+  "country": "Philippines"
+ },
+ {
+  "id": 5035,
+  "slug": "four-seasons-fort-lauderdale",
+  "name": "Four Seasons Fort Lauderdale",
+  "collection": "Four Seasons",
+  "city": "Fort Lauderdale",
+  "country": "United States"
+ },
+ {
+  "id": 5070,
+  "slug": "white-barn-inn-auberge-collection",
+  "name": "White Barn Inn, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Kennebunkport",
+  "country": "United States"
+ },
+ {
+  "id": 6072,
+  "slug": "itz-ana-resort",
+  "name": "Itz'ana Resort",
+  "collection": "The Signature Collection",
+  "city": "Placencia",
+  "country": "Belize"
+ },
+ {
+  "id": 6080,
+  "slug": "anantara-maia-seychelles-villas",
+  "name": "Anantara Maia Seychelles Villas",
+  "collection": "The Signature Collection",
+  "city": "Seychelles",
+  "country": "Seychelles"
+ },
+ {
+  "id": 6084,
+  "slug": "ritz-carlton-residences-orlando",
+  "name": "Ritz-Carlton Residences, Orlando",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Orlando and Disney World",
+  "country": "United States"
+ },
+ {
+  "id": 6092,
+  "slug": "mandarin-oriental-bodrum",
+  "name": "Mandarin Oriental Bodrum",
+  "collection": "Mandarin Oriental",
+  "city": "Bodrum",
+  "country": "Turkey"
+ },
+ {
+  "id": 6102,
+  "slug": "bishop-s-lodge-auberge-collection",
+  "name": "Bishop's Lodge, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Santa Fe",
+  "country": "United States"
+ },
+ {
+  "id": 6103,
+  "slug": "naviva-four-seasons-punta-mita",
+  "name": "Naviva, Four Seasons, Punta Mita",
+  "collection": "Four Seasons",
+  "city": "Punta Mita",
+  "country": "Mexico"
+ },
+ {
+  "id": 6150,
+  "slug": "alila-kothaifaru-maldives",
+  "name": "Alila Kothaifaru Maldives",
+  "collection": "Hyatt",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 6181,
+  "slug": "bluefields-bay-villas",
+  "name": "Bluefields Bay Villas",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Bluefields",
+  "country": "Jamaica"
+ },
+ {
+  "id": 6192,
+  "slug": "stanly-ranch-auberge-collection",
+  "name": "Stanly Ranch, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Napa Valley",
+  "country": "United States"
+ },
+ {
+  "id": 6194,
+  "slug": "mandarin-oriental-marrakech",
+  "name": "Mandarin Oriental, Marrakech",
+  "collection": "Mandarin Oriental",
+  "city": "Marrakech",
+  "country": "Morocco"
+ },
+ {
+  "id": 6206,
+  "slug": "mandarin-oriental-sanya",
+  "name": "Mandarin Oriental, Sanya",
+  "collection": "Mandarin Oriental",
+  "city": "Sanya",
+  "country": "China"
+ },
+ {
+  "id": 6212,
+  "slug": "the-reef-house-palm-cove",
+  "name": "The Reef House Palm Cove",
+  "collection": "The Signature Collection",
+  "city": "Cairns",
+  "country": "Australia"
+ },
+ {
+  "id": 6229,
+  "slug": "andaz-bali",
+  "name": "Andaz Bali",
+  "collection": "Andaz Hotels under the Hyatt Prive' Program",
+  "city": "Bali",
+  "country": "Indonesia"
+ },
+ {
+  "id": 6238,
+  "slug": "montage-big-sky",
+  "name": "Montage Big Sky",
+  "collection": "Montage Hotels & Resorts",
+  "city": "Big Sky",
+  "country": "United States"
+ },
+ {
+  "id": 6269,
+  "slug": "shore-house-at-the-del",
+  "name": "Shore House at The Del",
+  "collection": "The Signature Collection",
+  "city": "Coronado",
+  "country": "United States"
+ },
+ {
+  "id": 6280,
+  "slug": "goldener-hirsch-auberge-collection",
+  "name": "Goldener Hirsch, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Park City",
+  "country": "United States"
+ },
+ {
+  "id": 6281,
+  "slug": "stein-eriksen-lodge-deer-valley",
+  "name": "Stein Eriksen Lodge Deer Valley",
+  "collection": "The Signature Collection",
+  "city": "Deer Valley",
+  "country": "United States"
+ },
+ {
+  "id": 6282,
+  "slug": "stein-eriksen-residences-deer-valley",
+  "name": "Stein Eriksen Residences Deer Valley",
+  "collection": "The Signature Collection",
+  "city": "Deer Valley",
+  "country": "United States"
+ },
+ {
+  "id": 6286,
+  "slug": "susurros-del-coraz-n-auberge-collection",
+  "name": "Susurros del Corazón, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Punta Mita",
+  "country": "Mexico"
+ },
+ {
+  "id": 6367,
+  "slug": "danang-marriott-resort-spa",
+  "name": "Danang Marriott Resort & Spa",
+  "collection": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+  "city": "Da Nang",
+  "country": "Vietnam"
+ },
+ {
+  "id": 6379,
+  "slug": "barracuda-hotel-and-villas",
+  "name": "Barracuda Hotel and Villas",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Salvador Da Bahia",
+  "country": "Brazil"
+ },
+ {
+  "id": 6393,
+  "slug": "andaz-pattaya-jomtien-beach",
+  "name": "Andaz Pattaya Jomtien Beach",
+  "collection": "Andaz Hotels under the Hyatt Prive' Program",
+  "city": "Pattaya",
+  "country": "Thailand"
+ },
+ {
+  "id": 6402,
+  "slug": "schloss-roxburghe-hotel-golf-course",
+  "name": "Schloss Roxburghe Hotel & Golf Course",
+  "collection": "Destination Hotel & Resort",
+  "city": "Kelso",
+  "country": "Scotland"
+ },
+ {
+  "id": 6412,
+  "slug": "1-hotel-south-beach",
+  "name": "1 Hotel South Beach",
+  "collection": "1 Hotel",
+  "city": "South Beach, Miami",
+  "country": "United States"
+ },
+ {
+  "id": 6423,
+  "slug": "kimpton-grand-roatan-resort-spa",
+  "name": "Kimpton Grand Roatan Resort & Spa",
+  "collection": "Kimpton Hotels under IHG's Destined Program",
+  "city": "West Bay Beach",
+  "country": "Honduras"
+ },
+ {
+  "id": 6429,
+  "slug": "jw-marriott-clearwater-beach-resort-spa",
+  "name": "JW Marriott Clearwater Beach Resort & Spa",
+  "collection": "JW Marriott Hotel under Marriott's Luminous Progam",
+  "city": "Clearwater",
+  "country": "United States"
+ },
+ {
+  "id": 6436,
+  "slug": "four-seasons-doha-the-pearl-qatar",
+  "name": "Four Seasons Doha, The Pearl-Qatar",
+  "collection": "Four Seasons",
+  "city": "Doha",
+  "country": "Qatar"
+ },
+ {
+  "id": 6474,
+  "slug": "il-borro",
+  "name": "Il Borro",
+  "collection": "Relais & Châteaux",
+  "city": "Tuscany",
+  "country": "Italy"
+ },
+ {
+  "id": 6479,
+  "slug": "banyan-tree-phuket",
+  "name": "Banyan Tree Phuket",
+  "collection": "Banyan Tree",
+  "city": "Phuket",
+  "country": "Thailand"
+ },
+ {
+  "id": 6539,
+  "slug": "one-only-kea-island",
+  "name": "One&Only Kea Island",
+  "collection": "One & Only",
+  "city": "Athens",
+  "country": "Greece"
+ },
+ {
+  "id": 6547,
+  "slug": "the-riviera-maya-edition-at-kanai",
+  "name": "The Riviera Maya EDITION at Kanai",
+  "collection": "EDITION Hotels under The Marriott STARS Program",
+  "city": "Kanai",
+  "country": "Mexico"
+ },
+ {
+  "id": 6554,
+  "slug": "four-seasons-cabo-san-lucas-cabo-del-sol",
+  "name": "Four Seasons Cabo San Lucas @ Cabo del Sol",
+  "collection": "Four Seasons",
+  "city": "Cabo San Lucas",
+  "country": "Mexico"
+ },
+ {
+  "id": 6557,
+  "slug": "wild-dunes-resort-residences-at-sweetgrass-",
+  "name": "Wild Dunes Resort - Residences At Sweetgrass",
+  "collection": "Hyatt",
+  "city": "Charleston",
+  "country": "United States"
+ },
+ {
+  "id": 6558,
+  "slug": "wild-dunes-resort-homes-villas",
+  "name": "Wild Dunes Resort Homes & Villas",
+  "collection": "Hyatt",
+  "city": "Charleston",
+  "country": "United States"
+ },
+ {
+  "id": 6589,
+  "slug": "six-senses-la-sagesse",
+  "name": "Six Senses La Sagesse",
+  "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "St. David's",
+  "country": "Grenada"
+ },
+ {
+  "id": 6647,
+  "slug": "one-only-aesthesis",
+  "name": "One&Only Aesthesis",
+  "collection": "One & Only",
+  "city": "Athens",
+  "country": "Greece"
+ },
+ {
+  "id": 6662,
+  "slug": "danang-marriott-resort-spa-non-nuoc-beach-villas",
+  "name": "Danang Marriott Resort & Spa, Non Nuoc Beach Villas",
+  "collection": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+  "city": "Da Nang",
+  "country": "Vietnam"
+ },
+ {
+  "id": 6691,
+  "slug": "villa-caldera",
+  "name": "Villa Caldera",
+  "collection": "Mandarin Oriental",
+  "city": "Santorini",
+  "country": "Greece"
+ },
+ {
+  "id": 6692,
+  "slug": "fairmont-heritage-place-franz-klammer-lodge",
+  "name": "Fairmont Heritage Place Franz Klammer Lodge",
+  "collection": "Fairmont Hotels under Accor's HERA Program",
+  "city": "Telluride",
+  "country": "United States"
+ },
+ {
+  "id": 6693,
+  "slug": "verdura-resort-rocco-forte-private-villas",
+  "name": "Verdura Resort, Rocco Forte Private Villas",
+  "collection": "Rocco Forte Hotels",
+  "city": "Sicily",
+  "country": "Italy"
+ },
+ {
+  "id": 6695,
+  "slug": "rocco-forte-house-rome",
+  "name": "Rocco Forte House, Rome",
+  "collection": "Rocco Forte Hotels",
+  "city": "Rome",
+  "country": "Italy"
+ },
+ {
+  "id": 6697,
+  "slug": "rocco-forte-house-milan",
+  "name": "Rocco Forte House, Milan",
+  "collection": "Rocco Forte Hotels",
+  "city": "Milan",
+  "country": "Italy"
+ },
+ {
+  "id": 6703,
+  "slug": "the-sira",
+  "name": "The Sira",
+  "collection": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+  "city": "Lombok",
+  "country": "Indonesia"
+ },
+ {
+  "id": 6705,
+  "slug": "ritz-carlton-residences-turks-caicos",
+  "name": "Ritz Carlton Residences, Turks & Caicos",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 6706,
+  "slug": "the-ritz-carlton-residences-mexico-city",
+  "name": "The Ritz-Carlton Residences Mexico City",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Mexico City",
+  "country": "Mexico"
+ },
+ {
+  "id": 6722,
+  "slug": "7pines-resort-ibiza",
+  "name": "7Pines Resort Ibiza",
+  "collection": "Hyatt",
+  "city": "Ibiza",
+  "country": "Spain"
+ },
+ {
+  "id": 6732,
+  "slug": "meadowstone-manor",
+  "name": "Meadowstone Manor",
+  "collection": "The Signature Collection",
+  "city": "Stowe",
+  "country": "United States"
+ },
+ {
+  "id": 6733,
+  "slug": "gem-hacienda",
+  "name": "Gem Hacienda",
+  "collection": "The Signature Collection",
+  "city": "Taos",
+  "country": "United States"
+ },
+ {
+  "id": 6741,
+  "slug": "six-senses-southern-dunes",
+  "name": "Six Senses Southern Dunes",
+  "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "The Red Sea",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": 6746,
+  "slug": "six-senses-samui",
+  "name": "Six Senses Samui",
+  "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
+  "id": 6748,
+  "slug": "six-senses-krabey-island",
+  "name": "Six Senses Krabey Island",
+  "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "Sihanoukville",
+  "country": "Cambodia"
+ },
+ {
+  "id": 6755,
+  "slug": "dinso-resort-villas",
+  "name": "Dinso Resort & Villas",
+  "collection": "Vignette Collection Hotels under the IHG Destined Program",
+  "city": "Phuket",
+  "country": "Thailand"
+ },
+ {
+  "id": 6764,
+  "slug": "rosewood-mandarina",
+  "name": "Rosewood Mandarina",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Puerto Vallarta",
+  "country": "Mexico"
+ },
+ {
+  "id": 6766,
+  "slug": "ritz-carlton-maldives-fari-islands",
+  "name": "Ritz-Carlton Maldives, Fari Islands",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Maldives",
+  "country": "Maldives"
+ },
+ {
+  "id": 6847,
+  "slug": "rock-house",
+  "name": "Rock House",
+  "collection": "Leading Hotels of the World",
+  "city": "Turks & Caicos",
+  "country": "Turks and Caicos Islands"
+ }
+]

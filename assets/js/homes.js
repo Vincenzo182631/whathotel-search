@@ -35,13 +35,28 @@
      residential inventory (see homes-inventory-filter.js), plus
      campaign params so paid traffic is attributable end-to-end.
      ----------------------------------------------------------------- */
-  // Each property carries its real canonical WhataHotel URL. We append the
-  // Homes-intent flag + campaign params so availability filtering and paid-
-  // traffic attribution carry through to the property page.
+  var UTM = "utm_source=homes_landing&utm_medium=referral&utm_campaign=homes_directory";
+
+  // Canonical individual WhataHotel property page (photos, description, etc.).
   function buildPropertyUrl(p) {
-    var url = p.url || ("https://www.whatahotel.com/browse_offers.cfm?hotelID=" + p.id);
-    var params = "stayType=homes&utm_source=homes_landing&utm_medium=referral&utm_campaign=homes_directory";
-    return url + (url.indexOf("?") === -1 ? "?" : "&") + params;
+    var url = p.url || ("https://whatahotel.com/hotels/" + p.id + "/index.html");
+    return url + (url.indexOf("?") === -1 ? "?" : "&") + "stayType=homes&" + UTM;
+  }
+
+  // "Check Availability" — the EXISTING WhataHotel availability endpoint with
+  // type=homes. This is the same entry point the live Homes page uses ("View
+  // Rates"): the server searches the property's Amadeus inventory and returns
+  // only units whose actual room/unit description matches the approved
+  // residential keywords (residence, home, villa, …). We never determine
+  // eligibility from the hotel name — we hand off to that existing system.
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function ymd(d) { return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
+  function buildAvailabilityUrl(p) {
+    var inD = new Date(); inD.setDate(inD.getDate() + 21);
+    var outD = new Date(); outD.setDate(outD.getDate() + 23);
+    return "https://whatahotel.com/booking/showRates.cfm?hotelID=" + p.id +
+      "&checkIn=" + ymd(inD) + "&checkOut=" + ymd(outD) +
+      "&guests=2&children=0&rooms=1&type=homes&" + UTM;
   }
 
   /* -----------------------------------------------------------------
@@ -138,25 +153,27 @@
   }
 
   /* -----------------------------------------------------------------
-     Categories used for filter chips & category cards.
+     Filtering axes — derived from AUTHORITATIVE property data, never from
+     guessing residential inventory by name:
+       • REGIONS  — the property's real country grouped into 6 regions
+       • BRANDS   — the property's real collection/brand
+     Both come pre-computed (with counts) from data.js.
      ----------------------------------------------------------------- */
-  var CATEGORIES = [
-    { key: "villa",     label: "Villas",     blurb: "Private space, pools and resort-style living.", scene: "tropical" },
-    { key: "residence", label: "Residences", blurb: "Multi-bedroom living with full residential comforts.", scene: "city" },
-    { key: "home",      label: "Homes",      blurb: "The comforts of home at exceptional resorts.", scene: "beach" },
-    { key: "estate",    label: "Estates",    blurb: "Expansive private estates for the whole group.", scene: "countryside" }
-  ];
-  // Condos & apartments are surfaced within their related categories/filters.
-  var CAT_ALIAS = { home: ["home"], villa: ["villa"], residence: ["residence", "apartment", "condo"], estate: ["estate"] };
-  var FEATURES = [
-    { key: "beachfront",    label: "Beachfront" },
-    { key: "mountain",      label: "Mountain" },
-    { key: "family",        label: "Family-friendly" },
-    { key: "multi-bedroom", label: "Multiple bedrooms" },
-    { key: "kitchen",       label: "Kitchen" },
-    { key: "private-pool",  label: "Private pool" }
-  ];
-  var TYPE_LABEL = { home:"Home", villa:"Villa", residence:"Residence", apartment:"Apartment", condo:"Condo", estate:"Estate" };
+  var REGIONS = (window.WAH_REGIONS || []).slice();
+  var BRANDS = (window.WAH_BRANDS || []).slice();
+  // Short region labels for compact badges.
+  var REGION_SHORT = {
+    "north-america": "North America",
+    "latam-caribbean": "Latin America & Caribbean",
+    "europe": "Europe",
+    "asia": "Asia",
+    "mea": "Middle East & Africa",
+    "pacific": "Pacific & Indian Ocean"
+  };
+  var REGION_BADGE = {
+    "north-america": "North America", "latam-caribbean": "Caribbean & LatAm", "europe": "Europe",
+    "asia": "Asia", "mea": "Middle East & Africa", "pacific": "Pacific & Indian Ocean"
+  };
 
   /* ---- Hotel-style line icons (inline SVG, currentColor) ---- */
   function ic(paths) {
@@ -178,35 +195,47 @@
     pin:          ic('<path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/>'),
     search:       ic('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
     shield:       ic('<path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9 12l2 2 4-4"/>'),
-    bolt:         ic('<path d="M13 2L4 14h6l-1 8 9-12h-6z"/>')
+    bolt:         ic('<path d="M13 2L4 14h6l-1 8 9-12h-6z"/>'),
+    collection:   ic('<path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/>'),
+    /* region glyphs */
+    "north-america":  ic('<path d="M3 20l3-9 4 2 2-5 3 4 3-2 3 10z"/>'),
+    "latam-caribbean":ic('<path d="M3 18c1.4 1 2.6 1 4 0s2.6-1 4 0 2.6 1 4 0 2.6-1 4 0"/><path d="M12 14V6M12 6c3 0 5 2 5 4H7c0-2 2-4 5-4z"/>'),
+    "europe":         ic('<rect x="4" y="9" width="16" height="11" rx="1"/><path d="M8 9V5l4-2 4 2v4M10 20v-5h4v5"/>'),
+    "asia":           ic('<path d="M12 3c2 3 2 5 0 8-2-3-2-5 0-8zM6 21c0-4 2.7-7 6-7s6 3 6 7"/><path d="M9 21v-3M15 21v-3"/>'),
+    "mea":            ic('<path d="M3 20c3-6 6-9 9-9s6 3 9 9zM12 11V4M9 6l3-2 3 2"/>'),
+    "pacific":        ic('<circle cx="12" cy="12" r="8"/><path d="M4 12c3 2 5 2 8 0s5-2 8 0M12 4c-2 3-2 5 0 8s2 5 0 8"/>')
   };
   function iconFor(key) { return ICONS[key] || ""; }
 
   /* -----------------------------------------------------------------
-     State
+     State — cats = selected region keys, brands = selected collections.
      ----------------------------------------------------------------- */
-  var state = { query: "", cats: [], feats: [], sort: "featured", favs: {} };
+  var state = { query: "", cats: [], brands: [], sort: "featured", favs: {} };
 
-  function propMatchesCat(p, cat) {
-    var wanted = CAT_ALIAS[cat] || [cat];
-    return p.types.some(function (t) { return wanted.indexOf(t) !== -1; });
-  }
+  // Region match: a property belongs to exactly one region (its real country).
+  function propMatchesCat(p, cat) { return p.regionKey === cat; }
 
   function filtered() {
     var q = state.query.trim().toLowerCase();
     var list = PROPS.filter(function (p) {
-      if (state.cats.length && !state.cats.some(function (c) { return propMatchesCat(p, c); })) return false;
-      if (state.feats.length && !state.feats.every(function (f) { return p.features.indexOf(f) !== -1; })) return false;
+      if (state.cats.length && state.cats.indexOf(p.regionKey) === -1) return false;
+      if (state.brands.length && state.brands.indexOf(p.brand) === -1) return false;
       if (q) {
-        var hay = [p.name, p.loc, p.types.join(" ")].join(" ").toLowerCase();
+        var hay = [p.name, p.loc, p.city, p.country, p.region, p.collection, p.brand].join(" ").toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
       return true;
     });
     if (state.sort === "az") list.sort(function (a, b) { return a.name.localeCompare(b.name); });
-    else if (state.sort === "destination") list.sort(function (a, b) { return (a.loc || "").localeCompare(b.loc || ""); });
+    else if (state.sort === "destination") list.sort(function (a, b) { return (a.country || "").localeCompare(b.country || "") || (a.city || "").localeCompare(b.city || ""); });
     else list.sort(function (a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
     return list;
+  }
+
+  // Description: authoritative WhataHotel copy where available, else location line.
+  function blurbText(p) {
+    var d = window.WAH_DESC;
+    return (d && d[p.id]) ? d[p.id] : (p.blurb || "");
   }
 
   /* -----------------------------------------------------------------
@@ -256,7 +285,7 @@
       'onload="this.classList.add(\'is-loaded\')" ' +
       'onerror="if(this.dataset.fb){this.remove()}else{this.dataset.fb=1;this.src=this.dataset.raw}">';
   }
-  // Representative property (with an image) for a category card.
+  // Representative property (with an image) for a region card.
   function categoryPick(catKey) {
     var list = PROPS.filter(function (p) { return propMatchesCat(p, catKey); });
     var withImg = list.filter(function (p) { return rawImageFor(p); });
@@ -273,14 +302,13 @@
       imgTag(p, 640, "pcard__photo", 'loading="lazy"');
   }
 
+  // Image-overlay badge: the property's real collection/brand, else its region.
   function typeBadge(p) {
-    var t = p.types[0];
-    return TYPE_LABEL[t] || "Residence";
+    return p.brand || REGION_BADGE[p.regionKey] || p.region || "";
   }
-  var TYPE_PLURAL = { home: "Homes", villa: "Villas", residence: "Residences", apartment: "Apartments", condo: "Condos", estate: "Estate" };
+  // Card eyebrow: the property's real collection (brand line).
   function eyebrowFor(p) {
-    // e.g. "VILLAS" or "VILLAS · RESIDENCES" when a property offers both.
-    return p.types.slice(0, 2).map(function (t) { return TYPE_PLURAL[t] || TYPE_LABEL[t] || t; }).join(" · ");
+    return p.collection || p.brand || (REGION_SHORT[p.regionKey] || p.region || "");
   }
 
   function esc(s) {
@@ -290,16 +318,11 @@
   }
 
   function cardHTML(p, i, anim) {
-    var url = buildPropertyUrl(p);
     var delay = ((i || 0) % 3);
     var animAttr = ' data-anim="' + (anim || "rise") + '" style="--d:' + delay + '"';
-    var tags = p.types.slice(0, 3).map(function (t) { return '<span class="tag-pill">' + esc(TYPE_LABEL[t] || t) + '</span>'; });
-    // add up to one standout feature pill
-    var featPill = "";
-    if (p.features.indexOf("private-pool") !== -1) featPill = "Private Pool";
-    else if (p.features.indexOf("beachfront") !== -1) featPill = "Beachfront";
-    else if (p.features.indexOf("multi-bedroom") !== -1) featPill = "Multi-Bedroom";
-    if (featPill) tags.push('<span class="tag-pill">' + featPill + '</span>');
+    // Factual pills: region + country (both real, from the source list).
+    var tags = ['<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>'];
+    if (p.country) tags.push('<span class="tag-pill">' + esc(p.country) + '</span>');
 
     var favOn = !!state.favs[p.id];
     return '' +
@@ -314,7 +337,7 @@
       '<div class="pcard__body">' +
         '<div class="pcard__hotel">' + esc(eyebrowFor(p)) + '</div>' +
         '<h3 class="pcard__name">' + esc(p.name) + '</h3>' +
-        '<p class="pcard__blurb">' + esc((p.blurb || "").trim()) + '</p>' +
+        '<p class="pcard__blurb">' + esc(blurbText(p).trim()) + '</p>' +
         '<div class="pcard__tags">' + tags.join("") + '</div>' +
         '<div class="pcard__foot">' +
           '<span class="pcard__cta">' +
@@ -403,33 +426,27 @@
      & focus), prev/next, clickable progress segments, a desktop
      thumbnail rail, keyboard arrows, touch swipe, reduced-motion safe.
      ================================================================= */
-  // Curated, type- and scene-diverse marquee slides. Editorial copy is kept
-  // grounded in each property's real location & type (no invented amenities).
-  var HERO = [
-    { id: 6796, kicker: "Overwater Villas · Maldives",
-      desc: "Beachfront and overwater villas on a private Indian Ocean lagoon — each with its own pool and unhurried space to spread out." },
-    { id: 6282, kicker: "Ski Residences · Deer Valley",
-      desc: "Ski-in, ski-out mountain residences with fireplaces and full kitchens, moments from Deer Valley's celebrated slopes." },
-    { id: 1000, kicker: "Country Estate · Ireland",
-      desc: "A sweeping Irish country estate of manor residences, wrapped in ancient woodland, formal gardens and riverbank." },
-    { id: 6558, kicker: "Beach Homes & Villas · Charleston",
-      desc: "Beachfront homes and villas on a barrier island minutes from historic Charleston — room enough for the whole family." },
-    { id: 3287, kicker: "Beachfront Residences · Waikiki",
-      desc: "Full-kitchen residences on the sand at Waikiki, with sweeping Pacific and Diamond Head views." },
-    { id: 3022, kicker: "Cliffside Villa · Dubrovnik",
-      desc: "An intimate Adriatic villa perched above the sea, a short stroll from the storied walls of old-town Dubrovnik." }
-  ];
-  var META_KEYS = ["multi-bedroom", "private-pool", "kitchen", "beachfront", "mountain", "family"];
-  var META_LABEL = { "multi-bedroom": "Multiple bedrooms", "private-pool": "Private pool", kitchen: "Full kitchen", beachfront: "Beachfront", mountain: "Mountain", family: "Family-friendly" };
+  // Marquee slides — a geographically diverse set of REAL properties from the
+  // 271. All copy (kicker, description, meta) is derived from authoritative
+  // data: the property's collection, city/country/region and its own
+  // WhataHotel description. Nothing about the accommodation is invented.
+  var HERO_IDS = [1055, 2944, 1124, 1031, 1073, 3705];
 
+  function slideFor(p) {
+    var kicker = (p.collection ? p.collection + " · " : "") + (p.loc || p.region);
+    var meta = [];
+    if (p.country) meta.push({ icon: "pin", label: p.country });
+    meta.push({ icon: p.regionKey, label: REGION_SHORT[p.regionKey] || p.region });
+    if (p.brand) meta.push({ icon: "collection", label: p.brand });
+    return { p: p, kicker: kicker, desc: blurbText(p), meta: meta.slice(0, 3) };
+  }
   function heroSlides() {
-    var list = HERO.map(function (h) {
-      var p = PROPS.filter(function (x) { return x.id === h.id; })[0];
-      return p ? { p: p, kicker: h.kicker, desc: h.desc } : null;
+    var list = HERO_IDS.map(function (id) {
+      var p = PROPS.filter(function (x) { return x.id === id; })[0];
+      return p ? slideFor(p) : null;
     }).filter(Boolean);
     if (list.length < 3) { // fallback to featured if ids drift
-      list = PROPS.filter(function (p) { return p.featured; }).slice(0, 6)
-        .map(function (p) { return { p: p, kicker: eyebrowFor(p) + " · " + (p.loc || ""), desc: p.blurb }; });
+      list = PROPS.filter(function (p) { return p.featured; }).slice(0, 6).map(slideFor);
     }
     return list;
   }
@@ -444,8 +461,7 @@
 
     var slidesHTML = hero.slides.map(function (s, i) {
       var p = s.p;
-      var meta = META_KEYS.filter(function (k) { return p.features.indexOf(k) !== -1; }).slice(0, 3)
-        .map(function (k) { return '<li>' + iconFor(k) + '<span>' + esc(META_LABEL[k]) + '</span></li>'; }).join("");
+      var meta = (s.meta || []).map(function (m) { return '<li>' + iconFor(m.icon) + '<span>' + esc(m.label) + '</span></li>'; }).join("");
       return '' +
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
@@ -567,16 +583,16 @@
   function pause() { hero.paused = true; }
   function resume() { hero.paused = false; }
 
+  // "Explore by region" cards.
   function renderCategories() {
     var wrap = $("#category-grid");
     if (!wrap) return;
-    wrap.innerHTML = CATEGORIES.map(function (c, i) {
-      var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
+    wrap.innerHTML = REGIONS.map(function (c, i) {
       var pick = categoryPick(c.key);
       return '<button class="cat-card reveal" data-anim="zoom" style="--d:' + i + '" type="button" data-cat="' + c.key + '">' +
         '<div class="scene">' + sceneSVG(c.scene) + '</div>' +
         (pick ? imgTag(pick, 800, "cat-card__photo", 'loading="lazy"') : "") +
-        '<span class="cat-card__count">' + iconFor(c.key) + n + ' stays</span>' +
+        '<span class="cat-card__count">' + iconFor(c.key) + c.count + ' stays</span>' +
         '<div class="cat-card__body"><h3>' + esc(c.label) + '</h3><p>' + esc(c.blurb) + '</p></div>' +
       '</button>';
     }).join("");
@@ -585,7 +601,7 @@
         var cat = btn.getAttribute("data-cat");
         state.cats = [cat];
         syncControls();
-        track("filter_selected", { filter_type: "category", filter_value: cat, source: "category_card" });
+        track("filter_selected", { filter_type: "region", filter_value: cat, source: "region_card" });
         renderDirectory();
         scrollToDirectory();
       });
@@ -593,49 +609,51 @@
   }
 
   /* -----------------------------------------------------------------
-     Type tabs (segmented, single-select incl. "All") + feature chips.
-     Both use hotel-style icons.
+     Region tabs (single-select incl. "All") + collection/brand refine chips.
+     Both axes come straight from authoritative property data.
      ----------------------------------------------------------------- */
+  var REFINE_BRANDS = BRANDS.filter(function (b) { return b.count >= 3; }).slice(0, 8);
+
   function buildFilters() {
-    // Type tabs
+    // Region tabs
     var tabs = $("#type-tabs");
     if (tabs) {
       var all = '<button class="type-tab" type="button" data-cat="" aria-pressed="true">' +
-                iconFor("all") + '<span>All stays</span></button>';
-      tabs.innerHTML = all + CATEGORIES.map(function (c) {
-        var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
+                iconFor("all") + '<span>All stays</span><em>' + PROPS.length + '</em></button>';
+      tabs.innerHTML = all + REGIONS.map(function (c) {
         return '<button class="type-tab" type="button" data-cat="' + c.key + '" aria-pressed="false">' +
-          iconFor(c.key) + '<span>' + esc(c.label) + '</span><em>' + n + '</em></button>';
+          iconFor(c.key) + '<span>' + esc(REGION_BADGE[c.key] || c.label) + '</span><em>' + c.count + '</em></button>';
       }).join("");
       $$(".type-tab", tabs).forEach(function (tab) {
         tab.addEventListener("click", function () { setType(tab.getAttribute("data-cat")); });
       });
     }
-    // Feature chips
+    // Brand / collection refine chips
     var row = $("#feature-chips");
     if (row) {
-      row.innerHTML = '<span class="chip-row__label">Refine</span>' + FEATURES.map(function (f) {
-        return '<button class="chip" type="button" data-key="' + f.key + '" aria-pressed="false">' +
-          iconFor(f.key) + esc(f.label) + '<span class="chip-x" aria-hidden="true">✕</span></button>';
+      if (!REFINE_BRANDS.length) { row.innerHTML = ""; return; }
+      row.innerHTML = '<span class="chip-row__label">Collections</span>' + REFINE_BRANDS.map(function (b) {
+        return '<button class="chip" type="button" data-key="' + esc(b.label) + '" aria-pressed="false">' +
+          iconFor("collection") + esc(b.label) + '<span class="chip-x" aria-hidden="true">✕</span></button>';
       }).join("");
       $$(".chip", row).forEach(function (chip) {
-        chip.addEventListener("click", function () { toggleFeature(chip); });
+        chip.addEventListener("click", function () { toggleBrand(chip); });
       });
     }
   }
   function setType(cat) {
     state.cats = cat ? [cat] : [];
     syncControls();
-    if (cat) track("filter_selected", { filter_type: "category", filter_value: cat, source: "tab" });
+    if (cat) track("filter_selected", { filter_type: "region", filter_value: cat, source: "tab" });
     renderDirectory();
   }
-  function toggleFeature(chip) {
+  function toggleBrand(chip) {
     var key = chip.getAttribute("data-key");
-    var i = state.feats.indexOf(key);
+    var i = state.brands.indexOf(key);
     var on;
-    if (i === -1) { state.feats.push(key); on = true; } else { state.feats.splice(i, 1); on = false; }
+    if (i === -1) { state.brands.push(key); on = true; } else { state.brands.splice(i, 1); on = false; }
     chip.setAttribute("aria-pressed", on);
-    if (on) track("filter_selected", { filter_type: "feature", filter_value: key, source: "chip" });
+    if (on) track("filter_selected", { filter_type: "collection", filter_value: key, source: "chip" });
     renderDirectory();
   }
   function syncControls() {
@@ -644,12 +662,12 @@
       tab.setAttribute("aria-pressed", tab.getAttribute("data-cat") === cur);
     });
     $$("#feature-chips .chip").forEach(function (chip) {
-      chip.setAttribute("aria-pressed", state.feats.indexOf(chip.getAttribute("data-key")) !== -1);
+      chip.setAttribute("aria-pressed", state.brands.indexOf(chip.getAttribute("data-key")) !== -1);
     });
   }
 
   function clearAll() {
-    state.query = ""; state.cats = []; state.feats = []; state.sort = "featured";
+    state.query = ""; state.cats = []; state.brands = []; state.sort = "featured";
     var input = $("#search-input"); if (input) input.value = "";
     var sort = $("#sort-select"); if (sort) sort.value = "featured";
     syncControls();
@@ -812,27 +830,34 @@
     ensureModal();
     modalLastFocus = trigger || document.activeElement;
     var d = detailsFor(p);
-    var url = buildPropertyUrl(p);
+    var availUrl = buildAvailabilityUrl(p);
+    var pageUrl = buildPropertyUrl(p);
 
-    var typeLine = p.types.map(function (t) { return TYPE_LABEL[t] || t; }).join(" · ");
-    var eyebrow = (d && d.collection) ? esc(d.collection) : typeLine;
+    var regionLabel = REGION_SHORT[p.regionKey] || p.region || "";
+    var eyebrow = (d && d.collection) ? esc(d.collection) : esc(p.collection || p.brand || regionLabel);
     var locFull = (d && d.locationFull) ? d.locationFull : (p.loc || "");
-    var desc = (d && d.desc) ? d.desc : (p.blurb || "");
+    var desc = (d && d.desc) ? d.desc : blurbText(p);
     var ratingHTML = (d && d.rating) ? '<span class="pmodal__rating">' + starSVG() + esc(d.rating) + '</span>' : "";
 
-    // Highlights: use enriched list, else derive honestly from known features.
-    var highlights = (d && d.highlights) ? d.highlights
-      : p.features.map(function (f) { return META_LABEL[f] || f; });
+    // Highlights: enriched list when available, else the property's real facts.
+    var facts = [];
+    if (p.loc) facts.push("Location — " + p.loc);
+    if (regionLabel) facts.push("Region — " + regionLabel);
+    if (p.collection) facts.push("Collection — " + p.collection);
+    var highlights = (d && d.highlights) ? d.highlights : facts;
     var perks = (d && d.perks) ? d.perks : null;
 
-    var meta = META_KEYS.filter(function (k) { return p.features.indexOf(k) !== -1; })
-      .map(function (k) { return '<span class="pmodal__tag">' + iconFor(k) + esc(META_LABEL[k]) + '</span>'; }).join("");
+    // Factual chips: region + country + brand (all from the source list).
+    var chips = [{ icon: p.regionKey, label: REGION_BADGE[p.regionKey] || p.region }];
+    if (p.country) chips.push({ icon: "pin", label: p.country });
+    if (p.brand) chips.push({ icon: "collection", label: p.brand });
+    var meta = chips.map(function (c) { return '<span class="pmodal__tag">' + iconFor(c.icon) + esc(c.label) + '</span>'; }).join("");
 
     var body =
       '<div class="pmodal__media">' +
         '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
         imgTag(p, 1000, "pmodal__photo", "") +
-        '<span class="pmodal__typebadge">' + esc(typeLine) + '</span>' +
+        '<span class="pmodal__typebadge">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>' +
       '</div>' +
       '<div class="pmodal__content">' +
         '<div class="pmodal__eyebrow">' + eyebrow + '</div>' +
@@ -842,16 +867,16 @@
         '<p class="pmodal__desc">' + esc(desc) + '</p>' +
         ((d && d.stay) ? '<div class="pmodal__stay"><h4>Accommodations</h4><p>' + esc(d.stay) + '</p></div>' : "") +
         '<div class="pmodal__cols">' +
-          '<div class="pmodal__col"><h4>Highlights</h4><ul class="pmodal__list">' + chipList(highlights, "hl") + '</ul></div>' +
+          '<div class="pmodal__col"><h4>' + (d && d.highlights ? "Highlights" : "At a glance") + '</h4><ul class="pmodal__list">' + chipList(highlights, "hl") + '</ul></div>' +
           (perks ? '<div class="pmodal__col pmodal__col--perks"><h4>WhataHotel Signature perks</h4><ul class="pmodal__list">' + chipList(perks, "perk") + '</ul></div>' : "") +
         '</div>' +
-        (!d ? '<p class="pmodal__note">Full description, photos and live availability are on the property’s WhataHotel page.</p>' : "") +
+        '<p class="pmodal__note">“Check Availability” opens this property’s live WhataHotel availability, filtered to its residential-style units (villas, residences &amp; homes) where offered.</p>' +
         '<div class="pmodal__actions">' +
-          '<a class="btn btn-primary btn-lg" href="' + url + '" target="_blank" rel="noopener" ' +
+          '<a class="btn btn-primary btn-lg" href="' + availUrl + '" target="_blank" rel="noopener" ' +
              'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">Check Availability' + arrowSVG() + '</a>' +
           '<button class="btn btn-outline btn-lg" type="button" data-close>Keep browsing</button>' +
         '</div>' +
-        '<a class="pmodal__source" href="' + url + '" target="_blank" rel="noopener">View on WhataHotel.com ↗</a>' +
+        '<a class="pmodal__source" href="' + pageUrl + '" target="_blank" rel="noopener">View full property on WhataHotel.com ↗</a>' +
       '</div>';
 
     $("#pmodal-scroll").innerHTML = body;
