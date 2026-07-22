@@ -344,6 +344,28 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .benefit h3 { font-size: 1.22rem; color: var(--ink); margin-bottom: .3rem; }
 .benefit p { color: var(--text-soft); font-size: .96rem; margin: 0; }
 
+/* Photo-backed benefit tiles: image cover + bottom scrim, text over it */
+.benefit--photo {
+  position: relative; overflow: hidden; min-height: 320px; border: 1px solid rgba(255,255,255,.1);
+  display: flex; flex-direction: column; justify-content: flex-end; color: #fff; background: #16293d;
+  box-shadow: var(--shadow-md);
+}
+.benefit--photo::before { content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image: var(--bg); background-size: cover; background-position: center; transition: transform .6s ease; }
+.benefit--photo::after { content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(8,16,26,.1) 0%, rgba(8,16,26,.32) 42%, rgba(8,16,26,.88) 100%); }
+.benefit--photo:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.benefit--photo:hover::before { transform: scale(1.06); }
+.benefit--photo .benefit__ico, .benefit--photo h3, .benefit--photo p { position: relative; z-index: 2; }
+.benefit--photo .benefit__ico {
+  width: 48px; height: 48px; border-radius: 12px; margin-bottom: .9rem;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); backdrop-filter: blur(4px);
+  color: var(--gold-2);
+}
+.benefit--photo .benefit__ico svg { width: 24px; height: 24px; }
+.benefit--photo h3 { color: #fff; font-size: 1.3rem; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+.benefit--photo p { color: rgba(255,255,255,.92); text-shadow: 0 1px 10px rgba(0,0,0,.35); }
+
 /* ---------- Comparison ---------- */
 .compare {
   position: relative;

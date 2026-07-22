@@ -369,6 +369,28 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .benefit h3 { font-size: 1.22rem; color: var(--ink); margin-bottom: .3rem; }
 .benefit p { color: var(--text-soft); font-size: .96rem; margin: 0; }
 
+/* Photo-backed benefit tiles: image cover + bottom scrim, text over it */
+.benefit--photo {
+  position: relative; overflow: hidden; min-height: 320px; border: 1px solid rgba(255,255,255,.1);
+  display: flex; flex-direction: column; justify-content: flex-end; color: #fff; background: #16293d;
+  box-shadow: var(--shadow-md);
+}
+.benefit--photo::before { content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image: var(--bg); background-size: cover; background-position: center; transition: transform .6s ease; }
+.benefit--photo::after { content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(8,16,26,.1) 0%, rgba(8,16,26,.32) 42%, rgba(8,16,26,.88) 100%); }
+.benefit--photo:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.benefit--photo:hover::before { transform: scale(1.06); }
+.benefit--photo .benefit__ico, .benefit--photo h3, .benefit--photo p { position: relative; z-index: 2; }
+.benefit--photo .benefit__ico {
+  width: 48px; height: 48px; border-radius: 12px; margin-bottom: .9rem;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28); backdrop-filter: blur(4px);
+  color: var(--gold-2);
+}
+.benefit--photo .benefit__ico svg { width: 24px; height: 24px; }
+.benefit--photo h3 { color: #fff; font-size: 1.3rem; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+.benefit--photo p { color: rgba(255,255,255,.92); text-shadow: 0 1px 10px rgba(0,0,0,.35); }
+
 /* ---------- Comparison ---------- */
 .compare {
   position: relative;
@@ -910,32 +932,32 @@ body.modal-open { overflow: hidden; }
       <p>The same exceptional hotels and resorts you love — with the space, comfort and flexibility of a residence.</p>
     </div>
     <div class="benefit-grid stagger">
-      <div class="benefit reveal">
+      <div class="benefit benefit--photo reveal" style="--bg:url('https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a605c6d165d9012f9f12389.png&amp;w=800&amp;output=webp&amp;q=72')">
         <div class="benefit__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21V9l9-6 9 6v12M3 21h18M9 21v-6h6v6"/></svg></div>
         <h3>More space</h3>
         <p>Spread out with separate bedrooms and living areas instead of a single room.</p>
       </div>
-      <div class="benefit reveal">
+      <div class="benefit benefit--photo reveal" style="--bg:url('https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a605c6d93ff332dacea45b5.png&amp;w=800&amp;output=webp&amp;q=72')">
         <div class="benefit__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7.5-4.6-10-9.3C.7 8.9 2 5.5 5.2 5.1 7.2 4.8 9 6 12 9c3-3 4.8-4.2 6.8-3.9C22 5.5 23.3 8.9 22 11.7 19.5 16.4 12 21 12 21z"/></svg></div>
         <h3>More comfort</h3>
         <p>Enjoy the feeling of home while staying at some of the world's best hotels and resorts.</p>
       </div>
-      <div class="benefit reveal">
+      <div class="benefit benefit--photo reveal" style="--bg:url('https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a605c6ddd8ffd1870574707.png&amp;w=800&amp;output=webp&amp;q=72')">
         <div class="benefit__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h16v6a4 4 0 01-4 4H8a4 4 0 01-4-4V4zM8 14v6M16 14v6M6 20h12"/></svg></div>
         <h3>More flexibility</h3>
         <p>Many residences include full kitchens, dining areas, laundry and other residential amenities.</p>
       </div>
-      <div class="benefit reveal">
+      <div class="benefit benefit--photo reveal" style="--bg:url('https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a605c6d3b71bfd7c04fad13.png&amp;w=800&amp;output=webp&amp;q=72')">
         <div class="benefit__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3 2.7-5 6-5s6 2 6 5M15 20c0-2 1-3.5 3-3.5S21 18 21 20"/></svg></div>
         <h3>Better for groups &amp; families</h3>
         <p>Keep everyone together in one spacious home instead of booking several hotel rooms.</p>
       </div>
-      <div class="benefit reveal">
+      <div class="benefit benefit--photo reveal" style="--bg:url('https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a605c6d93ff332dacea45b1.png&amp;w=800&amp;output=webp&amp;q=72')">
         <div class="benefit__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
         <h3>Perfect for longer stays</h3>
         <p>Settle in with residential comforts when you're staying for multiple nights or longer.</p>
       </div>
-      <div class="benefit reveal">
+      <div class="benefit benefit--photo reveal" style="--bg:url('https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a605c6d165d9012f9f1238e.png&amp;w=800&amp;output=webp&amp;q=72')">
         <div class="benefit__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l2.4 6.5L21 9l-5 4.2L17.5 20 12 16.6 6.5 20 8 13.2 3 9l6.6-.5z"/></svg></div>
         <h3>Resort service included</h3>
         <p>Housekeeping, dining, spas and amenities — the best of a residence and a five-star resort.</p>
