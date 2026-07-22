@@ -158,6 +158,30 @@
   ];
   var TYPE_LABEL = { home:"Home", villa:"Villa", residence:"Residence", apartment:"Apartment", condo:"Condo", estate:"Estate" };
 
+  /* ---- Hotel-style line icons (inline SVG, currentColor) ---- */
+  function ic(paths) {
+    return '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+           'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + paths + '</svg>';
+  }
+  var ICONS = {
+    all:          ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/>'),
+    villa:        ic('<path d="M3 20h18M5 20v-8l7-5 7 5v8M9 20v-5h6v5"/><path d="M2 12l10-7 10 7"/>'),
+    residence:    ic('<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/>'),
+    home:         ic('<path d="M3 11l9-8 9 8M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>'),
+    estate:       ic('<path d="M2 21h20M4 21V9l4-2M20 21V9l-4-2M8 7V4l4-2 4 2v3M8 21V11h8v10M11 14h2"/>'),
+    beachfront:   ic('<path d="M3 18c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"/><path d="M12 14V5M12 5c3 0 5 2 5 4H7c0-2 2-4 5-4z"/>'),
+    mountain:     ic('<path d="M3 20l6-11 4 6 2-3 6 8z"/><path d="M9 9l1.5 2.5"/>'),
+    family:       ic('<circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="9" r="2"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M14 20c0-2 1-3.6 2.6-3.6S19 17 19 20"/>'),
+    "multi-bedroom": ic('<path d="M3 18v-5a2 2 0 012-2h14a2 2 0 012 2v5M3 14V8M21 18v-4M7 11V9a1 1 0 011-1h3M13 11V9a1 1 0 011-1h3"/>'),
+    kitchen:      ic('<path d="M8 3v6a3 3 0 01-3 3 3 3 0 003 3v6M6 3v4M10 3v4M16 3c-1.5 0-2 2-2 4s.5 4 2 5v9"/>'),
+    "private-pool": ic('<path d="M3 18c1.3 1 2.4 1 3.7 0s2.4-1 3.6 0 2.4 1 3.7 0 2.4-1 3.7 0"/><path d="M7 15V6a2 2 0 014 0M11 11h4"/>'),
+    pin:          ic('<path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/>'),
+    search:       ic('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
+    shield:       ic('<path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9 12l2 2 4-4"/>'),
+    bolt:         ic('<path d="M13 2L4 14h6l-1 8 9-12h-6z"/>')
+  };
+  function iconFor(key) { return ICONS[key] || ""; }
+
   /* -----------------------------------------------------------------
      State
      ----------------------------------------------------------------- */
@@ -186,16 +210,50 @@
   }
 
   /* -----------------------------------------------------------------
+     Splash photography — curated, scene-matched Unsplash images used as an
+     attractive placeholder until real WhataHotel property photos are wired in
+     (add an `image` field to a property to override). The CSS/SVG scene sits
+     behind every photo and shows instantly + as the fallback if an image is
+     blocked or 404s, so the card is never broken and LCP is never blank.
+     ----------------------------------------------------------------- */
+  var UNSPLASH = "https://images.unsplash.com/photo-";
+  var IMG_PARAMS = "?w=900&q=70&auto=format&fit=crop";
+  var SCENE_IMAGES = {
+    beach:       ["1520250497591-112f2f40a3f4", "1507525428034-b723cf961d3e", "1519046904884-53103b34b206", "1512100356356-de1b84283e18"],
+    tropical:    ["1540541338287-41700207dee6", "1571896349842-33c89424de2d", "1582719508461-905c673771fd", "1596436889106-be35e843f974"],
+    mountain:    ["1502784444187-359ac186c5bb", "1520984032042-162d526883e0"],
+    city:        ["1551882547-ff40c63fe5fa", "1522708323590-d24dbb6b0267", "1560448204-e02f11c3d0e2", "1502672260266-1c1ef2d93688"],
+    desert:      ["1539020140153-e479b8c22e70", "1445019980597-93fa8acb246c", "1558449028-b53a39d100fc", "1566073771259-6a8506099945"],
+    countryside: ["1505693416388-ac5ce068fe85", "1470071459604-3b5ec3a7fe05", "1512918728675-ed5a9ecdebfd"],
+    estate:      ["1613977257363-707ba9348227", "1600585154340-be6161a56a0c", "1600596542815-ffad4c1539a9", "1600607687939-ce8a6c25118c"]
+  };
+  // Optional: a self-contained preview can define window.WAH_IMAGE_MAP =
+  // { scene: [dataURI, ...] } so photos render with no external requests
+  // (used by the offline/artifact preview). Production omits it and uses the
+  // Unsplash CDN URLs below.
+  function sceneImage(scene, seed) {
+    var map = window.WAH_IMAGE_MAP;
+    if (map && map[scene] && map[scene].length) {
+      return map[scene][Math.abs(seed) % map[scene].length];
+    }
+    var pool = SCENE_IMAGES[scene] || SCENE_IMAGES.beach;
+    return UNSPLASH + pool[Math.abs(seed) % pool.length] + IMG_PARAMS;
+  }
+  function imageFor(p) {
+    if (p.image) return p.image;
+    return sceneImage(p.scene, p.id);
+  }
+
+  /* -----------------------------------------------------------------
      Card rendering
      ----------------------------------------------------------------- */
   function renderMedia(p) {
-    if (p.image) {
-      // Real photo with graceful fallback to the CSS/SVG scene on error.
-      return '<img src="' + p.image + '" alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
-             'loading="lazy" decoding="async" ' +
-             'onerror="this.remove()"><div class="scene">' + sceneSVG(p.scene) + '</div>';
-    }
-    return '<div class="scene">' + sceneSVG(p.scene) + '</div>';
+    // Scene sits behind; the photo overlays it and is removed on error so the
+    // scene shows through — never a broken image.
+    return '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
+           '<img class="pcard__photo" src="' + imageFor(p) + '" ' +
+           'alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
+           'loading="lazy" decoding="async" onerror="this.remove()">';
   }
 
   function typeBadge(p) {
@@ -281,9 +339,11 @@
     if (!wrap) return;
     wrap.innerHTML = CATEGORIES.map(function (c) {
       var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
+      var img = sceneImage(c.scene, 0);
       return '<button class="cat-card" type="button" data-cat="' + c.key + '">' +
         '<div class="scene">' + sceneSVG(c.scene) + '</div>' +
-        '<span class="cat-card__count">' + n + ' stays</span>' +
+        '<img class="cat-card__photo" src="' + img + '" alt="" loading="lazy" decoding="async" onerror="this.remove()">' +
+        '<span class="cat-card__count">' + iconFor(c.key) + n + ' stays</span>' +
         '<div class="cat-card__body"><h3>' + esc(c.label) + '</h3><p>' + esc(c.blurb) + '</p></div>' +
       '</button>';
     }).join("");
@@ -291,7 +351,7 @@
       btn.addEventListener("click", function () {
         var cat = btn.getAttribute("data-cat");
         state.cats = [cat];
-        syncChips();
+        syncControls();
         track("filter_selected", { filter_type: "category", filter_value: cat, source: "category_card" });
         renderDirectory();
         scrollToDirectory();
@@ -300,42 +360,58 @@
   }
 
   /* -----------------------------------------------------------------
-     Filter chips (categories) + feature chips
+     Type tabs (segmented, single-select incl. "All") + feature chips.
+     Both use hotel-style icons.
      ----------------------------------------------------------------- */
-  function buildChips() {
-    var row = $("#category-chips");
+  function buildFilters() {
+    // Type tabs
+    var tabs = $("#type-tabs");
+    if (tabs) {
+      var all = '<button class="type-tab" type="button" data-cat="" aria-pressed="true">' +
+                iconFor("all") + '<span>All stays</span></button>';
+      tabs.innerHTML = all + CATEGORIES.map(function (c) {
+        var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
+        return '<button class="type-tab" type="button" data-cat="' + c.key + '" aria-pressed="false">' +
+          iconFor(c.key) + '<span>' + esc(c.label) + '</span><em>' + n + '</em></button>';
+      }).join("");
+      $$(".type-tab", tabs).forEach(function (tab) {
+        tab.addEventListener("click", function () { setType(tab.getAttribute("data-cat")); });
+      });
+    }
+    // Feature chips
+    var row = $("#feature-chips");
     if (row) {
-      row.innerHTML = '<span class="chip-row__label">Type</span>' + CATEGORIES.map(function (c) {
-        return chipHTML("cat", c.key, c.label);
-      }).join("") + FEATURES.map(function (f) {
-        return chipHTML("feat", f.key, f.label);
+      row.innerHTML = '<span class="chip-row__label">Refine</span>' + FEATURES.map(function (f) {
+        return '<button class="chip" type="button" data-key="' + f.key + '" aria-pressed="false">' +
+          iconFor(f.key) + esc(f.label) + '<span class="chip-x" aria-hidden="true">✕</span></button>';
       }).join("");
       $$(".chip", row).forEach(function (chip) {
-        chip.addEventListener("click", function () { toggleChip(chip); });
+        chip.addEventListener("click", function () { toggleFeature(chip); });
       });
     }
   }
-  function chipHTML(kind, key, label) {
-    return '<button class="chip" type="button" data-kind="' + kind + '" data-key="' + key + '" aria-pressed="false">' +
-      esc(label) + '<span class="chip-x" aria-hidden="true">✕</span></button>';
-  }
-  function toggleChip(chip) {
-    var kind = chip.getAttribute("data-kind");
-    var key = chip.getAttribute("data-key");
-    var arr = kind === "cat" ? state.cats : state.feats;
-    var i = arr.indexOf(key);
-    var on;
-    if (i === -1) { arr.push(key); on = true; } else { arr.splice(i, 1); on = false; }
-    chip.setAttribute("aria-pressed", on);
-    if (on) track("filter_selected", { filter_type: kind === "cat" ? "category" : "feature", filter_value: key, source: "chip" });
+  function setType(cat) {
+    state.cats = cat ? [cat] : [];
+    syncControls();
+    if (cat) track("filter_selected", { filter_type: "category", filter_value: cat, source: "tab" });
     renderDirectory();
   }
-  function syncChips() {
-    $$("#category-chips .chip").forEach(function (chip) {
-      var kind = chip.getAttribute("data-kind");
-      var key = chip.getAttribute("data-key");
-      var arr = kind === "cat" ? state.cats : state.feats;
-      chip.setAttribute("aria-pressed", arr.indexOf(key) !== -1);
+  function toggleFeature(chip) {
+    var key = chip.getAttribute("data-key");
+    var i = state.feats.indexOf(key);
+    var on;
+    if (i === -1) { state.feats.push(key); on = true; } else { state.feats.splice(i, 1); on = false; }
+    chip.setAttribute("aria-pressed", on);
+    if (on) track("filter_selected", { filter_type: "feature", filter_value: key, source: "chip" });
+    renderDirectory();
+  }
+  function syncControls() {
+    var cur = state.cats[0] || "";
+    $$("#type-tabs .type-tab").forEach(function (tab) {
+      tab.setAttribute("aria-pressed", tab.getAttribute("data-cat") === cur);
+    });
+    $$("#feature-chips .chip").forEach(function (chip) {
+      chip.setAttribute("aria-pressed", state.feats.indexOf(chip.getAttribute("data-key")) !== -1);
     });
   }
 
@@ -343,7 +419,7 @@
     state.query = ""; state.cats = []; state.feats = []; state.sort = "featured";
     var input = $("#search-input"); if (input) input.value = "";
     var sort = $("#sort-select"); if (sort) sort.value = "featured";
-    syncChips();
+    syncControls();
     renderDirectory();
   }
 
@@ -516,7 +592,7 @@
   function init() {
     paintStaticScenes();
     renderCategories();
-    buildChips();
+    buildFilters();
     renderFeatured();
     renderDirectory();
     wireSearch();
