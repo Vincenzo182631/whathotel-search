@@ -20,9 +20,10 @@ export default async function handler(req, res) {
   }
 
   var apiKey = process.env.LIVEAVATAR_API_KEY;
-  var avatarId = process.env.LIVEAVATAR_AVATAR_ID;
-  if (!apiKey || !avatarId) {
-    // Not configured yet — the client falls back to the iframe embed.
+  // Avatar UUID is not a secret; env var overrides this default.
+  var avatarId = process.env.LIVEAVATAR_AVATAR_ID || "073b60a9-89a8-45aa-8902-c358f64d2852";
+  if (!apiKey) {
+    // No API key set yet — the client falls back to the iframe embed.
     return res.status(503).json({ error: "not_configured" });
   }
 

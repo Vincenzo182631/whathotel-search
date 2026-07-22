@@ -166,7 +166,9 @@ Steps:
    matching your host runs).
 2. In the host's **Environment variables**, set (see `.env.example`):
    - `LIVEAVATAR_API_KEY` — your **rotated** key from app.liveavatar.com/developers
-   - `LIVEAVATAR_AVATAR_ID` — the avatar's UUID from the LiveAvatar dashboard
+     (this is the only required variable)
+   - `LIVEAVATAR_AVATAR_ID` — optional; defaults to the configured avatar, set
+     only to use a different one
    - `LIVEAVATAR_SANDBOX` — optional, `true` while testing
 3. Load the site over **https**. The concierge now streams the SDK avatar; if
    the endpoint ever fails it silently falls back to the iframe.

@@ -10,12 +10,13 @@
 export async function onRequest(context) {
   var env = context.env || {};
   var apiKey = env.LIVEAVATAR_API_KEY;
-  var avatarId = env.LIVEAVATAR_AVATAR_ID;
+  // Avatar UUID is not a secret; env var overrides this default.
+  var avatarId = env.LIVEAVATAR_AVATAR_ID || "073b60a9-89a8-45aa-8902-c358f64d2852";
   var json = function (status, body) {
     return new Response(JSON.stringify(body), { status: status, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" } });
   };
 
-  if (!apiKey || !avatarId) return json(503, { error: "not_configured" });
+  if (!apiKey) return json(503, { error: "not_configured" });
 
   try {
     var upstream = await fetch("https://api.liveavatar.com/v1/sessions/token", {
