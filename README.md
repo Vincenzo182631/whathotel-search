@@ -26,16 +26,18 @@ index.html                          The landing page (all sections + SEO/JSON-LD
 favicon.svg                         Brand favicon
 assets/
   css/homes.css                     Mobile-first premium design system
-  js/data.js                        Real WhataHotel properties (hotelIDs + metadata)
+  js/data.js                        GENERATED property directory (do not hand-edit)
   js/homes.js                       Rendering, search, filters, analytics, video
   js/homes-inventory-filter.js      Residential-inventory keyword logic (for the property page)
+scripts/
+  build-data.mjs                    Generates data.js from the real WhataHotel search results
 ```
 
 ## Page sections
 
 1. **Hero** — "Find More Space. Stay Somewhere Extraordinary." + primary CTA
 2. **Search** — prominent search (destination / city / country / hotel / property) with type & feature filter chips
-3. **Categories** — Homes · Villas · Residences · Apartments & Condos (with live counts)
+3. **Categories** — Villas · Residences · Homes · Estates (with live counts; condos/apartments fold into related filters)
 4. **Why a Home?** — six space/comfort/flexibility benefits
 5. **Hotel room vs. home-style stay** — visual comparison
 6. **Featured collection** — curated standout stays
@@ -47,21 +49,41 @@ assets/
 
 ## Property data & preserved links
 
-Every property in `assets/js/data.js` is a **real** WhataHotel property. Cards link
-to the live individual page using the site's existing pattern:
+`assets/js/data.js` is **generated** by `scripts/build-data.mjs` from the real
+WhataHotel category search results (Homes / Residences / Villas / Condos /
+Estate). Every property is a real WhataHotel property and each card links to the
+site's **canonical** individual page:
 
 ```
-https://www.whatahotel.com/browse_offers.cfm?hotelID=<hotelID>
+https://whatahotel.com/hotels/<hotelID>/<slug>.html
 ```
 
-`homes.js` appends `&stayType=homes` (plus UTM params for paid-traffic
+`homes.js` appends `?stayType=homes` (plus UTM params for paid-traffic
 attribution) so the traveler's "Homes" intent is carried through to the property
-page. **Do not change the `hotelID` values** without verifying the destination.
+page.
 
-To add / edit properties, edit the `WAH_PROPERTIES` array — field reference is at
-the top of `data.js`. To show a real photograph on a card, add an `image` URL to
-the property; the CSS/SVG scene is used as an instant, zero-request placeholder
-and as the fallback if the image fails to load.
+### Curation: removing the search's false positives
+
+WhataHotel's own keyword search **substring-matches**, so it returns false
+positives that the brief explicitly warns against. The build script drops them by
+classifying each property on **whole-word** name keywords. Examples removed:
+
+| Search | False positives dropped |
+|---|---|
+| Homes | the 9 **Domes** resorts, **Omni Homestead**, **Holmes Beach** |
+| Condos | **Condesa** / **Las Condes** (0 real condos remained) |
+| Villas | "**Village**" hotels (Standard East Village, Westlake Village, Niseko Village) |
+| Estate | ~125 city hotels that aren't estates (1 Hotel, Aman, Marriott Marquis…) |
+
+Result: **113** genuine residential properties (68 villas, 34 residences, 10
+estates, 4 homes, 1 condo). A small allowlist re-includes genuinely residential
+properties whose names lack a keyword (e.g. Viceroy Snowmass, Beach Village at
+The Del, Kona Village).
+
+**To add / edit properties or tune the rules,** edit `scripts/build-data.mjs`
+and re-run `node scripts/build-data.mjs`. To show a real photograph on a card,
+add an `image` URL to a property record; the CSS/SVG scene is the instant,
+zero-request placeholder and the fallback if the image fails.
 
 ## Availability filtering (Homes-only inventory)
 

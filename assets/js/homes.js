@@ -35,16 +35,13 @@
      residential inventory (see homes-inventory-filter.js), plus
      campaign params so paid traffic is attributable end-to-end.
      ----------------------------------------------------------------- */
-  var BASE = "https://www.whatahotel.com/browse_offers.cfm";
+  // Each property carries its real canonical WhataHotel URL. We append the
+  // Homes-intent flag + campaign params so availability filtering and paid-
+  // traffic attribution carry through to the property page.
   function buildPropertyUrl(p) {
-    var params = [
-      "hotelID=" + encodeURIComponent(p.id),
-      "stayType=homes",
-      "utm_source=homes_landing",
-      "utm_medium=referral",
-      "utm_campaign=homes_directory"
-    ];
-    return BASE + "?" + params.join("&");
+    var url = p.url || ("https://www.whatahotel.com/browse_offers.cfm?hotelID=" + p.id);
+    var params = "stayType=homes&utm_source=homes_landing&utm_medium=referral&utm_campaign=homes_directory";
+    return url + (url.indexOf("?") === -1 ? "?" : "&") + params;
   }
 
   /* -----------------------------------------------------------------
@@ -144,12 +141,13 @@
      Categories used for filter chips & category cards.
      ----------------------------------------------------------------- */
   var CATEGORIES = [
-    { key: "home",      label: "Homes",             blurb: "The comforts of home at exceptional resorts.", scene: "countryside" },
-    { key: "villa",     label: "Villas",            blurb: "Private space, pools and resort-style living.", scene: "tropical" },
-    { key: "residence", label: "Residences",        blurb: "Multi-bedroom living areas and full kitchens.", scene: "beach" },
-    { key: "apartment", label: "Apartments & Condos", blurb: "More room and amenities than a hotel room.", scene: "city" }
+    { key: "villa",     label: "Villas",     blurb: "Private space, pools and resort-style living.", scene: "tropical" },
+    { key: "residence", label: "Residences", blurb: "Multi-bedroom living with full residential comforts.", scene: "city" },
+    { key: "home",      label: "Homes",      blurb: "The comforts of home at exceptional resorts.", scene: "beach" },
+    { key: "estate",    label: "Estates",    blurb: "Expansive private estates for the whole group.", scene: "countryside" }
   ];
-  var CAT_ALIAS = { apartment: ["apartment", "condo"] }; // group condos with apartments
+  // Condos & apartments are surfaced within their related categories/filters.
+  var CAT_ALIAS = { home: ["home"], villa: ["villa"], residence: ["residence", "apartment", "condo"], estate: ["estate"] };
   var FEATURES = [
     { key: "beachfront",    label: "Beachfront" },
     { key: "mountain",      label: "Mountain" },
@@ -176,13 +174,13 @@
       if (state.cats.length && !state.cats.some(function (c) { return propMatchesCat(p, c); })) return false;
       if (state.feats.length && !state.feats.every(function (f) { return p.features.indexOf(f) !== -1; })) return false;
       if (q) {
-        var hay = [p.name, p.hotel, p.city, p.region, p.country, p.types.join(" ")].join(" ").toLowerCase();
+        var hay = [p.name, p.loc, p.types.join(" ")].join(" ").toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
       return true;
     });
     if (state.sort === "az") list.sort(function (a, b) { return a.name.localeCompare(b.name); });
-    else if (state.sort === "destination") list.sort(function (a, b) { return a.country.localeCompare(b.country) || a.region.localeCompare(b.region); });
+    else if (state.sort === "destination") list.sort(function (a, b) { return (a.loc || "").localeCompare(b.loc || ""); });
     else list.sort(function (a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
     return list;
   }
@@ -193,7 +191,7 @@
   function renderMedia(p) {
     if (p.image) {
       // Real photo with graceful fallback to the CSS/SVG scene on error.
-      return '<img src="' + p.image + '" alt="' + esc(p.name) + ', ' + esc(p.city) + '" ' +
+      return '<img src="' + p.image + '" alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
              'loading="lazy" decoding="async" ' +
              'onerror="this.remove()"><div class="scene">' + sceneSVG(p.scene) + '</div>';
     }
@@ -203,6 +201,11 @@
   function typeBadge(p) {
     var t = p.types[0];
     return TYPE_LABEL[t] || "Residence";
+  }
+  var TYPE_PLURAL = { home: "Homes", villa: "Villas", residence: "Residences", apartment: "Apartments", condo: "Condos", estate: "Estate" };
+  function eyebrowFor(p) {
+    // e.g. "VILLAS" or "VILLAS · RESIDENCES" when a property offers both.
+    return p.types.slice(0, 2).map(function (t) { return TYPE_PLURAL[t] || TYPE_LABEL[t] || t; }).join(" · ");
   }
 
   function esc(s) {
@@ -228,12 +231,12 @@
         renderMedia(p) +
         '<span class="pcard__badge">' + esc(typeBadge(p)) + '</span>' +
         '<button class="pcard__fav" type="button" aria-pressed="' + favOn + '" aria-label="Save ' + esc(p.name) + '">' + heartSVG() + '</button>' +
-        '<span class="pcard__loc">' + pinSVG() + esc(p.city) + ', ' + esc(p.region) + '</span>' +
+        (p.loc ? '<span class="pcard__loc">' + pinSVG() + esc(p.loc) + '</span>' : '') +
       '</div>' +
       '<div class="pcard__body">' +
-        '<div class="pcard__hotel">' + esc(p.hotel) + '</div>' +
+        '<div class="pcard__hotel">' + esc(eyebrowFor(p)) + '</div>' +
         '<h3 class="pcard__name">' + esc(p.name) + '</h3>' +
-        '<p class="pcard__blurb">' + esc(p.blurb.trim()) + '</p>' +
+        '<p class="pcard__blurb">' + esc((p.blurb || "").trim()) + '</p>' +
         '<div class="pcard__tags">' + tags.join("") + '</div>' +
         '<div class="pcard__foot">' +
           '<span class="pcard__cta">' +
