@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.cache/
+
+# Environment / secrets (NEVER commit API keys)
+.env
+.env.*
+*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
