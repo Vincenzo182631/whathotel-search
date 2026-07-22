@@ -35,7 +35,7 @@ scripts/
 
 ## Page sections
 
-1. **Hero** — "Find More Space. Stay Somewhere Extraordinary." + primary CTA
+1. **Hero** — a full-bleed, cinematic **property carousel** (villas · residences · homes · estates). Each slide: high-res image with a slow Ken-Burns drift, a location kicker, the property name, an editorial description, detail pills, and an "Explore Property" CTA. Autoplay (pauses on hover/focus), prev/next arrows, a slide counter with clickable gold progress segments, a desktop thumbnail rail, keyboard arrows, touch-swipe, and full `prefers-reduced-motion` support. Slides are configured in `homes.js` (`HERO`)
 2. **Search** — prominent search (destination / city / country / hotel / property) with type & feature filter chips
 3. **Categories** — Villas · Residences · Homes · Estates (with live counts; condos/apartments fold into related filters)
 4. **Why a Home?** — six space/comfort/flexibility benefits

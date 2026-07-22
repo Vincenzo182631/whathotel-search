@@ -55,38 +55,12 @@
   </div>
 </header>
 
-<!-- ============================ HERO ============================ -->
-<section class="hero" id="hero">
-  <div class="hero__scene" data-scene="tropical" aria-hidden="true"></div>
-  <img class="hero__photo" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=68&auto=format&fit=crop" alt="" aria-hidden="true" fetchpriority="high" decoding="async" onerror="this.remove()">
-  <div class="hero__overlay" aria-hidden="true"></div>
-  <div class="wrap hero__inner">
-    <div class="hero__grid">
-      <div class="hero__copy">
-        <span class="eyebrow on-dark">Homes · Villas · Residences</span>
-        <h1>Find More Space.<br>Stay Somewhere <span class="accent">Extraordinary.</span></h1>
-        <p class="hero__lead">Discover spacious homes, villas, residences and unique accommodations at hotels and resorts around the world — the perfect place for your family vacation, group trip or extended stay.</p>
-        <div class="hero__actions">
-          <a class="btn btn-primary btn-lg" href="#search" data-scroll="#search" data-focus="search" data-cta="hero-explore">Explore Homes</a>
-          <a class="btn btn-ghost btn-lg" href="#why" data-scroll="#why" data-cta="hero-why">Why not a hotel room?</a>
-        </div>
-        <div class="hero__trust">
-          <span>★★★★★ Trusted since 1948</span>
-          <span>Real hotel &amp; resort inventory</span>
-          <span>Live availability</span>
-        </div>
-      </div>
-      <div class="hero__visual" aria-hidden="true">
-        <div class="scene-card scene-card--a"><div class="scene" data-scene="tropical"></div><img class="scene-card__photo" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=70&auto=format&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()"><span class="tag">Private villa · Maldives</span></div>
-        <div class="scene-card scene-card--b"><div class="scene" data-scene="mountain"></div><img class="scene-card__photo" src="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?w=800&q=70&auto=format&fit=crop" alt="" loading="lazy" decoding="async" onerror="this.remove()"><span class="tag">Ski residence · Deer Valley</span></div>
-        <div class="hero__badge">
-          <span class="ico">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
-          </span>
-          <span><b>110+</b> homes, villas &amp; residences</span>
-        </div>
-      </div>
-    </div>
+<!-- ============================ HERO CAROUSEL ============================ -->
+<section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured luxury villas, residences, homes and estates">
+  <h1 class="visually-hidden">Luxury homes, villas, residences and estates at hotels and resorts around the world</h1>
+  <div class="hero-carousel" id="hero-carousel" aria-live="polite">
+    <!-- slides + controls injected by homes.js; static fallback below -->
+    <noscript><div class="hero-fallback"><div class="wrap"><span class="eyebrow on-dark">Homes · Villas · Residences</span><h2>Find More Space. Stay Somewhere Extraordinary.</h2><p>Discover spacious homes, villas, residences and estates at hotels and resorts around the world.</p></div></div></noscript>
   </div>
   <div class="hero__wave" aria-hidden="true">
     <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 60 C240 90 480 90 720 66 C960 42 1200 30 1440 54 L1440 90 L0 90 Z" fill="#fbf9f4"/></svg>

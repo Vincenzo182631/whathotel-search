@@ -231,13 +231,14 @@
   // { scene: [dataURI, ...] } so photos render with no external requests
   // (used by the offline/artifact preview). Production omits it and uses the
   // Unsplash CDN URLs below.
-  function sceneImage(scene, seed) {
+  function sceneImage(scene, seed, width) {
     var map = window.WAH_IMAGE_MAP;
     if (map && map[scene] && map[scene].length) {
       return map[scene][Math.abs(seed) % map[scene].length];
     }
     var pool = SCENE_IMAGES[scene] || SCENE_IMAGES.beach;
-    return UNSPLASH + pool[Math.abs(seed) % pool.length] + IMG_PARAMS;
+    var params = width ? ("?w=" + width + "&q=72&auto=format&fit=crop") : IMG_PARAMS;
+    return UNSPLASH + pool[Math.abs(seed) % pool.length] + params;
   }
   function imageFor(p) {
     if (p.image) return p.image;
@@ -333,6 +334,177 @@
     rail.innerHTML = feat.map(cardHTML).join("");
     observeReveals(rail);
   }
+
+  /* =================================================================
+     HERO CAROUSEL — an immersive, cinematic showcase of marquee
+     villas / residences / homes / estates. Autoplay (pauses on hover
+     & focus), prev/next, clickable progress segments, a desktop
+     thumbnail rail, keyboard arrows, touch swipe, reduced-motion safe.
+     ================================================================= */
+  // Curated, type- and scene-diverse marquee slides. Editorial copy is kept
+  // grounded in each property's real location & type (no invented amenities).
+  var HERO = [
+    { id: 6796, kicker: "Overwater Villas · Maldives",
+      desc: "Beachfront and overwater villas on a private Indian Ocean lagoon — each with its own pool and unhurried space to spread out." },
+    { id: 6282, kicker: "Ski Residences · Deer Valley",
+      desc: "Ski-in, ski-out mountain residences with fireplaces and full kitchens, moments from Deer Valley's celebrated slopes." },
+    { id: 1000, kicker: "Country Estate · Ireland",
+      desc: "A sweeping Irish country estate of manor residences, wrapped in ancient woodland, formal gardens and riverbank." },
+    { id: 6558, kicker: "Beach Homes & Villas · Charleston",
+      desc: "Beachfront homes and villas on a barrier island minutes from historic Charleston — room enough for the whole family." },
+    { id: 3287, kicker: "Beachfront Residences · Waikiki",
+      desc: "Full-kitchen residences on the sand at Waikiki, with sweeping Pacific and Diamond Head views." },
+    { id: 3022, kicker: "Cliffside Villa · Dubrovnik",
+      desc: "An intimate Adriatic villa perched above the sea, a short stroll from the storied walls of old-town Dubrovnik." }
+  ];
+  var META_KEYS = ["multi-bedroom", "private-pool", "kitchen", "beachfront", "mountain", "family"];
+  var META_LABEL = { "multi-bedroom": "Multiple bedrooms", "private-pool": "Private pool", kitchen: "Full kitchen", beachfront: "Beachfront", mountain: "Mountain", family: "Family-friendly" };
+
+  function heroSlides() {
+    var list = HERO.map(function (h) {
+      var p = PROPS.filter(function (x) { return x.id === h.id; })[0];
+      return p ? { p: p, kicker: h.kicker, desc: h.desc } : null;
+    }).filter(Boolean);
+    if (list.length < 3) { // fallback to featured if ids drift
+      list = PROPS.filter(function (p) { return p.featured; }).slice(0, 6)
+        .map(function (p) { return { p: p, kicker: eyebrowFor(p) + " · " + (p.loc || ""), desc: p.blurb }; });
+    }
+    return list;
+  }
+
+  var hero = { i: 0, slides: [], timer: null, raf: null, start: 0, elapsed: 0, paused: false, AUTO: 6400 };
+
+  function buildHero() {
+    var root = $("#hero-carousel");
+    if (!root) return;
+    hero.slides = heroSlides();
+    if (!hero.slides.length) return;
+
+    var slidesHTML = hero.slides.map(function (s, i) {
+      var p = s.p;
+      var meta = META_KEYS.filter(function (k) { return p.features.indexOf(k) !== -1; }).slice(0, 3)
+        .map(function (k) { return '<li>' + iconFor(k) + '<span>' + esc(META_LABEL[k]) + '</span></li>'; }).join("");
+      return '' +
+      '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
+        '<div class="hslide__media">' +
+          '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
+          '<img class="hslide__photo" src="' + sceneImage(p.scene, p.id, 1680) + '" alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
+            (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" onerror="this.remove()">' +
+        '</div>' +
+        '<div class="hslide__scrim"></div>' +
+        '<div class="wrap hslide__inner">' +
+          '<div class="hslide__content">' +
+            '<span class="hslide__kicker">' + pinSVG() + esc(s.kicker) + '</span>' +
+            '<h2 class="hslide__title">' + esc(p.name) + '</h2>' +
+            '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
+            '<ul class="hslide__meta">' + meta + '</ul>' +
+            '<div class="hslide__actions">' +
+              '<a class="btn btn-primary btn-lg" href="' + buildPropertyUrl(p) + '" target="_blank" rel="noopener" ' +
+                 'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">Explore Property' + arrowSVG() + '</a>' +
+              '<a class="btn btn-ghost btn-lg" href="#directory" data-scroll="#directory" data-cta="hero-browse">Browse all stays</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    }).join("");
+
+    var thumbs = hero.slides.map(function (s, i) {
+      return '<button class="hthumb" type="button" data-go="' + i + '" aria-label="' + esc(s.p.name) + '">' +
+        '<img src="' + sceneImage(s.p.scene, s.p.id, 240) + '" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">' +
+        '<span class="hthumb__label">' + esc(s.p.name) + '</span>' +
+      '</button>';
+    }).join("");
+
+    var segs = hero.slides.map(function (s, i) {
+      return '<button class="hseg" type="button" data-go="' + i + '" aria-label="Go to slide ' + (i + 1) + '"><span class="hseg__fill"></span></button>';
+    }).join("");
+
+    root.innerHTML =
+      '<div class="hero-track">' + slidesHTML + '</div>' +
+      '<div class="hero-progress" aria-hidden="true"><span class="hero-progress__bar" id="hero-bar"></span></div>' +
+      '<div class="wrap hero-controls">' +
+        '<div class="hero-controls__left">' +
+          '<div class="hero-count"><b id="hero-index">01</b><span>/ ' + pad(hero.slides.length) + '</span></div>' +
+          '<div class="hero-segs">' + segs + '</div>' +
+        '</div>' +
+        '<div class="hero-controls__right">' +
+          '<button class="hero-arrow" id="hero-prev" type="button" aria-label="Previous property">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>' +
+          '<button class="hero-arrow" id="hero-next" type="button" aria-label="Next property">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="hero-thumbs" aria-hidden="true">' + thumbs + '</div>';
+
+    // wire controls
+    $("#hero-prev").addEventListener("click", function () { go(hero.i - 1, true); });
+    $("#hero-next").addEventListener("click", function () { go(hero.i + 1, true); });
+    $$(".hseg, .hthumb", root).forEach(function (b) {
+      b.addEventListener("click", function () { go(+b.getAttribute("data-go"), true); });
+    });
+    // pause on hover / focus / touch
+    ["mouseenter", "focusin", "touchstart"].forEach(function (ev) { root.addEventListener(ev, pause, { passive: true }); });
+    ["mouseleave", "focusout"].forEach(function (ev) { root.addEventListener(ev, resume); });
+    // keyboard
+    root.setAttribute("tabindex", "-1");
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { go(hero.i - 1, true); }
+      else if (e.key === "ArrowRight") { go(hero.i + 1, true); }
+    });
+    // swipe
+    var sx = 0, sy = 0;
+    root.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    root.addEventListener("touchend", function (e) {
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(hero.i + (dx < 0 ? 1 : -1), true);
+    }, { passive: true });
+
+    go(0, false);
+    if (!prefersReduced()) startAuto();
+  }
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function prefersReduced() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function go(idx, userInitiated) {
+    var n = hero.slides.length;
+    hero.i = ((idx % n) + n) % n;
+    $$("#hero-carousel .hslide").forEach(function (el) {
+      var on = +el.getAttribute("data-i") === hero.i;
+      el.classList.toggle("is-active", on);
+      el.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+    $$("#hero-carousel .hseg").forEach(function (el, i) { el.classList.toggle("is-active", i === hero.i); });
+    $$("#hero-carousel .hthumb").forEach(function (el, i) { el.setAttribute("aria-current", i === hero.i ? "true" : "false"); });
+    var idxEl = $("#hero-index"); if (idxEl) idxEl.textContent = pad(hero.i + 1);
+    // reset autoplay progress
+    hero.elapsed = 0; hero.start = 0;
+    setBar(0);
+    if (userInitiated) {
+      track("hero_slide_change", { property_id: hero.slides[hero.i].p.id, property_name: hero.slides[hero.i].p.name, source: "user" });
+    }
+  }
+  function setBar(p) { var b = $("#hero-bar"); if (b) b.style.width = (p * 100).toFixed(2) + "%"; }
+
+  function startAuto() {
+    stopAuto();
+    hero.raf = requestAnimationFrame(function loop(ts) {
+      if (!hero.start) hero.start = ts;
+      if (hero.paused) { hero.start = ts - hero.elapsed; }
+      else {
+        hero.elapsed = ts - hero.start;
+        var p = Math.min(1, hero.elapsed / hero.AUTO);
+        setBar(p);
+        if (p >= 1) { hero.start = ts; hero.elapsed = 0; go(hero.i + 1, false); }
+      }
+      hero.raf = requestAnimationFrame(loop);
+    });
+  }
+  function stopAuto() { if (hero.raf) cancelAnimationFrame(hero.raf); hero.raf = null; }
+  function pause() { hero.paused = true; }
+  function resume() { hero.paused = false; }
 
   function renderCategories() {
     var wrap = $("#category-grid");
@@ -591,6 +763,7 @@
      ----------------------------------------------------------------- */
   function init() {
     paintStaticScenes();
+    buildHero();
     renderCategories();
     buildFilters();
     renderFeatured();
