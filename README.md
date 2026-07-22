@@ -19,12 +19,9 @@ function, so the SDK avatar streams on your live https URL.
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Vincenzo182631/whathotel-search)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FVincenzo182631%2Fwhathotel-search&env=LIVEAVATAR_API_KEY&envDescription=Rotated%20LiveAvatar%20API%20key&envLink=https%3A%2F%2Fapp.liveavatar.com%2Fdevelopers)
 
-> **Branch note:** these buttons deploy the repo's **default branch**. This work
-> currently lives on `claude/whatahot-homes-landing-redesign-9ihk9d` — either
-> merge it to your default branch first, or, in the host's import screen, set the
-> production branch to `claude/whatahot-homes-landing-redesign-9ihk9d` before
-> deploying. See [AI Concierge](#ai-concierge-liveavatar) for details and the
-> iframe fallback.
+> The buttons deploy the repository's **default branch**, which already contains
+> this code — so they work as-is. See [AI Concierge](#ai-concierge-liveavatar)
+> for the token function and the iframe fallback.
 
 ## Quick start
 
