@@ -454,9 +454,18 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .card-grid { display: grid; gap: clamp(16px, 2.4vw, 26px); grid-template-columns: 1fr; }
 @media (min-width: 560px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1360px) {
+  .card-grid:not(.rail) { grid-template-columns: repeat(4, 1fr); }
+  #directory .wrap { max-width: 1440px; }
+}
 .card-grid.rail { grid-template-columns: 1fr; }
 @media (min-width: 560px) { .card-grid.rail { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .card-grid.rail { grid-template-columns: repeat(3, 1fr); } }
+
+/* Directory pagination — "Show more" keeps the initial page light on mobile */
+.dir-more { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 44px); }
+.dir-more[hidden] { display: none; }
+.dir-more .btn { min-width: min(320px, 100%); }
 
 .pcard {
   position: relative;
@@ -837,4 +846,30 @@ body.modal-open { overflow: hidden; }
   .concierge-launch__orb::after { display: none; }
   .concierge-panel { transition: opacity .2s ease; transform: none; }
   .concierge-media__loading .spin { animation: none; }
+}
+
+/* =====================================================================
+   Mobile refinements — comfortable tap targets & tighter rhythm
+   ===================================================================== */
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  /* Comfortable 44px+ tap targets for the refine controls */
+  .type-tab { padding: .72rem 1.05rem; }
+  .chip { padding: .62rem 1rem; }
+  .type-tabs, .chip-row { gap: .55rem; }
+  /* Stacked, full-width primary actions read better on a phone */
+  .hslide__actions { gap: .6rem; }
+  .hslide__actions .btn { flex: 1 1 100%; }
+  .search-row .btn { width: 100%; padding: .95rem 1.7rem; }
+  .search-results { padding: .8rem .9rem; }
+  .search-results__btn { flex: 1 1 auto; justify-content: center; }
+  /* Let long section headings breathe instead of cramping */
+  .section-head p { font-size: 1rem; }
+  .dir-toolbar { flex-wrap: wrap; gap: .8rem; }
+  .dir-controls, .select-field, .select-field select { width: 100%; }
+}
+/* Fine-tune the very small end (≤380px) so nothing feels cramped */
+@media (max-width: 380px) {
+  :root { --gutter: 16px; }
+  .type-tab em { display: none; }
 }

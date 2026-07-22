@@ -327,6 +327,38 @@
     '</article>';
   }
 
+  /* Directory is paginated so mobile/desktop only render a first page of
+     cards up front (keeps the DOM light and LCP fast on a Google Ads page).
+     "Show more" appends the next page; any filter change resets to page 1. */
+  var DIR_PAGE = 12;
+  var dirList = [];
+  var dirShown = 0;
+
+  function appendDirPage() {
+    var grid = $("#directory-grid");
+    if (!grid) return;
+    var next = dirList.slice(dirShown, dirShown + DIR_PAGE);
+    var frag = document.createElement("div");
+    frag.innerHTML = next.map(function (p, i) { return cardHTML(p, dirShown + i, "zoom"); }).join("");
+    while (frag.firstChild) grid.appendChild(frag.firstChild);
+    dirShown += next.length;
+    observeReveals(grid);
+    syncDirMore();
+  }
+
+  function syncDirMore() {
+    var more = $("#directory-more");
+    var label = $("#directory-more-label");
+    if (!more) return;
+    var remaining = dirList.length - dirShown;
+    if (remaining > 0) {
+      more.hidden = false;
+      if (label) label.textContent = "Show " + Math.min(DIR_PAGE, remaining) + " more of " + dirList.length;
+    } else {
+      more.hidden = true;
+    }
+  }
+
   function renderDirectory() {
     var list = filtered();
     var grid = $("#directory-grid");
@@ -335,6 +367,7 @@
     updateSearchCount(list.length);
     if (!grid) return;
     if (!list.length) {
+      dirList = []; dirShown = 0; syncDirMore();
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1">' + searchSVG() +
         '<h3>No properties match those filters</h3>' +
         '<p>Try a different destination or clear a filter to see more homes, villas and residences.</p>' +
@@ -342,8 +375,18 @@
       var ce = $("#clear-empty"); if (ce) ce.addEventListener("click", clearAll);
       return;
     }
-    grid.innerHTML = list.map(function (p, i) { return cardHTML(p, i, "zoom"); }).join("");
-    observeReveals(grid);
+    dirList = list;
+    dirShown = 0;
+    grid.innerHTML = "";
+    appendDirPage();
+  }
+
+  function wireDirMore() {
+    var btn = $("#directory-more-btn");
+    if (btn) btn.addEventListener("click", function () {
+      appendDirPage();
+      track("filter_selected", { type: "show_more", shown: dirShown, total: dirList.length });
+    });
   }
 
   function renderFeatured() {
@@ -1084,6 +1127,7 @@
     renderDirectory();
     wireSearch();
     wireTypewriter();
+    wireDirMore();
     wireDelegation();
     wireScrollLinks();
     wireVideo();
