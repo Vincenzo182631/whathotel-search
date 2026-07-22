@@ -133,16 +133,53 @@ Set `window.WAH_DEBUG = true` to log events to the console.
 
 ## AI Concierge (LiveAvatar)
 
-A floating **AI Concierge** launcher (bottom-right) expands into a panel that
-embeds the LiveAvatar virtual host. The `<iframe>` is **lazy-loaded on first
-open** (via `data-src`), so the embed and its microphone permission prompt only
-start when a visitor actually opens the concierge — it never slows initial page
-load. Open/close via the launcher, the ✕, `Escape`, or an outside click; fires
-`concierge_opened` for analytics. To change the avatar, edit the `data-src` on
-`#concierge-iframe` in `index.html`.
+A floating **AI Concierge** launcher (bottom-right) expands into a panel with a
+live avatar host ("Ava"). It runs in one of two modes, chosen automatically:
 
-> Note: the claude.ai artifact preview blocks third-party iframes (CSP), so the
-> avatar only renders on the deployed site or the downloaded standalone file.
+1. **SDK mode (preferred)** — `@heygen/liveavatar-web-sdk` streams the avatar
+   straight into a `<video>` with custom controls (mute, end). Requires the
+   serverless token endpoint below.
+2. **Iframe mode (fallback)** — the no-backend LiveAvatar embed. Used
+   automatically whenever the token endpoint isn't reachable (e.g. before you
+   deploy the function, or in the CSP-restricted artifact preview).
+
+Everything is **lazy** — the token request, the SDK script, and the stream only
+start when a visitor opens the concierge, so initial page load is unaffected.
+Closing (launcher, ✕, End, `Escape`, or outside-click) **stops the stream** so
+nothing keeps streaming/billing in the background. Fires `concierge_opened` and
+`concierge_avatar_started` (`mode: sdk|iframe`) analytics events.
+
+### Making SDK mode work (keeps the API key secret)
+
+The browser SDK needs a short-lived `session_token` that must be minted
+server-side — **the API key never goes in the browser**. A ready-to-deploy
+function is included for three hosts (use whichever matches your host):
+
+| Host | File | Route |
+|---|---|---|
+| Vercel | `api/liveavatar-token.js` | `/api/liveavatar-token` (automatic) |
+| Netlify | `netlify/functions/liveavatar-token.js` | mapped via `netlify.toml` |
+| Cloudflare Pages | `functions/api/liveavatar-token.js` | `/api/liveavatar-token` (automatic) |
+
+Steps:
+1. Deploy this repo to your host (all three functions can coexist; only the one
+   matching your host runs).
+2. In the host's **Environment variables**, set (see `.env.example`):
+   - `LIVEAVATAR_API_KEY` — your **rotated** key from app.liveavatar.com/developers
+   - `LIVEAVATAR_AVATAR_ID` — the avatar's UUID from the LiveAvatar dashboard
+   - `LIVEAVATAR_SANDBOX` — optional, `true` while testing
+3. Load the site over **https**. The concierge now streams the SDK avatar; if
+   the endpoint ever fails it silently falls back to the iframe.
+
+Client config lives in a small `window.WAH_AVATAR` block in `index.html`
+(`tokenEndpoint`, `sdkUrl`, `embedUrl`). The SDK is pinned from jsDelivr by
+default (`@heygen/liveavatar-web-sdk@0.0.18`); it's also in `node_modules` if
+you'd rather self-host `dist/index.umd.js`.
+
+> The claude.ai artifact preview blocks third-party iframes **and** scripts
+> (CSP) and isn't a secure context, so the avatar only streams on your deployed
+> https site (or a `localhost` dev server). The panel's header has an
+> "open in a new window ↗" escape hatch for any blocked context.
 
 ## Adding the video
 

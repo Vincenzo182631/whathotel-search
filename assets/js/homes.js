@@ -888,42 +888,108 @@
      and microphone prompt only start when the visitor asks for it.
      ----------------------------------------------------------------- */
   function wireConcierge() {
-    var root = $("#concierge"), launch = $("#concierge-launch"),
-        close = $("#concierge-close"), iframe = $("#concierge-iframe"),
-        loading = $("#concierge-loading"), panel = $("#concierge-panel");
+    var root = $("#concierge"), launch = $("#concierge-launch"), close = $("#concierge-close"),
+        panel = $("#concierge-panel"), media = $("#concierge-media"),
+        iframe = $("#concierge-iframe"), video = $("#concierge-video"),
+        loading = $("#concierge-loading"), controls = $("#concierge-controls"),
+        micBtn = $("#concierge-mic"), endBtn = $("#concierge-end");
     if (!root || !launch) return;
-    var loaded = false;
+
+    var CFG = window.WAH_AVATAR || {};
+    var started = false, session = null, listening = true;
+
+    function hideLoading() { if (loading) loading.classList.add("hide"); }
+
+    function loadScript(src) {
+      return new Promise(function (res, rej) {
+        if (window.LiveAvatarSDK) return res();
+        if (!src) return rej(new Error("no_sdk_url"));
+        var s = document.createElement("script");
+        s.src = src; s.async = true;
+        s.onload = function () { res(); };
+        s.onerror = function () { rej(new Error("sdk_load_failed")); };
+        document.head.appendChild(s);
+      });
+    }
+
+    // Fallback path: the no-backend iframe embed.
+    function useIframe(reason) {
+      if (media) media.classList.add("mode-iframe");
+      if (iframe && !iframe.src && iframe.getAttribute("data-src")) {
+        iframe.addEventListener("load", hideLoading);
+        iframe.src = iframe.getAttribute("data-src");
+      } else { hideLoading(); }
+      track("concierge_avatar_started", { mode: "iframe", reason: reason || "" });
+    }
+
+    // Preferred path: SDK streams the avatar into <video>.
+    function startSdk() {
+      var url = CFG.tokenEndpoint || "/api/liveavatar-token";
+      return fetch(url, { method: "POST", headers: { "Accept": "application/json" } })
+        .then(function (r) { if (!r.ok) throw new Error("token_http_" + r.status); return r.json(); })
+        .then(function (t) {
+          var token = t.session_token || (t.data && t.data.session_token);
+          if (!token) throw new Error("no_token");
+          return loadScript(CFG.sdkUrl).then(function () { return token; });
+        })
+        .then(function (token) {
+          var SDK = window.LiveAvatarSDK;
+          if (!SDK || !SDK.LiveAvatarSession) throw new Error("sdk_missing");
+          session = new SDK.LiveAvatarSession(token);
+          if (video) session.attach(video);
+          return session.start();
+        })
+        .then(function () {
+          try { session.startListening(); listening = true; } catch (e) {}
+          if (media) media.classList.add("mode-sdk");
+          if (controls) controls.hidden = false;
+          hideLoading();
+          track("concierge_avatar_started", { mode: "sdk" });
+        });
+    }
 
     function open() {
       root.classList.add("is-open");
       launch.setAttribute("aria-expanded", "true");
       if (panel) panel.setAttribute("aria-hidden", "false");
-      if (!loaded && iframe && iframe.getAttribute("data-src")) {
-        loaded = true;
-        // Fade the connecting screen once the embed document has loaded (it then
-        // shows its own avatar UI). The header "open in a new window" link is the
-        // escape hatch if the frame is blocked or the context isn't secure.
-        iframe.addEventListener("load", function () { if (loading) loading.classList.add("hide"); });
-        iframe.src = iframe.getAttribute("data-src");
+      if (!started) {
+        started = true;
+        startSdk().catch(function (err) {
+          if (window.WAH_DEBUG) console.warn("[concierge] SDK unavailable → embed:", err && err.message);
+          useIframe(err && err.message);
+        });
       }
       track("concierge_opened", {});
     }
+
+    // Closing fully ends the session (stops the stream) so nothing keeps
+    // streaming — and billing — in the background. Reopening starts fresh.
     function shut() {
       root.classList.remove("is-open");
       launch.setAttribute("aria-expanded", "false");
       if (panel) panel.setAttribute("aria-hidden", "true");
+      if (session) { try { session.stop(); } catch (e) {} session = null; }
+      if (iframe) iframe.removeAttribute("src");
+      if (media) media.classList.remove("mode-sdk", "mode-iframe");
+      if (controls) controls.hidden = true;
+      if (loading) loading.classList.remove("hide");
+      if (micBtn) { micBtn.setAttribute("aria-pressed", "true"); micBtn.classList.remove("is-muted"); }
+      started = false; listening = true;
     }
-    launch.addEventListener("click", function () {
-      if (root.classList.contains("is-open")) { shut(); } else { open(); }
-    });
+
+    launch.addEventListener("click", function () { root.classList.contains("is-open") ? shut() : open(); });
     if (close) close.addEventListener("click", shut);
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && root.classList.contains("is-open")) shut();
+    if (endBtn) endBtn.addEventListener("click", shut);
+    if (micBtn) micBtn.addEventListener("click", function () {
+      if (!session) return;
+      if (listening) { try { session.stopListening(); } catch (e) {} listening = false; }
+      else { try { session.startListening(); } catch (e) {} listening = true; }
+      micBtn.setAttribute("aria-pressed", String(listening));
+      micBtn.classList.toggle("is-muted", !listening);
     });
-    // Clicking outside the widget closes it.
-    document.addEventListener("click", function (e) {
-      if (root.classList.contains("is-open") && !root.contains(e.target)) shut();
-    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && root.classList.contains("is-open")) shut(); });
+    document.addEventListener("click", function (e) { if (root.classList.contains("is-open") && !root.contains(e.target)) shut(); });
+    window.addEventListener("pagehide", function () { if (session) { try { session.stop(); } catch (e) {} } });
   }
 
   /* -----------------------------------------------------------------

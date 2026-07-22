@@ -386,9 +386,11 @@
       </button>
     </div>
     <div class="concierge-media" id="concierge-media">
-      <!-- LiveAvatar embed — src is set on first open (lazy) so the mic prompt
-           and live stream only start when the visitor asks for the concierge.
-           Live video needs a secure context (https/localhost). -->
+      <!-- Preferred: streaming avatar rendered by @heygen/liveavatar-web-sdk
+           into this <video> (needs the /api/liveavatar-token backend). -->
+      <video id="concierge-video" class="concierge-video" playsinline autoplay></video>
+      <!-- Fallback: the no-backend iframe embed. src is set only if the SDK
+           path is unavailable, so the mic prompt/stream start on demand. -->
       <iframe id="concierge-iframe"
               data-src="https://embed.liveavatar.com/v1/91b5ac3a-10a0-4f5d-97be-04252c63658f?orientation=vertical"
               allow="microphone; autoplay; camera; clipboard-write; encrypted-media; fullscreen"
@@ -397,6 +399,16 @@
       <div class="concierge-media__loading" id="concierge-loading">
         <span class="spin" aria-hidden="true"></span>
         <span>Connecting you with Ava…</span>
+      </div>
+      <!-- SDK-mode controls -->
+      <div class="concierge-controls" id="concierge-controls" hidden>
+        <button class="concierge-ctl" type="button" id="concierge-mic" aria-pressed="true" aria-label="Mute microphone" title="Mute microphone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 013 3v6a3 3 0 01-6 0V6a3 3 0 013-3z"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+        </button>
+        <button class="concierge-ctl concierge-ctl--end" type="button" id="concierge-end" aria-label="End conversation" title="End conversation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          <span>End</span>
+        </button>
       </div>
     </div>
   </div>
@@ -410,6 +422,15 @@
 </div>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<!-- AI Concierge config. tokenEndpoint must be your deployed serverless function.
+     If it's unreachable (e.g. before deploy), the concierge falls back to the iframe embed. -->
+<script>
+  window.WAH_AVATAR = {
+    tokenEndpoint: "/api/liveavatar-token",
+    sdkUrl: "https://cdn.jsdelivr.net/npm/@heygen/liveavatar-web-sdk@0.0.18/dist/index.umd.js",
+    embedUrl: "https://embed.liveavatar.com/v1/91b5ac3a-10a0-4f5d-97be-04252c63658f?orientation=vertical"
+  };
+</script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/details.js"></script>
 <script src="assets/js/homes-inventory-filter.js"></script>

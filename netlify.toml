@@ -1,0 +1,12 @@
+# Netlify configuration for the WhataHotel! Homes landing page
+# Static site + one serverless function for the LiveAvatar session token.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Expose the token function at a clean path the client calls.
+[[redirects]]
+  from = "/api/liveavatar-token"
+  to = "/.netlify/functions/liveavatar-token"
+  status = 200
