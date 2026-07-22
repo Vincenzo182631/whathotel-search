@@ -378,18 +378,22 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
       </span>
       <span class="concierge-panel__title"><b>Ava · Travel Concierge</b><span>Online now</span></span>
+      <a class="concierge-panel__pop" href="https://embed.liveavatar.com/v1/91b5ac3a-10a0-4f5d-97be-04252c63658f?orientation=vertical" target="_blank" rel="noopener" aria-label="Open concierge in a new window" title="Open in a new window">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg>
+      </a>
       <button class="concierge-panel__close" type="button" id="concierge-close" aria-label="Close concierge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="concierge-media" id="concierge-media">
-      <!-- LiveAvatar embed — lazy-loaded on first open so the mic prompt and
-           stream only start when the visitor asks for the concierge. -->
+      <!-- LiveAvatar embed — src is set on first open (lazy) so the mic prompt
+           and live stream only start when the visitor asks for the concierge.
+           Live video needs a secure context (https/localhost). -->
       <iframe id="concierge-iframe"
               data-src="https://embed.liveavatar.com/v1/91b5ac3a-10a0-4f5d-97be-04252c63658f?orientation=vertical"
-              allow="microphone; autoplay"
-              title="WhataHotel AI Travel Concierge"
-              loading="lazy"></iframe>
+              allow="microphone; autoplay; camera; clipboard-write; encrypted-media; fullscreen"
+              allowfullscreen
+              title="WhataHotel AI Travel Concierge"></iframe>
       <div class="concierge-media__loading" id="concierge-loading">
         <span class="spin" aria-hidden="true"></span>
         <span>Connecting you with Ava…</span>

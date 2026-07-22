@@ -717,9 +717,15 @@ body.modal-open { overflow: hidden; }
 .concierge-panel__close:hover { background: rgba(255,255,255,.16); transform: rotate(90deg); }
 .concierge-panel__close svg { width: 18px; height: 18px; }
 .concierge-media { position: relative; width: 100%; height: min(74vh, 560px); background: #0a1826; }
-.concierge-media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-.concierge-media__loading { position: absolute; inset: 0; display: grid; place-items: center; gap: .8rem; color: var(--on-dark-sf); text-align: center; padding: 1rem; }
+.concierge-media iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; z-index: 1; }
+.concierge-media__loading { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: var(--on-dark-sf); text-align: center; padding: 1.5rem;
+  background: radial-gradient(120% 80% at 50% 20%, rgba(198,163,90,.14), transparent 60%), linear-gradient(180deg, var(--ink-2), #0a1826); }
+.concierge-media__loading.hide { display: none; }
 .concierge-media__loading .spin { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(255,255,255,.18); border-top-color: var(--gold-2); animation: cspin .9s linear infinite; }
+/* header "open in new window" escape hatch — always available */
+.concierge-panel__pop { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: #fff; display: grid; place-items: center; transition: background .16s, transform .16s; }
+.concierge-panel__pop:hover { background: var(--gold); color: #2a2008; border-color: var(--gold); transform: translateY(-1px); }
+.concierge-panel__pop svg { width: 17px; height: 17px; }
 @keyframes cspin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
   .concierge-launch__orb::after { display: none; }

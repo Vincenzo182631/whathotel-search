@@ -900,7 +900,10 @@
       if (panel) panel.setAttribute("aria-hidden", "false");
       if (!loaded && iframe && iframe.getAttribute("data-src")) {
         loaded = true;
-        iframe.addEventListener("load", function () { if (loading) loading.style.display = "none"; });
+        // Fade the connecting screen once the embed document has loaded (it then
+        // shows its own avatar UI). The header "open in a new window" link is the
+        // escape hatch if the frame is blocked or the context isn't secure.
+        iframe.addEventListener("load", function () { if (loading) loading.classList.add("hide"); });
         iframe.src = iframe.getAttribute("data-src");
       }
       track("concierge_opened", {});
