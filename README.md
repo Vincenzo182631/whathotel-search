@@ -94,9 +94,17 @@ properties whose names lack a keyword (e.g. Viceroy Snowmass, Beach Village at
 The Del, Kona Village).
 
 **To add / edit properties or tune the rules,** edit `scripts/build-data.mjs`
-and re-run `node scripts/build-data.mjs`. To show a real photograph on a card,
-add an `image` URL to a property record; the CSS/SVG scene is the instant,
-zero-request placeholder and the fallback if the image fails.
+and re-run `node scripts/build-data.mjs`.
+
+### Property images (real WhataHotel photos)
+
+`assets/js/images.js` (`window.WAH_IMAGES`) holds each property's **real
+WhataHotel hero image**, scraped from its property page's `og:image` by
+`scripts/fetch-images.mjs` (`node scripts/fetch-images.mjs` to refresh). Cards,
+the hero carousel, category cards and the detail modal all use these. The
+CSS/SVG scene is the instant placeholder and the automatic fallback if an image
+is missing or blocked, so a card is never broken. Per-property override: add an
+`image` URL to a record in the data. (No third-party stock imagery is used.)
 
 ## Availability filtering (Homes-only inventory)
 

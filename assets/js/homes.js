@@ -210,39 +210,29 @@
   }
 
   /* -----------------------------------------------------------------
-     Splash photography — curated, scene-matched Unsplash images used as an
-     attractive placeholder until real WhataHotel property photos are wired in
-     (add an `image` field to a property to override). The CSS/SVG scene sits
-     behind every photo and shows instantly + as the fallback if an image is
-     blocked or 404s, so the card is never broken and LCP is never blank.
+     Property photography — each property's REAL WhataHotel hero image
+     (assets/js/images.js, scraped from its property page). The CSS/SVG scene
+     sits behind every photo and shows instantly + as the fallback if an image
+     is missing/blocked, so the card is never broken and LCP is never blank.
+
+     Resolution order: explicit p.image → offline-preview data URI (optional
+     window.WAH_IMAGE_DATAURI[id]) → real WhataHotel hero → null (scene only).
      ----------------------------------------------------------------- */
-  var UNSPLASH = "https://images.unsplash.com/photo-";
-  var IMG_PARAMS = "?w=900&q=70&auto=format&fit=crop";
-  var SCENE_IMAGES = {
-    beach:       ["1520250497591-112f2f40a3f4", "1507525428034-b723cf961d3e", "1519046904884-53103b34b206", "1512100356356-de1b84283e18"],
-    tropical:    ["1540541338287-41700207dee6", "1571896349842-33c89424de2d", "1582719508461-905c673771fd", "1596436889106-be35e843f974"],
-    mountain:    ["1502784444187-359ac186c5bb", "1520984032042-162d526883e0"],
-    city:        ["1551882547-ff40c63fe5fa", "1522708323590-d24dbb6b0267", "1560448204-e02f11c3d0e2", "1502672260266-1c1ef2d93688"],
-    desert:      ["1539020140153-e479b8c22e70", "1445019980597-93fa8acb246c", "1558449028-b53a39d100fc", "1566073771259-6a8506099945"],
-    countryside: ["1505693416388-ac5ce068fe85", "1470071459604-3b5ec3a7fe05", "1512918728675-ed5a9ecdebfd"],
-    estate:      ["1613977257363-707ba9348227", "1600585154340-be6161a56a0c", "1600596542815-ffad4c1539a9", "1600607687939-ce8a6c25118c"]
-  };
-  // Optional: a self-contained preview can define window.WAH_IMAGE_MAP =
-  // { scene: [dataURI, ...] } so photos render with no external requests
-  // (used by the offline/artifact preview). Production omits it and uses the
-  // Unsplash CDN URLs below.
-  function sceneImage(scene, seed, width) {
-    var map = window.WAH_IMAGE_MAP;
-    if (map && map[scene] && map[scene].length) {
-      return map[scene][Math.abs(seed) % map[scene].length];
-    }
-    var pool = SCENE_IMAGES[scene] || SCENE_IMAGES.beach;
-    var params = width ? ("?w=" + width + "&q=72&auto=format&fit=crop") : IMG_PARAMS;
-    return UNSPLASH + pool[Math.abs(seed) % pool.length] + params;
-  }
   function imageFor(p) {
     if (p.image) return p.image;
-    return sceneImage(p.scene, p.id);
+    var over = window.WAH_IMAGE_DATAURI;
+    if (over && over[p.id]) return over[p.id];
+    var wi = window.WAH_IMAGES;
+    if (wi && wi[p.id] && wi[p.id].hero) return wi[p.id].hero;
+    return null;
+  }
+  // A representative real image for a category card: first featured (else any)
+  // property of that type that has a hero.
+  function categoryImage(catKey) {
+    var list = PROPS.filter(function (p) { return propMatchesCat(p, catKey); });
+    var withImg = list.filter(function (p) { return imageFor(p); });
+    var pick = withImg.filter(function (p) { return p.featured; })[0] || withImg[0] || list[0];
+    return pick ? imageFor(pick) : null;
   }
 
   /* -----------------------------------------------------------------
@@ -251,10 +241,11 @@
   function renderMedia(p) {
     // Scene sits behind; the photo overlays it and is removed on error so the
     // scene shows through — never a broken image.
+    var img = imageFor(p);
     return '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
-           '<img class="pcard__photo" src="' + imageFor(p) + '" ' +
-           'alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
-           'loading="lazy" decoding="async" onerror="this.remove()">';
+      (img ? '<img class="pcard__photo" src="' + img + '" ' +
+        'alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
+        'loading="lazy" decoding="async" onerror="this.remove()">' : "");
   }
 
   function typeBadge(p) {
@@ -390,8 +381,8 @@
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
           '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
-          '<img class="hslide__photo" src="' + sceneImage(p.scene, p.id, 1680) + '" alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
-            (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" onerror="this.remove()">' +
+          (imageFor(p) ? '<img class="hslide__photo" src="' + imageFor(p) + '" alt="' + esc(p.name) + (p.loc ? ", " + esc(p.loc) : "") + '" ' +
+            (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async" onerror="this.remove()">' : "") +
         '</div>' +
         '<div class="hslide__scrim"></div>' +
         '<div class="wrap hslide__inner">' +
@@ -410,8 +401,9 @@
     }).join("");
 
     var thumbs = hero.slides.map(function (s, i) {
+      var timg = imageFor(s.p);
       return '<button class="hthumb" type="button" data-go="' + i + '" aria-label="' + esc(s.p.name) + '">' +
-        '<img src="' + sceneImage(s.p.scene, s.p.id, 240) + '" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">' +
+        (timg ? '<img src="' + timg + '" alt="" loading="lazy" decoding="async" onerror="this.style.opacity=0">' : '<span class="scene">' + sceneSVG(s.p.scene) + '</span>') +
         '<span class="hthumb__label">' + esc(s.p.name) + '</span>' +
       '</button>';
     }).join("");
@@ -512,10 +504,10 @@
     if (!wrap) return;
     wrap.innerHTML = CATEGORIES.map(function (c, i) {
       var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
-      var img = sceneImage(c.scene, 0);
+      var img = categoryImage(c.key);
       return '<button class="cat-card reveal" data-anim="zoom" style="--d:' + i + '" type="button" data-cat="' + c.key + '">' +
         '<div class="scene">' + sceneSVG(c.scene) + '</div>' +
-        '<img class="cat-card__photo" src="' + img + '" alt="" loading="lazy" decoding="async" onerror="this.remove()">' +
+        (img ? '<img class="cat-card__photo" src="' + img + '" alt="" loading="lazy" decoding="async" onerror="this.remove()">' : "") +
         '<span class="cat-card__count">' + iconFor(c.key) + n + ' stays</span>' +
         '<div class="cat-card__body"><h3>' + esc(c.label) + '</h3><p>' + esc(c.blurb) + '</p></div>' +
       '</button>';
@@ -732,7 +724,7 @@
     var body =
       '<div class="pmodal__media">' +
         '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
-        '<img class="pmodal__photo" src="' + sceneImage(p.scene, p.id, 1280) + '" alt="' + esc(p.name) + '" decoding="async" onerror="this.remove()">' +
+        (imageFor(p) ? '<img class="pmodal__photo" src="' + imageFor(p) + '" alt="' + esc(p.name) + '" decoding="async" onerror="this.remove()">' : "") +
         '<span class="pmodal__typebadge">' + esc(typeLine) + '</span>' +
       '</div>' +
       '<div class="pmodal__content">' +
