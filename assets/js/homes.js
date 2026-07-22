@@ -253,6 +253,7 @@
     var alt = esc(p.name) + (p.loc ? ", " + esc(p.loc) : "");
     return '<img class="' + cls + '" src="' + optImg(raw, width) + '" data-raw="' + esc(raw) + '" ' +
       'alt="' + alt + '" ' + (extra || "") + ' decoding="async" ' +
+      'onload="this.classList.add(\'is-loaded\')" ' +
       'onerror="if(this.dataset.fb){this.remove()}else{this.dataset.fb=1;this.src=this.dataset.raw}">';
   }
   // Representative property (with an image) for a category card.

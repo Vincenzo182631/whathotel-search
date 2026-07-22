@@ -404,6 +404,31 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .pcard__zoom svg { width: 24px; height: 24px; }
 .pcard__media:hover .pcard__zoom, .pcard__media:focus-visible .pcard__zoom { opacity: 1; transform: translate(-50%,-50%) scale(1); }
 .pcard__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform .6s ease; }
+
+/* ---------- Image skeleton (shimmer while a property photo loads) ----------
+   The shimmer is the image element's own background: it shows until the photo's
+   pixels paint, then the photo covers it. No wrapper/z-index juggling, and it
+   reveals the CSS scene if the image errors out (the <img> is removed). ------- */
+.pcard__photo:not(.is-loaded),
+.cat-card__photo:not(.is-loaded),
+.pmodal__photo:not(.is-loaded) {
+  background-image:
+    linear-gradient(100deg, transparent 20%, rgba(255,255,255,.55) 50%, transparent 80%),
+    linear-gradient(0deg, #e9e2d3, #e9e2d3);
+  background-size: 220% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  animation: wahSkel 1.2s ease-in-out infinite;
+}
+/* darker shimmer for the dark modal frame */
+.pmodal__photo:not(.is-loaded) {
+  background-image:
+    linear-gradient(100deg, transparent 20%, rgba(255,255,255,.16) 50%, transparent 80%),
+    linear-gradient(0deg, #16293d, #16293d);
+}
+@keyframes wahSkel { from { background-position: 220% 0, 0 0; } to { background-position: -220% 0, 0 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .pcard__photo:not(.is-loaded), .cat-card__photo:not(.is-loaded), .pmodal__photo:not(.is-loaded) { animation: none; }
+}
 .pcard__media::after { content:""; position:absolute; inset:0; z-index: 1; background: linear-gradient(180deg, transparent 45%, rgba(8,16,26,.5)); }
 .pcard:hover .pcard__photo, .pcard:hover .pcard__media > .scene { transform: scale(1.06); }
 .pcard__media > .scene { transition: transform .6s ease; }
