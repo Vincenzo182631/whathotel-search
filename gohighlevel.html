@@ -370,18 +370,30 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .benefit p { color: var(--text-soft); font-size: .96rem; margin: 0; }
 
 /* ---------- Comparison ---------- */
-.compare { background: linear-gradient(180deg, var(--cream), var(--sand)); }
+.compare {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(8,16,26,.58) 0%, rgba(8,16,26,.28) 45%, rgba(8,16,26,.6) 100%),
+    url("https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a6059f593ff332dace8d5db.png&w=1600&output=webp&q=74") center / cover no-repeat;
+}
+/* light heading over the photo */
+.compare .section-head h2 { color: #fff; }
+.compare .section-head p { color: rgba(244,239,230,.85); }
+.compare .eyebrow { color: var(--gold-2); }
+.compare .eyebrow::before { background: var(--gold-2); }
+
 .compare-grid { display: grid; gap: 1.2rem; grid-template-columns: 1fr; align-items: stretch; }
 @media (min-width: 820px) { .compare-grid { grid-template-columns: 1fr auto 1fr; align-items: center; } }
-.compare-card { border-radius: var(--radius-lg); padding: clamp(24px, 3.4vw, 38px); box-shadow: var(--shadow-md); }
+.compare-card { border-radius: var(--radius-lg); padding: clamp(24px, 3.4vw, 38px); box-shadow: var(--shadow-lg); }
 .compare-card h3 { font-size: 1.5rem; margin-bottom: 1.1rem; display: flex; align-items: center; gap: .6rem; }
 .compare-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
 .compare-card li { display: flex; gap: .7rem; align-items: flex-start; font-size: .98rem; }
 .compare-card li svg { width: 1.2rem; height: 1.2rem; flex: none; margin-top: .15rem; }
-.compare-card--room { background: var(--paper); border: 1px solid var(--line); color: var(--text-soft); }
-.compare-card--room h3 { color: var(--text-mut); }
-.compare-card--room li svg { color: #b98d8d; }
-.compare-card--home { background: linear-gradient(160deg, var(--ink), var(--ink-2)); color: var(--on-dark); border: 1px solid rgba(255,255,255,.08); }
+/* frosted-glass cards so the photo reads through */
+.compare-card--room { background: rgba(247,243,236,.84); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.5); color: var(--text-soft); }
+.compare-card--room h3 { color: var(--ink); }
+.compare-card--room li svg { color: #c0605f; }
+.compare-card--home { background: linear-gradient(160deg, rgba(12,26,43,.8), rgba(12,26,43,.88)); backdrop-filter: blur(10px); color: var(--on-dark); border: 1px solid rgba(198,163,90,.38); }
 .compare-card--home h3 { color: #fff; }
 .compare-card--home li svg { color: var(--gold-2); }
 .compare-vs {
