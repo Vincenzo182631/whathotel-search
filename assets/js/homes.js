@@ -286,12 +286,13 @@
     var favOn = !!state.favs[p.id];
     return '' +
     '<article class="pcard reveal" data-id="' + p.id + '">' +
-      '<div class="pcard__media">' +
+      '<button class="pcard__media" type="button" data-action="detail" data-id="' + p.id + '" aria-label="View details for ' + esc(p.name) + '">' +
         renderMedia(p) +
         '<span class="pcard__badge">' + esc(typeBadge(p)) + '</span>' +
-        '<button class="pcard__fav" type="button" aria-pressed="' + favOn + '" aria-label="Save ' + esc(p.name) + '">' + heartSVG() + '</button>' +
         (p.loc ? '<span class="pcard__loc">' + pinSVG() + esc(p.loc) + '</span>' : '') +
-      '</div>' +
+        '<span class="pcard__zoom">' + zoomSVG() + '</span>' +
+      '</button>' +
+      '<button class="pcard__fav" type="button" aria-pressed="' + favOn + '" aria-label="Save ' + esc(p.name) + '">' + heartSVG() + '</button>' +
       '<div class="pcard__body">' +
         '<div class="pcard__hotel">' + esc(eyebrowFor(p)) + '</div>' +
         '<h3 class="pcard__name">' + esc(p.name) + '</h3>' +
@@ -299,10 +300,9 @@
         '<div class="pcard__tags">' + tags.join("") + '</div>' +
         '<div class="pcard__foot">' +
           '<span class="pcard__cta">' +
-            '<a class="btn btn-dark" href="' + url + '" target="_blank" rel="noopener" ' +
-               'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">' +
-               'Explore Property' + arrowSVG() +
-            '</a>' +
+            '<button class="btn btn-dark" type="button" data-action="detail" data-id="' + p.id + '">' +
+               'View Details' + arrowSVG() +
+            '</button>' +
           '</span>' +
         '</div>' +
       '</div>' +
@@ -399,8 +399,7 @@
             '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
             '<ul class="hslide__meta">' + meta + '</ul>' +
             '<div class="hslide__actions">' +
-              '<a class="btn btn-primary btn-lg" href="' + buildPropertyUrl(p) + '" target="_blank" rel="noopener" ' +
-                 'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">Explore Property' + arrowSVG() + '</a>' +
+              '<button class="btn btn-primary btn-lg" type="button" data-action="detail" data-id="' + p.id + '">Explore Property' + arrowSVG() + '</button>' +
               '<a class="btn btn-ghost btn-lg" href="#directory" data-scroll="#directory" data-cta="hero-browse">Browse all stays</a>' +
             '</div>' +
           '</div>' +
@@ -646,14 +645,22 @@
         if (id) state.favs[id] = on;
         return;
       }
+      // Open the zoomed detail view for a property.
+      var detailBtn = e.target.closest && e.target.closest('[data-action="detail"]');
+      if (detailBtn) {
+        e.preventDefault();
+        var did = +detailBtn.getAttribute("data-id");
+        var dp = PROPS.filter(function (x) { return x.id === did; })[0];
+        if (dp) openDetail(dp, detailBtn);
+        return;
+      }
+      // The availability CTA (inside the modal) leaves for the WhataHotel page.
       var propCta = e.target.closest && e.target.closest('[data-cta="explore-property"]');
       if (propCta) {
         track("property_card_clicked", {
           property_id: propCta.getAttribute("data-id"),
           property_name: propCta.getAttribute("data-name")
         });
-        // This click leaves the landing page → the traveler will check
-        // availability on the property page. Record the intent.
         track("availability_check_initiated", { property_id: propCta.getAttribute("data-id") });
         return;
       }
@@ -662,6 +669,120 @@
         track("cta_clicked", { cta: cta.getAttribute("data-cta"), label: (cta.textContent || "").trim() });
       }
     });
+  }
+
+  /* =================================================================
+     PROPERTY DETAIL MODAL — a zoomed, editorial view of one property.
+     Uses factual enrichment from window.WAH_DETAILS when available and
+     always falls back to the property's own known data. Accessible:
+     focus trap, ESC to close, backdrop click, scroll lock, restores focus.
+     ================================================================= */
+  var modalEl = null, modalLastFocus = null, modalKeydown = null;
+
+  function detailsFor(p) { return (window.WAH_DETAILS && window.WAH_DETAILS[p.id]) || null; }
+
+  function ensureModal() {
+    if (modalEl) return modalEl;
+    modalEl = document.createElement("div");
+    modalEl.className = "pmodal";
+    modalEl.id = "pmodal";
+    modalEl.setAttribute("hidden", "");
+    modalEl.innerHTML =
+      '<div class="pmodal__backdrop" data-close></div>' +
+      '<div class="pmodal__dialog" role="dialog" aria-modal="true" aria-labelledby="pmodal-title">' +
+        '<button class="pmodal__close" type="button" data-close aria-label="Close details">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+        '</button>' +
+        '<div class="pmodal__scroll" id="pmodal-scroll"></div>' +
+      '</div>';
+    document.body.appendChild(modalEl);
+    $$("[data-close]", modalEl).forEach(function (b) { b.addEventListener("click", closeDetail); });
+    return modalEl;
+  }
+
+  function chipList(items, kind) {
+    return items.map(function (t) {
+      var ico = kind === "perk" ? checkSVG() : dotSVG();
+      return '<li>' + ico + '<span>' + esc(t) + '</span></li>';
+    }).join("");
+  }
+
+  function openDetail(p, trigger) {
+    ensureModal();
+    modalLastFocus = trigger || document.activeElement;
+    var d = detailsFor(p);
+    var url = buildPropertyUrl(p);
+
+    var typeLine = p.types.map(function (t) { return TYPE_LABEL[t] || t; }).join(" · ");
+    var eyebrow = (d && d.collection) ? esc(d.collection) : typeLine;
+    var locFull = (d && d.locationFull) ? d.locationFull : (p.loc || "");
+    var desc = (d && d.desc) ? d.desc : (p.blurb || "");
+    var ratingHTML = (d && d.rating) ? '<span class="pmodal__rating">' + starSVG() + esc(d.rating) + '</span>' : "";
+
+    // Highlights: use enriched list, else derive honestly from known features.
+    var highlights = (d && d.highlights) ? d.highlights
+      : p.features.map(function (f) { return META_LABEL[f] || f; });
+    var perks = (d && d.perks) ? d.perks : null;
+
+    var meta = META_KEYS.filter(function (k) { return p.features.indexOf(k) !== -1; })
+      .map(function (k) { return '<span class="pmodal__tag">' + iconFor(k) + esc(META_LABEL[k]) + '</span>'; }).join("");
+
+    var body =
+      '<div class="pmodal__media">' +
+        '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
+        '<img class="pmodal__photo" src="' + sceneImage(p.scene, p.id, 1280) + '" alt="' + esc(p.name) + '" decoding="async" onerror="this.remove()">' +
+        '<span class="pmodal__typebadge">' + esc(typeLine) + '</span>' +
+      '</div>' +
+      '<div class="pmodal__content">' +
+        '<div class="pmodal__eyebrow">' + eyebrow + '</div>' +
+        '<h2 class="pmodal__title" id="pmodal-title">' + esc(p.name) + '</h2>' +
+        '<div class="pmodal__loc">' + pinSVG() + '<span>' + esc(locFull) + '</span>' + ratingHTML + '</div>' +
+        (meta ? '<div class="pmodal__tags">' + meta + '</div>' : "") +
+        '<p class="pmodal__desc">' + esc(desc) + '</p>' +
+        ((d && d.stay) ? '<div class="pmodal__stay"><h4>Accommodations</h4><p>' + esc(d.stay) + '</p></div>' : "") +
+        '<div class="pmodal__cols">' +
+          '<div class="pmodal__col"><h4>Highlights</h4><ul class="pmodal__list">' + chipList(highlights, "hl") + '</ul></div>' +
+          (perks ? '<div class="pmodal__col pmodal__col--perks"><h4>WhataHotel Signature perks</h4><ul class="pmodal__list">' + chipList(perks, "perk") + '</ul></div>' : "") +
+        '</div>' +
+        (!d ? '<p class="pmodal__note">Full description, photos and live availability are on the property’s WhataHotel page.</p>' : "") +
+        '<div class="pmodal__actions">' +
+          '<a class="btn btn-primary btn-lg" href="' + url + '" target="_blank" rel="noopener" ' +
+             'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">Check Availability' + arrowSVG() + '</a>' +
+          '<button class="btn btn-outline btn-lg" type="button" data-close>Keep browsing</button>' +
+        '</div>' +
+        '<a class="pmodal__source" href="' + url + '" target="_blank" rel="noopener">View on WhataHotel.com ↗</a>' +
+      '</div>';
+
+    $("#pmodal-scroll").innerHTML = body;
+    $$("[data-close]", modalEl).forEach(function (b) { if (!b._wired) { b.addEventListener("click", closeDetail); b._wired = true; } });
+
+    modalEl.removeAttribute("hidden");
+    document.body.classList.add("modal-open");
+    requestAnimationFrame(function () { modalEl.classList.add("is-open"); });
+    // focus management
+    var focusables = $$('a[href], button:not([disabled])', modalEl);
+    (focusables[0] || modalEl).focus();
+    modalKeydown = function (e) {
+      if (e.key === "Escape") { closeDetail(); return; }
+      if (e.key === "Tab" && focusables.length) {
+        var first = focusables[0], last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", modalKeydown);
+    pause(); // pause hero autoplay while viewing
+    track("property_detail_opened", { property_id: p.id, property_name: p.name, enriched: !!d });
+  }
+
+  function closeDetail() {
+    if (!modalEl) return;
+    modalEl.classList.remove("is-open");
+    document.body.classList.remove("modal-open");
+    if (modalKeydown) { document.removeEventListener("keydown", modalKeydown); modalKeydown = null; }
+    setTimeout(function () { modalEl.setAttribute("hidden", ""); }, 260);
+    if (modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
+    resume();
   }
 
   /* -----------------------------------------------------------------
@@ -757,6 +878,10 @@
   function pinSVG() { return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>'; }
   function arrowSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'; }
   function searchSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'; }
+  function zoomSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4M11 8v6M8 11h6"/></svg>'; }
+  function checkSVG() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4L19 7"/></svg>'; }
+  function dotSVG() { return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="3.4"/></svg>'; }
+  function starSVG() { return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.9 5.9 21.4l1.4-6.8L2.2 9.9l6.9-.8z"/></svg>'; }
 
   /* -----------------------------------------------------------------
      Init
