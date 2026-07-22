@@ -273,8 +273,10 @@
     });
   }
 
-  function cardHTML(p) {
+  function cardHTML(p, i, anim) {
     var url = buildPropertyUrl(p);
+    var delay = ((i || 0) % 3);
+    var animAttr = ' data-anim="' + (anim || "rise") + '" style="--d:' + delay + '"';
     var tags = p.types.slice(0, 3).map(function (t) { return '<span class="tag-pill">' + esc(TYPE_LABEL[t] || t) + '</span>'; });
     // add up to one standout feature pill
     var featPill = "";
@@ -285,7 +287,7 @@
 
     var favOn = !!state.favs[p.id];
     return '' +
-    '<article class="pcard reveal" data-id="' + p.id + '">' +
+    '<article class="pcard reveal"' + animAttr + ' data-id="' + p.id + '">' +
       '<button class="pcard__media" type="button" data-action="detail" data-id="' + p.id + '" aria-label="View details for ' + esc(p.name) + '">' +
         renderMedia(p) +
         '<span class="pcard__badge">' + esc(typeBadge(p)) + '</span>' +
@@ -323,7 +325,7 @@
       var ce = $("#clear-empty"); if (ce) ce.addEventListener("click", clearAll);
       return;
     }
-    grid.innerHTML = list.map(cardHTML).join("");
+    grid.innerHTML = list.map(function (p, i) { return cardHTML(p, i, "zoom"); }).join("");
     observeReveals(grid);
   }
 
@@ -331,7 +333,7 @@
     var rail = $("#featured-grid");
     if (!rail) return;
     var feat = PROPS.filter(function (p) { return p.featured; }).slice(0, 6);
-    rail.innerHTML = feat.map(cardHTML).join("");
+    rail.innerHTML = feat.map(function (p, i) { return cardHTML(p, i, "rise"); }).join("");
     observeReveals(rail);
   }
 
@@ -508,10 +510,10 @@
   function renderCategories() {
     var wrap = $("#category-grid");
     if (!wrap) return;
-    wrap.innerHTML = CATEGORIES.map(function (c) {
+    wrap.innerHTML = CATEGORIES.map(function (c, i) {
       var n = PROPS.filter(function (p) { return propMatchesCat(p, c.key); }).length;
       var img = sceneImage(c.scene, 0);
-      return '<button class="cat-card" type="button" data-cat="' + c.key + '">' +
+      return '<button class="cat-card reveal" data-anim="zoom" style="--d:' + i + '" type="button" data-cat="' + c.key + '">' +
         '<div class="scene">' + sceneSVG(c.scene) + '</div>' +
         '<img class="cat-card__photo" src="' + img + '" alt="" loading="lazy" decoding="async" onerror="this.remove()">' +
         '<span class="cat-card__count">' + iconFor(c.key) + n + ' stays</span>' +
@@ -845,7 +847,7 @@
   /* -----------------------------------------------------------------
      Scroll reveal + sticky mobile CTA + header state
      ----------------------------------------------------------------- */
-  var io;
+  var io, flushWired = false, flushRaf = 0;
   function observeReveals(scope) {
     if (!("IntersectionObserver" in window)) { $$(".reveal", scope).forEach(function (n) { n.classList.add("in"); }); return; }
     if (!io) {
@@ -854,6 +856,23 @@
       }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
     }
     $$(".reveal:not(.in)", scope || document).forEach(function (n) { io.observe(n); });
+    // Safety net: IntersectionObserver can miss elements during very fast or
+    // programmatic scrolling. A throttled scroll pass reveals anything whose
+    // top has already passed into (or above) the viewport, so nothing stays
+    // stuck hidden.
+    if (!flushWired) {
+      flushWired = true;
+      var flush = function () {
+        flushRaf = 0;
+        var vh = window.innerHeight || 0;
+        $$(".reveal:not(.in)").forEach(function (n) {
+          if (n.getBoundingClientRect().top < vh * 0.92) { n.classList.add("in"); io.unobserve(n); }
+        });
+      };
+      var onScroll = function () { if (!flushRaf) flushRaf = requestAnimationFrame(flush); };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll, { passive: true });
+    }
   }
   function wireMobileCta() {
     var bar = $("#mobile-cta");

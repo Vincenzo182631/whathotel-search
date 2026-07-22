@@ -332,6 +332,9 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   padding: 1.6rem; transition: transform .2s ease, box-shadow .2s ease;
 }
 .benefit:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.benefit.reveal .benefit__ico { transform: scale(.55) rotate(-10deg); opacity: 0; transition: transform .6s cubic-bezier(.34,1.56,.64,1) .18s, opacity .5s ease .18s; }
+.benefit.reveal.in .benefit__ico { transform: none; opacity: 1; }
+.benefit:hover .benefit__ico { transform: translateY(-2px) rotate(-4deg); }
 .benefit__ico {
   width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
   background: linear-gradient(135deg, rgba(198,163,90,.2), rgba(198,163,90,.08));
@@ -491,6 +494,11 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 }
 .video-poster:hover .video-play { transform: translate(-50%,-50%) scale(1.07); }
 .video-play svg { width: 30px; height: 30px; margin-left: 4px; }
+/* ambient pulse rings around the play button */
+.video-play::before, .video-play::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold-2); opacity: 0; animation: vpulse 2.8s ease-out infinite; }
+.video-play::after { animation-delay: 1.4s; }
+@keyframes vpulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.85); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .video-play::before, .video-play::after { display: none; } }
 .video-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 1.4rem; color: #fff; background: linear-gradient(0deg, rgba(6,16,28,.8), transparent); }
 .video-cap b { font-family: var(--serif); font-size: 1.3rem; display: block; }
 .video-actions { text-align: center; margin-top: 2rem; }
@@ -509,10 +517,15 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .step h3 { font-size: 1.2rem; color: var(--ink); margin-bottom: .3rem; }
 .step p { color: var(--text-soft); font-size: .95rem; margin: 0; }
 .step:not(:last-child)::after {
-  content: ""; position: absolute; top: 1.9rem; right: -14px; width: 28px; height: 1px;
-  background: var(--line); display: none;
+  content: ""; position: absolute; top: 1.9rem; right: -14px; width: 28px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent); display: none;
+  transform: scaleX(0); transform-origin: left; transition: transform .6s ease .35s;
 }
 @media (min-width: 980px) { .step:not(:last-child)::after { display: block; } }
+.step.reveal.in:not(:last-child)::after { transform: scaleX(1); }
+/* the big step number draws up on reveal */
+.step.reveal .step__num { display: inline-block; transform: translateY(8px); opacity: .4; transition: transform .6s ease .1s, opacity .6s ease .1s; }
+.step.reveal.in .step__num { transform: none; opacity: 1; }
 
 /* ---------- Trust ---------- */
 .trust { background: linear-gradient(180deg, var(--sand), var(--cream)); }
@@ -600,11 +613,50 @@ body.modal-open { overflow: hidden; }
   .pmodal__close:hover { transform: none; }
 }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
+/* ---------- Reveal on scroll — per-section animation variants ---------- */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .8s cubic-bezier(.22,.7,.2,1), transform .85s cubic-bezier(.22,.7,.2,1), filter .8s ease;
+  transition-delay: calc(var(--d, 0) * 85ms);
+  will-change: opacity, transform;
+}
+.reveal.in { opacity: 1; transform: none; filter: none; }
+
+/* Variant initial states — only while NOT yet revealed, so `.in` (base) always
+   wins and settles the element regardless of source order. */
+[data-anim="fade"].reveal:not(.in)    { transform: none; }
+[data-anim="left"].reveal:not(.in)    { transform: translateX(-46px); }
+[data-anim="right"].reveal:not(.in)   { transform: translateX(46px); }
+[data-anim="zoom"].reveal:not(.in)    { transform: scale(.9); }
+[data-anim="rise-lg"].reveal:not(.in) { transform: translateY(52px); }
+[data-anim="blur"].reveal:not(.in)    { transform: translateY(26px); filter: blur(12px); }
+[data-anim="pop"].reveal:not(.in)     { transform: scale(.8) translateY(12px); transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+[data-anim="tilt"].reveal:not(.in)    { transform: perspective(1200px) rotateX(10deg) translateY(30px); transform-origin: top center; }
+
+/* Section-head kicker line grows as it enters */
+.section-head.reveal .eyebrow::before { width: 0; transition: width .7s ease .25s; }
+.section-head.reveal.in .eyebrow::before { width: 26px; }
+
+/* Staggered groups — children cascade by DOM order */
+.stagger > .reveal:nth-child(1) { --d: 0; }
+.stagger > .reveal:nth-child(2) { --d: 1; }
+.stagger > .reveal:nth-child(3) { --d: 2; }
+.stagger > .reveal:nth-child(4) { --d: 3; }
+.stagger > .reveal:nth-child(5) { --d: 4; }
+.stagger > .reveal:nth-child(6) { --d: 5; }
+
+/* Section-scoped signatures (initial state only; base `.in` settles them) */
+.search-panel.reveal:not(.in)        { transform: translateY(46px) scale(.985); }      /* Search: rise + settle */
+.trust-grid .reveal:not(.in)         { transform: scale(.82) translateY(10px); transition-timing-function: cubic-bezier(.34,1.56,.64,1); } /* Trust: pop */
+.compare-card--room.reveal:not(.in)  { transform: translateX(-48px); }                 /* Comparison: cards slide in */
+.compare-card--home.reveal:not(.in)  { transform: translateX(48px); }
+.compare-vs.reveal:not(.in)          { transform: scale(.5) rotate(-30deg); transition-timing-function: cubic-bezier(.34,1.7,.5,1); transition-delay: .25s; } /* "vs" pops */
+#video-frame.reveal:not(.in)         { transform: translateY(28px) scale(.985); filter: blur(14px); } /* Video: focus-in */
+.final-cta .reveal:not(.in)          { transform: scale(.93); }                        /* Final CTA: zoom */
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal, [data-anim].reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  .section-head.reveal .eyebrow::before { width: 26px; transition: none; }
   html { scroll-behavior: auto; }
   * { animation: none !important; }
 }
