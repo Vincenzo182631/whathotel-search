@@ -578,7 +578,9 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .pcard__blurb { font-size: .9rem; color: var(--text-soft); margin: 0 0 .9rem; }
 .pcard__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.1rem; }
 .tag-pill { font-size: .72rem; font-weight: 600; color: var(--text-soft); background: var(--sand); border: 1px solid var(--line-2); padding: .22rem .6rem; border-radius: 999px; text-transform: capitalize; }
-.tag-pill--setting { color: var(--gold-deep); background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line-2)); }
+.tag-pill--setting { display: inline-flex; align-items: center; gap: .3rem; color: var(--gold-deep); background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line-2)); }
+.set-ic { width: .95em; height: .95em; flex: none; }
+.pmodal__tag--trait .set-ic { width: 1rem; height: 1rem; }
 .pcard__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
 .pcard__cta { flex: 1; }
 .pcard__cta .btn { width: 100%; }
@@ -7400,9 +7402,26 @@ window.WAH_DETAILS = {
     beachfront: "Beachfront", island: "Island", mountain: "Mountain & Ski",
     lake: "Lakeside", countryside: "Countryside", city: "City", desert: "Desert"
   };
+  // Professional line-style icons (match the site's SVG icon set: 24x24,
+  // stroke, round caps). One per setting — never an emoji.
+  function svgIc(paths) {
+    return '<svg class="set-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + paths + '</svg>';
+  }
   var SETTING_ICON = {
-    beachfront: "🏖️", island: "🏝️", mountain: "🏔️", lake: "🏞️",
-    countryside: "🌿", city: "🏙️", desert: "🏜️"
+    // sun over gentle surf
+    beachfront: svgIc('<circle cx="17.5" cy="6.5" r="2.6"/><path d="M2.5 14.5c1.4 0 1.4 1.4 2.9 1.4s1.4-1.4 2.9-1.4 1.4 1.4 2.9 1.4 1.4-1.4 2.9-1.4 1.4 1.4 2.9 1.4 1.4-1.4 2.6-1.4"/><path d="M2.5 18.6c1.4 0 1.4 1.4 2.9 1.4s1.4-1.4 2.9-1.4 1.4 1.4 2.9 1.4 1.4-1.4 2.9-1.4 1.4 1.4 2.9 1.4 1.4-1.4 2.6-1.4"/>'),
+    // palm tree on a shoreline
+    island: svgIc('<path d="M12 10.5V20"/><path d="M12 10.5C10 7.5 6 7.5 3.6 9.6c3-1.2 5.4-.3 6.4.9"/><path d="M12 10.5c2-3 6-3 8.4-.9-3-1.2-5.4-.3-6.4.9"/><path d="M12 10.5c0-3.2-2.2-5.6-5.2-5.6 2.4.8 4.2 2.8 4.2 5.6"/><path d="M4 20.4c2.4-1.4 13.6-1.4 16 0"/>'),
+    // twin peaks with snow cap
+    mountain: svgIc('<path d="M2.5 19.5 9 7l4 7.5 2-3.2 6.5 8.2z"/><path d="M6.6 12.2 9 7l2.3 4.3"/>'),
+    // peak reflected in still water
+    lake: svgIc('<path d="M4 11 8 5l4.2 6"/><path d="M12 11l2.8-3.6L20.5 12"/><path d="M3.5 15.5h17"/><path d="M3.5 18.6h17"/>'),
+    // rolling hills with a rising sun
+    countryside: svgIc('<circle cx="7" cy="8" r="2.4"/><path d="M2 19.5c3.2-5.8 7-5.8 10.2 0"/><path d="M9 19.5c3.2-5.8 8-5.8 12.8-.6"/>'),
+    // city skyline
+    city: svgIc('<path d="M3 20.5V8.5l5.5-3.5v15.5"/><path d="M8.5 20.5V10l5.5-2.8v13.3"/><path d="M14 20.5V12.5l6 2.2v5.8"/><path d="M2.5 20.5h19"/><path d="M6 11v0M6 14v0M11 12v0M11 15v0"/>'),
+    // dunes beneath a low sun
+    desert: svgIc('<circle cx="16.5" cy="7" r="2.4"/><path d="M2.5 18c3-4 5.5-.5 8.5-2.4S17 13 21.5 16"/><path d="M2.5 20.5c3-3.2 5.5-.4 8.5-2s6-1.6 10.5 1.2"/>')
   };
   var FEATURE_LABELS = {
     golf: "Golf", spa: "Spa", "private-pool": "Private pool", overwater: "Overwater",
@@ -7426,7 +7445,7 @@ window.WAH_DETAILS = {
     // Factual pills: setting (from real description/geography) + region + country.
     var tags = [];
     var pset = primarySetting(p);
-    if (pset) tags.push('<span class="tag-pill tag-pill--setting">' + (SETTING_ICON[pset] || "") + ' ' + esc(settingLabel(pset)) + '</span>');
+    if (pset) tags.push('<span class="tag-pill tag-pill--setting">' + (SETTING_ICON[pset] || "") + esc(settingLabel(pset)) + '</span>');
     tags.push('<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>');
     if (p.country) tags.push('<span class="tag-pill">' + esc(p.country) + '</span>');
 
@@ -8039,7 +8058,7 @@ window.WAH_DETAILS = {
     var traitMeta = "";
     if (tr) {
       var sc = (tr.settings || []).map(function (k) {
-        return '<span class="pmodal__tag pmodal__tag--trait">' + (SETTING_ICON[k] || "") + ' ' + esc(settingLabel(k)) + '</span>';
+        return '<span class="pmodal__tag pmodal__tag--trait">' + (SETTING_ICON[k] || "") + esc(settingLabel(k)) + '</span>';
       });
       var fc = (tr.features || []).map(function (k) {
         return '<span class="pmodal__tag pmodal__tag--feat">' + esc(FEATURE_LABELS[k] || k) + '</span>';
