@@ -23,6 +23,7 @@ const inlines = [
   ['<script src="assets/js/data.js"></script>', () => "<script>\n" + read("assets/js/data.js") + "\n</script>"],
   ['<script src="assets/js/images.js"></script>', () => "<script>\n" + read("assets/js/images.js") + "\n</script>"],
   ['<script src="assets/js/descriptions.js"></script>', () => "<script>\n" + read("assets/js/descriptions.js") + "\n</script>"],
+  ['<script src="assets/js/characteristics.js"></script>', () => "<script>\n" + read("assets/js/characteristics.js") + "\n</script>"],
   ['<script src="assets/js/details.js"></script>', () => "<script>\n" + read("assets/js/details.js") + "\n</script>"],
   ['<script src="assets/js/homes-inventory-filter.js"></script>', () => "<script>\n" + read("assets/js/homes-inventory-filter.js") + "\n</script>"],
   ['<script src="assets/js/homes.js" defer></script>', () => "<script>\n" + read("assets/js/homes.js") + "\n</script>"],

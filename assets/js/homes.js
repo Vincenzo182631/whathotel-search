@@ -210,7 +210,7 @@
   /* -----------------------------------------------------------------
      State — cats = selected region keys, brands = selected collections.
      ----------------------------------------------------------------- */
-  var state = { query: "", cats: [], brands: [], sort: "featured", favs: {} };
+  var state = { query: "", cats: [], brands: [], setting: "", sort: "featured", favs: {} };
 
   // Region match: a property belongs to exactly one region (its real country).
   function propMatchesCat(p, cat) { return p.regionKey === cat; }
@@ -220,8 +220,10 @@
     var list = PROPS.filter(function (p) {
       if (state.cats.length && state.cats.indexOf(p.regionKey) === -1) return false;
       if (state.brands.length && state.brands.indexOf(p.brand) === -1) return false;
+      if (state.setting && settingsFor(p).indexOf(state.setting) === -1) return false;
       if (q) {
-        var hay = [p.name, p.loc, p.city, p.country, p.region, p.collection, p.brand].join(" ").toLowerCase();
+        var settingWords = settingsFor(p).map(settingLabel).join(" ");
+        var hay = [p.name, p.loc, p.city, p.country, p.region, p.collection, p.brand, settingWords].join(" ").toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
       return true;
@@ -311,6 +313,29 @@
     return p.collection || p.brand || (REGION_SHORT[p.regionKey] || p.region || "");
   }
 
+  /* -----------------------------------------------------------------
+     Property CHARACTERISTICS (setting + features). Populated by the
+     classifier (assets/js/characteristics.js) — every tag is grounded in
+     the property's REAL description + geography, never its name. */
+  var TRAITS = window.WAH_TRAITS || {};
+  var SETTING_LABELS = window.WAH_SETTINGS || {
+    beachfront: "Beachfront", island: "Island", mountain: "Mountain & Ski",
+    lake: "Lakeside", countryside: "Countryside", city: "City", desert: "Desert"
+  };
+  var SETTING_ICON = {
+    beachfront: "🏖️", island: "🏝️", mountain: "🏔️", lake: "🏞️",
+    countryside: "🌿", city: "🏙️", desert: "🏜️"
+  };
+  var FEATURE_LABELS = {
+    golf: "Golf", spa: "Spa", "private-pool": "Private pool", overwater: "Overwater",
+    vineyard: "Vineyard", marina: "Marina", "family-friendly": "Family-friendly",
+    historic: "Historic", culinary: "Culinary"
+  };
+  function traitsFor(p) { return TRAITS[p.id] || null; }
+  function settingsFor(p) { var t = traitsFor(p); return (t && t.settings) || []; }
+  function primarySetting(p) { var t = traitsFor(p); return t && t.primary; }
+  function settingLabel(k) { return SETTING_LABELS[k] || k; }
+
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" })[c];
@@ -320,8 +345,11 @@
   function cardHTML(p, i, anim) {
     var delay = ((i || 0) % 3);
     var animAttr = ' data-anim="' + (anim || "rise") + '" style="--d:' + delay + '"';
-    // Factual pills: region + country (both real, from the source list).
-    var tags = ['<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>'];
+    // Factual pills: setting (from real description/geography) + region + country.
+    var tags = [];
+    var pset = primarySetting(p);
+    if (pset) tags.push('<span class="tag-pill tag-pill--setting">' + (SETTING_ICON[pset] || "") + ' ' + esc(settingLabel(pset)) + '</span>');
+    tags.push('<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>');
     if (p.country) tags.push('<span class="tag-pill">' + esc(p.country) + '</span>');
 
     var favOn = !!state.favs[p.id];
@@ -707,6 +735,27 @@
         REFINE_BRANDS.map(function (b) { return '<option value="' + esc(b.label) + '">' + esc(b.label) + ' · ' + b.count + '</option>'; }).join("");
       csel.addEventListener("change", function () { setBrand(csel.value); });
     }
+    var ssel = $("#setting-select");
+    if (ssel) {
+      // Settings offered = only those actually present in the data, with counts.
+      var counts = {};
+      PROPS.forEach(function (p) {
+        settingsFor(p).forEach(function (k) { counts[k] = (counts[k] || 0) + 1; });
+      });
+      var order = Object.keys(SETTING_LABELS).filter(function (k) { return counts[k]; })
+        .sort(function (a, b) { return counts[b] - counts[a]; });
+      ssel.innerHTML = '<option value="">Any setting</option>' +
+        order.map(function (k) {
+          return '<option value="' + k + '">' + esc(settingLabel(k)) + ' · ' + counts[k] + '</option>';
+        }).join("");
+      ssel.addEventListener("change", function () { setSetting(ssel.value); });
+    }
+  }
+  function setSetting(val) {
+    state.setting = val || "";
+    syncControls();
+    if (val) track("filter_selected", { filter_type: "setting", filter_value: val, source: "dropdown" });
+    renderDirectory();
   }
   function setType(cat) {
     state.cats = cat ? [cat] : [];
@@ -723,10 +772,11 @@
   function syncControls() {
     var rsel = $("#region-select"); if (rsel) rsel.value = state.cats[0] || "";
     var csel = $("#collection-select"); if (csel) csel.value = state.brands[0] || "";
+    var ssel = $("#setting-select"); if (ssel) ssel.value = state.setting || "";
   }
 
   function clearAll() {
-    state.query = ""; state.cats = []; state.brands = []; state.sort = "featured";
+    state.query = ""; state.cats = []; state.brands = []; state.setting = ""; state.sort = "featured";
     var input = $("#search-input"); if (input) input.value = "";
     var sort = $("#sort-select"); if (sort) sort.value = "featured";
     syncControls();
@@ -905,6 +955,20 @@
     if (p.brand) chips.push({ icon: "collection", label: p.brand });
     var meta = chips.map(function (c) { return '<span class="pmodal__tag">' + iconFor(c.icon) + esc(c.label) + '</span>'; }).join("");
 
+    // Characteristic chips: setting(s) + features (grounded in real
+    // description + geography, never the name).
+    var tr = traitsFor(p);
+    var traitMeta = "";
+    if (tr) {
+      var sc = (tr.settings || []).map(function (k) {
+        return '<span class="pmodal__tag pmodal__tag--trait">' + (SETTING_ICON[k] || "") + ' ' + esc(settingLabel(k)) + '</span>';
+      });
+      var fc = (tr.features || []).map(function (k) {
+        return '<span class="pmodal__tag pmodal__tag--feat">' + esc(FEATURE_LABELS[k] || k) + '</span>';
+      });
+      traitMeta = sc.concat(fc).join("");
+    }
+
     var body =
       '<div class="pmodal__media">' +
         '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
@@ -916,6 +980,7 @@
         '<h2 class="pmodal__title" id="pmodal-title">' + esc(p.name) + '</h2>' +
         '<div class="pmodal__loc">' + pinSVG() + '<span>' + esc(locFull) + '</span>' + ratingHTML + '</div>' +
         (meta ? '<div class="pmodal__tags">' + meta + '</div>' : "") +
+        (traitMeta ? '<div class="pmodal__tags pmodal__tags--traits">' + traitMeta + '</div>' : "") +
         '<p class="pmodal__desc">' + esc(desc) + '</p>' +
         ((d && d.stay) ? '<div class="pmodal__stay"><h4>Accommodations</h4><p>' + esc(d.stay) + '</p></div>' : "") +
         '<div class="pmodal__cols">' +

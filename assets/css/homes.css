@@ -319,6 +319,7 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 /* Refine — two compact dropdowns instead of scattered tabs/chips */
 .search-filters { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-top: .85rem; }
 @media (min-width: 640px) { .search-filters { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .search-filters { grid-template-columns: repeat(3, 1fr); } }
 .select-field--filter { display: flex; align-items: center; }
 .select-field--filter .select-field__ic { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%);
   width: 1.1rem; height: 1.1rem; color: var(--gold-deep); pointer-events: none; z-index: 1; }
@@ -537,6 +538,7 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .pcard__blurb { font-size: .9rem; color: var(--text-soft); margin: 0 0 .9rem; }
 .pcard__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.1rem; }
 .tag-pill { font-size: .72rem; font-weight: 600; color: var(--text-soft); background: var(--sand); border: 1px solid var(--line-2); padding: .22rem .6rem; border-radius: 999px; text-transform: capitalize; }
+.tag-pill--setting { color: var(--gold-deep); background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line-2)); }
 .pcard__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
 .pcard__cta { flex: 1; }
 .pcard__cta .btn { width: 100%; }
@@ -692,6 +694,9 @@ body.modal-open { overflow: hidden; }
 .pmodal__tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.3rem; }
 .pmodal__tag { display: inline-flex; align-items: center; gap: .45rem; font-size: .82rem; font-weight: 600; color: var(--text-soft); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: .4rem .8rem; }
 .pmodal__tag .ic { width: 1rem; height: 1rem; color: var(--gold-deep); }
+.pmodal__tags--traits { margin-top: -.7rem; }
+.pmodal__tag--trait { color: var(--gold-deep); background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line)); }
+.pmodal__tag--feat { font-weight: 500; }
 .pmodal__desc { font-size: 1.06rem; color: var(--text); line-height: 1.65; margin: 0 0 1.5rem; max-width: 68ch; }
 .pmodal__stay { margin-bottom: 1.6rem; }
 .pmodal h4 { font-family: var(--sans); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mut); margin: 0 0 .7rem; }

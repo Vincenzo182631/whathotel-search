@@ -42,13 +42,38 @@ assets/
   js/data.js                        GENERATED directory: the 271 Homes properties (do not hand-edit)
   js/images.js                      GENERATED real hero images (og:image per property)
   js/descriptions.js                GENERATED factual descriptions (per property)
-  js/homes.js                       Rendering, search, region/collection filters, analytics, video
+  js/characteristics.js             GENERATED settings + features per property (setting filter + badges)
+  js/homes.js                       Rendering, search, region/collection/setting filters, analytics, video
   js/homes-inventory-filter.js      Residential-inventory keyword logic (documents the availability behavior)
 scripts/
   source-homes.json                 AUTHORITATIVE list of the 271 properties on whatahotel.com/homes/
   build-data.mjs                    Generates data.js from source-homes.json
   fetch-images.mjs                  Scrapes each property's og:image + description
+  seed-characteristics.mjs          Deterministic setting/feature tagging from description + geography
+  classify-properties.mjs           Claude classifier (runs with your API key) — same output, LLM-verified
 ```
+
+## Property characteristics (the "setting" filter)
+
+Every property is tagged with a physical **setting** (beachfront, island,
+mountain & ski, lakeside, countryside, city, desert) and a short list of
+**features** (golf, spa, private pool, overwater, vineyard, marina,
+family-friendly, historic, culinary). These power the **Setting** dropdown in
+search and the badges on cards and in the detail modal.
+
+**Every tag is grounded in evidence — never the hotel's name.** The classifier
+reads only a property's *real on-page description* (`WAH_DESC`) and its *real
+geography* (city / country / region). A name containing "Beach", "Island" or
+"Mountain" contributes nothing.
+
+- `node scripts/seed-characteristics.mjs` — deterministic, zero-dependency
+  tagging from description prose + a curated geography gazetteer. Ships live.
+- `node scripts/classify-properties.mjs` — the "agentic AI" version: sends each
+  property's description + geography (with the **name withheld**) to Claude and
+  writes the same `assets/js/characteristics.js`. Requires `ANTHROPIC_API_KEY`
+  and `ANTHROPIC_MODEL` in your environment.
+
+Both write the identical shape, so the site works from either.
 
 ## Page sections
 

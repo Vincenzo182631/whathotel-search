@@ -359,6 +359,7 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 /* Refine — two compact dropdowns instead of scattered tabs/chips */
 .search-filters { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-top: .85rem; }
 @media (min-width: 640px) { .search-filters { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 900px) { .search-filters { grid-template-columns: repeat(3, 1fr); } }
 .select-field--filter { display: flex; align-items: center; }
 .select-field--filter .select-field__ic { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%);
   width: 1.1rem; height: 1.1rem; color: var(--gold-deep); pointer-events: none; z-index: 1; }
@@ -577,6 +578,7 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .pcard__blurb { font-size: .9rem; color: var(--text-soft); margin: 0 0 .9rem; }
 .pcard__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.1rem; }
 .tag-pill { font-size: .72rem; font-weight: 600; color: var(--text-soft); background: var(--sand); border: 1px solid var(--line-2); padding: .22rem .6rem; border-radius: 999px; text-transform: capitalize; }
+.tag-pill--setting { color: var(--gold-deep); background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line-2)); }
 .pcard__foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
 .pcard__cta { flex: 1; }
 .pcard__cta .btn { width: 100%; }
@@ -732,6 +734,9 @@ body.modal-open { overflow: hidden; }
 .pmodal__tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.3rem; }
 .pmodal__tag { display: inline-flex; align-items: center; gap: .45rem; font-size: .82rem; font-weight: 600; color: var(--text-soft); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: .4rem .8rem; }
 .pmodal__tag .ic { width: 1rem; height: 1rem; color: var(--gold-deep); }
+.pmodal__tags--traits { margin-top: -.7rem; }
+.pmodal__tag--trait { color: var(--gold-deep); background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line)); }
+.pmodal__tag--feat { font-weight: 500; }
 .pmodal__desc { font-size: 1.06rem; color: var(--text); line-height: 1.65; margin: 0 0 1.5rem; max-width: 68ch; }
 .pmodal__stay { margin-bottom: 1.6rem; }
 .pmodal h4 { font-family: var(--sans); font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mut); margin: 0 0 .7rem; }
@@ -1016,6 +1021,11 @@ body.modal-open { overflow: hidden; }
         <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/></svg>
         <label class="visually-hidden" for="region-select">Filter by region</label>
         <select id="region-select"></select>
+      </div>
+      <div class="select-field select-field--filter">
+        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg>
+        <label class="visually-hidden" for="setting-select">Filter by setting</label>
+        <select id="setting-select"></select>
       </div>
       <div class="select-field select-field--filter">
         <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
@@ -6676,6 +6686,31 @@ window.WAH_DESC = {
 </script>
 <script>
 /*
+ * WhataHotel! — Homes property CHARACTERISTICS (settings + features)
+ * AUTO-GENERATED. Seeded by scripts/seed-characteristics.mjs from each
+ * property's REAL on-page description (WAH_DESC) and REAL geography
+ * (city/country) — NEVER from the hotel name.
+ *
+ * The live "agentic" classifier (scripts/classify-properties.mjs) can
+ * overwrite this file with LLM-verified tags; the shape is identical.
+ *
+ * WAH_SETTINGS: label map for the controlled setting vocabulary.
+ * WAH_TRAITS:   { "<hotelID>": { settings:[keys], primary, features:[keys], source } }
+ */
+window.WAH_SETTINGS = {
+  "beachfront": "Beachfront",
+  "island": "Island",
+  "mountain": "Mountain & Ski",
+  "lake": "Lakeside",
+  "countryside": "Countryside",
+  "desert": "Desert",
+  "city": "City"
+};
+window.WAH_TRAITS = {"935":{"settings":["island"],"primary":"island","features":[],"source":"description"},"940":{"settings":["island"],"primary":"island","features":["private-pool"],"source":"description"},"946":{"settings":["city"],"primary":"city","features":[],"source":"description"},"951":{"settings":["island"],"primary":"island","features":["culinary"],"source":"description"},"952":{"settings":["city"],"primary":"city","features":["marina","culinary"],"source":"description"},"956":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"985":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"988":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"989":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"993":{"settings":["lake"],"primary":"lake","features":[],"source":"description"},"1014":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"1031":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1040":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"1045":{"settings":["city"],"primary":"city","features":[],"source":"description"},"1051":{"settings":["city"],"primary":"city","features":[],"source":"geography"},"1055":{"settings":["countryside","city"],"primary":"countryside","features":["historic"],"source":"description"},"1057":{"settings":["island"],"primary":"island","features":[],"source":"description"},"1066":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1073":{"settings":["island","countryside","beachfront"],"primary":"island","features":[],"source":"description"},"1124":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"1125":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"geography"},"1165":{"settings":["desert","city"],"primary":"desert","features":[],"source":"geography"},"1210":{"settings":["desert","city"],"primary":"desert","features":["marina"],"source":"description"},"1215":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1223":{"settings":["island"],"primary":"island","features":[],"source":"description"},"1253":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1268":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"1271":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1325":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"1328":{"settings":["city"],"primary":"city","features":["culinary"],"source":"region-fallback"},"1346":{"settings":["beachfront","island"],"primary":"beachfront","features":["spa"],"source":"description"},"1354":{"settings":["mountain","beachfront"],"primary":"mountain","features":["spa"],"source":"description"},"1389":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"1399":{"settings":["island"],"primary":"island","features":["marina"],"source":"description"},"1408":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"1414":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1422":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"1427":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"1438":{"settings":["beachfront"],"primary":"beachfront","features":["private-pool"],"source":"description"},"1441":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1449":{"settings":["desert","beachfront"],"primary":"desert","features":[],"source":"description"},"1459":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"1475":{"settings":["city"],"primary":"city","features":["culinary"],"source":"region-fallback"},"1500":{"settings":["city"],"primary":"city","features":[],"source":"description"},"1512":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1523":{"settings":["island","countryside"],"primary":"island","features":[],"source":"description"},"1527":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"1532":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"1533":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1569":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"1636":{"settings":["countryside"],"primary":"countryside","features":["spa","vineyard"],"source":"description"},"1650":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1736":{"settings":["beachfront"],"primary":"beachfront","features":["culinary"],"source":"description"},"1771":{"settings":["island"],"primary":"island","features":[],"source":"description"},"1783":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"1803":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"geography"},"1815":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1836":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"1846":{"settings":["desert"],"primary":"desert","features":[],"source":"region-fallback"},"1896":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1911":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"1954":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"1970":{"settings":["island"],"primary":"island","features":[],"source":"description"},"2133":{"settings":["city","beachfront"],"primary":"city","features":[],"source":"description"},"2135":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"2141":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2174":{"settings":["mountain"],"primary":"mountain","features":[],"source":"geography"},"2194":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"2212":{"settings":["beachfront"],"primary":"beachfront","features":["culinary"],"source":"description"},"2257":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"2262":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2265":{"settings":["countryside"],"primary":"countryside","features":["golf","vineyard"],"source":"description"},"2280":{"settings":["island","beachfront"],"primary":"island","features":["private-pool","overwater"],"source":"description"},"2281":{"settings":["island"],"primary":"island","features":["spa"],"source":"description"},"2287":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"2293":{"settings":["city"],"primary":"city","features":[],"source":"description"},"2314":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2349":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"2390":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"2394":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"2401":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2402":{"settings":["lake"],"primary":"lake","features":[],"source":"description"},"2426":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2441":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2442":{"settings":["mountain"],"primary":"mountain","features":[],"source":"geography"},"2461":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"2462":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"2493":{"settings":["desert"],"primary":"desert","features":[],"source":"region-fallback"},"2513":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"2520":{"settings":["city"],"primary":"city","features":[],"source":"description"},"2543":{"settings":["city"],"primary":"city","features":[],"source":"description"},"2545":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"2563":{"settings":["island"],"primary":"island","features":[],"source":"description"},"2568":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"2600":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"2674":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"2683":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"2706":{"settings":["island"],"primary":"island","features":[],"source":"description"},"2728":{"settings":["countryside"],"primary":"countryside","features":["culinary"],"source":"region-fallback"},"2738":{"settings":["desert"],"primary":"desert","features":[],"source":"geography"},"2741":{"settings":["desert","city"],"primary":"desert","features":[],"source":"geography"},"2753":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"2760":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2811":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2849":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2879":{"settings":["island"],"primary":"island","features":[],"source":"description"},"2894":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"2920":{"settings":["city"],"primary":"city","features":[],"source":"description"},"2944":{"settings":["beachfront"],"primary":"beachfront","features":["spa"],"source":"region-fallback"},"2946":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2962":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"2972":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"geography"},"2982":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"2987":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"3013":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3022":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3060":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3061":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3107":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"3108":{"settings":["island"],"primary":"island","features":["marina"],"source":"description"},"3109":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3118":{"settings":["city"],"primary":"city","features":["historic"],"source":"description"},"3133":{"settings":["island"],"primary":"island","features":["culinary"],"source":"description"},"3174":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3176":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3180":{"settings":["countryside"],"primary":"countryside","features":[],"source":"description"},"3214":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3231":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"3255":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"3270":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"3287":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"3289":{"settings":["island"],"primary":"island","features":[],"source":"description"},"3333":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3337":{"settings":["beachfront"],"primary":"beachfront","features":["culinary"],"source":"description"},"3352":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3360":{"settings":["beachfront"],"primary":"beachfront","features":["spa","private-pool"],"source":"description"},"3362":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"3371":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3395":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"geography"},"3397":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"geography"},"3399":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3445":{"settings":["beachfront","city"],"primary":"beachfront","features":[],"source":"description"},"3446":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3449":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"3450":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3463":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3468":{"settings":["desert"],"primary":"desert","features":["culinary"],"source":"description"},"3479":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3487":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"3488":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3492":{"settings":["desert","city"],"primary":"desert","features":["marina"],"source":"description"},"3497":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"3539":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3564":{"settings":["island"],"primary":"island","features":[],"source":"description"},"3577":{"settings":["island"],"primary":"island","features":["culinary"],"source":"description"},"3597":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3609":{"settings":["island"],"primary":"island","features":[],"source":"region-fallback"},"3614":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3617":{"settings":["countryside"],"primary":"countryside","features":["vineyard"],"source":"description"},"3676":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3682":{"settings":["mountain"],"primary":"mountain","features":[],"source":"geography"},"3685":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"3703":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3705":{"settings":["lake"],"primary":"lake","features":["historic"],"source":"description"},"3723":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3725":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3759":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"geography"},"3797":{"settings":["island"],"primary":"island","features":["spa","marina"],"source":"description"},"3808":{"settings":["beachfront"],"primary":"beachfront","features":["spa","culinary"],"source":"description"},"3834":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"3870":{"settings":["island"],"primary":"island","features":["culinary"],"source":"description"},"3879":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3887":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"3890":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"3901":{"settings":["island"],"primary":"island","features":[],"source":"description"},"3902":{"settings":["desert","beachfront"],"primary":"desert","features":[],"source":"description"},"3938":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"3939":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3943":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"3944":{"settings":["island"],"primary":"island","features":[],"source":"description"},"3953":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3963":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"3975":{"settings":["beachfront"],"primary":"beachfront","features":["historic"],"source":"region-fallback"},"3985":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"4031":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"4121":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"4132":{"settings":["island"],"primary":"island","features":[],"source":"description"},"4138":{"settings":["island"],"primary":"island","features":[],"source":"description"},"4139":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"geography"},"4165":{"settings":["beachfront"],"primary":"beachfront","features":["private-pool"],"source":"description"},"4177":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"4178":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"4180":{"settings":["island"],"primary":"island","features":[],"source":"description"},"4184":{"settings":["beachfront"],"primary":"beachfront","features":["spa","vineyard"],"source":"region-fallback"},"4215":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"4226":{"settings":["mountain"],"primary":"mountain","features":["culinary"],"source":"description"},"4247":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"4252":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"4411":{"settings":["beachfront"],"primary":"beachfront","features":["private-pool"],"source":"description"},"4510":{"settings":["city"],"primary":"city","features":["private-pool"],"source":"region-fallback"},"4575":{"settings":["countryside","city"],"primary":"countryside","features":["vineyard","historic"],"source":"description"},"4628":{"settings":["mountain"],"primary":"mountain","features":[],"source":"geography"},"4657":{"settings":["desert","city"],"primary":"desert","features":[],"source":"geography"},"4658":{"settings":["desert"],"primary":"desert","features":[],"source":"geography"},"4664":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"4746":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"4751":{"settings":["island"],"primary":"island","features":[],"source":"description"},"4823":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"4839":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"4898":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"4910":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"4937":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"geography"},"4945":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"4968":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"5035":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"5070":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"6072":{"settings":["beachfront"],"primary":"beachfront","features":["spa"],"source":"description"},"6080":{"settings":["island"],"primary":"island","features":[],"source":"description"},"6084":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"6092":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"6102":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"6103":{"settings":["beachfront"],"primary":"beachfront","features":["spa"],"source":"description"},"6150":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"6181":{"settings":["island","beachfront"],"primary":"island","features":[],"source":"description"},"6192":{"settings":["countryside","city"],"primary":"countryside","features":["vineyard"],"source":"description"},"6194":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"6206":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"6212":{"settings":["island"],"primary":"island","features":[],"source":"region-fallback"},"6229":{"settings":["beachfront"],"primary":"beachfront","features":["marina"],"source":"description"},"6238":{"settings":["mountain"],"primary":"mountain","features":["culinary"],"source":"description"},"6269":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6280":{"settings":["mountain","city"],"primary":"mountain","features":[],"source":"description"},"6281":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"6282":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"6286":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6367":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6379":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"6393":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"6402":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"6412":{"settings":["city"],"primary":"city","features":["spa"],"source":"region-fallback"},"6423":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"6429":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6436":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"6474":{"settings":["countryside"],"primary":"countryside","features":["spa"],"source":"description"},"6479":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6539":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"6547":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6554":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6557":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"6558":{"settings":["city"],"primary":"city","features":[],"source":"region-fallback"},"6589":{"settings":["island"],"primary":"island","features":[],"source":"description"},"6647":{"settings":["countryside"],"primary":"countryside","features":[],"source":"region-fallback"},"6662":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6691":{"settings":["island"],"primary":"island","features":[],"source":"description"},"6692":{"settings":["mountain"],"primary":"mountain","features":[],"source":"description"},"6693":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"6695":{"settings":["city"],"primary":"city","features":[],"source":"geography"},"6697":{"settings":["city"],"primary":"city","features":[],"source":"description"},"6703":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6705":{"settings":["island"],"primary":"island","features":[],"source":"description"},"6706":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"6722":{"settings":["island"],"primary":"island","features":[],"source":"geography"},"6732":{"settings":["mountain","countryside"],"primary":"mountain","features":["historic"],"source":"description"},"6733":{"settings":["desert"],"primary":"desert","features":[],"source":"description"},"6741":{"settings":["desert"],"primary":"desert","features":[],"source":"region-fallback"},"6746":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"6748":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"region-fallback"},"6755":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6764":{"settings":["beachfront"],"primary":"beachfront","features":[],"source":"description"},"6766":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"},"6847":{"settings":["beachfront","island"],"primary":"beachfront","features":[],"source":"description"}};
+
+</script>
+<script>
+/*
  * WhataHotel! — Property detail enrichment
  * =====================================================================
  * Factual, verified details for the property detail modal, sourced from each
@@ -7253,7 +7288,7 @@ window.WAH_DETAILS = {
   /* -----------------------------------------------------------------
      State — cats = selected region keys, brands = selected collections.
      ----------------------------------------------------------------- */
-  var state = { query: "", cats: [], brands: [], sort: "featured", favs: {} };
+  var state = { query: "", cats: [], brands: [], setting: "", sort: "featured", favs: {} };
 
   // Region match: a property belongs to exactly one region (its real country).
   function propMatchesCat(p, cat) { return p.regionKey === cat; }
@@ -7263,8 +7298,10 @@ window.WAH_DETAILS = {
     var list = PROPS.filter(function (p) {
       if (state.cats.length && state.cats.indexOf(p.regionKey) === -1) return false;
       if (state.brands.length && state.brands.indexOf(p.brand) === -1) return false;
+      if (state.setting && settingsFor(p).indexOf(state.setting) === -1) return false;
       if (q) {
-        var hay = [p.name, p.loc, p.city, p.country, p.region, p.collection, p.brand].join(" ").toLowerCase();
+        var settingWords = settingsFor(p).map(settingLabel).join(" ");
+        var hay = [p.name, p.loc, p.city, p.country, p.region, p.collection, p.brand, settingWords].join(" ").toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
       return true;
@@ -7354,6 +7391,29 @@ window.WAH_DETAILS = {
     return p.collection || p.brand || (REGION_SHORT[p.regionKey] || p.region || "");
   }
 
+  /* -----------------------------------------------------------------
+     Property CHARACTERISTICS (setting + features). Populated by the
+     classifier (assets/js/characteristics.js) — every tag is grounded in
+     the property's REAL description + geography, never its name. */
+  var TRAITS = window.WAH_TRAITS || {};
+  var SETTING_LABELS = window.WAH_SETTINGS || {
+    beachfront: "Beachfront", island: "Island", mountain: "Mountain & Ski",
+    lake: "Lakeside", countryside: "Countryside", city: "City", desert: "Desert"
+  };
+  var SETTING_ICON = {
+    beachfront: "🏖️", island: "🏝️", mountain: "🏔️", lake: "🏞️",
+    countryside: "🌿", city: "🏙️", desert: "🏜️"
+  };
+  var FEATURE_LABELS = {
+    golf: "Golf", spa: "Spa", "private-pool": "Private pool", overwater: "Overwater",
+    vineyard: "Vineyard", marina: "Marina", "family-friendly": "Family-friendly",
+    historic: "Historic", culinary: "Culinary"
+  };
+  function traitsFor(p) { return TRAITS[p.id] || null; }
+  function settingsFor(p) { var t = traitsFor(p); return (t && t.settings) || []; }
+  function primarySetting(p) { var t = traitsFor(p); return t && t.primary; }
+  function settingLabel(k) { return SETTING_LABELS[k] || k; }
+
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" })[c];
@@ -7363,8 +7423,11 @@ window.WAH_DETAILS = {
   function cardHTML(p, i, anim) {
     var delay = ((i || 0) % 3);
     var animAttr = ' data-anim="' + (anim || "rise") + '" style="--d:' + delay + '"';
-    // Factual pills: region + country (both real, from the source list).
-    var tags = ['<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>'];
+    // Factual pills: setting (from real description/geography) + region + country.
+    var tags = [];
+    var pset = primarySetting(p);
+    if (pset) tags.push('<span class="tag-pill tag-pill--setting">' + (SETTING_ICON[pset] || "") + ' ' + esc(settingLabel(pset)) + '</span>');
+    tags.push('<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>');
     if (p.country) tags.push('<span class="tag-pill">' + esc(p.country) + '</span>');
 
     var favOn = !!state.favs[p.id];
@@ -7750,6 +7813,27 @@ window.WAH_DETAILS = {
         REFINE_BRANDS.map(function (b) { return '<option value="' + esc(b.label) + '">' + esc(b.label) + ' · ' + b.count + '</option>'; }).join("");
       csel.addEventListener("change", function () { setBrand(csel.value); });
     }
+    var ssel = $("#setting-select");
+    if (ssel) {
+      // Settings offered = only those actually present in the data, with counts.
+      var counts = {};
+      PROPS.forEach(function (p) {
+        settingsFor(p).forEach(function (k) { counts[k] = (counts[k] || 0) + 1; });
+      });
+      var order = Object.keys(SETTING_LABELS).filter(function (k) { return counts[k]; })
+        .sort(function (a, b) { return counts[b] - counts[a]; });
+      ssel.innerHTML = '<option value="">Any setting</option>' +
+        order.map(function (k) {
+          return '<option value="' + k + '">' + esc(settingLabel(k)) + ' · ' + counts[k] + '</option>';
+        }).join("");
+      ssel.addEventListener("change", function () { setSetting(ssel.value); });
+    }
+  }
+  function setSetting(val) {
+    state.setting = val || "";
+    syncControls();
+    if (val) track("filter_selected", { filter_type: "setting", filter_value: val, source: "dropdown" });
+    renderDirectory();
   }
   function setType(cat) {
     state.cats = cat ? [cat] : [];
@@ -7766,10 +7850,11 @@ window.WAH_DETAILS = {
   function syncControls() {
     var rsel = $("#region-select"); if (rsel) rsel.value = state.cats[0] || "";
     var csel = $("#collection-select"); if (csel) csel.value = state.brands[0] || "";
+    var ssel = $("#setting-select"); if (ssel) ssel.value = state.setting || "";
   }
 
   function clearAll() {
-    state.query = ""; state.cats = []; state.brands = []; state.sort = "featured";
+    state.query = ""; state.cats = []; state.brands = []; state.setting = ""; state.sort = "featured";
     var input = $("#search-input"); if (input) input.value = "";
     var sort = $("#sort-select"); if (sort) sort.value = "featured";
     syncControls();
@@ -7948,6 +8033,20 @@ window.WAH_DETAILS = {
     if (p.brand) chips.push({ icon: "collection", label: p.brand });
     var meta = chips.map(function (c) { return '<span class="pmodal__tag">' + iconFor(c.icon) + esc(c.label) + '</span>'; }).join("");
 
+    // Characteristic chips: setting(s) + features (grounded in real
+    // description + geography, never the name).
+    var tr = traitsFor(p);
+    var traitMeta = "";
+    if (tr) {
+      var sc = (tr.settings || []).map(function (k) {
+        return '<span class="pmodal__tag pmodal__tag--trait">' + (SETTING_ICON[k] || "") + ' ' + esc(settingLabel(k)) + '</span>';
+      });
+      var fc = (tr.features || []).map(function (k) {
+        return '<span class="pmodal__tag pmodal__tag--feat">' + esc(FEATURE_LABELS[k] || k) + '</span>';
+      });
+      traitMeta = sc.concat(fc).join("");
+    }
+
     var body =
       '<div class="pmodal__media">' +
         '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
@@ -7959,6 +8058,7 @@ window.WAH_DETAILS = {
         '<h2 class="pmodal__title" id="pmodal-title">' + esc(p.name) + '</h2>' +
         '<div class="pmodal__loc">' + pinSVG() + '<span>' + esc(locFull) + '</span>' + ratingHTML + '</div>' +
         (meta ? '<div class="pmodal__tags">' + meta + '</div>' : "") +
+        (traitMeta ? '<div class="pmodal__tags pmodal__tags--traits">' + traitMeta + '</div>' : "") +
         '<p class="pmodal__desc">' + esc(desc) + '</p>' +
         ((d && d.stay) ? '<div class="pmodal__stay"><h4>Accommodations</h4><p>' + esc(d.stay) + '</p></div>' : "") +
         '<div class="pmodal__cols">' +
