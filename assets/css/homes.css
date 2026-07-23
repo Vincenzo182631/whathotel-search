@@ -412,11 +412,10 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 }
 
 /* ---------- Search panel ---------- */
-.search-shell { position: relative; z-index: 20; margin-top: clamp(-118px, -11vw, -88px); }
-/* Mobile: bring the search panel down so it clears the hero controls
-   (prev/next arrows + the big property number) instead of overlapping them.
-   Desktop keeps the original overlap above. */
-@media (max-width: 640px) { .search-shell { margin-top: -44px; } }
+/* The search panel is now its own section (between "More than a hotel room"
+   and the Featured collection), so it no longer overlaps the hero — normal
+   vertical rhythm from the surrounding sections. */
+.search-shell { position: relative; z-index: 20; margin: clamp(8px, 2vw, 24px) auto clamp(8px, 2vw, 24px); }
 .search-panel {
   position: relative;
   background: linear-gradient(180deg, #ffffff, #fdfbf6);
