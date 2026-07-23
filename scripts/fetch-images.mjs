@@ -72,6 +72,13 @@ function descFrom(html) {
     if (t.length < 90) continue;
     const low = t.toLowerCase();
     if (BOILER.some((b) => low.includes(b))) continue;
+    // Reject masked/perk lines and non-prose (e.g. "***** OR *****"): must be
+    // mostly letters, have enough alphabetic content, and read like a sentence.
+    const alpha = (t.match(/[a-zA-Z]/g) || []).length;
+    if (alpha < 60) continue;
+    if (alpha / t.length < 0.65) continue;
+    if ((t.match(/\*/g) || []).length > 1) continue;
+    if (!/[a-z]{3}\s+[a-z]{3}/.test(low)) continue; // has real words
     // Trim to ~2 sentences / 320 chars for card + modal use.
     if (t.length > 340) {
       const cut = t.slice(0, 340);
