@@ -529,13 +529,18 @@
     hero.slides = heroSlides();
     if (!hero.slides.length) return;
 
+    // Request smaller hero images on phones — all 25 slides stay in the DOM,
+    // so 1600px decodes blow past iOS Safari's per-tab image-memory budget and
+    // reload/"crash" the tab. A phone-sized request keeps it well within limits.
+    var HERO_IMG_W = (window.innerWidth || 1024) <= 700 ? 960 : 1600;
+
     var slidesHTML = hero.slides.map(function (s, i) {
       var p = s.p;
       return '' +
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
           '<div class="hslide__skel" aria-hidden="true"></div>' +
-          imgTag(p, 1600, "hslide__photo", (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"')) +
+          imgTag(p, HERO_IMG_W, "hslide__photo", (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"')) +
         '</div>' +
         '<div class="hslide__scrim"></div>' +
         '<div class="wrap hslide__inner">' +
