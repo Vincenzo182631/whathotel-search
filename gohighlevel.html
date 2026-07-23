@@ -383,6 +383,44 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   .feat-hero { min-height: 480px; border-radius: 14px; width: calc(100% - 2 * var(--gutter)); }
   .feat-hero .hslide__content { padding: 44px 0 96px; }
 }
+
+/* Collection count under the section heading */
+.featured-count { margin: 14px 0 0; font-size: .82rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold-deep); }
+
+/* 3-card preview deck below the featured carousel */
+.feat-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 22px);
+  margin-top: clamp(22px, 3vw, 36px); }
+.feat-card { position: relative; display: block; padding: 0; border: 0; background: none; cursor: pointer;
+  text-align: left; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 44px -26px rgba(8, 20, 34, .5);
+  transition: transform .4s cubic-bezier(.4,0,.06,1), box-shadow .4s ease; }
+.feat-card:hover, .feat-card:focus-visible { transform: translateY(-6px); box-shadow: 0 32px 60px -28px rgba(8,20,34,.65); }
+.feat-card:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
+.feat-card__media { position: relative; display: block; aspect-ratio: 16 / 11; background: var(--ink); }
+.feat-card__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .5s ease, transform .6s ease; }
+.feat-card__photo.is-loaded { opacity: 1; }
+.feat-card:hover .feat-card__photo { transform: scale(1.05); }
+.feat-card__grad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,24,.04) 40%, rgba(6,14,24,.82) 100%); }
+.feat-card__zoom { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; display: grid; place-items: center;
+  border-radius: 50%; background: rgba(10,20,34,.55); color: #fff; opacity: 0; transform: scale(.85);
+  transition: opacity .3s ease, transform .3s ease; }
+.feat-card__zoom svg { width: 16px; height: 16px; }
+.feat-card:hover .feat-card__zoom, .feat-card:focus-visible .feat-card__zoom { opacity: 1; transform: scale(1); }
+.feat-card__meta { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 1; }
+.feat-card__loc { display: flex; align-items: center; gap: 4px; color: var(--gold-2);
+  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; }
+.feat-card__loc svg { width: 12px; height: 12px; }
+.feat-card__name { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  color: #fff; font-family: var(--serif); font-size: 1rem; line-height: 1.25; }
+@media (max-width: 720px) {
+  .feat-deck { grid-template-columns: 1fr 1fr; }
+  .feat-card:nth-child(3) { display: none; }
+}
+@media (max-width: 460px) {
+  .feat-deck { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .feat-card__name { font-size: .86rem; }
+}
 @keyframes deckSlideM { from { transform: translateX(34px); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   .hslide { transition: opacity .3s ease; }
@@ -1257,12 +1295,14 @@ body.modal-open { overflow: hidden; }
       <span class="eyebrow center">Featured collection</span>
       <h2>Handpicked homes &amp; villas</h2>
       <p>A curated selection of standout residential stays at extraordinary resorts.</p>
+      <p class="featured-count" id="featured-count" aria-live="polite"></p>
     </div>
   </div>
   <div class="hero feat-hero" id="featured-hero" aria-roledescription="carousel" aria-label="Featured homes and villas gallery">
     <div class="hero-carousel" id="featured-carousel" aria-live="polite"></div>
   </div>
   <div class="wrap">
+    <div class="feat-deck" id="featured-deck" aria-label="More featured homes"></div>
     <div class="dir-more">
       <a class="btn btn-outline btn-lg" href="#directory" data-scroll="#directory" data-cta="see-all-featured">Browse all properties</a>
     </div>
@@ -7900,6 +7940,8 @@ window.WAH_DETAILS = {
 
   // HERO — the first 3 featured properties, looping back and forth.
   var CAROUSELS = {};
+  function pauseCarousels() { for (var k in CAROUSELS) { if (CAROUSELS[k] && CAROUSELS[k].pause) CAROUSELS[k].pause(); } }
+  function resumeCarousels() { for (var k in CAROUSELS) { if (CAROUSELS[k] && CAROUSELS[k].resume) CAROUSELS[k].resume(); } }
   function buildHero() {
     var root = $("#hero-carousel");
     if (!root) return;
@@ -7916,13 +7958,43 @@ window.WAH_DETAILS = {
   // styled like the hero (replaces the old static featured grid).
   function buildFeaturedGallery() {
     var root = $("#featured-carousel");
-    if (!root) return;
     var rest = buildHero._rest || heroSlides().slice(3);
-    if (!rest.length) return;
+    renderFeaturedDeck(rest);
+    if (!root || !rest.length) return;
     CAROUSELS.featured = makeCarousel({
       root: root, heroEl: document.querySelector("#featured-hero"),
       slides: rest, priority: false, autoWhenVisible: true, label: "featured"
     });
+  }
+
+  // A small static deck of 3 preview cards below the featured carousel, plus a
+  // count so visitors know how many homes the collection holds. Static (3 small
+  // lazy images) so it adds no per-slide image churn — memory stays bounded.
+  function renderFeaturedDeck(rest) {
+    rest = rest || buildHero._rest || heroSlides().slice(3);
+    var n = rest.length;
+    var countEl = $("#featured-count");
+    if (countEl) countEl.textContent = n ? (n + " featured homes to explore") : "";
+    var deck = $("#featured-deck");
+    if (!deck) return;
+    if (!n) { deck.innerHTML = ""; return; }
+    // Three picks spread across the collection for variety (first, middle, last).
+    var idxs = n >= 3 ? [0, Math.floor(n / 2), n - 1] : rest.map(function (_, i) { return i; });
+    var picks = idxs.map(function (ix) { return rest[ix] && rest[ix].p; }).filter(Boolean);
+    deck.innerHTML = picks.map(function (p, i) {
+      return '<button class="feat-card reveal" data-anim="rise" style="--d:' + i + '" type="button" data-action="detail" data-id="' + p.id + '" aria-label="View ' + esc(p.name) + '">' +
+        '<span class="feat-card__media">' +
+          imgTag(p, 560, "feat-card__photo", 'loading="lazy"') +
+          '<span class="feat-card__grad"></span>' +
+          '<span class="feat-card__zoom">' + zoomSVG() + '</span>' +
+        '</span>' +
+        '<span class="feat-card__meta">' +
+          '<span class="feat-card__loc">' + pinSVG() + esc(p.loc || p.region) + '</span>' +
+          '<span class="feat-card__name">' + esc(p.name) + '</span>' +
+        '</span>' +
+      '</button>';
+    }).join("");
+    observeReveals(deck);
   }
 
   // "Explore by region" cards.
@@ -8248,7 +8320,7 @@ window.WAH_DETAILS = {
       }
     };
     document.addEventListener("keydown", modalKeydown);
-    pause(); // pause hero autoplay while viewing
+    pauseCarousels(); // pause carousel autoplay while viewing
     track("property_detail_opened", { property_id: p.id, property_name: p.name, enriched: !!d });
   }
 
@@ -8259,7 +8331,7 @@ window.WAH_DETAILS = {
     if (modalKeydown) { document.removeEventListener("keydown", modalKeydown); modalKeydown = null; }
     setTimeout(function () { modalEl.setAttribute("hidden", ""); }, 260);
     if (modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
-    resume();
+    resumeCarousels();
   }
 
   /* -----------------------------------------------------------------
