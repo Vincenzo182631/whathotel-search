@@ -11,7 +11,15 @@
        • The CDN always serves the LATEST build from GitHub main, so you
          never have to re-paste the page again — just edit the repo.
      ============================================================ -->
-<div style="position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;">
+<!-- WHITE SPACE ABOVE THE HEADER?  That band is GoHighLevel's own SECTION
+     padding around this element — it is outside the page, so nothing in the
+     page can remove it. Fix it in GHL (10 seconds):
+       1. Click the SECTION (outermost) that holds this custom-code element.
+       2. Open its settings → Spacing/Layout.
+       3. Set TOP padding (and the Row/Column top padding) to 0.
+       4. Do the same for any Row and Column wrapping it. Save + Publish.
+     The margin:0 below removes any element-level gap on our side. -->
+<div style="position:relative;width:100%;height:100vh;min-height:640px;margin:0;padding:0;overflow:hidden;">
   <iframe
     src="https://raw.githack.com/Vincenzo182631/whathotel-search/main/gohighlevel.html"
     title="WhataHotel! Homes — Villas & Residences"

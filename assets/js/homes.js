@@ -685,6 +685,7 @@
       nxt.classList.add("is-enter"); nxt.classList.add("is-active"); nxt.setAttribute("aria-hidden", "false");
       requestAnimationFrame(function () { requestAnimationFrame(function () { nxt.classList.remove("is-enter"); }); });
       st.i = newI; hydrate(newI); positionDeck(newI);
+      if (cfg.onChange) cfg.onChange(newI);
       var num = q(".hero-bignum"); if (num) num.textContent = pad(st.i + 1);
       st.elapsed = 0; st.start = 0; setBar(0);
       if (userInitiated) track("hero_slide_change", { property_id: st.slides[st.i].p.id, property_name: st.slides[st.i].p.name, source: cfg.label || "hero" });
@@ -740,6 +741,7 @@
     var first = qa(".hslide")[0];
     if (first) { first.classList.add("is-active"); first.setAttribute("aria-hidden", "false"); }
     hydrate(0); setBar(0); positionDeck(0);
+    if (cfg.onChange) cfg.onChange(0);
 
     // Autoplay — only while the carousel is on screen (so an off-screen
     // gallery never decodes images in the background), and only if it has more
@@ -784,13 +786,29 @@
     if (!root || !rest.length) return;
     CAROUSELS.featured = makeCarousel({
       root: root, heroEl: document.querySelector("#featured-hero"),
-      slides: rest, priority: false, autoWhenVisible: true, label: "featured"
+      slides: rest, priority: false, autoWhenVisible: true, label: "featured",
+      // Keep the 3 preview cards below in step with the big gallery: as it
+      // advances, they slide to the next upcoming homes.
+      onChange: function (i) { updateFeaturedDeck(rest, i); }
     });
   }
 
-  // A small static deck of 3 preview cards below the featured carousel, plus a
-  // count so visitors know how many homes the collection holds. Static (3 small
-  // lazy images) so it adds no per-slide image churn — memory stays bounded.
+  // The 3 preview cards below the featured carousel. They CYCLE in step with
+  // the gallery — always showing the next homes coming up — sliding in from the
+  // right on each change. Only ever 3 small images are mounted at once, so the
+  // motion adds no unbounded image churn (memory stays bounded).
+  var FEAT_CARDS = ((window.innerWidth || 1024) <= 720) ? 2 : 3;
+  function featCardContent(p) {
+    return '<span class="feat-card__media">' +
+        imgTag(p, 460, "feat-card__photo", 'loading="lazy"') +
+        '<span class="feat-card__grad"></span>' +
+        '<span class="feat-card__zoom">' + zoomSVG() + '</span>' +
+      '</span>' +
+      '<span class="feat-card__meta">' +
+        '<span class="feat-card__loc">' + pinSVG() + esc(p.loc || p.region) + '</span>' +
+        '<span class="feat-card__name">' + esc(p.name) + '</span>' +
+      '</span>';
+  }
   function renderFeaturedDeck(rest) {
     rest = rest || buildHero._rest || heroSlides().slice(3);
     var n = rest.length;
@@ -799,23 +817,37 @@
     var deck = $("#featured-deck");
     if (!deck) return;
     if (!n) { deck.innerHTML = ""; return; }
-    // Three picks spread across the collection for variety (first, middle, last).
-    var idxs = n >= 3 ? [0, Math.floor(n / 2), n - 1] : rest.map(function (_, i) { return i; });
-    var picks = idxs.map(function (ix) { return rest[ix] && rest[ix].p; }).filter(Boolean);
-    deck.innerHTML = picks.map(function (p, i) {
-      return '<button class="feat-card reveal" data-anim="rise" style="--d:' + i + '" type="button" data-action="detail" data-id="' + p.id + '" aria-label="View ' + esc(p.name) + '">' +
-        '<span class="feat-card__media">' +
-          imgTag(p, 560, "feat-card__photo", 'loading="lazy"') +
-          '<span class="feat-card__grad"></span>' +
-          '<span class="feat-card__zoom">' + zoomSVG() + '</span>' +
-        '</span>' +
-        '<span class="feat-card__meta">' +
-          '<span class="feat-card__loc">' + pinSVG() + esc(p.loc || p.region) + '</span>' +
-          '<span class="feat-card__name">' + esc(p.name) + '</span>' +
-        '</span>' +
-      '</button>';
-    }).join("");
-    observeReveals(deck);
+    var cards = Math.min(FEAT_CARDS, n);
+    var html = "";
+    for (var k = 0; k < cards; k++) {
+      html += '<button class="feat-card" type="button" data-action="detail" data-id="" data-k="' + k + '" style="--k:' + k + '" aria-label="View featured home"></button>';
+    }
+    deck.innerHTML = html;
+    updateFeaturedDeck(rest, 0, true);
+  }
+  function updateFeaturedDeck(rest, activeI, immediate) {
+    var deck = $("#featured-deck");
+    if (!deck) return;
+    var n = rest.length;
+    var cards = Array.prototype.slice.call(deck.querySelectorAll(".feat-card"));
+    cards.forEach(function (card, k) {
+      var idx = (((activeI + 1 + k) % n) + n) % n;      // the upcoming homes
+      var p = rest[idx] && rest[idx].p;
+      if (!p) return;
+      if (String(card.getAttribute("data-id")) === String(p.id)) return; // no change
+      card.setAttribute("data-id", p.id);
+      card.setAttribute("aria-label", "View " + p.name);
+      card.innerHTML = featCardContent(p);
+      if (immediate || prefersReduced()) return;
+      card.classList.remove("feat-card--in");
+      card.classList.add("feat-card--enter");           // seat off to the right, invisible
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          card.classList.remove("feat-card--enter");
+          card.classList.add("feat-card--in");          // ease to rest (staggered via --k)
+        });
+      });
+    });
   }
 
   // "Explore by region" cards.

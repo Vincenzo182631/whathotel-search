@@ -347,9 +347,13 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 /* 3-card preview deck below the featured carousel */
 .feat-deck { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 1.6vw, 22px);
   margin-top: clamp(22px, 3vw, 36px); }
-.feat-card { position: relative; display: block; padding: 0; border: 0; background: none; cursor: pointer;
+.feat-card { position: relative; display: block; padding: 0; border: 0; background: var(--ink); cursor: pointer;
   text-align: left; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 44px -26px rgba(8, 20, 34, .5);
-  transition: transform .4s cubic-bezier(.4,0,.06,1), box-shadow .4s ease; }
+  transition: transform .7s cubic-bezier(.4,0,.06,1), opacity .55s ease, box-shadow .4s ease; }
+/* Cycle motion: a new card seats off to the right (invisible), then eases into
+   place — staggered by --k so the three don't move as one block. */
+.feat-card--enter { transform: translateX(34px); opacity: 0; transition: none; }
+.feat-card--in { transform: none; opacity: 1; transition-delay: calc(var(--k, 0) * .09s); }
 .feat-card:hover, .feat-card:focus-visible { transform: translateY(-6px); box-shadow: 0 32px 60px -28px rgba(8,20,34,.65); }
 .feat-card:focus-visible { outline: 2px solid var(--gold-2); outline-offset: 3px; }
 .feat-card__media { position: relative; display: block; aspect-ratio: 16 / 11; background: var(--ink); }
@@ -1003,10 +1007,12 @@ body.modal-open { overflow: hidden; }
   body { font-size: 16px; }
   /* Comfortable tap targets for the refine dropdowns */
   .select-field.select-field--filter select { padding-top: 1rem; padding-bottom: 1rem; }
-  /* Stacked, full-width primary actions read better on a phone */
-  .hslide__actions { gap: .6rem; }
-  .hslide__actions .btn { flex: 1 1 100%; }
-  .search-row .btn { width: 100%; padding: .95rem 1.7rem; }
+  /* Smaller, comfortable buttons on phones (the desktop btn-lg is oversized here) */
+  .btn-lg { padding: .8rem 1.4rem; font-size: .92rem; }
+  .hslide__actions { gap: .5rem .7rem; }
+  .hslide__actions .btn { flex: 0 1 auto; }
+  .search-row .btn { width: 100%; padding: .82rem 1.4rem; font-size: .95rem; }
+  .dir-more .btn, .video-actions .btn { padding: .78rem 1.3rem; font-size: .92rem; }
   /* Let long section headings breathe instead of cramping */
   .section-head p { font-size: 1rem; }
   .dir-toolbar { flex-wrap: wrap; gap: .8rem; }
