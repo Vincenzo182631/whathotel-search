@@ -1,0 +1,57 @@
+# WhataHotel! — Homes: Villas & Residences
+
+> WhataHotel! by Lorraine Travel is a luxury travel agency (Member, Signature Travel Network; founded 1948). This is the **Homes** collection landing page — a curated search-and-discovery experience for residential-style accommodations (villas, residences, homes and estates) at 271 of the world's finest hotels and resorts. Travelers browse by region and collection, open an individual property, and check live availability. "Check Availability" links to each property's existing WhataHotel booking flow with `type=homes`, which returns only residential-style inventory (villas, residences, homes) by matching the approved keywords against the actual room/unit descriptions.
+
+The collection is the exact list of 271 properties published on the official WhataHotel Homes page. Each property links to its canonical individual page at `https://whatahotel.com/hotels/<hotelID>/<slug>.html`. Categorisation is by real geography (region) and real brand (collection) — never inferred from a hotel's name.
+
+## Key pages
+
+- [Homes — Villas & Residences (official collection)](https://whatahotel.com/homes/): The authoritative WhataHotel page listing all 271 residential-style properties, grouped by country and city.
+- [WhataHotel! home](https://whatahotel.com/): The full WhataHotel site by Lorraine Travel.
+
+## Browse by region
+
+The 271 properties span six regions: North America (76), Latin America & Caribbean (74), Asia (52), Europe (34), Middle East & Africa (20), and the Pacific & Indian Ocean (15). Travelers can filter the collection by region and by collection/brand (Four Seasons, Hyatt, Leading Hotels of the World, Aman, Belmond, Rosewood, Ritz-Carlton, Mandarin Oriental and more).
+
+## Featured stays
+
+- [The Ritz Carlton Residences at Dorado Beach](https://whatahotel.com/hotels/3879/the-ritz-carlton-residences-at-dorado-beach.html): Dorado, Puerto Rico
+- [Four Seasons Resort Anguilla](https://whatahotel.com/hotels/3133/four-seasons-resort-anguilla-.html): Anguilla
+- [Four Seasons Resort Whistler](https://whatahotel.com/hotels/1354/four-seasons-resort-whistler.html): Whistler, Canada
+- [Four Seasons Resort Vail](https://whatahotel.com/hotels/2390/four-seasons-resort-vail.html): Vail, United States
+- [Ritz-Carlton Residences, Orlando](https://whatahotel.com/hotels/6084/ritz-carlton-residences-orlando.html): Orlando, United States
+- [Andaz Maui at Wailea](https://whatahotel.com/hotels/2706/andaz-maui-at-wailea.html): Maui, United States
+- [Montage Palmetto Bluff](https://whatahotel.com/hotels/1569/montage-palmetto-bluff.html): Bluffton, United States
+- [Four Seasons Resort Jackson Hole](https://whatahotel.com/hotels/1325/four-seasons-resort-jackson-hole.html): Jackson Hole, United States
+- [Four Seasons Resort Costa Rica](https://whatahotel.com/hotels/1271/four-seasons-resort-costa-rica-.html): Peninsula Papagayo, Costa Rica
+- [One&Only Reethi Rah](https://whatahotel.com/hotels/1399/one-only-reethi-rah.html): Maldives
+- [Bvlgari Resort Bali](https://whatahotel.com/hotels/1736/bvlgari-resort-bali-.html): Bali, Indonesia
+- [Mandarin Oriental, Lago di Como](https://whatahotel.com/hotels/3705/mandarin-oriental-lago-di-como.html): Lake Como, Italy
+- [Rosewood Castiglion del Bosco](https://whatahotel.com/hotels/2265/rosewood-castiglion-del-bosco.html): Tuscany, Italy
+- [Four Seasons Los Cabos at Costa Palmas](https://whatahotel.com/hotels/3614/four-seasons-los-cabos-at-costa-palmas.html): Cabo San Lucas, Mexico
+- [Banyan Tree Mayakoba](https://whatahotel.com/hotels/2314/banyan-tree-mayakoba.html): Mayakoba, Mexico
+- [Four Seasons Resort Punta Mita](https://whatahotel.com/hotels/1414/four-seasons-resort-punta-mita.html): Punta Mita, Mexico
+- [Mandarin Oriental, Canouan](https://whatahotel.com/hotels/2545/mandarin-oriental-canouan-.html): Canouan Island, Saint Vincent and the Grenadines
+- [Four Seasons Resort Tamarindo](https://whatahotel.com/hotels/4746/four-seasons-resort-tamarindo.html): Tamarindo, Mexico
+- [Amanpulo](https://whatahotel.com/hotels/1532/amanpulo.html): Pamalican Island, Philippines
+- [Hotel Arts Barcelona](https://whatahotel.com/hotels/952/hotel-arts-barcelona.html): Barcelona, Spain
+- [Four Seasons Resort Nevis](https://whatahotel.com/hotels/1422/four-seasons-resort-nevis.html): Nevis, St. Kitts and Nevis
+- [Grand Hotel des Bains Kempinski St. Moritz](https://whatahotel.com/hotels/2174/grand-hotel-des-bains-kempinski-st-moritz.html): St. Moritz, Switzerland
+- [Grace Bay Club](https://whatahotel.com/hotels/956/grace-bay-club.html): Turks & Caicos
+- [Four Seasons London at Tower Bridge](https://whatahotel.com/hotels/3118/four-seasons-london-at-tower-bridge.html): London, United Kingdom
+- [The Ritz-Carlton Residences, Waikiki Beach](https://whatahotel.com/hotels/3287/the-ritz-carlton-residences-waikiki-beach.html): Honolulu, United States
+
+## How booking works
+
+1. **Search / filter** the Homes collection by destination, region or collection.
+2. **Open a property** to see its photos, description, location and collection.
+3. **Check Availability** opens the property's live WhataHotel availability with `type=homes`, filtered to residential-style units (villas, residences, homes) where the property offers them. Eligibility is decided per unit from the actual room/unit description — never from the hotel's name.
+4. **Book** through WhataHotel, operated by Lorraine Travel, a Preferred Partner agency with Signature Travel Network perks.
+
+## About
+
+- [About Lorraine Travel / WhataHotel!](https://whatahotel.com/): WhataHotel! is operated by Lorraine Travel, in business since 1948, a member of Signature Travel Network offering exclusive rates and amenities at luxury hotels and resorts worldwide.
+
+## Optional
+
+- [Contact WhataHotel!](https://whatahotel.com/contact.cfm): Reach the Lorraine Travel team for help planning a residential-style stay.
