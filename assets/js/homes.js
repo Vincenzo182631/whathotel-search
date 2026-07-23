@@ -1197,6 +1197,54 @@
   }
 
   /* -----------------------------------------------------------------
+     Header — solid (cream) state on scroll + mobile burger menu.
+     The header overlays the hero transparently at the top and turns
+     solid once scrolled; the burger reveals the nav on mobile.
+     ----------------------------------------------------------------- */
+  function wireHeader() {
+    var header = $("#site-header");
+    if (!header) return;
+    var toggle = $("#nav-toggle");
+    var mnav = $("#mobile-nav");
+
+    // Solid state once the page is scrolled past the very top.
+    var solidRaf = 0;
+    function updateSolid() {
+      solidRaf = 0;
+      header.classList.toggle("is-solid", (window.pageYOffset || 0) > 24);
+    }
+    window.addEventListener("scroll", function () {
+      if (!solidRaf) solidRaf = requestAnimationFrame(updateSolid);
+    }, { passive: true });
+    updateSolid();
+
+    // Mobile burger menu.
+    if (toggle && mnav) {
+      mnav.removeAttribute("hidden"); // JS now controls visibility via .nav-open
+      var open = function (o) {
+        header.classList.toggle("nav-open", o);
+        toggle.setAttribute("aria-expanded", o ? "true" : "false");
+        toggle.setAttribute("aria-label", o ? "Close menu" : "Open menu");
+      };
+      toggle.addEventListener("click", function () {
+        var willOpen = !header.classList.contains("nav-open");
+        open(willOpen);
+        if (willOpen) track("nav_menu_opened", { source: "burger" });
+      });
+      // Close on link tap, Escape, or resize up to desktop.
+      $$("[data-mnav]", mnav).forEach(function (a) {
+        a.addEventListener("click", function () { open(false); });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && header.classList.contains("nav-open")) open(false);
+      });
+      window.addEventListener("resize", function () {
+        if (window.innerWidth >= 900 && header.classList.contains("nav-open")) open(false);
+      });
+    }
+  }
+
+  /* -----------------------------------------------------------------
      AI Concierge (LiveAvatar) — lazy-loaded on first open so the embed
      and microphone prompt only start when the visitor asks for it.
      ----------------------------------------------------------------- */
@@ -1347,6 +1395,7 @@
     wireScrollLinks();
     wireVideo();
     wireStepCounters();
+    wireHeader();
     wireMobileCta();
     wireConcierge();
     observeReveals(document);

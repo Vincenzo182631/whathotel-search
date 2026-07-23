@@ -88,7 +88,7 @@
 <body>
 
 <!-- ============================ HEADER ============================ -->
-<header class="site-header">
+<header class="site-header" id="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="#hero" data-scroll="#hero" aria-label="WhataHotel! by Lorraine Travel — back to top">
       <img class="brand-logo" src="https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a237895da24932f122f104e.png&amp;h=88&amp;output=webp" alt="WhataHotel!" width="150" height="34" decoding="async">
@@ -100,7 +100,17 @@
       <a href="#how">How It Works</a>
     </nav>
     <a class="btn btn-primary header-cta" href="#search" data-scroll="#search" data-focus="search" data-cta="header-explore">Explore Homes</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+    <a href="#why" data-mnav>Why a Home?</a>
+    <a href="#categories" data-mnav>Categories</a>
+    <a href="#directory" data-scroll="#directory" data-mnav>Browse Stays</a>
+    <a href="#how" data-mnav>How It Works</a>
+    <a class="btn btn-primary mobile-nav__cta" href="#search" data-scroll="#search" data-focus="search" data-cta="mobilenav-explore" data-mnav>Explore Homes</a>
+  </nav>
 </header>
 
 <!-- ============================ HERO CAROUSEL ============================ -->

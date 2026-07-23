@@ -102,31 +102,81 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .btn svg { width: 1.05em; height: 1.05em; }
 
 /* ---------- Header ---------- */
+/* Header overlays the hero (no cream band above it). Transparent at the top,
+   turns solid (cream) once the page is scrolled or the mobile menu is open. */
 .site-header {
-  position: sticky; top: 0; z-index: 60;
-  background: rgba(251,249,244,.82); backdrop-filter: saturate(140%) blur(12px);
-  border-bottom: 1px solid var(--line-2);
-  transition: background .3s ease;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  background: transparent; border-bottom: 1px solid transparent;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
-.site-header__inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.site-header.is-solid, .site-header.nav-open {
+  background: rgba(251,249,244,.92); backdrop-filter: saturate(140%) blur(12px);
+  border-bottom-color: var(--line-2); box-shadow: 0 6px 24px -18px rgba(0,0,0,.5);
+}
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
+@media (min-width: 720px) { .site-header__inner { height: 68px; } }
 .brand { display: inline-flex; align-items: baseline; gap: .12rem; font-family: var(--serif); font-size: 1.42rem; color: var(--ink); letter-spacing: -.01em; }
 .brand b { font-weight: 600; }
 .brand .bang { color: var(--gold); }
 .brand small { display:block; font-family: var(--sans); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color: var(--text-mut); font-weight:600; }
-.brand-logo { display: block; height: 30px; width: auto; }
+.brand-logo { display: block; height: 30px; width: auto; transition: filter .3s ease; }
 @media (min-width: 720px) { .brand-logo { height: 34px; } }
+/* Dark navy artwork: show it WHITE while the header is transparent over the
+   dark hero, and in its original colour once the header is solid (cream). */
+.site-header .brand-logo { filter: brightness(0) invert(1); }
+.site-header.is-solid .brand-logo, .site-header.nav-open .brand-logo { filter: none; }
 /* Footer uses the SAME logo as the header; the artwork is dark navy on
    transparent, so render it white to read on the dark footer. */
 .brand--foot { display: inline-block; margin-bottom: .9rem; }
 .brand-logo--foot { height: 40px; filter: brightness(0) invert(1); opacity: .95; transition: opacity .2s ease; }
 .brand--foot:hover .brand-logo--foot { opacity: 1; }
-.header-nav { display: none; gap: 2rem; font-size: .93rem; font-weight: 500; color: var(--text-soft); }
-.header-nav a:hover { color: var(--ink); }
+.header-nav { display: none; gap: 2rem; font-size: .93rem; font-weight: 500; }
+/* Light links while transparent over the hero; dark once the header is solid. */
+.header-nav a { color: rgba(255,255,255,.92); transition: color .3s ease; }
+.header-nav a:hover { color: #fff; }
+.site-header.is-solid .header-nav a { color: var(--text-soft); }
+.site-header.is-solid .header-nav a:hover { color: var(--ink); }
 .header-cta { display: none; }
 @media (min-width: 900px) {
   .header-nav { display: flex; }
   .header-cta { display: inline-flex; }
 }
+
+/* ---------- Mobile burger + dropdown nav ---------- */
+.nav-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; margin-right: -8px; border: none; background: transparent; color: #fff;
+}
+.site-header.is-solid .nav-toggle, .site-header.nav-open .nav-toggle { color: var(--ink); }
+@media (min-width: 900px) { .nav-toggle { display: none; } }
+.nav-toggle__bars { position: relative; display: block; width: 24px; height: 16px; }
+.nav-toggle__bars span {
+  position: absolute; left: 0; width: 100%; height: 2px; border-radius: 2px; background: currentColor;
+  transition: transform .3s ease, opacity .2s ease, top .3s ease;
+}
+.nav-toggle__bars span:nth-child(1) { top: 0; }
+.nav-toggle__bars span:nth-child(2) { top: 7px; }
+.nav-toggle__bars span:nth-child(3) { top: 14px; }
+.site-header.nav-open .nav-toggle__bars span:nth-child(1) { top: 7px; transform: rotate(45deg); }
+.site-header.nav-open .nav-toggle__bars span:nth-child(2) { opacity: 0; }
+.site-header.nav-open .nav-toggle__bars span:nth-child(3) { top: 7px; transform: rotate(-45deg); }
+
+.mobile-nav {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: #faf7f1;   /* solid so hero never bleeds through */
+  border-bottom: 1px solid var(--line-2); box-shadow: 0 20px 40px -24px rgba(0,0,0,.5);
+  padding: .5rem var(--gutter) 1.1rem; display: flex; flex-direction: column; gap: .1rem;
+}
+.mobile-nav[hidden] { display: none; }   /* pre-JS state; JS removes the attribute */
+.mobile-nav a { padding: .95rem .2rem; font-size: 1.02rem; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--line-2); }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav__cta { margin-top: .8rem; justify-content: center; border-bottom: none !important; color: #2a2008 !important; }
+/* Closed state (JS-managed): invisible + inert; slides/fades in when open. */
+.mobile-nav { transform: translateY(-8px); opacity: 0; visibility: hidden; pointer-events: none;
+  transition: transform .28s ease, opacity .28s ease, visibility 0s linear .28s; }
+.site-header.nav-open .mobile-nav { transform: none; opacity: 1; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+@media (min-width: 900px) { .mobile-nav { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .mobile-nav { transition: none; } .nav-toggle__bars span { transition: none; } }
 
 /* ---------- Hero carousel ---------- */
 .hero {
