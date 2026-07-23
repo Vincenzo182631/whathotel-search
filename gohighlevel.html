@@ -20,7 +20,10 @@
 <!-- Fonts (progressive enhancement; system serif/sans fallback keeps it fast) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts load non-render-blocking (media=print swap); the CSS has a system
+     serif/sans fallback so text paints immediately, then upgrades on load. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
 <style>
 /* =====================================================================
@@ -8036,9 +8039,13 @@ window.WAH_DETAILS = {
       var flush = function () {
         flushRaf = 0;
         var vh = window.innerHeight || 0;
-        $$(".reveal:not(.in)").forEach(function (n) {
-          if (n.getBoundingClientRect().top < vh * 0.92) { n.classList.add("in"); io.unobserve(n); }
-        });
+        // Read ALL geometry first, then write — avoids a read/write/read
+        // interleave that would force a reflow on every element.
+        var nodes = $$(".reveal:not(.in)"), reveal = [];
+        for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].getBoundingClientRect().top < vh * 0.92) reveal.push(nodes[i]);
+        }
+        reveal.forEach(function (n) { n.classList.add("in"); io.unobserve(n); });
       };
       var onScroll = function () { if (!flushRaf) flushRaf = requestAnimationFrame(flush); };
       window.addEventListener("scroll", onScroll, { passive: true });

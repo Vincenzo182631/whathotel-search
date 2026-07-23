@@ -1041,9 +1041,13 @@
       var flush = function () {
         flushRaf = 0;
         var vh = window.innerHeight || 0;
-        $$(".reveal:not(.in)").forEach(function (n) {
-          if (n.getBoundingClientRect().top < vh * 0.92) { n.classList.add("in"); io.unobserve(n); }
-        });
+        // Read ALL geometry first, then write — avoids a read/write/read
+        // interleave that would force a reflow on every element.
+        var nodes = $$(".reveal:not(.in)"), reveal = [];
+        for (var i = 0; i < nodes.length; i++) {
+          if (nodes[i].getBoundingClientRect().top < vh * 0.92) reveal.push(nodes[i]);
+        }
+        reveal.forEach(function (n) { n.classList.add("in"); io.unobserve(n); });
       };
       var onScroll = function () { if (!flushRaf) flushRaf = requestAnimationFrame(flush); };
       window.addEventListener("scroll", onScroll, { passive: true });
