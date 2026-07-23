@@ -215,22 +215,28 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 
 /* Upcoming-destination deck — a fanned stack of cards on the right */
 .hero-deck { position: absolute; right: clamp(20px, 4vw, 60px); top: 50%; transform: translateY(-46%); z-index: 6;
-  display: none; align-items: center;
-  transition: opacity .4s ease, transform .55s cubic-bezier(.4, 0, .06, 1); }
+  display: none; align-items: center; }
 @media (min-width: 1024px) and (min-height: 640px) { .hero-deck { display: flex; } }
-/* On slide change the deck slides out + fades, repopulates, slides back in */
-.hero-deck.is-swapping { opacity: 0; transform: translateY(-46%) translateX(34px); }
 .hero-deck__card { position: relative; flex: none; width: clamp(142px, 11.5vw, 178px); aspect-ratio: 3 / 4.3;
   border-radius: 20px; overflow: hidden; padding: 0; cursor: pointer; background: var(--ink-2);
   border: 1px solid rgba(255,255,255,.22); box-shadow: 0 26px 50px -22px rgba(0,0,0,.7);
-  margin-left: -14px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .2s;
-  animation: deckCardIn .6s ease backwards; animation-delay: calc(var(--k, 0) * .08s); }
-/* opacity-only entrance so it never fights the fanned resting transforms */
-@keyframes deckCardIn { from { opacity: 0; } to { opacity: 1; } }
+  margin-left: -14px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .2s; }
 .hero-deck__card:first-child { margin-left: 0; }
-.hero-deck__card:nth-child(1) { transform: translateY(24px) rotate(-2deg); z-index: 3; }
-.hero-deck__card:nth-child(2) { transform: translateY(-6px) rotate(0deg); z-index: 2; }
-.hero-deck__card:nth-child(3) { transform: translateY(34px) rotate(2deg); z-index: 1; }
+/* Resting fanned positions. On each slide change every card slides in
+   horizontally from the right into these positions — staggered, so the
+   cards travel independently (not as one block) and the images stay fully
+   visible the whole time (no fade). */
+.hero-deck__card:nth-child(1) { transform: translateY(24px) rotate(-2deg); z-index: 3;
+  animation: deckSlide1 .72s cubic-bezier(.16,.84,.28,1) backwards; animation-delay: calc(var(--k, 0) * .13s); }
+.hero-deck__card:nth-child(2) { transform: translateY(-6px) rotate(0deg); z-index: 2;
+  animation: deckSlide2 .72s cubic-bezier(.16,.84,.28,1) backwards; animation-delay: calc(var(--k, 0) * .13s); }
+.hero-deck__card:nth-child(3) { transform: translateY(34px) rotate(2deg); z-index: 1;
+  animation: deckSlide3 .72s cubic-bezier(.16,.84,.28,1) backwards; animation-delay: calc(var(--k, 0) * .13s); }
+/* Each keyframe holds this card's own resting Y/rotation and animates ONLY a
+   clearly-visible horizontal offset from right → left. Opacity stays 1. */
+@keyframes deckSlide1 { from { transform: translateX(130px) translateY(24px) rotate(-2deg); } to { transform: translateX(0) translateY(24px) rotate(-2deg); } }
+@keyframes deckSlide2 { from { transform: translateX(130px) translateY(-6px) rotate(0deg); } to { transform: translateX(0) translateY(-6px) rotate(0deg); } }
+@keyframes deckSlide3 { from { transform: translateX(130px) translateY(34px) rotate(2deg); } to { transform: translateX(0) translateY(34px) rotate(2deg); } }
 .hero-deck__card:hover { transform: translateY(-10px) rotate(0deg) scale(1.04); z-index: 5; border-color: var(--gold-2); box-shadow: 0 34px 60px -20px rgba(0,0,0,.8); }
 .hero-deck__img { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .hero-deck__img--scene { display: block; }
@@ -266,7 +272,7 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   .hslide.is-active .hslide__title,
   .hslide.is-active .hslide__desc,
   .hslide.is-active .hslide__actions { animation: none; opacity: 1; transform: none; }
-  .hero-deck, .hero-deck.is-swapping { transition: none; transform: translateY(-46%); opacity: 1; }
+  .hero-deck { transition: none; transform: translateY(-46%); opacity: 1; }
   .hero-deck__card { transition: none; animation: none; }
 }
 

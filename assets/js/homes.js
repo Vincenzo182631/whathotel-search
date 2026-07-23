@@ -645,9 +645,10 @@
   }
 
   /* The right-hand "deck" — a fanned stack of the next upcoming destinations,
-     each clickable to jump to that slide. On change the whole deck slides +
-     fades out, re-populates, then slides back in, so the cards feel like they
-     move through the collection rather than snapping. */
+     each clickable to jump to that slide. On change the deck is repainted and
+     each card slides in horizontally from the right into its fanned position,
+     staggered per card (see the deckSlideN keyframes) — so the cards move
+     independently, from right to left, and stay fully visible (no fade). */
   function buildDeckHTML(cur) {
     var n = hero.slides.length;
     var show = Math.min(3, n - 1);
@@ -677,16 +678,11 @@
   function renderHeroDeck(cur) {
     var deck = $("#hero-deck");
     if (!deck) return;
-    var paint = function () { deck.innerHTML = buildDeckHTML(cur); wireDeck(deck); };
-    if (deck.dataset.init && !prefersReduced()) {
-      deck.classList.add("is-swapping");
-      clearTimeout(deck._swapT);
-      deck._swapT = setTimeout(function () { paint(); deck.classList.remove("is-swapping"); }, 210);
-    } else {
-      paint();
-      deck.dataset.init = "1";
-    }
-    return;
+    // Repaint with fresh nodes so each card's right→left slide-in animation
+    // re-triggers on every slide change (staggered via --k, no fade).
+    deck.innerHTML = buildDeckHTML(cur);
+    wireDeck(deck);
+    deck.dataset.init = "1";
   }
   function setBar(p) { var b = $("#hero-bar"); if (b) b.style.width = (p * 100).toFixed(2) + "%"; }
 
