@@ -524,26 +524,32 @@
       '</div>';
 
     // wire controls
-    $("#hero-prev").addEventListener("click", function () { go(hero.i - 1, true); });
-    $("#hero-next").addEventListener("click", function () { go(hero.i + 1, true); });
+    $("#hero-prev").addEventListener("click", function () { go(hero.i - 1, true, -1); });
+    $("#hero-next").addEventListener("click", function () { go(hero.i + 1, true, 1); });
     // pause on hover / focus / touch
     ["mouseenter", "focusin", "touchstart"].forEach(function (ev) { root.addEventListener(ev, pause, { passive: true }); });
     ["mouseleave", "focusout"].forEach(function (ev) { root.addEventListener(ev, resume); });
     // keyboard
     root.setAttribute("tabindex", "-1");
     root.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") { go(hero.i - 1, true); }
-      else if (e.key === "ArrowRight") { go(hero.i + 1, true); }
+      if (e.key === "ArrowLeft") { go(hero.i - 1, true, -1); }
+      else if (e.key === "ArrowRight") { go(hero.i + 1, true, 1); }
     });
     // swipe
     var sx = 0, sy = 0;
     root.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
     root.addEventListener("touchend", function (e) {
       var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(hero.i + (dx < 0 ? 1 : -1), true);
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(hero.i + (dx < 0 ? 1 : -1), true, dx < 0 ? 1 : -1);
     }, { passive: true });
 
-    go(0, false);
+    // Initial activation (no leave animation, gentle fade-in of slide 0)
+    hero.i = 0;
+    var first = $$("#hero-carousel .hslide")[0];
+    if (first) { first.classList.add("is-active"); first.setAttribute("aria-hidden", "false"); }
+    var num0 = $("#hero-bignum"); if (num0) num0.textContent = pad(1);
+    renderHeroDeck(0);
+    setBar(0);
     if (!prefersReduced()) startAuto();
   }
 
@@ -552,17 +558,41 @@
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
-  function go(idx, userInitiated) {
-    var n = hero.slides.length;
-    hero.i = ((idx % n) + n) % n;
-    $$("#hero-carousel .hslide").forEach(function (el) {
-      var on = +el.getAttribute("data-i") === hero.i;
-      el.classList.toggle("is-active", on);
-      el.setAttribute("aria-hidden", on ? "false" : "true");
+  /* Cinematic, directional crossfade: the outgoing slide slides + fades one
+     way while the incoming slide slides in + fades from the other side. The
+     background image and all content live inside the slide, so they move
+     together as one coordinated layer. No zoom / Ken Burns. */
+  function go(idx, userInitiated, dir) {
+    var slides = $$("#hero-carousel .hslide");
+    var n = slides.length;
+    var newI = ((idx % n) + n) % n;
+    var nxt = slides[newI];
+    var cur = $("#hero-carousel .hslide.is-active");
+    if (!nxt || cur === nxt) return;
+    if (dir === undefined) dir = (newI > hero.i) ? 1 : -1;
+
+    var heroEl = document.querySelector(".hero");
+    if (heroEl) heroEl.setAttribute("data-dir", dir > 0 ? "next" : "prev");
+
+    // Outgoing → slide away + fade
+    if (cur) {
+      cur.classList.remove("is-active");
+      cur.classList.add("is-prev");
+      cur.setAttribute("aria-hidden", "true");
+      (function (c) { setTimeout(function () { c.classList.remove("is-prev"); }, 1150); })(cur);
+    }
+    // Incoming → start offset (is-enter pins transition:none), then release on
+    // the next frame so it eases from the offset to rest.
+    nxt.classList.add("is-enter");
+    nxt.classList.add("is-active");
+    nxt.setAttribute("aria-hidden", "false");
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { nxt.classList.remove("is-enter"); });
     });
+
+    hero.i = newI;
     var num = $("#hero-bignum"); if (num) num.textContent = pad(hero.i + 1);
     renderHeroDeck(hero.i);
-    // reset autoplay progress
     hero.elapsed = 0; hero.start = 0;
     setBar(0);
     if (userInitiated) {
@@ -571,10 +601,10 @@
   }
 
   /* The right-hand "deck" — a fanned stack of the next upcoming destinations,
-     each clickable to jump to that slide (rebuilt as the carousel advances). */
-  function renderHeroDeck(cur) {
-    var deck = $("#hero-deck");
-    if (!deck) return;
+     each clickable to jump to that slide. On change the whole deck slides +
+     fades out, re-populates, then slides back in, so the cards feel like they
+     move through the collection rather than snapping. */
+  function buildDeckHTML(cur) {
     var n = hero.slides.length;
     var show = Math.min(3, n - 1);
     var html = "";
@@ -593,10 +623,26 @@
           '</span>' +
         '</button>';
     }
-    deck.innerHTML = html;
+    return html;
+  }
+  function wireDeck(deck) {
     $$(".hero-deck__card", deck).forEach(function (b) {
-      b.addEventListener("click", function () { go(+b.getAttribute("data-go"), true); });
+      b.addEventListener("click", function () { go(+b.getAttribute("data-go"), true, 1); });
     });
+  }
+  function renderHeroDeck(cur) {
+    var deck = $("#hero-deck");
+    if (!deck) return;
+    var paint = function () { deck.innerHTML = buildDeckHTML(cur); wireDeck(deck); };
+    if (deck.dataset.init && !prefersReduced()) {
+      deck.classList.add("is-swapping");
+      clearTimeout(deck._swapT);
+      deck._swapT = setTimeout(function () { paint(); deck.classList.remove("is-swapping"); }, 210);
+    } else {
+      paint();
+      deck.dataset.init = "1";
+    }
+    return;
   }
   function setBar(p) { var b = $("#hero-bar"); if (b) b.style.width = (p * 100).toFixed(2) + "%"; }
 
@@ -609,7 +655,7 @@
         hero.elapsed = ts - hero.start;
         var p = Math.min(1, hero.elapsed / hero.AUTO);
         setBar(p);
-        if (p >= 1) { hero.start = ts; hero.elapsed = 0; go(hero.i + 1, false); }
+        if (p >= 1) { hero.start = ts; hero.elapsed = 0; go(hero.i + 1, false, 1); }
       }
       hero.raf = requestAnimationFrame(loop);
     });

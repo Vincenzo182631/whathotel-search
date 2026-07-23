@@ -133,15 +133,25 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .hero-carousel { position: absolute; inset: 0; }
 .hero-track { position: absolute; inset: 0; }
 
-/* Slides — crossfade */
-.hslide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease; }
-.hslide.is-active { opacity: 1; visibility: visible; z-index: 1; }
+/* Slides — cinematic directional crossfade (background + content move as one
+   layer). No zoom / Ken Burns: the image holds a stable scale; all motion comes
+   from the slide-to-slide transition. */
+.hslide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transform: translateX(0);
+  transition: opacity .8s ease, transform 1.15s cubic-bezier(.4, 0, .06, 1); will-change: opacity, transform; }
+.hslide.is-active { opacity: 1; z-index: 2; pointer-events: auto; }
+.hslide.is-prev { z-index: 1; }
+/* The incoming slide's start state is applied instantly (no transition), then
+   released one frame later so it eases from the offset to rest. */
+.hslide.is-enter { transition: none; }
+/* Directional start/exit offsets (direction set on .hero via data-dir) */
+.hero[data-dir="next"] .hslide.is-enter { transform: translateX(5%); opacity: 0; }
+.hero[data-dir="prev"] .hslide.is-enter { transform: translateX(-5%); opacity: 0; }
+.hero[data-dir="next"] .hslide.is-prev  { transform: translateX(-5%); opacity: 0; }
+.hero[data-dir="prev"] .hslide.is-prev  { transform: translateX(5%); opacity: 0; }
 .hslide__media { position: absolute; inset: 0; overflow: hidden; background: var(--ink); }
 .hslide__media .scene { position: absolute; inset: 0; }
-.hslide__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transform: scale(1.04); }
-/* Ken Burns drift only on the active slide */
-.hslide.is-active .hslide__photo { animation: heroKen 9s ease-out forwards; }
-@keyframes heroKen { from { transform: scale(1.04); } to { transform: scale(1.14); } }
+/* Stable overscan so the horizontal slide never reveals an edge — no animation */
+.hslide__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transform: scale(1.12); }
 .hslide__scrim { position: absolute; inset: 0; z-index: 2;
   background:
     linear-gradient(90deg, rgba(7,15,25,.86) 0%, rgba(7,15,25,.6) 38%, rgba(7,15,25,.12) 70%, transparent 100%),
@@ -205,12 +215,18 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 
 /* Upcoming-destination deck — a fanned stack of cards on the right */
 .hero-deck { position: absolute; right: clamp(20px, 4vw, 60px); top: 50%; transform: translateY(-46%); z-index: 6;
-  display: none; align-items: center; }
+  display: none; align-items: center;
+  transition: opacity .4s ease, transform .55s cubic-bezier(.4, 0, .06, 1); }
 @media (min-width: 1024px) and (min-height: 640px) { .hero-deck { display: flex; } }
+/* On slide change the deck slides out + fades, repopulates, slides back in */
+.hero-deck.is-swapping { opacity: 0; transform: translateY(-46%) translateX(34px); }
 .hero-deck__card { position: relative; flex: none; width: clamp(142px, 11.5vw, 178px); aspect-ratio: 3 / 4.3;
   border-radius: 20px; overflow: hidden; padding: 0; cursor: pointer; background: var(--ink-2);
   border: 1px solid rgba(255,255,255,.22); box-shadow: 0 26px 50px -22px rgba(0,0,0,.7);
-  margin-left: -14px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .2s; }
+  margin-left: -14px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .2s;
+  animation: deckCardIn .6s ease backwards; animation-delay: calc(var(--k, 0) * .08s); }
+/* opacity-only entrance so it never fights the fanned resting transforms */
+@keyframes deckCardIn { from { opacity: 0; } to { opacity: 1; } }
 .hero-deck__card:first-child { margin-left: 0; }
 .hero-deck__card:nth-child(1) { transform: translateY(24px) rotate(-2deg); z-index: 3; }
 .hero-deck__card:nth-child(2) { transform: translateY(-6px) rotate(0deg); z-index: 2; }
@@ -243,14 +259,15 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   .hero-line { width: clamp(60px, 22vw, 120px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hslide { transition: opacity .01s; }
-  .hslide.is-active .hslide__photo { animation: none; transform: scale(1.06); }
+  .hslide { transition: opacity .3s ease; }
+  .hslide, .hslide.is-enter, .hslide.is-prev,
+  .hero[data-dir] .hslide.is-enter, .hero[data-dir] .hslide.is-prev { transform: none !important; }
   .hslide.is-active .hslide__kicker,
   .hslide.is-active .hslide__title,
   .hslide.is-active .hslide__desc,
-  .hslide.is-active .hslide__meta,
   .hslide.is-active .hslide__actions { animation: none; opacity: 1; transform: none; }
-  .hero-deck__card { transition: none; }
+  .hero-deck, .hero-deck.is-swapping { transition: none; transform: translateY(-46%); opacity: 1; }
+  .hero-deck__card { transition: none; animation: none; }
 }
 
 /* ---------- Search panel ---------- */
