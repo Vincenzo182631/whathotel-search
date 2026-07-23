@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="wah-build" content="2026-07-23-mobile-memfix5-noautoplay">
+<meta name="wah-build" content="2026-07-23-memfix6-mobile-static-hero">
 <title>Luxury Villas &amp; Residences at Top Resorts | WhataHotel!</title>
 <meta name="description" content="Discover private villas, residences and homes at 270+ of the world's finest hotels and resorts. More space, five-star service and live availability, worldwide.">
 <meta name="keywords" content="luxury villas, hotel residences, private villas, resort villas, luxury home rentals, residential suites, family villa vacations, group travel villas, extended stay resorts, Four Seasons residences, Ritz-Carlton residences, villas Caribbean, villas Maldives, villas Europe, WhataHotel">
@@ -353,40 +353,17 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 @media (max-width: 1023px) {
   .hero-controls { width: calc(100% - 2 * var(--gutter)); }
 }
+/* Phones: the hero is a single static slide (no navigation, no deck) to
+   avoid the slide-change memory leak that crashed iOS Safari. Hide the
+   carousel controls and the deck entirely. */
+@media (max-width: 820px) {
+  .hero-controls, .hero-deck { display: none !important; }
+}
 @media (max-width: 640px) {
-  .hero { min-height: 786px; }
-  .hslide__content { padding: 52px 0 300px; }
+  .hero { min-height: 560px; }
+  .hslide__content { padding: 56px 0 72px; }
   .hslide__title { font-size: clamp(1.9rem, 8.4vw, 2.7rem); }
-  .hslide__desc { -webkit-line-clamp: 2; margin-bottom: 1.1rem; }
-  .hero-controls { bottom: 74px; }
-  .hero-arrow { width: 46px; height: 46px; }
-  .hero-line { width: clamp(60px, 22vw, 120px); }
-
-  /* Show the 3 "upcoming" deck cards on mobile too — as a flat equal-width
-     row in the empty band below the buttons and above the controls. No fan
-     or rotation here so they sit flush and never overlap. */
-  .hero-deck {
-    display: flex; position: absolute; left: var(--gutter); right: var(--gutter);
-    bottom: 202px; top: auto; transform: none;
-    justify-content: center; align-items: stretch; gap: 9px; z-index: 6;
-  }
-  .hero-deck__card {
-    flex: 1 1 0; width: auto; min-width: 0; margin-left: 0;
-    aspect-ratio: 3 / 3.7; border-radius: 14px;
-    box-shadow: 0 16px 34px -18px rgba(0,0,0,.75);
-  }
-  /* Flat resting positions (override the desktop fan) + a gentle staggered
-     slide-in from the right; images stay fully visible (no fade). */
-  .hero-deck__card:nth-child(1),
-  .hero-deck__card:nth-child(2),
-  .hero-deck__card:nth-child(3) {
-    transform: none;
-    animation: deckSlideM .6s cubic-bezier(.16,.84,.28,1) backwards;
-    animation-delay: calc(var(--k, 0) * .1s);
-  }
-  .hero-deck__meta { left: 9px; right: 9px; bottom: 9px; }
-  .hero-deck__loc { font-size: .56rem; }
-  .hero-deck__title { font-size: .72rem; -webkit-line-clamp: 2; }
+  .hslide__desc { -webkit-line-clamp: 3; margin-bottom: 1.3rem; }
 }
 @keyframes deckSlideM { from { transform: translateX(34px); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) {
@@ -7749,6 +7726,15 @@ window.WAH_DETAILS = {
     if (!root) return;
     hero.slides = heroSlides();
     if (!hero.slides.length) return;
+
+    // On phones the hero is a SINGLE static slide — no navigation, no deck.
+    // Every manual slide change rebuilt the deck (3 fresh image decodes) and
+    // loaded a new hero image; iOS Safari (inside GHL's heavy shell) never
+    // reclaims those fast enough, so after a few changes the tab runs out of
+    // memory and reloads/"crashes". With one slide there is nothing to change,
+    // so there is nothing to leak. Desktop keeps the full carousel.
+    var heroSingle = (window.innerWidth || 1024) <= 820;
+    if (heroSingle) hero.slides = hero.slides.slice(0, 1);
 
     // Request smaller hero images on phones — all 25 slides stay in the DOM,
     // so 1600px decodes blow past iOS Safari's per-tab image-memory budget and

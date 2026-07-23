@@ -551,6 +551,15 @@
     hero.slides = heroSlides();
     if (!hero.slides.length) return;
 
+    // On phones the hero is a SINGLE static slide — no navigation, no deck.
+    // Every manual slide change rebuilt the deck (3 fresh image decodes) and
+    // loaded a new hero image; iOS Safari (inside GHL's heavy shell) never
+    // reclaims those fast enough, so after a few changes the tab runs out of
+    // memory and reloads/"crashes". With one slide there is nothing to change,
+    // so there is nothing to leak. Desktop keeps the full carousel.
+    var heroSingle = (window.innerWidth || 1024) <= 820;
+    if (heroSingle) hero.slides = hero.slides.slice(0, 1);
+
     // Request smaller hero images on phones — all 25 slides stay in the DOM,
     // so 1600px decodes blow past iOS Safari's per-tab image-memory budget and
     // reload/"crash" the tab. A phone-sized request keeps it well within limits.
