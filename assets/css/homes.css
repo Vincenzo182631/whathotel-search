@@ -615,9 +615,12 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .step { position: relative; padding-top: 1rem; }
 .step__num {
   font-family: var(--serif); font-size: 2.6rem; color: var(--gold); line-height: 1;
-  display: inline-block; margin-bottom: .6rem;
+  display: inline-block; margin-bottom: .6rem; font-variant-numeric: tabular-nums;
 }
 .step__num::before { counter-increment: step; content: "0" counter(step); }
+/* When JS drives the count-up, it writes the value into the span itself, so
+   suppress the static CSS counter (which is the no-JS fallback). */
+.steps-grid.js-count .step__num::before { content: none; }
 .step h3 { font-size: 1.2rem; color: var(--ink); margin-bottom: .3rem; }
 .step p { color: var(--text-soft); font-size: .95rem; margin: 0; }
 .step:not(:last-child)::after {

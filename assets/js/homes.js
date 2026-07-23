@@ -1107,6 +1107,53 @@
   }
 
   /* -----------------------------------------------------------------
+     "How it works" step numbers — each rolls up from 00 to its own
+     number (01..04), staggered so they start in order 01 → 04. Runs once
+     when the section scrolls into view. The CSS counter is the no-JS
+     fallback; adding .js-count hands rendering to this animation.
+     ----------------------------------------------------------------- */
+  function wireStepCounters() {
+    var grid = $(".steps-grid");
+    if (!grid) return;
+    var nums = $$(".step__num", grid);
+    if (!nums.length) return;
+    grid.classList.add("js-count");
+    var two = function (n) { return (n < 10 ? "0" : "") + n; };
+    nums.forEach(function (el) { el.textContent = "00"; });
+
+    if (prefersReduced()) {
+      nums.forEach(function (el, i) { el.textContent = two(i + 1); });
+      return;
+    }
+
+    var START_STAGGER = 240; // ms between each tile starting (01 → 04)
+    var TICK = 190;          // ms per increment while rolling up
+    function runOne(el, target) {
+      var v = 0;
+      el.textContent = "00";
+      (function tick() {
+        v += 1;
+        el.textContent = two(v);
+        if (v < target) setTimeout(tick, TICK);
+      })();
+    }
+    function runAll() {
+      nums.forEach(function (el, i) {
+        setTimeout(function () { runOne(el, i + 1); }, i * START_STAGGER);
+      });
+    }
+
+    if (!("IntersectionObserver" in window)) { runAll(); return; }
+    var done = false;
+    var sio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && !done) { done = true; runAll(); sio.disconnect(); }
+      });
+    }, { threshold: 0.4 });
+    sio.observe(grid);
+  }
+
+  /* -----------------------------------------------------------------
      Scroll reveal + sticky mobile CTA + header state
      ----------------------------------------------------------------- */
   var io, flushWired = false, flushRaf = 0;
@@ -1299,6 +1346,7 @@
     wireDelegation();
     wireScrollLinks();
     wireVideo();
+    wireStepCounters();
     wireMobileCta();
     wireConcierge();
     observeReveals(document);

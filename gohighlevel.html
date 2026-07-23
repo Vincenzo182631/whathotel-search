@@ -655,9 +655,12 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .step { position: relative; padding-top: 1rem; }
 .step__num {
   font-family: var(--serif); font-size: 2.6rem; color: var(--gold); line-height: 1;
-  display: inline-block; margin-bottom: .6rem;
+  display: inline-block; margin-bottom: .6rem; font-variant-numeric: tabular-nums;
 }
 .step__num::before { counter-increment: step; content: "0" counter(step); }
+/* When JS drives the count-up, it writes the value into the span itself, so
+   suppress the static CSS counter (which is the no-JS fallback). */
+.steps-grid.js-count .step__num::before { content: none; }
 .step h3 { font-size: 1.2rem; color: var(--ink); margin-bottom: .3rem; }
 .step p { color: var(--text-soft); font-size: .95rem; margin: 0; }
 .step:not(:last-child)::after {
@@ -8179,6 +8182,53 @@ window.WAH_DETAILS = {
   }
 
   /* -----------------------------------------------------------------
+     "How it works" step numbers — each rolls up from 00 to its own
+     number (01..04), staggered so they start in order 01 → 04. Runs once
+     when the section scrolls into view. The CSS counter is the no-JS
+     fallback; adding .js-count hands rendering to this animation.
+     ----------------------------------------------------------------- */
+  function wireStepCounters() {
+    var grid = $(".steps-grid");
+    if (!grid) return;
+    var nums = $$(".step__num", grid);
+    if (!nums.length) return;
+    grid.classList.add("js-count");
+    var two = function (n) { return (n < 10 ? "0" : "") + n; };
+    nums.forEach(function (el) { el.textContent = "00"; });
+
+    if (prefersReduced()) {
+      nums.forEach(function (el, i) { el.textContent = two(i + 1); });
+      return;
+    }
+
+    var START_STAGGER = 240; // ms between each tile starting (01 → 04)
+    var TICK = 190;          // ms per increment while rolling up
+    function runOne(el, target) {
+      var v = 0;
+      el.textContent = "00";
+      (function tick() {
+        v += 1;
+        el.textContent = two(v);
+        if (v < target) setTimeout(tick, TICK);
+      })();
+    }
+    function runAll() {
+      nums.forEach(function (el, i) {
+        setTimeout(function () { runOne(el, i + 1); }, i * START_STAGGER);
+      });
+    }
+
+    if (!("IntersectionObserver" in window)) { runAll(); return; }
+    var done = false;
+    var sio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && !done) { done = true; runAll(); sio.disconnect(); }
+      });
+    }, { threshold: 0.4 });
+    sio.observe(grid);
+  }
+
+  /* -----------------------------------------------------------------
      Scroll reveal + sticky mobile CTA + header state
      ----------------------------------------------------------------- */
   var io, flushWired = false, flushRaf = 0;
@@ -8371,6 +8421,7 @@ window.WAH_DETAILS = {
     wireDelegation();
     wireScrollLinks();
     wireVideo();
+    wireStepCounters();
     wireMobileCta();
     wireConcierge();
     observeReveals(document);
