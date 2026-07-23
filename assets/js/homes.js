@@ -1116,12 +1116,13 @@
     if (!vid) return;
     var src = vid.getAttribute("data-src");
     if (!src) return;
-    // On phones, don't continuously autoplay/decode a full-bleed video —
-    // combined with the hero it pushes iOS Safari past its memory limit and
-    // reloads/"crashes" the tab. Show the poster frame with controls instead
-    // (same path as reduced-motion); desktop keeps the autoplay video.
+    // On phones, NEVER load the mp4 — a full-bleed video decoder on top of the
+    // hero pushes iOS Safari past its per-tab memory limit and reloads/"crashes"
+    // the tab (white screen). Show the static poster image only; desktop keeps
+    // the autoplay video. This is the single biggest mobile memory saver.
     var narrow = (window.innerWidth || 1024) <= 820;
-    var reduce = prefersReduced() || narrow;
+    if (narrow) { vid.classList.add("is-playing"); return; }  // reveal poster, no video load
+    var reduce = prefersReduced();
     var loaded = false, tracked = false;
 
     function load() {

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="wah-build" content="2026-07-23-mobile-memfix2">
 <title>Luxury Villas &amp; Residences at Top Resorts | WhataHotel!</title>
 <meta name="description" content="Discover private villas, residences and homes at 270+ of the world's finest hotels and resorts. More space, five-star service and live availability, worldwide.">
 <meta name="keywords" content="luxury villas, hotel residences, private villas, resort villas, luxury home rentals, residential suites, family villa vacations, group travel villas, extended stay resorts, Four Seasons residences, Ritz-Carlton residences, villas Caribbean, villas Maldives, villas Europe, WhataHotel">
@@ -1302,6 +1303,7 @@ body.modal-open { overflow: hidden; }
 <section class="section video-sec" id="video">
   <div class="video-skel" aria-hidden="true"></div>
   <video class="video-bg" id="video-bg" muted loop playsinline webkit-playsinline preload="none" disablepictureinpicture disableremoteplayback aria-hidden="true"
+         poster="https://wsrv.nl/?url=ssl:whatahotel.com/content/hotels/1031/palmilla.jpg&amp;w=900&amp;output=webp&amp;q=68"
          data-src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a606d5dfd944475982125f4.mp4"></video>
   <div class="video-scrim"></div>
   <div class="wrap video-overlay">
@@ -8306,12 +8308,13 @@ window.WAH_DETAILS = {
     if (!vid) return;
     var src = vid.getAttribute("data-src");
     if (!src) return;
-    // On phones, don't continuously autoplay/decode a full-bleed video —
-    // combined with the hero it pushes iOS Safari past its memory limit and
-    // reloads/"crashes" the tab. Show the poster frame with controls instead
-    // (same path as reduced-motion); desktop keeps the autoplay video.
+    // On phones, NEVER load the mp4 — a full-bleed video decoder on top of the
+    // hero pushes iOS Safari past its per-tab memory limit and reloads/"crashes"
+    // the tab (white screen). Show the static poster image only; desktop keeps
+    // the autoplay video. This is the single biggest mobile memory saver.
     var narrow = (window.innerWidth || 1024) <= 820;
-    var reduce = prefersReduced() || narrow;
+    if (narrow) { vid.classList.add("is-playing"); return; }  // reveal poster, no video load
+    var reduce = prefersReduced();
     var loaded = false, tracked = false;
 
     function load() {
