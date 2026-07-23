@@ -430,7 +430,33 @@
   // 271. All copy (kicker, description, meta) is derived from authoritative
   // data: the property's collection, city/country/region and its own
   // WhataHotel description. Nothing about the accommodation is invented.
-  var HERO_IDS = [1055, 2944, 1124, 1031, 1073, 3705];
+  var HERO_IDS = [
+    3879, // Ritz-Carlton Residences at Dorado Beach
+    3133, // Four Seasons Resort Anguilla
+    1354, // Four Seasons Resort Whistler
+    2390, // Four Seasons Resort Vail
+    6084, // Ritz-Carlton Residences, Orlando
+    2706, // Andaz Maui at Wailea
+    1569, // Montage Palmetto Bluff
+    1325, // Four Seasons Resort Jackson Hole
+    1271, // Four Seasons Resort Costa Rica
+    1399, // One&Only Reethi Rah
+    1736, // Bvlgari Resort Bali
+    3705, // Mandarin Oriental, Lago di Como
+    2265, // Rosewood Castiglion del Bosco
+    3614, // Four Seasons Los Cabos at Costa Palmas
+    2314, // Banyan Tree Mayakoba
+    1414, // Four Seasons Resort Punta Mita
+    2545, // Mandarin Oriental, Canouan
+    4746, // Four Seasons Resort Tamarindo
+    1532, // Amanpulo
+    952,  // Hotel Arts Barcelona
+    1422, // Four Seasons Resort Nevis
+    2174, // Grand Hotel des Bains Kempinski St. Moritz
+    956,  // Grace Bay Club
+    3118, // Four Seasons London at Tower Bridge
+    3287  // Ritz-Carlton Residences, Waikiki Beach
+  ];
 
   function slideFor(p) {
     var kicker = (p.collection ? p.collection + " · " : "") + (p.loc || p.region);
@@ -461,7 +487,6 @@
 
     var slidesHTML = hero.slides.map(function (s, i) {
       var p = s.p;
-      var meta = (s.meta || []).map(function (m) { return '<li>' + iconFor(m.icon) + '<span>' + esc(m.label) + '</span></li>'; }).join("");
       return '' +
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
@@ -474,7 +499,6 @@
             '<span class="hslide__kicker">' + pinSVG() + esc(s.kicker) + '</span>' +
             '<h2 class="hslide__title">' + esc(p.name) + '</h2>' +
             '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
-            '<ul class="hslide__meta">' + meta + '</ul>' +
             '<div class="hslide__actions">' +
               '<button class="hslide__save" type="button" data-hero-fav data-id="' + p.id + '" aria-pressed="false" aria-label="Save ' + esc(p.name) + '">' + bookmarkSVG() + '</button>' +
               '<button class="btn btn-primary btn-lg" type="button" data-action="detail" data-id="' + p.id + '">Explore Property' + arrowSVG() + '</button>' +

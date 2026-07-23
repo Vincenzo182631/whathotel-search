@@ -172,8 +172,8 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
     linear-gradient(90deg, rgba(7,15,25,.86) 0%, rgba(7,15,25,.6) 38%, rgba(7,15,25,.12) 70%, transparent 100%),
     linear-gradient(180deg, rgba(7,15,25,.35) 0%, transparent 30%, rgba(7,15,25,.55) 100%);
 }
-.hslide__inner { position: relative; z-index: 3; height: 100%; display: flex; align-items: center; }
-.hslide__content { max-width: 620px; padding: 84px 0 150px; }
+.hslide__inner { position: relative; z-index: 3; height: 100%; display: flex; align-items: flex-start; }
+.hslide__content { max-width: 640px; padding: clamp(84px, 12vh, 128px) 0 160px; }
 
 /* Staggered content reveal on the active slide */
 .hslide__kicker, .hslide__title, .hslide__desc, .hslide__meta, .hslide__actions {
@@ -189,11 +189,14 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .hslide__kicker { display: inline-flex; align-items: center; gap: .5rem; color: var(--gold-2);
   font-size: .82rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 1rem; }
 .hslide__kicker svg { width: 1.1em; height: 1.1em; }
-/* Big editorial title — heavy uppercase sans, like the reference */
-.hslide__title { font-family: var(--sans); font-weight: 800; font-size: clamp(2.7rem, 7vw, 5.2rem);
-  color: #fff; line-height: .95; letter-spacing: -.02em; text-transform: uppercase; margin: 0 0 1rem; text-wrap: balance;
-  text-shadow: 0 2px 30px rgba(0,0,0,.35); }
-.hslide__desc { font-size: clamp(1rem, 1.7vw, 1.14rem); color: rgba(244,239,230,.85); max-width: 44ch; margin: 0 0 1.4rem; }
+/* Big editorial title — heavy uppercase sans, like the reference.
+   Sized down and line-clamped so long hotel names stay tidy (max 3 lines). */
+.hslide__title { font-family: var(--sans); font-weight: 800; font-size: clamp(2.1rem, 4.4vw, 3.7rem);
+  color: #fff; line-height: 1.0; letter-spacing: -.02em; text-transform: uppercase; margin: 0 0 1rem; text-wrap: balance;
+  text-shadow: 0 2px 30px rgba(0,0,0,.35);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.hslide__desc { font-size: clamp(1rem, 1.7vw, 1.14rem); color: rgba(244,239,230,.85); max-width: 46ch; margin: 0 0 1.4rem;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .hslide__meta { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem .6rem; margin: 0 0 1.7rem; padding: 0; }
 .hslide__meta li { display: inline-flex; align-items: center; gap: .45rem; font-size: .82rem; font-weight: 500; color: #fff;
   background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; padding: .38rem .8rem; backdrop-filter: blur(4px); }
@@ -256,10 +259,11 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   .hero-controls { width: calc(100% - 2 * var(--gutter)); }
 }
 @media (max-width: 640px) {
-  .hero { min-height: 660px; }
-  .hslide__content { padding: 60px 0 180px; }
-  .hslide__meta { display: none; }
-  .hero-controls { bottom: 96px; }
+  .hero { min-height: 680px; }
+  .hslide__content { padding: 56px 0 172px; }
+  .hslide__title { font-size: clamp(1.9rem, 8.4vw, 2.7rem); }
+  .hslide__desc { -webkit-line-clamp: 2; margin-bottom: 1.2rem; }
+  .hero-controls { bottom: 88px; }
   .hero-arrow { width: 46px; height: 46px; }
   .hero-line { width: clamp(60px, 22vw, 120px); }
 }
@@ -7448,7 +7452,33 @@ window.WAH_DETAILS = {
   // 271. All copy (kicker, description, meta) is derived from authoritative
   // data: the property's collection, city/country/region and its own
   // WhataHotel description. Nothing about the accommodation is invented.
-  var HERO_IDS = [1055, 2944, 1124, 1031, 1073, 3705];
+  var HERO_IDS = [
+    3879, // Ritz-Carlton Residences at Dorado Beach
+    3133, // Four Seasons Resort Anguilla
+    1354, // Four Seasons Resort Whistler
+    2390, // Four Seasons Resort Vail
+    6084, // Ritz-Carlton Residences, Orlando
+    2706, // Andaz Maui at Wailea
+    1569, // Montage Palmetto Bluff
+    1325, // Four Seasons Resort Jackson Hole
+    1271, // Four Seasons Resort Costa Rica
+    1399, // One&Only Reethi Rah
+    1736, // Bvlgari Resort Bali
+    3705, // Mandarin Oriental, Lago di Como
+    2265, // Rosewood Castiglion del Bosco
+    3614, // Four Seasons Los Cabos at Costa Palmas
+    2314, // Banyan Tree Mayakoba
+    1414, // Four Seasons Resort Punta Mita
+    2545, // Mandarin Oriental, Canouan
+    4746, // Four Seasons Resort Tamarindo
+    1532, // Amanpulo
+    952,  // Hotel Arts Barcelona
+    1422, // Four Seasons Resort Nevis
+    2174, // Grand Hotel des Bains Kempinski St. Moritz
+    956,  // Grace Bay Club
+    3118, // Four Seasons London at Tower Bridge
+    3287  // Ritz-Carlton Residences, Waikiki Beach
+  ];
 
   function slideFor(p) {
     var kicker = (p.collection ? p.collection + " · " : "") + (p.loc || p.region);
@@ -7479,7 +7509,6 @@ window.WAH_DETAILS = {
 
     var slidesHTML = hero.slides.map(function (s, i) {
       var p = s.p;
-      var meta = (s.meta || []).map(function (m) { return '<li>' + iconFor(m.icon) + '<span>' + esc(m.label) + '</span></li>'; }).join("");
       return '' +
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
@@ -7492,7 +7521,6 @@ window.WAH_DETAILS = {
             '<span class="hslide__kicker">' + pinSVG() + esc(s.kicker) + '</span>' +
             '<h2 class="hslide__title">' + esc(p.name) + '</h2>' +
             '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
-            '<ul class="hslide__meta">' + meta + '</ul>' +
             '<div class="hslide__actions">' +
               '<button class="hslide__save" type="button" data-hero-fav data-id="' + p.id + '" aria-pressed="false" aria-label="Save ' + esc(p.name) + '">' + bookmarkSVG() + '</button>' +
               '<button class="btn btn-primary btn-lg" type="button" data-action="detail" data-id="' + p.id + '">Explore Property' + arrowSVG() + '</button>' +
