@@ -265,11 +265,19 @@
   var IMG_OPT = (window.WAH_IMG_OPT !== false);
   var IMG_PROXY = window.WAH_IMG_PROXY || "https://wsrv.nl/?url=";
   var IMG_Q = window.WAH_IMG_QUALITY || 72;
+  /* GLOBAL mobile image-width cap. Decoded image memory is width*height*4 bytes
+     (independent of file size/quality), so a hard cap on requested width is the
+     single most effective way to keep iOS Safari under its per-tab memory limit
+     — it shrinks EVERY image on the page (hero, cards, categories, featured,
+     modal) at once. 720px is plenty for a phone yet ~5x lighter than 1600px. */
+  var IMG_MAX_W = ((window.innerWidth || 1024) <= 820) ? 720 : 100000;
+  var IMG_Q_EFF = ((window.innerWidth || 1024) <= 820) ? 64 : IMG_Q;
   function optImg(url, width) {
     if (!IMG_OPT || !url) return url;
     if (/^data:/.test(url) || url.indexOf("wsrv.nl") !== -1) return url; // already inline/optimized
+    var w = Math.min(width || IMG_MAX_W, IMG_MAX_W);
     var clean = url.replace(/^https?:\/\//, "");
-    return IMG_PROXY + encodeURIComponent(clean) + "&w=" + width + "&output=webp&q=" + IMG_Q + "&we=1";
+    return IMG_PROXY + encodeURIComponent(clean) + "&w=" + w + "&output=webp&q=" + IMG_Q_EFF + "&we=1";
   }
   // Optimized URL for a property at a given render width.
   function imageFor(p, width) {
@@ -411,7 +419,8 @@
   /* Directory is paginated so mobile/desktop only render a first page of
      cards up front (keeps the DOM light and LCP fast on a Google Ads page).
      "Show more" appends the next page; any filter change resets to page 1. */
-  var DIR_PAGE = 12;
+  // Fewer cards per page on phones so fewer images decode at once (memory).
+  var DIR_PAGE = ((window.innerWidth || 1024) <= 820) ? 6 : 12;
   var dirList = [];
   var dirShown = 0;
 
