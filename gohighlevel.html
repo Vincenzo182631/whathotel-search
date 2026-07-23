@@ -155,6 +155,11 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .brand small { display:block; font-family: var(--sans); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color: var(--text-mut); font-weight:600; }
 .brand-logo { display: block; height: 30px; width: auto; }
 @media (min-width: 720px) { .brand-logo { height: 34px; } }
+/* Footer uses the SAME logo as the header; the artwork is dark navy on
+   transparent, so render it white to read on the dark footer. */
+.brand--foot { display: inline-block; margin-bottom: .9rem; }
+.brand-logo--foot { height: 40px; filter: brightness(0) invert(1); opacity: .95; transition: opacity .2s ease; }
+.brand--foot:hover .brand-logo--foot { opacity: 1; }
 .header-nav { display: none; gap: 2rem; font-size: .93rem; font-weight: 500; color: var(--text-soft); }
 .header-nav a:hover { color: var(--ink); }
 .header-cta { display: none; }
@@ -189,9 +194,16 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .hero[data-dir="next"] .hslide.is-prev  { transform: translateX(-5%); opacity: 0; }
 .hero[data-dir="prev"] .hslide.is-prev  { transform: translateX(5%); opacity: 0; }
 .hslide__media { position: absolute; inset: 0; overflow: hidden; background: var(--ink); }
-.hslide__media .scene { position: absolute; inset: 0; }
+/* Skeleton behind the hero photo — shown only while the photo is loading,
+   then covered by the image (no decorative placeholder art). */
+.hslide__media .hslide__skel { position: absolute; inset: 0; z-index: 0; background-image:
+    linear-gradient(100deg, transparent 20%, rgba(255,255,255,.10) 50%, transparent 80%),
+    linear-gradient(0deg, #12212f, #12212f);
+  background-size: 220% 100%, 100% 100%; background-repeat: no-repeat; animation: wahSkel 1.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .hslide__media .hslide__skel { animation: none; } }
 /* Stable overscan so the horizontal slide never reveals an edge — no animation */
-.hslide__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transform: scale(1.12); }
+.hslide__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transform: scale(1.12); opacity: 0; transition: opacity .6s ease; }
+.hslide__photo.is-loaded { opacity: 1; }
 .hslide__scrim { position: absolute; inset: 0; z-index: 2;
   background:
     linear-gradient(90deg, rgba(7,15,25,.86) 0%, rgba(7,15,25,.6) 38%, rgba(7,15,25,.12) 70%, transparent 100%),
@@ -633,8 +645,13 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   min-height: clamp(460px, 82vh, 760px);
   display: flex; align-items: center;
 }
-.video-scene, .video-bg, .video-scrim { position: absolute; inset: 0; z-index: 0; }
-.video-scene .scene-svg { width: 100%; height: 100%; }
+.video-skel, .video-bg, .video-scrim { position: absolute; inset: 0; z-index: 0; }
+/* Skeleton shown only while the video is loading — no decorative placeholder. */
+.video-skel { background-image:
+    linear-gradient(100deg, transparent 20%, rgba(255,255,255,.08) 50%, transparent 80%),
+    linear-gradient(0deg, #0c1a2a, #0c1a2a);
+  background-size: 220% 100%, 100% 100%; background-repeat: no-repeat; animation: wahSkel 1.5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .video-skel { animation: none; } }
 .video-bg { width: 100%; height: 100%; object-fit: cover; border: 0; opacity: 0; transition: opacity .8s ease; }
 .video-bg.is-playing { opacity: 1; }
 /* Cinematic scrim so the overlaid copy stays legible over any footage. */
@@ -970,7 +987,7 @@ body.modal-open { overflow: hidden; }
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="wrap site-header__inner">
-    <a class="brand" href="https://www.whatahotel.com/" aria-label="WhataHotel! by Lorraine Travel — home">
+    <a class="brand" href="#hero" data-scroll="#hero" aria-label="WhataHotel! by Lorraine Travel — back to top">
       <img class="brand-logo" src="https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a237895da24932f122f104e.png&amp;h=88&amp;output=webp" alt="WhataHotel!" width="150" height="34" decoding="async">
     </a>
     <nav class="header-nav" aria-label="Primary">
@@ -1187,7 +1204,7 @@ body.modal-open { overflow: hidden; }
   the initial page load. Swap the WhataHotel Homes video by editing data-src.
 -->
 <section class="section video-sec" id="video">
-  <div class="scene video-scene" data-scene="tropical"></div>
+  <div class="video-skel" aria-hidden="true"></div>
   <video class="video-bg" id="video-bg" muted loop playsinline preload="none" aria-hidden="true"
          data-src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a606d5dfd944475982125f4.mp4"></video>
   <div class="video-scrim"></div>
@@ -1275,7 +1292,9 @@ body.modal-open { overflow: hidden; }
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="brand" style="font-size:1.5rem;margin-bottom:.7rem"><span><b>WhataHotel</b><span class="bang" style="color:var(--gold)">!</span></span></div>
+        <a class="brand brand--foot" href="#hero" data-scroll="#hero" aria-label="WhataHotel! by Lorraine Travel — back to top">
+          <img class="brand-logo brand-logo--foot" src="https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a237895da24932f122f104e.png&amp;h=96&amp;output=webp" alt="WhataHotel!" width="167" height="42" decoding="async">
+        </a>
         <p style="max-width:38ch">Homes, villas and residences at exceptional hotels and resorts around the world — the space of a home with the service of a five-star resort.</p>
         <p style="font-size:.82rem;color:rgba(244,239,230,.5)">WhataHotel! by Lorraine Travel · Member, Signature Travel Network</p>
       </div>
@@ -7609,7 +7628,7 @@ window.WAH_DETAILS = {
       return '' +
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
-          '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
+          '<div class="hslide__skel" aria-hidden="true"></div>' +
           imgTag(p, 1600, "hslide__photo", (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"')) +
         '</div>' +
         '<div class="hslide__scrim"></div>' +

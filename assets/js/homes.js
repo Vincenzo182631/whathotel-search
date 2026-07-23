@@ -534,7 +534,7 @@
       return '' +
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
-          '<div class="scene">' + sceneSVG(p.scene) + '</div>' +
+          '<div class="hslide__skel" aria-hidden="true"></div>' +
           imgTag(p, 1600, "hslide__photo", (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"')) +
         '</div>' +
         '<div class="hslide__scrim"></div>' +
