@@ -320,16 +320,17 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .search-filters { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-top: .85rem; }
 @media (min-width: 640px) { .search-filters { grid-template-columns: 1fr 1fr; } }
 .select-field--filter { display: flex; align-items: center; }
-.select-field--filter .select-field__ic { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-  width: 1.15rem; height: 1.15rem; color: var(--gold-deep); pointer-events: none; }
-.select-field--filter select {
-  width: 100%; padding: .85rem 2.4rem .85rem 2.7rem; border-radius: 14px;
+.select-field--filter .select-field__ic { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%);
+  width: 1.1rem; height: 1.1rem; color: var(--gold-deep); pointer-events: none; z-index: 1; }
+/* Two classes so this beats the base `.select-field select` that follows it */
+.select-field.select-field--filter select {
+  width: 100%; padding: .9rem 2.5rem .9rem 2.9rem; border-radius: 14px; line-height: 1.2;
   border: 1px solid var(--line); background: var(--sand); color: var(--text);
-  font-size: .95rem; font-weight: 600; cursor: pointer;
+  font-size: .95rem; font-weight: 600; cursor: pointer; text-overflow: ellipsis;
   transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
-.select-field--filter select:hover { border-color: var(--gold); }
-.select-field--filter select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(198,163,90,.18); background: var(--paper); }
+.select-field.select-field--filter select:hover { border-color: var(--gold); }
+.select-field.select-field--filter select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(198,163,90,.18); background: var(--paper); }
 
 .search-trust { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line-2); }
 .search-trust span { display: inline-flex; align-items: center; gap: .5rem; font-size: .82rem; font-weight: 500; color: var(--text-soft); }
@@ -853,7 +854,7 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 560px) {
   body { font-size: 16px; }
   /* Comfortable tap targets for the refine dropdowns */
-  .select-field--filter select { padding-top: .95rem; padding-bottom: .95rem; }
+  .select-field.select-field--filter select { padding-top: 1rem; padding-bottom: 1rem; }
   /* Stacked, full-width primary actions read better on a phone */
   .hslide__actions { gap: .6rem; }
   .hslide__actions .btn { flex: 1 1 100%; }
