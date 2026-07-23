@@ -118,6 +118,13 @@ await run(pairs, async (p) => {
 
 console.log(`Heroes: ${okImg} ok, ${missImg} missing.  Descriptions: ${okDesc}/${pairs.length}.`);
 
+// Manual hero overrides (curated by request) — applied last so they survive
+// re-scrapes and take precedence over the auto-detected og:image.
+const IMAGE_OVERRIDES = {
+  3879: "https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a61a2a09e476cfa0bafda51.jpg", // The Ritz-Carlton Residences at Dorado Beach
+};
+for (const [id, hero] of Object.entries(IMAGE_OVERRIDES)) images[id] = { hero };
+
 function emit(path, varName, obj, note) {
   const ordered = {};
   Object.keys(obj).map(Number).sort((a, b) => a - b).forEach((id) => { ordered[id] = obj[id]; });
