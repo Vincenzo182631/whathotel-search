@@ -621,7 +621,11 @@
     hydrateHeroWindow(0);
     renderHeroDeck(0);
     setBar(0);
-    if (!prefersReduced()) startAuto();
+    // Don't auto-advance on phones: the every-few-seconds image decode churn,
+    // on top of GHL's heavy shell, is what tips iOS Safari over its memory
+    // limit a moment after load. The hero is still fully swipeable/arrow-nav.
+    var heroNarrow = (window.innerWidth || 1024) <= 820;
+    if (!prefersReduced() && !heroNarrow) startAuto();
   }
 
   /* Keep only the current hero slide and its immediate neighbours loaded;
