@@ -387,7 +387,6 @@
     var grid = $("#directory-grid");
     var count = $("#directory-count");
     if (count) count.innerHTML = "<b>" + list.length + "</b> " + (list.length === 1 ? "property" : "properties");
-    updateSearchCount(list.length);
     if (!grid) return;
     if (!list.length) {
       dirList = []; dirShown = 0; syncDirMore();
@@ -690,61 +689,40 @@
   }
 
   /* -----------------------------------------------------------------
-     Region tabs (single-select incl. "All") + collection/brand refine chips.
-     Both axes come straight from authoritative property data.
+     Refine — two compact dropdowns (Region + Collection), single-select.
+     Both option sets come straight from authoritative property data.
      ----------------------------------------------------------------- */
-  var REFINE_BRANDS = BRANDS.filter(function (b) { return b.count >= 3; }).slice(0, 8);
+  var REFINE_BRANDS = BRANDS.filter(function (b) { return b.count >= 2; });
 
   function buildFilters() {
-    // Region tabs
-    var tabs = $("#type-tabs");
-    if (tabs) {
-      var all = '<button class="type-tab" type="button" data-cat="" aria-pressed="true">' +
-                iconFor("all") + '<span>All stays</span><em>' + PROPS.length + '</em></button>';
-      tabs.innerHTML = all + REGIONS.map(function (c) {
-        return '<button class="type-tab" type="button" data-cat="' + c.key + '" aria-pressed="false">' +
-          iconFor(c.key) + '<span>' + esc(REGION_BADGE[c.key] || c.label) + '</span><em>' + c.count + '</em></button>';
-      }).join("");
-      $$(".type-tab", tabs).forEach(function (tab) {
-        tab.addEventListener("click", function () { setType(tab.getAttribute("data-cat")); });
-      });
+    var rsel = $("#region-select");
+    if (rsel) {
+      rsel.innerHTML = '<option value="">All regions · ' + PROPS.length + '</option>' +
+        REGIONS.map(function (c) { return '<option value="' + c.key + '">' + esc(c.label) + ' · ' + c.count + '</option>'; }).join("");
+      rsel.addEventListener("change", function () { setType(rsel.value); });
     }
-    // Brand / collection refine chips
-    var row = $("#feature-chips");
-    if (row) {
-      if (!REFINE_BRANDS.length) { row.innerHTML = ""; return; }
-      row.innerHTML = '<span class="chip-row__label">Collections</span>' + REFINE_BRANDS.map(function (b) {
-        return '<button class="chip" type="button" data-key="' + esc(b.label) + '" aria-pressed="false">' +
-          iconFor("collection") + esc(b.label) + '<span class="chip-x" aria-hidden="true">✕</span></button>';
-      }).join("");
-      $$(".chip", row).forEach(function (chip) {
-        chip.addEventListener("click", function () { toggleBrand(chip); });
-      });
+    var csel = $("#collection-select");
+    if (csel) {
+      csel.innerHTML = '<option value="">All collections</option>' +
+        REFINE_BRANDS.map(function (b) { return '<option value="' + esc(b.label) + '">' + esc(b.label) + ' · ' + b.count + '</option>'; }).join("");
+      csel.addEventListener("change", function () { setBrand(csel.value); });
     }
   }
   function setType(cat) {
     state.cats = cat ? [cat] : [];
     syncControls();
-    if (cat) track("filter_selected", { filter_type: "region", filter_value: cat, source: "tab" });
+    if (cat) track("filter_selected", { filter_type: "region", filter_value: cat, source: "dropdown" });
     renderDirectory();
   }
-  function toggleBrand(chip) {
-    var key = chip.getAttribute("data-key");
-    var i = state.brands.indexOf(key);
-    var on;
-    if (i === -1) { state.brands.push(key); on = true; } else { state.brands.splice(i, 1); on = false; }
-    chip.setAttribute("aria-pressed", on);
-    if (on) track("filter_selected", { filter_type: "collection", filter_value: key, source: "chip" });
+  function setBrand(val) {
+    state.brands = val ? [val] : [];
+    syncControls();
+    if (val) track("filter_selected", { filter_type: "collection", filter_value: val, source: "dropdown" });
     renderDirectory();
   }
   function syncControls() {
-    var cur = state.cats[0] || "";
-    $$("#type-tabs .type-tab").forEach(function (tab) {
-      tab.setAttribute("aria-pressed", tab.getAttribute("data-cat") === cur);
-    });
-    $$("#feature-chips .chip").forEach(function (chip) {
-      chip.setAttribute("aria-pressed", state.brands.indexOf(chip.getAttribute("data-key")) !== -1);
-    });
+    var rsel = $("#region-select"); if (rsel) rsel.value = state.cats[0] || "";
+    var csel = $("#collection-select"); if (csel) csel.value = state.brands[0] || "";
   }
 
   function clearAll() {
@@ -790,21 +768,6 @@
       track("filter_selected", { filter_type: "sort", filter_value: sort.value });
       renderDirectory();
     });
-  }
-
-  /* Live results counter in the search panel — proves the type tabs, search
-     and refine chips are actually filtering (updated from renderDirectory). */
-  var lastCount = -1;
-  function updateSearchCount(n) {
-    var el = $("#search-count"), label = $("#search-count-label"), bar = $("#search-results");
-    if (!el) return;
-    el.textContent = n;
-    if (label) label.textContent = n === 1 ? "stay matches" : "stays match";
-    if (bar) {
-      bar.classList.toggle("is-empty", n === 0);
-      if (n !== lastCount) { bar.classList.remove("pulse"); void bar.offsetWidth; bar.classList.add("pulse"); }
-    }
-    lastCount = n;
   }
 
   /* Typewriter placeholder — cycles example searches until the field is used. */

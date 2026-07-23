@@ -323,22 +323,6 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .search-panel__title h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); margin: 0; color: var(--ink); }
 .search-panel__hint { margin: 0; color: var(--text-mut); font-size: .84rem; }
 
-/* Type tabs — segmented control with hotel icons */
-.type-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.1rem; }
-.type-tab {
-  display: inline-flex; align-items: center; gap: .5rem;
-  border: 1px solid var(--line); background: var(--paper); color: var(--text-soft);
-  padding: .6rem 1rem; border-radius: 14px; font-size: .9rem; font-weight: 600;
-  transition: transform .15s ease, border-color .15s ease, background .15s ease, color .15s ease, box-shadow .15s ease;
-}
-.type-tab .ic { width: 1.15rem; height: 1.15rem; color: var(--gold-deep); transition: color .15s ease; flex: none; }
-.type-tab em { font-style: normal; font-size: .74rem; font-weight: 700; color: var(--text-mut);
-  background: var(--sand); border-radius: 999px; padding: .05rem .45rem; }
-.type-tab:hover { border-color: var(--gold); color: var(--ink); transform: translateY(-1px); }
-.type-tab[aria-pressed="true"] { background: linear-gradient(160deg, var(--ink), var(--ink-2)); color: #fff; border-color: var(--ink); box-shadow: var(--shadow-md); }
-.type-tab[aria-pressed="true"] .ic { color: var(--gold-2); }
-.type-tab[aria-pressed="true"] em { background: rgba(255,255,255,.16); color: #fff; }
-
 .search-row { display: grid; gap: .7rem; grid-template-columns: 1fr; }
 @media (min-width: 720px) { .search-row { grid-template-columns: 1fr auto; } }
 .search-field {
@@ -357,44 +341,20 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .search-row .btn { flex: none; border-radius: 16px; }
 .search-row .btn svg { width: 1.1em; height: 1.1em; }
 
-.chip-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.15rem; align-items: center; }
-.chip-row__label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-mut); font-weight: 700; margin-right: .3rem; }
-.chip {
-  border: 1px solid var(--line); background: var(--paper); color: var(--text-soft);
-  padding: .5rem .9rem; border-radius: 999px; font-size: .85rem; font-weight: 600;
-  display: inline-flex; align-items: center; gap: .45rem; transition: all .16s ease;
+/* Refine — two compact dropdowns instead of scattered tabs/chips */
+.search-filters { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-top: .85rem; }
+@media (min-width: 640px) { .search-filters { grid-template-columns: 1fr 1fr; } }
+.select-field--filter { display: flex; align-items: center; }
+.select-field--filter .select-field__ic { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  width: 1.15rem; height: 1.15rem; color: var(--gold-deep); pointer-events: none; }
+.select-field--filter select {
+  width: 100%; padding: .85rem 2.4rem .85rem 2.7rem; border-radius: 14px;
+  border: 1px solid var(--line); background: var(--sand); color: var(--text);
+  font-size: .95rem; font-weight: 600; cursor: pointer;
+  transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
 }
-.chip .ic { width: 1.05rem; height: 1.05rem; color: var(--gold-deep); transition: color .15s ease; }
-.chip:hover { border-color: var(--gold); color: var(--ink); }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
-.chip[aria-pressed="true"] .ic { color: var(--gold-2); }
-.chip[aria-pressed="true"] .chip-x { opacity: 1; width: .8em; margin-left: .1rem; }
-.chip .chip-x { opacity: 0; width: 0; overflow: hidden; transition: opacity .15s; }
-
-/* Live results bar — real-time proof the tabs/search/refine chips filter */
-.search-results {
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-  margin-top: 1.25rem; padding: .85rem 1rem .85rem 1.2rem; border-radius: 16px;
-  background: linear-gradient(150deg, rgba(198,163,90,.14), rgba(198,163,90,.05));
-  border: 1px solid rgba(198,163,90,.35);
-}
-.search-results__count { font-size: 1rem; font-weight: 500; color: var(--ink-soft); display: inline-flex; align-items: baseline; gap: .4rem; }
-.search-results__count b { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--ink); line-height: 1; }
-.search-results__btn { flex: none; border-radius: 12px; padding: .6rem 1.15rem; font-size: .9rem; }
-.search-results__btn svg { width: 1.05em; height: 1.05em; }
-.search-results.is-empty {
-  background: linear-gradient(150deg, rgba(200,60,60,.1), rgba(200,60,60,.04));
-  border-color: rgba(200,60,60,.32);
-}
-.search-results.is-empty .search-results__count b { color: #b23b3b; }
-.search-results.is-empty .search-results__btn { display: none; }
-.search-results.pulse { animation: wahPulse .5s ease; }
-@keyframes wahPulse {
-  0% { transform: scale(1); }
-  35% { transform: scale(1.018); box-shadow: 0 10px 26px -14px rgba(198,163,90,.6); }
-  100% { transform: scale(1); }
-}
-@media (prefers-reduced-motion: reduce) { .search-results.pulse { animation: none; } }
+.select-field--filter select:hover { border-color: var(--gold); }
+.select-field--filter select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(198,163,90,.18); background: var(--paper); }
 
 .search-trust { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--line-2); }
 .search-trust span { display: inline-flex; align-items: center; gap: .5rem; font-size: .82rem; font-weight: 500; color: var(--text-soft); }
@@ -917,16 +877,12 @@ body.modal-open { overflow: hidden; }
    ===================================================================== */
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  /* Comfortable 44px+ tap targets for the refine controls */
-  .type-tab { padding: .72rem 1.05rem; }
-  .chip { padding: .62rem 1rem; }
-  .type-tabs, .chip-row { gap: .55rem; }
+  /* Comfortable tap targets for the refine dropdowns */
+  .select-field--filter select { padding-top: .95rem; padding-bottom: .95rem; }
   /* Stacked, full-width primary actions read better on a phone */
   .hslide__actions { gap: .6rem; }
   .hslide__actions .btn { flex: 1 1 100%; }
   .search-row .btn { width: 100%; padding: .95rem 1.7rem; }
-  .search-results { padding: .8rem .9rem; }
-  .search-results__btn { flex: 1 1 auto; justify-content: center; }
   /* Let long section headings breathe instead of cramping */
   .section-head p { font-size: 1rem; }
   .dir-toolbar { flex-wrap: wrap; gap: .8rem; }
@@ -935,7 +891,6 @@ body.modal-open { overflow: hidden; }
 /* Fine-tune the very small end (≤380px) so nothing feels cramped */
 @media (max-width: 380px) {
   :root { --gutter: 16px; }
-  .type-tab em { display: none; }
 }
 
 </style>
@@ -994,9 +949,6 @@ body.modal-open { overflow: hidden; }
       <p class="search-panel__hint">Destination · city · country · hotel or property name</p>
     </div>
 
-    <!-- Region — segmented tabs -->
-    <div class="type-tabs" id="type-tabs" role="group" aria-label="Filter by region"></div>
-
     <form id="search-form" class="search-row" role="search" autocomplete="off">
       <label class="search-field">
         <span class="visually-hidden">Search homes, villas and residences</span>
@@ -1009,15 +961,18 @@ body.modal-open { overflow: hidden; }
       </button>
     </form>
 
-    <div class="chip-row" id="feature-chips" role="group" aria-label="Refine by collection"></div>
-
-    <!-- Live results — updates as you type, tab, or refine -->
-    <div class="search-results" id="search-results" aria-live="polite">
-      <span class="search-results__count"><b id="search-count">271</b> <span id="search-count-label">stays match</span></span>
-      <button class="btn btn-primary search-results__btn" type="button" data-scroll="#directory" data-cta="search-view">
-        View stays
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-      </button>
+    <!-- Refine — compact dropdowns (populated in homes.js) -->
+    <div class="search-filters" role="group" aria-label="Refine your search">
+      <div class="select-field select-field--filter">
+        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/></svg>
+        <label class="visually-hidden" for="region-select">Filter by region</label>
+        <select id="region-select"></select>
+      </div>
+      <div class="select-field select-field--filter">
+        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+        <label class="visually-hidden" for="collection-select">Filter by collection</label>
+        <select id="collection-select"></select>
+      </div>
     </div>
 
     <div class="search-trust">
@@ -7426,7 +7381,6 @@ window.WAH_DETAILS = {
     var grid = $("#directory-grid");
     var count = $("#directory-count");
     if (count) count.innerHTML = "<b>" + list.length + "</b> " + (list.length === 1 ? "property" : "properties");
-    updateSearchCount(list.length);
     if (!grid) return;
     if (!list.length) {
       dirList = []; dirShown = 0; syncDirMore();
@@ -7729,61 +7683,40 @@ window.WAH_DETAILS = {
   }
 
   /* -----------------------------------------------------------------
-     Region tabs (single-select incl. "All") + collection/brand refine chips.
-     Both axes come straight from authoritative property data.
+     Refine — two compact dropdowns (Region + Collection), single-select.
+     Both option sets come straight from authoritative property data.
      ----------------------------------------------------------------- */
-  var REFINE_BRANDS = BRANDS.filter(function (b) { return b.count >= 3; }).slice(0, 8);
+  var REFINE_BRANDS = BRANDS.filter(function (b) { return b.count >= 2; });
 
   function buildFilters() {
-    // Region tabs
-    var tabs = $("#type-tabs");
-    if (tabs) {
-      var all = '<button class="type-tab" type="button" data-cat="" aria-pressed="true">' +
-                iconFor("all") + '<span>All stays</span><em>' + PROPS.length + '</em></button>';
-      tabs.innerHTML = all + REGIONS.map(function (c) {
-        return '<button class="type-tab" type="button" data-cat="' + c.key + '" aria-pressed="false">' +
-          iconFor(c.key) + '<span>' + esc(REGION_BADGE[c.key] || c.label) + '</span><em>' + c.count + '</em></button>';
-      }).join("");
-      $$(".type-tab", tabs).forEach(function (tab) {
-        tab.addEventListener("click", function () { setType(tab.getAttribute("data-cat")); });
-      });
+    var rsel = $("#region-select");
+    if (rsel) {
+      rsel.innerHTML = '<option value="">All regions · ' + PROPS.length + '</option>' +
+        REGIONS.map(function (c) { return '<option value="' + c.key + '">' + esc(c.label) + ' · ' + c.count + '</option>'; }).join("");
+      rsel.addEventListener("change", function () { setType(rsel.value); });
     }
-    // Brand / collection refine chips
-    var row = $("#feature-chips");
-    if (row) {
-      if (!REFINE_BRANDS.length) { row.innerHTML = ""; return; }
-      row.innerHTML = '<span class="chip-row__label">Collections</span>' + REFINE_BRANDS.map(function (b) {
-        return '<button class="chip" type="button" data-key="' + esc(b.label) + '" aria-pressed="false">' +
-          iconFor("collection") + esc(b.label) + '<span class="chip-x" aria-hidden="true">✕</span></button>';
-      }).join("");
-      $$(".chip", row).forEach(function (chip) {
-        chip.addEventListener("click", function () { toggleBrand(chip); });
-      });
+    var csel = $("#collection-select");
+    if (csel) {
+      csel.innerHTML = '<option value="">All collections</option>' +
+        REFINE_BRANDS.map(function (b) { return '<option value="' + esc(b.label) + '">' + esc(b.label) + ' · ' + b.count + '</option>'; }).join("");
+      csel.addEventListener("change", function () { setBrand(csel.value); });
     }
   }
   function setType(cat) {
     state.cats = cat ? [cat] : [];
     syncControls();
-    if (cat) track("filter_selected", { filter_type: "region", filter_value: cat, source: "tab" });
+    if (cat) track("filter_selected", { filter_type: "region", filter_value: cat, source: "dropdown" });
     renderDirectory();
   }
-  function toggleBrand(chip) {
-    var key = chip.getAttribute("data-key");
-    var i = state.brands.indexOf(key);
-    var on;
-    if (i === -1) { state.brands.push(key); on = true; } else { state.brands.splice(i, 1); on = false; }
-    chip.setAttribute("aria-pressed", on);
-    if (on) track("filter_selected", { filter_type: "collection", filter_value: key, source: "chip" });
+  function setBrand(val) {
+    state.brands = val ? [val] : [];
+    syncControls();
+    if (val) track("filter_selected", { filter_type: "collection", filter_value: val, source: "dropdown" });
     renderDirectory();
   }
   function syncControls() {
-    var cur = state.cats[0] || "";
-    $$("#type-tabs .type-tab").forEach(function (tab) {
-      tab.setAttribute("aria-pressed", tab.getAttribute("data-cat") === cur);
-    });
-    $$("#feature-chips .chip").forEach(function (chip) {
-      chip.setAttribute("aria-pressed", state.brands.indexOf(chip.getAttribute("data-key")) !== -1);
-    });
+    var rsel = $("#region-select"); if (rsel) rsel.value = state.cats[0] || "";
+    var csel = $("#collection-select"); if (csel) csel.value = state.brands[0] || "";
   }
 
   function clearAll() {
@@ -7829,21 +7762,6 @@ window.WAH_DETAILS = {
       track("filter_selected", { filter_type: "sort", filter_value: sort.value });
       renderDirectory();
     });
-  }
-
-  /* Live results counter in the search panel — proves the type tabs, search
-     and refine chips are actually filtering (updated from renderDirectory). */
-  var lastCount = -1;
-  function updateSearchCount(n) {
-    var el = $("#search-count"), label = $("#search-count-label"), bar = $("#search-results");
-    if (!el) return;
-    el.textContent = n;
-    if (label) label.textContent = n === 1 ? "stay matches" : "stays match";
-    if (bar) {
-      bar.classList.toggle("is-empty", n === 0);
-      if (n !== lastCount) { bar.classList.remove("pulse"); void bar.offsetWidth; bar.classList.add("pulse"); }
-    }
-    lastCount = n;
   }
 
   /* Typewriter placeholder — cycles example searches until the field is used. */

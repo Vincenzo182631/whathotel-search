@@ -78,9 +78,6 @@
       <p class="search-panel__hint">Destination · city · country · hotel or property name</p>
     </div>
 
-    <!-- Region — segmented tabs -->
-    <div class="type-tabs" id="type-tabs" role="group" aria-label="Filter by region"></div>
-
     <form id="search-form" class="search-row" role="search" autocomplete="off">
       <label class="search-field">
         <span class="visually-hidden">Search homes, villas and residences</span>
@@ -93,15 +90,18 @@
       </button>
     </form>
 
-    <div class="chip-row" id="feature-chips" role="group" aria-label="Refine by collection"></div>
-
-    <!-- Live results — updates as you type, tab, or refine -->
-    <div class="search-results" id="search-results" aria-live="polite">
-      <span class="search-results__count"><b id="search-count">271</b> <span id="search-count-label">stays match</span></span>
-      <button class="btn btn-primary search-results__btn" type="button" data-scroll="#directory" data-cta="search-view">
-        View stays
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-      </button>
+    <!-- Refine — compact dropdowns (populated in homes.js) -->
+    <div class="search-filters" role="group" aria-label="Refine your search">
+      <div class="select-field select-field--filter">
+        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/></svg>
+        <label class="visually-hidden" for="region-select">Filter by region</label>
+        <select id="region-select"></select>
+      </div>
+      <div class="select-field select-field--filter">
+        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+        <label class="visually-hidden" for="collection-select">Filter by collection</label>
+        <select id="collection-select"></select>
+      </div>
     </div>
 
     <div class="search-trust">
