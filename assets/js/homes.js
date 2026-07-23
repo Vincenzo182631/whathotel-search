@@ -497,8 +497,11 @@
   // data: the property's collection, city/country/region and its own
   // WhataHotel description. Nothing about the accommodation is invented.
   var HERO_IDS = [
-    3879, // Ritz-Carlton Residences at Dorado Beach
+    // ---- HERO (first three, shown in this exact order) ----
     3133, // Four Seasons Resort Anguilla
+    3879, // Ritz-Carlton Residences at Dorado Beach
+    952,  // Hotel Arts Barcelona
+    // ---- FEATURED gallery (the rest) ----
     1354, // Four Seasons Resort Whistler
     2390, // Four Seasons Resort Vail
     6084, // Ritz-Carlton Residences, Orlando
@@ -516,7 +519,6 @@
     2545, // Mandarin Oriental, Canouan
     4746, // Four Seasons Resort Tamarindo
     1532, // Amanpulo
-    952,  // Hotel Arts Barcelona
     1422, // Four Seasons Resort Nevis
     2174, // Grand Hotel des Bains Kempinski St. Moritz
     956,  // Grace Bay Club
