@@ -322,14 +322,41 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   .hero-controls { width: calc(100% - 2 * var(--gutter)); }
 }
 @media (max-width: 640px) {
-  .hero { min-height: 680px; }
-  .hslide__content { padding: 56px 0 172px; }
+  .hero { min-height: 786px; }
+  .hslide__content { padding: 52px 0 300px; }
   .hslide__title { font-size: clamp(1.9rem, 8.4vw, 2.7rem); }
-  .hslide__desc { -webkit-line-clamp: 2; margin-bottom: 1.2rem; }
-  .hero-controls { bottom: 88px; }
+  .hslide__desc { -webkit-line-clamp: 2; margin-bottom: 1.1rem; }
+  .hero-controls { bottom: 74px; }
   .hero-arrow { width: 46px; height: 46px; }
   .hero-line { width: clamp(60px, 22vw, 120px); }
+
+  /* Show the 3 "upcoming" deck cards on mobile too — as a flat equal-width
+     row in the empty band below the buttons and above the controls. No fan
+     or rotation here so they sit flush and never overlap. */
+  .hero-deck {
+    display: flex; position: absolute; left: var(--gutter); right: var(--gutter);
+    bottom: 146px; top: auto; transform: none;
+    justify-content: center; align-items: stretch; gap: 9px; z-index: 6;
+  }
+  .hero-deck__card {
+    flex: 1 1 0; width: auto; min-width: 0; margin-left: 0;
+    aspect-ratio: 3 / 3.7; border-radius: 14px;
+    box-shadow: 0 16px 34px -18px rgba(0,0,0,.75);
+  }
+  /* Flat resting positions (override the desktop fan) + a gentle staggered
+     slide-in from the right; images stay fully visible (no fade). */
+  .hero-deck__card:nth-child(1),
+  .hero-deck__card:nth-child(2),
+  .hero-deck__card:nth-child(3) {
+    transform: none;
+    animation: deckSlideM .6s cubic-bezier(.16,.84,.28,1) backwards;
+    animation-delay: calc(var(--k, 0) * .1s);
+  }
+  .hero-deck__meta { left: 9px; right: 9px; bottom: 9px; }
+  .hero-deck__loc { font-size: .56rem; }
+  .hero-deck__title { font-size: .72rem; -webkit-line-clamp: 2; }
 }
+@keyframes deckSlideM { from { transform: translateX(34px); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   .hslide { transition: opacity .3s ease; }
   .hslide, .hslide.is-enter, .hslide.is-prev,
@@ -338,8 +365,18 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
   .hslide.is-active .hslide__title,
   .hslide.is-active .hslide__desc,
   .hslide.is-active .hslide__actions { animation: none; opacity: 1; transform: none; }
-  .hero-deck { transition: none; transform: translateY(-46%); opacity: 1; }
+  .hero-deck { transition: none; opacity: 1; }
   .hero-deck__card { transition: none; animation: none; }
+}
+/* Desktop deck keeps its vertical-centering transform under reduced motion;
+   mobile keeps its own bottom-anchored layout (transform: none). */
+@media (prefers-reduced-motion: reduce) and (min-width: 1024px) {
+  .hero-deck { transform: translateY(-46%); }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 640px) {
+  .hero-deck__card:nth-child(1),
+  .hero-deck__card:nth-child(2),
+  .hero-deck__card:nth-child(3) { animation: none; transform: none; }
 }
 
 /* ---------- Search panel ---------- */
