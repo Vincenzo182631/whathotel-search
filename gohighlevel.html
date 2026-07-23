@@ -625,34 +625,26 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .pcard__media .scene-svg, .cat-card .scene-svg, .scene-card .scene-svg { position:absolute; inset:0; width:100%; height:100%; }
 
 /* ---------- Video ---------- */
-.video-sec { background: linear-gradient(160deg, var(--ink), #0a1826); color: var(--on-dark); }
+/* Full-bleed video section: the video is the whole section background, with
+   the heading + CTA overlaid. No boxed player, no click-to-play button. */
+.video-sec {
+  position: relative; overflow: hidden; color: var(--on-dark);
+  background: linear-gradient(160deg, var(--ink), #0a1826);
+  min-height: clamp(460px, 82vh, 760px);
+  display: flex; align-items: center;
+}
+.video-scene, .video-bg, .video-scrim { position: absolute; inset: 0; z-index: 0; }
+.video-scene .scene-svg { width: 100%; height: 100%; }
+.video-bg { width: 100%; height: 100%; object-fit: cover; border: 0; opacity: 0; transition: opacity .8s ease; }
+.video-bg.is-playing { opacity: 1; }
+/* Cinematic scrim so the overlaid copy stays legible over any footage. */
+.video-scrim { z-index: 1; background:
+  linear-gradient(180deg, rgba(6,16,28,.55) 0%, rgba(6,16,28,.30) 40%, rgba(6,16,28,.72) 100%),
+  radial-gradient(120% 80% at 50% 50%, transparent 45%, rgba(6,16,28,.45) 100%); }
+.video-overlay { position: relative; z-index: 2; width: 100%; text-align: center; }
+.video-sec .section-head { margin-bottom: 0; }
 .video-sec .section-head h2 { color: #fff; }
 .video-sec .section-head p { color: var(--on-dark-sf); }
-.video-frame {
-  position: relative; max-width: 940px; margin: 0 auto; border-radius: var(--radius-lg);
-  overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,.12);
-  aspect-ratio: 16 / 9; background: #06101c;
-}
-.video-frame iframe, .video-frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-poster { position: absolute; inset: 0; cursor: pointer; z-index: 2; }
-.video-poster .scene-svg { position:absolute; inset:0; }
-.video-poster::after { content:""; position:absolute; inset:0; background: rgba(6,16,28,.34); }
-.video-play {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3;
-  width: 84px; height: 84px; border-radius: 50%; border: none;
-  background: linear-gradient(135deg, var(--gold-2), var(--gold)); color: #2a2008;
-  display: grid; place-items: center; box-shadow: 0 16px 40px -10px rgba(0,0,0,.5);
-  transition: transform .2s ease;
-}
-.video-poster:hover .video-play { transform: translate(-50%,-50%) scale(1.07); }
-.video-play svg { width: 30px; height: 30px; margin-left: 4px; }
-/* ambient pulse rings around the play button */
-.video-play::before, .video-play::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold-2); opacity: 0; animation: vpulse 2.8s ease-out infinite; }
-.video-play::after { animation-delay: 1.4s; }
-@keyframes vpulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.85); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .video-play::before, .video-play::after { display: none; } }
-.video-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 1.4rem; color: #fff; background: linear-gradient(0deg, rgba(6,16,28,.8), transparent); }
-.video-cap b { font-family: var(--serif); font-size: 1.3rem; display: block; }
 .video-actions { text-align: center; margin-top: 2rem; }
 
 /* ---------- How it works ---------- */
@@ -1185,28 +1177,22 @@ body.modal-open { overflow: hidden; }
 </section>
 
 <!-- ============================ VIDEO ============================ -->
+<!--
+  Full-bleed video section. The video autoplays muted + looping as the whole
+  section background (no click-to-play player). It is lazy-loaded: the src is
+  set from data-src only when the section scrolls into view, so it never slows
+  the initial page load. Swap the WhataHotel Homes video by editing data-src.
+-->
 <section class="section video-sec" id="video">
-  <div class="wrap">
+  <div class="scene video-scene" data-scene="tropical"></div>
+  <video class="video-bg" id="video-bg" muted loop playsinline preload="none" aria-hidden="true"
+         data-src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a606d5dfd944475982125f4.mp4"></video>
+  <div class="video-scrim"></div>
+  <div class="wrap video-overlay">
     <div class="section-head reveal">
       <span class="eyebrow center on-dark">See the space</span>
       <h2>Step inside a home away from home</h2>
-      <p>There's nothing like room to breathe. Press play to see what a residential-style stay really feels like.</p>
-    </div>
-    <!--
-      Configure the video by setting one of these on #video-frame:
-        data-embed="https://www.youtube.com/embed/VIDEO_ID"   (YouTube/Vimeo)
-        data-src="assets/media/homes.mp4"                     (self-hosted)
-      The video is lazy-loaded only when the visitor clicks play, so it never
-      slows the initial page load. Drop in WhataHotel's existing Homes video here.
-    -->
-    <div class="video-frame reveal" id="video-frame" data-src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a606d5dfd944475982125f4.mp4">
-      <div class="video-poster" id="video-poster" role="button" tabindex="0" aria-label="Play the Homes video">
-        <div class="scene" data-scene="tropical"></div>
-        <button class="video-play" type="button" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div class="video-cap"><b>Homes, Villas &amp; Residences</b>Space, comfort and resort living — around the world.</div>
-      </div>
+      <p>There's nothing like room to breathe — see what a residential-style stay really feels like.</p>
     </div>
     <div class="video-actions">
       <a class="btn btn-primary btn-lg" href="#directory" data-scroll="#directory" data-cta="video-explore">Explore available homes</a>
@@ -8151,37 +8137,45 @@ window.WAH_DETAILS = {
   }
 
   /* -----------------------------------------------------------------
-     Video — lazy load only on demand (page-speed friendly).
-     Configure the source on #video-frame via data-embed (YouTube/Vimeo
-     URL) or data-src (self-hosted mp4). Falls back to a poster CTA.
+     Full-bleed video section — the video IS the section background.
+     Lazy-loaded: the src is set from data-src and playback starts only
+     when the section scrolls into view (page-speed friendly), then plays
+     muted + looping. Pauses when scrolled out of view. Honors
+     prefers-reduced-motion (loads the poster frame but does not autoplay).
      ----------------------------------------------------------------- */
   function wireVideo() {
-    var poster = $("#video-poster");
-    var frame = $("#video-frame");
-    if (!poster || !frame) return;
-    poster.addEventListener("click", function () {
-      var embed = frame.getAttribute("data-embed");
-      var src = frame.getAttribute("data-src");
-      var node;
-      if (embed) {
-        node = document.createElement("iframe");
-        node.src = embed + (embed.indexOf("?") === -1 ? "?" : "&") + "autoplay=1&rel=0";
-        node.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        node.setAttribute("allowfullscreen", "");
-        node.title = "WhataHotel Homes, Villas & Residences";
-      } else if (src) {
-        node = document.createElement("video");
-        node.src = src; node.controls = true; node.autoplay = true; node.playsInline = true;
-      }
-      if (node) {
-        poster.replaceWith(node);
-        track("video_played", { location: "homes_video_section" });
-      } else {
-        // No source configured yet — take the traveler to the directory.
-        track("video_played", { location: "homes_video_section", note: "no_source" });
-        scrollToDirectory();
-      }
-    });
+    var vid = $("#video-bg");
+    if (!vid) return;
+    var src = vid.getAttribute("data-src");
+    if (!src) return;
+    var reduce = prefersReduced();
+    var loaded = false, tracked = false;
+
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      vid.src = src;
+      vid.muted = true;                 // required for autoplay
+      vid.addEventListener("playing", function () { vid.classList.add("is-playing"); }, { once: true });
+      vid.addEventListener("loadeddata", function () { vid.classList.add("is-playing"); }, { once: true });
+      if (reduce) { vid.controls = true; vid.load(); }  // no autoplay; let user play
+    }
+    function play() {
+      if (reduce) return;
+      load();
+      var pr = vid.play();
+      if (pr && pr.catch) pr.catch(function () {});
+      if (!tracked) { tracked = true; track("video_played", { location: "homes_video_section", mode: "autoplay" }); }
+    }
+
+    if (!("IntersectionObserver" in window)) { play(); return; }
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { play(); }
+        else if (loaded && !reduce && !vid.paused) { vid.pause(); }
+      });
+    }, { threshold: 0.25 });
+    vio.observe(vid);
   }
 
   /* -----------------------------------------------------------------

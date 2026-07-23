@@ -300,28 +300,22 @@
 </section>
 
 <!-- ============================ VIDEO ============================ -->
+<!--
+  Full-bleed video section. The video autoplays muted + looping as the whole
+  section background (no click-to-play player). It is lazy-loaded: the src is
+  set from data-src only when the section scrolls into view, so it never slows
+  the initial page load. Swap the WhataHotel Homes video by editing data-src.
+-->
 <section class="section video-sec" id="video">
-  <div class="wrap">
+  <div class="scene video-scene" data-scene="tropical"></div>
+  <video class="video-bg" id="video-bg" muted loop playsinline preload="none" aria-hidden="true"
+         data-src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a606d5dfd944475982125f4.mp4"></video>
+  <div class="video-scrim"></div>
+  <div class="wrap video-overlay">
     <div class="section-head reveal">
       <span class="eyebrow center on-dark">See the space</span>
       <h2>Step inside a home away from home</h2>
-      <p>There's nothing like room to breathe. Press play to see what a residential-style stay really feels like.</p>
-    </div>
-    <!--
-      Configure the video by setting one of these on #video-frame:
-        data-embed="https://www.youtube.com/embed/VIDEO_ID"   (YouTube/Vimeo)
-        data-src="assets/media/homes.mp4"                     (self-hosted)
-      The video is lazy-loaded only when the visitor clicks play, so it never
-      slows the initial page load. Drop in WhataHotel's existing Homes video here.
-    -->
-    <div class="video-frame reveal" id="video-frame" data-src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a606d5dfd944475982125f4.mp4">
-      <div class="video-poster" id="video-poster" role="button" tabindex="0" aria-label="Play the Homes video">
-        <div class="scene" data-scene="tropical"></div>
-        <button class="video-play" type="button" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div class="video-cap"><b>Homes, Villas &amp; Residences</b>Space, comfort and resort living — around the world.</div>
-      </div>
+      <p>There's nothing like room to breathe — see what a residential-style stay really feels like.</p>
     </div>
     <div class="video-actions">
       <a class="btn btn-primary btn-lg" href="#directory" data-scroll="#directory" data-cta="video-explore">Explore available homes</a>

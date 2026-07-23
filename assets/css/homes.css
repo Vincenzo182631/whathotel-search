@@ -585,34 +585,26 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .pcard__media .scene-svg, .cat-card .scene-svg, .scene-card .scene-svg { position:absolute; inset:0; width:100%; height:100%; }
 
 /* ---------- Video ---------- */
-.video-sec { background: linear-gradient(160deg, var(--ink), #0a1826); color: var(--on-dark); }
+/* Full-bleed video section: the video is the whole section background, with
+   the heading + CTA overlaid. No boxed player, no click-to-play button. */
+.video-sec {
+  position: relative; overflow: hidden; color: var(--on-dark);
+  background: linear-gradient(160deg, var(--ink), #0a1826);
+  min-height: clamp(460px, 82vh, 760px);
+  display: flex; align-items: center;
+}
+.video-scene, .video-bg, .video-scrim { position: absolute; inset: 0; z-index: 0; }
+.video-scene .scene-svg { width: 100%; height: 100%; }
+.video-bg { width: 100%; height: 100%; object-fit: cover; border: 0; opacity: 0; transition: opacity .8s ease; }
+.video-bg.is-playing { opacity: 1; }
+/* Cinematic scrim so the overlaid copy stays legible over any footage. */
+.video-scrim { z-index: 1; background:
+  linear-gradient(180deg, rgba(6,16,28,.55) 0%, rgba(6,16,28,.30) 40%, rgba(6,16,28,.72) 100%),
+  radial-gradient(120% 80% at 50% 50%, transparent 45%, rgba(6,16,28,.45) 100%); }
+.video-overlay { position: relative; z-index: 2; width: 100%; text-align: center; }
+.video-sec .section-head { margin-bottom: 0; }
 .video-sec .section-head h2 { color: #fff; }
 .video-sec .section-head p { color: var(--on-dark-sf); }
-.video-frame {
-  position: relative; max-width: 940px; margin: 0 auto; border-radius: var(--radius-lg);
-  overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(255,255,255,.12);
-  aspect-ratio: 16 / 9; background: #06101c;
-}
-.video-frame iframe, .video-frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video-poster { position: absolute; inset: 0; cursor: pointer; z-index: 2; }
-.video-poster .scene-svg { position:absolute; inset:0; }
-.video-poster::after { content:""; position:absolute; inset:0; background: rgba(6,16,28,.34); }
-.video-play {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 3;
-  width: 84px; height: 84px; border-radius: 50%; border: none;
-  background: linear-gradient(135deg, var(--gold-2), var(--gold)); color: #2a2008;
-  display: grid; place-items: center; box-shadow: 0 16px 40px -10px rgba(0,0,0,.5);
-  transition: transform .2s ease;
-}
-.video-poster:hover .video-play { transform: translate(-50%,-50%) scale(1.07); }
-.video-play svg { width: 30px; height: 30px; margin-left: 4px; }
-/* ambient pulse rings around the play button */
-.video-play::before, .video-play::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--gold-2); opacity: 0; animation: vpulse 2.8s ease-out infinite; }
-.video-play::after { animation-delay: 1.4s; }
-@keyframes vpulse { 0% { transform: scale(1); opacity: .55; } 100% { transform: scale(1.85); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .video-play::before, .video-play::after { display: none; } }
-.video-cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 1.4rem; color: #fff; background: linear-gradient(0deg, rgba(6,16,28,.8), transparent); }
-.video-cap b { font-family: var(--serif); font-size: 1.3rem; display: block; }
 .video-actions { text-align: center; margin-top: 2rem; }
 
 /* ---------- How it works ---------- */

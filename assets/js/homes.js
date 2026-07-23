@@ -1065,37 +1065,45 @@
   }
 
   /* -----------------------------------------------------------------
-     Video — lazy load only on demand (page-speed friendly).
-     Configure the source on #video-frame via data-embed (YouTube/Vimeo
-     URL) or data-src (self-hosted mp4). Falls back to a poster CTA.
+     Full-bleed video section — the video IS the section background.
+     Lazy-loaded: the src is set from data-src and playback starts only
+     when the section scrolls into view (page-speed friendly), then plays
+     muted + looping. Pauses when scrolled out of view. Honors
+     prefers-reduced-motion (loads the poster frame but does not autoplay).
      ----------------------------------------------------------------- */
   function wireVideo() {
-    var poster = $("#video-poster");
-    var frame = $("#video-frame");
-    if (!poster || !frame) return;
-    poster.addEventListener("click", function () {
-      var embed = frame.getAttribute("data-embed");
-      var src = frame.getAttribute("data-src");
-      var node;
-      if (embed) {
-        node = document.createElement("iframe");
-        node.src = embed + (embed.indexOf("?") === -1 ? "?" : "&") + "autoplay=1&rel=0";
-        node.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        node.setAttribute("allowfullscreen", "");
-        node.title = "WhataHotel Homes, Villas & Residences";
-      } else if (src) {
-        node = document.createElement("video");
-        node.src = src; node.controls = true; node.autoplay = true; node.playsInline = true;
-      }
-      if (node) {
-        poster.replaceWith(node);
-        track("video_played", { location: "homes_video_section" });
-      } else {
-        // No source configured yet — take the traveler to the directory.
-        track("video_played", { location: "homes_video_section", note: "no_source" });
-        scrollToDirectory();
-      }
-    });
+    var vid = $("#video-bg");
+    if (!vid) return;
+    var src = vid.getAttribute("data-src");
+    if (!src) return;
+    var reduce = prefersReduced();
+    var loaded = false, tracked = false;
+
+    function load() {
+      if (loaded) return;
+      loaded = true;
+      vid.src = src;
+      vid.muted = true;                 // required for autoplay
+      vid.addEventListener("playing", function () { vid.classList.add("is-playing"); }, { once: true });
+      vid.addEventListener("loadeddata", function () { vid.classList.add("is-playing"); }, { once: true });
+      if (reduce) { vid.controls = true; vid.load(); }  // no autoplay; let user play
+    }
+    function play() {
+      if (reduce) return;
+      load();
+      var pr = vid.play();
+      if (pr && pr.catch) pr.catch(function () {});
+      if (!tracked) { tracked = true; track("video_played", { location: "homes_video_section", mode: "autoplay" }); }
+    }
+
+    if (!("IntersectionObserver" in window)) { play(); return; }
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { play(); }
+        else if (loaded && !reduce && !vid.paused) { vid.pause(); }
+      });
+    }, { threshold: 0.25 });
+    vio.observe(vid);
   }
 
   /* -----------------------------------------------------------------
