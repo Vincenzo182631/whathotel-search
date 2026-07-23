@@ -287,6 +287,19 @@
       'onload="this.classList.add(\'is-loaded\')" ' +
       'onerror="if(this.dataset.fb){this.remove()}else{this.dataset.fb=1;this.src=this.dataset.raw}">';
   }
+  // Hero <img> that loads lazily via data-src (no src yet), so the carousel
+  // can keep only a few slides decoded at a time (see hydrateHeroWindow) —
+  // essential on iOS Safari, which reloads/"crashes" a tab when the 25 hero
+  // images all stay decoded at once.
+  function heroImgTag(p, width, extra) {
+    var raw = rawImageFor(p);
+    if (!raw) return "";
+    var alt = esc(p.name) + (p.loc ? ", " + esc(p.loc) : "");
+    return '<img class="hslide__photo" data-src="' + optImg(raw, width) + '" data-raw="' + esc(raw) + '" ' +
+      'alt="' + alt + '" ' + (extra || "") + ' decoding="async" ' +
+      'onload="this.classList.add(\'is-loaded\')" ' +
+      'onerror="if(this.dataset.fb){this.removeAttribute(\'src\')}else{this.dataset.fb=1;this.src=this.dataset.raw}">';
+  }
   // Representative property (with an image) for a region card.
   function categoryPick(catKey) {
     var list = PROPS.filter(function (p) { return propMatchesCat(p, catKey); });
@@ -540,7 +553,7 @@
       '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + hero.slides.length + '">' +
         '<div class="hslide__media">' +
           '<div class="hslide__skel" aria-hidden="true"></div>' +
-          imgTag(p, HERO_IMG_W, "hslide__photo", (i === 0 ? 'fetchpriority="high"' : 'loading="lazy"')) +
+          heroImgTag(p, HERO_IMG_W, (i === 0 ? 'fetchpriority="high"' : '')) +
         '</div>' +
         '<div class="hslide__scrim"></div>' +
         '<div class="wrap hslide__inner">' +
@@ -596,9 +609,31 @@
     var first = $$("#hero-carousel .hslide")[0];
     if (first) { first.classList.add("is-active"); first.setAttribute("aria-hidden", "false"); }
     var num0 = $("#hero-bignum"); if (num0) num0.textContent = pad(1);
+    hydrateHeroWindow(0);
     renderHeroDeck(0);
     setBar(0);
     if (!prefersReduced()) startAuto();
+  }
+
+  /* Keep only the current hero slide and its immediate neighbours loaded;
+     release the rest so iOS Safari's per-tab image memory stays bounded. */
+  var HERO_WINDOW = 1;
+  function hydrateHeroWindow(center) {
+    var slides = $$("#hero-carousel .hslide");
+    var n = slides.length;
+    if (!n) return;
+    for (var i = 0; i < n; i++) {
+      var img = slides[i].querySelector(".hslide__photo");
+      if (!img) continue;
+      var d = Math.min((i - center + n) % n, (center - i + n) % n); // wrap-aware distance
+      if (d <= HERO_WINDOW) {
+        if (!img.getAttribute("src") && img.getAttribute("data-src")) img.src = img.getAttribute("data-src");
+      } else if (img.getAttribute("src")) {
+        // release the decoded bitmap; skeleton returns until it re-hydrates
+        img.removeAttribute("src");
+        img.classList.remove("is-loaded");
+      }
+    }
   }
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
@@ -639,6 +674,7 @@
     });
 
     hero.i = newI;
+    hydrateHeroWindow(newI);
     var num = $("#hero-bignum"); if (num) num.textContent = pad(hero.i + 1);
     renderHeroDeck(hero.i);
     hero.elapsed = 0; hero.start = 0;
@@ -1080,7 +1116,12 @@
     if (!vid) return;
     var src = vid.getAttribute("data-src");
     if (!src) return;
-    var reduce = prefersReduced();
+    // On phones, don't continuously autoplay/decode a full-bleed video —
+    // combined with the hero it pushes iOS Safari past its memory limit and
+    // reloads/"crashes" the tab. Show the poster frame with controls instead
+    // (same path as reduced-motion); desktop keeps the autoplay video.
+    var narrow = (window.innerWidth || 1024) <= 820;
+    var reduce = prefersReduced() || narrow;
     var loaded = false, tracked = false;
 
     function load() {
