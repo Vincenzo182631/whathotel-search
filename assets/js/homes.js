@@ -621,11 +621,12 @@
     hydrateHeroWindow(0);
     renderHeroDeck(0);
     setBar(0);
-    // Don't auto-advance on phones: the every-few-seconds image decode churn,
-    // on top of GHL's heavy shell, is what tips iOS Safari over its memory
-    // limit a moment after load. The hero is still fully swipeable/arrow-nav.
-    var heroNarrow = (window.innerWidth || 1024) <= 820;
-    if (!prefersReduced() && !heroNarrow) startAuto();
+    // Autoplay is OFF by default. Auto-advancing decodes a new hero image (plus
+    // 3 deck images) every few seconds forever; on iOS Safari inside GHL's heavy
+    // shell that non-stop churn fills memory and reloads/"crashes" the tab. The
+    // hero is still fully swipeable, arrow- and deck-navigable. To re-enable on
+    // desktop only, set window.WAH_HERO_AUTOPLAY = true before this script runs.
+    if (window.WAH_HERO_AUTOPLAY && !prefersReduced()) startAuto();
   }
 
   /* Keep only the current hero slide and its immediate neighbours loaded;
