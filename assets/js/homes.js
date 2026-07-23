@@ -498,14 +498,14 @@
   // WhataHotel description. Nothing about the accommodation is invented.
   var HERO_IDS = [
     // ---- HERO (first three, shown in this exact order) ----
-    3133, // Four Seasons Resort Anguilla
+    3133, // Four Seasons Residences, Anguilla
     3879, // Ritz-Carlton Residences at Dorado Beach
-    952,  // Hotel Arts Barcelona
+    2706, // Andaz Maui at Wailea Villas
     // ---- FEATURED gallery (the rest) ----
     1354, // Four Seasons Resort Whistler
     2390, // Four Seasons Resort Vail
     6084, // Ritz-Carlton Residences, Orlando
-    2706, // Andaz Maui at Wailea
+    952,  // Hotel Arts Barcelona
     1569, // Montage Palmetto Bluff
     1325, // Four Seasons Resort Jackson Hole
     1271, // Four Seasons Resort Costa Rica

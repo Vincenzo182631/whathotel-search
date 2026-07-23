@@ -566,7 +566,7 @@ window.WAH_PROPERTIES = [
   {
     "id": 2706,
     "url": "https://whatahotel.com/hotels/2706/andaz-maui-at-wailea.html",
-    "name": "Andaz Maui at Wailea",
+    "name": "Andaz Maui at Wailea Villas",
     "loc": "Maui, United States",
     "city": "Maui",
     "country": "United States",
@@ -1316,7 +1316,7 @@ window.WAH_PROPERTIES = [
   {
     "id": 3133,
     "url": "https://whatahotel.com/hotels/3133/four-seasons-resort-anguilla-.html",
-    "name": "Four Seasons Resort Anguilla",
+    "name": "Four Seasons Residences, Anguilla",
     "loc": "Anguilla, Anguilla",
     "city": "Anguilla",
     "country": "Anguilla",
