@@ -594,10 +594,34 @@
     var q = function (sel) { return root.querySelector(sel); };
     var qa = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
 
+    // Supporting-card deck (hero only). Rendered ONCE — the same 3 cards are
+    // repositioned by slot class on every navigation, so no image is ever
+    // re-decoded (memory stays bounded; this is what keeps the deck iOS-safe).
+    function deckHTML() {
+      if (!cfg.deck) return "";
+      return '<div class="hero-cards" aria-hidden="true">' +
+        st.slides.map(function (s, j) {
+          var p = s.p, raw = rawImageFor(p);
+          var img = raw
+            ? '<img class="hcard__img" src="' + optImg(raw, 520) + '" data-raw="' + esc(raw) + '" alt="" decoding="async" ' +
+              'onload="this.classList.add(\'is-loaded\')" onerror="if(this.dataset.fb){this.remove()}else{this.dataset.fb=1;this.src=this.dataset.raw}">'
+            : '';
+          return '<button class="hcard" type="button" tabindex="-1" data-i="' + j + '" data-slot="' + j + '" aria-label="Show ' + esc(p.name) + '">' +
+            '<span class="hcard__media">' + img + '<span class="hcard__grad"></span></span>' +
+            '<span class="hcard__meta">' +
+              '<span class="hcard__loc">' + esc(p.loc || p.region) + '</span>' +
+              '<span class="hcard__name">' + esc(p.name) + '</span>' +
+            '</span>' +
+          '</button>';
+        }).join("") +
+      '</div>';
+    }
+
     root.innerHTML =
       '<div class="hero-track">' +
         st.slides.map(function (s, i) { return slideHTML(s, i, IMG_W, cfg.priority); }).join("") +
       '</div>' +
+      deckHTML() +
       '<div class="wrap hero-controls">' +
         '<div class="hero-nav">' +
           '<button class="hero-arrow hero-prev" type="button" aria-label="Previous property">' + ARROW_PREV + '</button>' +
@@ -606,6 +630,28 @@
         '</div>' +
         '<div class="hero-bignum" aria-hidden="true">01</div>' +
       '</div>';
+
+    // Reposition the supporting cards for the given active index. Slot 0 = the
+    // property currently shown large (its card hides); slots 1 & 2 = the next
+    // properties, sliding right-to-left as you advance. The card recycling from
+    // the hidden slot has its transform transition suppressed for one frame so
+    // it re-enters from the right instead of streaking across.
+    function positionDeck(activeI) {
+      if (!cfg.deck) return;
+      var cards = qa(".hcard"), n = st.slides.length;
+      cards.forEach(function (card) {
+        var j = +card.getAttribute("data-i");
+        var slot = (((j - activeI) % n) + n) % n;
+        var prev = card.getAttribute("data-slot");
+        if (prev === "0" && slot !== 0) {
+          card.classList.add("hcard--recycle");           // jump into place, invisible
+          card.setAttribute("data-slot", String(slot));
+          requestAnimationFrame(function () { requestAnimationFrame(function () { card.classList.remove("hcard--recycle"); }); });
+        } else {
+          card.setAttribute("data-slot", String(slot));
+        }
+      });
+    }
 
     function setBar(pp) { var b = q(".hero-line__fill"); if (b) b.style.width = (pp * 100).toFixed(2) + "%"; }
 
@@ -638,7 +684,7 @@
       }
       nxt.classList.add("is-enter"); nxt.classList.add("is-active"); nxt.setAttribute("aria-hidden", "false");
       requestAnimationFrame(function () { requestAnimationFrame(function () { nxt.classList.remove("is-enter"); }); });
-      st.i = newI; hydrate(newI);
+      st.i = newI; hydrate(newI); positionDeck(newI);
       var num = q(".hero-bignum"); if (num) num.textContent = pad(st.i + 1);
       st.elapsed = 0; st.start = 0; setBar(0);
       if (userInitiated) track("hero_slide_change", { property_id: st.slides[st.i].p.id, property_name: st.slides[st.i].p.name, source: cfg.label || "hero" });
@@ -679,10 +725,21 @@
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(st.i + (dx < 0 ? 1 : -1), true, dx < 0 ? 1 : -1);
     }, { passive: true });
 
-    // Init: activate slide 0, load its window.
+    // Clicking a supporting card jumps the showcase to that property.
+    if (cfg.deck) {
+      qa(".hcard").forEach(function (card) {
+        card.addEventListener("click", function () {
+          var j = +card.getAttribute("data-i"), n = st.slides.length;
+          if (j === st.i) return;
+          go(j, true, ((j - st.i + n) % n) === 1 ? 1 : -1);
+        });
+      });
+    }
+
+    // Init: activate slide 0, load its window, seat the deck.
     var first = qa(".hslide")[0];
     if (first) { first.classList.add("is-active"); first.setAttribute("aria-hidden", "false"); }
-    hydrate(0); setBar(0);
+    hydrate(0); setBar(0); positionDeck(0);
 
     // Autoplay — only while the carousel is on screen (so an off-screen
     // gallery never decodes images in the background), and only if it has more
@@ -714,7 +771,7 @@
     var three = all.slice(0, 3);
     CAROUSELS.hero = makeCarousel({
       root: root, heroEl: document.querySelector(".hero"),
-      slides: three, priority: true, autoWhenVisible: true, label: "hero"
+      slides: three, priority: true, autoWhenVisible: true, deck: true, label: "hero"
     });
   }
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="wah-build" content="2026-07-23-hero3-featured-gallery">
+<meta name="wah-build" content="2026-07-23-hero3-supporting-cards">
 <title>Luxury Villas &amp; Residences at Top Resorts | WhataHotel!</title>
 <meta name="description" content="Discover private villas, residences and homes at 270+ of the world's finest hotels and resorts. More space, five-star service and live availability, worldwide.">
 <meta name="keywords" content="luxury villas, hotel residences, private villas, resort villas, luxury home rentals, residential suites, family villa vacations, group travel villas, extended stay resorts, Four Seasons residences, Ritz-Carlton residences, villas Caribbean, villas Maldives, villas Europe, WhataHotel">
@@ -311,40 +311,37 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .hero-bignum { font-family: var(--sans); font-weight: 800; font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: .8;
   color: #fff; letter-spacing: -.03em; font-variant-numeric: tabular-nums; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
 
-/* Upcoming-destination deck — a fanned stack of cards on the right */
-.hero-deck { position: absolute; right: clamp(20px, 4vw, 60px); top: 50%; transform: translateY(-46%); z-index: 6;
-  display: none; align-items: center; }
-@media (min-width: 1024px) and (min-height: 640px) { .hero-deck { display: flex; } }
-.hero-deck__card { position: relative; flex: none; width: clamp(142px, 11.5vw, 178px); aspect-ratio: 3 / 4.3;
-  border-radius: 20px; overflow: hidden; padding: 0; cursor: pointer; background: var(--ink-2);
-  border: 1px solid rgba(255,255,255,.22); box-shadow: 0 26px 50px -22px rgba(0,0,0,.7);
-  margin-left: -14px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s, border-color .2s; }
-.hero-deck__card:first-child { margin-left: 0; }
-/* Resting fanned positions. On each slide change every card slides in
-   horizontally from the right into these positions — staggered, so the
-   cards travel independently (not as one block) and the images stay fully
-   visible the whole time (no fade). */
-.hero-deck__card:nth-child(1) { transform: translateY(24px) rotate(-2deg); z-index: 3;
-  animation: deckSlide1 .72s cubic-bezier(.16,.84,.28,1) backwards; animation-delay: calc(var(--k, 0) * .13s); }
-.hero-deck__card:nth-child(2) { transform: translateY(-6px) rotate(0deg); z-index: 2;
-  animation: deckSlide2 .72s cubic-bezier(.16,.84,.28,1) backwards; animation-delay: calc(var(--k, 0) * .13s); }
-.hero-deck__card:nth-child(3) { transform: translateY(34px) rotate(2deg); z-index: 1;
-  animation: deckSlide3 .72s cubic-bezier(.16,.84,.28,1) backwards; animation-delay: calc(var(--k, 0) * .13s); }
-/* Each keyframe holds this card's own resting Y/rotation and animates ONLY a
-   clearly-visible horizontal offset from right → left. Opacity stays 1. */
-@keyframes deckSlide1 { from { transform: translateX(130px) translateY(24px) rotate(-2deg); } to { transform: translateX(0) translateY(24px) rotate(-2deg); } }
-@keyframes deckSlide2 { from { transform: translateX(130px) translateY(-6px) rotate(0deg); } to { transform: translateX(0) translateY(-6px) rotate(0deg); } }
-@keyframes deckSlide3 { from { transform: translateX(130px) translateY(34px) rotate(2deg); } to { transform: translateX(0) translateY(34px) rotate(2deg); } }
-.hero-deck__card:hover { transform: translateY(-10px) rotate(0deg) scale(1.04); z-index: 5; border-color: var(--gold-2); box-shadow: 0 34px 60px -20px rgba(0,0,0,.8); }
-.hero-deck__img { position: absolute; inset: 0; background-size: cover; background-position: center; }
-.hero-deck__img--scene { display: block; }
-.hero-deck__img--scene .scene-svg { width: 100%; height: 100%; }
-.hero-deck__grad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,24,.05) 30%, rgba(6,14,24,.82) 100%); }
-.hero-deck__meta { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 1; text-align: left; }
-.hero-deck__loc { display: block; color: var(--gold-2); font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  margin-bottom: .2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.hero-deck__title { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  color: #fff; font-family: var(--sans); font-weight: 700; font-size: .82rem; line-height: 1.15; text-transform: uppercase; letter-spacing: .01em; }
+/* Supporting-card deck — the two upcoming properties beside the large slide.
+   The SAME 3 cards are rendered once and only repositioned by slot on each
+   navigation (no image ever re-decodes → memory stays bounded). All motion is
+   a horizontal translate + fade; no zoom/scale. */
+.hero-cards { position: absolute; right: clamp(72px, 7vw, 132px); top: 50%; margin-top: -8px;
+  width: clamp(200px, 16vw, 246px); height: clamp(300px, 42vh, 418px); transform: translateY(-50%);
+  z-index: 6; display: none; }
+@media (min-width: 1080px) and (min-height: 640px) { .hero-cards { display: block; } }
+.hcard { position: absolute; inset: 0; padding: 0; border: 1px solid rgba(255,255,255,.22); cursor: pointer;
+  border-radius: 20px; overflow: hidden; background: var(--ink); box-shadow: 0 28px 56px -22px rgba(0,0,0,.72);
+  text-align: left; will-change: transform, opacity;
+  transition: transform .85s cubic-bezier(.4,0,.06,1), opacity .7s ease, box-shadow .3s ease; }
+/* Recycling card: it teleports to the back slot (transform jumps) but still
+   fades in, so it reads as entering from the right rather than streaking. */
+.hcard.hcard--recycle { transition: opacity .7s ease, box-shadow .3s ease; }
+/* Slot 0 = the property shown large right now → its card slides left (toward
+   the big content) and hides. Slots 1/2 = the upcoming two. */
+.hcard[data-slot="0"] { transform: translate(-132px, -10px); opacity: 0; z-index: 1; pointer-events: none; }
+.hcard[data-slot="1"] { transform: translate(0, 0); opacity: 1; z-index: 3; }
+.hcard[data-slot="2"] { transform: translate(54px, 30px); opacity: .5; z-index: 2; }
+.hcard[data-slot="1"]:hover { box-shadow: 0 36px 66px -20px rgba(0,0,0,.82); border-color: var(--gold-2); }
+.hcard__media { position: absolute; inset: 0; }
+.hcard__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
+.hcard__img.is-loaded { opacity: 1; }
+.hcard__grad { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,14,24,.05) 30%, rgba(6,14,24,.85) 100%); }
+.hcard__meta { position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 1; }
+.hcard__loc { display: block; color: var(--gold-2); font-size: .62rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; margin-bottom: .25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hcard__name { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  color: #fff; font-family: var(--sans); font-weight: 700; font-size: .84rem; line-height: 1.16; text-transform: uppercase; letter-spacing: .01em; }
+@media (prefers-reduced-motion: reduce) { .hcard { transition: opacity .3s ease; } }
 
 /* Curved divider under hero */
 .hero__wave { position: absolute; left: 0; right: 0; bottom: -1px; z-index: 5; line-height: 0; pointer-events: none; }
@@ -7832,10 +7829,34 @@ window.WAH_DETAILS = {
     var q = function (sel) { return root.querySelector(sel); };
     var qa = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
 
+    // Supporting-card deck (hero only). Rendered ONCE — the same 3 cards are
+    // repositioned by slot class on every navigation, so no image is ever
+    // re-decoded (memory stays bounded; this is what keeps the deck iOS-safe).
+    function deckHTML() {
+      if (!cfg.deck) return "";
+      return '<div class="hero-cards" aria-hidden="true">' +
+        st.slides.map(function (s, j) {
+          var p = s.p, raw = rawImageFor(p);
+          var img = raw
+            ? '<img class="hcard__img" src="' + optImg(raw, 520) + '" data-raw="' + esc(raw) + '" alt="" decoding="async" ' +
+              'onload="this.classList.add(\'is-loaded\')" onerror="if(this.dataset.fb){this.remove()}else{this.dataset.fb=1;this.src=this.dataset.raw}">'
+            : '';
+          return '<button class="hcard" type="button" tabindex="-1" data-i="' + j + '" data-slot="' + j + '" aria-label="Show ' + esc(p.name) + '">' +
+            '<span class="hcard__media">' + img + '<span class="hcard__grad"></span></span>' +
+            '<span class="hcard__meta">' +
+              '<span class="hcard__loc">' + esc(p.loc || p.region) + '</span>' +
+              '<span class="hcard__name">' + esc(p.name) + '</span>' +
+            '</span>' +
+          '</button>';
+        }).join("") +
+      '</div>';
+    }
+
     root.innerHTML =
       '<div class="hero-track">' +
         st.slides.map(function (s, i) { return slideHTML(s, i, IMG_W, cfg.priority); }).join("") +
       '</div>' +
+      deckHTML() +
       '<div class="wrap hero-controls">' +
         '<div class="hero-nav">' +
           '<button class="hero-arrow hero-prev" type="button" aria-label="Previous property">' + ARROW_PREV + '</button>' +
@@ -7844,6 +7865,28 @@ window.WAH_DETAILS = {
         '</div>' +
         '<div class="hero-bignum" aria-hidden="true">01</div>' +
       '</div>';
+
+    // Reposition the supporting cards for the given active index. Slot 0 = the
+    // property currently shown large (its card hides); slots 1 & 2 = the next
+    // properties, sliding right-to-left as you advance. The card recycling from
+    // the hidden slot has its transform transition suppressed for one frame so
+    // it re-enters from the right instead of streaking across.
+    function positionDeck(activeI) {
+      if (!cfg.deck) return;
+      var cards = qa(".hcard"), n = st.slides.length;
+      cards.forEach(function (card) {
+        var j = +card.getAttribute("data-i");
+        var slot = (((j - activeI) % n) + n) % n;
+        var prev = card.getAttribute("data-slot");
+        if (prev === "0" && slot !== 0) {
+          card.classList.add("hcard--recycle");           // jump into place, invisible
+          card.setAttribute("data-slot", String(slot));
+          requestAnimationFrame(function () { requestAnimationFrame(function () { card.classList.remove("hcard--recycle"); }); });
+        } else {
+          card.setAttribute("data-slot", String(slot));
+        }
+      });
+    }
 
     function setBar(pp) { var b = q(".hero-line__fill"); if (b) b.style.width = (pp * 100).toFixed(2) + "%"; }
 
@@ -7876,7 +7919,7 @@ window.WAH_DETAILS = {
       }
       nxt.classList.add("is-enter"); nxt.classList.add("is-active"); nxt.setAttribute("aria-hidden", "false");
       requestAnimationFrame(function () { requestAnimationFrame(function () { nxt.classList.remove("is-enter"); }); });
-      st.i = newI; hydrate(newI);
+      st.i = newI; hydrate(newI); positionDeck(newI);
       var num = q(".hero-bignum"); if (num) num.textContent = pad(st.i + 1);
       st.elapsed = 0; st.start = 0; setBar(0);
       if (userInitiated) track("hero_slide_change", { property_id: st.slides[st.i].p.id, property_name: st.slides[st.i].p.name, source: cfg.label || "hero" });
@@ -7917,10 +7960,21 @@ window.WAH_DETAILS = {
       if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(st.i + (dx < 0 ? 1 : -1), true, dx < 0 ? 1 : -1);
     }, { passive: true });
 
-    // Init: activate slide 0, load its window.
+    // Clicking a supporting card jumps the showcase to that property.
+    if (cfg.deck) {
+      qa(".hcard").forEach(function (card) {
+        card.addEventListener("click", function () {
+          var j = +card.getAttribute("data-i"), n = st.slides.length;
+          if (j === st.i) return;
+          go(j, true, ((j - st.i + n) % n) === 1 ? 1 : -1);
+        });
+      });
+    }
+
+    // Init: activate slide 0, load its window, seat the deck.
     var first = qa(".hslide")[0];
     if (first) { first.classList.add("is-active"); first.setAttribute("aria-hidden", "false"); }
-    hydrate(0); setBar(0);
+    hydrate(0); setBar(0); positionDeck(0);
 
     // Autoplay — only while the carousel is on screen (so an off-screen
     // gallery never decodes images in the background), and only if it has more
@@ -7952,7 +8006,7 @@ window.WAH_DETAILS = {
     var three = all.slice(0, 3);
     CAROUSELS.hero = makeCarousel({
       root: root, heroEl: document.querySelector(".hero"),
-      slides: three, priority: true, autoWhenVisible: true, label: "hero"
+      slides: three, priority: true, autoWhenVisible: true, deck: true, label: "hero"
     });
   }
 
