@@ -213,14 +213,14 @@
         <span class="search-panel__eyebrow">Begin your search</span>
         <h2>Where do you want to stay?</h2>
       </div>
-      <p class="search-panel__hint">Destination · city · country · hotel or property name</p>
+      <p class="search-panel__hint">Search for a destination, property type, or the kind of stay you want.</p>
     </div>
 
     <form id="search-form" class="search-row" role="search" autocomplete="off">
       <label class="search-field">
         <span class="visually-hidden">Search homes, villas and residences</span>
         <svg class="search-field__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        <input id="search-input" type="search" name="q" placeholder="Try “Maldives”, “villa in Anguilla”, or “Ritz-Carlton”…" inputmode="search">
+        <input id="search-input" type="search" name="q" placeholder="Try “a beachfront villa in Florida for a family”…" inputmode="search">
       </label>
       <button class="btn btn-primary btn-lg" type="submit" data-cta="search-submit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -228,24 +228,12 @@
       </button>
     </form>
 
-    <!-- Refine — compact dropdowns (populated in homes.js) -->
-    <div class="search-filters" role="group" aria-label="Refine your search">
-      <div class="select-field select-field--filter">
-        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15 0 18M12 3c-2.6 2.7-2.6 15 0 18"/></svg>
-        <label class="visually-hidden" for="region-select">Filter by region</label>
-        <select id="region-select"></select>
-      </div>
-      <div class="select-field select-field--filter">
-        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-6h6v6"/></svg>
-        <label class="visually-hidden" for="setting-select">Filter by setting</label>
-        <select id="setting-select"></select>
-      </div>
-      <div class="select-field select-field--filter">
-        <svg class="select-field__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
-        <label class="visually-hidden" for="collection-select">Filter by collection</label>
-        <select id="collection-select"></select>
-      </div>
-    </div>
+    <!-- Intelligent search: type anything — a destination, a property type, or
+         the kind of stay you want — and results are ranked by intent. -->
+    <p class="search-tip">
+      <svg class="search-tip__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2h5c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>
+      <span><strong>Tip:</strong> Add a city or destination — like “a beachfront villa in Miami for a family” — for the best results.</span>
+    </p>
 
     <div class="search-trust">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9 12l2 2 4-4"/></svg>Secure booking</span>

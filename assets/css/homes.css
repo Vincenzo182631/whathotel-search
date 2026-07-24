@@ -484,9 +484,11 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .search-row .btn svg { width: 1.1em; height: 1.1em; }
 
 /* Refine — two compact dropdowns instead of scattered tabs/chips */
-.search-filters { display: grid; grid-template-columns: 1fr; gap: .7rem; margin-top: .85rem; }
-@media (min-width: 640px) { .search-filters { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 900px) { .search-filters { grid-template-columns: repeat(3, 1fr); } }
+/* Helper note under the intelligent search bar */
+.search-tip { display: flex; align-items: flex-start; gap: .55rem; margin: .95rem 0 0;
+  font-size: .86rem; line-height: 1.45; color: var(--text-soft); }
+.search-tip__ic { width: 1.15rem; height: 1.15rem; flex: none; margin-top: .1rem; color: var(--gold-deep); }
+.search-tip strong { color: var(--ink); font-weight: 700; }
 .select-field--filter { display: flex; align-items: center; }
 .select-field--filter .select-field__ic { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%);
   width: 1.1rem; height: 1.1rem; color: var(--gold-deep); pointer-events: none; z-index: 1; }

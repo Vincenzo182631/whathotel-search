@@ -216,22 +216,147 @@
   function propMatchesCat(p, cat) { return p.regionKey === cat; }
 
   function filtered() {
-    var q = state.query.trim().toLowerCase();
-    var list = PROPS.filter(function (p) {
+    var q = state.query.trim();
+    // Base set still honours the "Explore by region" cards (state.cats); the
+    // old refine dropdowns are gone in favour of natural-language search.
+    var base = PROPS.filter(function (p) {
       if (state.cats.length && state.cats.indexOf(p.regionKey) === -1) return false;
-      if (state.brands.length && state.brands.indexOf(p.brand) === -1) return false;
-      if (state.setting && settingsFor(p).indexOf(state.setting) === -1) return false;
-      if (q) {
-        var settingWords = settingsFor(p).map(settingLabel).join(" ");
-        var hay = [p.name, p.loc, p.city, p.country, p.region, p.collection, p.brand, settingWords].join(" ").toLowerCase();
-        if (hay.indexOf(q) === -1) return false;
-      }
       return true;
     });
+    if (q) return smartRank(base, q);              // intelligent, intent-aware ranking
+    var list = base.slice();
     if (state.sort === "az") list.sort(function (a, b) { return a.name.localeCompare(b.name); });
     else if (state.sort === "destination") list.sort(function (a, b) { return (a.country || "").localeCompare(b.country || "") || (a.city || "").localeCompare(b.city || ""); });
     else list.sort(function (a, b) { return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); });
     return list;
+  }
+
+  /* =================================================================
+     Intelligent search — turns a free-text query ("a beachfront villa in
+     Florida for a family") into ranked results by reading intent from the
+     property's REAL data (destination, setting & feature characteristics,
+     collection). No dropdowns, no server: a compact local intent parser.
+     ================================================================= */
+  var SETTING_SYNONYMS = {
+    beachfront: ["beachfront", "beach", "oceanfront", "ocean front", "seaside", "seafront", "waterfront", "coastal", "coast", "shore", "shoreline", "sand", "by the sea", "on the water", "ocean"],
+    island:     ["private island", "island", "islands", "isle", "cay", "atoll"],
+    mountain:   ["mountainside", "mountain", "mountains", "skiing", "ski", "alpine", "alps", "slopes", "slope", "snow", "peak", "chalet"],
+    lake:       ["lakefront", "lakeside", "lake", "lakes"],
+    countryside:["countryside", "country side", "rural", "wine country", "farmland", "hillside", "hills", "pastoral", "vineyards"],
+    city:       ["city centre", "city center", "city", "urban", "downtown", "metropolitan", "skyline"],
+    desert:     ["desert", "dunes", "oasis"]
+  };
+  var FEATURE_SYNONYMS = {
+    "private-pool":   ["private pool", "plunge pool", "swimming pool", "pool"],
+    golf:             ["golf course", "golfing", "golf", "fairway"],
+    spa:              ["spa", "wellness", "massage", "hammam"],
+    overwater:        ["overwater", "over-water", "over water", "water villa", "water bungalow"],
+    vineyard:         ["vineyard", "vineyards", "winery", "wine estate", "wine country"],
+    marina:           ["marina", "yachting", "yacht", "sailing", "boating", "harbour", "harbor"],
+    "family-friendly":["family-friendly", "kid-friendly", "family", "families", "kids", "kid", "children", "child"],
+    historic:         ["historic", "historical", "heritage", "old-world"],
+    culinary:         ["culinary", "fine dining", "dining", "chef", "gastronomy", "michelin", "restaurant"]
+  };
+  var GROUP_WORDS = ["group", "groups", "party", "people", "guests", "persons", "adults", "everyone", "big", "large", "spacious", "roomy"];
+  var QUIET_WORDS = ["quiet", "secluded", "peaceful", "tranquil", "serene", "private", "hideaway", "retreat", "escape", "romantic", "intimate", "off the beaten"];
+  var LUX_WORDS   = ["luxury", "luxurious", "five-star", "5-star", "five star", "premium", "exclusive", "opulent", "high-end", "prestige"];
+  var STOP_WORDS = {};
+  ("a an the in at on of for with and or to near around close nearby by my our we i me you your it that this these those is are be need want looking find get search searching show me somewhere someplace some any place home homes house houses villa villas residence residences estate estates property properties stay stays staying accommodation accommodations trip trips vacation holiday getaway weekend week month long longer extended nights night day days perfect nice great good best lovely beautiful amazing stunning kind type sort where want would like really very just more most people person"
+    .split(" ")).forEach(function (w) { STOP_WORDS[w] = 1; });
+
+  var CARIB = {};
+  ("anguilla,antigua,bahamas,barbados,bermuda,british virgin islands,cayman,grand cayman,dominican republic,grenada,jamaica,puerto rico,saint lucia,st lucia,turks & caicos,turks and caicos,us virgin islands,saint barthelemy,st barts,nevis,saint kitts,aruba,curacao").split(",").forEach(function (c) { CARIB[c.trim()] = 1; });
+  var CITY_WORD_SKIP = { beach: 1, city: 1, island: 1, saint: 1, world: 1, coast: 1, area: 1, north: 1, south: 1, east: 1, west: 1, downtown: 1, resort: 1, national: 1, park: 1 };
+
+  var PLACE_INDEX = null;
+  function buildPlaceIndex() {
+    if (PLACE_INDEX) return PLACE_INDEX;
+    var terms = [], seen = {};
+    function add(term, test) { term = (term || "").toLowerCase().trim(); if (term.length < 3 || seen[term]) return; seen[term] = 1; terms.push({ t: term, test: test }); }
+    var US = function (p) { return p.country === "United States"; };
+    var UK = function (p) { return p.country === "United Kingdom"; };
+    var mkField = function (v) { var lv = v.toLowerCase(); return function (p) { return ((p.city || "") + " " + (p.country || "") + " " + (p.region || "")).toLowerCase().indexOf(lv) !== -1; }; };
+    var mkWord = function (w) { return function (p) { return (p.city || "").toLowerCase().indexOf(w) !== -1; }; };
+    var mkRegion = function (rk) { return function (p) { return p.regionKey === rk; }; };
+    // High-value aliases (broader than any single data field)
+    add("florida", function (p) { return US(p) && /miami|lauderdale|orlando|naples|palm beach|key |vero|amelia|sarasota|tampa|jacksonville|boca|disney/i.test((p.city || "") + " " + (p.loc || "")); });
+    add("hawaii", function (p) { return /maui|oahu|kauai|honolulu|wailea|lanai|waikiki|kona|hawaii|hualalai|lahaina/i.test((p.city || "") + " " + (p.loc || "")); });
+    add("caribbean", function (p) { return /caribbean/i.test(p.region || "") || CARIB[(p.country || "").toLowerCase()]; });
+    add("mediterranean", mkRegion("europe")); add("europe", mkRegion("europe")); add("asia", mkRegion("asia"));
+    add("north america", mkRegion("north-america"));
+    ["usa", "u.s.a", "united states", "america", "the states"].forEach(function (t) { add(t, US); });
+    ["u.k.", "britain", "england", "united kingdom", "great britain"].forEach(function (t) { add(t, UK); });
+    PROPS.forEach(function (p) {
+      [p.city, p.country, p.region].forEach(function (v) { if (v) add(v, mkField(v)); });
+      (p.city || "").toLowerCase().split(/[^a-z]+/).forEach(function (w) { if (w.length >= 4 && !CITY_WORD_SKIP[w]) add(w, mkWord(w)); });
+    });
+    terms.sort(function (a, b) { return b.t.length - a.t.length; });  // multi-word terms win first
+    return (PLACE_INDEX = terms);
+  }
+
+  function parseNL(q) {
+    var sig = { places: [], settings: [], features: [], quiet: false, group: false, luxury: false, text: [] };
+    var lc = " " + q.toLowerCase().replace(/[^a-z0-9&'\s-]/g, " ").replace(/\s+/g, " ") + " ";
+    function eat(word) { // remove a matched phrase so it isn't re-read as a place/text token
+      var re = new RegExp("\\b" + word.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&") + "\\b", "g");
+      if (re.test(lc)) { lc = lc.replace(re, " "); return true; }
+      return false;
+    }
+    Object.keys(SETTING_SYNONYMS).forEach(function (k) { SETTING_SYNONYMS[k].forEach(function (w) { if (eat(w) && sig.settings.indexOf(k) === -1) sig.settings.push(k); }); });
+    Object.keys(FEATURE_SYNONYMS).forEach(function (k) { FEATURE_SYNONYMS[k].forEach(function (w) { if (eat(w) && sig.features.indexOf(k) === -1) sig.features.push(k); }); });
+    QUIET_WORDS.forEach(function (w) { if (eat(w)) sig.quiet = true; });
+    LUX_WORDS.forEach(function (w) { if (eat(w)) sig.luxury = true; });
+    if (/\b\d+\s*(people|guests|persons|adults|pax|bedrooms?|beds?)\b/.test(lc)) sig.group = true;
+    GROUP_WORDS.forEach(function (w) { if (eat(w)) sig.group = true; });
+    if (sig.features.indexOf("family-friendly") !== -1) sig.group = true;
+    // Places (longest terms first) from whatever text remains
+    buildPlaceIndex().forEach(function (e) { if (lc.indexOf(" " + e.t + " ") !== -1 || lc.indexOf(e.t) !== -1) { if (new RegExp("\\b" + e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).test(lc)) { sig.places.push(e.test); lc = lc.replace(new RegExp(e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "g"), " "); } } });
+    // Leftover meaningful tokens → free-text (brand / hotel names, unknown places)
+    lc.split(/\s+/).forEach(function (w) { w = w.trim(); if (w.length >= 3 && !STOP_WORDS[w] && !/^\d+$/.test(w) && sig.text.indexOf(w) === -1) sig.text.push(w); });
+    return sig;
+  }
+
+  function nlHay(p) { return (p.name + " " + (p.collection || "") + " " + (p.brand || "") + " " + (p.loc || "") + " " + (p.region || "") + " " + (p.country || "")).toLowerCase(); }
+  function placeHit(p, sig) { for (var i = 0; i < sig.places.length; i++) { if (sig.places[i](p)) return true; } return false; }
+  function traitHit(p, sig) {
+    var ps = settingsFor(p), pf = featuresFor(p);
+    for (var i = 0; i < sig.settings.length; i++) if (ps.indexOf(sig.settings[i]) !== -1) return true;
+    for (var j = 0; j < sig.features.length; j++) if (pf.indexOf(sig.features[j]) !== -1) return true;
+    return false;
+  }
+  function textHit(p, tokens) { var h = nlHay(p); for (var i = 0; i < tokens.length; i++) if (h.indexOf(tokens[i]) !== -1) return true; return false; }
+
+  function scoreNL(p, sig) {
+    var s = 0, ps = settingsFor(p), pf = featuresFor(p), prim = primarySetting(p);
+    if (sig.places.length) { var pm = 0; for (var i = 0; i < sig.places.length; i++) if (sig.places[i](p)) pm++; s += pm * 60; }
+    sig.settings.forEach(function (k) { if (ps.indexOf(k) !== -1) { s += 25; if (prim === k) s += 12; } });
+    sig.features.forEach(function (k) { if (pf.indexOf(k) !== -1) s += 20; });
+    if (sig.quiet) { if (ps.indexOf("island") !== -1 || ps.indexOf("countryside") !== -1 || ps.indexOf("lake") !== -1) s += 10; if (ps.indexOf("city") !== -1) s -= 6; }
+    if (sig.group && pf.indexOf("family-friendly") !== -1) s += 14;
+    if (sig.text.length) { var h = nlHay(p); sig.text.forEach(function (t) { if (h.indexOf(t) !== -1) s += 10; }); }
+    if (sig.luxury && p.featured) s += 6;
+    if (p.featured) s += 1;
+    return s;
+  }
+
+  function smartRank(base, q) {
+    var sig = parseNL(q), cands;
+    if (sig.places.length) {
+      cands = base.filter(function (p) { return placeHit(p, sig); });
+      if (!cands.length) cands = base.filter(function (p) { return textHit(p, sig.text.concat(q.toLowerCase())); });
+    } else if (sig.settings.length || sig.features.length) {
+      cands = base.filter(function (p) { return traitHit(p, sig); });
+    } else if (sig.text.length) {
+      cands = base.filter(function (p) { return textHit(p, sig.text); });
+      if (!cands.length) { var ql = q.toLowerCase().trim(); cands = base.filter(function (p) { return nlHay(p).indexOf(ql) !== -1; }); }
+    } else {
+      cands = base.slice();  // only intent words (e.g. "spacious place") → show the best, ranked
+    }
+    if (!cands.length) return [];
+    return cands
+      .map(function (p) { return { p: p, s: scoreNL(p, sig) }; })
+      .sort(function (a, b) { return b.s - a.s || ((b.p.featured ? 1 : 0) - (a.p.featured ? 1 : 0)) || a.p.name.localeCompare(b.p.name); })
+      .map(function (x) { return x.p; });
   }
 
   // Description: authoritative WhataHotel copy where available, else location line.
@@ -371,6 +496,7 @@
   };
   function traitsFor(p) { return TRAITS[p.id] || null; }
   function settingsFor(p) { var t = traitsFor(p); return (t && t.settings) || []; }
+  function featuresFor(p) { var t = traitsFor(p); return (t && t.features) || []; }
   function primarySetting(p) { var t = traitsFor(p); return t && t.primary; }
   function settingLabel(k) { return SETTING_LABELS[k] || k; }
 
@@ -988,7 +1114,7 @@
   function wireTypewriter() {
     var input = $("#search-input");
     if (!input || prefersReduced()) return;
-    var samples = ["“Maldives”", "“villa in Anguilla”", "“Ritz-Carlton”", "“Lake Como”", "“beachfront in Turks & Caicos”", "“ski residence in Aspen”"];
+    var samples = ["“a beachfront villa in Florida”", "“luxury residence near Orlando”", "“a home with a pool for a family”", "“somewhere quiet near the beach”", "“a spacious villa in Anguilla”", "“ski residence in the mountains”"];
     var si = 0, ci = 0, deleting = false, active = true, tId;
     var PRE = "Try ", SUF = "…";
     function stop() { active = false; clearTimeout(tId); }
