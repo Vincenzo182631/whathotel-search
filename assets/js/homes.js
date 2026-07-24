@@ -1681,7 +1681,44 @@
     wireHeader();
     wireMobileCta();
     wireConcierge();
+    wireFloatingVideo();
     observeReveals(document);
+  }
+
+  /* Floating promo video (bottom-right). Autoplays muted + looped; a close (X)
+     dismisses it for the session; a small button toggles sound. */
+  function wireFloatingVideo() {
+    var fv = $("#floating-video");
+    if (!fv) return;
+    var sessKey = "wah_fv_closed";
+    try { if (sessionStorage.getItem(sessKey) === "1") { fv.parentNode && fv.parentNode.removeChild(fv); return; } } catch (e) {}
+    var vid = $("#fv-video");
+    if (vid) { var pr = vid.play && vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    var closeBtn = $("#fv-close");
+    if (closeBtn) closeBtn.addEventListener("click", function () {
+      fv.classList.add("is-closing");
+      try { sessionStorage.setItem(sessKey, "1"); } catch (e) {}
+      if (vid) { try { vid.pause(); vid.removeAttribute("src"); vid.load(); } catch (e) {} }
+      setTimeout(function () { fv.parentNode && fv.parentNode.removeChild(fv); }, 340);
+      track("floating_video_closed", {});
+    });
+    var MUTED = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M17 9l4 4M21 9l-4 4"/></svg>';
+    var LOUD  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.6 6a8 8 0 0 1 0 12"/></svg>';
+    var muteBtn = $("#fv-mute");
+    if (muteBtn && vid) muteBtn.addEventListener("click", function () {
+      vid.muted = !vid.muted;
+      muteBtn.setAttribute("aria-pressed", String(!vid.muted));
+      muteBtn.setAttribute("aria-label", vid.muted ? "Unmute video" : "Mute video");
+      muteBtn.innerHTML = vid.muted ? MUTED : LOUD;
+      if (!vid.muted) { var pr2 = vid.play && vid.play(); if (pr2 && pr2.catch) pr2.catch(function () {}); }
+      track("floating_video_sound", { muted: vid.muted });
+    });
+    // Save resources: pause while the tab is hidden, resume when visible.
+    if (vid) document.addEventListener("visibilitychange", function () {
+      if (!document.body.contains(fv)) return;
+      if (document.hidden) { try { vid.pause(); } catch (e) {} }
+      else { var pr3 = vid.play && vid.play(); if (pr3 && pr3.catch) pr3.catch(function () {}); }
+    });
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

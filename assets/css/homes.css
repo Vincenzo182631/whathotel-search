@@ -1013,6 +1013,28 @@ body.modal-open { overflow: hidden; }
 .concierge { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 90; }
 @media (max-width: 899px) { .concierge { bottom: 78px; right: 14px; } } /* clear the sticky mobile CTA */
 
+/* ---------- Floating promo video (bottom-right, closeable) ---------- */
+.floating-video { position: fixed; right: clamp(14px, 3vw, 26px); bottom: clamp(14px, 3vw, 26px); z-index: 80;
+  width: clamp(184px, 20vw, 234px); border-radius: 16px; overflow: hidden; background: var(--ink); line-height: 0;
+  box-shadow: 0 26px 60px -18px rgba(6,14,24,.62), 0 0 0 1px rgba(255,255,255,.12);
+  animation: fvIn .5s cubic-bezier(.22,1.4,.5,1) both; }
+@keyframes fvIn { from { opacity: 0; transform: translateY(24px) scale(.9); } to { opacity: 1; transform: none; } }
+.floating-video.is-closing { animation: fvOut .3s ease forwards; pointer-events: none; }
+@keyframes fvOut { to { opacity: 0; transform: translateY(16px) scale(.92); } }
+.floating-video__vid { display: block; width: 100%; height: auto; max-height: 62vh; }
+.floating-video__close { position: absolute; top: 7px; right: 7px; z-index: 2; width: 28px; height: 28px; border: 0;
+  border-radius: 50%; background: rgba(10,20,34,.6); color: #fff; display: grid; place-items: center; cursor: pointer;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); transition: background .18s ease, transform .18s ease; }
+.floating-video__close:hover { background: rgba(10,20,34,.92); transform: scale(1.08); }
+.floating-video__close svg { width: 15px; height: 15px; }
+.floating-video__mute { position: absolute; bottom: 8px; left: 8px; z-index: 2; width: 30px; height: 30px; border: 0;
+  border-radius: 50%; background: rgba(10,20,34,.52); color: #fff; display: grid; place-items: center; cursor: pointer;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); transition: background .18s ease; }
+.floating-video__mute:hover { background: rgba(10,20,34,.85); }
+.floating-video__mute svg { width: 16px; height: 16px; }
+@media (max-width: 899px) { .floating-video { width: clamp(140px, 42vw, 172px); right: 12px; bottom: 78px; } }
+@media (prefers-reduced-motion: reduce) { .floating-video, .floating-video.is-closing { animation: none; } }
+
 .concierge-launch {
   display: inline-flex; align-items: center; gap: .6rem; padding: .5rem .55rem; border: none; cursor: pointer;
   background: linear-gradient(150deg, var(--ink), var(--ink-2)); color: #fff;
