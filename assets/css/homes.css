@@ -1022,18 +1022,33 @@ body.modal-open { overflow: hidden; }
 .floating-video.is-closing { animation: fvOut .3s ease forwards; pointer-events: none; }
 @keyframes fvOut { to { opacity: 0; transform: translateY(16px) scale(.92); } }
 .floating-video__vid { display: block; width: 100%; height: auto; max-height: 62vh; }
-.floating-video__close { position: absolute; top: 7px; right: 7px; z-index: 2; width: 28px; height: 28px; border: 0;
+.floating-video__min { position: absolute; top: 7px; right: 7px; z-index: 2; width: 28px; height: 28px; border: 0;
   border-radius: 50%; background: rgba(10,20,34,.6); color: #fff; display: grid; place-items: center; cursor: pointer;
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); transition: background .18s ease, transform .18s ease; }
-.floating-video__close:hover { background: rgba(10,20,34,.92); transform: scale(1.08); }
-.floating-video__close svg { width: 15px; height: 15px; }
+.floating-video__min:hover { background: rgba(10,20,34,.92); transform: scale(1.08); }
+.floating-video__min svg { width: 16px; height: 16px; }
 .floating-video__mute { position: absolute; bottom: 8px; left: 8px; z-index: 2; width: 30px; height: 30px; border: 0;
   border-radius: 50%; background: rgba(10,20,34,.52); color: #fff; display: grid; place-items: center; cursor: pointer;
   -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); transition: background .18s ease; }
 .floating-video__mute:hover { background: rgba(10,20,34,.85); }
 .floating-video__mute svg { width: 16px; height: 16px; }
-@media (max-width: 899px) { .floating-video { width: clamp(140px, 42vw, 172px); right: 12px; bottom: 78px; } }
-@media (prefers-reduced-motion: reduce) { .floating-video, .floating-video.is-closing { animation: none; } }
+
+/* Minimized state — the card collapses into a compact "Watch" launcher pill. */
+.floating-video.is-min { width: auto; border-radius: 999px; background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  box-shadow: 0 18px 40px -14px rgba(198,163,90,.7), 0 0 0 1px rgba(255,255,255,.2); animation: none; }
+.floating-video.is-min .floating-video__vid,
+.floating-video.is-min .floating-video__min,
+.floating-video.is-min .floating-video__mute { display: none; }
+.floating-video__launch { display: none; }
+.floating-video.is-min .floating-video__launch { display: inline-flex; align-items: center; gap: .5rem;
+  padding: .62rem .95rem .62rem .85rem; border: 0; background: none; color: #2a2008; cursor: pointer;
+  font-family: var(--sans); font-weight: 800; font-size: .82rem; letter-spacing: .06em; line-height: 1; }
+.floating-video__launch svg { width: 1.15rem; height: 1.15rem; flex: none; }
+.floating-video__launch-txt { text-transform: uppercase; }
+
+@media (max-width: 899px) { .floating-video { width: clamp(140px, 42vw, 172px); right: 12px; bottom: 78px; }
+  .floating-video.is-min { width: auto; } }
+@media (prefers-reduced-motion: reduce) { .floating-video { animation: none; } }
 
 .concierge-launch {
   display: inline-flex; align-items: center; gap: .6rem; padding: .5rem .55rem; border: none; cursor: pointer;

@@ -1685,23 +1685,29 @@
     observeReveals(document);
   }
 
-  /* Floating promo video (bottom-right). Autoplays muted + looped; a close (X)
-     dismisses it for the session; a small button toggles sound. */
+  /* Floating promo video (bottom-right). Autoplays muted + looped. It can't be
+     closed — instead it MINIMIZES into a compact "Watch" pill the user can
+     reopen; a small button toggles sound. State persists for the session. */
   function wireFloatingVideo() {
     var fv = $("#floating-video");
     if (!fv) return;
-    var sessKey = "wah_fv_closed";
-    try { if (sessionStorage.getItem(sessKey) === "1") { fv.parentNode && fv.parentNode.removeChild(fv); return; } } catch (e) {}
-    var vid = $("#fv-video");
-    if (vid) { var pr = vid.play && vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
-    var closeBtn = $("#fv-close");
-    if (closeBtn) closeBtn.addEventListener("click", function () {
-      fv.classList.add("is-closing");
-      try { sessionStorage.setItem(sessKey, "1"); } catch (e) {}
-      if (vid) { try { vid.pause(); vid.removeAttribute("src"); vid.load(); } catch (e) {} }
-      setTimeout(function () { fv.parentNode && fv.parentNode.removeChild(fv); }, 340);
-      track("floating_video_closed", {});
-    });
+    var vid = $("#fv-video"), minBtn = $("#fv-min"), launchBtn = $("#fv-launch");
+    var sessKey = "wah_fv_min";
+    function playVid() { if (vid) { var pr = vid.play && vid.play(); if (pr && pr.catch) pr.catch(function () {}); } }
+    function setMin(min, persist) {
+      fv.classList.toggle("is-min", min);
+      if (launchBtn) launchBtn.hidden = !min;
+      if (vid) { if (min) { try { vid.pause(); } catch (e) {} } else { playVid(); } }
+      if (persist) { try { sessionStorage.setItem(sessKey, min ? "1" : "0"); } catch (e) {} }
+    }
+    var startMin = false;
+    try { startMin = sessionStorage.getItem(sessKey) === "1"; } catch (e) {}
+    setMin(startMin, false);
+    if (!startMin) playVid();
+
+    if (minBtn) minBtn.addEventListener("click", function () { setMin(true, true); track("floating_video_minimized", {}); });
+    if (launchBtn) launchBtn.addEventListener("click", function () { setMin(false, true); track("floating_video_opened", {}); });
+
     var MUTED = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M17 9l4 4M21 9l-4 4"/></svg>';
     var LOUD  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.6 6a8 8 0 0 1 0 12"/></svg>';
     var muteBtn = $("#fv-mute");
@@ -1710,14 +1716,13 @@
       muteBtn.setAttribute("aria-pressed", String(!vid.muted));
       muteBtn.setAttribute("aria-label", vid.muted ? "Unmute video" : "Mute video");
       muteBtn.innerHTML = vid.muted ? MUTED : LOUD;
-      if (!vid.muted) { var pr2 = vid.play && vid.play(); if (pr2 && pr2.catch) pr2.catch(function () {}); }
+      if (!vid.muted) playVid();
       track("floating_video_sound", { muted: vid.muted });
     });
-    // Save resources: pause while the tab is hidden, resume when visible.
+    // Save resources: pause while the tab is hidden or minimized; resume when visible.
     if (vid) document.addEventListener("visibilitychange", function () {
-      if (!document.body.contains(fv)) return;
-      if (document.hidden) { try { vid.pause(); } catch (e) {} }
-      else { var pr3 = vid.play && vid.play(); if (pr3 && pr3.catch) pr3.catch(function () {}); }
+      if (document.hidden || fv.classList.contains("is-min")) { try { vid.pause(); } catch (e) {} }
+      else playVid();
     });
   }
 
