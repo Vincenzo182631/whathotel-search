@@ -561,7 +561,11 @@
   var ARROW_PREV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
   var ARROW_NEXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
 
-  function slideHTML(s, i, imgW, priority) {
+  // A small house glyph for the "Homes Away From Home!" tagline badge.
+  var HOME_SVG = '<svg class="hero-tagline__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.4 12 4l9 7.4"/><path d="M5.2 9.8V20h13.6V9.8"/><path d="M9.6 20v-5.2h4.8V20"/></svg>';
+  var HERO_TAGLINE = '<span class="hero-tagline">' + HOME_SVG + '<span class="hero-tagline__txt">Homes Away From Home!</span></span>';
+
+  function slideHTML(s, i, imgW, priority, slogan) {
     var p = s.p;
     return '' +
     '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide">' +
@@ -572,6 +576,7 @@
       '<div class="hslide__scrim"></div>' +
       '<div class="wrap hslide__inner">' +
         '<div class="hslide__content">' +
+          (slogan ? HERO_TAGLINE : '') +
           '<span class="hslide__kicker">' + pinSVG() + esc(s.kicker) + '</span>' +
           '<h2 class="hslide__title">' + esc(p.name) + '</h2>' +
           '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
@@ -619,7 +624,7 @@
 
     root.innerHTML =
       '<div class="hero-track">' +
-        st.slides.map(function (s, i) { return slideHTML(s, i, IMG_W, cfg.priority); }).join("") +
+        st.slides.map(function (s, i) { return slideHTML(s, i, IMG_W, cfg.priority, cfg.slogan); }).join("") +
       '</div>' +
       deckHTML() +
       '<div class="wrap hero-controls">' +
@@ -773,7 +778,7 @@
     var three = all.slice(0, 3);
     CAROUSELS.hero = makeCarousel({
       root: root, heroEl: document.querySelector(".hero"),
-      slides: three, priority: true, autoWhenVisible: true, deck: true, label: "hero"
+      slides: three, priority: true, autoWhenVisible: true, deck: true, slogan: true, label: "hero"
     });
   }
 

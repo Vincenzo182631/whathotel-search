@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="wah-build" content="2026-07-23-hero3-supporting-cards">
+<meta name="wah-build" content="2026-07-24-homes-away-tagline">
 <title>Luxury Villas &amp; Residences at Top Resorts | WhataHotel!</title>
 <meta name="description" content="Discover private villas, residences and homes at 270+ of the world's finest hotels and resorts. More space, five-star service and live availability, worldwide.">
 <meta name="keywords" content="luxury villas, hotel residences, private villas, resort villas, luxury home rentals, residential suites, family villa vacations, group travel villas, extended stay resorts, Four Seasons residences, Ritz-Carlton residences, villas Caribbean, villas Maldives, villas Europe, WhataHotel">
@@ -257,6 +257,29 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 }
 .hslide__inner { position: relative; z-index: 3; height: 100%; display: flex; align-items: flex-start; }
 .hslide__content { max-width: 640px; padding: clamp(84px, 12vh, 128px) 0 160px; }
+
+/* "Homes Away From Home!" tagline badge — a distinctive gold pill at the very
+   top of the hero content that instantly signals residential-style stays. */
+.hero-tagline { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.15rem;
+  padding: .5rem .95rem .5rem .8rem; border-radius: 999px;
+  background: linear-gradient(120deg, rgba(198,163,90,.26), rgba(198,163,90,.08));
+  border: 1px solid rgba(227,200,135,.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  box-shadow: 0 10px 26px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.2); }
+.hero-tagline__ic { width: 1.15rem; height: 1.15rem; flex: none; color: var(--gold-2); }
+.hero-tagline__txt { font-family: var(--sans); font-weight: 700; font-size: .82rem;
+  letter-spacing: .17em; text-transform: uppercase; white-space: nowrap;
+  background: linear-gradient(90deg, #f6e9c6 0%, #e3c887 45%, #fff6df 55%, #e3c887 70%, #f6e9c6 100%);
+  background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: var(--gold-2);
+  animation: taglineShine 6s linear infinite; }
+@keyframes taglineShine { to { background-position: 220% center; } }
+@media (prefers-reduced-motion: reduce) { .hero-tagline__txt { animation: none; } }
+@media (max-width: 640px) {
+  .hero-tagline { margin-bottom: .9rem; padding: .44rem .82rem .44rem .68rem; }
+  .hero-tagline__ic { width: 1.02rem; height: 1.02rem; }
+  .hero-tagline__txt { font-size: .74rem; letter-spacing: .14em; }
+}
 
 /* Staggered content reveal on the active slide */
 .hslide__kicker, .hslide__title, .hslide__desc, .hslide__meta, .hslide__actions {
@@ -7862,7 +7885,11 @@ window.WAH_DETAILS = {
   var ARROW_PREV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
   var ARROW_NEXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
 
-  function slideHTML(s, i, imgW, priority) {
+  // A small house glyph for the "Homes Away From Home!" tagline badge.
+  var HOME_SVG = '<svg class="hero-tagline__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.4 12 4l9 7.4"/><path d="M5.2 9.8V20h13.6V9.8"/><path d="M9.6 20v-5.2h4.8V20"/></svg>';
+  var HERO_TAGLINE = '<span class="hero-tagline">' + HOME_SVG + '<span class="hero-tagline__txt">Homes Away From Home!</span></span>';
+
+  function slideHTML(s, i, imgW, priority, slogan) {
     var p = s.p;
     return '' +
     '<article class="hslide" data-i="' + i + '" aria-hidden="' + (i ? "true" : "false") + '" aria-roledescription="slide">' +
@@ -7873,6 +7900,7 @@ window.WAH_DETAILS = {
       '<div class="hslide__scrim"></div>' +
       '<div class="wrap hslide__inner">' +
         '<div class="hslide__content">' +
+          (slogan ? HERO_TAGLINE : '') +
           '<span class="hslide__kicker">' + pinSVG() + esc(s.kicker) + '</span>' +
           '<h2 class="hslide__title">' + esc(p.name) + '</h2>' +
           '<p class="hslide__desc">' + esc(s.desc) + '</p>' +
@@ -7920,7 +7948,7 @@ window.WAH_DETAILS = {
 
     root.innerHTML =
       '<div class="hero-track">' +
-        st.slides.map(function (s, i) { return slideHTML(s, i, IMG_W, cfg.priority); }).join("") +
+        st.slides.map(function (s, i) { return slideHTML(s, i, IMG_W, cfg.priority, cfg.slogan); }).join("") +
       '</div>' +
       deckHTML() +
       '<div class="wrap hero-controls">' +
@@ -8074,7 +8102,7 @@ window.WAH_DETAILS = {
     var three = all.slice(0, 3);
     CAROUSELS.hero = makeCarousel({
       root: root, heroEl: document.querySelector(".hero"),
-      slides: three, priority: true, autoWhenVisible: true, deck: true, label: "hero"
+      slides: three, priority: true, autoWhenVisible: true, deck: true, slogan: true, label: "hero"
     });
   }
 

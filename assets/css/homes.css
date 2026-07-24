@@ -217,6 +217,29 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .hslide__inner { position: relative; z-index: 3; height: 100%; display: flex; align-items: flex-start; }
 .hslide__content { max-width: 640px; padding: clamp(84px, 12vh, 128px) 0 160px; }
 
+/* "Homes Away From Home!" tagline badge — a distinctive gold pill at the very
+   top of the hero content that instantly signals residential-style stays. */
+.hero-tagline { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 1.15rem;
+  padding: .5rem .95rem .5rem .8rem; border-radius: 999px;
+  background: linear-gradient(120deg, rgba(198,163,90,.26), rgba(198,163,90,.08));
+  border: 1px solid rgba(227,200,135,.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  box-shadow: 0 10px 26px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.2); }
+.hero-tagline__ic { width: 1.15rem; height: 1.15rem; flex: none; color: var(--gold-2); }
+.hero-tagline__txt { font-family: var(--sans); font-weight: 700; font-size: .82rem;
+  letter-spacing: .17em; text-transform: uppercase; white-space: nowrap;
+  background: linear-gradient(90deg, #f6e9c6 0%, #e3c887 45%, #fff6df 55%, #e3c887 70%, #f6e9c6 100%);
+  background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: var(--gold-2);
+  animation: taglineShine 6s linear infinite; }
+@keyframes taglineShine { to { background-position: 220% center; } }
+@media (prefers-reduced-motion: reduce) { .hero-tagline__txt { animation: none; } }
+@media (max-width: 640px) {
+  .hero-tagline { margin-bottom: .9rem; padding: .44rem .82rem .44rem .68rem; }
+  .hero-tagline__ic { width: 1.02rem; height: 1.02rem; }
+  .hero-tagline__txt { font-size: .74rem; letter-spacing: .14em; }
+}
+
 /* Staggered content reveal on the active slide */
 .hslide__kicker, .hslide__title, .hslide__desc, .hslide__meta, .hslide__actions {
   opacity: 0; transform: translateY(22px);
