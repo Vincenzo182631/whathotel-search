@@ -261,11 +261,11 @@
   var QUIET_WORDS = ["quiet", "secluded", "peaceful", "tranquil", "serene", "private", "hideaway", "retreat", "escape", "romantic", "intimate", "off the beaten"];
   var LUX_WORDS   = ["luxury", "luxurious", "five-star", "5-star", "five star", "premium", "exclusive", "opulent", "high-end", "prestige"];
   var STOP_WORDS = {};
-  ("a an the in at on of for with and or to near around close nearby by my our we i me you your it that this these those is are be need want looking find get search searching show me somewhere someplace some any place home homes house houses villa villas residence residences estate estates property properties stay stays staying accommodation accommodations trip trips vacation holiday getaway weekend week month long longer extended nights night day days perfect nice great good best lovely beautiful amazing stunning kind type sort where want would like really very just more most people person"
+  ("a an the in at on of for with and or to near around close nearby by my our we i me you your it that this these those is are be need want looking find get search searching show me somewhere someplace some any place home homes house houses villa villas residence residences estate estates property properties stay stays staying accommodation accommodations trip trips vacation holiday getaway weekend week month long longer extended nights night day days perfect nice great good best lovely beautiful amazing stunning kind type sort where want would like really very just more most people person kitchen kitchens honeymoon anniversary wedding couple couples friends friend dog dogs pet pets view views sunset sunsets relax relaxing adventure cheap affordable budget stay"
     .split(" ")).forEach(function (w) { STOP_WORDS[w] = 1; });
 
   var CARIB = {};
-  ("anguilla,antigua,bahamas,barbados,bermuda,british virgin islands,cayman,grand cayman,dominican republic,grenada,jamaica,puerto rico,saint lucia,st lucia,turks & caicos,turks and caicos,us virgin islands,saint barthelemy,st barts,nevis,saint kitts,aruba,curacao").split(",").forEach(function (c) { CARIB[c.trim()] = 1; });
+  ("anguilla,antigua,bahamas,barbados,belize,british virgin islands,cayman,grand cayman,dominican republic,grenada,honduras,jamaica,puerto rico,saint lucia,st lucia,saint vincent and the grenadines,st. kitts and nevis,saint kitts,nevis,st. martin,saint martin,turks & caicos,turks and caicos,us virgin islands,saint barthelemy,st barts,aruba,curacao").split(",").forEach(function (c) { CARIB[c.trim()] = 1; });
   var CITY_WORD_SKIP = { beach: 1, city: 1, island: 1, saint: 1, world: 1, coast: 1, area: 1, north: 1, south: 1, east: 1, west: 1, downtown: 1, resort: 1, national: 1, park: 1 };
 
   var PLACE_INDEX = null;
@@ -281,7 +281,10 @@
     // High-value aliases (broader than any single data field)
     add("florida", function (p) { return US(p) && /miami|lauderdale|orlando|naples|palm beach|key |vero|amelia|sarasota|tampa|jacksonville|boca|disney/i.test((p.city || "") + " " + (p.loc || "")); });
     add("hawaii", function (p) { return /maui|oahu|kauai|honolulu|wailea|lanai|waikiki|kona|hawaii|hualalai|lahaina/i.test((p.city || "") + " " + (p.loc || "")); });
-    add("caribbean", function (p) { return /caribbean/i.test(p.region || "") || CARIB[(p.country || "").toLowerCase()]; });
+    add("caribbean", function (p) { // the islands + Belize, Roatán and Mexico's Caribbean coast (not the Pacific side)
+      var c = (p.country || "").toLowerCase();
+      return !!CARIB[c] || (c === "mexico" && /cancun|mayakoba|kanai|riviera maya|tulum|playa del carmen|cozumel/i.test(p.city || ""));
+    });
     add("mediterranean", mkRegion("europe")); add("europe", mkRegion("europe")); add("asia", mkRegion("asia"));
     add("north america", mkRegion("north-america"));
     ["usa", "u.s.a", "united states", "america", "the states"].forEach(function (t) { add(t, US); });
@@ -294,8 +297,61 @@
     return (PLACE_INDEX = terms);
   }
 
+  /* Typo tolerance: a word that matches nothing in the collection is snapped to
+     the closest real term (places, brands, hotel names, setting/feature words)
+     within 1 edit (2 for longer words) — "maldivs" → maldives, "carribean" →
+     caribbean, "tuscny" → tuscany. Partial words that already match ("mald")
+     are left alone so search-as-you-type keeps working. */
+  var NL_VOCAB = null, NL_VOCAB_SET = null, NL_ALL_HAY = null;
+  function buildVocab() {
+    if (NL_VOCAB) return NL_VOCAB;
+    var set = {};
+    function addWords(str) { (str || "").toLowerCase().split(/[^a-z0-9&'-]+/).forEach(function (w) { if (w.length >= 4) set[w] = 1; }); }
+    buildPlaceIndex().forEach(function (e) { addWords(e.t); });
+    PROPS.forEach(function (p) { addWords(p.name); addWords(p.collection); addWords(p.brand); addWords(p.city); addWords(p.country); addWords(p.region); });
+    [SETTING_SYNONYMS, FEATURE_SYNONYMS].forEach(function (m) { Object.keys(m).forEach(function (k) { m[k].forEach(addWords); }); });
+    [GROUP_WORDS, QUIET_WORDS, LUX_WORDS].forEach(function (l) { l.forEach(addWords); });
+    NL_VOCAB_SET = set;
+    NL_ALL_HAY = PROPS.map(nlHay).join(" | ");
+    return (NL_VOCAB = Object.keys(set));
+  }
+  function editDist(a, b, max) { // optimal-string-alignment distance, capped
+    var n = a.length, m = b.length;
+    if (Math.abs(n - m) > max) return max + 1;
+    var prev2 = null, prev = [], cur, i, j;
+    for (j = 0; j <= m; j++) prev[j] = j;
+    for (i = 1; i <= n; i++) {
+      cur = [i]; var rowMin = i;
+      for (j = 1; j <= m; j++) {
+        var c = a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1;
+        var v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + c);
+        if (prev2 && i > 1 && j > 1 && a.charAt(i - 1) === b.charAt(j - 2) && a.charAt(i - 2) === b.charAt(j - 1)) v = Math.min(v, prev2[j - 2] + 1);
+        cur[j] = v; if (v < rowMin) rowMin = v;
+      }
+      if (rowMin > max) return max + 1;
+      prev2 = prev; prev = cur;
+    }
+    return prev[m];
+  }
+  function correctQuery(q) {
+    var vocab = buildVocab(), fixes = [];
+    var out = q.toLowerCase().replace(/[a-z][a-z'-]{3,}/g, function (w) {
+      if (NL_VOCAB_SET[w] || STOP_WORDS[w] || NL_ALL_HAY.indexOf(w) !== -1) return w;
+      var max = w.length >= 7 ? 2 : 1, best = null, bd = max + 1;
+      for (var i = 0; i < vocab.length; i++) {
+        var v = vocab[i];
+        if (Math.abs(v.length - w.length) > max || v.charAt(0) !== w.charAt(0) && max < 2) continue;
+        var d = editDist(w, v, max);
+        if (d < bd) { bd = d; best = v; if (d === 1 && max === 1) break; }
+      }
+      if (best && bd <= max) { fixes.push([w, best]); return best; }
+      return w;
+    });
+    return { q: out, fixes: fixes };
+  }
+
   function parseNL(q) {
-    var sig = { places: [], settings: [], features: [], quiet: false, group: false, luxury: false, text: [] };
+    var sig = { places: [], placeLabels: [], settings: [], features: [], quiet: false, group: false, luxury: false, text: [] };
     var lc = " " + q.toLowerCase().replace(/[^a-z0-9&'\s-]/g, " ").replace(/\s+/g, " ") + " ";
     function eat(word) { // remove a matched phrase so it isn't re-read as a place/text token
       var re = new RegExp("\\b" + word.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&") + "\\b", "g");
@@ -310,7 +366,7 @@
     GROUP_WORDS.forEach(function (w) { if (eat(w)) sig.group = true; });
     if (sig.features.indexOf("family-friendly") !== -1) sig.group = true;
     // Places (longest terms first) from whatever text remains
-    buildPlaceIndex().forEach(function (e) { if (lc.indexOf(" " + e.t + " ") !== -1 || lc.indexOf(e.t) !== -1) { if (new RegExp("\\b" + e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).test(lc)) { sig.places.push(e.test); lc = lc.replace(new RegExp(e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "g"), " "); } } });
+    buildPlaceIndex().forEach(function (e) { if (lc.indexOf(" " + e.t + " ") !== -1 || lc.indexOf(e.t) !== -1) { if (new RegExp("\\b" + e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).test(lc)) { sig.places.push(e.test); sig.placeLabels.push(e.t); lc = lc.replace(new RegExp(e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "g"), " "); } } });
     // Leftover meaningful tokens → free-text (brand / hotel names, unknown places)
     lc.split(/\s+/).forEach(function (w) { w = w.trim(); if (w.length >= 3 && !STOP_WORDS[w] && !/^\d+$/.test(w) && sig.text.indexOf(w) === -1) sig.text.push(w); });
     return sig;
@@ -340,6 +396,7 @@
   }
 
   function smartRank(base, q) {
+    var cq = correctQuery(q); q = cq.q;
     var sig = parseNL(q), cands;
     if (sig.places.length) {
       cands = base.filter(function (p) { return placeHit(p, sig); });
@@ -352,6 +409,13 @@
     } else {
       cands = base.slice();  // only intent words (e.g. "spacious place") → show the best, ranked
     }
+    // Free-text words narrow the result when they can ("four seasons mexico" →
+    // only the Four Seasons in Mexico), but never empty it.
+    if (sig.text.length && (sig.places.length || sig.settings.length || sig.features.length)) {
+      var refined = cands.filter(function (p) { var h = nlHay(p); return sig.text.every(function (t) { return h.indexOf(t) !== -1; }); });
+      if (refined.length) cands = refined;
+    }
+    smartRank.last = { sig: sig, fixes: cq.fixes, query: q };
     if (!cands.length) return [];
     return cands
       .map(function (p) { return { p: p, s: scoreNL(p, sig) }; })
@@ -1077,15 +1141,85 @@
      Search wiring
      ----------------------------------------------------------------- */
   var searchTimer, lastTracked = "";
+  /* Live suggestions under the search bar: as the visitor types, show what the
+     search understood (destination, setting, features, typo fixes) and the top
+     matching homes, so the "intelligence" is visible right at the bar instead of
+     only in the directory further down the page. */
+  var SUGGEST_MAX = 5;
+  function titleCase(t) { return t.replace(/\b([a-z])/g, function (c) { return c.toUpperCase(); }).replace(/\bU\.s\.a\b/i, "USA"); }
+  function understoodChips(sig) {
+    var chips = [];
+    (sig.placeLabels || []).forEach(function (t) { chips.push('<span class="ss-chip ss-chip--place">' + pinSVG() + esc(titleCase(t)) + '</span>'); });
+    sig.settings.forEach(function (k) { chips.push('<span class="ss-chip">' + (SETTING_ICON[k] || "") + esc(settingLabel(k)) + '</span>'); });
+    sig.features.forEach(function (k) { if (k !== "family-friendly") chips.push('<span class="ss-chip">' + esc(FEATURE_LABELS[k] || k) + '</span>'); });
+    if (sig.group) chips.push('<span class="ss-chip">Families &amp; groups</span>');
+    if (sig.quiet) chips.push('<span class="ss-chip">Quiet &amp; secluded</span>');
+    if (sig.text.length) chips.push('<span class="ss-chip">' + esc(titleCase(sig.text.join(" "))) + '</span>');
+    return chips;
+  }
+  function renderSuggest(box, q) {
+    if (!box) return;
+    if (q.length < 2) { box.hidden = true; box.innerHTML = ""; document.body.classList.remove("search-active"); return; }
+    var list = filtered(), info = smartRank.last || { sig: { places: [], settings: [], features: [], text: [] }, fixes: [] };
+    var chips = understoodChips(info.sig);
+    var fix = info.fixes && info.fixes.length
+      ? '<p class="ss-fix">Showing results for <b>' + info.fixes.map(function (f) { return esc(f[1]); }).join(", ") + '</b> <span>(you typed ' + info.fixes.map(function (f) { return "“" + esc(f[0]) + "”"; }).join(", ") + ')</span></p>' : '';
+    var head = chips.length ? '<div class="ss-head"><span class="ss-label">Searching for</span>' + chips.join("") + '</div>' : '';
+    var body;
+    if (!list.length) {
+      body = '<p class="ss-empty">No matching homes yet. Try a city or destination, like “Miami”, “Lake Como” or “Anguilla”.</p>';
+    } else {
+      body = '<ul class="ss-list" role="listbox">' + list.slice(0, SUGGEST_MAX).map(function (p, i) {
+        return '<li role="presentation"><button type="button" class="ss-item" role="option" id="ss-opt-' + i + '" data-action="detail" data-id="' + p.id + '">' +
+          '<span class="ss-thumb">' + imgTag(p, 120, "ss-thumb__img", 'loading="lazy"') + '</span>' +
+          '<span class="ss-text"><span class="ss-name">' + esc(p.name) + '</span><span class="ss-loc">' + esc(p.loc || p.region) + '</span></span>' +
+          '<span class="ss-go">' + arrowSVG() + '</span></button></li>';
+      }).join("") + '</ul>' +
+      '<button type="button" class="ss-all" data-ss-all>See all ' + list.length + (list.length === 1 ? ' home' : ' homes') + arrowSVG() + '</button>';
+    }
+    box.innerHTML = fix + head + body;
+    box.hidden = false;
+    document.body.classList.add("search-active"); // tuck away floating widgets that would cover it
+  }
+
   function wireSearch() {
     var input = $("#search-input");
     var form = $("#search-form");
+    var box = null, active = -1;
+    if (form) {
+      box = document.createElement("div");
+      box.className = "search-suggest"; box.id = "search-suggest"; box.hidden = true;
+      form.appendChild(box);
+      if (input) { input.setAttribute("aria-controls", "search-suggest"); input.setAttribute("aria-autocomplete", "list"); }
+      box.addEventListener("mousedown", function (e) { e.preventDefault(); }); // keep focus while clicking
+      box.addEventListener("click", function (e) {
+        if (e.target.closest("[data-ss-all]")) { hideSuggest(); scrollToDirectory(); track("search_suggest_all", { search_term: state.query.trim() }); return; }
+        if (e.target.closest(".ss-item")) { hideSuggest(); track("search_suggest_pick", { search_term: state.query.trim() }); }
+      });
+    }
+    function opts() { return box ? Array.prototype.slice.call(box.querySelectorAll(".ss-item")) : []; }
+    function setActive(i) {
+      var o = opts(); active = o.length ? (i + o.length) % o.length : -1;
+      o.forEach(function (el, k) { el.classList.toggle("is-active", k === active); el.setAttribute("aria-selected", k === active ? "true" : "false"); });
+      if (input) { if (active >= 0) input.setAttribute("aria-activedescendant", o[active].id); else input.removeAttribute("aria-activedescendant"); }
+    }
+    function hideSuggest() { if (box) { box.hidden = true; } active = -1; document.body.classList.remove("search-active"); if (input) input.removeAttribute("aria-activedescendant"); }
     if (input) {
+      input.addEventListener("keydown", function (e) {
+        if (!box || box.hidden) return;
+        if (e.key === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
+        else if (e.key === "Escape") { hideSuggest(); }
+        else if (e.key === "Enter" && active >= 0) { e.preventDefault(); var o = opts()[active]; hideSuggest(); if (o) o.click(); }
+      });
+      input.addEventListener("focus", function () { if (input.value.trim().length >= 2) renderSuggest(box, input.value.trim()); });
+      input.addEventListener("blur", function () { setTimeout(hideSuggest, 120); });
       input.addEventListener("input", function () {
         state.query = input.value;
         clearTimeout(searchTimer);
         searchTimer = setTimeout(function () {
           renderDirectory();
+          active = -1; renderSuggest(box, input.value.trim());
           var q = input.value.trim();
           if (q.length >= 2 && q !== lastTracked) {
             lastTracked = q;
@@ -1098,6 +1232,7 @@
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         renderDirectory();
+        hideSuggest();
         track("search_initiated", { search_term: state.query.trim(), results: filtered().length, source: "submit" });
         scrollToDirectory();
       });
