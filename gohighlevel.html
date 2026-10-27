@@ -1087,8 +1087,14 @@ body.modal-open { overflow: hidden; }
 .floating-video__launch svg { width: 1.15rem; height: 1.15rem; flex: none; }
 .floating-video__launch-txt { text-transform: uppercase; }
 
-@media (max-width: 899px) { .floating-video { width: clamp(140px, 42vw, 172px); right: 12px; bottom: 78px; }
-  .floating-video.is-min { width: auto; } }
+@media (max-width: 899px) { .floating-video { width: clamp(104px, 29vw, 124px); right: 10px; bottom: 78px; border-radius: 12px; }
+  .floating-video__vid { max-height: 34vh; }
+  .floating-video__min { top: 5px; right: 5px; width: 22px; height: 22px; }
+  .floating-video__min svg { width: 13px; height: 13px; }
+  .floating-video__mute { bottom: 5px; left: 5px; width: 24px; height: 24px; }
+  .floating-video__mute svg { width: 13px; height: 13px; }
+  .floating-video.is-min { width: auto; }
+  .floating-video.is-min .floating-video__launch { padding: .5rem .8rem .5rem .7rem; font-size: .74rem; } }
 @media (prefers-reduced-motion: reduce) { .floating-video { animation: none; } }
 
 .concierge-launch {
