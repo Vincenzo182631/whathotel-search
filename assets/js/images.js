@@ -372,6 +372,9 @@ window.WAH_IMAGES = {
   "3133": {
     "hero": "https://whatahotel.com/content/hotels/3133/dsc_0371.jpg"
   },
+  "3149": {
+    "hero": "https://www.whatahotel.com/content/hotels/3149/east_miami_photo.jpg"
+  },
   "3174": {
     "hero": "https://whatahotel.com/content/hotels/3174/Las-Terrazas-Resort-And-Residences-photos-Exterior.JPEG"
   },

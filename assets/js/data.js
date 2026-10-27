@@ -20,7 +20,7 @@ window.WAH_REGIONS = [
     "label": "North America",
     "blurb": "Villas, residences & estates across the U.S. and Canada.",
     "scene": "mountain",
-    "count": 76
+    "count": 77
   },
   {
     "key": "latam-caribbean",
@@ -112,6 +112,10 @@ window.WAH_BRANDS = [
     "count": 6
   },
   {
+    "label": "Preferred",
+    "count": 5
+  },
+  {
     "label": "Relais & Châteaux",
     "count": 5
   },
@@ -125,10 +129,6 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Luxury Collection",
-    "count": 4
-  },
-  {
-    "label": "Preferred",
     "count": 4
   },
   {
@@ -1026,6 +1026,21 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "beach",
     "blurb": "In Halkidiki, Greece.",
+    "featured": false
+  },
+  {
+    "id": 3149,
+    "url": "https://whatahotel.com/hotels/3149/east-miami.html",
+    "name": "EAST Miami",
+    "loc": "Brickell, Miami, United States",
+    "city": "Brickell, Miami",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "beach",
+    "blurb": "In Brickell, Miami, United States.",
     "featured": false
   },
   {

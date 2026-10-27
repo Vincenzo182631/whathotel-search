@@ -683,7 +683,7 @@
      thumbnail rail, keyboard arrows, touch swipe, reduced-motion safe.
      ================================================================= */
   // Marquee slides — a geographically diverse set of REAL properties from the
-  // 272. All copy (kicker, description, meta) is derived from authoritative
+  // 273. All copy (kicker, description, meta) is derived from authoritative
   // data: the property's collection, city/country/region and its own
   // WhataHotel description. Nothing about the accommodation is invented.
   var HERO_IDS = [
