@@ -338,23 +338,29 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
    The SAME 3 cards are rendered once and only repositioned by slot on each
    navigation (no image ever re-decodes → memory stays bounded). All motion is
    a horizontal translate + fade; no zoom/scale. */
-.hero-cards { position: absolute; right: clamp(72px, 7vw, 132px); top: 50%; margin-top: -8px;
-  width: clamp(200px, 16vw, 246px); height: clamp(300px, 42vh, 418px); transform: translateY(-50%);
-  z-index: 6; display: none; }
-@media (min-width: 1080px) and (min-height: 640px) { .hero-cards { display: block; } }
-.hcard { position: absolute; inset: 0; padding: 0; border: 1px solid rgba(255,255,255,.22); cursor: pointer;
-  border-radius: 20px; overflow: hidden; background: var(--ink); box-shadow: 0 28px 56px -22px rgba(0,0,0,.72);
+/* Two clean cards side by side (no overlap). On each advance the row slides
+   right-to-left: the left card exits toward the big slide, the right card
+   moves into its place, and the recycled card fades in on the right. */
+.hero-cards { --cw: clamp(150px, 12.5vw, 205px); --cg: 16px;
+  position: absolute; right: clamp(40px, 4vw, 80px); top: 50%; transform: translateY(-50%);
+  width: calc(var(--cw) * 2 + var(--cg)); height: calc(var(--cw) * 1.42); z-index: 6; display: none; }
+.hero-cards::before { content: "Up next"; position: absolute; left: 0; top: -30px; color: var(--gold-2);
+  font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+@media (min-width: 1180px) and (min-height: 640px) { .hero-cards { display: block; } }
+.hcard { position: absolute; left: 0; top: 0; width: var(--cw); height: 100%; padding: 0;
+  border: 1px solid rgba(255,255,255,.22); cursor: pointer;
+  border-radius: 18px; overflow: hidden; background: var(--ink); box-shadow: 0 28px 56px -22px rgba(0,0,0,.72);
   text-align: left; will-change: transform, opacity;
-  transition: transform .85s cubic-bezier(.4,0,.06,1), opacity .7s ease, box-shadow .3s ease; }
-/* Recycling card: it teleports to the back slot (transform jumps) but still
-   fades in, so it reads as entering from the right rather than streaking. */
+  transition: transform .85s cubic-bezier(.4,0,.06,1), opacity .7s ease, box-shadow .3s ease, border-color .3s ease; }
+/* Recycling card: it jumps to the right slot (no transform transition) but
+   still fades in, so it reads as arriving from the right. */
 .hcard.hcard--recycle { transition: opacity .7s ease, box-shadow .3s ease; }
-/* Slot 0 = the property shown large right now → its card slides left (toward
-   the big content) and hides. Slots 1/2 = the upcoming two. */
-.hcard[data-slot="0"] { transform: translate(-132px, -10px); opacity: 0; z-index: 1; pointer-events: none; }
-.hcard[data-slot="1"] { transform: translate(0, 0); opacity: 1; z-index: 3; }
-.hcard[data-slot="2"] { transform: translate(54px, 30px); opacity: .5; z-index: 2; }
-.hcard[data-slot="1"]:hover { box-shadow: 0 36px 66px -20px rgba(0,0,0,.82); border-color: var(--gold-2); }
+/* Slot 0 = the property shown large right now (its card exits left, hidden).
+   Slot 1 = next (left), slot 2 = after that (right). */
+.hcard[data-slot="0"] { transform: translateX(calc(-1 * (var(--cw) + var(--cg)))); opacity: 0; z-index: 1; pointer-events: none; }
+.hcard[data-slot="1"] { transform: translateX(0); opacity: 1; z-index: 3; }
+.hcard[data-slot="2"] { transform: translateX(calc(var(--cw) + var(--cg))); opacity: .78; z-index: 2; }
+.hcard:hover { box-shadow: 0 36px 66px -20px rgba(0,0,0,.82); border-color: var(--gold-2); opacity: 1; }
 .hcard__media { position: absolute; inset: 0; }
 .hcard__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
 .hcard__img.is-loaded { opacity: 1; }
