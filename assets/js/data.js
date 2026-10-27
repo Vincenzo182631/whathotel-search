@@ -27,7 +27,7 @@ window.WAH_REGIONS = [
     "label": "Latin America & Caribbean",
     "blurb": "Beachfront homes & villas across Mexico, the Caribbean and beyond.",
     "scene": "tropical",
-    "count": 74
+    "count": 75
   },
   {
     "key": "europe",
@@ -120,15 +120,15 @@ window.WAH_BRANDS = [
     "count": 5
   },
   {
+    "label": "St. Regis",
+    "count": 5
+  },
+  {
     "label": "Luxury Collection",
     "count": 4
   },
   {
     "label": "Preferred",
-    "count": 4
-  },
-  {
-    "label": "St. Regis",
     "count": 4
   },
   {
@@ -3951,6 +3951,21 @@ window.WAH_PROPERTIES = [
     "brand": "St. Regis",
     "scene": "mountain",
     "blurb": "In Deer Valley, United States.",
+    "featured": false
+  },
+  {
+    "id": 6290,
+    "url": "https://whatahotel.com/hotels/6290/the-st-regis-kanai-resort-riviera-maya.html",
+    "name": "The St. Regis Kanai Resort, Riviera Maya",
+    "loc": "Kanai, Mexico",
+    "city": "Kanai",
+    "country": "Mexico",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "St. Regis Hotels & Resorts",
+    "brand": "St. Regis",
+    "scene": "tropical",
+    "blurb": "In Kanai, Mexico.",
     "featured": false
   },
   {

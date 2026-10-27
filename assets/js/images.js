@@ -708,6 +708,9 @@ window.WAH_IMAGES = {
   "6286": {
     "hero": "https://whatahotel.com/content/hotels/6286/susurros-del-corazon-auberge-room-01-SDCAUB0722-bbcf7732174a46caaddeac50b82a98c1.jpeg"
   },
+  "6290": {
+    "hero": "https://www.whatahotel.com/content/hotels/6290/xr-cunxr-str-cunxr-37632-10472-Feature-Hor.jpeg"
+  },
   "6367": {
     "hero": "https://whatahotel.com/content/hotels/6367/mc-dadmr-pool-1-27003_Feature-Hor.jpeg"
   },

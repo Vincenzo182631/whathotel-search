@@ -62,7 +62,9 @@ const BOILER = ["lorraine travel", "whatahotel", "preferred partner", "the perks
   "best way to book", "virtuoso", "signature travel", "*the perks", "verified by", "book ",
   // booking / perk / policy paragraphs — not property descriptions
   "$", "credit", "deposit", "cancellation", "blackout", "excluding", "upgrade upon", "back-to-back",
-  "one-time", "resort fee", "per night", "per stay", "valid for", "subject to availability", "early check"];
+  "one-time", "resort fee", "per night", "per stay", "valid for", "subject to availability", "early check",
+  // account / sign-up banners
+  "free account", "create a free", "log in", "viewing this site"];
 
 function descFrom(html) {
   const paras = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map((x) => x[1]);
@@ -82,8 +84,12 @@ function descFrom(html) {
     // Trim to ~2 sentences / 320 chars for card + modal use.
     if (t.length > 340) {
       const cut = t.slice(0, 340);
-      const lastDot = cut.lastIndexOf(". ");
-      t = (lastDot > 140 ? cut.slice(0, lastDot + 1) : cut.trim() + "…");
+      // Last real sentence end — not an abbreviation like "St. Regis" / "Mt. Cook".
+      let lastDot = -1;
+      for (const mm of cut.matchAll(/\.\s/g)) {
+        if (!/\b(St|Ste|Mt|Dr|Mr|Mrs|Ms|No|Jr|Sr)$/i.test(cut.slice(0, mm.index))) lastDot = mm.index;
+      }
+      t = (lastDot > 140 ? cut.slice(0, lastDot + 1) : cut.replace(/\s+\S*$/, "").replace(/[,;:]$/, "") + "…");
     }
     return t;
   }
