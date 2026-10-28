@@ -821,5 +821,32 @@ window.WAH_IMAGES = {
   },
   "6847": {
     "hero": "https://whatahotel.com/content/hotels/6847/Rock-House-8003-1-scaled.jpg"
+  },
+  "6980": {
+    "hero": "https://www.whatahotel.com/content/hotels/6980/ak-aseak-viewline-exterior-91948_Feature-Hor.jpeg"
+  },
+  "7073": {
+    "hero": "https://www.whatahotel.com/content/hotels/7073/1111_Banyan_Tree_Koh_Samui.jpg"
+  },
+  "7078": {
+    "hero": "https://www.whatahotel.com/content/hotels/7078/0_mcocha-property-sunset-view-2880x1180.jpg"
+  },
+  "7082": {
+    "hero": "https://www.whatahotel.com/content/hotels/7082/AML_023_original.jpg"
+  },
+  "7083": {
+    "hero": "https://www.whatahotel.com/content/hotels/7083/Siari_Riviera_Nayarit,_a_Ritz-Carlton_Reserve.jpeg"
+  },
+  "7114": {
+    "hero": "https://www.whatahotel.com/content/hotels/7114/Tablet-Banner-1200x750-IMG-AMAALA-CR-Cracknell_6.jpg"
+  },
+  "7115": {
+    "hero": "https://www.whatahotel.com/content/hotels/7115/d2f5d790-6af9-4971-911a-53c0cf86bbce.jpg"
+  },
+  "7151": {
+    "hero": "https://www.whatahotel.com/content/hotels/7151/nobu_hotel_los_cabos_cover.jpg"
+  },
+  "7159": {
+    "hero": "https://www.whatahotel.com/content/hotels/7159/100451-01-The_Branson_Estate_overview_1-Moskito_Island.jpg"
   }
 };

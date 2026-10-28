@@ -20,14 +20,14 @@ window.WAH_REGIONS = [
     "label": "North America",
     "blurb": "Villas, residences & estates across the U.S. and Canada.",
     "scene": "mountain",
-    "count": 77
+    "count": 79
   },
   {
     "key": "latam-caribbean",
     "label": "Latin America & Caribbean",
     "blurb": "Beachfront homes & villas across Mexico, the Caribbean and beyond.",
     "scene": "tropical",
-    "count": 75
+    "count": 78
   },
   {
     "key": "europe",
@@ -41,14 +41,14 @@ window.WAH_REGIONS = [
     "label": "Asia",
     "blurb": "Private pool villas & residences across Southeast Asia and beyond.",
     "scene": "tropical",
-    "count": 52
+    "count": 53
   },
   {
     "key": "mea",
     "label": "Middle East & Africa",
     "blurb": "Desert residences & island villas across the region.",
     "scene": "desert",
-    "count": 20
+    "count": 23
   },
   {
     "key": "pacific",
@@ -61,7 +61,7 @@ window.WAH_REGIONS = [
 window.WAH_BRANDS = [
   {
     "label": "Four Seasons",
-    "count": 29
+    "count": 30
   },
   {
     "label": "Hyatt",
@@ -72,19 +72,19 @@ window.WAH_BRANDS = [
     "count": 17
   },
   {
+    "label": "Ritz-Carlton",
+    "count": 10
+  },
+  {
     "label": "Auberge Resorts",
     "count": 9
   },
   {
-    "label": "Ritz-Carlton",
+    "label": "Rosewood",
     "count": 9
   },
   {
     "label": "Belmond",
-    "count": 8
-  },
-  {
-    "label": "Rosewood",
     "count": 8
   },
   {
@@ -100,6 +100,10 @@ window.WAH_BRANDS = [
     "count": 7
   },
   {
+    "label": "Preferred",
+    "count": 7
+  },
+  {
     "label": "Raffles",
     "count": 7
   },
@@ -112,15 +116,11 @@ window.WAH_BRANDS = [
     "count": 6
   },
   {
-    "label": "Preferred",
-    "count": 5
+    "label": "Six Senses",
+    "count": 6
   },
   {
     "label": "Relais & Châteaux",
-    "count": 5
-  },
-  {
-    "label": "Six Senses",
     "count": 5
   },
   {
@@ -128,16 +128,16 @@ window.WAH_BRANDS = [
     "count": 5
   },
   {
-    "label": "Luxury Collection",
+    "label": "Autograph Collection",
     "count": 4
   },
   {
-    "label": "Autograph Collection",
-    "count": 3
+    "label": "Banyan Tree",
+    "count": 4
   },
   {
-    "label": "Banyan Tree",
-    "count": 3
+    "label": "Luxury Collection",
+    "count": 4
   },
   {
     "label": "Hilton",
@@ -666,6 +666,21 @@ window.WAH_PROPERTIES = [
     "brand": "Banyan Tree",
     "scene": "tropical",
     "blurb": "In Phuket, Thailand.",
+    "featured": false
+  },
+  {
+    "id": 7073,
+    "url": "https://whatahotel.com/hotels/7073/banyan-tree-samui.html",
+    "name": "Banyan Tree Samui",
+    "loc": "Koh Samui, Thailand",
+    "city": "Koh Samui",
+    "country": "Thailand",
+    "region": "Asia",
+    "regionKey": "asia",
+    "collection": "Banyan Tree",
+    "brand": "Banyan Tree",
+    "scene": "tropical",
+    "blurb": "In Koh Samui, Thailand.",
     "featured": false
   },
   {
@@ -1341,6 +1356,21 @@ window.WAH_PROPERTIES = [
     "brand": "Four Seasons",
     "scene": "tropical",
     "blurb": "In Anguilla, Anguilla.",
+    "featured": false
+  },
+  {
+    "id": 7082,
+    "url": "https://whatahotel.com/hotels/7082/four-seasons-resort-amaala-at-triple-bay.html",
+    "name": "Four Seasons Resort AMAALA at Triple Bay",
+    "loc": "The Red Sea, Saudi Arabia",
+    "city": "The Red Sea",
+    "country": "Saudi Arabia",
+    "region": "Middle East & Africa",
+    "regionKey": "mea",
+    "collection": "Four Seasons",
+    "brand": "Four Seasons",
+    "scene": "desert",
+    "blurb": "In The Red Sea, Saudi Arabia.",
     "featured": false
   },
   {
@@ -2544,6 +2574,36 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 7151,
+    "url": "https://whatahotel.com/hotels/7151/nobu-hotel-los-cabos.html",
+    "name": "Nobu Hotel Los Cabos",
+    "loc": "Cabo San Lucas, Mexico",
+    "city": "Cabo San Lucas",
+    "country": "Mexico",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "tropical",
+    "blurb": "In Cabo San Lucas, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 7078,
+    "url": "https://whatahotel.com/hotels/7078/omni-orlando-at-champions-gate.html",
+    "name": "Omni Orlando at Champions Gate",
+    "loc": "Orlando and Disney World, United States",
+    "city": "Orlando and Disney World",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Signature Collection",
+    "brand": "",
+    "scene": "city",
+    "blurb": "In Orlando and Disney World, United States.",
+    "featured": false
+  },
+  {
     "id": 6647,
     "url": "https://whatahotel.com/hotels/6647/one-only-aesthesis.html",
     "name": "One&Only Aesthesis",
@@ -3069,6 +3129,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 7114,
+    "url": "https://whatahotel.com/hotels/7114/rosewood-amaala.html",
+    "name": "Rosewood AMAALA",
+    "loc": "The Red Sea, Saudi Arabia",
+    "city": "The Red Sea",
+    "country": "Saudi Arabia",
+    "region": "Middle East & Africa",
+    "regionKey": "mea",
+    "collection": "Rosewood Hotels & Resorts",
+    "brand": "Rosewood",
+    "scene": "desert",
+    "blurb": "In The Red Sea, Saudi Arabia.",
+    "featured": false
+  },
+  {
     "id": 2982,
     "url": "https://whatahotel.com/hotels/2982/rosewood-baha-mar.html",
     "name": "Rosewood Baha Mar",
@@ -3291,6 +3366,36 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "beach",
     "blurb": "In Coronado, United States.",
+    "featured": false
+  },
+  {
+    "id": 7083,
+    "url": "https://whatahotel.com/hotels/7083/siari-a-ritz-carlton-reserve.html",
+    "name": "Siari, a Ritz-Carlton Reserve",
+    "loc": "Riviera Nayarit, Mexico",
+    "city": "Riviera Nayarit",
+    "country": "Mexico",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Ritz Carlton Hotels & Resorts",
+    "brand": "Ritz-Carlton",
+    "scene": "tropical",
+    "blurb": "In Riviera Nayarit, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 7115,
+    "url": "https://whatahotel.com/hotels/7115/six-senses-amaala.html",
+    "name": "Six Senses AMAALA",
+    "loc": "The Red Sea, Saudi Arabia",
+    "city": "The Red Sea",
+    "country": "Saudi Arabia",
+    "region": "Middle East & Africa",
+    "regionKey": "mea",
+    "collection": "Six Senses Hotels & Resorts",
+    "brand": "Six Senses",
+    "scene": "desert",
+    "blurb": "In The Red Sea, Saudi Arabia.",
     "featured": false
   },
   {
@@ -3576,6 +3681,21 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "tropical",
     "blurb": "In Papeete, French Polynesia.",
+    "featured": false
+  },
+  {
+    "id": 7159,
+    "url": "https://whatahotel.com/hotels/7159/the-branson-beach-estate.html",
+    "name": "The Branson Beach Estate",
+    "loc": "Moskito Island, British Virgin Islands",
+    "city": "Moskito Island",
+    "country": "British Virgin Islands",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "tropical",
+    "blurb": "In Moskito Island, British Virgin Islands.",
     "featured": false
   },
   {
@@ -4084,6 +4204,21 @@ window.WAH_PROPERTIES = [
     "regionKey": "north-america",
     "collection": "Viceroy Hotels",
     "brand": "",
+    "scene": "mountain",
+    "blurb": "In Snowmass Village, United States.",
+    "featured": false
+  },
+  {
+    "id": 6980,
+    "url": "https://whatahotel.com/hotels/6980/viewline-resort-snowmass.html",
+    "name": "Viewline Resort Snowmass",
+    "loc": "Snowmass Village, United States",
+    "city": "Snowmass Village",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Autograph Collection",
+    "brand": "Autograph Collection",
     "scene": "mountain",
     "blurb": "In Snowmass Village, United States.",
     "featured": false

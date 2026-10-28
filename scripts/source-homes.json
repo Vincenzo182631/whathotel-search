@@ -1416,6 +1416,14 @@
   "country": "British Virgin Islands"
  },
  {
+  "id": 7159,
+  "slug": "the-branson-beach-estate",
+  "name": "The Branson Beach Estate",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Moskito Island",
+  "country": "British Virgin Islands"
+ },
+ {
   "id": 3939,
   "slug": "eden-roc-cap-cana-",
   "name": "Eden Roc Cap Cana",
@@ -2128,10 +2136,50 @@
   "country": "United States"
  },
  {
+  "id": 6980,
+  "slug": "viewline-resort-snowmass",
+  "name": "Viewline Resort Snowmass",
+  "collection": "Autograph Collection under the Marriott Luminous Program",
+  "city": "Snowmass Village",
+  "country": "United States"
+ },
+ {
+  "id": 7078,
+  "slug": "omni-orlando-at-champions-gate",
+  "name": "Omni Orlando at Champions Gate",
+  "collection": "The Signature Collection",
+  "city": "Orlando and Disney World",
+  "country": "United States"
+ },
+ {
   "id": 6741,
   "slug": "six-senses-southern-dunes",
   "name": "Six Senses Southern Dunes",
   "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "The Red Sea",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": 7114,
+  "slug": "rosewood-amaala",
+  "name": "Rosewood AMAALA",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "The Red Sea",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": 7115,
+  "slug": "six-senses-amaala",
+  "name": "Six Senses AMAALA",
+  "collection": "Six Senses Hotels & Resorts under IHG's Destined Program",
+  "city": "The Red Sea",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": 7082,
+  "slug": "four-seasons-resort-amaala-at-triple-bay",
+  "name": "Four Seasons Resort AMAALA at Triple Bay",
+  "collection": "Four Seasons",
   "city": "The Red Sea",
   "country": "Saudi Arabia"
  },
@@ -2160,11 +2208,35 @@
   "country": "Thailand"
  },
  {
+  "id": 7073,
+  "slug": "banyan-tree-samui",
+  "name": "Banyan Tree Samui",
+  "collection": "Banyan Tree",
+  "city": "Koh Samui",
+  "country": "Thailand"
+ },
+ {
   "id": 6764,
   "slug": "rosewood-mandarina",
   "name": "Rosewood Mandarina",
   "collection": "Rosewood Hotels & Resorts",
   "city": "Puerto Vallarta",
+  "country": "Mexico"
+ },
+ {
+  "id": 7083,
+  "slug": "siari-a-ritz-carlton-reserve",
+  "name": "Siari, a Ritz-Carlton Reserve",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Riviera Nayarit",
+  "country": "Mexico"
+ },
+ {
+  "id": 7151,
+  "slug": "nobu-hotel-los-cabos",
+  "name": "Nobu Hotel Los Cabos",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Cabo San Lucas",
   "country": "Mexico"
  },
  {

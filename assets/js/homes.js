@@ -266,7 +266,7 @@
 
   var CARIB = {};
   ("anguilla,antigua,bahamas,barbados,belize,british virgin islands,cayman,grand cayman,dominican republic,grenada,honduras,jamaica,puerto rico,saint lucia,st lucia,saint vincent and the grenadines,st. kitts and nevis,saint kitts,nevis,st. martin,saint martin,turks & caicos,turks and caicos,us virgin islands,saint barthelemy,st barts,aruba,curacao").split(",").forEach(function (c) { CARIB[c.trim()] = 1; });
-  var CITY_WORD_SKIP = { beach: 1, city: 1, island: 1, saint: 1, world: 1, coast: 1, area: 1, north: 1, south: 1, east: 1, west: 1, downtown: 1, resort: 1, national: 1, park: 1 };
+  var CITY_WORD_SKIP = { beach: 1, city: 1, island: 1, saint: 1, world: 1, coast: 1, area: 1, north: 1, south: 1, east: 1, west: 1, downtown: 1, resort: 1, national: 1, park: 1, village: 1, grand: 1, bays: 1 };
 
   var PLACE_INDEX = null;
   function buildPlaceIndex() {
@@ -289,9 +289,16 @@
     add("north america", mkRegion("north-america"));
     ["usa", "u.s.a", "united states", "america", "the states"].forEach(function (t) { add(t, US); });
     ["u.k.", "britain", "england", "united kingdom", "great britain"].forEach(function (t) { add(t, UK); });
+    var VIBE = {};  // setting/feature vocabulary must stay a setting, never a city name
+    [SETTING_SYNONYMS, FEATURE_SYNONYMS].forEach(function (m) { Object.keys(m).forEach(function (k) { m[k].forEach(function (ph) { ph.split(/\s+/).forEach(function (w) { VIBE[w] = 1; }); }); }); });
+    [GROUP_WORDS, QUIET_WORDS, LUX_WORDS].forEach(function (l) { l.forEach(function (w) { VIBE[w] = 1; }); });
     PROPS.forEach(function (p) {
-      [p.city, p.country, p.region].forEach(function (v) { if (v) add(v, mkField(v)); });
-      (p.city || "").toLowerCase().split(/[^a-z]+/).forEach(function (w) { if (w.length >= 4 && !CITY_WORD_SKIP[w]) add(w, mkWord(w)); });
+      [p.city, p.country, p.region].forEach(function (v) {
+        if (!v) return;
+        add(v, mkField(v));
+        if (/^the\s+/i.test(v)) add(v.replace(/^the\s+/i, ""), mkField(v));   // "The Red Sea" → "red sea"
+      });
+      (p.city || "").toLowerCase().split(/[^a-z]+/).forEach(function (w) { if (w.length >= 4 && !CITY_WORD_SKIP[w] && !VIBE[w]) add(w, mkWord(w)); });
     });
     terms.sort(function (a, b) { return b.t.length - a.t.length; });  // multi-word terms win first
     return (PLACE_INDEX = terms);
@@ -358,6 +365,14 @@
       if (re.test(lc)) { lc = lc.replace(re, " "); return true; }
       return false;
     }
+    // Places first (longest terms first, whole words), so "British Virgin Islands"
+    // or "Lake Como" are read as a destination before "islands"/"lake" are read
+    // as a setting.
+    buildPlaceIndex().forEach(function (e) {
+      if (lc.indexOf(e.t) === -1) return;
+      var re = new RegExp("(^|[^a-z0-9])" + e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&") + "(?=$|[^a-z0-9])", "g");
+      if (re.test(lc)) { sig.places.push(e.test); sig.placeLabels.push(e.t); lc = lc.replace(re, "$1 "); }
+    });
     Object.keys(SETTING_SYNONYMS).forEach(function (k) { SETTING_SYNONYMS[k].forEach(function (w) { if (eat(w) && sig.settings.indexOf(k) === -1) sig.settings.push(k); }); });
     Object.keys(FEATURE_SYNONYMS).forEach(function (k) { FEATURE_SYNONYMS[k].forEach(function (w) { if (eat(w) && sig.features.indexOf(k) === -1) sig.features.push(k); }); });
     QUIET_WORDS.forEach(function (w) { if (eat(w)) sig.quiet = true; });
@@ -365,8 +380,6 @@
     if (/\b\d+\s*(people|guests|persons|adults|pax|bedrooms?|beds?)\b/.test(lc)) sig.group = true;
     GROUP_WORDS.forEach(function (w) { if (eat(w)) sig.group = true; });
     if (sig.features.indexOf("family-friendly") !== -1) sig.group = true;
-    // Places (longest terms first) from whatever text remains
-    buildPlaceIndex().forEach(function (e) { if (lc.indexOf(" " + e.t + " ") !== -1 || lc.indexOf(e.t) !== -1) { if (new RegExp("\\b" + e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&")).test(lc)) { sig.places.push(e.test); sig.placeLabels.push(e.t); lc = lc.replace(new RegExp(e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&"), "g"), " "); } } });
     // Leftover meaningful tokens → free-text (brand / hotel names, unknown places)
     lc.split(/\s+/).forEach(function (w) { w = w.trim(); if (w.length >= 3 && !STOP_WORDS[w] && !/^\d+$/.test(w) && sig.text.indexOf(w) === -1) sig.text.push(w); });
     return sig;
@@ -404,7 +417,9 @@
     } else if (sig.settings.length || sig.features.length) {
       cands = base.filter(function (p) { return traitHit(p, sig); });
     } else if (sig.text.length) {
-      cands = base.filter(function (p) { return textHit(p, sig.text); });
+      // Prefer homes matching ALL the words ("four seasons amaala"), else ANY.
+      cands = base.filter(function (p) { var h = nlHay(p); return sig.text.every(function (t) { return h.indexOf(t) !== -1; }); });
+      if (!cands.length) cands = base.filter(function (p) { return textHit(p, sig.text); });
       if (!cands.length) { var ql = q.toLowerCase().trim(); cands = base.filter(function (p) { return nlHay(p).indexOf(ql) !== -1; }); }
     } else {
       cands = base.slice();  // only intent words (e.g. "spacious place") → show the best, ranked
@@ -683,7 +698,7 @@
      thumbnail rail, keyboard arrows, touch swipe, reduced-motion safe.
      ================================================================= */
   // Marquee slides — a geographically diverse set of REAL properties from the
-  // 273. All copy (kicker, description, meta) is derived from authoritative
+  // 282. All copy (kicker, description, meta) is derived from authoritative
   // data: the property's collection, city/country/region and its own
   // WhataHotel description. Nothing about the accommodation is invented.
   var HERO_IDS = [
