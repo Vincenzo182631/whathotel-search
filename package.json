@@ -9,5 +9,11 @@
   },
   "dependencies": {
     "@heygen/liveavatar-web-sdk": "^0.0.18"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "dev": "node scripts/dev-server.mjs",
+    "import:mo": "node scripts/import-mo-homes.mjs",
+    "import:mo:dry": "node scripts/import-mo-homes.mjs --dry-run"
   }
 }

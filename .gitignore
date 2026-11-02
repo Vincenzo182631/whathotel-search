@@ -13,3 +13,10 @@ dist/
 # OS / editor
 .DS_Store
 Thumbs.db
+
+# Mandarin Oriental import: raw source snapshots (may contain third-party personal data)
+data/.mo-cache/
+!.env.example
+
+# Local working files
+scratchpad/

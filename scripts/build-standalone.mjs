@@ -6,7 +6,13 @@
  * Uses the real WhataHotel image URLs (they load on any https page, incl. GHL).
  *
  * Run:  node scripts/build-standalone.mjs
+ *       INQUIRY_ENDPOINT=https://<your-deployment>/api/request-availability node scripts/build-standalone.mjs
  * Output: gohighlevel.html  (repo root)
+ *
+ * INQUIRY_ENDPOINT: the Exceptional Homes "Request Availability" form posts here.
+ * A GHL-hosted page has no /api, so the embed needs the absolute URL of the
+ * deployment that runs api/request-availability. Without it the form shows its
+ * error state (with the reservations email); it never shows a false success.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -27,10 +33,24 @@ const inlines = [
   ['<script src="assets/js/details.js"></script>', () => "<script>\n" + read("assets/js/details.js") + "\n</script>"],
   ['<script src="assets/js/homes-inventory-filter.js"></script>', () => "<script>\n" + read("assets/js/homes-inventory-filter.js") + "\n</script>"],
   ['<script src="assets/js/homes.js" defer></script>', () => "<script>\n" + read("assets/js/homes.js") + "\n</script>"],
+  ['<link rel="stylesheet" href="assets/css/mo-homes.css">', () => "<style>\n" + read("assets/css/mo-homes.css") + "\n</style>"],
+  // Exceptional Homes: data is inlined (no lazy fetch from a relative path inside GHL).
+  ['<script src="assets/js/mo-format.js" defer></script>', () => "<script>\n" + read("assets/js/mo-homes.js") + "\n</script>\n<script>\n" + read("assets/js/mo-format.js") + "\n</script>"],
+  ['<script src="assets/js/mo-homes-ui.js" defer></script>', () => "<script>\n" + read("assets/js/mo-homes-ui.js") + "\n</script>"],
 ];
 for (const [tag, payload] of inlines) {
   if (html.indexOf(tag) === -1) throw new Error("Tag not found while bundling: " + tag);
   html = html.replace(tag, payload); // function form → no $-substitution surprises
+}
+
+const EP = process.env.INQUIRY_ENDPOINT;
+if (EP) {
+  if (!/^https:\/\/[^\s"<>]+\/api\/request-availability$/.test(EP)) throw new Error("INQUIRY_ENDPOINT must be https://…/api/request-availability");
+  const tag = '<meta name="wah-inquiry-endpoint" content="/api/request-availability">';
+  if (html.indexOf(tag) === -1) throw new Error("Endpoint meta tag not found");
+  html = html.replace(tag, () => `<meta name="wah-inquiry-endpoint" content="${EP}">`);
+} else {
+  console.warn("Note: INQUIRY_ENDPOINT not set — the embedded Request Availability form will post to /api/request-availability on the GHL domain and show its error state.");
 }
 
 const OUT = join(root, "gohighlevel.html");

@@ -185,6 +185,25 @@ It is deliberately careful about false positives / negatives:
 The module is dependency-free and Node-testable (`module.exports`). A 16-case
 matrix (including all the false-friend guards) was verified during development.
 
+## Mandarin Oriental Exceptional Homes
+
+The `#exceptional-homes` section lists 42 MO Exceptional Homes across 8 countries, using MO photos and text with the client's confirmed permission. These homes are **not bookable online**; "Request Availability" sends an inquiry to the reservations team.
+
+- **Data:** `scripts/import-mo-homes.mjs` (Playwright, polite, idempotent) writes these files. Never edit them by hand.
+  - `data/mo-exceptional-homes.json`
+  - `assets/js/mo-homes.js`, loaded lazily when the section nears the viewport
+  - `server/mo-homes-registry.mjs`
+  - `docs/mo-import-report.md`, listing the selection rules, exclusions and missing data
+  - Run `npm run import:mo` to re-import (add `--dry-run` to preview the selection, or `--from-cache` to rebuild without re-fetching). Selection rules live in `scripts/mo-homes.config.json`.
+- **UI:**
+  - `assets/js/mo-homes-ui.js`, `assets/js/mo-format.js` and `assets/css/mo-homes.css`
+  - Country filter, cards, a detail dialog with "More Info" sections, and the request form
+- **Inquiries:** `server/inquiry-core.mjs` is served through `api/` (Vercel), `netlify/functions/` and `functions/api/` (Cloudflare), and delivers to a GoHighLevel webhook. For setup, env vars and safe testing, see **docs/exceptional-homes-inquiries.md**.
+- **Tests:**
+  - `npm test` runs the unit tests.
+  - `node tests/e2e-mo-homes.cjs` runs the desktop and mobile browser flow against a mock webhook. Screenshots go to `tests/screenshots/`.
+- **Structured data:** none is added for MO homes. They aren't bookable products with live prices, and the rates are indicative, so `Offer`/`Product` markup would overstate them.
+
 ## Analytics / conversion tracking
 
 Interactions push to `window.dataLayer` (Google Tag Manager compatible; falls
