@@ -33,6 +33,9 @@ window.WAH_IMAGES = {
   "993": {
     "hero": "https://whatahotel.com/content/hotels/993/best_villa_deste.jpg"
   },
+  "1004": {
+    "hero": "https://www.whatahotel.com/content/hotels/1004/chateau_st_martin.jpg"
+  },
   "1014": {
     "hero": "https://whatahotel.com/content/hotels/1014/118601729.jpg"
   },
@@ -81,6 +84,9 @@ window.WAH_IMAGES = {
   "1253": {
     "hero": "https://whatahotel.com/content/hotels/1253/mav.jpg"
   },
+  "1254": {
+    "hero": "https://www.whatahotel.com/content/hotels/1254/RitzCarlton_BachelorGulch_01.jpg"
+  },
   "1268": {
     "hero": "https://whatahotel.com/content/hotels/1268/8db0cb89_the_terrace_s-original.jpg"
   },
@@ -104,6 +110,9 @@ window.WAH_IMAGES = {
   },
   "1399": {
     "hero": "https://whatahotel.com/content/hotels/1399/5-star-reethi-rah-resort-in-maldives-by-oneonly-swimming-pool-one-and-only-top-luxury-beach-island-tblog-center.jpg"
+  },
+  "1407": {
+    "hero": "https://www.whatahotel.com/content/hotels/1407/lux1194ag-169200-Evening_Views_of_Santa_Marina_Private_Beach.jpg"
   },
   "1408": {
     "hero": "https://whatahotel.com/content/hotels/1408/PrivatePoolatDusk.jpg"
@@ -129,6 +138,9 @@ window.WAH_IMAGES = {
   "1459": {
     "hero": "https://whatahotel.com/content/hotels/1459/d3fab7d7-5b5a-4244-a198-68fcb01f313a.jpg"
   },
+  "1472": {
+    "hero": "https://www.whatahotel.com/content/hotels/1472/18714-media-1Slideshow-CalistogaRanch-Calistoga-Pool-1600x600.jpg"
+  },
   "1475": {
     "hero": "https://whatahotel.com/content/hotels/1475/slide-02.jpg"
   },
@@ -153,11 +165,17 @@ window.WAH_IMAGES = {
   "1569": {
     "hero": "https://whatahotel.com/content/hotels/1569/Palmetto.jpg"
   },
+  "1626": {
+    "hero": "https://www.whatahotel.com/content/hotels/1626/Anantara-Villa-Padierna-Palace-Hotel-Banner.jpg"
+  },
   "1636": {
     "hero": "https://whatahotel.com/content/hotels/1636/Carneros_Resort_and_Spa.jpg"
   },
   "1650": {
     "hero": "https://whatahotel.com/content/hotels/1650/slide-01-ac46845cf9ef469f1a11069a192d7ad4.jpg"
+  },
+  "1728": {
+    "hero": "https://www.whatahotel.com/content/hotels/1728/7afc1021fb8188fca4e166ea8f531d05.jpg"
   },
   "1736": {
     "hero": "https://whatahotel.com/content/hotels/1736/jcr_content.jpg"
@@ -192,6 +210,9 @@ window.WAH_IMAGES = {
   "1970": {
     "hero": "https://whatahotel.com/content/hotels/1970/intercontinental-bora-bora-4022945818-2x1.jpg"
   },
+  "2093": {
+    "hero": "https://www.whatahotel.com/content/hotels/2093/SSF_034_original.jpg"
+  },
   "2133": {
     "hero": "https://whatahotel.com/content/hotels/2133/Fairmont-Miramar-Hotel-Bungalows_Miramar-Gardens-Bungalow-View-1-1350x712.jpg"
   },
@@ -206,6 +227,9 @@ window.WAH_IMAGES = {
   },
   "2194": {
     "hero": "https://whatahotel.com/content/hotels/2194/hyatt-regency-monterey.jpg"
+  },
+  "2206": {
+    "hero": "https://www.whatahotel.com/content/hotels/2206/CastleMartyr.jpg"
   },
   "2212": {
     "hero": "https://whatahotel.com/content/hotels/2212/xr-pvrxr-aerial-pools-29336-07596_Wide-Hor.jpeg"
@@ -234,6 +258,9 @@ window.WAH_IMAGES = {
   "2314": {
     "hero": "https://whatahotel.com/content/hotels/2314/mayakoba.jpg"
   },
+  "2348": {
+    "hero": "https://www.whatahotel.com/content/hotels/2348/the-lodge-exterior-summer-3-lr.jpg"
+  },
   "2349": {
     "hero": "https://whatahotel.com/content/hotels/2349/st.-regis-home-page.jpg"
   },
@@ -249,8 +276,14 @@ window.WAH_IMAGES = {
   "2402": {
     "hero": "https://whatahotel.com/content/hotels/2402/Ritz_Lake_Tahoe.jpg"
   },
+  "2422": {
+    "hero": "https://www.whatahotel.com/content/hotels/2422/WA_ParkCity_RWAV_Balcony_View1_RWAV.jpg"
+  },
   "2426": {
     "hero": "https://whatahotel.com/content/hotels/2426/sjuxr-casa-grande-8034-hor-wide.jpg"
+  },
+  "2427": {
+    "hero": "https://www.whatahotel.com/content/hotels/2427/Finca-Cortesin-Golf.jpg"
   },
   "2441": {
     "hero": "https://whatahotel.com/content/hotels/2441/e2d2e37d2dc14f2c8d7e4efcec7f8480_LARGE!_!24027fd3fa6ce8a1cfa85bc45b39d0b0.jpg"
@@ -272,6 +305,9 @@ window.WAH_IMAGES = {
   },
   "2520": {
     "hero": "https://whatahotel.com/content/hotels/2520/gjh.jpg"
+  },
+  "2539": {
+    "hero": "https://www.whatahotel.com/content/hotels/2539/miaxr-suite-1885-hor-clsc.jpg"
   },
   "2543": {
     "hero": "https://whatahotel.com/content/hotels/2543/AVO_075_original.jpg"
@@ -297,6 +333,9 @@ window.WAH_IMAGES = {
   "2706": {
     "hero": "https://whatahotel.com/content/hotels/2706/andaz_maui.jpg"
   },
+  "2710": {
+    "hero": "https://www.whatahotel.com/content/hotels/2710/0000_canaves_epitome.jpg"
+  },
   "2728": {
     "hero": "https://whatahotel.com/content/hotels/2728/foto-Signature-2014_sito2.jpg"
   },
@@ -312,8 +351,14 @@ window.WAH_IMAGES = {
   "2760": {
     "hero": "https://whatahotel.com/content/hotels/2760/AndazPapagayo_PRINT07.jpg"
   },
+  "2786": {
+    "hero": "https://www.whatahotel.com/content/hotels/2786/lux3290lo.104260_xx.jpg"
+  },
   "2811": {
     "hero": "https://whatahotel.com/content/hotels/2811/685f846a48fa9cdea05a492d617d3525_galleru_full.jpg"
+  },
+  "2835": {
+    "hero": "https://www.whatahotel.com/content/hotels/2835/str1509gr.130062_xx.jpg"
   },
   "2849": {
     "hero": "https://whatahotel.com/content/hotels/2849/NIZUC-Resort-and-Spa-Cancun_01_l.jpg"
@@ -450,6 +495,9 @@ window.WAH_IMAGES = {
   "3479": {
     "hero": "https://whatahotel.com/content/hotels/3479/San-Miguel-de-Allende-105.jpg"
   },
+  "3483": {
+    "hero": "https://www.whatahotel.com/content/hotels/3483/RosewoodMiramarBeach_GreatLawnDay.jpg"
+  },
   "3487": {
     "hero": "https://whatahotel.com/content/hotels/3487/50477175-Arrival_pavilion_02.jpg"
   },
@@ -461,6 +509,9 @@ window.WAH_IMAGES = {
   },
   "3497": {
     "hero": "https://whatahotel.com/content/hotels/3497/13d93ab5a36d76562fa922429470f944.jpg"
+  },
+  "3530": {
+    "hero": "https://www.whatahotel.com/content/hotels/3530/lodge_at_edgewood_tahoe-_publicity_-_h_2017.jpg"
   },
   "3539": {
     "hero": "https://whatahotel.com/content/hotels/3539/95030573.jpg"
@@ -492,6 +543,9 @@ window.WAH_IMAGES = {
   "3685": {
     "hero": "https://whatahotel.com/content/hotels/3685/mountain-shadows-paradise-valley-az-2000x700.jpg"
   },
+  "3692": {
+    "hero": "https://www.whatahotel.com/content/hotels/3692/mainbuilding1.jpg"
+  },
   "3703": {
     "hero": "https://whatahotel.com/content/hotels/3703/Zadun-Ritz-Carlton-Reserve-Golf.jpg"
   },
@@ -509,6 +563,9 @@ window.WAH_IMAGES = {
   },
   "3797": {
     "hero": "https://whatahotel.com/content/hotels/3797/eisak-aerial-9816-hor-feat.jpg"
+  },
+  "3802": {
+    "hero": "https://www.whatahotel.com/content/hotels/3802/7_SpinalongaView_1.jpg"
   },
   "3808": {
     "hero": "https://whatahotel.com/content/hotels/3808/mthak-pool-0030-hor-feat.jpg"
@@ -600,6 +657,9 @@ window.WAH_IMAGES = {
   "4252": {
     "hero": "https://whatahotel.com/content/hotels/4252/oopm-resort-exterior-1.jpg"
   },
+  "4402": {
+    "hero": "https://www.whatahotel.com/content/hotels/4402/Le_Vallon_de_Valrugues_&_Spa.jpg"
+  },
   "4411": {
     "hero": "https://whatahotel.com/content/hotels/4411/Eagles_Villas.jpeg"
   },
@@ -657,6 +717,9 @@ window.WAH_IMAGES = {
   "6072": {
     "hero": "https://whatahotel.com/content/hotels/6072/0000_itzana2.jpg"
   },
+  "6075": {
+    "hero": "https://www.whatahotel.com/content/hotels/6075/0000_porto_zante.jpg"
+  },
   "6080": {
     "hero": "https://whatahotel.com/content/hotels/6080/Maia-Luxury-Resort-and-Spa-Ocean-Panoramic-Villa-View-Private-Deck-Mahe-island-Seychelles-Timbuktu-Travel.jpg"
   },
@@ -665,6 +728,9 @@ window.WAH_IMAGES = {
   },
   "6092": {
     "hero": "https://whatahotel.com/content/hotels/6092/mandarin-oriental-bodrum-aerial-view.jpg"
+  },
+  "6100": {
+    "hero": "https://www.whatahotel.com/content/hotels/6100/etereo-auberge-resorts.jpg"
   },
   "6102": {
     "hero": "https://whatahotel.com/content/hotels/6102/4.jpg"
@@ -714,6 +780,9 @@ window.WAH_IMAGES = {
   "6290": {
     "hero": "https://www.whatahotel.com/content/hotels/6290/xr-cunxr-str-cunxr-37632-10472-Feature-Hor.jpeg"
   },
+  "6298": {
+    "hero": "https://www.whatahotel.com/content/hotels/6298/Sum_gardens_Dubrovnik.jpg"
+  },
   "6367": {
     "hero": "https://whatahotel.com/content/hotels/6367/mc-dadmr-pool-1-27003_Feature-Hor.jpeg"
   },
@@ -744,8 +813,14 @@ window.WAH_IMAGES = {
   "6479": {
     "hero": "https://whatahotel.com/content/hotels/6479/b1u8_ho_00_p_1024x768.jpg"
   },
+  "6519": {
+    "hero": "https://www.whatahotel.com/content/hotels/6519/0_rebello_1.jpg"
+  },
   "6539": {
     "hero": "https://whatahotel.com/content/hotels/6539/Kea.jpg"
+  },
+  "6543": {
+    "hero": "https://www.whatahotel.com/content/hotels/6543/Costa-Navarino-Ormos-Beach-Club-scaled.jpg"
   },
   "6547": {
     "hero": "https://whatahotel.com/content/hotels/6547/-1x-1.jpg"
@@ -758,6 +833,9 @@ window.WAH_IMAGES = {
   },
   "6558": {
     "hero": "https://whatahotel.com/content/hotels/6558/CHSDB-P0086-Sweetgrass-Inn-Pool-Deck.16x9.jpg"
+  },
+  "6584": {
+    "hero": "https://www.whatahotel.com/content/hotels/6584/angsana_corfu_cover.jpeg"
   },
   "6589": {
     "hero": "https://whatahotel.com/content/hotels/6589/villas-exterior2-jpg.jpg"
@@ -819,6 +897,12 @@ window.WAH_IMAGES = {
   "6766": {
     "hero": "https://whatahotel.com/content/hotels/6766/rz-mlera-captivating-overwater-bli-13306_Feature-Hor.jpg"
   },
+  "6824": {
+    "hero": "https://www.whatahotel.com/content/hotels/6824/02_CVGH_Media_Resort_Portada.jpg"
+  },
+  "6842": {
+    "hero": "https://www.whatahotel.com/content/hotels/6842/marriott-residences-salgados-resort-0.jpg"
+  },
   "6847": {
     "hero": "https://whatahotel.com/content/hotels/6847/Rock-House-8003-1-scaled.jpg"
   },
@@ -848,5 +932,17 @@ window.WAH_IMAGES = {
   },
   "7159": {
     "hero": "https://www.whatahotel.com/content/hotels/7159/100451-01-The_Branson_Estate_overview_1-Moskito_Island.jpg"
+  },
+  "7163": {
+    "hero": "https://www.whatahotel.com/content/hotels/7163/du_Soleil.jpg"
+  },
+  "7166": {
+    "hero": "https://www.whatahotel.com/content/hotels/7166/Shebara.jpg"
+  },
+  "7168": {
+    "hero": "https://www.whatahotel.com/content/hotels/7168/Parklane-Limassol.jpg"
+  },
+  "7169": {
+    "hero": "https://www.whatahotel.com/content/hotels/7169/Grosvenor.jpeg"
   }
 };

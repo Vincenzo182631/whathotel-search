@@ -536,6 +536,14 @@
   "country": "Switzerland"
  },
  {
+  "id": 2348,
+  "slug": "the-lodge",
+  "name": "The Lodge",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Verbier",
+  "country": "Switzerland"
+ },
+ {
   "id": 2194,
   "slug": "hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course",
   "name": "Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course",
@@ -832,6 +840,22 @@
   "country": "Portugal"
  },
  {
+  "id": 6519,
+  "slug": "the-rebello-hotel",
+  "name": "The Rebello Hotel",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Porto",
+  "country": "Portugal"
+ },
+ {
+  "id": 6842,
+  "slug": "marriott-residences-salgados-resort",
+  "name": "Marriott Residences Salgados Resort",
+  "collection": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+  "city": "Algarve",
+  "country": "Portugal"
+ },
+ {
   "id": 2849,
   "slug": "nizuc-resort-spa-",
   "name": "Nizuc Resort & Spa",
@@ -928,6 +952,14 @@
   "country": "Croatia"
  },
  {
+  "id": 6298,
+  "slug": "sun-gardens-dubrovnik",
+  "name": "Sun Gardens Dubrovnik",
+  "collection": "Leading Hotels of the World",
+  "city": "Dubrovnik",
+  "country": "Croatia"
+ },
+ {
   "id": 3060,
   "slug": "alila-villas-uluwatu",
   "name": "Alila Villas Uluwatu",
@@ -972,6 +1004,14 @@
   "slug": "four-seasons-london-at-tower-bridge",
   "name": "Four Seasons London at Tower Bridge",
   "collection": "Four Seasons",
+  "city": "London",
+  "country": "United Kingdom"
+ },
+ {
+  "id": 7169,
+  "slug": "grosvenor-house-suites",
+  "name": "Grosvenor House Suites",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
   "city": "London",
   "country": "United Kingdom"
  },
@@ -1285,6 +1325,22 @@
   "name": "Four Seasons Les Chalets du Mont d’Arbois , Megeve",
   "collection": "Four Seasons",
   "city": "Megeve",
+  "country": "France"
+ },
+ {
+  "id": 1004,
+  "slug": "chateau-saint-martin-spa",
+  "name": "Chateau Saint-Martin & Spa",
+  "collection": "Oetker Collection",
+  "city": "Vence",
+  "country": "France"
+ },
+ {
+  "id": 4402,
+  "slug": "le-vallon-de-valrugues-hotel-spa-and-villas",
+  "name": "Le Vallon de Valrugues Hotel Spa and Villas",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Saint-Rémy-de-Provence",
   "country": "France"
  },
  {
@@ -2056,6 +2112,70 @@
   "country": "Greece"
  },
  {
+  "id": 1407,
+  "slug": "santa-marina",
+  "name": "Santa Marina",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Mykonos",
+  "country": "Greece"
+ },
+ {
+  "id": 2710,
+  "slug": "canaves-oia-epitome",
+  "name": "Canaves Oia Epitome",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Santorini",
+  "country": "Greece"
+ },
+ {
+  "id": 2786,
+  "slug": "the-romanos",
+  "name": "The Romanos",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Costa Navarino",
+  "country": "Greece"
+ },
+ {
+  "id": 3692,
+  "slug": "domes-miramare-corfu",
+  "name": "Domes Miramare Corfu",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Corfu",
+  "country": "Greece"
+ },
+ {
+  "id": 3802,
+  "slug": "domes-of-elounda",
+  "name": "Domes of Elounda",
+  "collection": "Autograph Collection under the Marriott Luminous Program",
+  "city": "Crete Island",
+  "country": "Greece"
+ },
+ {
+  "id": 6075,
+  "slug": "porto-zante-villas-spa",
+  "name": "Porto Zante Villas & Spa",
+  "collection": "Small Luxury Hotels of The World",
+  "city": "Zakinthos",
+  "country": "Greece"
+ },
+ {
+  "id": 6543,
+  "slug": "mandarin-oriental-costa-navarino",
+  "name": "Mandarin Oriental, Costa Navarino",
+  "collection": "Mandarin Oriental",
+  "city": "Costa Navarino",
+  "country": "Greece"
+ },
+ {
+  "id": 6584,
+  "slug": "angsana-corfu-resort-spa",
+  "name": "Angsana Corfu Resort & Spa",
+  "collection": "Banyan Tree",
+  "city": "Corfu",
+  "country": "Greece"
+ },
+ {
   "id": 6692,
   "slug": "fairmont-heritage-place-franz-klammer-lodge",
   "name": "Fairmont Heritage Place Franz Klammer Lodge",
@@ -2120,6 +2240,30 @@
   "country": "Spain"
  },
  {
+  "id": 1626,
+  "slug": "anantara-villa-padierna-palace",
+  "name": "Anantara Villa Padierna Palace",
+  "collection": "Leading Hotels of the World",
+  "city": "Marbella",
+  "country": "Spain"
+ },
+ {
+  "id": 2427,
+  "slug": "finca-cortesin-hotel-golf-spa",
+  "name": "Finca Cortesin Hotel Golf & Spa",
+  "collection": "The Signature Collection",
+  "city": "Casares",
+  "country": "Spain"
+ },
+ {
+  "id": 6824,
+  "slug": "cap-vermell-grand-hotel",
+  "name": "Cap Vermell Grand Hotel",
+  "collection": "Leading Hotels of the World",
+  "city": "Mallorca",
+  "country": "Spain"
+ },
+ {
   "id": 6732,
   "slug": "meadowstone-manor",
   "name": "Meadowstone Manor",
@@ -2152,6 +2296,78 @@
   "country": "United States"
  },
  {
+  "id": 1254,
+  "slug": "the-ritz-carlton-bachelor-gulch",
+  "name": "The Ritz-Carlton, Bachelor Gulch",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Beaver Creek",
+  "country": "United States"
+ },
+ {
+  "id": 1472,
+  "slug": "calistoga-ranch",
+  "name": "Calistoga Ranch",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Calistoga",
+  "country": "United States"
+ },
+ {
+  "id": 2093,
+  "slug": "four-seasons-rancho-encantado-santa-fe",
+  "name": "Four Seasons Rancho Encantado, Santa Fe",
+  "collection": "Four Seasons",
+  "city": "Santa Fe",
+  "country": "United States"
+ },
+ {
+  "id": 2422,
+  "slug": "waldorf-astoria-park-city-",
+  "name": "Waldorf Astoria Park City",
+  "collection": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+  "city": "Park City",
+  "country": "United States"
+ },
+ {
+  "id": 2539,
+  "slug": "the-st-regis-bal-harbour-resort",
+  "name": "The St. Regis Bal Harbour Resort",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "Miami Beach",
+  "country": "United States"
+ },
+ {
+  "id": 2835,
+  "slug": "st-regis-residence-aspen-resort",
+  "name": "St Regis Residence Aspen Resort",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Aspen",
+  "country": "United States"
+ },
+ {
+  "id": 3530,
+  "slug": "edgewood-tahoe-resort",
+  "name": "Edgewood Tahoe Resort",
+  "collection": "The Signature Collection",
+  "city": "Lake Tahoe",
+  "country": "United States"
+ },
+ {
+  "id": 3483,
+  "slug": "rosewood-miramar-beach-hotel",
+  "name": "Rosewood Miramar Beach Hotel",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Santa Barbara",
+  "country": "United States"
+ },
+ {
+  "id": 7163,
+  "slug": "auberge-du-soleil",
+  "name": "Auberge du Soleil",
+  "collection": "Auberge Collection",
+  "city": "Napa Valley",
+  "country": "United States"
+ },
+ {
   "id": 6741,
   "slug": "six-senses-southern-dunes",
   "name": "Six Senses Southern Dunes",
@@ -2180,6 +2396,14 @@
   "slug": "four-seasons-resort-amaala-at-triple-bay",
   "name": "Four Seasons Resort AMAALA at Triple Bay",
   "collection": "Four Seasons",
+  "city": "The Red Sea",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": 7166,
+  "slug": "shebara",
+  "name": "Shebara",
+  "collection": "The Signature Collection",
   "city": "The Red Sea",
   "country": "Saudi Arabia"
  },
@@ -2240,6 +2464,14 @@
   "country": "Mexico"
  },
  {
+  "id": 6100,
+  "slug": "etereo-kanai-auberge-collection",
+  "name": "Etereo Kanai, Auberge Collection",
+  "collection": "Auberge Collection",
+  "city": "Kanai",
+  "country": "Mexico"
+ },
+ {
   "id": 6766,
   "slug": "ritz-carlton-maldives-fari-islands",
   "name": "Ritz-Carlton Maldives, Fari Islands",
@@ -2254,5 +2486,29 @@
   "collection": "Leading Hotels of the World",
   "city": "Turks & Caicos",
   "country": "Turks and Caicos Islands"
+ },
+ {
+  "id": 1728,
+  "slug": "rosewood-schloss-fuschl-",
+  "name": "Rosewood Schloss Fuschl",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Hof bei Salzburg",
+  "country": "Austria"
+ },
+ {
+  "id": 2206,
+  "slug": "castlemartyr-resort",
+  "name": "Castlemartyr Resort",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "County Cork",
+  "country": "Ireland"
+ },
+ {
+  "id": 7168,
+  "slug": "parklane",
+  "name": "Parklane",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Limassol",
+  "country": "Cyprus"
  }
 ]

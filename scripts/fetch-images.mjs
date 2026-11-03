@@ -31,7 +31,15 @@ const pairs = [];
 const re = /"id":\s*(\d+),\s*"url":\s*"([^"]+)"/g;
 let m;
 while ((m = re.exec(dataSrc)) !== null) pairs.push({ id: Number(m[1]), url: m[2] });
-console.log("Properties to fetch:", pairs.length);
+// --only=1004,1254,…  → fetch just these IDs and merge into the existing files,
+// leaving every other property's image and description untouched.
+const onlyArg = process.argv.find((a) => a.startsWith("--only="));
+const ONLY = onlyArg ? new Set(onlyArg.slice(7).split(",").map(Number).filter(Boolean)) : null;
+if (ONLY) {
+  const keep = pairs.filter((p) => ONLY.has(p.id));
+  pairs.length = 0; pairs.push(...keep);
+}
+console.log("Properties to fetch:", pairs.length, ONLY ? "(only mode: merging into existing files)" : "");
 
 function curl(url) {
   return new Promise((resolve) => {
@@ -62,7 +70,7 @@ const BOILER = ["lorraine travel", "whatahotel", "preferred partner", "the perks
   "best way to book", "virtuoso", "signature travel", "*the perks", "verified by", "book ",
   // booking / perk / policy paragraphs — not property descriptions
   "$", "credit", "deposit", "cancellation", "blackout", "excluding", "upgrade upon", "back-to-back",
-  "one-time", "resort fee", "per night", "per stay", "valid for", "subject to availability", "early check",
+  "one-time", "resort fee", "per night", "per stay", "valid for", "subject to availability", "early check", "minimum length of stay", "valid year-round", "based on availability", "roundtrip", "special to be applicable", "when booking",
   // account / sign-up banners
   "free account", "create a free", "log in", "viewing this site"];
 
@@ -107,8 +115,12 @@ async function run(items, worker, concurrency) {
   await Promise.all(Array.from({ length: Math.min(concurrency, items.length) }, next));
 }
 
-const images = {};
-const descs = {};
+function loadExisting(path, varName) {
+  try { return JSON.parse(readFileSync(path, "utf8").split(varName + " = ")[1].replace(/;\s*$/, "")); } catch (e) { return {}; }
+}
+const images = ONLY ? loadExisting(IMG_OUT, "window.WAH_IMAGES") : {};
+const descs = ONLY ? loadExisting(DESC_OUT, "window.WAH_DESC") : {};
+if (ONLY && (!Object.keys(images).length || !Object.keys(descs).length)) throw new Error("Could not read existing images.js / descriptions.js for --only merge");
 let okImg = 0, missImg = 0, okDesc = 0;
 let done = 0;
 await run(pairs, async (p) => {

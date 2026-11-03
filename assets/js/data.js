@@ -20,21 +20,21 @@ window.WAH_REGIONS = [
     "label": "North America",
     "blurb": "Villas, residences & estates across the U.S. and Canada.",
     "scene": "mountain",
-    "count": 79
+    "count": 88
   },
   {
     "key": "latam-caribbean",
     "label": "Latin America & Caribbean",
     "blurb": "Beachfront homes & villas across Mexico, the Caribbean and beyond.",
     "scene": "tropical",
-    "count": 78
+    "count": 79
   },
   {
     "key": "europe",
     "label": "Europe",
     "blurb": "Historic villas & residences across the Mediterranean and countryside.",
     "scene": "countryside",
-    "count": 34
+    "count": 55
   },
   {
     "key": "asia",
@@ -48,7 +48,7 @@ window.WAH_REGIONS = [
     "label": "Middle East & Africa",
     "blurb": "Desert residences & island villas across the region.",
     "scene": "desert",
-    "count": 23
+    "count": 24
   },
   {
     "key": "pacific",
@@ -61,7 +61,7 @@ window.WAH_REGIONS = [
 window.WAH_BRANDS = [
   {
     "label": "Four Seasons",
-    "count": 30
+    "count": 31
   },
   {
     "label": "Hyatt",
@@ -69,22 +69,34 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Leading Hotels of the World",
-    "count": 17
-  },
-  {
-    "label": "Ritz-Carlton",
-    "count": 10
-  },
-  {
-    "label": "Auberge Resorts",
-    "count": 9
+    "count": 19
   },
   {
     "label": "Rosewood",
-    "count": 9
+    "count": 12
+  },
+  {
+    "label": "Auberge Resorts",
+    "count": 11
+  },
+  {
+    "label": "Ritz-Carlton",
+    "count": 11
+  },
+  {
+    "label": "Preferred",
+    "count": 10
   },
   {
     "label": "Belmond",
+    "count": 8
+  },
+  {
+    "label": "Luxury Collection",
+    "count": 8
+  },
+  {
+    "label": "Mandarin Oriental",
     "count": 8
   },
   {
@@ -96,15 +108,11 @@ window.WAH_BRANDS = [
     "count": 7
   },
   {
-    "label": "Mandarin Oriental",
-    "count": 7
-  },
-  {
-    "label": "Preferred",
-    "count": 7
-  },
-  {
     "label": "Raffles",
+    "count": 7
+  },
+  {
+    "label": "St. Regis",
     "count": 7
   },
   {
@@ -120,28 +128,32 @@ window.WAH_BRANDS = [
     "count": 6
   },
   {
+    "label": "Autograph Collection",
+    "count": 5
+  },
+  {
+    "label": "Banyan Tree",
+    "count": 5
+  },
+  {
     "label": "Relais & Châteaux",
     "count": 5
   },
   {
-    "label": "St. Regis",
-    "count": 5
-  },
-  {
-    "label": "Autograph Collection",
-    "count": 4
-  },
-  {
-    "label": "Banyan Tree",
-    "count": 4
-  },
-  {
-    "label": "Luxury Collection",
-    "count": 4
-  },
-  {
     "label": "Hilton",
     "count": 3
+  },
+  {
+    "label": "Waldorf Astoria",
+    "count": 3
+  },
+  {
+    "label": "Anantara",
+    "count": 2
+  },
+  {
+    "label": "Oetker Collection",
+    "count": 2
   },
   {
     "label": "Peninsula",
@@ -152,19 +164,7 @@ window.WAH_BRANDS = [
     "count": 2
   },
   {
-    "label": "Waldorf Astoria",
-    "count": 2
-  },
-  {
     "label": "Accor",
-    "count": 1
-  },
-  {
-    "label": "Anantara",
-    "count": 1
-  },
-  {
-    "label": "Oetker Collection",
     "count": 1
   },
   {
@@ -534,6 +534,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 1626,
+    "url": "https://whatahotel.com/hotels/1626/anantara-villa-padierna-palace.html",
+    "name": "Anantara Villa Padierna Palace",
+    "loc": "Marbella, Spain",
+    "city": "Marbella",
+    "country": "Spain",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Leading Hotels of the World",
+    "brand": "Anantara",
+    "scene": "countryside",
+    "blurb": "In Marbella, Spain.",
+    "featured": false
+  },
+  {
     "id": 6229,
     "url": "https://whatahotel.com/hotels/6229/andaz-bali.html",
     "name": "Andaz Bali",
@@ -606,6 +621,36 @@ window.WAH_PROPERTIES = [
     "brand": "Hyatt",
     "scene": "desert",
     "blurb": "In Scottsdale, United States.",
+    "featured": false
+  },
+  {
+    "id": 6584,
+    "url": "https://whatahotel.com/hotels/6584/angsana-corfu-resort-spa.html",
+    "name": "Angsana Corfu Resort & Spa",
+    "loc": "Corfu, Greece",
+    "city": "Corfu",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Banyan Tree",
+    "brand": "Banyan Tree",
+    "scene": "beach",
+    "blurb": "In Corfu, Greece.",
+    "featured": false
+  },
+  {
+    "id": 7163,
+    "url": "https://whatahotel.com/hotels/7163/auberge-du-soleil.html",
+    "name": "Auberge du Soleil",
+    "loc": "Napa Valley, United States",
+    "city": "Napa Valley",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Auberge Collection",
+    "brand": "Auberge Resorts",
+    "scene": "countryside",
+    "blurb": "In Napa Valley, United States.",
     "featured": false
   },
   {
@@ -834,6 +879,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 1472,
+    "url": "https://whatahotel.com/hotels/1472/calistoga-ranch.html",
+    "name": "Calistoga Ranch",
+    "loc": "Calistoga, United States",
+    "city": "Calistoga",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Rosewood Hotels & Resorts",
+    "brand": "Rosewood",
+    "scene": "city",
+    "blurb": "In Calistoga, United States.",
+    "featured": false
+  },
+  {
     "id": 940,
     "url": "https://whatahotel.com/hotels/940/cambridge-beaches-resort-spa.html",
     "name": "Cambridge Beaches Resort & Spa",
@@ -846,6 +906,36 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "tropical",
     "blurb": "In Sandys, Bermuda.",
+    "featured": false
+  },
+  {
+    "id": 2710,
+    "url": "https://whatahotel.com/hotels/2710/canaves-oia-epitome.html",
+    "name": "Canaves Oia Epitome",
+    "loc": "Santorini, Greece",
+    "city": "Santorini",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Small Luxury Hotels of The World",
+    "brand": "",
+    "scene": "beach",
+    "blurb": "In Santorini, Greece.",
+    "featured": false
+  },
+  {
+    "id": 6824,
+    "url": "https://whatahotel.com/hotels/6824/cap-vermell-grand-hotel.html",
+    "name": "Cap Vermell Grand Hotel",
+    "loc": "Mallorca, Spain",
+    "city": "Mallorca",
+    "country": "Spain",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Leading Hotels of the World",
+    "brand": "Leading Hotels of the World",
+    "scene": "beach",
+    "blurb": "In Mallorca, Spain.",
     "featured": false
   },
   {
@@ -894,6 +984,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 2206,
+    "url": "https://whatahotel.com/hotels/2206/castlemartyr-resort.html",
+    "name": "Castlemartyr Resort",
+    "loc": "County Cork, Ireland",
+    "city": "County Cork",
+    "country": "Ireland",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "countryside",
+    "blurb": "In County Cork, Ireland.",
+    "featured": false
+  },
+  {
     "id": 4184,
     "url": "https://whatahotel.com/hotels/4184/chable-yucatan.html",
     "name": "Chable Yucatan",
@@ -906,6 +1011,21 @@ window.WAH_PROPERTIES = [
     "brand": "Leading Hotels of the World",
     "scene": "tropical",
     "blurb": "In Merida, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 1004,
+    "url": "https://whatahotel.com/hotels/1004/chateau-saint-martin-spa.html",
+    "name": "Chateau Saint-Martin & Spa",
+    "loc": "Vence, France",
+    "city": "Vence",
+    "country": "France",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Oetker Collection",
+    "brand": "Oetker Collection",
+    "scene": "countryside",
+    "blurb": "In Vence, France.",
     "featured": false
   },
   {
@@ -1029,6 +1149,36 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 3692,
+    "url": "https://whatahotel.com/hotels/3692/domes-miramare-corfu.html",
+    "name": "Domes Miramare Corfu",
+    "loc": "Corfu, Greece",
+    "city": "Corfu",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "The Luxury Collection",
+    "brand": "Luxury Collection",
+    "scene": "beach",
+    "blurb": "In Corfu, Greece.",
+    "featured": false
+  },
+  {
+    "id": 3802,
+    "url": "https://whatahotel.com/hotels/3802/domes-of-elounda.html",
+    "name": "Domes of Elounda",
+    "loc": "Crete Island, Greece",
+    "city": "Crete Island",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Autograph Collection",
+    "brand": "Autograph Collection",
+    "scene": "beach",
+    "blurb": "In Crete Island, Greece.",
+    "featured": false
+  },
+  {
     "id": 4411,
     "url": "https://whatahotel.com/hotels/4411/eagles-villas.html",
     "name": "Eagles Villas",
@@ -1074,6 +1224,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 3530,
+    "url": "https://whatahotel.com/hotels/3530/edgewood-tahoe-resort.html",
+    "name": "Edgewood Tahoe Resort",
+    "loc": "Lake Tahoe, United States",
+    "city": "Lake Tahoe",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Signature Collection",
+    "brand": "",
+    "scene": "city",
+    "blurb": "In Lake Tahoe, United States.",
+    "featured": false
+  },
+  {
     "id": 3360,
     "url": "https://whatahotel.com/hotels/3360/elounda-gulf-villas-suites.html",
     "name": "Elounda Gulf Villas & Suites",
@@ -1101,6 +1266,21 @@ window.WAH_PROPERTIES = [
     "brand": "Auberge Resorts",
     "scene": "tropical",
     "blurb": "In Cabo San Lucas, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 6100,
+    "url": "https://whatahotel.com/hotels/6100/etereo-kanai-auberge-collection.html",
+    "name": "Etereo Kanai, Auberge Collection",
+    "loc": "Kanai, Mexico",
+    "city": "Kanai",
+    "country": "Mexico",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Auberge Collection",
+    "brand": "Auberge Resorts",
+    "scene": "tropical",
+    "blurb": "In Kanai, Mexico.",
     "featured": false
   },
   {
@@ -1176,6 +1356,21 @@ window.WAH_PROPERTIES = [
     "brand": "Fairmont",
     "scene": "city",
     "blurb": "In Los Angeles, United States.",
+    "featured": false
+  },
+  {
+    "id": 2427,
+    "url": "https://whatahotel.com/hotels/2427/finca-cortesin-hotel-golf-spa.html",
+    "name": "Finca Cortesin Hotel Golf & Spa",
+    "loc": "Casares, Spain",
+    "city": "Casares",
+    "country": "Spain",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "The Signature Collection",
+    "brand": "",
+    "scene": "countryside",
+    "blurb": "In Casares, Spain.",
     "featured": false
   },
   {
@@ -1341,6 +1536,21 @@ window.WAH_PROPERTIES = [
     "brand": "Four Seasons",
     "scene": "countryside",
     "blurb": "In Napa Valley, United States.",
+    "featured": false
+  },
+  {
+    "id": 2093,
+    "url": "https://whatahotel.com/hotels/2093/four-seasons-rancho-encantado-santa-fe.html",
+    "name": "Four Seasons Rancho Encantado, Santa Fe",
+    "loc": "Santa Fe, United States",
+    "city": "Santa Fe",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Four Seasons",
+    "brand": "Four Seasons",
+    "scene": "city",
+    "blurb": "In Santa Fe, United States.",
     "featured": false
   },
   {
@@ -1761,6 +1971,21 @@ window.WAH_PROPERTIES = [
     "brand": "Hyatt",
     "scene": "desert",
     "blurb": "In Doha, Qatar.",
+    "featured": false
+  },
+  {
+    "id": 7169,
+    "url": "https://whatahotel.com/hotels/7169/grosvenor-house-suites.html",
+    "name": "Grosvenor House Suites",
+    "loc": "London, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "countryside",
+    "blurb": "In London, United Kingdom.",
     "featured": false
   },
   {
@@ -2259,6 +2484,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 4402,
+    "url": "https://whatahotel.com/hotels/4402/le-vallon-de-valrugues-hotel-spa-and-villas.html",
+    "name": "Le Vallon de Valrugues Hotel Spa and Villas",
+    "loc": "Saint-Rémy-de-Provence, France",
+    "city": "Saint-Rémy-de-Provence",
+    "country": "France",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Small Luxury Hotels of The World",
+    "brand": "",
+    "scene": "countryside",
+    "blurb": "In Saint-Rémy-de-Provence, France.",
+    "featured": false
+  },
+  {
     "id": 3887,
     "url": "https://whatahotel.com/hotels/3887/lido-house-autograph-collection.html",
     "name": "Lido House, Autograph Collection",
@@ -2349,6 +2589,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 6543,
+    "url": "https://whatahotel.com/hotels/6543/mandarin-oriental-costa-navarino.html",
+    "name": "Mandarin Oriental, Costa Navarino",
+    "loc": "Costa Navarino, Greece",
+    "city": "Costa Navarino",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Mandarin Oriental",
+    "brand": "Mandarin Oriental",
+    "scene": "countryside",
+    "blurb": "In Costa Navarino, Greece.",
+    "featured": false
+  },
+  {
     "id": 6194,
     "url": "https://whatahotel.com/hotels/6194/mandarin-oriental-marrakech.html",
     "name": "Mandarin Oriental, Marrakech",
@@ -2391,6 +2646,21 @@ window.WAH_PROPERTIES = [
     "brand": "Belmond",
     "scene": "tropical",
     "blurb": "In Cancun, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 6842,
+    "url": "https://whatahotel.com/hotels/6842/marriott-residences-salgados-resort.html",
+    "name": "Marriott Residences Salgados Resort",
+    "loc": "Algarve, Portugal",
+    "city": "Algarve",
+    "country": "Portugal",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Marriott Hotels & Resorts",
+    "brand": "",
+    "scene": "beach",
+    "blurb": "In Algarve, Portugal.",
     "featured": false
   },
   {
@@ -2814,6 +3084,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 7168,
+    "url": "https://whatahotel.com/hotels/7168/parklane.html",
+    "name": "Parklane",
+    "loc": "Limassol, Cyprus",
+    "city": "Limassol",
+    "country": "Cyprus",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "The Luxury Collection",
+    "brand": "Luxury Collection",
+    "scene": "countryside",
+    "blurb": "In Limassol, Cyprus.",
+    "featured": false
+  },
+  {
     "id": 1408,
     "url": "https://whatahotel.com/hotels/1408/phaea-blue-palace.html",
     "name": "Phaea Blue Palace",
@@ -2856,6 +3141,21 @@ window.WAH_PROPERTIES = [
     "brand": "Autograph Collection",
     "scene": "city",
     "blurb": "In Key Largo, United States.",
+    "featured": false
+  },
+  {
+    "id": 6075,
+    "url": "https://whatahotel.com/hotels/6075/porto-zante-villas-spa.html",
+    "name": "Porto Zante Villas & Spa",
+    "loc": "Zakinthos, Greece",
+    "city": "Zakinthos",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Small Luxury Hotels of The World",
+    "brand": "",
+    "scene": "countryside",
+    "blurb": "In Zakinthos, Greece.",
     "featured": false
   },
   {
@@ -3219,6 +3519,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 3483,
+    "url": "https://whatahotel.com/hotels/3483/rosewood-miramar-beach-hotel.html",
+    "name": "Rosewood Miramar Beach Hotel",
+    "loc": "Santa Barbara, United States",
+    "city": "Santa Barbara",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Rosewood Hotels & Resorts",
+    "brand": "Rosewood",
+    "scene": "city",
+    "blurb": "In Santa Barbara, United States.",
+    "featured": false
+  },
+  {
     "id": 3479,
     "url": "https://whatahotel.com/hotels/3479/rosewood-san-miguel-allende.html",
     "name": "Rosewood San Miguel Allende",
@@ -3231,6 +3546,21 @@ window.WAH_PROPERTIES = [
     "brand": "Rosewood",
     "scene": "tropical",
     "blurb": "In San Miguel de Allende, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 1728,
+    "url": "https://whatahotel.com/hotels/1728/rosewood-schloss-fuschl-.html",
+    "name": "Rosewood Schloss Fuschl",
+    "loc": "Hof bei Salzburg, Austria",
+    "city": "Hof bei Salzburg",
+    "country": "Austria",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Rosewood Hotels & Resorts",
+    "brand": "Rosewood",
+    "scene": "countryside",
+    "blurb": "In Hof bei Salzburg, Austria.",
     "featured": false
   },
   {
@@ -3276,6 +3606,21 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "desert",
     "blurb": "In Paradise Valley, United States.",
+    "featured": false
+  },
+  {
+    "id": 1407,
+    "url": "https://whatahotel.com/hotels/1407/santa-marina.html",
+    "name": "Santa Marina",
+    "loc": "Mykonos, Greece",
+    "city": "Mykonos",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "The Luxury Collection",
+    "brand": "Luxury Collection",
+    "scene": "beach",
+    "blurb": "In Mykonos, Greece.",
     "featured": false
   },
   {
@@ -3351,6 +3696,21 @@ window.WAH_PROPERTIES = [
     "brand": "Luxury Collection",
     "scene": "beach",
     "blurb": "In Captiva Island, United States.",
+    "featured": false
+  },
+  {
+    "id": 7166,
+    "url": "https://whatahotel.com/hotels/7166/shebara.html",
+    "name": "Shebara",
+    "loc": "The Red Sea, Saudi Arabia",
+    "city": "The Red Sea",
+    "country": "Saudi Arabia",
+    "region": "Middle East & Africa",
+    "regionKey": "mea",
+    "collection": "The Signature Collection",
+    "brand": "",
+    "scene": "desert",
+    "blurb": "In The Red Sea, Saudi Arabia.",
     "featured": false
   },
   {
@@ -3534,6 +3894,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 2835,
+    "url": "https://whatahotel.com/hotels/2835/st-regis-residence-aspen-resort.html",
+    "name": "St Regis Residence Aspen Resort",
+    "loc": "Aspen, United States",
+    "city": "Aspen",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Luxury Collection",
+    "brand": "St. Regis",
+    "scene": "mountain",
+    "blurb": "In Aspen, United States.",
+    "featured": false
+  },
+  {
     "id": 6192,
     "url": "https://whatahotel.com/hotels/6192/stanly-ranch-auberge-collection.html",
     "name": "Stanly Ranch, Auberge Collection",
@@ -3591,6 +3966,21 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "tropical",
     "blurb": "In Soufriere, Saint Lucia.",
+    "featured": false
+  },
+  {
+    "id": 6298,
+    "url": "https://whatahotel.com/hotels/6298/sun-gardens-dubrovnik.html",
+    "name": "Sun Gardens Dubrovnik",
+    "loc": "Dubrovnik, Croatia",
+    "city": "Dubrovnik",
+    "country": "Croatia",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Leading Hotels of the World",
+    "brand": "Leading Hotels of the World",
+    "scene": "beach",
+    "blurb": "In Dubrovnik, Croatia.",
     "featured": false
   },
   {
@@ -3774,6 +4164,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 2348,
+    "url": "https://whatahotel.com/hotels/2348/the-lodge.html",
+    "name": "The Lodge",
+    "loc": "Verbier, Switzerland",
+    "city": "Verbier",
+    "country": "Switzerland",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "mountain",
+    "blurb": "In Verbier, Switzerland.",
+    "featured": false
+  },
+  {
     "id": 2962,
     "url": "https://whatahotel.com/hotels/2962/the-miami-beach-edition.html",
     "name": "The Miami Beach EDITION",
@@ -3831,6 +4236,21 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "city",
     "blurb": "In Philipsburg, United States.",
+    "featured": false
+  },
+  {
+    "id": 6519,
+    "url": "https://whatahotel.com/hotels/6519/the-rebello-hotel.html",
+    "name": "The Rebello Hotel",
+    "loc": "Porto, Portugal",
+    "city": "Porto",
+    "country": "Portugal",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Small Luxury Hotels of The World",
+    "brand": "",
+    "scene": "countryside",
+    "blurb": "In Porto, Portugal.",
     "featured": false
   },
   {
@@ -3969,6 +4389,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 1254,
+    "url": "https://whatahotel.com/hotels/1254/the-ritz-carlton-bachelor-gulch.html",
+    "name": "The Ritz-Carlton, Bachelor Gulch",
+    "loc": "Beaver Creek, United States",
+    "city": "Beaver Creek",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Ritz Carlton Hotels & Resorts",
+    "brand": "Ritz-Carlton",
+    "scene": "city",
+    "blurb": "In Beaver Creek, United States.",
+    "featured": false
+  },
+  {
     "id": 1954,
     "url": "https://whatahotel.com/hotels/1954/the-ritz-carlton-bal-harbour.html",
     "name": "The Ritz-Carlton, Bal Harbour",
@@ -4029,6 +4464,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 2786,
+    "url": "https://whatahotel.com/hotels/2786/the-romanos.html",
+    "name": "The Romanos",
+    "loc": "Costa Navarino, Greece",
+    "city": "Costa Navarino",
+    "country": "Greece",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "The Luxury Collection",
+    "brand": "Luxury Collection",
+    "scene": "countryside",
+    "blurb": "In Costa Navarino, Greece.",
+    "featured": false
+  },
+  {
     "id": 3488,
     "url": "https://whatahotel.com/hotels/3488/the-sanya-edition.html",
     "name": "The Sanya EDITION",
@@ -4071,6 +4521,21 @@ window.WAH_PROPERTIES = [
     "brand": "St. Regis",
     "scene": "tropical",
     "blurb": "In Rio Grande, Puerto Rico.",
+    "featured": false
+  },
+  {
+    "id": 2539,
+    "url": "https://whatahotel.com/hotels/2539/the-st-regis-bal-harbour-resort.html",
+    "name": "The St. Regis Bal Harbour Resort",
+    "loc": "Miami Beach, United States",
+    "city": "Miami Beach",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "St. Regis Hotels & Resorts",
+    "brand": "St. Regis",
+    "scene": "beach",
+    "blurb": "In Miami Beach, United States.",
     "featured": false
   },
   {
@@ -4311,6 +4776,21 @@ window.WAH_PROPERTIES = [
     "brand": "Waldorf Astoria",
     "scene": "tropical",
     "blurb": "In Cabo San Lucas, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 2422,
+    "url": "https://whatahotel.com/hotels/2422/waldorf-astoria-park-city-.html",
+    "name": "Waldorf Astoria Park City",
+    "loc": "Park City, United States",
+    "city": "Park City",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Waldorf Astoria Hotels",
+    "brand": "Waldorf Astoria",
+    "scene": "mountain",
+    "blurb": "In Park City, United States.",
     "featured": false
   },
   {

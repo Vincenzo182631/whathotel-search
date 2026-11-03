@@ -74,6 +74,7 @@ const SETTINGS = {
       "santa monica", "malibu", "laguna beach", "santa barbara", "naples", "captiva",
       "palm beach", "miami beach", "key west", "kiawah", "sea island", "amelia island",
       "cabo san lucas", "san jose del cabo", "waikiki", "wailea", "kapalua", "kohala",
+      "costa navarino", "elounda", "dubrovnik", "corfu", "zakinthos", "limassol",
     ],
   },
   island: {
@@ -90,6 +91,7 @@ const SETTINGS = {
       "boracay", "phu quoc", "koh samui", "zanzibar", "santorini", "mykonos",
       "capri", "ischia", "sardinia", "sicily", "mallorca", "menorca", "ibiza",
       "hawaii", "maui", "kauai", "lanai", "kona", "oahu", "hamilton island",
+      "crete", "corfu", "zakinthos",
     ],
   },
   mountain: {
@@ -125,7 +127,7 @@ const SETTINGS = {
     geo: [
       "tuscany", "chianti", "montalcino", "castiglion", "siena", "florence countryside",
       "napa", "yountville", "sonoma", "provence", "loire", "cotswolds", "umbria",
-      "burgundy", "bordeaux", "asolo", "kilkenny", "thomastown", "county",
+      "burgundy", "bordeaux", "asolo", "kilkenny", "thomastown", "county", "calistoga",
     ],
   },
   desert: {
@@ -146,6 +148,7 @@ const SETTINGS = {
       "san francisco", "los angeles", "washington", "toronto", "montreal", "vienna",
       "amsterdam", "berlin", "istanbul", "dubai", "beijing", "seoul", "sydney", "melbourne",
       "geneva", "zurich", "munich", "florence", "venice", "lisbon", "prague", "budapest",
+      "porto portugal",
     ],
   },
 };

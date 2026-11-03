@@ -408,7 +408,38 @@
     return s;
   }
 
+  // Name-first: when every word of a multi-word query is in a home's NAME
+  // ("Santa Marina", "Porto Zante", "St. Regis Bal Harbour", "Domes of Elounda"),
+  // show that home rather than reading a word as a place, feature or typo.
+  // Pure place queries ("Lake Como", "Napa Valley") and broad brand queries
+  // ("Four Seasons", more than 3 name hits) keep the normal search.
+  var NAME_SKIP = { the: 1, of: 1, and: 1, a: 1, an: 1 };
+  function nameWords(s) {
+    var t = String(s || "").toLowerCase();
+    if (t.normalize) t = t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    return t.replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
+  }
+  function nameMatches(base, q) {
+    var words = nameWords(q).filter(function (w) { return !NAME_SKIP[w]; });
+    if (words.length < 2) return null;
+    var hits = base.filter(function (p) {
+      var nw = nameWords(p.name);
+      return words.every(function (w) {
+        return nw.some(function (n) { return n === w || (w.length >= 3 && n.indexOf(w) === 0); });
+      });
+    });
+    if (!hits.length || hits.length > 3) return null;   // brand words ("four seasons") → normal search
+    var sig = parseNL(q);
+    var purePlace = sig.places.length && !sig.text.length && !sig.settings.length && !sig.features.length;
+    return purePlace ? null : hits;
+  }
+
   function smartRank(base, q) {
+    var byName = nameMatches(base, q);
+    if (byName) {
+      smartRank.last = { sig: { places: [], settings: [], features: [], text: [q.trim()] }, fixes: [], query: q };
+      return byName.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+    }
     var cq = correctQuery(q); q = cq.q;
     var sig = parseNL(q), cands;
     if (sig.places.length) {

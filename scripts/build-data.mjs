@@ -43,6 +43,7 @@ const REGION_OF = {
   "Italy": "Europe", "Greece": "Europe", "Spain": "Europe", "Switzerland": "Europe",
   "Turkey": "Europe", "Croatia": "Europe", "France": "Europe", "Montenegro": "Europe",
   "Portugal": "Europe", "Scotland": "Europe", "United Kingdom": "Europe",
+  "Austria": "Europe", "Ireland": "Europe", "Cyprus": "Europe",
   "Indonesia": "Asia", "Thailand": "Asia", "Vietnam": "Asia", "China": "Asia",
   "Japan": "Asia", "Cambodia": "Asia", "Philippines": "Asia", "Malaysia": "Asia",
   "India": "Asia", "Singapore": "Asia",
