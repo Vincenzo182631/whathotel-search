@@ -6,7 +6,8 @@
  * Uses the real WhataHotel image URLs (they load on any https page, incl. GHL).
  *
  * Run:  node scripts/build-standalone.mjs
- *       INQUIRY_ENDPOINT=https://<your-deployment>/api/request-availability node scripts/build-standalone.mjs
+ *       GHL_WEBHOOK_URL=https://services.leadconnectorhq.com/hooks/<…> node scripts/build-standalone.mjs
+ *       (or INQUIRY_ENDPOINT=https://<your-deployment>/api/request-availability for the server route)
  * Output: gohighlevel.html  (repo root)
  *
  * INQUIRY_ENDPOINT: the Exceptional Homes "Request Availability" form posts here.
@@ -43,14 +44,22 @@ for (const [tag, payload] of inlines) {
   html = html.replace(tag, payload); // function form → no $-substitution surprises
 }
 
+// GHL_WEBHOOK_URL: GoHighLevel Inbound Webhook the Request Availability form posts to directly.
+const HOOK = process.env.GHL_WEBHOOK_URL;
+if (HOOK) {
+  if (!/^https:\/\/(services|backend)\.leadconnectorhq\.com\/hooks\/[A-Za-z0-9_\-\/]+$/.test(HOOK)) throw new Error("GHL_WEBHOOK_URL must look like https://services.leadconnectorhq.com/hooks/…");
+  const re = /<meta name="wah-ghl-webhook" content="[^"]*">/;
+  if (!re.test(html)) throw new Error("Webhook meta tag not found");
+  html = html.replace(re, () => `<meta name="wah-ghl-webhook" content="${HOOK}">`);
+}
 const EP = process.env.INQUIRY_ENDPOINT;
 if (EP) {
   if (!/^https:\/\/[^\s"<>]+\/api\/request-availability$/.test(EP)) throw new Error("INQUIRY_ENDPOINT must be https://…/api/request-availability");
   const tag = '<meta name="wah-inquiry-endpoint" content="/api/request-availability">';
   if (html.indexOf(tag) === -1) throw new Error("Endpoint meta tag not found");
   html = html.replace(tag, () => `<meta name="wah-inquiry-endpoint" content="${EP}">`);
-} else {
-  console.warn("Note: INQUIRY_ENDPOINT not set — the embedded Request Availability form will post to /api/request-availability on the GHL domain and show its error state.");
+} else if (!HOOK && /<meta name="wah-ghl-webhook" content="">/.test(html)) {
+  console.warn("Note: neither GHL_WEBHOOK_URL nor INQUIRY_ENDPOINT is set — the embedded Request Availability form will post to /api/request-availability on the GHL domain and show its error state.");
 }
 
 const OUT = join(root, "gohighlevel.html");

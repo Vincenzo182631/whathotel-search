@@ -240,3 +240,25 @@ test("handler: logs contain no personal data", async () => {
   const all = lines.join("\n");
   for (const pii of ["guest@example.com", "Test Guest", "555 0100", "Anniversary"]) assert.ok(!all.includes(pii), pii);
 });
+
+/* ---------------- 8. Direct GoHighLevel payload (browser → webhook) ---------------- */
+test("ghl payload: flat fields for mapping, recipient, subject, totals, escaping", () => {
+  const home = DATA.homes.find((h) => h.id === "mo-castello-di-procopio");
+  const p = F.buildInquiry(home, { fullName: "Ann Marie Lee", email: "ann@example.com", phone: "+39 06 0000 0000", checkIn: "2027-06-01", checkOut: "2027-06-08", adults: "10", children: "4", infants: "1", message: "<script>x</script>" },
+    { now: NOW, pageUrl: "https://pro.whatahotel.com/homes?utm=1#exceptional-homes", submissionId: "sub-1" });
+  assert.equal(p.notify_to, "Reservations@WhataHotel.com");
+  assert.equal(p.subject, "New Exceptional Home Availability Request — Castello di Procopio");
+  assert.equal(p.reply_to, "ann@example.com");
+  assert.deepEqual([p.first_name, p.last_name], ["Ann", "Marie Lee"]);
+  assert.deepEqual([p.nights, p.adults, p.children, p.infants, p.total_guests], [7, 10, 4, 1, 15]);
+  assert.equal(p.property_country, "Italy"); assert.equal(p.property_source_url, home.sourceUrl);
+  assert.equal(p.over_published_capacity, home.maxGuests != null && 14 > home.maxGuests ? "Yes" : "No");
+  assert.equal(p.source_page, "https://pro.whatahotel.com/homes");
+  assert.match(p.inquiry_id, /^MOH-20261102-[A-Z0-9]{6}$/);
+  assert.ok(!p.email_html.includes("<script>x</script>") && p.email_html.includes("&lt;script&gt;"));
+  for (const [k, v] of Object.entries(p)) assert.ok(v === null || ["string", "number"].includes(typeof v), `${k} is flat`);
+});
+test("ghl webhook configured in index.html", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  assert.match(html, /<meta name="wah-ghl-webhook" content="https:\/\/services\.leadconnectorhq\.com\/hooks\/[^"]+">/);
+});

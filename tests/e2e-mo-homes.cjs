@@ -22,10 +22,14 @@ const results = []; const check = (name, cond, extra) => { results.push({ name, 
 function startHook() {
   return new Promise((res) => {
     const s = http.createServer((req, rsp) => {
+      // CORS like the real GHL hook (services.leadconnectorhq.com answers OPTIONS 204, allow-origin *).
+      const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*", "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE" };
+      if (process.env.E2E_DEBUG) console.log("HOOK", req.method, req.url);
+      if (req.method === "OPTIONS") { rsp.writeHead(204, cors).end(); return; }
       let b = ""; req.on("data", (c) => (b += c)); req.on("end", () => {
-        if (hookMode === "fail") { rsp.writeHead(500).end("down"); return; }
+        if (hookMode === "fail") { rsp.writeHead(500, cors).end("down"); return; }
         try { received.push(JSON.parse(b)); } catch (e) {}
-        rsp.writeHead(200, { "Content-Type": "application/json" }).end('{"status":"Success: request sent to trigger execution server"}');
+        rsp.writeHead(200, { ...cors, "Content-Type": "application/json" }).end('{"status":"Success: request sent to trigger execution server"}');
       });
     }).listen(HOOK_PORT, () => res(s));
   });
@@ -40,8 +44,14 @@ function startServer() {
 }
 function isoIn(days) { const d = new Date(Date.now() + days * 86400000); return d.toISOString().slice(0, 10); }
 
+const liveHits = [];
+async function guard(ctx) {   // tests must NEVER reach the live GoHighLevel webhook
+  await ctx.route(/leadconnectorhq\.com/, (route) => { liveHits.push(route.request().url()); route.abort(); });
+}
 async function run(browser, label, opts) {
   const ctx = await browser.newContext(opts);
+  await guard(ctx);
+  await ctx.addInitScript(() => { window.WAH_GHL_WEBHOOK = ""; });   // server route for these runs
   const page = await ctx.newPage();
   const errors = []; page.on("pageerror", (e) => errors.push(e.message));
   const dl = []; await page.exposeFunction("__dl", (e) => dl.push(e));
@@ -135,14 +145,83 @@ async function run(browser, label, opts) {
   await ctx.close();
 }
 
+// Direct mode: the page posts straight to the GHL Inbound Webhook (cross-origin).
+async function runDirect(browser) {
+  const label = "ghl-direct";
+  const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+  await guard(ctx);
+  const page = await ctx.newPage();
+  const errors = []; page.on("pageerror", (e) => errors.push(e.message));
+  if (process.env.E2E_DEBUG) { page.on("requestfailed", (r) => console.log("REQFAIL", r.method(), r.url().slice(0, 80), r.failure().errorText)); page.on("console", (m) => console.log("CONSOLE", m.text().slice(0, 160))); }
+  const HOOK = `http://127.0.0.1:${HOOK_PORT}/hooks/LOC123/webhook-trigger/abc`;
+  await page.addInitScript((h) => { window.WAH_GHL_WEBHOOK = h; }, HOOK);
+  await page.goto(`http://localhost:${PORT}/`, { waitUntil: "domcontentloaded" });
+  await page.evaluate(() => window.WAH_MO_BOOT && window.WAH_MO_BOOT());
+  await page.waitForFunction(() => window.WAH_MO_UI);
+  check(`${label}: test webhook overrides the live one`, true);
+  check(`${label}: form is in direct GHL mode`, (await page.evaluate(() => window.WAH_MO_UI.mode)) === "ghl");
+  async function openAndFill(id) {
+    await page.evaluate((i) => window.WAH_MO_UI.request(i), id);
+    await page.waitForSelector("#mo-request[open]");
+    await page.fill("#mo-f-name", "GHL Direct Test"); await page.fill("#mo-f-email", "ghl-direct@example.test");
+    await page.fill("#mo-f-phone", "+1 305 555 0101");
+    await page.fill("#mo-f-checkin", isoIn(90)); await page.fill("#mo-f-checkout", isoIn(94));
+    await page.fill("#mo-f-adults", "2"); await page.fill("#mo-f-children", "1");
+    await page.fill("#mo-f-message", "Direct webhook test <b>ignore</b>");
+    await page.locator("#mo-f-consent").check();
+    await page.waitForTimeout(1600);
+  }
+  // 1) Webhook down → retried, then error state; no success.
+  hookMode = "fail"; let base = received.length;
+  await openAndFill("mo-villa-sa-font");
+  await page.locator("#mo-f-submit").click();
+  await page.waitForSelector("#mo-form-error:not([hidden])", { timeout: 30000 });
+  check(`${label}: GHL failure → error state, no success`, await page.locator("#mo-req-success").isHidden() && received.length === base);
+  // 2) Webhook up → exactly one delivery, success with the same reference.
+  hookMode = "ok";
+  await page.locator("#mo-f-submit").dblclick();
+  await page.waitForSelector("#mo-req-success:not([hidden])", { timeout: 15000 }).catch(async (e) => { console.log("DEBUG", received.length - base, await page.locator("#mo-form-error").textContent(), await page.locator(".mo-field__err").allTextContents()); throw e; });
+  const p = received[received.length - 1] || {};
+  check(`${label}: exactly one delivery to the webhook`, received.length === base + 1, `${received.length - base}`);
+  check(`${label}: notify_to is Reservations@WhataHotel.com`, p.notify_to === "Reservations@WhataHotel.com");
+  check(`${label}: subject + property fields from the dataset`, p.subject === "New Exceptional Home Availability Request — Villa Sa Font" && p.property_id === "mo-villa-sa-font" && p.property_country === "Spain" && /mandarinoriental\.com/.test(p.property_source_url));
+  check(`${label}: guest + stay fields mapped`, p.full_name === "GHL Direct Test" && p.first_name === "GHL" && p.email === "ghl-direct@example.test" && p.reply_to === "ghl-direct@example.test" && p.phone === "+1 305 555 0101" && p.nights === 4 && p.total_guests === 3 && p.adults === 2 && p.children === 1);
+  check(`${label}: email body escapes guest text`, /&lt;b&gt;ignore/.test(p.email_html || "") && !/<b>ignore/.test(p.email_html || "") && /Guest email: ghl-direct@example.test/.test(p.email_text || ""));
+  check(`${label}: reference shown matches inquiry_id`, (await page.locator("#mo-req-ref").textContent()) === "Reference: " + p.inquiry_id);
+  check(`${label}: exact success message`, (await page.locator(".mo-req__ok").textContent()).trim() === "Thank you for your inquiry. Our travel advisors will review your preferred dates and contact you regarding availability and rates. Your reservation is not confirmed.");
+  check(`${label}: no personal data in source_page`, !/ghl-direct|GHL/.test(p.source_page || ""));
+  await page.screenshot({ path: path.join(SHOTS, `${label}-success.png`) });
+  await page.keyboard.press("Escape");
+  // 3) Honeypot filled → looks successful, nothing sent.
+  base = received.length;
+  await openAndFill("mo-tatvani");
+  await page.evaluate(() => { document.getElementById("mo-f-website").value = "http://spam.example"; });
+  await page.locator("#mo-f-submit").click();
+  await page.waitForSelector("#mo-req-success:not([hidden])", { timeout: 5000 });
+  check(`${label}: honeypot → nothing sent`, received.length === base);
+  await page.keyboard.press("Escape");
+  // 4) Per-browser limit: 3 sends in 10 minutes.
+  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click(); await page.waitForSelector("#mo-req-success:not([hidden])"); await page.keyboard.press("Escape");
+  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click(); await page.waitForSelector("#mo-req-success:not([hidden])"); await page.keyboard.press("Escape");
+  base = received.length;
+  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click();
+  await page.waitForSelector("#mo-form-error:not([hidden])", { timeout: 5000 });
+  check(`${label}: 4th send in 10 minutes is held back`, received.length === base && /several requests/.test(await page.locator("#mo-form-error").textContent()));
+  check(`${label}: no page errors`, errors.length === 0, errors.join("; "));
+  await ctx.close();
+}
+
 (async () => {
   const hook = await startHook(); const srv = await startServer();
   const browser = await pw.chromium.launch();
   try {
     await run(browser, "desktop", { viewport: { width: 1366, height: 900 } });
     await run(browser, "mobile", { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+    await runDirect(browser);
   } catch (e) { console.error(e); results.push({ name: "crash", ok: false }); }
   finally { await browser.close(); srv.kill(); hook.close(); }
+  results.push({ name: "no request reached the live GHL webhook", ok: liveHits.length === 0 });
+  console.log(`${liveHits.length ? "FAIL" : "PASS"}  no request reached the live GHL webhook${liveHits.length ? " — " + liveHits.length + " blocked" : ""}`);
   const failed = results.filter((r) => !r.ok);
   console.log(`\n${results.length - failed.length}/${results.length} checks passed`);
   process.exit(failed.length ? 1 : 0);

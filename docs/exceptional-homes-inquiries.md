@@ -1,86 +1,106 @@
-# Exceptional Homes: "Request Availability" setup
+# Exceptional Homes: "Request Availability" → GoHighLevel
 
-The Mandarin Oriental Exceptional Homes section on the Homes page is **not bookable online**. "Request Availability" sends an inquiry to the reservations team, and an advisor confirms availability and rates by email. Nothing checks live availability, takes payment or confirms a booking.
+The Mandarin Oriental Exceptional Homes on the Homes page are **not bookable online**. "Request Availability" sends an inquiry, and an advisor confirms availability and rates.
+
+## How it works
 
 ```
-Browser form ──POST JSON──▶ /api/request-availability ──POST──▶ GoHighLevel Inbound Webhook ──▶ GHL workflow emails the team
- (validation, honeypot)     (server/inquiry-core.mjs:            (GHL_INQUIRY_WEBHOOK_URL)        To {{notify_to}}, Reply-To {{reply_to}}
-                             re-validates, checks the home ID,
-                             rate-limits, dedupes, retries)
+Request Availability form ──POST JSON──▶ GHL Inbound Webhook ──▶ GHL workflow
+ (validation, spam checks,             (services.leadconnectorhq.com)    • Create/Update Contact
+  retries)                                                               • Email → Reservations@WhataHotel.com
 ```
 
-The guest only sees the success message after the webhook accepts the request (HTTP 2xx). If delivery fails, the form shows an error and the reservations email address instead.
+- The form posts **directly** to the GoHighLevel Inbound Webhook. No server is involved.
+- The webhook URL is set in `index.html`: `<meta name="wah-ghl-webhook" content="https://services.leadconnectorhq.com/hooks/…">`.
+- `gohighlevel.html` inherits it from `index.html` when you rebuild it with `node scripts/build-standalone.mjs`.
+- To change the URL in the embed only, run `GHL_WEBHOOK_URL=… node scripts/build-standalone.mjs`.
+- **The guest only sees the success message after GHL accepts the request (HTTP 2xx).**
+  - If GHL is unreachable, the form retries twice. Then it shows an error with the Reservations@WhataHotel.com address.
+  - The page never shows a false success.
 
-## 1. Create the GoHighLevel workflow
+> **Webhook URL is public.** Because the form posts from the browser, the webhook URL is visible in the page source (this was your choice). Anyone who finds it could send fake inquiries. If that happens, create a new Inbound Webhook trigger in GHL, then update the URL in `index.html`. To harden the setup later, switch to the optional server route (see the end of this page).
 
-1. In GHL, go to **Automation → Workflows → Create workflow** and start from scratch.
-2. Add the trigger **Inbound Webhook**, then copy its URL. This is `GHL_INQUIRY_WEBHOOK_URL`.
-3. Send one test request so GHL can map the fields (see step 4). The fields arrive as `inquiry_id`, `subject`, `notify_to`, `reply_to`, `email_html`, `email_text`, `property_*`, `full_name`, `first_name`, `last_name`, `email`, `phone`, `check_in`, `check_out`, `nights`, `adults`, `children`, `infants`, `total_guests`, `message`, `over_published_capacity` and `tags`.
-4. Add the action **Create/Update Contact** with first name, last name, email and phone taken from the webhook fields. Optionally add the tag `exceptional-homes-inquiry`.
-5. Add the action **Send Email** (an internal notification, not to the contact):
-   - **To:** `{{inboundWebhookRequest.notify_to}}` (or type `Reservations@WhataHotel.com`)
-   - **Subject:** `{{inboundWebhookRequest.subject}}`, which reads "New Exceptional Home Availability Request — [Property Name]"
-   - **Body:** switch to HTML or code mode and insert `{{inboundWebhookRequest.email_html}}`. `email_text` is the plain-text version.
-   - **Reply-To:** `{{inboundWebhookRequest.reply_to}}` (the guest's email)
-6. Save, then publish the workflow.
+## Fields the webhook receives
 
-> The exact merge-field syntax depends on your GHL version. Use the field picker in the Send Email action after the first test request has arrived.
+All fields are flat, so each can be mapped in GHL. See the full sample in [`ghl-sample-payload.json`](ghl-sample-payload.json).
 
-## 2. Configure the endpoint
-
-Set these variables in the host's dashboard. Never put them in code. See `.env.example`.
-
-| Variable | Purpose |
+| Field | Example |
 |---|---|
-| `GHL_INQUIRY_WEBHOOK_URL` | The Inbound Webhook URL from step 1. Without it the endpoint replies `503`, and the form shows an error. |
-| `INQUIRY_TO` | The notification recipient (`{{notify_to}}`). Defaults to `Reservations@WhataHotel.com`. **Use a test inbox until a live send is approved.** |
-| `ALLOWED_ORIGINS` | Other sites allowed to post to the endpoint, e.g. `https://pro.whatahotel.com,https://rawcdn.githack.com`. Same-origin requests always work. |
-| `INQUIRY_DELIVERY` | `ghl` (default), or `log` for local testing. `log` is refused on production deployments. |
+| `subject` | New Exceptional Home Availability Request — Villa Sa Font |
+| `notify_to` | Reservations@WhataHotel.com |
+| `reply_to` / `email` | the guest's email |
+| `full_name`, `first_name`, `last_name`, `phone` | guest details (phone optional) |
+| `property_name`, `property_id`, `property_destination`, `property_country`, `property_location`, `property_source_url` | the home (taken from our dataset, not typed by the guest) |
+| `check_in`, `check_out`, `nights` | preferred dates (YYYY-MM-DD) |
+| `adults`, `children`, `infants`, `total_guests` | party size |
+| `over_published_capacity` | "Yes" if adults + children exceed the home's published capacity |
+| `message` | the guest's message (may be empty) |
+| `email_text` | ready-made plain-text summary of everything above |
+| `email_html` | ready-made HTML summary (guest text escaped) |
+| `inquiry_id` | reference shown to the guest, e.g. `MOH-20261103-QJHJK8` |
+| `submitted_at`, `source_page`, `consent`, `tags`, `event`, `submission_id` | housekeeping |
 
-The same handler is wired for every host:
-- **Vercel:** `api/request-availability.mjs`
-- **Netlify:** `netlify/functions/request-availability.mjs` plus the `netlify.toml` redirect
-- **Cloudflare Pages:** `functions/api/request-availability.js`
+## Set up the GHL workflow
 
-### GoHighLevel embed (`gohighlevel.html`)
+1. Go to **Automation → Workflows → + Create Workflow**, then **Start from scratch**.
+2. **Trigger:** Inbound Webhook. Its URL must match the one in `index.html`.
+3. **Map the fields.** GHL needs one sample request:
+   - Keep the workflow in **Draft** so no email goes out.
+   - Send one **test** request. Either use the page in a preview, or ask us to post `docs/ghl-sample-payload.json`, which is clearly marked "TEST — please ignore".
+   - Click **Fetch Sample Requests** and select it. The fields above now appear as `{{inboundWebhookRequest.<field>}}`.
+4. **Action: Create/Update Contact.**
+   - Map first name, last name, email and phone.
+   - Optionally add the tag `exceptional-homes-inquiry`.
+5. **Action: Send Internal Notification** (type: Email). Alternatively use **Send Email** to a custom address.
+   - **To:** `Reservations@WhataHotel.com`
+   - **Subject:** `{{inboundWebhookRequest.subject}}`
+   - **Message:** either use `{{inboundWebhookRequest.email_text}}`, or build your own layout from the individual fields:
+     ```
+     Property: {{inboundWebhookRequest.property_name}} ({{inboundWebhookRequest.property_destination}})
+     Guest: {{inboundWebhookRequest.full_name}} · {{inboundWebhookRequest.email}} · {{inboundWebhookRequest.phone}}
+     Dates: {{inboundWebhookRequest.check_in}} → {{inboundWebhookRequest.check_out}} ({{inboundWebhookRequest.nights}} nights)
+     Guests: {{inboundWebhookRequest.adults}} adults, {{inboundWebhookRequest.children}} children, {{inboundWebhookRequest.infants}} infants (total {{inboundWebhookRequest.total_guests}})
+     Over published capacity: {{inboundWebhookRequest.over_published_capacity}}
+     Message: {{inboundWebhookRequest.message}}
+     Source: {{inboundWebhookRequest.property_source_url}}
+     Reference: {{inboundWebhookRequest.inquiry_id}}
+     This is an availability REQUEST. Nothing has been booked or confirmed.
+     ```
+   - **Reply-To:** `{{inboundWebhookRequest.reply_to}}`, if your GHL version offers a Reply-To field. If it doesn't, the guest's email is in the message.
+6. Save and **Publish**, then send one final test (see below).
 
-A page hosted inside GHL has no `/api`. Build the embed with the absolute URL of the deployment that runs the endpoint:
+> Merge-field names come from GHL's field picker after step 3. Use the picker rather than typing them, since the exact syntax can vary between GHL versions.
 
-```
-INQUIRY_ENDPOINT=https://<your-deployment>/api/request-availability node scripts/build-standalone.mjs
-```
+## Testing
 
-Then add the embed's origin to `ALLOWED_ORIGINS`. Without `INQUIRY_ENDPOINT`, the embedded form shows its error state; it never shows a false success.
+- **Automated tests never contact the live webhook.**
+  - `npm test` runs the unit tests.
+  - `node tests/e2e-mo-homes.cjs` runs the browser tests against a local mock webhook. It also blocks any request to `leadconnectorhq.com` and fails if one is attempted.
+- **First live test (needs your approval):**
+  - Submit one request from the preview page using an obviously fake guest ("TEST — please ignore") and your own email.
+  - Confirm that Reservations@WhataHotel.com receives it with the right subject, fields and reply address, and that the contact appears in GHL.
+  - Delete the test contact afterwards.
 
-## 3. Test safely before going live
+## Protections on the page
 
-1. Set `INQUIRY_TO` to a test inbox, never the live reservations inbox, until a real send is approved.
-2. Deploy to a **preview** environment, not production.
-3. Submit one inquiry. Use a clearly fake guest name ("TEST — please ignore") and your own test email.
-4. Confirm that:
-   - the email arrived with the right subject;
-   - Reply-To is set to the guest;
-   - the HTML and plain-text versions both render;
-   - the contact was created in GHL.
-5. Switch `INQUIRY_TO` to `Reservations@WhataHotel.com` (or clear it) only after approval.
+- **Field checks:** required fields, a valid email, phone optional, dates valid and in the future, check-out after check-in, at least 1 adult, and consent.
+- **Trusted home details:** the home's name, location and source link come from the dataset; only its ID comes from the button the guest clicked.
+- **Spam checks:**
+  - A hidden honeypot field: bots that fill it in see a normal success message, and nothing is sent.
+  - Submissions made within 1.5 seconds of opening the form are refused.
+  - At most 3 sends per browser in 10 minutes.
+- **Duplicate prevention:** the button is disabled while sending, so a double-click sends once.
+- **Retries:** network errors, 429 and 5xx responses are retried twice with backoff. Other 4xx responses are not retried.
+- **Privacy:** no personal data goes into URLs or analytics. The `dataLayer` events carry only the home ID, country or HTTP status.
 
-Local checks, which never contact a real inbox:
-- `npm test` runs the unit tests, with delivery mocked.
-- `node tests/e2e-mo-homes.cjs` drives the browser against the real handler and a local mock webhook.
-- `npm run dev` gives a local preview with `INQUIRY_DELIVERY=log`.
+## Optional: server route (stronger protection)
 
-## Protections
+`server/inquiry-core.mjs` has adapters for Vercel (`api/request-availability.mjs`), Netlify and Cloudflare. It does the same job behind a server and adds:
+- server-side validation;
+- per-IP rate limiting and deduplication;
+- a hidden webhook URL (`GHL_INQUIRY_WEBHOOK_URL`). See `.env.example`.
 
-- **Server-side validation:** the server re-checks every field. The home is identified only by its ID, which must exist in `server/mo-homes-registry.mjs`; any name the client sends is ignored.
-- **Honeypot field (`website`):** filled-in submissions are silently dropped. Submissions completed in under 1.5 seconds are rejected.
-- **Rate limit:** 5 requests per 10 minutes per IP. This is best effort, counted per warm serverless instance. For a hard limit, add the host's firewall or WAF rate limiting.
-- **Duplicate prevention:** the browser disables the button while sending, and the server dedupes by `submissionId` for 15 minutes, including two requests arriving at the same time.
-- **Delivery:** 3 attempts with backoff on network errors, 5xx and 429. Other 4xx responses are not retried.
-- **Privacy:**
-  - Logs contain only the inquiry ID and home ID.
-  - No personal data goes into URLs or analytics. The `dataLayer` events are `mo_filter`, `mo_view_details`, `mo_request_opened`, `mo_request_submitted` and `mo_request_failed`, carrying only the home ID, country or HTTP status.
-  - Data is not stored on the server; it lives in GHL.
-
-## Status
-
-The handler, the form and the webhook payload have passed the unit and browser tests with a **mock** webhook. **Delivery to a real GoHighLevel workflow and inbox has not been tested yet.** That needs the webhook URL, a test inbox and a preview deployment (section 3).
+To switch to it:
+1. Deploy one of the adapters.
+2. Empty the `wah-ghl-webhook` meta tag.
+3. Set `wah-inquiry-endpoint` to the deployed `/api/request-availability` URL.

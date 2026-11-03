@@ -198,7 +198,11 @@ The `#exceptional-homes` section lists 42 MO Exceptional Homes across 8 countrie
 - **UI:**
   - `assets/js/mo-homes-ui.js`, `assets/js/mo-format.js` and `assets/css/mo-homes.css`
   - Country filter, cards, a detail dialog with "More Info" sections, and the request form
-- **Inquiries:** `server/inquiry-core.mjs` is served through `api/` (Vercel), `netlify/functions/` and `functions/api/` (Cloudflare), and delivers to a GoHighLevel webhook. For setup, env vars and safe testing, see **docs/exceptional-homes-inquiries.md**.
+- **Inquiries:**
+  - The form posts directly to the GoHighLevel Inbound Webhook set in `<meta name="wah-ghl-webhook">`.
+  - The GHL workflow then emails Reservations@WhataHotel.com.
+  - Field list, workflow setup and safe testing are in **docs/exceptional-homes-inquiries.md**.
+  - An optional server route (`server/inquiry-core.mjs`) is kept for stronger protection.
 - **Tests:**
   - `npm test` runs the unit tests.
   - `node tests/e2e-mo-homes.cjs` runs the desktop and mobile browser flow against a mock webhook. Screenshots go to `tests/screenshots/`.

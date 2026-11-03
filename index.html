@@ -40,8 +40,10 @@
 
 <link rel="stylesheet" href="assets/css/homes.css">
 <link rel="stylesheet" href="assets/css/mo-homes.css">
-<!-- Request Availability endpoint. Relative works where /api is served (Vercel/Netlify/Cloudflare);
-     the GHL embed needs the absolute deployed URL here (see docs/exceptional-homes-inquiries.md). -->
+<!-- Exceptional Homes "Request Availability": paste the GoHighLevel Inbound Webhook URL into
+     wah-ghl-webhook and the form posts straight to it (GHL workflow emails Reservations@WhataHotel.com).
+     Leave it empty to use the optional server endpoint below instead. See docs/exceptional-homes-inquiries.md. -->
+<meta name="wah-ghl-webhook" content="https://services.leadconnectorhq.com/hooks/fBHK0xDUEFQL6rOoyKnY/webhook-trigger/jXZT5UbdKrjdGVeNiYoK">
 <meta name="wah-inquiry-endpoint" content="/api/request-availability">
 
 <!-- Structured data for SEO -->
