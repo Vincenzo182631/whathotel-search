@@ -34,7 +34,8 @@
 .mo-card__img.is-loaded { opacity: 1; }
 .mo-card:hover .mo-card__img { transform: scale(1.04); }
 .mo-noimg { background: linear-gradient(135deg, var(--sand), var(--cream)); }
-.mo-card__badge { position: absolute; left: 12px; top: 12px; padding: .35rem .7rem; border-radius: 999px; background: rgba(12,26,43,.72); color: var(--on-dark); font: 600 .72rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(4px); }
+/* Brand badge on the photo — same look as the hotel cards (.pcard__badge). */
+.mo-card__badge { position: absolute; left: .8rem; top: .8rem; z-index: 2; padding: .3rem .65rem; border-radius: 999px; color: #2a2008; background: linear-gradient(135deg, var(--gold-2), var(--gold)); box-shadow: var(--shadow-sm); font: 700 .72rem/1.2 var(--sans); letter-spacing: .03em; text-transform: uppercase; }
 .mo-card__body { display: flex; flex-direction: column; flex: 1; padding: 18px 18px 20px; }
 .mo-card__brand { margin: 0 0 .3rem; color: var(--gold-deep); font: 600 .74rem/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
 .mo-card__loc { display: flex; align-items: center; gap: .35rem; margin: -.35rem 0 .8rem; color: var(--text-soft); font: 400 .88rem/1.35 var(--sans); }

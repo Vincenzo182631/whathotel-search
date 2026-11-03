@@ -137,7 +137,7 @@
     return '<article class="mo-card" data-id="' + esc(h.id) + '" aria-labelledby="moc-' + esc(h.id) + '">' +
       '<button type="button" class="mo-card__media' + (img ? "" : " mo-noimg") + '" data-mo-detail="' + esc(h.id) + '" aria-label="View details for ' + esc(h.name) + '">' +
         imgTag(img, 720, "mo-card__img") +
-        '<span class="mo-card__badge">' + esc(h.country) + '</span>' +
+        '<span class="mo-card__badge">' + esc(h.brand || "Mandarin Oriental") + '</span>' +
       '</button>' +
       '<div class="mo-card__body">' +
         '<p class="mo-card__brand">' + esc(h.brand || "Mandarin Oriental") + '</p>' +
@@ -215,7 +215,7 @@
     detailBody.innerHTML =
       '<div class="mo-detail__grid">' +
         '<div class="mo-gal' + (gallery.list.length ? "" : " mo-noimg") + '">' +
-          '<div class="mo-gal__stage"><div class="mo-gal__main"></div>' +
+          '<div class="mo-gal__stage"><div class="mo-gal__main"></div><span class="mo-card__badge">' + esc(h.brand || "Mandarin Oriental") + '</span>' +
           (gallery.list.length > 1 ? '<button type="button" class="mo-gal__nav mo-gal__prev" data-mo-gal="-1" aria-label="Previous photograph">' + ICON.prev + '</button><button type="button" class="mo-gal__nav mo-gal__next" data-mo-gal="1" aria-label="Next photograph">' + ICON.next + '</button>' : "") +
           (gallery.list.length ? '<span class="mo-gal__count" aria-live="polite"></span>' : "") + '</div>' + thumbs +
           (gallery.list.length ? '<p class="mo-credit">' + esc(gallery.list[0].credit || "") + '</p>' : "") +

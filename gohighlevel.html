@@ -1277,7 +1277,8 @@ body.modal-open { overflow: hidden; }
 .mo-card__img.is-loaded { opacity: 1; }
 .mo-card:hover .mo-card__img { transform: scale(1.04); }
 .mo-noimg { background: linear-gradient(135deg, var(--sand), var(--cream)); }
-.mo-card__badge { position: absolute; left: 12px; top: 12px; padding: .35rem .7rem; border-radius: 999px; background: rgba(12,26,43,.72); color: var(--on-dark); font: 600 .72rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(4px); }
+/* Brand badge on the photo — same look as the hotel cards (.pcard__badge). */
+.mo-card__badge { position: absolute; left: .8rem; top: .8rem; z-index: 2; padding: .3rem .65rem; border-radius: 999px; color: #2a2008; background: linear-gradient(135deg, var(--gold-2), var(--gold)); box-shadow: var(--shadow-sm); font: 700 .72rem/1.2 var(--sans); letter-spacing: .03em; text-transform: uppercase; }
 .mo-card__body { display: flex; flex-direction: column; flex: 1; padding: 18px 18px 20px; }
 .mo-card__brand { margin: 0 0 .3rem; color: var(--gold-deep); font: 600 .74rem/1.3 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
 .mo-card__loc { display: flex; align-items: center; gap: .35rem; margin: -.35rem 0 .8rem; color: var(--text-soft); font: 400 .88rem/1.35 var(--sans); }
@@ -10845,7 +10846,7 @@ window.WAH_MO_HOMES = {"meta":{"source":"https://www.mandarinoriental.com/en/exc
     return '<article class="mo-card" data-id="' + esc(h.id) + '" aria-labelledby="moc-' + esc(h.id) + '">' +
       '<button type="button" class="mo-card__media' + (img ? "" : " mo-noimg") + '" data-mo-detail="' + esc(h.id) + '" aria-label="View details for ' + esc(h.name) + '">' +
         imgTag(img, 720, "mo-card__img") +
-        '<span class="mo-card__badge">' + esc(h.country) + '</span>' +
+        '<span class="mo-card__badge">' + esc(h.brand || "Mandarin Oriental") + '</span>' +
       '</button>' +
       '<div class="mo-card__body">' +
         '<p class="mo-card__brand">' + esc(h.brand || "Mandarin Oriental") + '</p>' +
@@ -10923,7 +10924,7 @@ window.WAH_MO_HOMES = {"meta":{"source":"https://www.mandarinoriental.com/en/exc
     detailBody.innerHTML =
       '<div class="mo-detail__grid">' +
         '<div class="mo-gal' + (gallery.list.length ? "" : " mo-noimg") + '">' +
-          '<div class="mo-gal__stage"><div class="mo-gal__main"></div>' +
+          '<div class="mo-gal__stage"><div class="mo-gal__main"></div><span class="mo-card__badge">' + esc(h.brand || "Mandarin Oriental") + '</span>' +
           (gallery.list.length > 1 ? '<button type="button" class="mo-gal__nav mo-gal__prev" data-mo-gal="-1" aria-label="Previous photograph">' + ICON.prev + '</button><button type="button" class="mo-gal__nav mo-gal__next" data-mo-gal="1" aria-label="Next photograph">' + ICON.next + '</button>' : "") +
           (gallery.list.length ? '<span class="mo-gal__count" aria-live="polite"></span>' : "") + '</div>' + thumbs +
           (gallery.list.length ? '<p class="mo-credit">' + esc(gallery.list[0].credit || "") + '</p>' : "") +
