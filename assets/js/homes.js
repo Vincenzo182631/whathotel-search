@@ -9,6 +9,25 @@
   "use strict";
 
   var PROPS = (window.WAH_PROPERTIES || []).slice();
+
+  /* Mandarin Oriental Exceptional Homes (window.WAH_MO_INDEX, from
+     scripts/import-mo-homes.mjs) join the collection so search, the region
+     cards and brand matching include them. They carry the brand "Mandarin
+     Oriental" and open the Exceptional Homes detail view with "Request
+     Availability" — they are not bookable online, so no booking link. */
+  var MO_REGION_KEY = { "Europe": "europe", "Asia": "asia" };
+  (window.WAH_MO_INDEX || []).forEach(function (h) {
+    var region = h.siteRegion || "Europe";
+    var loc = h.location || h.country;
+    if (loc.toLowerCase().indexOf(String(h.country).toLowerCase()) === -1) loc += ", " + h.country;
+    PROPS.push({
+      id: h.id, kind: "mo", name: h.name, loc: loc, city: h.location || "", country: h.country,
+      region: region, regionKey: MO_REGION_KEY[region] || "europe",
+      collection: h.brand || "Mandarin Oriental", brand: h.brand || "Mandarin Oriental",
+      image: h.image, scene: region === "Asia" ? "tropical" : "beach",
+      blurb: h.blurb || ("In " + loc + "."), featured: false, mo: h
+    });
+  });
   var $  = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
@@ -159,8 +178,16 @@
        • BRANDS   — the property's real collection/brand
      Both come pre-computed (with counts) from data.js.
      ----------------------------------------------------------------- */
-  var REGIONS = (window.WAH_REGIONS || []).slice();
-  var BRANDS = (window.WAH_BRANDS || []).slice();
+  var REGIONS = (window.WAH_REGIONS || []).map(function (r) {
+    var o = {}; for (var k in r) o[k] = r[k];
+    o.count = PROPS.filter(function (p) { return p.regionKey === r.key; }).length;   // includes Exceptional Homes
+    return o;
+  });
+  var BRANDS = (window.WAH_BRANDS || []).map(function (b) {
+    var o = {}; for (var k in b) o[k] = b[k];
+    if (window.WAH_MO_INDEX && b.label === "Mandarin Oriental") o.count += window.WAH_MO_INDEX.length;
+    return o;
+  });
   // Short region labels for compact badges.
   var REGION_SHORT = {
     "north-america": "North America",
@@ -285,6 +312,7 @@
       var c = (p.country || "").toLowerCase();
       return !!CARIB[c] || (c === "mexico" && /cancun|mayakoba|kanai|riviera maya|tulum|playa del carmen|cozumel/i.test(p.city || ""));
     });
+    add("tuscany", function (p) { return p.country === "Italy" && /tuscany|florence|chianti|siena|montalcino|castiglion|impruneta|casole|val d.orcia|lucca|pienza/i.test((p.city || "") + " " + (p.loc || "")); });
     add("mediterranean", mkRegion("europe")); add("europe", mkRegion("europe")); add("asia", mkRegion("asia"));
     add("north america", mkRegion("north-america"));
     ["usa", "u.s.a", "united states", "america", "the states"].forEach(function (t) { add(t, US); });
@@ -623,8 +651,10 @@
     var tags = [];
     var pset = primarySetting(p);
     if (pset) tags.push('<span class="tag-pill tag-pill--setting">' + (SETTING_ICON[pset] || "") + esc(settingLabel(pset)) + '</span>');
+    if (p.kind === "mo") tags.push('<span class="tag-pill tag-pill--mo">Exceptional Home</span>');
     tags.push('<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>');
     if (p.country) tags.push('<span class="tag-pill">' + esc(p.country) + '</span>');
+    if (p.kind === "mo" && p.mo.bedroomsDisplay) tags.push('<span class="tag-pill">' + esc(p.mo.bedroomsDisplay) + ' bedrooms</span>');
 
     var favOn = !!state.favs[p.id];
     return '' +
@@ -1341,8 +1371,8 @@
       var detailBtn = e.target.closest && e.target.closest('[data-action="detail"]');
       if (detailBtn) {
         e.preventDefault();
-        var did = +detailBtn.getAttribute("data-id");
-        var dp = PROPS.filter(function (x) { return x.id === did; })[0];
+        var did = String(detailBtn.getAttribute("data-id"));
+        var dp = PROPS.filter(function (x) { return String(x.id) === did; })[0];
         if (dp) openDetail(dp, detailBtn);
         return;
       }
@@ -1399,7 +1429,20 @@
     }).join("");
   }
 
+  // Exceptional Homes use their own detail view (gallery, Details, Activities
+  // Nearby, Request Availability). Its data loads on first use.
+  function openMoDetail(p) {
+    track("property_card_clicked", { property_id: p.id, property_type: "exceptional_home" });
+    if (window.WAH_MO_UI) { window.WAH_MO_UI.open(p.id); return; }
+    document.addEventListener("wah:mo-ready", function once() {
+      document.removeEventListener("wah:mo-ready", once);
+      if (window.WAH_MO_UI) window.WAH_MO_UI.open(p.id);
+    });
+    if (window.WAH_MO_BOOT) window.WAH_MO_BOOT();
+  }
+
   function openDetail(p, trigger) {
+    if (p.kind === "mo") { openMoDetail(p); return; }
     ensureModal();
     modalLastFocus = trigger || document.activeElement;
     var d = detailsFor(p);

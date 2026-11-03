@@ -140,8 +140,9 @@
         '<span class="mo-card__badge">' + esc(h.country) + '</span>' +
       '</button>' +
       '<div class="mo-card__body">' +
-        '<p class="mo-card__loc">' + ICON.pin + esc(h.location || h.region || h.country) + '</p>' +
+        '<p class="mo-card__brand">' + esc(h.brand || "Mandarin Oriental") + '</p>' +
         '<h4 class="mo-card__name" id="moc-' + esc(h.id) + '">' + esc(h.name) + '</h4>' +
+        '<p class="mo-card__loc">' + ICON.pin + esc(placeLine(h)) + '</p>' +
         specs(h, "mo-specs") +
         rateHTML(h, "mo-rate") +
         '<div class="mo-card__actions">' +
@@ -220,9 +221,9 @@
           (gallery.list.length ? '<p class="mo-credit">' + esc(gallery.list[0].credit || "") + '</p>' : "") +
         '</div>' +
         '<div class="mo-detail__info">' +
-          '<p class="mo-detail__eyebrow">Mandarin Oriental Exceptional Homes · ' + esc(h.country) + '</p>' +
+          '<p class="mo-detail__eyebrow">' + esc(h.brand || "Mandarin Oriental") + ' · Exceptional Homes</p>' +
           '<h2 class="mo-detail__name" id="mo-detail-title">' + esc(h.name) + '</h2>' +
-          '<p class="mo-detail__loc">' + ICON.pin + esc(h.location || h.country) + '</p>' +
+          '<p class="mo-detail__loc">' + ICON.pin + esc(placeLine(h)) + '</p>' +
           specs(h, "mo-specs mo-specs--lg") +
           rateHTML(h, "mo-rate mo-rate--lg") +
           '<p class="mo-fine">*Indicative starting rate published by Mandarin Oriental, subject to confirmation. Not bookable online; your advisor confirms availability and the final rate.</p>' +

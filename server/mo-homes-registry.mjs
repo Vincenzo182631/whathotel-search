@@ -3,10 +3,11 @@
  * homes that may receive inquiries. The inquiry endpoint trusts ONLY this list
  * (never the name/country a browser sends).
  */
-export const MO_DATASET_IMPORTED_AT = "2026-11-02T22:34:47.246Z";
+export const MO_DATASET_IMPORTED_AT = "2026-11-03T06:07:57.583Z";
 export const MO_HOMES_REGISTRY = {
   "mo-uluwatu-estate": {
     "name": "Uluwatu Estate",
+    "brand": "Mandarin Oriental",
     "country": "Indonesia",
     "location": "Uluwatu, Bali",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/uluwatu-estate",
@@ -14,6 +15,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-tatvani": {
     "name": "Tatvani",
+    "brand": "Mandarin Oriental",
     "country": "Thailand",
     "location": "Chiang Rai, Thailand",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/tatvani",
@@ -21,6 +23,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-amarisa": {
     "name": "Villa Amarisa",
+    "brand": "Mandarin Oriental",
     "country": "Thailand",
     "location": "Phuket, Thailand",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-amarisa",
@@ -28,6 +31,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-churchill-manor": {
     "name": "Churchill Manor",
+    "brand": "Mandarin Oriental",
     "country": "United Kingdom",
     "location": "Chipping Norton, The Cotswolds",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/churchill-manor",
@@ -35,6 +39,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-coombe-end-manor": {
     "name": "Coombe End Manor",
+    "brand": "Mandarin Oriental",
     "country": "United Kingdom",
     "location": "Cirencester, The Cotswolds",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/coombe-end-manor",
@@ -42,6 +47,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-cirencester-estate": {
     "name": "Cirencester Estate",
+    "brand": "Mandarin Oriental",
     "country": "United Kingdom",
     "location": "Cirencester, The Cotswolds",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/cirencester-estate",
@@ -49,6 +55,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-il-cellese": {
     "name": "Il Cellese",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Chianti, Italy",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/il-cellese",
@@ -56,6 +63,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-ada": {
     "name": "Villa Ada",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Portisco, Sardinia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-ada",
@@ -63,6 +71,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-dimora-ghirlandaio": {
     "name": "Dimora Ghirlandaio",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Impruneta, Florence",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/dimora-ghirlandaio",
@@ -70,6 +79,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-petrucci": {
     "name": "Villa Petrucci",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Florence, Italy",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-petrucci",
@@ -77,6 +87,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-marzia": {
     "name": "Villa Marzia",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Capo Coda Cavallo, Sardinia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-marzia",
@@ -84,6 +95,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-trullo-delle-dame": {
     "name": "Trullo delle Dame",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Cisternino, Puglia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/trullo-delle-dame",
@@ -91,6 +103,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-trullo-dei-pumi": {
     "name": "Trullo dei Pumi",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Cisternino, Puglia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/trullo-dei-pumi",
@@ -98,6 +111,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-masseria-petrarolo": {
     "name": "Masseria Petrarolo",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Monopoli, Puglia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/masseria-petrarolo",
@@ -105,6 +119,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-masseria-pistola": {
     "name": "Masseria Pistola",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Alberobello, Puglia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/masseria-pistola",
@@ -112,6 +127,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-castello-di-procopio": {
     "name": "Castello di Procopio",
+    "brand": "Mandarin Oriental",
     "country": "Italy",
     "location": "Perugia, Umbria",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/castello-di-procopio",
@@ -119,6 +135,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-cesar": {
     "name": "Villa Cesar",
+    "brand": "Mandarin Oriental",
     "country": "France",
     "location": "La Croix‑Valmer, French Riviera",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-cesar",
@@ -126,6 +143,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-chateau-de-la-croix-des-gardes": {
     "name": "Château de la Croix des Gardes",
+    "brand": "Mandarin Oriental",
     "country": "France",
     "location": "Cannes, French Riviera",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/chateau-de-la-croix-des-gardes",
@@ -133,6 +151,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-o": {
     "name": "Villa O",
+    "brand": "Mandarin Oriental",
     "country": "France",
     "location": "Saint-Jean-Cap-Ferrat, French Riviera",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-o",
@@ -140,6 +159,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-palmira": {
     "name": "Villa Palmira",
+    "brand": "Mandarin Oriental",
     "country": "France",
     "location": "Super Cannes, French Riviera",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-palmira",
@@ -147,6 +167,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-riviera": {
     "name": "Villa Riviera",
+    "brand": "Mandarin Oriental",
     "country": "France",
     "location": "Saint-Paul-de-Vence, French Riviera",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-riviera",
@@ -154,6 +175,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-sa-font": {
     "name": "Villa Sa Font",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Provençals, Mallorca",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-sa-font",
@@ -161,6 +183,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-puesta-del-sol": {
     "name": "Villa Puesta del Sol",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Port d'Andratx, Mallorca",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-puesta-del-sol",
@@ -168,6 +191,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-can-catalina": {
     "name": "Can Catalina",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Cala Llamp, Mallorca",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/can-catalina",
@@ -175,6 +199,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-ca-n-miquelet": {
     "name": "Ca’n Miquelet",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Deià, Mallorca",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/ca-n-miquelet",
@@ -182,6 +207,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-blue-dream": {
     "name": "Blue Dream",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Talamanca, Ibiza",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/blue-dream",
@@ -189,6 +215,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-casanova": {
     "name": "Villa Casanova",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Jesús, Ibiza",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-casanova",
@@ -196,6 +223,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-bellini": {
     "name": "Villa Bellini",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Sierra Blanca, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-bellini",
@@ -203,6 +231,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-los-verdiales": {
     "name": "Villa Los Verdiales",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Nueva Andalucía, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-los-verdiales",
@@ -210,6 +239,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-paris": {
     "name": "Villa Paris",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Nueva Andalucía, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-paris",
@@ -217,6 +247,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-tuscany": {
     "name": "Villa Tuscany",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Nueva Andalucía, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-tuscany",
@@ -224,6 +255,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-azur": {
     "name": "Villa Azur",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Nueva Andalucía, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-azur",
@@ -231,6 +263,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-los-angeles": {
     "name": "Villa Los Angeles",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Nueva Andalucía, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-los-angeles",
@@ -238,6 +271,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-mirage": {
     "name": "Villa Mirage",
+    "brand": "Mandarin Oriental",
     "country": "Spain",
     "location": "Nueva Andalucía, Marbella",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-mirage",
@@ -245,6 +279,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-casa-gaia": {
     "name": "Casa Gaia",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Fokos, Mykonos",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/casa-gaia",
@@ -252,6 +287,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-serenaos": {
     "name": "SERENAOS",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Ellomeno, Lefkada",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/serenaos",
@@ -259,6 +295,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-vayra": {
     "name": "VAYRA",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Kentroma, Corfu",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/vayra",
@@ -266,6 +303,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-alice": {
     "name": "Villa Alice",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Gimari, Corfu",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-alice",
@@ -273,6 +311,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-vanikiba": {
     "name": "Vanikiba",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Peloponnese, Porto Heli",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/vanikiba",
@@ -280,6 +319,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-aegean": {
     "name": "Villa Aegean",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Imerovigli, Santorini",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-aegean",
@@ -287,6 +327,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-villa-caldera": {
     "name": "Villa Caldera",
+    "brand": "Mandarin Oriental",
     "country": "Greece",
     "location": "Imerovigli, Santorini",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/villa-caldera",
@@ -294,6 +335,7 @@ export const MO_HOMES_REGISTRY = {
   },
   "mo-lopud-1483": {
     "name": "Lopud 1483",
+    "brand": "Mandarin Oriental",
     "country": "Croatia",
     "location": "Lopud, Croatia",
     "sourceUrl": "https://www.mandarinoriental.com/en/exceptional-homes/lopud-1483",

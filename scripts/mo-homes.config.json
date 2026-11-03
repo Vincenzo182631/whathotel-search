@@ -1,7 +1,27 @@
 {
   "source": "https://www.mandarinoriental.com/en/exceptional-homes",
   "homeUrlBase": "https://www.mandarinoriental.com/en/exceptional-homes/",
-  "countries": ["Indonesia", "Thailand", "United Kingdom", "Italy", "France", "Spain", "Greece", "Croatia"],
+  "brand": "Mandarin Oriental",
+  "siteRegion": {
+    "Indonesia": "Asia",
+    "Thailand": "Asia",
+    "United Kingdom": "Europe",
+    "Italy": "Europe",
+    "France": "Europe",
+    "Spain": "Europe",
+    "Greece": "Europe",
+    "Croatia": "Europe"
+  },
+  "countries": [
+    "Indonesia",
+    "Thailand",
+    "United Kingdom",
+    "Italy",
+    "France",
+    "Spain",
+    "Greece",
+    "Croatia"
+  ],
   "destinationToCountry": {
     "Bali": "Indonesia",
     "Thailand": "Thailand",
@@ -18,7 +38,11 @@
   "selection": {
     "perCountry": 8,
     "fullDozenUpTo": 12,
-    "overDozen": { "bedroomsMin": 4, "bedroomsMax": 8, "cap": null },
+    "overDozen": {
+      "bedroomsMin": 4,
+      "bedroomsMax": 8,
+      "cap": null
+    },
     "maxTotal": 64,
     "notes": "<= 8 homes: all. 9-12 homes: the full dozen (all). Over 12: only homes with 4-8 bedrooms (base count, e.g. '5+1' = 5), no further cap (confirmed by Lorraine Travel, 2026-11-02). Source order is preserved."
   },
@@ -36,13 +60,56 @@
   "politeDelayMs": 2500,
   "concurrency": 2,
   "plannedSelection": {
-    "Indonesia": ["Uluwatu Estate"],
-    "Thailand": ["Tatvani", "Villa Amarisa"],
-    "United Kingdom": ["Churchill Manor", "Coombe End Manor", "Cirencester Estate"],
-    "Italy": ["Il Cellese", "Villa Ada", "Dimora Ghirlandaio", "Villa Petrucci", "Villa Marzia", "Trullo delle Dame", "Trullo dei Pumi", "Masseria Petrarolo"],
-    "France": ["Villa Cesar", "Château de la Croix des Gardes", "Villa O", "Villa Palmira", "Villa Riviera"],
-    "Spain": ["Mas Mateu", "Villa Sa Font", "Villa Puesta del Sol", "Can Catalina", "Ca’n Miquelet", "Blue Dream", "Villa Casanova", "Villa Bellini"],
-    "Greece": ["Casa Gaia", "Serenaos", "Vayra", "Villa Alice", "Vanikiba", "Villa Aegean", "Villa Caldera"],
-    "Croatia": ["Lopud 1483"]
+    "Indonesia": [
+      "Uluwatu Estate"
+    ],
+    "Thailand": [
+      "Tatvani",
+      "Villa Amarisa"
+    ],
+    "United Kingdom": [
+      "Churchill Manor",
+      "Coombe End Manor",
+      "Cirencester Estate"
+    ],
+    "Italy": [
+      "Il Cellese",
+      "Villa Ada",
+      "Dimora Ghirlandaio",
+      "Villa Petrucci",
+      "Villa Marzia",
+      "Trullo delle Dame",
+      "Trullo dei Pumi",
+      "Masseria Petrarolo"
+    ],
+    "France": [
+      "Villa Cesar",
+      "Château de la Croix des Gardes",
+      "Villa O",
+      "Villa Palmira",
+      "Villa Riviera"
+    ],
+    "Spain": [
+      "Mas Mateu",
+      "Villa Sa Font",
+      "Villa Puesta del Sol",
+      "Can Catalina",
+      "Ca’n Miquelet",
+      "Blue Dream",
+      "Villa Casanova",
+      "Villa Bellini"
+    ],
+    "Greece": [
+      "Casa Gaia",
+      "Serenaos",
+      "Vayra",
+      "Villa Alice",
+      "Vanikiba",
+      "Villa Aegean",
+      "Villa Caldera"
+    ],
+    "Croatia": [
+      "Lopud 1483"
+    ]
   }
 }

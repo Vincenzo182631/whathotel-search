@@ -48,6 +48,18 @@ const PROPS = win.WAH_PROPERTIES || [];
 const DESC = win.WAH_DESC || {};
 if (!PROPS.length) { console.error("No WAH_PROPERTIES loaded"); process.exit(1); }
 
+/* Mandarin Oriental Exceptional Homes: same rules, from their REAL prose
+   (DETAILS paragraphs only) and real geography. Keyed "mo-<slug>". */
+const MO_FILE = path.join(root, "data", "mo-exceptional-homes.json");
+if (fs.existsSync(MO_FILE)) {
+  const mo = JSON.parse(fs.readFileSync(MO_FILE, "utf8"));
+  const SITE_REGION_KEY = { Indonesia: "asia", Thailand: "asia" };
+  for (const h of mo.homes || []) {
+    PROPS.push({ id: h.id, city: h.location || "", country: h.country, regionKey: SITE_REGION_KEY[h.country] || "europe" });
+    DESC[h.id] = (h.details || []).filter((b) => b.type === "p").map((b) => b.text).join(" ");
+  }
+}
+
 /* ------------------------------------------------------------------ *
  * SETTING vocabulary (the controlled list the UI filters on).
  * Each setting has:
@@ -127,7 +139,7 @@ const SETTINGS = {
     geo: [
       "tuscany", "chianti", "montalcino", "castiglion", "siena", "florence countryside",
       "napa", "yountville", "sonoma", "provence", "loire", "cotswolds", "umbria",
-      "burgundy", "bordeaux", "asolo", "kilkenny", "thomastown", "county", "calistoga",
+      "burgundy", "bordeaux", "asolo", "kilkenny", "thomastown", "county", "calistoga", "chiang rai",
     ],
   },
   desert: {
@@ -141,7 +153,7 @@ const SETTINGS = {
   },
   city: {
     label: "City",
-    text: [/\bin the heart of\b.*\b(city|downtown)\b/, /\bcity centre\b/, /\bdowntown\b/, /\burban\b/, /\bskyline\b/, /\bcosmopolitan\b/],
+    text: [/\bin the heart of\b.*\b(city|downtown)\b/, /\bcity centre\b/, /\bdowntown\b/, /\burban\b/, /\bskyline\b/],
     geo: [
       "new york", "manhattan", "london", "paris", "milan", "rome", "madrid", "barcelona",
       "tokyo", "singapore", "hong kong", "shanghai", "bangkok", "boston", "chicago",

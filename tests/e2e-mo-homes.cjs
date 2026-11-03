@@ -96,7 +96,7 @@ async function run(browser, label, opts) {
   await page.locator('.mo-card[data-id="mo-tatvani"] .mo-btn[data-mo-request]').click();
   await page.waitForSelector("#mo-request[open]");
   check(`${label}: home preselected (name, hidden id)`, (await page.locator("#mo-req-home").textContent()) === "Tatvani" && (await page.locator("#mo-f-property-id").inputValue()) === "mo-tatvani");
-  check(`${label}: focus moves into the form`, await page.evaluate(() => document.activeElement && document.activeElement.id === "mo-f-name"));
+  check(`${label}: focus moves into the form`, await page.waitForFunction(() => document.activeElement && document.activeElement.id === "mo-f-name", null, { timeout: 2000 }).then(() => true, () => false));
   const base = received.length;
   await page.locator("#mo-f-submit").click();
   await page.waitForTimeout(300);

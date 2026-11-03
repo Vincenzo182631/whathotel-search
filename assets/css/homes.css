@@ -803,6 +803,7 @@ body.search-active .floating-video { animation: none; visibility: hidden; } /* i
 .pcard__blurb { font-size: .9rem; color: var(--text-soft); margin: 0 0 .9rem; }
 .pcard__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.1rem; }
 .tag-pill { font-size: .72rem; font-weight: 600; color: var(--text-soft); background: var(--sand); border: 1px solid var(--line-2); padding: .22rem .6rem; border-radius: 999px; text-transform: capitalize; }
+.tag-pill--mo { color: var(--ink); background: color-mix(in srgb, var(--gold) 18%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 40%, var(--line-2)); font-weight: 600; }
 .tag-pill--setting { display: inline-flex; align-items: center; gap: .3rem; color: var(--gold-deep); background: #f4ecda; border-color: #e4d3ab; background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line-2)); }
 .set-ic { width: .95em; height: .95em; flex: none; }
 .pmodal__tag--trait .set-ic { width: 1rem; height: 1rem; }
