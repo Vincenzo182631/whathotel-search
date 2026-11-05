@@ -208,6 +208,19 @@ The `#exceptional-homes` section lists 42 MO Exceptional Homes across 8 countrie
   - `node tests/e2e-mo-homes.cjs` runs the desktop and mobile browser flow against a mock webhook. Screenshots go to `tests/screenshots/`.
 - **Structured data:** none is added for MO homes. They aren't bookable products with live prices, and the rates are indicative, so `Offer`/`Product` markup would overstate them.
 
+## SEO, AEO & GEO
+
+`scripts/build-seo.mjs` (run by `npm run build`, or `npm run seo` on its own) generates from the real data:
+- **"The full collection"** (`#full-collection`): every property in plain HTML, grouped by region and country, with its location and brand.
+  - Hotel links go to their WhataHotel pages.
+  - Home links open the Exceptional Homes view.
+  - Search engines and AI crawlers that don't run JavaScript can still read every property.
+- **FAQ** (`#faq`): answer-first questions and answers, with matching `FAQPage` JSON-LD.
+- **JSON-LD `ItemList`** of all properties: `Hotel` / `LodgingBusiness` with name, location, brand and URL, with no prices. It sits at the end of `<body>`.
+- **`llms.txt`** (FAQ section), **`llms-full.txt`** (every property), and the strings in `cloudflare-llms-worker.js`, which serves both files on pro.whatahotel.com.
+
+The canonical URL is **https://pro.whatahotel.com/homes**. Leave GHL's canonical field empty, and don't paste JSON-LD into GHL's head code (see `ghl-head-code.html`).
+
 ## Analytics / conversion tracking
 
 Interactions push to `window.dataLayer` (Google Tag Manager compatible; falls
@@ -295,7 +308,7 @@ never hurts page speed). Configure the source on `#video-frame` in `index.html`:
   (good for Google Ads Quality Score). The only external asset is the Google
   Fonts stylesheet, which degrades gracefully to a system serif/sans stack.
 - Cards reveal on scroll; respects `prefers-reduced-motion`.
-- SEO: descriptive title/meta, Open Graph, canonical, and `CollectionPage` JSON-LD.
+- SEO: descriptive title/meta, Open Graph, canonical, JSON-LD (organization, page, full property list, FAQ). See "SEO, AEO & GEO" above.
 
 ---
 
