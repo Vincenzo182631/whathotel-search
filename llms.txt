@@ -1,17 +1,17 @@
 # WhataHotel! — Homes: Villas & Residences
 
-> WhataHotel! by Lorraine Travel is a luxury travel agency (Member, Signature Travel Network; founded 1948). This is the **Homes** collection landing page — a curated search-and-discovery experience for residential-style accommodations (villas, residences, homes and estates) at 314 of the world's finest hotels and resorts. Travelers browse by region and collection, open an individual property, and check live availability. "Check Availability" links to each property's existing WhataHotel booking flow with `type=homes`, which returns only residential-style inventory (villas, residences, homes) by matching the approved keywords against the actual room/unit descriptions.
+> WhataHotel! by Lorraine Travel is a luxury travel agency (Member, Signature Travel Network; founded 1948). This is the **Homes** collection landing page — a curated search-and-discovery experience for residential-style accommodations (villas, residences, homes and estates) at 322 of the world's finest hotels and resorts. Travelers browse by region and collection, open an individual property, and check live availability. "Check Availability" links to each property's existing WhataHotel booking flow with `type=homes`, which returns only residential-style inventory (villas, residences, homes) by matching the approved keywords against the actual room/unit descriptions.
 
-The collection is the exact list of 314 properties published on the official WhataHotel Homes page. Each property links to its canonical individual page at `https://whatahotel.com/hotels/<hotelID>/<slug>.html`. Categorisation is by real geography (region) and real brand (collection) — never inferred from a hotel's name.
+The collection is the exact list of 322 properties published on the official WhataHotel Homes page. Each property links to its canonical individual page at `https://whatahotel.com/hotels/<hotelID>/<slug>.html`. Categorisation is by real geography (region) and real brand (collection) — never inferred from a hotel's name.
 
 ## Key pages
 
-- [Homes — Villas & Residences (official collection)](https://whatahotel.com/homes/): The authoritative WhataHotel page listing all 314 residential-style properties, grouped by country and city.
+- [Homes — Villas & Residences (official collection)](https://whatahotel.com/homes/): The authoritative WhataHotel page listing all 322 residential-style properties, grouped by country and city.
 - [WhataHotel! home](https://whatahotel.com/): The full WhataHotel site by Lorraine Travel.
 
 ## Browse by region
 
-The 314 properties span six regions: North America (88), Latin America & Caribbean (79), Asia (53), Europe (55), Middle East & Africa (24), and the Pacific & Indian Ocean (15). The page also features 42 Mandarin Oriental Exceptional Homes (brand: Mandarin Oriental) — private villas and estates in Indonesia, Thailand, the United Kingdom, Italy, France, Spain, Greece and Croatia — which are not bookable online; travelers send a "Request Availability" inquiry and an advisor confirms availability and rates. Travelers can filter the collection by region and by collection/brand (Four Seasons, Hyatt, Leading Hotels of the World, Aman, Belmond, Rosewood, Ritz-Carlton, Mandarin Oriental and more).
+The 322 properties span six regions: North America (88), Latin America & Caribbean (86), Asia (54), Europe (55), Middle East & Africa (24), and the Pacific & Indian Ocean (15). The page also features 42 Mandarin Oriental Exceptional Homes (brand: Mandarin Oriental) — private villas and estates in Indonesia, Thailand, the United Kingdom, Italy, France, Spain, Greece and Croatia — which are not bookable online; travelers send a "Request Availability" inquiry and an advisor confirms availability and rates. Travelers can filter the collection by region and by collection/brand (Four Seasons, Hyatt, Leading Hotels of the World, Aman, Belmond, Rosewood, Ritz-Carlton, Mandarin Oriental and more).
 
 ## Featured stays
 

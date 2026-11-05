@@ -585,6 +585,9 @@ window.WAH_IMAGES = {
   "3890": {
     "hero": "https://whatahotel.com/content/hotels/3890/1523420277.jpg"
   },
+  "3896": {
+    "hero": "https://www.whatahotel.com/content/hotels/3896/361677961_WxH.jpg"
+  },
   "3901": {
     "hero": "https://whatahotel.com/content/hotels/3901/170-2018120611372033-946.jpg"
   },
@@ -617,6 +620,9 @@ window.WAH_IMAGES = {
   },
   "4031": {
     "hero": "https://whatahotel.com/content/hotels/4031/HIB_Main_Pool_Aerial_13_C_-_1600.jpg"
+  },
+  "4055": {
+    "hero": "https://www.whatahotel.com/content/hotels/4055/Ocean_Club_Costa_Norte.jpg"
   },
   "4121": {
     "hero": "https://whatahotel.com/content/hotels/4121/Park-Hyatt-Niseko-Hanazono-R001-Residences-Exterior.16x9.adapt.1280.720.jpg"
@@ -701,6 +707,9 @@ window.WAH_IMAGES = {
   },
   "4937": {
     "hero": "https://whatahotel.com/content/hotels/4937/0_raffles_bali.jpg"
+  },
+  "4938": {
+    "hero": "https://www.whatahotel.com/content/hotels/4938/0_amartera_villa_bali.jpg"
   },
   "4945": {
     "hero": "https://whatahotel.com/content/hotels/4945/0_raffles-maldives-meradhoo.jpg"
@@ -897,6 +906,9 @@ window.WAH_IMAGES = {
   "6766": {
     "hero": "https://whatahotel.com/content/hotels/6766/rz-mlera-captivating-overwater-bli-13306_Feature-Hor.jpg"
   },
+  "6781": {
+    "hero": "https://www.whatahotel.com/content/hotels/6781/rz-lirrz-s020-ext-courtyard-27029-57366-Wide-Hor.jpeg"
+  },
   "6824": {
     "hero": "https://www.whatahotel.com/content/hotels/6824/02_CVGH_Media_Resort_Portada.jpg"
   },
@@ -927,6 +939,9 @@ window.WAH_IMAGES = {
   "7115": {
     "hero": "https://www.whatahotel.com/content/hotels/7115/d2f5d790-6af9-4971-911a-53c0cf86bbce.jpg"
   },
+  "7127": {
+    "hero": "https://www.whatahotel.com/content/hotels/7127/wuh7eaogvpepf3k7bxvq.jpg"
+  },
   "7151": {
     "hero": "https://www.whatahotel.com/content/hotels/7151/nobu_hotel_los_cabos_cover.jpg"
   },
@@ -944,5 +959,14 @@ window.WAH_IMAGES = {
   },
   "7169": {
     "hero": "https://www.whatahotel.com/content/hotels/7169/Grosvenor.jpeg"
+  },
+  "7170": {
+    "hero": "https://www.whatahotel.com/content/hotels/7170/xr-bdarx-residences-beach-exterior_Feature-Hor.jpg"
+  },
+  "7171": {
+    "hero": "https://www.whatahotel.com/content/hotels/7171/lc-sjdls-residences-beach-architecture_Feature-Hor.jpg"
+  },
+  "7172": {
+    "hero": "https://www.whatahotel.com/content/hotels/7172/Vnz9h9ziHDu7XrPYJuAD5A.jpg"
   }
 };

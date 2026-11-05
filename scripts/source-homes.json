@@ -16,6 +16,14 @@
   "country": "Bermuda"
  },
  {
+  "id": 7170,
+  "slug": "the-residences-at-the-st-regis-bermuda",
+  "name": "The Residences at The St. Regis Bermuda",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "St. George's",
+  "country": "Bermuda"
+ },
+ {
   "id": 946,
   "slug": "belmond-villa-san-michele",
   "name": "Belmond Villa San Michele",
@@ -832,6 +840,30 @@
   "country": "Costa Rica"
  },
  {
+  "id": 3896,
+  "slug": "w-costa-rica-reserva-conchal",
+  "name": "W Costa Rica - Reserva Conchal",
+  "collection": "W Hotels under the Marriott Luminous Program",
+  "city": "Peninsula Papagayo",
+  "country": "Costa Rica"
+ },
+ {
+  "id": 6781,
+  "slug": "nekajui-a-ritz-carlton-reserve",
+  "name": "Nekajui, A Ritz Carlton Reserve",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Peninsula Papagayo",
+  "country": "Costa Rica"
+ },
+ {
+  "id": 7172,
+  "slug": "nekajui-a-ritz-carlton-reserve-residences",
+  "name": "Nekajui, a Ritz Carlton Reserve Residences",
+  "collection": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+  "city": "Peninsula Papagayo",
+  "country": "Costa Rica"
+ },
+ {
   "id": 2811,
   "slug": "pine-cliffs-residence-luxury-collection",
   "name": "Pine Cliffs Residence, Luxury Collection",
@@ -1485,6 +1517,22 @@
   "name": "Eden Roc Cap Cana",
   "collection": "Relais & Châteaux",
   "city": "Punta Cana",
+  "country": "Dominican Republic"
+ },
+ {
+  "id": 4055,
+  "slug": "the-ocean-club-costa-norte",
+  "name": "The Ocean Club, Costa Norte",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Puerto Plata",
+  "country": "Dominican Republic"
+ },
+ {
+  "id": 7127,
+  "slug": "the-residences-at-the-st-regis-cap-cana-resort",
+  "name": "The Residences at The St. Regis Cap Cana Resort",
+  "collection": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+  "city": "Cap Cana",
   "country": "Dominican Republic"
  },
  {
@@ -2216,6 +2264,14 @@
   "country": "Indonesia"
  },
  {
+  "id": 4938,
+  "slug": "amarterra-villas-resort-bali-nusa-dua-",
+  "name": "Amarterra Villas Resort Bali Nusa Dua",
+  "collection": "Autograph Collection under the Marriott Luminous Program",
+  "city": "Nusa Dua",
+  "country": "Indonesia"
+ },
+ {
   "id": 6705,
   "slug": "ritz-carlton-residences-turks-caicos",
   "name": "Ritz Carlton Residences, Turks & Caicos",
@@ -2469,6 +2525,14 @@
   "name": "Etereo Kanai, Auberge Collection",
   "collection": "Auberge Collection",
   "city": "Kanai",
+  "country": "Mexico"
+ },
+ {
+  "id": 7171,
+  "slug": "the-residences-at-solaz-los-cabos",
+  "name": "The Residences at Solaz, Los Cabos",
+  "collection": "The Luxury Collection under the Marriott STARS Program",
+  "city": "Cabo San Lucas",
   "country": "Mexico"
  },
  {

@@ -27,7 +27,7 @@ window.WAH_REGIONS = [
     "label": "Latin America & Caribbean",
     "blurb": "Beachfront homes & villas across Mexico, the Caribbean and beyond.",
     "scene": "tropical",
-    "count": 79
+    "count": 86
   },
   {
     "key": "europe",
@@ -41,7 +41,7 @@ window.WAH_REGIONS = [
     "label": "Asia",
     "blurb": "Private pool villas & residences across Southeast Asia and beyond.",
     "scene": "tropical",
-    "count": 53
+    "count": 54
   },
   {
     "key": "mea",
@@ -84,15 +84,19 @@ window.WAH_BRANDS = [
     "count": 11
   },
   {
+    "label": "Luxury Collection",
+    "count": 10
+  },
+  {
     "label": "Preferred",
     "count": 10
   },
   {
-    "label": "Belmond",
-    "count": 8
+    "label": "St. Regis",
+    "count": 9
   },
   {
-    "label": "Luxury Collection",
+    "label": "Belmond",
     "count": 8
   },
   {
@@ -112,8 +116,8 @@ window.WAH_BRANDS = [
     "count": 7
   },
   {
-    "label": "St. Regis",
-    "count": 7
+    "label": "Autograph Collection",
+    "count": 6
   },
   {
     "label": "JW Marriott",
@@ -128,10 +132,6 @@ window.WAH_BRANDS = [
     "count": 6
   },
   {
-    "label": "Autograph Collection",
-    "count": 5
-  },
-  {
     "label": "Banyan Tree",
     "count": 5
   },
@@ -141,6 +141,10 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Hilton",
+    "count": 3
+  },
+  {
+    "label": "W Hotels",
     "count": 3
   },
   {
@@ -157,10 +161,6 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Peninsula",
-    "count": 2
-  },
-  {
-    "label": "W Hotels",
     "count": 2
   },
   {
@@ -516,6 +516,21 @@ window.WAH_PROPERTIES = [
     "brand": "Aman",
     "scene": "countryside",
     "blurb": "In Kranidi, Greece.",
+    "featured": false
+  },
+  {
+    "id": 4938,
+    "url": "https://whatahotel.com/hotels/4938/amarterra-villas-resort-bali-nusa-dua-.html",
+    "name": "Amarterra Villas Resort Bali Nusa Dua",
+    "loc": "Nusa Dua, Indonesia",
+    "city": "Nusa Dua",
+    "country": "Indonesia",
+    "region": "Asia",
+    "regionKey": "asia",
+    "collection": "Autograph Collection",
+    "brand": "Autograph Collection",
+    "scene": "tropical",
+    "blurb": "In Nusa Dua, Indonesia.",
     "featured": false
   },
   {
@@ -2814,6 +2829,36 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 6781,
+    "url": "https://whatahotel.com/hotels/6781/nekajui-a-ritz-carlton-reserve.html",
+    "name": "Nekajui, A Ritz Carlton Reserve",
+    "loc": "Peninsula Papagayo, Costa Rica",
+    "city": "Peninsula Papagayo",
+    "country": "Costa Rica",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Ritz Carlton Hotels & Resorts",
+    "brand": "",
+    "scene": "tropical",
+    "blurb": "In Peninsula Papagayo, Costa Rica.",
+    "featured": false
+  },
+  {
+    "id": 7172,
+    "url": "https://whatahotel.com/hotels/7172/nekajui-a-ritz-carlton-reserve-residences.html",
+    "name": "Nekajui, a Ritz Carlton Reserve Residences",
+    "loc": "Peninsula Papagayo, Costa Rica",
+    "city": "Peninsula Papagayo",
+    "country": "Costa Rica",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Ritz Carlton Hotels & Resorts",
+    "brand": "",
+    "scene": "tropical",
+    "blurb": "In Peninsula Papagayo, Costa Rica.",
+    "featured": false
+  },
+  {
     "id": 4510,
     "url": "https://whatahotel.com/hotels/4510/nemacolin-woodlands-resort.html",
     "name": "Nemacolin Woodlands Resort",
@@ -4194,6 +4239,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 4055,
+    "url": "https://whatahotel.com/hotels/4055/the-ocean-club-costa-norte.html",
+    "name": "The Ocean Club, Costa Norte",
+    "loc": "Puerto Plata, Dominican Republic",
+    "city": "Puerto Plata",
+    "country": "Dominican Republic",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "The Luxury Collection",
+    "brand": "Luxury Collection",
+    "scene": "tropical",
+    "blurb": "In Puerto Plata, Dominican Republic.",
+    "featured": false
+  },
+  {
     "id": 1427,
     "url": "https://whatahotel.com/hotels/1427/the-peninsula-beverly-hills.html",
     "name": "The Peninsula Beverly Hills",
@@ -4266,6 +4326,51 @@ window.WAH_PROPERTIES = [
     "brand": "",
     "scene": "tropical",
     "blurb": "In Cairns, Australia.",
+    "featured": false
+  },
+  {
+    "id": 7171,
+    "url": "https://whatahotel.com/hotels/7171/the-residences-at-solaz-los-cabos.html",
+    "name": "The Residences at Solaz, Los Cabos",
+    "loc": "Cabo San Lucas, Mexico",
+    "city": "Cabo San Lucas",
+    "country": "Mexico",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "The Luxury Collection",
+    "brand": "Luxury Collection",
+    "scene": "tropical",
+    "blurb": "In Cabo San Lucas, Mexico.",
+    "featured": false
+  },
+  {
+    "id": 7170,
+    "url": "https://whatahotel.com/hotels/7170/the-residences-at-the-st-regis-bermuda.html",
+    "name": "The Residences at The St. Regis Bermuda",
+    "loc": "St. George's, Bermuda",
+    "city": "St. George's",
+    "country": "Bermuda",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "St. Regis Hotels & Resorts",
+    "brand": "St. Regis",
+    "scene": "tropical",
+    "blurb": "In St. George's, Bermuda.",
+    "featured": false
+  },
+  {
+    "id": 7127,
+    "url": "https://whatahotel.com/hotels/7127/the-residences-at-the-st-regis-cap-cana-resort.html",
+    "name": "The Residences at The St. Regis Cap Cana Resort",
+    "loc": "Cap Cana, Dominican Republic",
+    "city": "Cap Cana",
+    "country": "Dominican Republic",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "St. Regis Hotels & Resorts",
+    "brand": "St. Regis",
+    "scene": "tropical",
+    "blurb": "In Cap Cana, Dominican Republic.",
     "featured": false
   },
   {
@@ -4746,6 +4851,21 @@ window.WAH_PROPERTIES = [
     "brand": "W Hotels",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
+    "featured": false
+  },
+  {
+    "id": 3896,
+    "url": "https://whatahotel.com/hotels/3896/w-costa-rica-reserva-conchal.html",
+    "name": "W Costa Rica - Reserva Conchal",
+    "loc": "Peninsula Papagayo, Costa Rica",
+    "city": "Peninsula Papagayo",
+    "country": "Costa Rica",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "W Hotels",
+    "brand": "W Hotels",
+    "scene": "tropical",
+    "blurb": "In Peninsula Papagayo, Costa Rica.",
     "featured": false
   },
   {

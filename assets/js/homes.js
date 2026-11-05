@@ -466,7 +466,12 @@
     var byName = nameMatches(base, q);
     if (byName) {
       smartRank.last = { sig: { places: [], settings: [], features: [], text: [q.trim()] }, fixes: [], query: q };
-      return byName.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+      // Exact name first ("Nekajui, A Ritz Carlton Reserve" before "… Reserve Residences"), then shortest name.
+      var qk = nameWords(q).join(" ");
+      return byName.slice().sort(function (a, b) {
+        var ea = nameWords(a.name).join(" ") === qk ? 0 : 1, eb = nameWords(b.name).join(" ") === qk ? 0 : 1;
+        return ea - eb || a.name.length - b.name.length || a.name.localeCompare(b.name);
+      });
     }
     var cq = correctQuery(q); q = cq.q;
     var sig = parseNL(q), cands;
