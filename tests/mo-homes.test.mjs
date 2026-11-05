@@ -272,3 +272,19 @@ test("gohighlevel.html stays under GoHighLevel's 1 MB custom-code limit and load
   assert.match(s, /data-src="https:\/\/cdn\.jsdelivr\.net\/gh\/Vincenzo182631\/whathotel-search@[0-9a-f]{40}\/assets\/js\/mo-homes\.js"/);
   assert.ok(s.includes("mo-homes-ui.js — Mandarin Oriental"), "section code is present");
 });
+
+/* ---------------- 10. Exceptional Homes perks + Q&A (from scripts/mo-homes.config.json) ---------------- */
+test("perks band, section Q&A and FAQPage use the same configured text", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const perks = CONFIG.guestPerks, faq = CONFIG.guestFaq;
+  assert.equal(perks.items.length, 5);
+  for (const it of perks.items) assert.ok(html.includes(it.title.replace("&", "&amp;")), `perk on page: ${it.title}`);
+  assert.ok(html.includes("$500 Concierge Credit*") && html.includes("The value is in the currency where the property is located."));
+  const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
+  const faqPage = ld.flatMap((d) => d["@graph"] || [d]).find((g) => g["@type"] === "FAQPage");
+  for (const [q, a] of faq) {
+    assert.ok(html.includes(q.replace(/'/g, "'").replace("&", "&amp;")), `visible Q: ${q}`);
+    const entry = faqPage.mainEntity.find((e) => e.name === q);
+    assert.ok(entry && entry.acceptedAnswer.text === a, `FAQPage matches visible answer: ${q}`);
+  }
+});

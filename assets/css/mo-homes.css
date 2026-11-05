@@ -185,3 +185,44 @@ html.mo-lock .floating-video, html.mo-lock .mobile-cta, html.mo-lock .concierge 
   .mo-card:hover, .mo-card:hover .mo-card__img { transform: none; }
   .mo-spin { animation-duration: 2s; }
 }
+
+/* ---------- Perks included with every Exceptional Home ---------- */
+.mo-perks { max-width: 1080px; margin: 0 auto clamp(28px, 4vw, 44px); padding: clamp(20px, 3vw, 30px); border-radius: var(--radius-lg); background: var(--paper); border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--line-2)); box-shadow: var(--shadow-sm); text-align: center; }
+.mo-perks__title { margin: 0 0 .3rem; font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 2.4vw, 1.7rem); color: var(--ink); }
+.mo-perks__intro { margin: 0 0 1.2rem; color: var(--text-soft); font-size: .95rem; }
+.mo-perks__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; text-align: left; }
+.mo-perk { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: .65rem; align-items: start; padding: 14px; border-radius: 14px; background: var(--cream); border: 1px solid var(--line-2); }
+.mo-perk svg { grid-row: 1 / span 2; width: 26px; height: 26px; color: var(--gold-deep); margin-top: 2px; }
+.mo-perk__t { font-weight: 700; font-size: .92rem; line-height: 1.3; color: var(--ink); }
+.mo-perk__d { font-size: .82rem; line-height: 1.45; color: var(--text-soft); margin-top: .2rem; }
+.mo-perk--hl { background: linear-gradient(135deg, #f8eccd, #f1dca6); border-color: color-mix(in srgb, var(--gold) 55%, transparent); }
+.mo-perk--hl svg { color: #7a5a17; }
+.mo-perk--hl .mo-perk__t { color: #3d2c08; }
+.mo-perks__note { margin: .9rem 0 0; font-size: .78rem; line-height: 1.5; color: var(--text-mut); }
+@media (max-width: 1080px) { .mo-perks__list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .mo-perks { padding: 18px 14px; }
+  .mo-perks__list { grid-template-columns: 1fr; gap: 8px; }
+  .mo-perk--hl { order: -1; }
+  .mo-perk { padding: 11px 12px; }
+  .mo-perk__d { font-size: .8rem; }
+}
+/* compact version inside the detail view */
+.mo-incl { padding: 1.2rem 0; border-top: 1px solid var(--line); }
+.mo-perks__list--compact { grid-template-columns: 1fr 1fr; gap: 8px; }
+.mo-perks__list--compact .mo-perk { padding: 10px 12px; }
+.mo-perks__list--compact .mo-perk--hl { grid-column: 1 / -1; order: -1; }
+.mo-incl .mo-perks__note { text-align: left; }
+.mo-notes__h { margin: 1rem 0 .4rem; font: 700 .78rem/1.3 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.mo-notes { display: grid; grid-template-columns: auto 1fr; gap: .35rem .9rem; margin: 0; font-size: .88rem; line-height: 1.5; }
+.mo-notes dt { font-weight: 600; color: var(--ink); }
+.mo-notes dd { margin: 0; color: var(--text-soft); }
+@media (max-width: 520px) { .mo-perks__list--compact { grid-template-columns: 1fr; } .mo-notes { grid-template-columns: 1fr; } .mo-notes dd { margin-bottom: .4rem; } }
+/* card line */
+.mo-card__perks { margin: -.2rem 0 .9rem; font-size: .84rem; font-weight: 600; color: var(--gold-deep); }
+/* form reminder */
+.mo-req__perks { margin: -.4rem 0 1rem; padding: .7rem .9rem; border-radius: 12px; background: #fbf3e2; color: #5d4815; font-size: .88rem; line-height: 1.5; }
+/* section Q&A */
+.mo-qa { max-width: 860px; margin: clamp(30px, 4vw, 48px) auto 0; display: grid; gap: 10px; }
+.mo-qa__title { margin: 0 0 .4rem; text-align: center; font-family: var(--serif); font-weight: 500; font-size: clamp(1.3rem, 2.2vw, 1.6rem); color: var(--ink); }
+.seo-faq__item > summary h4 { flex: 1; margin: 0; font: 600 1.02rem/1.4 var(--sans); color: var(--ink); }

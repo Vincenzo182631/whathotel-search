@@ -111,5 +111,72 @@
     "Croatia": [
       "Lopud 1483"
     ]
-  }
+  },
+  "guestPerks": {
+    "heading": "Perks included with every Exceptional Home",
+    "intro": "Rental of any Mandarin Oriental Exceptional Home includes:",
+    "items": [
+      {
+        "icon": "concierge",
+        "title": "Dedicated concierge",
+        "text": "Assistance with pre-arrival requests, local experiences and transportation"
+      },
+      {
+        "icon": "housekeeping",
+        "title": "Daily housekeeping",
+        "text": "Service inspired by Mandarin Oriental's exacting standards"
+      },
+      {
+        "icon": "manager",
+        "title": "Full-time manager",
+        "text": "A Villa, Property or Estate Manager throughout your stay"
+      },
+      {
+        "icon": "children",
+        "title": "Children of all ages",
+        "text": "Special arrangements for children of all ages"
+      },
+      {
+        "icon": "credit",
+        "title": "$500 Concierge Credit*",
+        "text": "Toward grocery provisioning, in-villa spa treatments and more",
+        "highlight": true
+      }
+    ],
+    "footnote": "*The Concierge Credit can be applied toward grocery provisioning, in-villa spa treatments and more. The value is in the currency where the property is located.",
+    "cardLine": "$500 Concierge Credit + 4 more perks",
+    "formLine": "Your stay includes a dedicated concierge, daily housekeeping, a full-time Villa, Property or Estate Manager, special arrangements for children and a $500 Concierge Credit*."
+  },
+  "guestFaq": [
+    [
+      "What's included with a Mandarin Oriental Exceptional Home?",
+      "Every rental includes a dedicated concierge to assist with pre-arrival requests, local experiences and transportation; daily housekeeping inspired by Mandarin Oriental's exacting standards; a full-time Villa, Property or Estate Manager; special arrangements for children of all ages; and a $500 Concierge Credit, which can be applied toward grocery provisioning, in-villa spa treatments and more (the value is in the currency where the property is located)."
+    ],
+    [
+      "Is there a dedicated chef available?",
+      "Not every home includes a chef service; however, for properties where a chef is not included, we can arrange one at an additional cost. Whether included in the villa rate or booked separately, all chef services are approved by Mandarin Oriental. Most properties charge separately for food and beverage provisions, although a select number of homes include these costs in the rate."
+    ],
+    [
+      "Are airport transfers included?",
+      "It varies by home. A dedicated concierge team can arrange all transfers at an additional cost. Some properties include transfers as part of the villa rate; this is detailed within each property's inclusions."
+    ],
+    [
+      "What other amenities are provided?",
+      "Mandarin Oriental robes, slippers and luxury toiletries are provided in all homes."
+    ]
+  ],
+  "guestNotes": [
+    [
+      "Chef",
+      "Not included in every home; can be arranged at an additional cost (all chef services approved by Mandarin Oriental). Food and beverage provisions are usually charged separately."
+    ],
+    [
+      "Airport transfers",
+      "Arranged by the concierge team at an additional cost; included at some homes (see this home's inclusions)."
+    ],
+    [
+      "Amenities",
+      "Mandarin Oriental robes, slippers and luxury toiletries in every home."
+    ]
+  ]
 }
