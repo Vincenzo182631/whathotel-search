@@ -81,7 +81,7 @@ async function run(browser, label, opts) {
   await page.locator('.mo-card[data-id="mo-tatvani"] .mo-btn[data-mo-detail]').click();
   await page.waitForSelector("#mo-detail[open]");
   const more = page.locator('#mo-detail .mo-more:not([hidden])').first();
-  check(`${label}: detail shows DETAILS + ACTIVITIES NEARBY`, (await page.locator("#mo-detail .mo-sec__title").allTextContents()).join("|") === "Details|Activities Nearby");
+  check(`${label}: detail shows perks + DETAILS + ACTIVITIES NEARBY`, (await page.locator("#mo-detail .mo-sec__title").allTextContents()).join("|") === "Included with your stay|Details|Activities Nearby");
   check(`${label}: More Info appears only when needed (aria-expanded=false)`, (await more.count()) === 1 && (await more.getAttribute("aria-expanded")) === "false");
   await page.waitForTimeout(2000);
   await page.screenshot({ path: path.join(SHOTS, `${label}-2-detail.png`) });
