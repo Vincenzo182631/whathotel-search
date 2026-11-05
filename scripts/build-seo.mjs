@@ -208,7 +208,7 @@ function mdToHtml(md) {
   const page = read("llms-ghl-page.html");
   const headEnd = page.indexOf("<body>");
   if (headEnd === -1) throw new Error("llms-ghl-page.html: <body> not found");
-  const body = `<body>\n<main>\n${mdToHtml(llms)}\n<hr>\n${mdToHtml(full.join("\n")).replace(/<h1>/, "<h1 id=\"full\">")}\n</main>\n</body>\n</html>\n`;
+  const body = `<body>\n<main class="llms">\n${mdToHtml(llms)}\n<hr>\n${mdToHtml(full.join("\n")).replace(/<h1>/, "<h1 id=\"full\">")}\n</main>\n</body>\n</html>\n`;
   const head = page.slice(0, headEnd).replace(/<title>[^<]*<\/title>/, "<title>WhataHotel! Homes — villas, residences &amp; Exceptional Homes (llms)</title>")
     .replace(/<link rel="canonical"[^>]*>\n?/, "") .replace("</head>", `<link rel="canonical" href="https://pro.whatahotel.com/llms">\n</head>`);
   writeFileSync(join(root, "llms-ghl-page.html"), head + body);
