@@ -65,7 +65,11 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Hyatt",
-    "count": 24
+    "count": 25
+  },
+  {
+    "label": "Ritz-Carlton",
+    "count": 20
   },
   {
     "label": "Leading Hotels of the World",
@@ -77,10 +81,6 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Auberge Resorts",
-    "count": 11
-  },
-  {
-    "label": "Ritz-Carlton",
     "count": 11
   },
   {
@@ -160,11 +160,11 @@ window.WAH_BRANDS = [
     "count": 2
   },
   {
-    "label": "Peninsula",
-    "count": 2
+    "label": "Accor",
+    "count": 1
   },
   {
-    "label": "Accor",
+    "label": "Peninsula",
     "count": 1
   },
   {
@@ -588,7 +588,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Andaz Hotels",
-    "brand": "Peninsula",
+    "brand": "Hyatt",
     "scene": "tropical",
     "blurb": "In Peninsula Papagayo, Costa Rica.",
     "featured": false
@@ -2043,7 +2043,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "countryside",
     "blurb": "In Barcelona, Spain.",
     "featured": false
@@ -2838,7 +2838,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Peninsula Papagayo, Costa Rica.",
     "featured": false
@@ -2853,7 +2853,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Peninsula Papagayo, Costa Rica.",
     "featured": false
@@ -3348,7 +3348,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "city",
     "blurb": "In Dallas, United States.",
     "featured": false
@@ -3363,7 +3363,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Honolulu, United States.",
     "featured": false
@@ -3378,7 +3378,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Turks & Caicos, Turks & Caicos.",
     "featured": false
@@ -3393,7 +3393,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Grand Cayman, Grand Cayman.",
     "featured": false
@@ -4428,7 +4428,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Maui, United States.",
     "featured": false
@@ -4443,7 +4443,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Ritz Carlton Hotels & Resorts",
-    "brand": "",
+    "brand": "Ritz-Carlton",
     "scene": "tropical",
     "blurb": "In Dorado, Puerto Rico.",
     "featured": false

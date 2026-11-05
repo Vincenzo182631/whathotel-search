@@ -83,7 +83,7 @@ function cleanCollection(s) {
 }
 // Ordered brand rules; matched against "<name> <collection>". First hit wins.
 const BRAND_RULES = [
-  [/ritz-?carlton/i, "Ritz-Carlton"],
+  [/ritz[- ]?carlton/i, "Ritz-Carlton"],
   [/four seasons/i, "Four Seasons"],
   [/\baman/i, "Aman"],
   [/belmond/i, "Belmond"],
@@ -100,7 +100,7 @@ const BRAND_RULES = [
   [/raffles/i, "Raffles"],
   [/fairmont/i, "Fairmont"],
   [/regent/i, "Regent"],
-  [/peninsula/i, "Peninsula"],
+  [/peninsula hotels/i, "Peninsula"],   // the hotel group, not the place word ("Peninsula Papagayo")
   [/shangri-?la/i, "Shangri-La"],
   [/jw marriott/i, "JW Marriott"],
   [/w hotels|w doha|w algarve|\bw \b/i, "W Hotels"],
