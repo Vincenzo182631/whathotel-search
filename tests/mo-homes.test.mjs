@@ -262,3 +262,13 @@ test("ghl webhook configured in index.html", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   assert.match(html, /<meta name="wah-ghl-webhook" content="https:\/\/services\.leadconnectorhq\.com\/hooks\/[^"]+">/);
 });
+
+/* ---------------- 9. GoHighLevel build size (GHL truncates custom code at 1,000,000 bytes) ---------------- */
+test("gohighlevel.html stays under GoHighLevel's 1 MB custom-code limit and loads homes data from the CDN", () => {
+  const html = readFileSync(new URL("../gohighlevel.html", import.meta.url));
+  assert.ok(html.length < 950000, `gohighlevel.html is ${html.length} bytes`);
+  const s = html.toString("utf8");
+  assert.ok(!s.includes("window.WAH_MO_HOMES ="), "full homes data must not be inlined");
+  assert.match(s, /data-src="https:\/\/cdn\.jsdelivr\.net\/gh\/Vincenzo182631\/whathotel-search@[0-9a-f]{40}\/assets\/js\/mo-homes\.js"/);
+  assert.ok(s.includes("mo-homes-ui.js — Mandarin Oriental"), "section code is present");
+});

@@ -180,6 +180,40 @@ const faqMd = `<!-- WAH:FAQ:START -->\n## Frequently asked questions\n\n${FAQ.ma
 llms = /<!-- WAH:FAQ:START -->[\s\S]*?<!-- WAH:FAQ:END -->/.test(llms) ? llms.replace(/<!-- WAH:FAQ:START -->[\s\S]*?<!-- WAH:FAQ:END -->/, () => faqMd) : llms.replace("## About", () => faqMd + "\n\n## About");
 writeFileSync(join(root, "llms.txt"), llms);
 
+/* ---------- llms-ghl-page.html: the same content as a normal web page ----------
+   whatahotel.com's DNS is not on Cloudflare, so /llms.txt can't be served on
+   pro.whatahotel.com. Publish this as a GoHighLevel page at /llms instead.  */
+function inline(md) {
+  return esc(md).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2">$1</a>');
+}
+function mdToHtml(md) {
+  const out = []; let list = null, para = [];
+  const flush = () => { if (para.length) { out.push(`<p>${inline(para.join(" "))}</p>`); para = []; } if (list) { out.push(`<${list}>`, ...listItems, `</${list}>`); list = null; listItems = []; } };
+  let listItems = [];
+  for (const line of md.split("\n")) {
+    if (/^<!--.*-->$/.test(line.trim())) continue;
+    let m;
+    if (!line.trim()) { flush(); continue; }
+    if ((m = line.match(/^(#{1,3}) (.*)/))) { flush(); const n = m[1].length; out.push(`<h${n}>${inline(m[2])}</h${n}>`); continue; }
+    if ((m = line.match(/^> (.*)/))) { flush(); out.push(`<blockquote>${inline(m[1])}</blockquote>`); continue; }
+    if ((m = line.match(/^- (.*)/)) || (m = line.match(/^\d+\. (.*)/))) { if (para.length) { out.push(`<p>${inline(para.join(" "))}</p>`); para = []; } const t = /^\d/.test(line) ? "ol" : "ul"; if (list && list !== t) flush(); list = t; listItems.push(`  <li>${inline(m[1])}</li>`); continue; }
+    if (list) flush();
+    para.push(line.trim());
+  }
+  flush();
+  return out.join("\n");
+}
+{
+  const page = read("llms-ghl-page.html");
+  const headEnd = page.indexOf("<body>");
+  if (headEnd === -1) throw new Error("llms-ghl-page.html: <body> not found");
+  const body = `<body>\n<main>\n${mdToHtml(llms)}\n<hr>\n${mdToHtml(full.join("\n")).replace(/<h1>/, "<h1 id=\"full\">")}\n</main>\n</body>\n</html>\n`;
+  const head = page.slice(0, headEnd).replace(/<title>[^<]*<\/title>/, "<title>WhataHotel! Homes — villas, residences &amp; Exceptional Homes (llms)</title>")
+    .replace(/<link rel="canonical"[^>]*>\n?/, "") .replace("</head>", `<link rel="canonical" href="https://pro.whatahotel.com/llms">\n</head>`);
+  writeFileSync(join(root, "llms-ghl-page.html"), head + body);
+}
+
 /* ---------- keep the Cloudflare llms Worker in sync ---------- */
 let worker = read("cloudflare-llms-worker.js");
 worker = worker.replace(/const LLMS_FULL_TXT = .*;\n/, () => `const LLMS_FULL_TXT = ${JSON.stringify(full.join("\n"))};\n`)

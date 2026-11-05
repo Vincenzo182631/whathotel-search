@@ -16,6 +16,7 @@
  * error state (with the reservations email); it never shows a false success.
  */
 import { readFileSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -36,8 +37,7 @@ const inlines = [
   ['<script src="assets/js/homes-inventory-filter.js"></script>', () => "<script>\n" + read("assets/js/homes-inventory-filter.js") + "\n</script>"],
   ['<script src="assets/js/homes.js" defer></script>', () => "<script>\n" + read("assets/js/homes.js") + "\n</script>"],
   ['<link rel="stylesheet" href="assets/css/mo-homes.css">', () => "<style>\n" + read("assets/css/mo-homes.css") + "\n</style>"],
-  // Exceptional Homes: data is inlined (no lazy fetch from a relative path inside GHL).
-  ['<script src="assets/js/mo-format.js" defer></script>', () => "<script>\n" + read("assets/js/mo-homes.js") + "\n</script>\n<script>\n" + read("assets/js/mo-format.js") + "\n</script>"],
+  ['<script src="assets/js/mo-format.js" defer></script>', () => "<script>\n" + read("assets/js/mo-format.js") + "\n</script>"],
   ['<script src="assets/js/mo-homes-ui.js" defer></script>', () => "<script>\n" + read("assets/js/mo-homes-ui.js") + "\n</script>"],
 ];
 for (const [tag, payload] of inlines) {
@@ -63,6 +63,26 @@ if (EP) {
   console.warn("Note: neither GHL_WEBHOOK_URL nor INQUIRY_ENDPOINT is set — the embedded Request Availability form will post to /api/request-availability on the GHL domain and show its error state.");
 }
 
+// Exceptional Homes full data (~350 KB) is NOT inlined: GoHighLevel truncates
+// custom code at 1,000,000 bytes. The page loads it lazily from jsDelivr,
+// pinned to the last commit that changed assets/js/mo-homes.js (immutable).
+{
+  const git = (...a) => execFileSync("git", a, { cwd: root, encoding: "utf8" }).trim();
+  const sha = git("log", "-1", "--format=%H", "--", "assets/js/mo-homes.js");
+  if (!sha) throw new Error("assets/js/mo-homes.js has never been committed");
+  try { git("diff", "--quiet", sha, "--", "assets/js/mo-homes.js"); }
+  catch (e) { throw new Error("assets/js/mo-homes.js has uncommitted changes — commit and push it first, then rebuild"); }
+  const url = `https://cdn.jsdelivr.net/gh/Vincenzo182631/whathotel-search@${sha}/assets/js/mo-homes.js`;
+  const tag = 'data-src="assets/js/mo-homes.js"';
+  if (html.indexOf(tag) === -1) throw new Error("Exceptional Homes data-src not found");
+  html = html.replace(tag, () => `data-src="${url}"`);
+  console.log("Exceptional Homes data:", url, "(make sure that commit is pushed)");
+}
+
 const OUT = join(root, "gohighlevel.html");
+// GoHighLevel silently cuts custom code at 1,000,000 bytes (everything after is
+// lost, breaking the page). Keep a safety margin.
+const BYTES = Buffer.byteLength(html, "utf8"), LIMIT = 950000;
+if (BYTES > LIMIT) throw new Error(`gohighlevel.html would be ${BYTES} bytes — over the ${LIMIT}-byte safety limit (GoHighLevel truncates at 1,000,000). Move more data out of the inline build.`);
 writeFileSync(OUT, html);
-console.log("Wrote", OUT, "(" + Math.round(html.length / 1024) + " KB, self-contained)");
+console.log("Wrote", OUT, "(" + BYTES + " bytes; GoHighLevel limit 1,000,000)");
