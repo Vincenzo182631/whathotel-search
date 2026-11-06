@@ -1,6 +1,6 @@
 /*
- * tavus-context.js — tells the Tavus website guide (in <tavus-widget>) which
- * property the visitor has open, so it can say more about it
+ * tavus-context.js — tells the Tavus website guide (in <tavus-embed>, see
+ * video-guide.js) which property the visitor has open, so it can say more about it
  * and point to the right button.
  *
  * The detail views dispatch:
@@ -14,7 +14,7 @@
  */
 (function () {
   "use strict";
-  // Looked up each time (works with <tavus-widget> or a <tavus-embed> added later).
+  // The element is created on the launcher's first tap, so look it up each time.
   function guideEl() { return document.querySelector("tavus-embed, tavus-widget"); }
 
   var BASE = "The visitor is browsing the WhataHotel! Homes page (pro.whatahotel.com/homes).";
