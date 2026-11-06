@@ -225,6 +225,22 @@
       if (btn) { btn.hidden = !over; btn.setAttribute("aria-expanded", "false"); btn.textContent = "More Info"; }
     });
   }
+  // Tells Ava (tavus-context.js) which home is open. Facts only; no visitor data, no rates.
+  function blocksText(blocks) {
+    return (blocks || []).map(function (b) { return b.items ? b.items.join(" ") : (b.text || ""); }).join(" ");
+  }
+  function announceHome(h) {
+    function n(v) { var c = F.formatCount(v, "", ""); return c.missing ? "" : String(v); }
+    var perks = PERKS_EL ? Array.prototype.slice.call(PERKS_EL.querySelectorAll(".mo-perk__t")).map(function (t) { return t.textContent.trim(); }) : [];
+    var perkNote = PERKS_EL && PERKS_EL.querySelector(".mo-perks__note") ? PERKS_EL.querySelector(".mo-perks__note").textContent.replace(/\s+/g, " ").trim() : "";
+    try {
+      document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
+        kind: "home", id: h.id, name: h.name, brand: h.brand || "Mandarin Oriental", location: placeLine(h),
+        bedrooms: n(h.bedroomsDisplay), bathrooms: n(h.bathroomsDisplay), guests: n(h.maxGuestsDisplay),
+        description: blocksText(h.details), activities: [blocksText(h.activitiesNearby)].filter(Boolean), perks: perks, perkNote: perkNote
+      } }));
+    } catch (e) {}
+  }
   function openDetail(id) {
     var h = BY_ID[id]; if (!h || !detail) return;
     gallery = { list: h.imageAssets || [], i: 0 };
@@ -259,6 +275,7 @@
     detail.scrollTop = 0;
     measureClamps(detailBody);
     track("mo_view_details", { property_id: h.id });
+    announceHome(h);
   }
   function closeDialog(d) {
     if (!d) return;
@@ -484,7 +501,7 @@
     if (!d) return;
     d.addEventListener("click", function (e) { if (e.target === d) closeDialog(d); });   // backdrop click
     d.addEventListener("close", function () {
-      if (d === detail) detailBody.innerHTML = "";
+      if (d === detail) { detailBody.innerHTML = ""; try { document.dispatchEvent(new CustomEvent("wah:property-closed")); } catch (e) {} }
       if (!(detail && detail.open) && !(req && req.open)) document.documentElement.classList.remove("mo-lock");
     });
   });

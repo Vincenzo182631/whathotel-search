@@ -1535,10 +1535,19 @@
     document.addEventListener("keydown", modalKeydown);
     pauseCarousels(); // pause carousel autoplay while viewing
     track("property_detail_opened", { property_id: p.id, property_name: p.name, enriched: !!d });
+    // Tells Ava (tavus-context.js) which property is open. Facts only.
+    try {
+      document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
+        kind: "hotel", id: p.id, name: p.name, brand: p.brand || "", collection: (d && d.collection) || p.collection || "",
+        location: locFull, setting: tr && tr.settings ? tr.settings.map(settingLabel).join(", ") : "",
+        description: desc, highlights: (d && d.highlights) || []
+      } }));
+    } catch (e) {}
   }
 
   function closeDetail() {
     if (!modalEl) return;
+    if (modalEl.classList.contains("is-open")) { try { document.dispatchEvent(new CustomEvent("wah:property-closed")); } catch (e) {} }
     modalEl.classList.remove("is-open");
     document.body.classList.remove("modal-open");
     if (modalKeydown) { document.removeEventListener("keydown", modalKeydown); modalKeydown = null; }

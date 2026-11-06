@@ -10974,10 +10974,19 @@ window.WAH_DETAILS = {
     document.addEventListener("keydown", modalKeydown);
     pauseCarousels(); // pause carousel autoplay while viewing
     track("property_detail_opened", { property_id: p.id, property_name: p.name, enriched: !!d });
+    // Tells Ava (tavus-context.js) which property is open. Facts only.
+    try {
+      document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
+        kind: "hotel", id: p.id, name: p.name, brand: p.brand || "", collection: (d && d.collection) || p.collection || "",
+        location: locFull, setting: tr && tr.settings ? tr.settings.map(settingLabel).join(", ") : "",
+        description: desc, highlights: (d && d.highlights) || []
+      } }));
+    } catch (e) {}
   }
 
   function closeDetail() {
     if (!modalEl) return;
+    if (modalEl.classList.contains("is-open")) { try { document.dispatchEvent(new CustomEvent("wah:property-closed")); } catch (e) {} }
     modalEl.classList.remove("is-open");
     document.body.classList.remove("modal-open");
     if (modalKeydown) { document.removeEventListener("keydown", modalKeydown); modalKeydown = null; }
@@ -11778,6 +11787,22 @@ window.WAH_DETAILS = {
       if (btn) { btn.hidden = !over; btn.setAttribute("aria-expanded", "false"); btn.textContent = "More Info"; }
     });
   }
+  // Tells Ava (tavus-context.js) which home is open. Facts only; no visitor data, no rates.
+  function blocksText(blocks) {
+    return (blocks || []).map(function (b) { return b.items ? b.items.join(" ") : (b.text || ""); }).join(" ");
+  }
+  function announceHome(h) {
+    function n(v) { var c = F.formatCount(v, "", ""); return c.missing ? "" : String(v); }
+    var perks = PERKS_EL ? Array.prototype.slice.call(PERKS_EL.querySelectorAll(".mo-perk__t")).map(function (t) { return t.textContent.trim(); }) : [];
+    var perkNote = PERKS_EL && PERKS_EL.querySelector(".mo-perks__note") ? PERKS_EL.querySelector(".mo-perks__note").textContent.replace(/\s+/g, " ").trim() : "";
+    try {
+      document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
+        kind: "home", id: h.id, name: h.name, brand: h.brand || "Mandarin Oriental", location: placeLine(h),
+        bedrooms: n(h.bedroomsDisplay), bathrooms: n(h.bathroomsDisplay), guests: n(h.maxGuestsDisplay),
+        description: blocksText(h.details), activities: [blocksText(h.activitiesNearby)].filter(Boolean), perks: perks, perkNote: perkNote
+      } }));
+    } catch (e) {}
+  }
   function openDetail(id) {
     var h = BY_ID[id]; if (!h || !detail) return;
     gallery = { list: h.imageAssets || [], i: 0 };
@@ -11812,6 +11837,7 @@ window.WAH_DETAILS = {
     detail.scrollTop = 0;
     measureClamps(detailBody);
     track("mo_view_details", { property_id: h.id });
+    announceHome(h);
   }
   function closeDialog(d) {
     if (!d) return;
@@ -12037,7 +12063,7 @@ window.WAH_DETAILS = {
     if (!d) return;
     d.addEventListener("click", function (e) { if (e.target === d) closeDialog(d); });   // backdrop click
     d.addEventListener("close", function () {
-      if (d === detail) detailBody.innerHTML = "";
+      if (d === detail) { detailBody.innerHTML = ""; try { document.dispatchEvent(new CustomEvent("wah:property-closed")); } catch (e) {} }
       if (!(detail && detail.open) && !(req && req.open)) document.documentElement.classList.remove("mo-lock");
     });
   });
@@ -12060,6 +12086,80 @@ window.WAH_DETAILS = {
   window.WAH_MO_UI = { open: openDetail, request: openRequest, setCountry: setCountry, mode: MODE };
   try { document.dispatchEvent(new Event("wah:mo-ready")); } catch (e) {}
   }
+})();
+
+</script>
+<script>
+/*
+ * tavus-context.js — tells Ava (the Tavus PAL in <tavus-widget>) which property
+ * the visitor has open, so she can say more about it and point to the right button.
+ *
+ * The detail views dispatch:
+ *   document "wah:property-viewed"  { kind: "hotel"|"home", name, brand, location, ... }
+ *   document "wah:property-closed"
+ * Before a call: the facts go into the widget's conversational-context attribute
+ *   (read when the conversation starts).
+ * During a call (after tavus:conversation-started): sent with
+ *   conversation.append_llm_context (attributes are not re-read mid-call).
+ * Only property facts are sent — never anything the visitor typed.
+ */
+(function () {
+  "use strict";
+  var el = document.querySelector("tavus-widget");
+  if (!el) return;
+
+  var BASE = "The visitor is browsing the WhataHotel! Homes page (pro.whatahotel.com/homes).";
+  var live = false, lastSent = "", current = null;
+
+  function clip(s, n) { s = String(s || "").replace(/\s+/g, " ").trim(); return s.length > n ? s.slice(0, n - 1).replace(/\s+\S*$/, "") + "…" : s; }
+
+  function describe(p) {
+    var lines = [];
+    if (p.kind === "home") {
+      lines.push("Property open: " + p.name + " — a Mandarin Oriental Exceptional Home (private villa) in " + p.location + ".");
+      var spec = [p.bedrooms && p.bedrooms + " bedrooms", p.bathrooms && p.bathrooms + " bathrooms", p.guests && "up to " + p.guests + " guests"].filter(Boolean).join(", ");
+      if (spec) lines.push("Size: " + spec + ".");
+      if (p.description) lines.push("About it: " + clip(p.description, 700));
+      if (p.activities && p.activities.length) lines.push("Nearby: " + clip(p.activities.join("; "), 350));
+      if (p.perks && p.perks.length) lines.push("Included with every Exceptional Home: " + p.perks.join(", ") + "." + (p.perkNote ? " " + clip(p.perkNote, 300) : ""));
+      lines.push("Not bookable online: the Request Availability button opens the inquiry form; View Details shows photos, Details and Activities Nearby.");
+    } else {
+      lines.push("Property open: " + p.name + (p.brand ? " (" + p.brand + ")" : "") + " in " + p.location + ".");
+      if (p.collection && p.collection !== p.brand) lines.push("Collection: " + p.collection + ".");
+      if (p.setting) lines.push("Setting: " + p.setting + ".");
+      if (p.description) lines.push("About it: " + clip(p.description, 700));
+      if (p.highlights && p.highlights.length) lines.push("Highlights: " + clip(p.highlights.join("; "), 350));
+      lines.push("In its details, Check Availability opens live villa and residence availability on WhataHotel.com; View full property on WhataHotel.com opens its full page.");
+    }
+    return lines.join(" ");
+  }
+
+  function setStartContext() {
+    var ctx = current ? BASE + " " + describe(current) : "";
+    if (ctx) el.setAttribute("conversational-context", ctx);
+    else el.removeAttribute("conversational-context");
+  }
+
+  function sendLive(text) {
+    if (!live || typeof el.sendMessage !== "function" || text === lastSent) return;
+    lastSent = text;
+    try { el.sendMessage({ event_type: "conversation.append_llm_context", properties: { context: text } }); } catch (e) {}
+  }
+
+  document.addEventListener("wah:property-viewed", function (e) {
+    current = e.detail || null;
+    if (!current || !current.name) return;
+    if (live) sendLive("Update: " + describe(current));
+    else setStartContext();
+  });
+  document.addEventListener("wah:property-closed", function () {
+    if (!current) return;
+    if (live) sendLive("Update: the visitor closed " + current.name + " and is back on the main page.");
+    current = null;
+    if (!live) setStartContext();
+  });
+  document.addEventListener("tavus:conversation-started", function () { live = true; lastSent = ""; });
+  document.addEventListener("tavus:conversation-ended", function () { live = false; lastSent = ""; setStartContext(); });
 })();
 
 </script>

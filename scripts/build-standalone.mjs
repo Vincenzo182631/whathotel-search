@@ -39,6 +39,7 @@ const inlines = [
   ['<link rel="stylesheet" href="assets/css/mo-homes.css">', () => "<style>\n" + read("assets/css/mo-homes.css") + "\n</style>"],
   ['<script src="assets/js/mo-format.js" defer></script>', () => "<script>\n" + read("assets/js/mo-format.js") + "\n</script>"],
   ['<script src="assets/js/mo-homes-ui.js" defer></script>', () => "<script>\n" + read("assets/js/mo-homes-ui.js") + "\n</script>"],
+  ['<script src="assets/js/tavus-context.js" defer></script>', () => "<script>\n" + read("assets/js/tavus-context.js") + "\n</script>"],
 ];
 for (const [tag, payload] of inlines) {
   if (html.indexOf(tag) === -1) throw new Error("Tag not found while bundling: " + tag);
