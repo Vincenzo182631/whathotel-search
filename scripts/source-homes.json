@@ -1048,6 +1048,14 @@
   "country": "United Kingdom"
  },
  {
+  "id": 7046,
+  "slug": "mandarin-oriental-mayfair-london",
+  "name": "Mandarin Oriental Mayfair, London",
+  "collection": "Mandarin Oriental",
+  "city": "London",
+  "country": "United Kingdom"
+ },
+ {
   "id": 3133,
   "slug": "four-seasons-resort-anguilla-",
   "name": "Four Seasons Residences, Anguilla",
@@ -1512,6 +1520,14 @@
   "country": "British Virgin Islands"
  },
  {
+  "id": 1572,
+  "slug": "peter-island-resort-spa",
+  "name": "Peter Island Resort & Spa",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Peter Island",
+  "country": "British Virgin Islands"
+ },
+ {
   "id": 3939,
   "slug": "eden-roc-cap-cana-",
   "name": "Eden Roc Cap Cana",
@@ -1741,6 +1757,14 @@
   "name": "Jumeirah at Saadiyat Island Resort",
   "collection": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
   "city": "Abu Dhabi",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": 7006,
+  "slug": "the-biltmore-hotel-villas",
+  "name": "The Biltmore Hotel Villas",
+  "collection": "Leading Hotels of the World",
+  "city": "Dubai",
   "country": "United Arab Emirates"
  },
  {
@@ -2256,6 +2280,14 @@
   "country": "Italy"
  },
  {
+  "id": 7173,
+  "slug": "miralago-luxury-apartments",
+  "name": "Miralago Luxury Apartments",
+  "collection": "The Signature Collection",
+  "city": "Lake Como",
+  "country": "Italy"
+ },
+ {
   "id": 6703,
   "slug": "the-sira",
   "name": "The Sira",
@@ -2361,8 +2393,8 @@
  },
  {
   "id": 1472,
-  "slug": "calistoga-ranch",
-  "name": "Calistoga Ranch",
+  "slug": "rosewood-calistoga",
+  "name": "Rosewood Calistoga",
   "collection": "Rosewood Hotels & Resorts",
   "city": "Calistoga",
   "country": "United States"
@@ -2421,6 +2453,14 @@
   "name": "Auberge du Soleil",
   "collection": "Auberge Collection",
   "city": "Napa Valley",
+  "country": "United States"
+ },
+ {
+  "id": 2226,
+  "slug": "mandarin-oriental-boston",
+  "name": "Mandarin Oriental Boston",
+  "collection": "Mandarin Oriental",
+  "city": "Boston",
   "country": "United States"
  },
  {

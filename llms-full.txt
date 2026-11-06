@@ -1,8 +1,8 @@
 # WhataHotel! Homes — full collection
 
-> Every property on https://pro.whatahotel.com/homes (364 total): 322 hotels and resorts with villas, residences and homes, and 42 Mandarin Oriental Exceptional Homes (not bookable online; availability on request via the page's Request Availability form). Generated 2026-11-06 from the page data.
+> Every property on https://pro.whatahotel.com/homes (369 total): 327 hotels and resorts with villas, residences and homes, and 42 Mandarin Oriental Exceptional Homes (not bookable online; availability on request via the page's Request Availability form). Generated 2026-11-06 from the page data.
 
-## North America (88)
+## North America (89)
 
 ### Canada
 
@@ -18,7 +18,6 @@
 - [Auberge du Soleil](https://whatahotel.com/hotels/7163/auberge-du-soleil.html): Napa Valley, United States — Auberge Resorts
 - [Bishop's Lodge, Auberge Collection](https://whatahotel.com/hotels/6102/bishop-s-lodge-auberge-collection.html): Santa Fe, United States — Auberge Resorts
 - [Blackberry Farm](https://whatahotel.com/hotels/4839/blackberry-farm.html): Walland, United States — Relais & Châteaux
-- [Calistoga Ranch](https://whatahotel.com/hotels/1472/calistoga-ranch.html): Calistoga, United States — Rosewood
 - [Carneros Resort & Spa](https://whatahotel.com/hotels/1636/carneros-resort-spa.html): Napa Valley, United States — Preferred
 - [Chatham Bars Inn](https://whatahotel.com/hotels/1783/chatham-bars-inn.html): Cape Cod, United States — Leading Hotels of the World
 - [Conrad Fort Lauderdale Beach](https://whatahotel.com/hotels/3333/conrad-fort-lauderdale-beach.html): Fort Lauderdale, United States — Hilton
@@ -43,6 +42,7 @@
 - [JW Marriott Scottsdale Camelback Inn Resort and Spa](https://whatahotel.com/hotels/3255/jw-marriott-scottsdale-camelback-inn-resort-and-spa.html): Scottsdale, United States — JW Marriott
 - [Lido House, Autograph Collection](https://whatahotel.com/hotels/3887/lido-house-autograph-collection.html): Newport Beach, United States — Autograph Collection
 - [Madeline Hotel & Residences, Auberge Collection](https://whatahotel.com/hotels/4226/madeline-hotel-residences-auberge-collection.html): Telluride, United States — Auberge Resorts
+- [Mandarin Oriental Boston](https://whatahotel.com/hotels/2226/mandarin-oriental-boston.html): Boston, United States — Mandarin Oriental
 - [Mauna Lani Resort, Auberge Collection](https://whatahotel.com/hotels/2683/mauna-lani-resort-auberge-collection.html): Big Island, United States — Auberge Resorts
 - [Meadowstone Manor](https://whatahotel.com/hotels/6732/meadowstone-manor.html): Stowe, United States — Signature Collection
 - [Montage Big Sky](https://whatahotel.com/hotels/6238/montage-big-sky.html): Big Sky, United States — Montage
@@ -59,6 +59,7 @@
 - [Ritz Carlton Dallas, Las Colinas Resort](https://whatahotel.com/hotels/1836/ritz-carlton-dallas-las-colinas-resort-.html): Dallas, United States — Ritz-Carlton
 - [Ritz Carlton Oahu, Turtle Bay](https://whatahotel.com/hotels/2141/ritz-carlton-oahu-turtle-bay-.html): Honolulu, United States — Ritz-Carlton
 - [Ritz-Carlton Residences, Orlando](https://whatahotel.com/hotels/6084/ritz-carlton-residences-orlando.html): Orlando and Disney World, United States — Ritz-Carlton
+- [Rosewood Calistoga](https://whatahotel.com/hotels/1472/rosewood-calistoga.html): Calistoga, United States — Rosewood
 - [Rosewood Miramar Beach Hotel](https://whatahotel.com/hotels/3483/rosewood-miramar-beach-hotel.html): Santa Barbara, United States — Rosewood
 - [Sanctuary on Camelback Mountain](https://whatahotel.com/hotels/1210/sanctuary-on-camelback-mountain.html): Paradise Valley, United States — Signature Collection
 - [Sea Oats Private Estate](https://whatahotel.com/hotels/4178/sea-oats-private-estate.html): Captiva Island, United States — Luxury Collection
@@ -98,7 +99,7 @@
 - [Wild Dunes Resort - Residences At Sweetgrass](https://whatahotel.com/hotels/6557/wild-dunes-resort-residences-at-sweetgrass-.html): Charleston, United States — Hyatt
 - [Wild Dunes Resort Homes & Villas](https://whatahotel.com/hotels/6558/wild-dunes-resort-homes-villas.html): Charleston, United States — Hyatt
 
-## Latin America & Caribbean (86)
+## Latin America & Caribbean (87)
 
 ### Anguilla
 
@@ -137,6 +138,7 @@
 
 ### British Virgin Islands
 
+- [Peter Island Resort & Spa](https://whatahotel.com/hotels/1572/peter-island-resort-spa.html): Peter Island, British Virgin Islands — Preferred
 - [Rosewood Little Dix Bay](https://whatahotel.com/hotels/3938/rosewood-little-dix-bay.html): Virgin Gorda, British Virgin Islands — Rosewood
 - [Scrub Island Resort, Spa & Marina](https://whatahotel.com/hotels/3797/scrub-island-resort-spa-marina.html): Scrub Island, British Virgin Islands — Signature Collection
 - [The Branson Beach Estate](https://whatahotel.com/hotels/7159/the-branson-beach-estate.html): Moskito Island, British Virgin Islands — Preferred
@@ -252,7 +254,7 @@
 - [Villa Mani](https://whatahotel.com/hotels/4180/villa-mani.html): Turks & Caicos — Signature Collection
 - [Wymara Resort, Turks and Caicos](https://whatahotel.com/hotels/3901/wymara-resort-turks-and-caicos.html): Turks & Caicos — Signature Collection
 
-## Europe (94)
+## Europe (96)
 
 ### Austria
 
@@ -321,6 +323,7 @@
 - [Mandarin Oriental, Lago di Como](https://whatahotel.com/hotels/3705/mandarin-oriental-lago-di-como.html): Lake Como, Italy — Mandarin Oriental
 - Masseria Petrarolo: Monopoli, Puglia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 8+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Masseria Pistola: Alberobello, Puglia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 10+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
+- [Miralago Luxury Apartments](https://whatahotel.com/hotels/7173/miralago-luxury-apartments.html): Lake Como, Italy — Signature Collection
 - [Rocco Forte House, Milan](https://whatahotel.com/hotels/6697/rocco-forte-house-milan.html): Milan, Italy — Rocco Forte
 - [Rocco Forte House, Rome](https://whatahotel.com/hotels/6695/rocco-forte-house-rome.html): Rome, Italy — Rocco Forte
 - [Rosewood Castiglion del Bosco](https://whatahotel.com/hotels/2265/rosewood-castiglion-del-bosco.html): Tuscany, Italy — Rosewood
@@ -389,6 +392,7 @@
 - Coombe End Manor: Cirencester, The Cotswolds, United Kingdom — Mandarin Oriental — Mandarin Oriental Exceptional Home, 13+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [Four Seasons London at Tower Bridge](https://whatahotel.com/hotels/3118/four-seasons-london-at-tower-bridge.html): London, United Kingdom — Four Seasons
 - [Grosvenor House Suites](https://whatahotel.com/hotels/7169/grosvenor-house-suites.html): London, United Kingdom — Preferred
+- [Mandarin Oriental Mayfair, London](https://whatahotel.com/hotels/7046/mandarin-oriental-mayfair-london.html): London, United Kingdom — Mandarin Oriental
 
 ## Asia (57)
 
@@ -479,7 +483,7 @@
 - [JW Marriott Phu Quoc Emerald Bay Resort & Spa](https://whatahotel.com/hotels/3870/jw-marriott-phu-quoc-emerald-bay-resort-spa.html): Phu Quoc, Vietnam — JW Marriott
 - [Regent Phu Quoc](https://whatahotel.com/hotels/4751/regent-phu-quoc.html): Phu Quoc, Vietnam — Regent
 
-## Middle East & Africa (24)
+## Middle East & Africa (25)
 
 ### Egypt
 
@@ -531,6 +535,7 @@
 - [Jumeirah Zabeel Saray](https://whatahotel.com/hotels/2741/jumeirah-zabeel-saray.html): Dubai, United Arab Emirates — Jumeirah
 - [Park Hyatt Abu Dhabi Hotel and Villas](https://whatahotel.com/hotels/3902/park-hyatt-abu-dhabi-hotel-and-villas.html): Abu Dhabi, United Arab Emirates — Hyatt
 - [The Abu Dhabi EDITION](https://whatahotel.com/hotels/3468/the-abu-dhabi-edition.html): Abu Dhabi, United Arab Emirates — EDITION
+- [The Biltmore Hotel Villas](https://whatahotel.com/hotels/7006/the-biltmore-hotel-villas.html): Dubai, United Arab Emirates — Leading Hotels of the World
 
 ## Pacific & Indian Ocean (15)
 

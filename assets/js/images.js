@@ -139,7 +139,7 @@ window.WAH_IMAGES = {
     "hero": "https://whatahotel.com/content/hotels/1459/d3fab7d7-5b5a-4244-a198-68fcb01f313a.jpg"
   },
   "1472": {
-    "hero": "https://www.whatahotel.com/content/hotels/1472/18714-media-1Slideshow-CalistogaRanch-Calistoga-Pool-1600x600.jpg"
+    "hero": "https://www.whatahotel.com/content/hotels/1472/rwcsa-rosewood-calistoga-adult-pool-header.jpg"
   },
   "1475": {
     "hero": "https://whatahotel.com/content/hotels/1475/slide-02.jpg"
@@ -164,6 +164,9 @@ window.WAH_IMAGES = {
   },
   "1569": {
     "hero": "https://whatahotel.com/content/hotels/1569/Palmetto.jpg"
+  },
+  "1572": {
+    "hero": "https://www.whatahotel.com/content/hotels/1572/08_BEACHES_Little-Deadmans-Beach_RS_1280_960_90.jpg"
   },
   "1626": {
     "hero": "https://www.whatahotel.com/content/hotels/1626/Anantara-Villa-Padierna-Palace-Hotel-Banner.jpg"
@@ -233,6 +236,9 @@ window.WAH_IMAGES = {
   },
   "2212": {
     "hero": "https://whatahotel.com/content/hotels/2212/xr-pvrxr-aerial-pools-29336-07596_Wide-Hor.jpeg"
+  },
+  "2226": {
+    "hero": "https://www.whatahotel.com/content/hotels/2226/boston-exterior.jpg"
   },
   "2257": {
     "hero": "https://whatahotel.com/content/hotels/2257/the-sebastian-vail-hero.jpg"
@@ -921,6 +927,12 @@ window.WAH_IMAGES = {
   "6980": {
     "hero": "https://www.whatahotel.com/content/hotels/6980/ak-aseak-viewline-exterior-91948_Feature-Hor.jpeg"
   },
+  "7006": {
+    "hero": "https://www.whatahotel.com/content/hotels/7006/The_Biltmore_Night.jpg"
+  },
+  "7046": {
+    "hero": "https://www.whatahotel.com/content/hotels/7046/0_mayfair_MAS240048_74_m_gal.jpg"
+  },
   "7073": {
     "hero": "https://www.whatahotel.com/content/hotels/7073/1111_Banyan_Tree_Koh_Samui.jpg"
   },
@@ -968,5 +980,8 @@ window.WAH_IMAGES = {
   },
   "7172": {
     "hero": "https://www.whatahotel.com/content/hotels/7172/Vnz9h9ziHDu7XrPYJuAD5A.jpg"
+  },
+  "7173": {
+    "hero": "https://www.whatahotel.com/content/hotels/7173/MIralago.jpg"
   }
 };

@@ -20,21 +20,21 @@ window.WAH_REGIONS = [
     "label": "North America",
     "blurb": "Villas, residences & estates across the U.S. and Canada.",
     "scene": "mountain",
-    "count": 88
+    "count": 89
   },
   {
     "key": "latam-caribbean",
     "label": "Latin America & Caribbean",
     "blurb": "Beachfront homes & villas across Mexico, the Caribbean and beyond.",
     "scene": "tropical",
-    "count": 86
+    "count": 87
   },
   {
     "key": "europe",
     "label": "Europe",
     "blurb": "Historic villas & residences across the Mediterranean and countryside.",
     "scene": "countryside",
-    "count": 55
+    "count": 57
   },
   {
     "key": "asia",
@@ -48,7 +48,7 @@ window.WAH_REGIONS = [
     "label": "Middle East & Africa",
     "blurb": "Desert residences & island villas across the region.",
     "scene": "desert",
-    "count": 24
+    "count": 25
   },
   {
     "key": "pacific",
@@ -60,11 +60,11 @@ window.WAH_REGIONS = [
 ];
 window.WAH_BRANDS = [
   {
-    "label": "Four Seasons",
-    "count": 31
+    "label": "Signature Collection",
+    "count": 32
   },
   {
-    "label": "Signature Collection",
+    "label": "Four Seasons",
     "count": 31
   },
   {
@@ -72,12 +72,12 @@ window.WAH_BRANDS = [
     "count": 29
   },
   {
-    "label": "Ritz-Carlton",
+    "label": "Leading Hotels of the World",
     "count": 20
   },
   {
-    "label": "Leading Hotels of the World",
-    "count": 19
+    "label": "Ritz-Carlton",
+    "count": 20
   },
   {
     "label": "Rosewood",
@@ -88,11 +88,15 @@ window.WAH_BRANDS = [
     "count": 11
   },
   {
+    "label": "Preferred",
+    "count": 11
+  },
+  {
     "label": "Luxury Collection",
     "count": 10
   },
   {
-    "label": "Preferred",
+    "label": "Mandarin Oriental",
     "count": 10
   },
   {
@@ -105,10 +109,6 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Jumeirah",
-    "count": 8
-  },
-  {
-    "label": "Mandarin Oriental",
     "count": 8
   },
   {
@@ -971,21 +971,6 @@ window.WAH_PROPERTIES = [
     "brand": "Bvlgari",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
-    "featured": false
-  },
-  {
-    "id": 1472,
-    "url": "https://whatahotel.com/hotels/1472/calistoga-ranch.html",
-    "name": "Calistoga Ranch",
-    "loc": "Calistoga, United States",
-    "city": "Calistoga",
-    "country": "United States",
-    "region": "North America",
-    "regionKey": "north-america",
-    "collection": "Rosewood Hotels & Resorts",
-    "brand": "Rosewood",
-    "scene": "city",
-    "blurb": "In Calistoga, United States.",
     "featured": false
   },
   {
@@ -2654,6 +2639,36 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 2226,
+    "url": "https://whatahotel.com/hotels/2226/mandarin-oriental-boston.html",
+    "name": "Mandarin Oriental Boston",
+    "loc": "Boston, United States",
+    "city": "Boston",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Mandarin Oriental",
+    "brand": "Mandarin Oriental",
+    "scene": "city",
+    "blurb": "In Boston, United States.",
+    "featured": false
+  },
+  {
+    "id": 7046,
+    "url": "https://whatahotel.com/hotels/7046/mandarin-oriental-mayfair-london.html",
+    "name": "Mandarin Oriental Mayfair, London",
+    "loc": "London, United Kingdom",
+    "city": "London",
+    "country": "United Kingdom",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "Mandarin Oriental",
+    "brand": "Mandarin Oriental",
+    "scene": "countryside",
+    "blurb": "In London, United Kingdom.",
+    "featured": false
+  },
+  {
     "id": 1045,
     "url": "https://whatahotel.com/hotels/1045/mandarin-oriental-bangkok-.html",
     "name": "Mandarin Oriental, Bangkok",
@@ -2786,6 +2801,21 @@ window.WAH_PROPERTIES = [
     "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Stowe, United States.",
+    "featured": false
+  },
+  {
+    "id": 7173,
+    "url": "https://whatahotel.com/hotels/7173/miralago-luxury-apartments.html",
+    "name": "Miralago Luxury Apartments",
+    "loc": "Lake Como, Italy",
+    "city": "Lake Como",
+    "country": "Italy",
+    "region": "Europe",
+    "regionKey": "europe",
+    "collection": "The Signature Collection",
+    "brand": "Signature Collection",
+    "scene": "countryside",
+    "blurb": "In Lake Como, Italy.",
     "featured": false
   },
   {
@@ -3224,6 +3254,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 1572,
+    "url": "https://whatahotel.com/hotels/1572/peter-island-resort-spa.html",
+    "name": "Peter Island Resort & Spa",
+    "loc": "Peter Island, British Virgin Islands",
+    "city": "Peter Island",
+    "country": "British Virgin Islands",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "tropical",
+    "blurb": "In Peter Island, British Virgin Islands.",
+    "featured": false
+  },
+  {
     "id": 1408,
     "url": "https://whatahotel.com/hotels/1408/phaea-blue-palace.html",
     "name": "Phaea Blue Palace",
@@ -3581,6 +3626,21 @@ window.WAH_PROPERTIES = [
     "brand": "Rosewood",
     "scene": "tropical",
     "blurb": "In Nassau, Bahamas.",
+    "featured": false
+  },
+  {
+    "id": 1472,
+    "url": "https://whatahotel.com/hotels/1472/rosewood-calistoga.html",
+    "name": "Rosewood Calistoga",
+    "loc": "Calistoga, United States",
+    "city": "Calistoga",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Rosewood Hotels & Resorts",
+    "brand": "Rosewood",
+    "scene": "city",
+    "blurb": "In Calistoga, United States.",
     "featured": false
   },
   {
@@ -4166,6 +4226,21 @@ window.WAH_PROPERTIES = [
     "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Vail, United States.",
+    "featured": false
+  },
+  {
+    "id": 7006,
+    "url": "https://whatahotel.com/hotels/7006/the-biltmore-hotel-villas.html",
+    "name": "The Biltmore Hotel Villas",
+    "loc": "Dubai, United Arab Emirates",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "region": "Middle East & Africa",
+    "regionKey": "mea",
+    "collection": "Leading Hotels of the World",
+    "brand": "Leading Hotels of the World",
+    "scene": "desert",
+    "blurb": "In Dubai, United Arab Emirates.",
     "featured": false
   },
   {
