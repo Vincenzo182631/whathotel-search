@@ -1089,10 +1089,14 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 899px) {
   .vguide-launch { right: 12px; bottom: 20px; }
   /* Before the call: wide enough for the "Verify you are human" check (300px).
-     Once the call is live: a small 200 x 300 corner window. */
+     Once the call is live: a small 100 x 150 corner window. */
   .vguide { right: 12px; bottom: 84px; width: min(300px, calc(100vw - 24px)); }
   .vguide__stage { height: 300px; }
-  .vguide.is-live { width: 200px; }
+  .vguide.is-live { width: 100px; }
+  .vguide.is-live .vguide__stage { height: 150px; }
+  .vguide.is-live .vguide__bar { height: 22px; padding-left: 0; justify-content: flex-end; }
+  .vguide.is-live .vguide__title { display: none; } /* no room at 100px; the × stays */
+  .vguide.is-live .vguide__close { width: 22px; height: 22px; }
   /* the sticky Search / Browse bar stops short of the launcher */
   body:has(#vguide-launch) .mobile-cta { right: 68px; gap: .45rem; }
   body:has(#vguide-launch) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
