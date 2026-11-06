@@ -1057,59 +1057,12 @@ body.modal-open { overflow: hidden; }
 .mobile-cta.show { transform: none; }
 .mobile-cta .btn { flex: 1; padding: .85rem 1rem; font-size: .92rem; }
 @media (min-width: 900px) { .mobile-cta { display: none; } }
-/* ---------- Video guide (Tavus embed in our own compact window) ----------
-   Small gold launcher bottom-right; the call window opens above it at a fixed small
-   size so the page stays visible. Nothing inside <tavus-embed> is styled. */
-.vguide-launch { position: fixed; right: 24px; bottom: 24px; z-index: 210; height: 52px;
-  display: inline-flex; align-items: center; gap: .6rem; padding: 4px 18px 4px 4px; border: 0; border-radius: 999px; cursor: pointer;
-  color: var(--ink); background: linear-gradient(145deg, var(--gold-2), var(--gold));
-  font: inherit; font-size: .92rem; font-weight: 700; letter-spacing: .01em; white-space: nowrap;
-  box-shadow: 0 10px 26px -8px rgba(6,14,24,.55), 0 0 0 2px rgba(255,255,255,.85);
-  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
-.vguide-launch__face { width: 44px; height: 44px; flex: none; border-radius: 50%; object-fit: cover; display: block;
-  box-shadow: 0 0 0 2px var(--ink); }
-.vguide-launch:hover { transform: translateY(-2px); }
-.vguide-launch:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 3px; }
-.vguide-launch[aria-expanded="true"] { background: var(--ink); color: var(--gold-2); }
-.vguide { position: fixed; right: 24px; bottom: 88px; z-index: 210; width: 300px;
-  border-radius: 14px; overflow: hidden; background: var(--ink);
-  box-shadow: 0 26px 60px -18px rgba(6,14,24,.62), 0 0 0 1px rgba(255,255,255,.12); }
-.vguide[hidden] { display: none; }
-.vguide__bar { display: flex; align-items: center; justify-content: space-between; height: 30px; padding: 0 4px 0 12px;
-  color: var(--gold-2); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.vguide__close { width: 26px; height: 26px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%;
-  background: transparent; color: #fff; cursor: pointer; }
-.vguide__close:hover { background: rgba(255,255,255,.12); }
-.vguide__close:focus-visible { outline: 2px solid var(--gold-2); }
-.vguide__close svg { width: 16px; height: 16px; }
-.vguide__stage { position: relative; width: 100%; height: 400px; background: #000; }
-.vguide.is-live { width: 280px; }
-.vguide__stage[data-state]::after { position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem;
-  color: rgba(255,255,255,.8); font-size: .85rem; text-align: center; }
-.vguide__stage[data-state="loading"]::after { content: "Connecting…"; }
-.vguide__stage[data-state="error"]::after { content: "Video chat couldn't load. Please try again later."; }
+/* Tavus video guide launcher (bottom-right "Talk to Us" card): on phones it would sit
+   behind the sticky Search / Browse bar, so the bar is not shown while the widget is
+   on the page (visitors scroll to the search box instead). */
 @media (max-width: 899px) {
-  /* Phones: the face alone (48px) beside the Search / Browse bar, with "Talk to Us"
-     as a small tag above it (hidden while the call window is open). */
-  .vguide-launch { right: 12px; bottom: 20px; width: 48px; height: 48px; padding: 2px; justify-content: center; }
-  .vguide-launch__label { position: absolute; right: -2px; bottom: calc(100% + 16px); padding: .22rem .55rem; border-radius: 999px;
-    background: var(--ink); color: var(--gold-2); font-size: .68rem; letter-spacing: .02em;
-    box-shadow: 0 6px 16px -6px rgba(6,14,24,.6); }
-  .vguide-launch[aria-expanded="true"] .vguide-launch__label { display: none; }
-  /* Before the call: wide enough for the "Verify you are human" check (300px).
-     Once the call is live: a small 100 x 150 corner window. */
-  .vguide { right: 12px; bottom: 84px; width: min(300px, calc(100vw - 24px)); }
-  .vguide__stage { height: 300px; }
-  .vguide.is-live { width: 100px; }
-  .vguide.is-live .vguide__stage { height: 150px; }
-  .vguide.is-live .vguide__bar { height: 22px; padding-left: 0; justify-content: flex-end; }
-  .vguide.is-live .vguide__title { display: none; } /* no room at 100px; the × stays */
-  .vguide.is-live .vguide__close { width: 22px; height: 22px; }
-  /* the sticky Search / Browse bar stops short of the launcher */
-  body:has(#vguide-launch) .mobile-cta { right: 68px; gap: .45rem; }
-  body:has(#vguide-launch) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
+  body:has(tavus-widget) .mobile-cta { display: none; }
 }
-body.search-active .vguide-launch { opacity: 0; pointer-events: none; }
 
 /* ---------- AI Concierge (LiveAvatar) ---------- */
 .concierge { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 90; }
