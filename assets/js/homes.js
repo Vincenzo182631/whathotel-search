@@ -772,29 +772,37 @@
     3133, // Four Seasons Residences, Anguilla
     3879, // Ritz-Carlton Residences at Dorado Beach
     2706, // Andaz Maui at Wailea Villas
-    // ---- FEATURED gallery (the rest) ----
+    // ---- FEATURED gallery (the rest; Mandarin Oriental Exceptional Homes mixed in) ----
     1354, // Four Seasons Resort Whistler
     2390, // Four Seasons Resort Vail
     6084, // Ritz-Carlton Residences, Orlando
+    "mo-uluwatu-estate", // MO Exceptional Home: Uluwatu Estate, Bali (Indonesia)
     952,  // Hotel Arts Barcelona
     1569, // Montage Palmetto Bluff
     1325, // Four Seasons Resort Jackson Hole
+    "mo-il-cellese", // MO Exceptional Home: Il Cellese, Chianti (Italy)
     1271, // Four Seasons Resort Costa Rica
     1399, // One&Only Reethi Rah
     1736, // Bvlgari Resort Bali
+    "mo-tatvani", // MO Exceptional Home: Tatvani, Chiang Rai (Thailand)
     3705, // Mandarin Oriental, Lago di Como
     2265, // Rosewood Castiglion del Bosco
     3614, // Four Seasons Los Cabos at Costa Palmas
+    "mo-chateau-de-la-croix-des-gardes", // MO Exceptional Home: Château de la Croix des Gardes, Cannes (France)
     2314, // Banyan Tree Mayakoba
     1414, // Four Seasons Resort Punta Mita
     2545, // Mandarin Oriental, Canouan
+    "mo-coombe-end-manor", // MO Exceptional Home: Coombe End Manor, Cotswolds (United Kingdom)
     4746, // Four Seasons Resort Tamarindo
     1532, // Amanpulo
     1422, // Four Seasons Resort Nevis
+    "mo-villa-sa-font", // MO Exceptional Home: Villa Sa Font, Mallorca (Spain)
     2174, // Grand Hotel des Bains Kempinski St. Moritz
     956,  // Grace Bay Club
     3118, // Four Seasons London at Tower Bridge
-    3287  // Ritz-Carlton Residences, Waikiki Beach
+    "mo-villa-caldera", // MO Exceptional Home: Villa Caldera, Santorini (Greece)
+    3287, // Ritz-Carlton Residences, Waikiki Beach
+    "mo-lopud-1483"  // MO Exceptional Home: Lopud 1483 (Croatia)
   ];
 
   function slideFor(p) {
