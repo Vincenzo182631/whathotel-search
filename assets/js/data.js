@@ -64,8 +64,12 @@ window.WAH_BRANDS = [
     "count": 31
   },
   {
+    "label": "Signature Collection",
+    "count": 31
+  },
+  {
     "label": "Hyatt",
-    "count": 25
+    "count": 29
   },
   {
     "label": "Ritz-Carlton",
@@ -100,7 +104,15 @@ window.WAH_BRANDS = [
     "count": 8
   },
   {
+    "label": "Jumeirah",
+    "count": 8
+  },
+  {
     "label": "Mandarin Oriental",
+    "count": 8
+  },
+  {
+    "label": "Small Luxury Hotels",
     "count": 8
   },
   {
@@ -124,6 +136,10 @@ window.WAH_BRANDS = [
     "count": 6
   },
   {
+    "label": "Montage",
+    "count": 6
+  },
+  {
     "label": "One&Only",
     "count": 6
   },
@@ -136,11 +152,27 @@ window.WAH_BRANDS = [
     "count": 5
   },
   {
+    "label": "EDITION",
+    "count": 5
+  },
+  {
     "label": "Relais & Châteaux",
     "count": 5
   },
   {
+    "label": "InterContinental",
+    "count": 4
+  },
+  {
+    "label": "Marriott",
+    "count": 4
+  },
+  {
     "label": "Hilton",
+    "count": 3
+  },
+  {
+    "label": "Rocco Forte",
     "count": 3
   },
   {
@@ -156,11 +188,51 @@ window.WAH_BRANDS = [
     "count": 2
   },
   {
+    "label": "Bvlgari",
+    "count": 2
+  },
+  {
+    "label": "Kimpton",
+    "count": 2
+  },
+  {
     "label": "Oetker Collection",
     "count": 2
   },
   {
+    "label": "Viceroy",
+    "count": 2
+  },
+  {
+    "label": "1 Hotels",
+    "count": 1
+  },
+  {
     "label": "Accor",
+    "count": 1
+  },
+  {
+    "label": "COMO",
+    "count": 1
+  },
+  {
+    "label": "Destination Hotels",
+    "count": 1
+  },
+  {
+    "label": "Hotel Indigo",
+    "count": 1
+  },
+  {
+    "label": "Kempinski",
+    "count": 1
+  },
+  {
+    "label": "Langham",
+    "count": 1
+  },
+  {
+    "label": "Omni",
     "count": 1
   },
   {
@@ -169,6 +241,14 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Regent",
+    "count": 1
+  },
+  {
+    "label": "Renaissance",
+    "count": 1
+  },
+  {
+    "label": "Vignette Collection",
     "count": 1
   }
 ];
@@ -228,7 +308,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "COMO",
     "scene": "tropical",
     "blurb": "In Turks & Caicos, Turks & Caicos.",
     "featured": true
@@ -348,7 +428,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "1 Hotel",
-    "brand": "",
+    "brand": "1 Hotels",
     "scene": "beach",
     "blurb": "In South Beach, Miami, United States.",
     "featured": false
@@ -393,7 +473,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "ALiLa",
-    "brand": "",
+    "brand": "Hyatt",
     "scene": "tropical",
     "blurb": "In Kerobokan, Indonesia.",
     "featured": false
@@ -408,7 +488,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "ALiLa",
-    "brand": "",
+    "brand": "Hyatt",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
     "featured": false
@@ -423,7 +503,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "ALiLa",
-    "brand": "",
+    "brand": "Hyatt",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
     "featured": false
@@ -753,7 +833,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "tropical",
     "blurb": "In Salvador Da Bahia, Brazil.",
     "featured": false
@@ -843,7 +923,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "tropical",
     "blurb": "In Bluefields, Jamaica.",
     "featured": false
@@ -873,7 +953,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "Bvlgari",
-    "brand": "",
+    "brand": "Bvlgari",
     "scene": "desert",
     "blurb": "In Dubai, United Arab Emirates.",
     "featured": false
@@ -888,7 +968,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Bvlgari",
-    "brand": "",
+    "brand": "Bvlgari",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
     "featured": false
@@ -918,7 +998,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Sandys, Bermuda.",
     "featured": false
@@ -933,7 +1013,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "beach",
     "blurb": "In Santorini, Greece.",
     "featured": false
@@ -1128,7 +1208,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Marriott Hotels & Resorts",
-    "brand": "",
+    "brand": "Marriott",
     "scene": "tropical",
     "blurb": "In Da Nang, Vietnam.",
     "featured": false
@@ -1143,7 +1223,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Marriott Hotels & Resorts",
-    "brand": "",
+    "brand": "Marriott",
     "scene": "tropical",
     "blurb": "In Da Nang, Vietnam.",
     "featured": false
@@ -1158,7 +1238,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Vignette Collection Hotels",
-    "brand": "",
+    "brand": "Vignette Collection",
     "scene": "tropical",
     "blurb": "In Phuket, Thailand.",
     "featured": false
@@ -1203,7 +1283,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "beach",
     "blurb": "In Halkidiki, Greece.",
     "featured": false
@@ -1248,7 +1328,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Lake Tahoe, United States.",
     "featured": false
@@ -1263,7 +1343,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "beach",
     "blurb": "In Elounda, Greece.",
     "featured": false
@@ -1383,7 +1463,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "countryside",
     "blurb": "In Casares, Spain.",
     "featured": false
@@ -1848,7 +1928,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "desert",
     "blurb": "In Taos, United States.",
     "featured": false
@@ -1923,7 +2003,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Kempinski Hotels",
-    "brand": "",
+    "brand": "Kempinski",
     "scene": "mountain",
     "blurb": "In St. Moritz, Switzerland.",
     "featured": false
@@ -2013,7 +2093,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Montego Bay, Jamaica.",
     "featured": false
@@ -2058,7 +2138,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Cancun, Mexico.",
     "featured": false
@@ -2073,7 +2153,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Hotel Indigo",
-    "brand": "",
+    "brand": "Hotel Indigo",
     "scene": "tropical",
     "blurb": "In Seminyak, Indonesia.",
     "featured": false
@@ -2133,7 +2213,7 @@ window.WAH_PROPERTIES = [
     "region": "Pacific & Indian Ocean",
     "regionKey": "pacific",
     "collection": "InterContinental Hotels & Resorts",
-    "brand": "",
+    "brand": "InterContinental",
     "scene": "tropical",
     "blurb": "In Bora Bora, French Polynesia.",
     "featured": false
@@ -2148,7 +2228,7 @@ window.WAH_PROPERTIES = [
     "region": "Pacific & Indian Ocean",
     "regionKey": "pacific",
     "collection": "InterContinental Hotels & Resorts",
-    "brand": "",
+    "brand": "InterContinental",
     "scene": "tropical",
     "blurb": "In Hayman Island, Australia.",
     "featured": false
@@ -2163,7 +2243,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "InterContinental Hotels & Resorts",
-    "brand": "",
+    "brand": "InterContinental",
     "scene": "tropical",
     "blurb": "In Koh Samui, Thailand.",
     "featured": false
@@ -2178,7 +2258,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "InterContinental Hotels & Resorts",
-    "brand": "",
+    "brand": "InterContinental",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
     "featured": false
@@ -2193,7 +2273,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Placencia, Belize.",
     "featured": false
@@ -2208,7 +2288,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "desert",
     "blurb": "In Abu Dhabi, United Arab Emirates.",
     "featured": false
@@ -2223,7 +2303,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "desert",
     "blurb": "In Abu Dhabi, United Arab Emirates.",
     "featured": false
@@ -2238,7 +2318,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "tropical",
     "blurb": "In Bali, Indonesia.",
     "featured": false
@@ -2253,7 +2333,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "desert",
     "blurb": "In Dubai, United Arab Emirates.",
     "featured": false
@@ -2268,7 +2348,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "desert",
     "blurb": "In Dubai, United Arab Emirates.",
     "featured": false
@@ -2283,7 +2363,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "tropical",
     "blurb": "In Guangzhou, China.",
     "featured": false
@@ -2298,7 +2378,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "beach",
     "blurb": "In Mallorca, Spain.",
     "featured": false
@@ -2313,7 +2393,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "Jumeirah Hotels",
-    "brand": "",
+    "brand": "Jumeirah",
     "scene": "desert",
     "blurb": "In Dubai, United Arab Emirates.",
     "featured": false
@@ -2418,7 +2498,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Kimpton Hotels",
-    "brand": "",
+    "brand": "Kimpton",
     "scene": "tropical",
     "blurb": "In West Bay Beach, Honduras.",
     "featured": false
@@ -2433,7 +2513,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Kimpton Hotels",
-    "brand": "",
+    "brand": "Kimpton",
     "scene": "tropical",
     "blurb": "In Grand Cayman, Grand Cayman.",
     "featured": false
@@ -2463,7 +2543,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In San Pedro, Belize.",
     "featured": false
@@ -2508,7 +2588,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "countryside",
     "blurb": "In Saint-Rémy-de-Provence, France.",
     "featured": false
@@ -2538,7 +2618,7 @@ window.WAH_PROPERTIES = [
     "region": "Pacific & Indian Ocean",
     "regionKey": "pacific",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Lizard Island, Australia.",
     "featured": false
@@ -2673,7 +2753,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Marriott Hotels & Resorts",
-    "brand": "",
+    "brand": "Marriott",
     "scene": "beach",
     "blurb": "In Algarve, Portugal.",
     "featured": false
@@ -2703,7 +2783,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Stowe, United States.",
     "featured": false
@@ -2718,7 +2798,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Montage Hotels & Resorts",
-    "brand": "",
+    "brand": "Montage",
     "scene": "city",
     "blurb": "In Big Sky, United States.",
     "featured": false
@@ -2733,7 +2813,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Montage Hotels & Resorts",
-    "brand": "",
+    "brand": "Montage",
     "scene": "mountain",
     "blurb": "In Deer Valley, United States.",
     "featured": false
@@ -2748,7 +2828,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Montage Hotels & Resorts",
-    "brand": "",
+    "brand": "Montage",
     "scene": "city",
     "blurb": "In Healdsburg, United States.",
     "featured": false
@@ -2763,7 +2843,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Montage Hotels & Resorts",
-    "brand": "",
+    "brand": "Montage",
     "scene": "city",
     "blurb": "In Laguna Beach, United States.",
     "featured": false
@@ -2778,7 +2858,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Montage Hotels & Resorts",
-    "brand": "",
+    "brand": "Montage",
     "scene": "tropical",
     "blurb": "In Cabo San Lucas, Mexico.",
     "featured": false
@@ -2793,7 +2873,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Montage Hotels & Resorts",
-    "brand": "",
+    "brand": "Montage",
     "scene": "city",
     "blurb": "In Bluffton, United States.",
     "featured": false
@@ -2868,7 +2948,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Farmington, United States.",
     "featured": false
@@ -2913,7 +2993,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Omni",
     "scene": "city",
     "blurb": "In Orlando and Disney World, United States.",
     "featured": false
@@ -3153,7 +3233,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "beach",
     "blurb": "In Elounda, Greece.",
     "featured": false
@@ -3198,7 +3278,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "countryside",
     "blurb": "In Zakinthos, Greece.",
     "featured": false
@@ -3303,7 +3383,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Rancho Santa Fe, United States.",
     "featured": false
@@ -3333,7 +3413,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Renaissance Hotels",
-    "brand": "",
+    "brand": "Renaissance",
     "scene": "city",
     "blurb": "In Orlando and Disney World, United States.",
     "featured": false
@@ -3438,7 +3518,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Rocco Forte Hotels",
-    "brand": "",
+    "brand": "Rocco Forte",
     "scene": "countryside",
     "blurb": "In Milan, Italy.",
     "featured": false
@@ -3453,7 +3533,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Rocco Forte Hotels",
-    "brand": "",
+    "brand": "Rocco Forte",
     "scene": "countryside",
     "blurb": "In Rome, Italy.",
     "featured": false
@@ -3633,7 +3713,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Montego Bay, Jamaica.",
     "featured": false
@@ -3648,7 +3728,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "desert",
     "blurb": "In Paradise Valley, United States.",
     "featured": false
@@ -3693,7 +3773,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Destination Hotel & Resort",
-    "brand": "",
+    "brand": "Destination Hotels",
     "scene": "countryside",
     "blurb": "In Kelso, Scotland.",
     "featured": false
@@ -3708,7 +3788,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Scrub Island, British Virgin Islands.",
     "featured": false
@@ -3753,7 +3833,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "desert",
     "blurb": "In The Red Sea, Saudi Arabia.",
     "featured": false
@@ -3768,7 +3848,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "beach",
     "blurb": "In Coronado, United States.",
     "featured": false
@@ -3978,7 +4058,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Deer Valley, United States.",
     "featured": false
@@ -3993,7 +4073,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Deer Valley, United States.",
     "featured": false
@@ -4008,7 +4088,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "Viceroy Hotels",
-    "brand": "",
+    "brand": "Viceroy",
     "scene": "tropical",
     "blurb": "In Soufriere, Saint Lucia.",
     "featured": false
@@ -4053,7 +4133,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Los Angeles, United States.",
     "featured": false
@@ -4068,7 +4148,7 @@ window.WAH_PROPERTIES = [
     "region": "Middle East & Africa",
     "regionKey": "mea",
     "collection": "EDITION Hotels",
-    "brand": "",
+    "brand": "EDITION",
     "scene": "desert",
     "blurb": "In Abu Dhabi, United Arab Emirates.",
     "featured": false
@@ -4083,7 +4163,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Vail, United States.",
     "featured": false
@@ -4098,7 +4178,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "EDITION Hotels",
-    "brand": "",
+    "brand": "EDITION",
     "scene": "beach",
     "blurb": "In Bodrum, Turkey.",
     "featured": false
@@ -4113,7 +4193,7 @@ window.WAH_PROPERTIES = [
     "region": "Pacific & Indian Ocean",
     "regionKey": "pacific",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Papeete, French Polynesia.",
     "featured": false
@@ -4188,7 +4268,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Langham Hotels",
-    "brand": "",
+    "brand": "Langham",
     "scene": "city",
     "blurb": "In Pasadena, United States.",
     "featured": false
@@ -4203,7 +4283,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Aspen, United States.",
     "featured": false
@@ -4233,7 +4313,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "EDITION Hotels",
-    "brand": "",
+    "brand": "EDITION",
     "scene": "beach",
     "blurb": "In Miami Beach, United States.",
     "featured": false
@@ -4278,7 +4358,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Laguna Beach, United States.",
     "featured": false
@@ -4293,7 +4373,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Philipsburg, United States.",
     "featured": false
@@ -4308,7 +4388,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Small Luxury Hotels of The World",
-    "brand": "",
+    "brand": "Small Luxury Hotels",
     "scene": "countryside",
     "blurb": "In Porto, Portugal.",
     "featured": false
@@ -4323,7 +4403,7 @@ window.WAH_PROPERTIES = [
     "region": "Pacific & Indian Ocean",
     "regionKey": "pacific",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Cairns, Australia.",
     "featured": false
@@ -4398,7 +4478,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Greenough, United States.",
     "featured": false
@@ -4413,7 +4493,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "city",
     "blurb": "In Newport Beach, United States.",
     "featured": false
@@ -4563,7 +4643,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "EDITION Hotels",
-    "brand": "",
+    "brand": "EDITION",
     "scene": "tropical",
     "blurb": "In Kanai, Mexico.",
     "featured": false
@@ -4593,7 +4673,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "EDITION Hotels",
-    "brand": "",
+    "brand": "EDITION",
     "scene": "tropical",
     "blurb": "In Sanya, China.",
     "featured": false
@@ -4608,7 +4688,7 @@ window.WAH_PROPERTIES = [
     "region": "Asia",
     "regionKey": "asia",
     "collection": "Marriott Hotels & Resorts",
-    "brand": "",
+    "brand": "Marriott",
     "scene": "tropical",
     "blurb": "In Lombok, Indonesia.",
     "featured": false
@@ -4743,7 +4823,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "ALiLa",
-    "brand": "",
+    "brand": "Hyatt",
     "scene": "city",
     "blurb": "In Big Sur, United States.",
     "featured": false
@@ -4758,7 +4838,7 @@ window.WAH_PROPERTIES = [
     "region": "Europe",
     "regionKey": "europe",
     "collection": "Rocco Forte Hotels",
-    "brand": "",
+    "brand": "Rocco Forte",
     "scene": "beach",
     "blurb": "In Sicily, Italy.",
     "featured": false
@@ -4773,7 +4853,7 @@ window.WAH_PROPERTIES = [
     "region": "North America",
     "regionKey": "north-america",
     "collection": "Viceroy Hotels",
-    "brand": "",
+    "brand": "Viceroy",
     "scene": "mountain",
     "blurb": "In Snowmass Village, United States.",
     "featured": false
@@ -4833,7 +4913,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Turks & Caicos, Turks & Caicos.",
     "featured": false
@@ -4983,7 +5063,7 @@ window.WAH_PROPERTIES = [
     "region": "Latin America & Caribbean",
     "regionKey": "latam-caribbean",
     "collection": "The Signature Collection",
-    "brand": "",
+    "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Turks & Caicos, Turks & Caicos.",
     "featured": false

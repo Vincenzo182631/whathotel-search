@@ -12,7 +12,7 @@
 
 ### United States
 
-- [1 Hotel South Beach](https://whatahotel.com/hotels/6412/1-hotel-south-beach.html): South Beach, Miami, United States
+- [1 Hotel South Beach](https://whatahotel.com/hotels/6412/1-hotel-south-beach.html): South Beach, Miami, United States — 1 Hotels
 - [Andaz Maui at Wailea Villas](https://whatahotel.com/hotels/2706/andaz-maui-at-wailea.html): Maui, United States — Hyatt
 - [Andaz Scottsdale Resort & Spa](https://whatahotel.com/hotels/3231/andaz-scottsdale-resort-spa.html): Scottsdale, United States — Hyatt
 - [Auberge du Soleil](https://whatahotel.com/hotels/7163/auberge-du-soleil.html): Napa Valley, United States — Auberge Resorts
@@ -23,7 +23,7 @@
 - [Chatham Bars Inn](https://whatahotel.com/hotels/1783/chatham-bars-inn.html): Cape Cod, United States — Leading Hotels of the World
 - [Conrad Fort Lauderdale Beach](https://whatahotel.com/hotels/3333/conrad-fort-lauderdale-beach.html): Fort Lauderdale, United States — Hilton
 - [EAST Miami](https://whatahotel.com/hotels/3149/east-miami.html): Brickell, Miami, United States — Preferred
-- [Edgewood Tahoe Resort](https://whatahotel.com/hotels/3530/edgewood-tahoe-resort.html): Lake Tahoe, United States
+- [Edgewood Tahoe Resort](https://whatahotel.com/hotels/3530/edgewood-tahoe-resort.html): Lake Tahoe, United States — Signature Collection
 - [Fairmont Heritage Place Franz Klammer Lodge](https://whatahotel.com/hotels/6692/fairmont-heritage-place-franz-klammer-lodge.html): Telluride, United States — Fairmont
 - [Fairmont Heritage Place, Ghirardelli Sq.](https://whatahotel.com/hotels/2520/fairmont-heritage-place-ghirardelli-sq-.html): San Francisco, United States — Fairmont
 - [Fairmont Kea Lani, Maui](https://whatahotel.com/hotels/1223/fairmont-kea-lani-maui.html): Maui, United States — Fairmont
@@ -35,7 +35,7 @@
 - [Four Seasons Rancho Encantado, Santa Fe](https://whatahotel.com/hotels/2093/four-seasons-rancho-encantado-santa-fe.html): Santa Fe, United States — Four Seasons
 - [Four Seasons Resort Jackson Hole](https://whatahotel.com/hotels/1325/four-seasons-resort-jackson-hole.html): Jackson Hole, United States — Four Seasons
 - [Four Seasons Resort Vail](https://whatahotel.com/hotels/2390/four-seasons-resort-vail.html): Vail, United States — Four Seasons
-- [Gem Hacienda](https://whatahotel.com/hotels/6733/gem-hacienda.html): Taos, United States
+- [Gem Hacienda](https://whatahotel.com/hotels/6733/gem-hacienda.html): Taos, United States — Signature Collection
 - [Goldener Hirsch, Auberge Collection](https://whatahotel.com/hotels/6280/goldener-hirsch-auberge-collection.html): Park City, United States — Auberge Resorts
 - [Ho’olei at Grand Wailea](https://whatahotel.com/hotels/4138/ho-olei-at-grand-wailea.html): Maui, United States — Waldorf Astoria
 - [Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course](https://whatahotel.com/hotels/2194/hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course.html): Monterey, United States — Hyatt
@@ -44,42 +44,42 @@
 - [Lido House, Autograph Collection](https://whatahotel.com/hotels/3887/lido-house-autograph-collection.html): Newport Beach, United States — Autograph Collection
 - [Madeline Hotel & Residences, Auberge Collection](https://whatahotel.com/hotels/4226/madeline-hotel-residences-auberge-collection.html): Telluride, United States — Auberge Resorts
 - [Mauna Lani Resort, Auberge Collection](https://whatahotel.com/hotels/2683/mauna-lani-resort-auberge-collection.html): Big Island, United States — Auberge Resorts
-- [Meadowstone Manor](https://whatahotel.com/hotels/6732/meadowstone-manor.html): Stowe, United States
-- [Montage Big Sky](https://whatahotel.com/hotels/6238/montage-big-sky.html): Big Sky, United States
-- [Montage Deer Valley](https://whatahotel.com/hotels/2394/montage-deer-valley.html): Deer Valley, United States
-- [Montage Healdsburg](https://whatahotel.com/hotels/4575/montage-healdsburg.html): Healdsburg, United States
-- [Montage Laguna Beach](https://whatahotel.com/hotels/1253/montage-laguna-beach-.html): Laguna Beach, United States
-- [Montage Palmetto Bluff](https://whatahotel.com/hotels/1569/montage-palmetto-bluff.html): Bluffton, United States
+- [Meadowstone Manor](https://whatahotel.com/hotels/6732/meadowstone-manor.html): Stowe, United States — Signature Collection
+- [Montage Big Sky](https://whatahotel.com/hotels/6238/montage-big-sky.html): Big Sky, United States — Montage
+- [Montage Deer Valley](https://whatahotel.com/hotels/2394/montage-deer-valley.html): Deer Valley, United States — Montage
+- [Montage Healdsburg](https://whatahotel.com/hotels/4575/montage-healdsburg.html): Healdsburg, United States — Montage
+- [Montage Laguna Beach](https://whatahotel.com/hotels/1253/montage-laguna-beach-.html): Laguna Beach, United States — Montage
+- [Montage Palmetto Bluff](https://whatahotel.com/hotels/1569/montage-palmetto-bluff.html): Bluffton, United States — Montage
 - [Mountain Shadows](https://whatahotel.com/hotels/3685/mountain-shadows.html): Paradise Valley, United States — Preferred
-- [Nemacolin Woodlands Resort](https://whatahotel.com/hotels/4510/nemacolin-woodlands-resort.html): Farmington, United States
-- [Omni Orlando at Champions Gate](https://whatahotel.com/hotels/7078/omni-orlando-at-champions-gate.html): Orlando and Disney World, United States
+- [Nemacolin Woodlands Resort](https://whatahotel.com/hotels/4510/nemacolin-woodlands-resort.html): Farmington, United States — Signature Collection
+- [Omni Orlando at Champions Gate](https://whatahotel.com/hotels/7078/omni-orlando-at-champions-gate.html): Orlando and Disney World, United States — Omni
 - [Playa Largo Resort & Spa](https://whatahotel.com/hotels/3808/playa-largo-resort-spa.html): Key Largo, United States — Autograph Collection
-- [Rancho Valencia](https://whatahotel.com/hotels/1449/rancho-valencia.html): Rancho Santa Fe, United States
-- [Renaissance Orlando at SeaWorld](https://whatahotel.com/hotels/3270/renaissance-orlando-at-seaworld.html): Orlando and Disney World, United States
+- [Rancho Valencia](https://whatahotel.com/hotels/1449/rancho-valencia.html): Rancho Santa Fe, United States — Signature Collection
+- [Renaissance Orlando at SeaWorld](https://whatahotel.com/hotels/3270/renaissance-orlando-at-seaworld.html): Orlando and Disney World, United States — Renaissance
 - [Ritz Carlton Dallas, Las Colinas Resort](https://whatahotel.com/hotels/1836/ritz-carlton-dallas-las-colinas-resort-.html): Dallas, United States — Ritz-Carlton
 - [Ritz Carlton Oahu, Turtle Bay](https://whatahotel.com/hotels/2141/ritz-carlton-oahu-turtle-bay-.html): Honolulu, United States — Ritz-Carlton
 - [Ritz-Carlton Residences, Orlando](https://whatahotel.com/hotels/6084/ritz-carlton-residences-orlando.html): Orlando and Disney World, United States — Ritz-Carlton
 - [Rosewood Miramar Beach Hotel](https://whatahotel.com/hotels/3483/rosewood-miramar-beach-hotel.html): Santa Barbara, United States — Rosewood
-- [Sanctuary on Camelback Mountain](https://whatahotel.com/hotels/1210/sanctuary-on-camelback-mountain.html): Paradise Valley, United States
+- [Sanctuary on Camelback Mountain](https://whatahotel.com/hotels/1210/sanctuary-on-camelback-mountain.html): Paradise Valley, United States — Signature Collection
 - [Sea Oats Private Estate](https://whatahotel.com/hotels/4178/sea-oats-private-estate.html): Captiva Island, United States — Luxury Collection
 - [Sea Palms Private Beachfront Estate](https://whatahotel.com/hotels/4177/sea-palms-private-beachfront-estate.html): Captiva Island, United States — Luxury Collection
-- [Shore House at The Del](https://whatahotel.com/hotels/6269/shore-house-at-the-del.html): Coronado, United States
+- [Shore House at The Del](https://whatahotel.com/hotels/6269/shore-house-at-the-del.html): Coronado, United States — Signature Collection
 - [Sonnenalp Hotel](https://whatahotel.com/hotels/4215/sonnenalp-hotel.html): Vail, United States — Leading Hotels of the World
 - [St Regis Residence Aspen Resort](https://whatahotel.com/hotels/2835/st-regis-residence-aspen-resort.html): Aspen, United States — St. Regis
 - [Stanly Ranch, Auberge Collection](https://whatahotel.com/hotels/6192/stanly-ranch-auberge-collection.html): Napa Valley, United States — Auberge Resorts
-- [Stein Eriksen Lodge Deer Valley](https://whatahotel.com/hotels/6281/stein-eriksen-lodge-deer-valley.html): Deer Valley, United States
-- [Stein Eriksen Residences Deer Valley](https://whatahotel.com/hotels/6282/stein-eriksen-residences-deer-valley.html): Deer Valley, United States
-- [Terranea Resort](https://whatahotel.com/hotels/2293/terranea-resort.html): Los Angeles, United States
-- [The Arrabelle, Vail Square](https://whatahotel.com/hotels/2257/the-arrabelle-vail-square.html): Vail, United States
-- [The Langham Huntington, Pasadena, Los Angeles](https://whatahotel.com/hotels/1328/the-langham-huntington-pasadena-los-angeles.html): Pasadena, United States
-- [The Little Nell](https://whatahotel.com/hotels/2600/the-little-nell.html): Aspen, United States
-- [The Miami Beach EDITION](https://whatahotel.com/hotels/2962/the-miami-beach-edition.html): Miami Beach, United States
+- [Stein Eriksen Lodge Deer Valley](https://whatahotel.com/hotels/6281/stein-eriksen-lodge-deer-valley.html): Deer Valley, United States — Signature Collection
+- [Stein Eriksen Residences Deer Valley](https://whatahotel.com/hotels/6282/stein-eriksen-residences-deer-valley.html): Deer Valley, United States — Signature Collection
+- [Terranea Resort](https://whatahotel.com/hotels/2293/terranea-resort.html): Los Angeles, United States — Signature Collection
+- [The Arrabelle, Vail Square](https://whatahotel.com/hotels/2257/the-arrabelle-vail-square.html): Vail, United States — Signature Collection
+- [The Langham Huntington, Pasadena, Los Angeles](https://whatahotel.com/hotels/1328/the-langham-huntington-pasadena-los-angeles.html): Pasadena, United States — Langham
+- [The Little Nell](https://whatahotel.com/hotels/2600/the-little-nell.html): Aspen, United States — Signature Collection
+- [The Miami Beach EDITION](https://whatahotel.com/hotels/2962/the-miami-beach-edition.html): Miami Beach, United States — EDITION
 - [The Peninsula Beverly Hills](https://whatahotel.com/hotels/1427/the-peninsula-beverly-hills.html): Beverly Hills, United States — Peninsula
-- [The Ranch at Laguna Beach](https://whatahotel.com/hotels/3953/the-ranch-at-laguna-beach.html): Laguna Beach, United States
-- [The Ranch at Rock Creek **All Inclusive**](https://whatahotel.com/hotels/2462/the-ranch-at-rock-creek-br-all-inclusive-.html): Philipsburg, United States
+- [The Ranch at Laguna Beach](https://whatahotel.com/hotels/3953/the-ranch-at-laguna-beach.html): Laguna Beach, United States — Signature Collection
+- [The Ranch at Rock Creek **All Inclusive**](https://whatahotel.com/hotels/2462/the-ranch-at-rock-creek-br-all-inclusive-.html): Philipsburg, United States — Signature Collection
 - [The Resort at Kapalua Bay](https://whatahotel.com/hotels/2879/the-resort-at-kapalua-bay.html): Maui, United States — St. Regis
-- [The Resort at Paws Up](https://whatahotel.com/hotels/1475/the-resort-at-paws-up-.html): Greenough, United States
-- [The Resort at Pelican Hill](https://whatahotel.com/hotels/2674/the-resort-at-pelican-hill-.html): Newport Beach, United States
+- [The Resort at Paws Up](https://whatahotel.com/hotels/1475/the-resort-at-paws-up-.html): Greenough, United States — Signature Collection
+- [The Resort at Pelican Hill](https://whatahotel.com/hotels/2674/the-resort-at-pelican-hill-.html): Newport Beach, United States — Signature Collection
 - [The Ritz Carlton Kapalua](https://whatahotel.com/hotels/951/the-ritz-carlton-kapalua.html): Maui, United States — Ritz-Carlton
 - [The Ritz-Carlton Residences, Waikiki Beach](https://whatahotel.com/hotels/3287/the-ritz-carlton-residences-waikiki-beach.html): Honolulu, United States — Ritz-Carlton
 - [The Ritz-Carlton, Bachelor Gulch](https://whatahotel.com/hotels/1254/the-ritz-carlton-bachelor-gulch.html): Beaver Creek, United States — Ritz-Carlton
@@ -89,8 +89,8 @@
 - [The St. Regis Bal Harbour Resort](https://whatahotel.com/hotels/2539/the-st-regis-bal-harbour-resort.html): Miami Beach, United States — St. Regis
 - [The St. Regis Deer Valley](https://whatahotel.com/hotels/2349/the-st-regis-deer-valley.html): Deer Valley, United States — St. Regis
 - [Vail Residences at Cascade Village](https://whatahotel.com/hotels/4628/vail-residences-at-cascade-village.html): Vail, United States — Hyatt
-- [Ventana Big Sur](https://whatahotel.com/hotels/2441/ventana-big-sur.html): Big Sur, United States
-- [Viceroy Snowmass](https://whatahotel.com/hotels/2442/viceroy-snowmass-.html): Snowmass Village, United States
+- [Ventana Big Sur](https://whatahotel.com/hotels/2441/ventana-big-sur.html): Big Sur, United States — Hyatt
+- [Viceroy Snowmass](https://whatahotel.com/hotels/2442/viceroy-snowmass-.html): Snowmass Village, United States — Viceroy
 - [Viewline Resort Snowmass](https://whatahotel.com/hotels/6980/viewline-resort-snowmass.html): Snowmass Village, United States — Autograph Collection
 - [Waldorf Astoria Park City](https://whatahotel.com/hotels/2422/waldorf-astoria-park-city-.html): Park City, United States — Waldorf Astoria
 - [Waterline Marina Resort & Beach Club, Autograph Collection](https://whatahotel.com/hotels/3834/waterline-marina-resort-beach-club-autograph-collection.html): Holmes Beach, United States — Autograph Collection
@@ -123,22 +123,22 @@
 
 ### Belize
 
-- [Itz'ana Resort](https://whatahotel.com/hotels/6072/itz-ana-resort.html): Placencia, Belize
-- [Las Terrazas Resort](https://whatahotel.com/hotels/3174/las-terrazas-resort.html): San Pedro, Belize
+- [Itz'ana Resort](https://whatahotel.com/hotels/6072/itz-ana-resort.html): Placencia, Belize — Signature Collection
+- [Las Terrazas Resort](https://whatahotel.com/hotels/3174/las-terrazas-resort.html): San Pedro, Belize — Signature Collection
 
 ### Bermuda
 
-- [Cambridge Beaches Resort & Spa](https://whatahotel.com/hotels/940/cambridge-beaches-resort-spa.html): Sandys, Bermuda
+- [Cambridge Beaches Resort & Spa](https://whatahotel.com/hotels/940/cambridge-beaches-resort-spa.html): Sandys, Bermuda — Signature Collection
 - [The Residences at The St. Regis Bermuda](https://whatahotel.com/hotels/7170/the-residences-at-the-st-regis-bermuda.html): St. George's, Bermuda — St. Regis
 
 ### Brazil
 
-- [Barracuda Hotel and Villas](https://whatahotel.com/hotels/6379/barracuda-hotel-and-villas.html): Salvador Da Bahia, Brazil
+- [Barracuda Hotel and Villas](https://whatahotel.com/hotels/6379/barracuda-hotel-and-villas.html): Salvador Da Bahia, Brazil — Small Luxury Hotels
 
 ### British Virgin Islands
 
 - [Rosewood Little Dix Bay](https://whatahotel.com/hotels/3938/rosewood-little-dix-bay.html): Virgin Gorda, British Virgin Islands — Rosewood
-- [Scrub Island Resort, Spa & Marina](https://whatahotel.com/hotels/3797/scrub-island-resort-spa-marina.html): Scrub Island, British Virgin Islands
+- [Scrub Island Resort, Spa & Marina](https://whatahotel.com/hotels/3797/scrub-island-resort-spa-marina.html): Scrub Island, British Virgin Islands — Signature Collection
 - [The Branson Beach Estate](https://whatahotel.com/hotels/7159/the-branson-beach-estate.html): Moskito Island, British Virgin Islands — Preferred
 
 ### Costa Rica
@@ -159,7 +159,7 @@
 
 ### Grand Cayman
 
-- [Kimpton Seafire Resort](https://whatahotel.com/hotels/3214/kimpton-seafire-resort-.html): Grand Cayman
+- [Kimpton Seafire Resort](https://whatahotel.com/hotels/3214/kimpton-seafire-resort-.html): Grand Cayman — Kimpton
 - [Ritz Carlton, Grand Cayman](https://whatahotel.com/hotels/1512/ritz-carlton-grand-cayman-.html): Grand Cayman — Ritz-Carlton
 
 ### Grenada
@@ -168,13 +168,13 @@
 
 ### Honduras
 
-- [Kimpton Grand Roatan Resort & Spa](https://whatahotel.com/hotels/6423/kimpton-grand-roatan-resort-spa.html): West Bay Beach, Honduras
+- [Kimpton Grand Roatan Resort & Spa](https://whatahotel.com/hotels/6423/kimpton-grand-roatan-resort-spa.html): West Bay Beach, Honduras — Kimpton
 
 ### Jamaica
 
-- [Bluefields Bay Villas](https://whatahotel.com/hotels/6181/bluefields-bay-villas.html): Bluefields, Jamaica
-- [Half Moon](https://whatahotel.com/hotels/988/half-moon.html): Montego Bay, Jamaica
-- [Round Hill Hotel & Villas](https://whatahotel.com/hotels/989/round-hill-hotel-villas.html): Montego Bay, Jamaica
+- [Bluefields Bay Villas](https://whatahotel.com/hotels/6181/bluefields-bay-villas.html): Bluefields, Jamaica — Small Luxury Hotels
+- [Half Moon](https://whatahotel.com/hotels/988/half-moon.html): Montego Bay, Jamaica — Signature Collection
+- [Round Hill Hotel & Villas](https://whatahotel.com/hotels/989/round-hill-hotel-villas.html): Montego Bay, Jamaica — Signature Collection
 
 ### Mexico
 
@@ -190,10 +190,10 @@
 - [Four Seasons Los Cabos at Costa Palmas](https://whatahotel.com/hotels/3614/four-seasons-los-cabos-at-costa-palmas.html): Cabo San Lucas, Mexico — Four Seasons
 - [Four Seasons Resort Punta Mita](https://whatahotel.com/hotels/1414/four-seasons-resort-punta-mita.html): Punta Mita, Mexico — Four Seasons
 - [Four Seasons Resort Tamarindo](https://whatahotel.com/hotels/4746/four-seasons-resort-tamarindo.html): Tamarindo, Mexico — Four Seasons
-- [Hotel Esencia](https://whatahotel.com/hotels/1815/hotel-esencia-.html): Cancun, Mexico
+- [Hotel Esencia](https://whatahotel.com/hotels/1815/hotel-esencia-.html): Cancun, Mexico — Signature Collection
 - [Las Ventanas Al Paraiso](https://whatahotel.com/hotels/985/las-ventanas-al-paraiso.html): Cabo San Lucas, Mexico — Rosewood
 - [Maroma, A Belmond Hotel](https://whatahotel.com/hotels/1066/maroma-a-belmond-hotel.html): Cancun, Mexico — Belmond
-- [Montage Los Cabos, Mexico](https://whatahotel.com/hotels/3337/montage-los-cabos-mexico.html): Cabo San Lucas, Mexico
+- [Montage Los Cabos, Mexico](https://whatahotel.com/hotels/3337/montage-los-cabos-mexico.html): Cabo San Lucas, Mexico — Montage
 - [Naviva, Four Seasons, Punta Mita](https://whatahotel.com/hotels/6103/naviva-four-seasons-punta-mita.html): Punta Mita, Mexico — Four Seasons
 - [Nizuc Resort & Spa](https://whatahotel.com/hotels/2849/nizuc-resort-spa-.html): Cancun, Mexico — Preferred
 - [Nobu Hotel Los Cabos](https://whatahotel.com/hotels/7151/nobu-hotel-los-cabos.html): Cabo San Lucas, Mexico — Preferred
@@ -208,7 +208,7 @@
 - [The Cape](https://whatahotel.com/hotels/3013/the-cape.html): Cabo San Lucas, Mexico — Hyatt
 - [The Residences at Solaz, Los Cabos](https://whatahotel.com/hotels/7171/the-residences-at-solaz-los-cabos.html): Cabo San Lucas, Mexico — Luxury Collection
 - [The Ritz-Carlton Residences Mexico City](https://whatahotel.com/hotels/6706/the-ritz-carlton-residences-mexico-city.html): Mexico City — Ritz-Carlton
-- [The Riviera Maya EDITION at Kanai](https://whatahotel.com/hotels/6547/the-riviera-maya-edition-at-kanai.html): Kanai, Mexico
+- [The Riviera Maya EDITION at Kanai](https://whatahotel.com/hotels/6547/the-riviera-maya-edition-at-kanai.html): Kanai, Mexico — EDITION
 - [The St. Regis Kanai Resort, Riviera Maya](https://whatahotel.com/hotels/6290/the-st-regis-kanai-resort-riviera-maya.html): Kanai, Mexico — St. Regis
 - [The St. Regis Punta Mita Resort](https://whatahotel.com/hotels/2212/the-st-regis-punta-mita-resort.html): Punta Mita, Mexico — St. Regis
 - [Waldorf Astoria Los Cabos Pedregal](https://whatahotel.com/hotels/2262/waldorf-astoria-los-cabos-pedregal.html): Cabo San Lucas, Mexico — Waldorf Astoria
@@ -225,7 +225,7 @@
 
 ### Saint Lucia
 
-- [Sugar Beach, A Viceroy Resort](https://whatahotel.com/hotels/2568/sugar-beach-a-viceroy-resort.html): Soufriere, Saint Lucia
+- [Sugar Beach, A Viceroy Resort](https://whatahotel.com/hotels/2568/sugar-beach-a-viceroy-resort.html): Soufriere, Saint Lucia — Viceroy
 
 ### Saint Vincent and the Grenadines
 
@@ -243,14 +243,14 @@
 ### Turks & Caicos
 
 - [Amanyara](https://whatahotel.com/hotels/1523/amanyara.html): Turks & Caicos — Aman
-- [COMO Parrot Cay, Turks & Caicos](https://whatahotel.com/hotels/1057/como-parrot-cay-turks-caicos.html): Turks & Caicos
+- [COMO Parrot Cay, Turks & Caicos](https://whatahotel.com/hotels/1057/como-parrot-cay-turks-caicos.html): Turks & Caicos — COMO
 - [Grace Bay Club](https://whatahotel.com/hotels/956/grace-bay-club.html): Turks & Caicos — Leading Hotels of the World
 - [Grace Bay Club Villa Seaclusion](https://whatahotel.com/hotels/3944/grace-bay-club-villa-seaclusion.html): Turks & Caicos — Leading Hotels of the World
 - [Grace Bay Club Villa Seascape](https://whatahotel.com/hotels/3943/grace-bay-club-villa-seascape.html): Turks & Caicos — Leading Hotels of the World
 - [Ritz Carlton Residences, Turks & Caicos](https://whatahotel.com/hotels/6705/ritz-carlton-residences-turks-caicos.html): Turks & Caicos — Ritz-Carlton
 - [Rock House](https://whatahotel.com/hotels/6847/rock-house.html): Turks & Caicos — Leading Hotels of the World
-- [Villa Mani](https://whatahotel.com/hotels/4180/villa-mani.html): Turks & Caicos
-- [Wymara Resort, Turks and Caicos](https://whatahotel.com/hotels/3901/wymara-resort-turks-and-caicos.html): Turks & Caicos
+- [Villa Mani](https://whatahotel.com/hotels/4180/villa-mani.html): Turks & Caicos — Signature Collection
+- [Wymara Resort, Turks and Caicos](https://whatahotel.com/hotels/3901/wymara-resort-turks-and-caicos.html): Turks & Caicos — Signature Collection
 
 ## Europe (94)
 
@@ -273,7 +273,7 @@
 - Château de la Croix des Gardes: Cannes, French Riviera, France — Mandarin Oriental — Mandarin Oriental Exceptional Home, 16 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [Chateau Saint-Martin & Spa](https://whatahotel.com/hotels/1004/chateau-saint-martin-spa.html): Vence, France — Oetker Collection
 - [Four Seasons Les Chalets du Mont d’Arbois , Megeve](https://whatahotel.com/hotels/3682/-four-seasons-les-chalets-du-mont-d-arbois-megeve-.html): Megeve, France — Four Seasons
-- [Le Vallon de Valrugues Hotel Spa and Villas](https://whatahotel.com/hotels/4402/le-vallon-de-valrugues-hotel-spa-and-villas.html): Saint-Rémy-de-Provence, France
+- [Le Vallon de Valrugues Hotel Spa and Villas](https://whatahotel.com/hotels/4402/le-vallon-de-valrugues-hotel-spa-and-villas.html): Saint-Rémy-de-Provence, France — Small Luxury Hotels
 - Villa Cesar: La Croix‑Valmer, French Riviera, France — Mandarin Oriental — Mandarin Oriental Exceptional Home, 7 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Villa O: Saint-Jean-Cap-Ferrat, French Riviera, France — Mandarin Oriental — Mandarin Oriental Exceptional Home, 4+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Villa Palmira: Super Cannes, French Riviera, France — Mandarin Oriental — Mandarin Oriental Exceptional Home, 5 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
@@ -283,17 +283,17 @@
 
 - [Amanzoe](https://whatahotel.com/hotels/2946/amanzoe.html): Kranidi, Greece — Aman
 - [Angsana Corfu Resort & Spa](https://whatahotel.com/hotels/6584/angsana-corfu-resort-spa.html): Corfu, Greece — Banyan Tree
-- [Canaves Oia Epitome](https://whatahotel.com/hotels/2710/canaves-oia-epitome.html): Santorini, Greece
+- [Canaves Oia Epitome](https://whatahotel.com/hotels/2710/canaves-oia-epitome.html): Santorini, Greece — Small Luxury Hotels
 - Casa Gaia: Fokos, Mykonos, Greece — Mandarin Oriental — Mandarin Oriental Exceptional Home, 9 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [Domes Miramare Corfu](https://whatahotel.com/hotels/3692/domes-miramare-corfu.html): Corfu, Greece — Luxury Collection
 - [Domes of Elounda](https://whatahotel.com/hotels/3802/domes-of-elounda.html): Crete Island, Greece — Autograph Collection
-- [Eagles Villas](https://whatahotel.com/hotels/4411/eagles-villas.html): Halkidiki, Greece
-- [Elounda Gulf Villas & Suites](https://whatahotel.com/hotels/3360/elounda-gulf-villas-suites.html): Elounda, Greece
+- [Eagles Villas](https://whatahotel.com/hotels/4411/eagles-villas.html): Halkidiki, Greece — Small Luxury Hotels
+- [Elounda Gulf Villas & Suites](https://whatahotel.com/hotels/3360/elounda-gulf-villas-suites.html): Elounda, Greece — Small Luxury Hotels
 - [Mandarin Oriental, Costa Navarino](https://whatahotel.com/hotels/6543/mandarin-oriental-costa-navarino.html): Costa Navarino, Greece — Mandarin Oriental
 - [One&Only Aesthesis](https://whatahotel.com/hotels/6647/one-only-aesthesis.html): Athens, Greece — One&Only
 - [One&Only Kea Island](https://whatahotel.com/hotels/6539/one-only-kea-island.html): Athens, Greece — One&Only
-- [Phaea Blue Palace](https://whatahotel.com/hotels/1408/phaea-blue-palace.html): Elounda, Greece
-- [Porto Zante Villas & Spa](https://whatahotel.com/hotels/6075/porto-zante-villas-spa.html): Zakinthos, Greece
+- [Phaea Blue Palace](https://whatahotel.com/hotels/1408/phaea-blue-palace.html): Elounda, Greece — Signature Collection
+- [Porto Zante Villas & Spa](https://whatahotel.com/hotels/6075/porto-zante-villas-spa.html): Zakinthos, Greece — Small Luxury Hotels
 - [Santa Marina](https://whatahotel.com/hotels/1407/santa-marina.html): Mykonos, Greece — Luxury Collection
 - SERENAOS: Ellomeno, Lefkada, Greece — Mandarin Oriental — Mandarin Oriental Exceptional Home, 5 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [The Romanos](https://whatahotel.com/hotels/2786/the-romanos.html): Costa Navarino, Greece — Luxury Collection
@@ -321,12 +321,12 @@
 - [Mandarin Oriental, Lago di Como](https://whatahotel.com/hotels/3705/mandarin-oriental-lago-di-como.html): Lake Como, Italy — Mandarin Oriental
 - Masseria Petrarolo: Monopoli, Puglia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 8+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Masseria Pistola: Alberobello, Puglia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 10+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
-- [Rocco Forte House, Milan](https://whatahotel.com/hotels/6697/rocco-forte-house-milan.html): Milan, Italy
-- [Rocco Forte House, Rome](https://whatahotel.com/hotels/6695/rocco-forte-house-rome.html): Rome, Italy
+- [Rocco Forte House, Milan](https://whatahotel.com/hotels/6697/rocco-forte-house-milan.html): Milan, Italy — Rocco Forte
+- [Rocco Forte House, Rome](https://whatahotel.com/hotels/6695/rocco-forte-house-rome.html): Rome, Italy — Rocco Forte
 - [Rosewood Castiglion del Bosco](https://whatahotel.com/hotels/2265/rosewood-castiglion-del-bosco.html): Tuscany, Italy — Rosewood
 - Trullo dei Pumi: Cisternino, Puglia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 5 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Trullo delle Dame: Cisternino, Puglia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 6 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
-- [Verdura Resort, Rocco Forte Private Villas](https://whatahotel.com/hotels/6693/verdura-resort-rocco-forte-private-villas.html): Sicily, Italy
+- [Verdura Resort, Rocco Forte Private Villas](https://whatahotel.com/hotels/6693/verdura-resort-rocco-forte-private-villas.html): Sicily, Italy — Rocco Forte
 - Villa Ada: Portisco, Sardinia, Italy — Mandarin Oriental — Mandarin Oriental Exceptional Home, 8 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [Villa d'Este](https://whatahotel.com/hotels/993/villa-d-este.html): Lake Como, Italy — Leading Hotels of the World
 - [Villa La Massa](https://whatahotel.com/hotels/1055/villa-la-massa.html): Florence, Italy — Leading Hotels of the World
@@ -339,13 +339,13 @@
 
 ### Portugal
 
-- [Marriott Residences Salgados Resort](https://whatahotel.com/hotels/6842/marriott-residences-salgados-resort.html): Algarve, Portugal
+- [Marriott Residences Salgados Resort](https://whatahotel.com/hotels/6842/marriott-residences-salgados-resort.html): Algarve, Portugal — Marriott
 - [Pine Cliffs Residence, Luxury Collection](https://whatahotel.com/hotels/2811/pine-cliffs-residence-luxury-collection.html): Algarve, Portugal — Luxury Collection
-- [The Rebello Hotel](https://whatahotel.com/hotels/6519/the-rebello-hotel.html): Porto, Portugal
+- [The Rebello Hotel](https://whatahotel.com/hotels/6519/the-rebello-hotel.html): Porto, Portugal — Small Luxury Hotels
 
 ### Scotland
 
-- [Schloss Roxburghe Hotel & Golf Course](https://whatahotel.com/hotels/6402/schloss-roxburghe-hotel-golf-course.html): Kelso, Scotland
+- [Schloss Roxburghe Hotel & Golf Course](https://whatahotel.com/hotels/6402/schloss-roxburghe-hotel-golf-course.html): Kelso, Scotland — Destination Hotels
 
 ### Spain
 
@@ -356,9 +356,9 @@
 - Ca’n Miquelet: Deià, Mallorca, Spain — Mandarin Oriental — Mandarin Oriental Exceptional Home, 4 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Can Catalina: Cala Llamp, Mallorca, Spain — Mandarin Oriental — Mandarin Oriental Exceptional Home, 5+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [Cap Vermell Grand Hotel](https://whatahotel.com/hotels/6824/cap-vermell-grand-hotel.html): Mallorca, Spain — Leading Hotels of the World
-- [Finca Cortesin Hotel Golf & Spa](https://whatahotel.com/hotels/2427/finca-cortesin-hotel-golf-spa.html): Casares, Spain
+- [Finca Cortesin Hotel Golf & Spa](https://whatahotel.com/hotels/2427/finca-cortesin-hotel-golf-spa.html): Casares, Spain — Signature Collection
 - [Hotel Arts Barcelona](https://whatahotel.com/hotels/952/hotel-arts-barcelona.html): Barcelona, Spain — Ritz-Carlton
-- [Jumeirah Mallorca](https://whatahotel.com/hotels/2753/jumeirah-mallorca.html): Mallorca, Spain
+- [Jumeirah Mallorca](https://whatahotel.com/hotels/2753/jumeirah-mallorca.html): Mallorca, Spain — Jumeirah
 - [Rosewood Villa Magna](https://whatahotel.com/hotels/2920/rosewood-villa-magna.html): Madrid, Spain — Rosewood
 - Villa Azur: Nueva Andalucía, Marbella, Spain — Mandarin Oriental — Mandarin Oriental Exceptional Home, 7 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - Villa Bellini: Sierra Blanca, Marbella, Spain — Mandarin Oriental — Mandarin Oriental Exceptional Home, 6 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
@@ -373,14 +373,14 @@
 
 ### Switzerland
 
-- [Grand Hotel des Bains Kempinski St. Moritz](https://whatahotel.com/hotels/2174/grand-hotel-des-bains-kempinski-st-moritz.html): St. Moritz, Switzerland
+- [Grand Hotel des Bains Kempinski St. Moritz](https://whatahotel.com/hotels/2174/grand-hotel-des-bains-kempinski-st-moritz.html): St. Moritz, Switzerland — Kempinski
 - [Park Hyatt Zurich](https://whatahotel.com/hotels/1500/park-hyatt-zurich.html): Zurich, Switzerland — Hyatt
 - [The Lodge](https://whatahotel.com/hotels/2348/the-lodge.html): Verbier, Switzerland — Preferred
 
 ### Turkey
 
 - [Mandarin Oriental Bodrum](https://whatahotel.com/hotels/6092/mandarin-oriental-bodrum.html): Bodrum, Turkey — Mandarin Oriental
-- [The Bodrum EDITION](https://whatahotel.com/hotels/3371/the-bodrum-edition.html): Bodrum, Turkey
+- [The Bodrum EDITION](https://whatahotel.com/hotels/3371/the-bodrum-edition.html): Bodrum, Turkey — EDITION
 
 ### United Kingdom
 
@@ -399,11 +399,11 @@
 
 ### China
 
-- [Jumeirah Living Guangzhou](https://whatahotel.com/hotels/4664/jumeirah-living-guangzhou.html): Guangzhou, China
+- [Jumeirah Living Guangzhou](https://whatahotel.com/hotels/4664/jumeirah-living-guangzhou.html): Guangzhou, China — Jumeirah
 - [Mandarin Oriental, Sanya](https://whatahotel.com/hotels/6206/mandarin-oriental-sanya.html): Sanya, China — Mandarin Oriental
 - [Park Hyatt Sanya Sunny Bay](https://whatahotel.com/hotels/3446/park-hyatt-sanya-sunny-bay-.html): Sanya, China — Hyatt
 - [Raffles Hainan](https://whatahotel.com/hotels/4910/raffles-hainan.html): Sanya, China — Raffles
-- [The Sanya EDITION](https://whatahotel.com/hotels/3488/the-sanya-edition.html): Sanya, China
+- [The Sanya EDITION](https://whatahotel.com/hotels/3488/the-sanya-edition.html): Sanya, China — EDITION
 - [The Temple House](https://whatahotel.com/hotels/3176/the-temple-house.html): Chengdu, China — Preferred
 
 ### India
@@ -412,20 +412,20 @@
 
 ### Indonesia
 
-- [Alila Seminyak](https://whatahotel.com/hotels/3963/alila-seminyak.html): Kerobokan, Indonesia
-- [Alila Ubud](https://whatahotel.com/hotels/3061/alila-ubud.html): Bali, Indonesia
-- [Alila Villas Uluwatu](https://whatahotel.com/hotels/3060/alila-villas-uluwatu.html): Bali, Indonesia
+- [Alila Seminyak](https://whatahotel.com/hotels/3963/alila-seminyak.html): Kerobokan, Indonesia — Hyatt
+- [Alila Ubud](https://whatahotel.com/hotels/3061/alila-ubud.html): Bali, Indonesia — Hyatt
+- [Alila Villas Uluwatu](https://whatahotel.com/hotels/3060/alila-villas-uluwatu.html): Bali, Indonesia — Hyatt
 - [Amandari](https://whatahotel.com/hotels/1527/amandari.html): Ubud, Indonesia — Aman
 - [Amarterra Villas Resort Bali Nusa Dua](https://whatahotel.com/hotels/4938/amarterra-villas-resort-bali-nusa-dua-.html): Nusa Dua, Indonesia — Autograph Collection
 - [Andaz Bali](https://whatahotel.com/hotels/6229/andaz-bali.html): Bali, Indonesia — Hyatt
-- [Bvlgari Resort Bali](https://whatahotel.com/hotels/1736/bvlgari-resort-bali-.html): Bali, Indonesia
+- [Bvlgari Resort Bali](https://whatahotel.com/hotels/1736/bvlgari-resort-bali-.html): Bali, Indonesia — Bvlgari
 - [Four Seasons Resort Bali at Jimbaran Bay](https://whatahotel.com/hotels/1438/four-seasons-resort-bali-at-jimbaran-bay.html): Bali, Indonesia — Four Seasons
 - [Grand Hyatt Bali](https://whatahotel.com/hotels/3399/grand-hyatt-bali.html): Bali, Indonesia — Hyatt
-- [Hotel Indigo Bali Seminyak Beach](https://whatahotel.com/hotels/4031/hotel-indigo-bali-seminyak-beach-.html): Seminyak, Indonesia
-- [InterContinental Resort Bali](https://whatahotel.com/hotels/3985/intercontinental-resort-bali-.html): Bali, Indonesia
-- [Jumeirah Bali](https://whatahotel.com/hotels/4165/jumeirah-bali.html): Bali, Indonesia
+- [Hotel Indigo Bali Seminyak Beach](https://whatahotel.com/hotels/4031/hotel-indigo-bali-seminyak-beach-.html): Seminyak, Indonesia — Hotel Indigo
+- [InterContinental Resort Bali](https://whatahotel.com/hotels/3985/intercontinental-resort-bali-.html): Bali, Indonesia — InterContinental
+- [Jumeirah Bali](https://whatahotel.com/hotels/4165/jumeirah-bali.html): Bali, Indonesia — Jumeirah
 - [Raffles Bali](https://whatahotel.com/hotels/4937/raffles-bali.html): Jimbaran, Indonesia — Raffles
-- [The Sira](https://whatahotel.com/hotels/6703/the-sira.html): Lombok, Indonesia
+- [The Sira](https://whatahotel.com/hotels/6703/the-sira.html): Lombok, Indonesia — Marriott
 - Uluwatu Estate: Uluwatu, Bali, Indonesia — Mandarin Oriental — Mandarin Oriental Exceptional Home, 8+1 bedrooms; request availability at https://pro.whatahotel.com/homes#exceptional-homes
 - [W Bali - Seminyak](https://whatahotel.com/hotels/2972/w-bali-seminyak.html): Bali, Indonesia — W Hotels
 
@@ -456,10 +456,10 @@
 - [Banyan Tree Phuket](https://whatahotel.com/hotels/6479/banyan-tree-phuket.html): Phuket, Thailand — Banyan Tree
 - [Banyan Tree Samui](https://whatahotel.com/hotels/7073/banyan-tree-samui.html): Koh Samui, Thailand — Banyan Tree
 - [Belmond Napasai](https://whatahotel.com/hotels/2513/belmond-napasai-.html): Koh Samui, Thailand — Belmond
-- [Dinso Resort & Villas](https://whatahotel.com/hotels/6755/dinso-resort-villas.html): Phuket, Thailand
+- [Dinso Resort & Villas](https://whatahotel.com/hotels/6755/dinso-resort-villas.html): Phuket, Thailand — Vignette Collection
 - [Four Seasons Resort Chiang Mai](https://whatahotel.com/hotels/1389/four-seasons-resort-chiang-mai.html): Chiang Mai, Thailand — Four Seasons
 - [Four Seasons Resort Koh Samui](https://whatahotel.com/hotels/1911/four-seasons-resort-koh-samui.html): Koh Samui, Thailand — Four Seasons
-- [Intercontinental Koh Samui](https://whatahotel.com/hotels/3362/intercontinental-koh-samui.html): Koh Samui, Thailand
+- [Intercontinental Koh Samui](https://whatahotel.com/hotels/3362/intercontinental-koh-samui.html): Koh Samui, Thailand — InterContinental
 - [JW Marriott Khao Lak Resort & Spa](https://whatahotel.com/hotels/3723/jw-marriott-khao-lak-resort-spa.html): Khao Lak, Thailand — JW Marriott
 - [JW Marriott Phuket Resort & Spa](https://whatahotel.com/hotels/3725/jw-marriott-phuket-resort-spa.html): Phuket, Thailand — JW Marriott
 - [Mandarin Oriental, Bangkok](https://whatahotel.com/hotels/1045/mandarin-oriental-bangkok-.html): Bangkok, Thailand — Mandarin Oriental
@@ -472,8 +472,8 @@
 ### Vietnam
 
 - [Amanoi](https://whatahotel.com/hotels/2944/amanoi.html): Vinh Hy, Vietnam — Aman
-- [Danang Marriott Resort & Spa](https://whatahotel.com/hotels/6367/danang-marriott-resort-spa.html): Da Nang, Vietnam
-- [Danang Marriott Resort & Spa, Non Nuoc Beach Villas](https://whatahotel.com/hotels/6662/danang-marriott-resort-spa-non-nuoc-beach-villas.html): Da Nang, Vietnam
+- [Danang Marriott Resort & Spa](https://whatahotel.com/hotels/6367/danang-marriott-resort-spa.html): Da Nang, Vietnam — Marriott
+- [Danang Marriott Resort & Spa, Non Nuoc Beach Villas](https://whatahotel.com/hotels/6662/danang-marriott-resort-spa-non-nuoc-beach-villas.html): Da Nang, Vietnam — Marriott
 - [Four Seasons Resort the Nam Hai](https://whatahotel.com/hotels/1803/four-seasons-resort-the-nam-hai.html): Hoi An, Vietnam — Four Seasons
 - [Hyatt Regency Danang Resort & Spa](https://whatahotel.com/hotels/3395/hyatt-regency-danang-resort-spa.html): Da Nang, Vietnam — Hyatt
 - [JW Marriott Phu Quoc Emerald Bay Resort & Spa](https://whatahotel.com/hotels/3870/jw-marriott-phu-quoc-emerald-bay-resort-spa.html): Phu Quoc, Vietnam — JW Marriott
@@ -502,7 +502,7 @@
 
 - [Four Seasons Resort AMAALA at Triple Bay](https://whatahotel.com/hotels/7082/four-seasons-resort-amaala-at-triple-bay.html): The Red Sea, Saudi Arabia — Four Seasons
 - [Rosewood AMAALA](https://whatahotel.com/hotels/7114/rosewood-amaala.html): The Red Sea, Saudi Arabia — Rosewood
-- [Shebara](https://whatahotel.com/hotels/7166/shebara.html): The Red Sea, Saudi Arabia
+- [Shebara](https://whatahotel.com/hotels/7166/shebara.html): The Red Sea, Saudi Arabia — Signature Collection
 - [Six Senses AMAALA](https://whatahotel.com/hotels/7115/six-senses-amaala.html): The Red Sea, Saudi Arabia — Six Senses
 - [Six Senses Southern Dunes](https://whatahotel.com/hotels/6741/six-senses-southern-dunes.html): The Red Sea, Saudi Arabia — Six Senses
 
@@ -523,22 +523,22 @@
 
 ### United Arab Emirates
 
-- [Bvlgari Hotel, Dubai](https://whatahotel.com/hotels/3492/bvlgari-hotel-dubai.html): Dubai, United Arab Emirates
-- [Jumeirah at Etihad Towers](https://whatahotel.com/hotels/2738/jumeirah-at-etihad-towers-.html): Abu Dhabi, United Arab Emirates
-- [Jumeirah at Saadiyat Island Resort](https://whatahotel.com/hotels/4658/jumeirah-at-saadiyat-island-resort.html): Abu Dhabi, United Arab Emirates
-- [Jumeirah Beach Hotel](https://whatahotel.com/hotels/1165/jumeirah-beach-hotel.html): Dubai, United Arab Emirates
-- [Jumeirah Dar Al Masyaf](https://whatahotel.com/hotels/4657/jumeirah-dar-al-masyaf.html): Dubai, United Arab Emirates
-- [Jumeirah Zabeel Saray](https://whatahotel.com/hotels/2741/jumeirah-zabeel-saray.html): Dubai, United Arab Emirates
+- [Bvlgari Hotel, Dubai](https://whatahotel.com/hotels/3492/bvlgari-hotel-dubai.html): Dubai, United Arab Emirates — Bvlgari
+- [Jumeirah at Etihad Towers](https://whatahotel.com/hotels/2738/jumeirah-at-etihad-towers-.html): Abu Dhabi, United Arab Emirates — Jumeirah
+- [Jumeirah at Saadiyat Island Resort](https://whatahotel.com/hotels/4658/jumeirah-at-saadiyat-island-resort.html): Abu Dhabi, United Arab Emirates — Jumeirah
+- [Jumeirah Beach Hotel](https://whatahotel.com/hotels/1165/jumeirah-beach-hotel.html): Dubai, United Arab Emirates — Jumeirah
+- [Jumeirah Dar Al Masyaf](https://whatahotel.com/hotels/4657/jumeirah-dar-al-masyaf.html): Dubai, United Arab Emirates — Jumeirah
+- [Jumeirah Zabeel Saray](https://whatahotel.com/hotels/2741/jumeirah-zabeel-saray.html): Dubai, United Arab Emirates — Jumeirah
 - [Park Hyatt Abu Dhabi Hotel and Villas](https://whatahotel.com/hotels/3902/park-hyatt-abu-dhabi-hotel-and-villas.html): Abu Dhabi, United Arab Emirates — Hyatt
-- [The Abu Dhabi EDITION](https://whatahotel.com/hotels/3468/the-abu-dhabi-edition.html): Abu Dhabi, United Arab Emirates
+- [The Abu Dhabi EDITION](https://whatahotel.com/hotels/3468/the-abu-dhabi-edition.html): Abu Dhabi, United Arab Emirates — EDITION
 
 ## Pacific & Indian Ocean (15)
 
 ### Australia
 
-- [InterContinental Hayman Island Resort](https://whatahotel.com/hotels/3609/intercontinental-hayman-island-resort.html): Hayman Island, Australia
-- [Lizard Island Resort All-Inclusive](https://whatahotel.com/hotels/1771/lizard-island-resort-br-all-inclusive.html): Lizard Island, Australia
-- [The Reef House Palm Cove](https://whatahotel.com/hotels/6212/the-reef-house-palm-cove.html): Cairns, Australia
+- [InterContinental Hayman Island Resort](https://whatahotel.com/hotels/3609/intercontinental-hayman-island-resort.html): Hayman Island, Australia — InterContinental
+- [Lizard Island Resort All-Inclusive](https://whatahotel.com/hotels/1771/lizard-island-resort-br-all-inclusive.html): Lizard Island, Australia — Signature Collection
+- [The Reef House Palm Cove](https://whatahotel.com/hotels/6212/the-reef-house-palm-cove.html): Cairns, Australia — Signature Collection
 
 ### Fiji
 
@@ -547,9 +547,9 @@
 ### French Polynesia
 
 - [Four Seasons Resort Bora Bora](https://whatahotel.com/hotels/2280/four-seasons-resort-bora-bora.html): Bora Bora, French Polynesia — Four Seasons
-- [InterContinental Bora Bora & Thalasso](https://whatahotel.com/hotels/1970/intercontinental-bora-bora-thalasso-.html): Bora Bora, French Polynesia
+- [InterContinental Bora Bora & Thalasso](https://whatahotel.com/hotels/1970/intercontinental-bora-bora-thalasso-.html): Bora Bora, French Polynesia — InterContinental
 - [Le Taha'a Island Resort & Spa](https://whatahotel.com/hotels/1346/le-taha-a-island-resort-spa.html): Taha'a, French Polynesia — Relais & Châteaux
-- [The Brando](https://whatahotel.com/hotels/2987/the-brando.html): Papeete, French Polynesia
+- [The Brando](https://whatahotel.com/hotels/2987/the-brando.html): Papeete, French Polynesia — Signature Collection
 
 ### Maldives
 

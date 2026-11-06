@@ -781,6 +781,8 @@ body.search-active .floating-video { animation: none; visibility: hidden; } /* i
   font-size: .72rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
   color: #2a2008; background: linear-gradient(135deg, var(--gold-2), var(--gold));
   padding: .3rem .65rem; border-radius: 999px; box-shadow: var(--shadow-sm);
+  /* never run under the heart button (top-right); very long names end in "…" */
+  max-width: calc(100% - 1.5rem - 42px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .pcard__fav {
   position: absolute; top: .7rem; right: .7rem; z-index: 2;

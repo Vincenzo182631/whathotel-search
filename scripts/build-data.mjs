@@ -112,6 +112,29 @@ const BRAND_RULES = [
   [/leading hotels/i, "Leading Hotels of the World"],
   [/preferred/i, "Preferred"],
   [/relais\s*&?\s*ch/i, "Relais & Châteaux"],
+  // Added after the rules above, so they only label properties nothing above matched.
+  // Each comes from the property's own collection field (or a brand in its name).
+  [/\balila\b/i, "Hyatt"],                      // Alila is a Hyatt brand (as Andaz → Hyatt above)
+  [/\bCOMO\b/, "COMO"],                         // case-sensitive: not "Lago di Como"
+  [/\bomni\b/i, "Omni"],
+  [/\bbvlgari\b|\bbulgari\b/i, "Bvlgari"],
+  [/\b1 hotels?\b/i, "1 Hotels"],
+  [/\bmontage\b/i, "Montage"],
+  [/\bjumeirah\b/i, "Jumeirah"],
+  [/\bkempinski\b/i, "Kempinski"],
+  [/\bedition hotels\b|\bthe [a-z ]+ edition\b/i, "EDITION"],
+  [/\bintercontinental\b/i, "InterContinental"],
+  [/\bkimpton\b/i, "Kimpton"],
+  [/\bhotel indigo\b/i, "Hotel Indigo"],
+  [/\bvignette collection\b/i, "Vignette Collection"],
+  [/\brenaissance hotels?\b/i, "Renaissance"],
+  [/\bmarriott\b/i, "Marriott"],                // after JW Marriott / Ritz-Carlton / St. Regis above
+  [/\brocco forte\b/i, "Rocco Forte"],
+  [/\bviceroy\b/i, "Viceroy"],
+  [/\blangham\b/i, "Langham"],
+  [/\bdestination hotel/i, "Destination Hotels"],
+  [/small luxury hotels/i, "Small Luxury Hotels"],   // short for the photo badge; the full name stays in the collection line
+  [/the signature collection/i, "Signature Collection"], // WhataHotel's independent hotels
 ];
 function brandFor(name, collection) {
   const hay = (name + " " + collection);
