@@ -1057,6 +1057,13 @@ body.modal-open { overflow: hidden; }
 .mobile-cta.show { transform: none; }
 .mobile-cta .btn { flex: 1; padding: .85rem 1rem; font-size: .92rem; }
 @media (min-width: 900px) { .mobile-cta { display: none; } }
+/* Tavus chat launcher (tiny orb, bottom-right: 64px + 16px margin, with a "Want to
+   chat?" bubble to its left): on phones the sticky bar stops just short of the orb so
+   it stays visible and tappable; the bubble tucks behind the bar. */
+@media (max-width: 899px) {
+  body:has(tavus-widget) .mobile-cta { right: 82px; gap: .45rem; }
+  body:has(tavus-widget) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
+}
 
 /* ---------- AI Concierge (LiveAvatar) ---------- */
 .concierge { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 90; }

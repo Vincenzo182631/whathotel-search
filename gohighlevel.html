@@ -1098,6 +1098,13 @@ body.modal-open { overflow: hidden; }
 .mobile-cta.show { transform: none; }
 .mobile-cta .btn { flex: 1; padding: .85rem 1rem; font-size: .92rem; }
 @media (min-width: 900px) { .mobile-cta { display: none; } }
+/* Tavus chat launcher (tiny orb, bottom-right: 64px + 16px margin, with a "Want to
+   chat?" bubble to its left): on phones the sticky bar stops just short of the orb so
+   it stays visible and tappable; the bubble tucks behind the bar. */
+@media (max-width: 899px) {
+  body:has(tavus-widget) .mobile-cta { right: 82px; gap: .45rem; }
+  body:has(tavus-widget) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
+}
 
 /* ---------- AI Concierge (LiveAvatar) ---------- */
 .concierge { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 90; }
@@ -2684,22 +2691,13 @@ html.mo-lock .floating-video, html.mo-lock .mobile-cta, html.mo-lock .concierge 
   <a class="btn btn-primary" href="#directory" data-scroll="#directory" data-cta="mobile-browse">Browse Homes</a>
 </div>
 
-<!-- ============================ FLOATING VIDEO ============================ -->
-<div class="floating-video" id="floating-video" aria-label="Featured video">
-  <button class="floating-video__min" id="fv-min" type="button" aria-label="Minimize video">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 17h12"/></svg>
-  </button>
-  <video class="floating-video__vid" id="fv-video" muted loop autoplay playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback>
-    <source src="https://assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a62e56f9eb8e1b1cca3f618.mp4" type="video/mp4">
-  </video>
-  <button class="floating-video__mute" id="fv-mute" type="button" aria-label="Unmute video" aria-pressed="false">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M17 9l4 4M21 9l-4 4"/></svg>
-  </button>
-  <button class="floating-video__launch" id="fv-launch" type="button" aria-label="Open video" hidden>
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
-    <span class="floating-video__launch-txt">Watch</span>
-  </button>
-</div>
+<!-- ============================ TAVUS AI CONCIERGE (CVI widget) ============================ -->
+<!-- Floating launcher for a face-to-face conversation with our Tavus PAL. Everything inside it
+     (launcher, preview, device check, call, captions) is rendered and styled by Tavus; its look,
+     corner (bottom-right) and the PAL itself are set in the Tavus portal (maker.tavus.io).
+     The deployment id is not a secret. Replaced the floating promo video in this corner. -->
+<tavus-widget deployment-id="6b86bcb5-fed3-4aab-a141-6b6fdc78632d"></tavus-widget>
+<script src="https://unpkg.com/@tavus/widget@latest"></script>
 
 <!-- ============================ AI CONCIERGE (LiveAvatar) ============================ -->
 <!-- Hidden by default; shown only when window.WAH_AVATAR.enabled === true. -->
