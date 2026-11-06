@@ -314,7 +314,8 @@
     if (typeof req.showModal === "function") req.showModal(); else req.setAttribute("open", "");
     document.documentElement.classList.add("mo-lock");
     req.scrollTop = 0;
-    setTimeout(function () { var f = $("#mo-f-name"); if (f) f.focus(); }, 30);
+    // Focus Name once the dialog is up, unless the visitor is already typing in the form.
+    setTimeout(function () { var f = $("#mo-f-name"); if (f && !form.contains(document.activeElement)) f.focus(); }, 30);
     track("mo_request_opened", { property_id: h.id });
   }
   function showView(which) {

@@ -163,6 +163,8 @@ async function runDirect(browser) {
   async function openAndFill(id) {
     await page.evaluate((i) => window.WAH_MO_UI.request(i), id);
     await page.waitForSelector("#mo-request[open]");
+    // The form moves focus to Name ~30ms after opening; typing before that can land in the wrong field.
+    await page.waitForFunction(() => document.activeElement && document.activeElement.id === "mo-f-name");
     await page.fill("#mo-f-name", "GHL Direct Test"); await page.fill("#mo-f-email", "ghl-direct@example.test");
     await page.fill("#mo-f-phone", "+1 305 555 0101");
     await page.fill("#mo-f-checkin", isoIn(90)); await page.fill("#mo-f-checkout", isoIn(94));
@@ -171,6 +173,13 @@ async function runDirect(browser) {
     await page.locator("#mo-f-consent").check();
     await page.waitForTimeout(1600);
   }
+  async function dumpState(tag) {
+    console.log(tag, JSON.stringify(await page.evaluate(() => ({ sends: (JSON.parse(localStorage.getItem("wah_mo_sends") || "[]")).length, open: document.getElementById("mo-request").open,
+      success: !document.getElementById("mo-req-success").hidden, formErr: !document.getElementById("mo-form-error").hidden && document.getElementById("mo-form-error").textContent.slice(0, 80),
+      fieldErrs: [...document.querySelectorAll(".mo-field__err")].map(x => x.textContent).filter(Boolean), busy: document.getElementById("mo-f-submit").disabled,
+      active: document.activeElement && (document.activeElement.id || document.activeElement.tagName), name: document.getElementById("mo-f-name").value, consent: document.getElementById("mo-f-consent").checked }))), "received:", received.length);
+  }
+  async function waitOr(sel, timeout, tag) { await page.waitForSelector(sel, { timeout }).catch(async (e) => { await dumpState(tag); throw e; }); }
   // 1) Webhook down → retried, then error state; no success.
   hookMode = "fail"; let base = received.length;
   await openAndFill("mo-villa-sa-font");
@@ -197,15 +206,15 @@ async function runDirect(browser) {
   await openAndFill("mo-tatvani");
   await page.evaluate(() => { document.getElementById("mo-f-website").value = "http://spam.example"; });
   await page.locator("#mo-f-submit").click();
-  await page.waitForSelector("#mo-req-success:not([hidden])", { timeout: 5000 });
+  await waitOr("#mo-req-success:not([hidden])", 5000, "DEBUG3");
   check(`${label}: honeypot → nothing sent`, received.length === base);
   await page.keyboard.press("Escape");
   // 4) Per-browser limit: 3 sends in 10 minutes.
-  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click(); await page.waitForSelector("#mo-req-success:not([hidden])"); await page.keyboard.press("Escape");
-  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click(); await page.waitForSelector("#mo-req-success:not([hidden])"); await page.keyboard.press("Escape");
+  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click(); await waitOr("#mo-req-success:not([hidden])", 15000, "DEBUG4a"); await page.keyboard.press("Escape");
+  await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click(); await waitOr("#mo-req-success:not([hidden])", 15000, "DEBUG4b"); await page.keyboard.press("Escape");
   base = received.length;
   await openAndFill("mo-tatvani"); await page.locator("#mo-f-submit").click();
-  await page.waitForSelector("#mo-form-error:not([hidden])", { timeout: 5000 });
+  await waitOr("#mo-form-error:not([hidden])", 5000, "DEBUG4c");
   check(`${label}: 4th send in 10 minutes is held back`, received.length === base && /several requests/.test(await page.locator("#mo-form-error").textContent()));
   check(`${label}: no page errors`, errors.length === 0, errors.join("; "));
   await ctx.close();
