@@ -1089,25 +1089,20 @@ body.modal-open { overflow: hidden; }
 .vguide__stage[data-state="loading"]::after { content: "Connecting…"; }
 .vguide__stage[data-state="error"]::after { content: "Video chat couldn't load. Please try again later."; }
 @media (max-width: 899px) {
-  /* Phones: the face alone (48px) beside the Search / Browse bar, with "Talk to Us"
-     as a small tag above it (hidden while the call window is open). */
-  .vguide-launch { right: 12px; bottom: 20px; width: 48px; height: 48px; padding: 2px; justify-content: center; }
-  .vguide-launch__label { position: absolute; right: -2px; bottom: calc(100% + 16px); padding: .22rem .55rem; border-radius: 999px;
+  /* Phones: no Search / Browse bar, so the bottom of the screen is free. The face
+     (48px) sits bottom-right with a small "Talk to Us" tag above it. While the call
+     window is open it takes the corner and the launcher steps aside (× closes). */
+  body:has(#vguide-launch) .mobile-cta { display: none; }
+  .vguide-launch { right: 16px; bottom: 16px; width: 48px; height: 48px; padding: 2px; justify-content: center; }
+  .vguide-launch__label { position: absolute; right: -2px; bottom: calc(100% + 8px); padding: .22rem .55rem; border-radius: 999px;
     background: var(--ink); color: var(--gold-2); font-size: .68rem; letter-spacing: .02em;
     box-shadow: 0 6px 16px -6px rgba(6,14,24,.6); }
-  .vguide-launch[aria-expanded="true"] .vguide-launch__label { display: none; }
+  body.vguide-open .vguide-launch { display: none; }
   /* Before the call: wide enough for the "Verify you are human" check (300px).
-     Once the call is live: a small 100 x 150 corner window. */
-  .vguide { right: 12px; bottom: 84px; width: min(300px, calc(100vw - 24px)); }
+     Once the call is live: a 200 x 300 corner window, room for Tavus's call buttons. */
+  .vguide { right: 12px; bottom: 12px; width: min(300px, calc(100vw - 24px)); }
   .vguide__stage { height: 300px; }
-  .vguide.is-live { width: 100px; }
-  .vguide.is-live .vguide__stage { height: 150px; }
-  .vguide.is-live .vguide__bar { height: 22px; padding-left: 0; justify-content: flex-end; }
-  .vguide.is-live .vguide__title { display: none; } /* no room at 100px; the × stays */
-  .vguide.is-live .vguide__close { width: 22px; height: 22px; }
-  /* the sticky Search / Browse bar stops short of the launcher */
-  body:has(#vguide-launch) .mobile-cta { right: 68px; gap: .45rem; }
-  body:has(#vguide-launch) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
+  .vguide.is-live { width: 200px; }
 }
 body.search-active .vguide-launch { opacity: 0; pointer-events: none; }
 
