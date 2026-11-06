@@ -279,7 +279,8 @@ test("perks band, section Q&A and FAQPage use the same configured text", () => {
   const perks = CONFIG.guestPerks, faq = CONFIG.guestFaq;
   assert.equal(perks.items.length, 5);
   for (const it of perks.items) assert.ok(html.includes(it.title.replace("&", "&amp;")), `perk on page: ${it.title}`);
-  assert.ok(html.includes("$500 Concierge Credit*") && html.includes("The value is in the currency where the property is located."));
+  assert.ok(html.includes("$500 Concierge Credit*") && html.includes("the equivalent of US$500, applied in the property"));
+  assert.ok(!html.includes("The value is in the currency where the property is located"), "old footnote removed");
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
   const faqPage = ld.flatMap((d) => d["@graph"] || [d]).find((g) => g["@type"] === "FAQPage");
   for (const [q, a] of faq) {
