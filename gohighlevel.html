@@ -1098,13 +1098,47 @@ body.modal-open { overflow: hidden; }
 .mobile-cta.show { transform: none; }
 .mobile-cta .btn { flex: 1; padding: .85rem 1rem; font-size: .92rem; }
 @media (min-width: 900px) { .mobile-cta { display: none; } }
-/* Tavus chat launcher (tiny orb, bottom-right: 64px + 16px margin, with a "Want to
-   chat?" bubble to its left): on phones the sticky bar stops just short of the orb so
-   it stays visible and tappable; the bubble tucks behind the bar. */
+/* ---------- Video guide (Tavus embed in our own compact window) ----------
+   Small gold launcher bottom-right; the call window opens above it at a fixed small
+   size so the page stays visible. Nothing inside <tavus-embed> is styled. */
+.vguide-launch { position: fixed; right: 24px; bottom: 24px; z-index: 210; width: 48px; height: 48px;
+  display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  color: var(--ink); background: linear-gradient(145deg, var(--gold-2), var(--gold));
+  box-shadow: 0 10px 26px -8px rgba(6,14,24,.55), 0 0 0 2px rgba(255,255,255,.85);
+  transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
+.vguide-launch svg { width: 22px; height: 22px; }
+.vguide-launch:hover { transform: translateY(-2px); }
+.vguide-launch:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 3px; }
+.vguide-launch[aria-expanded="true"] { background: var(--ink); color: var(--gold-2); }
+.vguide { position: fixed; right: 24px; bottom: 84px; z-index: 210; width: 300px;
+  border-radius: 14px; overflow: hidden; background: var(--ink);
+  box-shadow: 0 26px 60px -18px rgba(6,14,24,.62), 0 0 0 1px rgba(255,255,255,.12); }
+.vguide[hidden] { display: none; }
+.vguide__bar { display: flex; align-items: center; justify-content: space-between; height: 30px; padding: 0 4px 0 12px;
+  color: var(--gold-2); font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.vguide__close { width: 26px; height: 26px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%;
+  background: transparent; color: #fff; cursor: pointer; }
+.vguide__close:hover { background: rgba(255,255,255,.12); }
+.vguide__close:focus-visible { outline: 2px solid var(--gold-2); }
+.vguide__close svg { width: 16px; height: 16px; }
+.vguide__stage { position: relative; width: 100%; height: 400px; background: #000; }
+.vguide.is-live { width: 280px; }
+.vguide__stage[data-state]::after { position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem;
+  color: rgba(255,255,255,.8); font-size: .85rem; text-align: center; }
+.vguide__stage[data-state="loading"]::after { content: "Connecting…"; }
+.vguide__stage[data-state="error"]::after { content: "Video chat couldn't load. Please try again later."; }
 @media (max-width: 899px) {
-  body:has(tavus-widget) .mobile-cta { right: 82px; gap: .45rem; }
-  body:has(tavus-widget) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
+  .vguide-launch { right: 12px; bottom: 20px; }
+  /* Before the call: wide enough for the "Verify you are human" check (300px).
+     Once the call is live: a small 200 x 300 corner window. */
+  .vguide { right: 12px; bottom: 84px; width: min(300px, calc(100vw - 24px)); }
+  .vguide__stage { height: 300px; }
+  .vguide.is-live { width: 200px; }
+  /* the sticky Search / Browse bar stops short of the launcher */
+  body:has(#vguide-launch) .mobile-cta { right: 68px; gap: .45rem; }
+  body:has(#vguide-launch) .mobile-cta .btn { white-space: nowrap; padding-inline: .7rem; font-size: .92rem; }
 }
+body.search-active .vguide-launch { opacity: 0; pointer-events: none; }
 
 /* ---------- AI Concierge (LiveAvatar) ---------- */
 .concierge { position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 90; }
@@ -2691,13 +2725,25 @@ html.mo-lock .floating-video, html.mo-lock .mobile-cta, html.mo-lock .concierge 
   <a class="btn btn-primary" href="#directory" data-scroll="#directory" data-cta="mobile-browse">Browse Homes</a>
 </div>
 
-<!-- ============================ TAVUS AI CONCIERGE (CVI widget) ============================ -->
-<!-- Floating launcher for a face-to-face conversation with our Tavus PAL. Everything inside it
-     (launcher, preview, device check, call, captions) is rendered and styled by Tavus; its look,
-     corner (bottom-right) and the PAL itself are set in the Tavus portal (maker.tavus.io).
-     The deployment id is not a secret. Replaced the floating promo video in this corner. -->
-<tavus-widget deployment-id="6b86bcb5-fed3-4aab-a141-6b6fdc78632d"></tavus-widget>
-<script src="https://unpkg.com/@tavus/widget@latest"></script>
+<!-- ============================ VIDEO GUIDE (Tavus embed) ============================ -->
+<!-- Our own small launcher and compact call window (assets/js/video-guide.js). The Tavus
+     embed script loads on the first tap; the call UI inside <tavus-embed> is Tavus's own.
+     The guide's name, face and behaviour are set in the Tavus portal (maker.tavus.io).
+     The deployment id is not a secret. -->
+<button class="vguide-launch" id="vguide-launch" type="button" aria-controls="vguide" aria-expanded="false"
+        aria-label="Video chat with our website guide" title="Video chat with our website guide"
+        data-deployment="6b86bcb5-fed3-4aab-a141-6b6fdc78632d">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/></svg>
+</button>
+<section class="vguide" id="vguide" aria-label="Video chat with our website guide" hidden>
+  <div class="vguide__bar">
+    <span class="vguide__title">Website guide</span>
+    <button class="vguide__close" id="vguide-close" type="button" aria-label="End video chat and close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="vguide__stage" id="vguide-stage"></div>
+</section>
 
 <!-- ============================ AI CONCIERGE (LiveAvatar) ============================ -->
 <!-- Hidden by default; shown only when window.WAH_AVATAR.enabled === true. -->
@@ -12091,13 +12137,111 @@ window.WAH_DETAILS = {
 </script>
 <script>
 /*
- * tavus-context.js — tells Ava (the Tavus PAL in <tavus-widget>) which property
- * the visitor has open, so she can say more about it and point to the right button.
+ * video-guide.js — our own small launcher + compact call window for the Tavus guide.
+ *
+ * Why not <tavus-widget>: its call popup has no size setting and covers almost the
+ * whole phone screen. <tavus-embed> fills whatever box it is given, so the page sets
+ * the size (see .vguide in homes.css) and the visitor can keep browsing during a call.
+ *
+ * - The Tavus embed script loads on the first tap only (nothing loads for visitors
+ *   who never open it). Version tracks the "latest" tag, as with the old widget.
+ * - Tapping the button opens the window and starts the call; × ends it and closes.
+ * - Until the call connects the window is 300px wide so Tavus's "Verify you are
+ *   human" check fits; once live it shrinks to the small call size.
+ * - Everything inside <tavus-embed> is Tavus's own UI and is not styled here.
+ * - No API key or backend: the deployment id is public and only accepts
+ *   requests from pro.whatahotel.com.
+ */
+(function () {
+  "use strict";
+  var launch = document.getElementById("vguide-launch");
+  var panel = document.getElementById("vguide");
+  var stage = document.getElementById("vguide-stage");
+  var closeBtn = document.getElementById("vguide-close");
+  if (!launch || !panel || !stage) return;
+
+  var DEPLOYMENT = launch.getAttribute("data-deployment");
+  var SCRIPT = "https://unpkg.com/@tavus/embed@latest";
+  var el = null, ready = false, wantStart = false, scriptAdded = false;
+
+  function track(name) { try { if (window.dataLayer) window.dataLayer.push({ event: name }); } catch (e) {} }
+
+  function loadScript() {
+    if (scriptAdded) return;
+    scriptAdded = true;
+    var s = document.createElement("script");
+    s.src = SCRIPT; s.async = true;
+    s.onerror = function () { stage.setAttribute("data-state", "error"); };
+    document.head.appendChild(s);
+  }
+
+  function mount() {
+    if (el) return;
+    el = document.createElement("tavus-embed");
+    el.setAttribute("deployment-id", DEPLOYMENT);
+    el.addEventListener("tavus:ready", function () {
+      ready = true;
+      stage.removeAttribute("data-state");
+      if (wantStart) start();
+    });
+    stage.appendChild(el);
+    // tavus-context.js copies the open property's facts onto the element.
+    try { document.dispatchEvent(new CustomEvent("wah:guide-mounted")); } catch (e) {}
+    loadScript();
+  }
+
+  function start() {
+    wantStart = false;
+    if (el && typeof el.startConversation === "function") {
+      try { el.startConversation(); } catch (e) {}
+    }
+  }
+
+  function open() {
+    if (!panel.hidden) return;
+    panel.hidden = false;
+    launch.setAttribute("aria-expanded", "true");
+    document.body.classList.add("vguide-open");
+    if (!el) { stage.setAttribute("data-state", "loading"); mount(); }
+    if (ready) start(); else wantStart = true;
+    track("video_guide_opened");
+  }
+
+  function close() {
+    if (panel.hidden) return;
+    wantStart = false;
+    if (el && typeof el.endConversation === "function") {
+      try { el.endConversation(); } catch (e) {}
+    }
+    panel.hidden = true;
+    panel.classList.remove("is-live");
+    launch.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("vguide-open");
+    launch.focus();
+  }
+
+  // Shrink to the small call size once the call is live (CSS .vguide.is-live).
+  document.addEventListener("tavus:conversation-started", function () { panel.classList.add("is-live"); });
+  document.addEventListener("tavus:conversation-ended", function () { panel.classList.remove("is-live"); });
+
+  launch.addEventListener("click", function () { if (panel.hidden) open(); else close(); });
+  if (closeBtn) closeBtn.addEventListener("click", close);
+  panel.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+  window.WAH_GUIDE = { open: open, close: close };
+})();
+
+</script>
+<script>
+/*
+ * tavus-context.js — tells the Tavus website guide (in <tavus-embed>, see
+ * video-guide.js) which property the visitor has open, so it can say more about it
+ * and point to the right button.
  *
  * The detail views dispatch:
  *   document "wah:property-viewed"  { kind: "hotel"|"home", name, brand, location, ... }
  *   document "wah:property-closed"
- * Before a call: the facts go into the widget's conversational-context attribute
+ * Before a call: the facts go into the element's conversational-context attribute
  *   (read when the conversation starts).
  * During a call (after tavus:conversation-started): sent with
  *   conversation.append_llm_context (attributes are not re-read mid-call).
@@ -12105,8 +12249,8 @@ window.WAH_DETAILS = {
  */
 (function () {
   "use strict";
-  var el = document.querySelector("tavus-widget");
-  if (!el) return;
+  // The element is created on the launcher's first tap, so look it up each time.
+  function guideEl() { return document.querySelector("tavus-embed, tavus-widget"); }
 
   var BASE = "The visitor is browsing the WhataHotel! Homes page (pro.whatahotel.com/homes).";
   var live = false, lastSent = "", current = null;
@@ -12135,13 +12279,15 @@ window.WAH_DETAILS = {
   }
 
   function setStartContext() {
+    var el = guideEl(); if (!el) return;
     var ctx = current ? BASE + " " + describe(current) : "";
     if (ctx) el.setAttribute("conversational-context", ctx);
     else el.removeAttribute("conversational-context");
   }
 
   function sendLive(text) {
-    if (!live || typeof el.sendMessage !== "function" || text === lastSent) return;
+    var el = guideEl();
+    if (!live || !el || typeof el.sendMessage !== "function" || text === lastSent) return;
     lastSent = text;
     try { el.sendMessage({ event_type: "conversation.append_llm_context", properties: { context: text } }); } catch (e) {}
   }
@@ -12158,6 +12304,7 @@ window.WAH_DETAILS = {
     current = null;
     if (!live) setStartContext();
   });
+  document.addEventListener("wah:guide-mounted", setStartContext);
   document.addEventListener("tavus:conversation-started", function () { live = true; lastSent = ""; });
   document.addEventListener("tavus:conversation-ended", function () { live = false; lastSent = ""; setStartContext(); });
 })();

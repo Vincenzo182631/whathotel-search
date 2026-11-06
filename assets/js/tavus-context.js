@@ -1,11 +1,12 @@
 /*
- * tavus-context.js — tells Ava (the Tavus PAL in <tavus-widget>) which property
- * the visitor has open, so she can say more about it and point to the right button.
+ * tavus-context.js — tells the Tavus website guide (in <tavus-embed>, see
+ * video-guide.js) which property the visitor has open, so it can say more about it
+ * and point to the right button.
  *
  * The detail views dispatch:
  *   document "wah:property-viewed"  { kind: "hotel"|"home", name, brand, location, ... }
  *   document "wah:property-closed"
- * Before a call: the facts go into the widget's conversational-context attribute
+ * Before a call: the facts go into the element's conversational-context attribute
  *   (read when the conversation starts).
  * During a call (after tavus:conversation-started): sent with
  *   conversation.append_llm_context (attributes are not re-read mid-call).
@@ -13,8 +14,8 @@
  */
 (function () {
   "use strict";
-  var el = document.querySelector("tavus-widget");
-  if (!el) return;
+  // The element is created on the launcher's first tap, so look it up each time.
+  function guideEl() { return document.querySelector("tavus-embed, tavus-widget"); }
 
   var BASE = "The visitor is browsing the WhataHotel! Homes page (pro.whatahotel.com/homes).";
   var live = false, lastSent = "", current = null;
@@ -43,13 +44,15 @@
   }
 
   function setStartContext() {
+    var el = guideEl(); if (!el) return;
     var ctx = current ? BASE + " " + describe(current) : "";
     if (ctx) el.setAttribute("conversational-context", ctx);
     else el.removeAttribute("conversational-context");
   }
 
   function sendLive(text) {
-    if (!live || typeof el.sendMessage !== "function" || text === lastSent) return;
+    var el = guideEl();
+    if (!live || !el || typeof el.sendMessage !== "function" || text === lastSent) return;
     lastSent = text;
     try { el.sendMessage({ event_type: "conversation.append_llm_context", properties: { context: text } }); } catch (e) {}
   }
@@ -66,6 +69,7 @@
     current = null;
     if (!live) setStartContext();
   });
+  document.addEventListener("wah:guide-mounted", setStartContext);
   document.addEventListener("tavus:conversation-started", function () { live = true; lastSent = ""; });
   document.addEventListener("tavus:conversation-ended", function () { live = false; lastSent = ""; setStartContext(); });
 })();
