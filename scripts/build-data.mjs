@@ -30,7 +30,7 @@ const source = JSON.parse(readFileSync(join(__dirname, "source-homes.json"), "ut
 const REGION_OF = {
   "United States": "North America", "Canada": "North America",
   "Mexico": "Latin America & Caribbean", "Belize": "Latin America & Caribbean",
-  "Costa Rica": "Latin America & Caribbean", "Honduras": "Latin America & Caribbean",
+  "Costa Rica": "Latin America & Caribbean", "Honduras": "Latin America & Caribbean", "Nicaragua": "Latin America & Caribbean",
   "Brazil": "Latin America & Caribbean", "Peru": "Latin America & Caribbean",
   "Turks and Caicos Islands": "Latin America & Caribbean", "Anguilla, BWI": "Latin America & Caribbean",
   "Bahamas": "Latin America & Caribbean", "Dominican Republic": "Latin America & Caribbean",

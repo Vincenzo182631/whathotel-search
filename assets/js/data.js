@@ -20,14 +20,14 @@ window.WAH_REGIONS = [
     "label": "North America",
     "blurb": "Villas, residences & estates across the U.S. and Canada.",
     "scene": "mountain",
-    "count": 89
+    "count": 94
   },
   {
     "key": "latam-caribbean",
     "label": "Latin America & Caribbean",
     "blurb": "Beachfront homes & villas across Mexico, the Caribbean and beyond.",
     "scene": "tropical",
-    "count": 87
+    "count": 89
   },
   {
     "key": "europe",
@@ -61,7 +61,7 @@ window.WAH_REGIONS = [
 window.WAH_BRANDS = [
   {
     "label": "Signature Collection",
-    "count": 32
+    "count": 36
   },
   {
     "label": "Four Seasons",
@@ -80,15 +80,15 @@ window.WAH_BRANDS = [
     "count": 20
   },
   {
+    "label": "Preferred",
+    "count": 14
+  },
+  {
     "label": "Rosewood",
     "count": 12
   },
   {
     "label": "Auberge Resorts",
-    "count": 11
-  },
-  {
-    "label": "Preferred",
     "count": 11
   },
   {
@@ -611,6 +611,21 @@ window.WAH_PROPERTIES = [
     "brand": "Autograph Collection",
     "scene": "tropical",
     "blurb": "In Nusa Dua, Indonesia.",
+    "featured": false
+  },
+  {
+    "id": 4233,
+    "url": "https://whatahotel.com/hotels/4233/amrit-ocean-resort-.html",
+    "name": "Amrit Ocean Resort",
+    "loc": "Singer Island, United States",
+    "city": "Singer Island",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "city",
+    "blurb": "In Singer Island, United States.",
     "featured": false
   },
   {
@@ -2084,6 +2099,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 4574,
+    "url": "https://whatahotel.com/hotels/4574/hawks-cay-resort.html",
+    "name": "Hawks Cay Resort",
+    "loc": "Duck Key, United States",
+    "city": "Duck Key",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "city",
+    "blurb": "In Duck Key, United States.",
+    "featured": false
+  },
+  {
     "id": 4138,
     "url": "https://whatahotel.com/hotels/4138/ho-olei-at-grand-wailea.html",
     "name": "Ho’olei at Grand Wailea",
@@ -2501,6 +2531,21 @@ window.WAH_PROPERTIES = [
     "brand": "Kimpton",
     "scene": "tropical",
     "blurb": "In Grand Cayman, Grand Cayman.",
+    "featured": false
+  },
+  {
+    "id": 1211,
+    "url": "https://whatahotel.com/hotels/1211/l-ermitage-beverly-hills.html",
+    "name": "L'Ermitage Beverly Hills",
+    "loc": "Beverly Hills, United States",
+    "city": "Beverly Hills",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Signature Collection",
+    "brand": "Signature Collection",
+    "scene": "city",
+    "blurb": "In Beverly Hills, United States.",
     "featured": false
   },
   {
@@ -3269,6 +3314,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 6211,
+    "url": "https://whatahotel.com/hotels/6211/pga-national-resort-.html",
+    "name": "PGA National Resort",
+    "loc": "Palm Beach, United States",
+    "city": "Palm Beach",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Signature Collection",
+    "brand": "Signature Collection",
+    "scene": "city",
+    "blurb": "In Palm Beach, United States.",
+    "featured": false
+  },
+  {
     "id": 1408,
     "url": "https://whatahotel.com/hotels/1408/phaea-blue-palace.html",
     "name": "Phaea Blue Palace",
@@ -3296,6 +3356,21 @@ window.WAH_PROPERTIES = [
     "brand": "Luxury Collection",
     "scene": "beach",
     "blurb": "In Algarve, Portugal.",
+    "featured": false
+  },
+  {
+    "id": 1996,
+    "url": "https://whatahotel.com/hotels/1996/pink-sands-resort.html",
+    "name": "Pink Sands Resort",
+    "loc": "Harbour Island, Bahamas",
+    "city": "Harbour Island",
+    "country": "Bahamas",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "Preferred Hotels & Resorts",
+    "brand": "Preferred",
+    "scene": "tropical",
+    "blurb": "In Harbour Island, Bahamas.",
     "featured": false
   },
   {
@@ -3416,6 +3491,21 @@ window.WAH_PROPERTIES = [
     "brand": "Raffles",
     "scene": "tropical",
     "blurb": "In Seychelles, Seychelles.",
+    "featured": false
+  },
+  {
+    "id": 6389,
+    "url": "https://whatahotel.com/hotels/6389/rancho-santana.html",
+    "name": "Rancho Santana",
+    "loc": "Tola, Nicaragua",
+    "city": "Tola",
+    "country": "Nicaragua",
+    "region": "Latin America & Caribbean",
+    "regionKey": "latam-caribbean",
+    "collection": "The Signature Collection",
+    "brand": "Signature Collection",
+    "scene": "tropical",
+    "blurb": "In Tola, Nicaragua.",
     "featured": false
   },
   {
@@ -4376,6 +4466,21 @@ window.WAH_PROPERTIES = [
     "brand": "Preferred",
     "scene": "mountain",
     "blurb": "In Verbier, Switzerland.",
+    "featured": false
+  },
+  {
+    "id": 3696,
+    "url": "https://whatahotel.com/hotels/3696/the-lodge-spa-at-brush-creek-ranch.html",
+    "name": "The Lodge & Spa at Brush Creek Ranch",
+    "loc": "Saratoga, United States",
+    "city": "Saratoga",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Signature Collection",
+    "brand": "Signature Collection",
+    "scene": "city",
+    "blurb": "In Saratoga, United States.",
     "featured": false
   },
   {

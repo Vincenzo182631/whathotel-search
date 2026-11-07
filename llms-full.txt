@@ -1,8 +1,8 @@
 # WhataHotel! Homes — full collection
 
-> Every property on https://pro.whatahotel.com/homes (369 total): 327 hotels and resorts with villas, residences and homes, and 42 Mandarin Oriental Exceptional Homes (not bookable online; availability on request via the page's Request Availability form). Generated 2026-11-06 from the page data.
+> Every property on https://pro.whatahotel.com/homes (376 total): 334 hotels and resorts with villas, residences and homes, and 42 Mandarin Oriental Exceptional Homes (not bookable online; availability on request via the page's Request Availability form). Generated 2026-11-07 from the page data.
 
-## North America (89)
+## North America (94)
 
 ### Canada
 
@@ -13,6 +13,7 @@
 ### United States
 
 - [1 Hotel South Beach](https://whatahotel.com/hotels/6412/1-hotel-south-beach.html): South Beach, Miami, United States — 1 Hotels
+- [Amrit Ocean Resort](https://whatahotel.com/hotels/4233/amrit-ocean-resort-.html): Singer Island, United States — Preferred
 - [Andaz Maui at Wailea Villas](https://whatahotel.com/hotels/2706/andaz-maui-at-wailea.html): Maui, United States — Hyatt
 - [Andaz Scottsdale Resort & Spa](https://whatahotel.com/hotels/3231/andaz-scottsdale-resort-spa.html): Scottsdale, United States — Hyatt
 - [Auberge du Soleil](https://whatahotel.com/hotels/7163/auberge-du-soleil.html): Napa Valley, United States — Auberge Resorts
@@ -36,10 +37,12 @@
 - [Four Seasons Resort Vail](https://whatahotel.com/hotels/2390/four-seasons-resort-vail.html): Vail, United States — Four Seasons
 - [Gem Hacienda](https://whatahotel.com/hotels/6733/gem-hacienda.html): Taos, United States — Signature Collection
 - [Goldener Hirsch, Auberge Collection](https://whatahotel.com/hotels/6280/goldener-hirsch-auberge-collection.html): Park City, United States — Auberge Resorts
+- [Hawks Cay Resort](https://whatahotel.com/hotels/4574/hawks-cay-resort.html): Duck Key, United States — Preferred
 - [Ho’olei at Grand Wailea](https://whatahotel.com/hotels/4138/ho-olei-at-grand-wailea.html): Maui, United States — Waldorf Astoria
 - [Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course](https://whatahotel.com/hotels/2194/hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course.html): Monterey, United States — Hyatt
 - [JW Marriott Clearwater Beach Resort & Spa](https://whatahotel.com/hotels/6429/jw-marriott-clearwater-beach-resort-spa.html): Clearwater, United States — JW Marriott
 - [JW Marriott Scottsdale Camelback Inn Resort and Spa](https://whatahotel.com/hotels/3255/jw-marriott-scottsdale-camelback-inn-resort-and-spa.html): Scottsdale, United States — JW Marriott
+- [L'Ermitage Beverly Hills](https://whatahotel.com/hotels/1211/l-ermitage-beverly-hills.html): Beverly Hills, United States — Signature Collection
 - [Lido House, Autograph Collection](https://whatahotel.com/hotels/3887/lido-house-autograph-collection.html): Newport Beach, United States — Autograph Collection
 - [Madeline Hotel & Residences, Auberge Collection](https://whatahotel.com/hotels/4226/madeline-hotel-residences-auberge-collection.html): Telluride, United States — Auberge Resorts
 - [Mandarin Oriental Boston](https://whatahotel.com/hotels/2226/mandarin-oriental-boston.html): Boston, United States — Mandarin Oriental
@@ -53,6 +56,7 @@
 - [Mountain Shadows](https://whatahotel.com/hotels/3685/mountain-shadows.html): Paradise Valley, United States — Preferred
 - [Nemacolin Woodlands Resort](https://whatahotel.com/hotels/4510/nemacolin-woodlands-resort.html): Farmington, United States — Signature Collection
 - [Omni Orlando at Champions Gate](https://whatahotel.com/hotels/7078/omni-orlando-at-champions-gate.html): Orlando and Disney World, United States — Omni
+- [PGA National Resort](https://whatahotel.com/hotels/6211/pga-national-resort-.html): Palm Beach, United States — Signature Collection
 - [Playa Largo Resort & Spa](https://whatahotel.com/hotels/3808/playa-largo-resort-spa.html): Key Largo, United States — Autograph Collection
 - [Rancho Valencia](https://whatahotel.com/hotels/1449/rancho-valencia.html): Rancho Santa Fe, United States — Signature Collection
 - [Renaissance Orlando at SeaWorld](https://whatahotel.com/hotels/3270/renaissance-orlando-at-seaworld.html): Orlando and Disney World, United States — Renaissance
@@ -74,6 +78,7 @@
 - [The Arrabelle, Vail Square](https://whatahotel.com/hotels/2257/the-arrabelle-vail-square.html): Vail, United States — Signature Collection
 - [The Langham Huntington, Pasadena, Los Angeles](https://whatahotel.com/hotels/1328/the-langham-huntington-pasadena-los-angeles.html): Pasadena, United States — Langham
 - [The Little Nell](https://whatahotel.com/hotels/2600/the-little-nell.html): Aspen, United States — Signature Collection
+- [The Lodge & Spa at Brush Creek Ranch](https://whatahotel.com/hotels/3696/the-lodge-spa-at-brush-creek-ranch.html): Saratoga, United States — Signature Collection
 - [The Miami Beach EDITION](https://whatahotel.com/hotels/2962/the-miami-beach-edition.html): Miami Beach, United States — EDITION
 - [The Peninsula Beverly Hills](https://whatahotel.com/hotels/1427/the-peninsula-beverly-hills.html): Beverly Hills, United States — Peninsula
 - [The Ranch at Laguna Beach](https://whatahotel.com/hotels/3953/the-ranch-at-laguna-beach.html): Laguna Beach, United States — Signature Collection
@@ -99,7 +104,7 @@
 - [Wild Dunes Resort - Residences At Sweetgrass](https://whatahotel.com/hotels/6557/wild-dunes-resort-residences-at-sweetgrass-.html): Charleston, United States — Hyatt
 - [Wild Dunes Resort Homes & Villas](https://whatahotel.com/hotels/6558/wild-dunes-resort-homes-villas.html): Charleston, United States — Hyatt
 
-## Latin America & Caribbean (87)
+## Latin America & Caribbean (89)
 
 ### Anguilla
 
@@ -114,6 +119,7 @@
 ### Bahamas
 
 - [Grand Hyatt Baha Mar](https://whatahotel.com/hotels/3397/grand-hyatt-baha-mar-.html): Nassau, Bahamas — Hyatt
+- [Pink Sands Resort](https://whatahotel.com/hotels/1996/pink-sands-resort.html): Harbour Island, Bahamas — Preferred
 - [Rosewood Baha Mar](https://whatahotel.com/hotels/2982/rosewood-baha-mar.html): Nassau, Bahamas — Rosewood
 - [SLS Baha Mar](https://whatahotel.com/hotels/3497/sls-baha-mar.html): Nassau, Bahamas — Accor
 
@@ -215,6 +221,10 @@
 - [The St. Regis Punta Mita Resort](https://whatahotel.com/hotels/2212/the-st-regis-punta-mita-resort.html): Punta Mita, Mexico — St. Regis
 - [Waldorf Astoria Los Cabos Pedregal](https://whatahotel.com/hotels/2262/waldorf-astoria-los-cabos-pedregal.html): Cabo San Lucas, Mexico — Waldorf Astoria
 - [Zadun, a Ritz-Carlton Reserve](https://whatahotel.com/hotels/3703/zadun-a-ritz-carlton-reserve-.html): Cabo San Lucas, Mexico — Ritz-Carlton
+
+### Nicaragua
+
+- [Rancho Santana](https://whatahotel.com/hotels/6389/rancho-santana.html): Tola, Nicaragua — Signature Collection
 
 ### Peru
 

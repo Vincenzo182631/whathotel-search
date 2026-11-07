@@ -864,6 +864,14 @@
   "country": "Costa Rica"
  },
  {
+  "id": 6389,
+  "slug": "rancho-santana",
+  "name": "Rancho Santana",
+  "collection": "The Signature Collection",
+  "city": "Tola",
+  "country": "Nicaragua"
+ },
+ {
   "id": 2811,
   "slug": "pine-cliffs-residence-luxury-collection",
   "name": "Pine Cliffs Residence, Luxury Collection",
@@ -1293,6 +1301,14 @@
   "name": "SLS Baha Mar",
   "collection": "SLS Hotels & Resorts under Accor HERA Program",
   "city": "Nassau",
+  "country": "Bahamas"
+ },
+ {
+  "id": 1996,
+  "slug": "pink-sands-resort",
+  "name": "Pink Sands Resort",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Harbour Island",
   "country": "Bahamas"
  },
  {
@@ -2461,6 +2477,46 @@
   "name": "Mandarin Oriental Boston",
   "collection": "Mandarin Oriental",
   "city": "Boston",
+  "country": "United States"
+ },
+ {
+  "id": 4233,
+  "slug": "amrit-ocean-resort-",
+  "name": "Amrit Ocean Resort",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Singer Island",
+  "country": "United States"
+ },
+ {
+  "id": 4574,
+  "slug": "hawks-cay-resort",
+  "name": "Hawks Cay Resort",
+  "collection": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+  "city": "Duck Key",
+  "country": "United States"
+ },
+ {
+  "id": 1211,
+  "slug": "l-ermitage-beverly-hills",
+  "name": "L'Ermitage Beverly Hills",
+  "collection": "The Signature Collection",
+  "city": "Beverly Hills",
+  "country": "United States"
+ },
+ {
+  "id": 6211,
+  "slug": "pga-national-resort-",
+  "name": "PGA National Resort",
+  "collection": "The Signature Collection",
+  "city": "Palm Beach",
+  "country": "United States"
+ },
+ {
+  "id": 3696,
+  "slug": "the-lodge-spa-at-brush-creek-ranch",
+  "name": "The Lodge & Spa at Brush Creek Ranch",
+  "collection": "The Signature Collection",
+  "city": "Saratoga",
   "country": "United States"
  },
  {

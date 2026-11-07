@@ -75,6 +75,9 @@ window.WAH_IMAGES = {
   "1210": {
     "hero": "https://whatahotel.com/content/hotels/1210/20190304230641926382000000-o.jpg"
   },
+  "1211": {
+    "hero": "https://www.whatahotel.com/content/hotels/1211/ermitage.jpg"
+  },
   "1215": {
     "hero": "https://whatahotel.com/content/hotels/1215/Esperanza_2013_3282B-13.jpg"
   },
@@ -212,6 +215,9 @@ window.WAH_IMAGES = {
   },
   "1970": {
     "hero": "https://whatahotel.com/content/hotels/1970/intercontinental-bora-bora-4022945818-2x1.jpg"
+  },
+  "1996": {
+    "hero": "https://www.whatahotel.com/content/hotels/1996/Pink.jpg"
   },
   "2093": {
     "hero": "https://www.whatahotel.com/content/hotels/2093/SSF_034_original.jpg"
@@ -552,6 +558,9 @@ window.WAH_IMAGES = {
   "3692": {
     "hero": "https://www.whatahotel.com/content/hotels/3692/mainbuilding1.jpg"
   },
+  "3696": {
+    "hero": "https://www.whatahotel.com/content/hotels/3696/89805856305-47446624023.jpg"
+  },
   "3703": {
     "hero": "https://whatahotel.com/content/hotels/3703/Zadun-Ritz-Carlton-Reserve-Golf.jpg"
   },
@@ -663,6 +672,9 @@ window.WAH_IMAGES = {
   "4226": {
     "hero": "https://whatahotel.com/content/hotels/4226/mdl-home-hero-summer-1-1-1.jpg"
   },
+  "4233": {
+    "hero": "https://www.whatahotel.com/content/hotels/4233/Am9-1-1200x656.jpg"
+  },
   "4247": {
     "hero": "https://whatahotel.com/content/hotels/4247/oomm-accommodation-ocean-cliff-villa-terrace-2.jpg"
   },
@@ -677,6 +689,9 @@ window.WAH_IMAGES = {
   },
   "4510": {
     "hero": "https://whatahotel.com/content/hotels/4510/nemacolin1.jpeg"
+  },
+  "4574": {
+    "hero": "https://www.whatahotel.com/content/hotels/4574/Hawks.jpg"
   },
   "4575": {
     "hero": "https://whatahotel.com/content/hotels/4575/hEALDSBURG.jpg"
@@ -768,6 +783,9 @@ window.WAH_IMAGES = {
   "6206": {
     "hero": "https://whatahotel.com/content/hotels/6206/mandarin-oriental-sanya.jpg"
   },
+  "6211": {
+    "hero": "https://www.whatahotel.com/content/hotels/6211/PGA-champion-golf-course.jpg"
+  },
   "6212": {
     "hero": "https://whatahotel.com/content/hotels/6212/rkfhp0gm3us3xad3sbs5.jpeg"
   },
@@ -803,6 +821,9 @@ window.WAH_IMAGES = {
   },
   "6379": {
     "hero": "https://whatahotel.com/content/hotels/6379/7.jpg"
+  },
+  "6389": {
+    "hero": "https://www.whatahotel.com/content/hotels/6389/ocean-view.jpg"
   },
   "6393": {
     "hero": "https://whatahotel.com/content/hotels/6393/UTPAZ-R007-Manor-House-Pool-Exterior.16x9.jpg"
