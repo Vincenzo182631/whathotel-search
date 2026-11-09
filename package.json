@@ -16,6 +16,7 @@
     "import:mo": "node scripts/import-mo-homes.mjs",
     "import:mo:dry": "node scripts/import-mo-homes.mjs --dry-run",
     "seo": "node scripts/build-seo.mjs",
-    "build": "node scripts/build-data.mjs && node scripts/seed-characteristics.mjs && node scripts/build-seo.mjs && node scripts/build-standalone.mjs"
+    "build": "node scripts/build-data.mjs && node scripts/seed-characteristics.mjs && node scripts/build-seo.mjs && node scripts/build-standalone.mjs",
+    "test:search": "node tests/search-audit.cjs --list"
   }
 }

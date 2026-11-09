@@ -306,8 +306,38 @@
     var mkWord = function (w) { return function (p) { return (p.city || "").toLowerCase().indexOf(w) !== -1; }; };
     var mkRegion = function (rk) { return function (p) { return p.regionKey === rk; }; };
     // High-value aliases (broader than any single data field)
-    add("florida", function (p) { return US(p) && /miami|lauderdale|orlando|naples|palm beach|key |vero|amelia|sarasota|tampa|jacksonville|boca|disney/i.test((p.city || "") + " " + (p.loc || "")); });
-    add("hawaii", function (p) { return /maui|oahu|kauai|honolulu|wailea|lanai|waikiki|kona|hawaii|hualalai|lahaina/i.test((p.city || "") + " " + (p.loc || "")); });
+    add("florida", function (p) { return US(p) && /miami|lauderdale|orlando|naples|palm beach|\bkeys?\b|vero|amelia|sarasota|tampa|jacksonville|boca|disney|captiva|clearwater|holmes beach|singer island|brickell/i.test((p.city || "") + " " + (p.loc || "")); });
+    add("hawaii", function (p) { return /maui|oahu|kauai|honolulu|wailea|lanai|waikiki|kona|hawaii|hualalai|lahaina|big island/i.test((p.city || "") + " " + (p.loc || "")); });
+    // US states, from the city each property is in (the data has cities, not states).
+    var STATE_CITIES = {
+      "colorado": /aspen|beaver creek|snowmass|telluride|vail/i,
+      "california": /beverly hills|big sur|calistoga|coronado|healdsburg|laguna beach|lake tahoe|los angeles|monterey|napa|newport beach|pasadena|rancho santa fe|san diego|aviara|san francisco|santa barbara/i,
+      "utah": /deer valley|park city/i, "wyoming": /jackson hole|saratoga/i, "montana": /big sky|greenough/i,
+      "arizona": /paradise valley|scottsdale/i, "new mexico": /santa fe|taos/i, "massachusetts": /boston|cape cod/i,
+      "south carolina": /bluffton|charleston/i, "texas": /dallas/i, "maine": /kennebunkport/i, "vermont": /stowe/i,
+      "tennessee": /walland/i, "pennsylvania": /farmington/i, "nevada": /\bnevada\b/i
+    };
+    var NV_NAMES = /edgewood tahoe/i;   // Lake Tahoe, Nevada shore
+    Object.keys(STATE_CITIES).forEach(function (st) {
+      var re = STATE_CITIES[st];
+      add(st, function (p) {
+        if (!US(p)) return false;
+        if (NV_NAMES.test(p.name)) return st === "nevada";
+        return re.test(p.city || "");
+      });
+    });
+    add("florida keys", function (p) { return US(p) && /\bkeys?\b|key largo|duck key/i.test(p.city || ""); });
+    add("the keys", function (p) { return US(p) && /\bkeys?\b|key largo|duck key/i.test(p.city || ""); });
+    // Well-known US places with no property yet: an honest "no matches" instead of a
+    // typo "correction" into something else ("new york" ≠ Newport Beach).
+    ["new york", "nyc", "manhattan", "chicago", "illinois", "las vegas", "new orleans", "louisiana", "washington", "seattle",
+     "oregon", "portland", "georgia", "atlanta", "north carolina", "virginia", "michigan", "new jersey", "the hamptons", "hamptons", "nantucket", "martha's vineyard"]
+      .forEach(function (c) { add(c, function () { return false; }); });
+    add("socal", function (p) { return US(p) && /beverly hills|coronado|laguna beach|los angeles|newport beach|pasadena|rancho santa fe|san diego|aviara|santa barbara/i.test(p.city || ""); });
+    // Caribbean islands without a property yet: read as a place (no results)
+    // rather than "corrected" into a hotel name ("st barts" ≠ Chatham Bars Inn).
+    Object.keys(CARIB).forEach(function (c) { add(c, function (p) { return (p.country || "").toLowerCase() === c; }); });
+    ["st barths", "st. barts", "st. barths", "saint barths", "st. bart's", "st bart's"].forEach(function (c) { add(c, function () { return false; }); });
     add("caribbean", function (p) { // the islands + Belize, Roatán and Mexico's Caribbean coast (not the Pacific side)
       var c = (p.country || "").toLowerCase();
       return !!CARIB[c] || (c === "mexico" && /cancun|mayakoba|kanai|riviera maya|tulum|playa del carmen|cozumel/i.test(p.city || ""));
@@ -385,6 +415,13 @@
     return { q: out, fixes: fixes };
   }
 
+  // A place also matches hotels named after it whose address says otherwise
+  // ("Raffles Bali" is in Jimbaran). Not the Exceptional Homes: their villas
+  // are named after places elsewhere ("Villa Tuscany" is in Spain).
+  function placeOrName(test, term) {
+    var t = " " + normName(term) + " ";
+    return function (p) { return test(p) || (p.kind !== "mo" && (" " + normName(p.name) + " ").indexOf(t) !== -1); };
+  }
   function parseNL(q) {
     var sig = { places: [], placeLabels: [], settings: [], features: [], quiet: false, group: false, luxury: false, text: [] };
     var lc = " " + q.toLowerCase().replace(/[^a-z0-9&'\s-]/g, " ").replace(/\s+/g, " ") + " ";
@@ -399,7 +436,7 @@
     buildPlaceIndex().forEach(function (e) {
       if (lc.indexOf(e.t) === -1) return;
       var re = new RegExp("(^|[^a-z0-9])" + e.t.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&") + "(?=$|[^a-z0-9])", "g");
-      if (re.test(lc)) { sig.places.push(e.test); sig.placeLabels.push(e.t); lc = lc.replace(re, "$1 "); }
+      if (re.test(lc)) { sig.places.push(placeOrName(e.test, e.t)); sig.placeLabels.push(e.t); lc = lc.replace(re, "$1 "); }
     });
     Object.keys(SETTING_SYNONYMS).forEach(function (k) { SETTING_SYNONYMS[k].forEach(function (w) { if (eat(w) && sig.settings.indexOf(k) === -1) sig.settings.push(k); }); });
     Object.keys(FEATURE_SYNONYMS).forEach(function (k) { FEATURE_SYNONYMS[k].forEach(function (w) { if (eat(w) && sig.features.indexOf(k) === -1) sig.features.push(k); }); });
@@ -436,50 +473,116 @@
     return s;
   }
 
-  // Name-first: when every word of a multi-word query is in a home's NAME
-  // ("Santa Marina", "Porto Zante", "St. Regis Bal Harbour", "Domes of Elounda"),
-  // show that home rather than reading a word as a place, feature or typo.
-  // Pure place queries ("Lake Como", "Napa Valley") and broad brand queries
-  // ("Four Seasons", more than 3 name hits) keep the normal search.
-  var NAME_SKIP = { the: 1, of: 1, and: 1, a: 1, an: 1 };
-  function nameWords(s) {
+  /* Name & brand matching — runs before the intent parser so a property's own
+     name always finds it, even when the name contains a place ("Villa Tuscany",
+     "W Koh Samui", "The Cape"), a setting word, or a typo ("hawks cay resrt").
+     Names are compared without accents, punctuation, "the/of/and", with "&" =
+     "and" and One&Only = OneandOnly; spaces don't matter ("lermitage",
+     "l ermitage"). A brand typed on its own ("Peninsula", "COMO", "Autograph
+     Collection") lists that brand's properties first. */
+  var NAME_SKIP = { the: 1, of: 1, and: 1, a: 1, an: 1, at: 1, by: 1 };
+  function normName(s) {
     var t = String(s || "").toLowerCase();
     if (t.normalize) t = t.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    return t.replace(/[^a-z0-9]+/g, " ").trim().split(" ").filter(Boolean);
+    t = t.replace(/\bone\s*(?:&|and)?\s*only\b/g, " oneandonly ").replace(/&/g, " and ").replace(/['\u2019`]/g, "");
+    return t.replace(/[^a-z0-9]+/g, " ").trim();
   }
-  function nameMatches(base, q) {
-    var words = nameWords(q).filter(function (w) { return !NAME_SKIP[w]; });
-    if (words.length < 2) return null;
-    var hits = base.filter(function (p) {
-      var nw = nameWords(p.name);
-      return words.every(function (w) {
-        return nw.some(function (n) { return n === w || (w.length >= 3 && n.indexOf(w) === 0); });
-      });
+  function nameWords(s) { return normName(s).split(" ").filter(function (w) { return w && !NAME_SKIP[w]; }); }
+  // Cost of matching a typed word against a name word: 0 exact/prefix, 1-2 for a typo, -1 no match.
+  function wordCost(w, n) {
+    if (n === w) return 0;
+    if (w.length >= 3 && n.indexOf(w) === 0) return 0.25;
+    if (w.length >= 4 && n.length >= 4 && editDist(w, n, 1) <= 1) return 1;
+    if (w.length >= 7 && editDist(w, n, 2) <= 2) return 2;
+    return -1;
+  }
+  var NAME_CACHE = {};
+  function nameInfo(p) {
+    var k = p.id; if (NAME_CACHE[k]) return NAME_CACHE[k];
+    var w = nameWords(p.name);
+    return (NAME_CACHE[k] = { words: w, joined: w.join("") });
+  }
+  // [{ p, exact, prefix, cost }] for properties whose name contains every typed word.
+  function nameHits(base, q) {
+    var words = nameWords(q);
+    if (!words.length) return [];
+    var joined = words.join(""), out = [];
+    base.forEach(function (p) {
+      var ni = nameInfo(p);
+      var exact = ni.joined === joined, prefix = !exact && joined.length >= 4 && ni.joined.indexOf(joined) === 0;
+      var cost = 0, ok = true;
+      for (var i = 0; i < words.length && ok; i++) {
+        var best = -1;
+        for (var j = 0; j < ni.words.length; j++) { var c = wordCost(words[i], ni.words[j]); if (c >= 0 && (best < 0 || c < best)) best = c; }
+        if (best < 0) ok = false; else cost += best;
+      }
+      if (exact || prefix || ok) out.push({ p: p, exact: exact, prefix: prefix, cost: ok ? cost : 0 });
     });
-    if (!hits.length || hits.length > 3) return null;   // brand words ("four seasons") → normal search
-    var sig = parseNL(q);
-    var purePlace = sig.places.length && !sig.text.length && !sig.settings.length && !sig.features.length;
-    return purePlace ? null : hits;
+    return out.sort(function (a, b) {
+      return (b.exact - a.exact) || (b.prefix - a.prefix) || (a.cost - b.cost) || a.p.name.length - b.p.name.length || a.p.name.localeCompare(b.p.name);
+    });
+  }
+  // A brand typed on its own: "Peninsula", "COMO", "Ritz Carlton", "Small Luxury".
+  function brandHits(base, q) {
+    var nq = normName(q);
+    if (nq.length < 3) return [];
+    var labels = {};
+    base.forEach(function (p) { if (p.brand) labels[p.brand] = normName(p.brand); });
+    var match = Object.keys(labels).filter(function (b) { var nb = labels[b]; return nb === nq || (nq.length >= 4 && nb.indexOf(nq) === 0); });
+    if (!match.length) return [];
+    return base.filter(function (p) { return match.indexOf(p.brand) !== -1; })
+      .sort(function (a, b) { return ((b.featured ? 1 : 0) - (a.featured ? 1 : 0)) || a.name.localeCompare(b.name); });
+  }
+  function uniqProps(lists) {
+    var seen = {}, out = [];
+    lists.forEach(function (l) { l.forEach(function (p) { if (!seen[p.id]) { seen[p.id] = 1; out.push(p); } }); });
+    return out;
   }
 
   function smartRank(base, q) {
-    var byName = nameMatches(base, q);
-    if (byName) {
-      smartRank.last = { sig: { places: [], settings: [], features: [], text: [q.trim()] }, fixes: [], query: q };
-      // Exact name first ("Nekajui, A Ritz Carlton Reserve" before "… Reserve Residences"), then shortest name.
-      var qk = nameWords(q).join(" ");
-      return byName.slice().sort(function (a, b) {
-        var ea = nameWords(a.name).join(" ") === qk ? 0 : 1, eb = nameWords(b.name).join(" ") === qk ? 0 : 1;
-        return ea - eb || a.name.length - b.name.length || a.name.localeCompare(b.name);
-      });
+    var raw = q;
+    var nh = nameHits(base, q);
+    var strong = nh.filter(function (h) { return h.exact || h.prefix; }).map(function (h) { return h.p; });
+    var bh = brandHits(base, q);
+    if (bh.length) {                       // brand query: that brand first, then anything else that matches
+      var restB = nlRank(base, q);
+      smartRank.last = { sig: { places: [], settings: [], features: [], text: [raw.trim()] }, fixes: [], query: raw };
+      return uniqProps([strong, bh, restB]);
     }
+    var sig0 = parseNL(q);
+    var broad = !sig0.text.length && (sig0.places.length || sig0.settings.length || sig0.features.length);
+    // Name query: a few properties carry every typed word in their name.
+    if (nh.length && nh.length <= 3 && !(broad && !strong.length)) {
+      if (broad) {                         // "Villa Tuscany": that villa first, then Tuscany
+        var restP = nlRank(base, q);
+        return uniqProps([nh.map(function (h) { return h.p; }), restP]);
+      }
+      smartRank.last = { sig: { places: [], settings: [], features: [], text: [raw.trim()] }, fixes: [], query: raw };
+      return nh.map(function (h) { return h.p; });
+    }
+    // Typos: correct, then try the name again ("danang mariott" → Danang Marriott).
+    var cq = correctQuery(q);
+    if (cq.fixes.length) {
+      var nh2 = nameHits(base, cq.q);
+      if (nh2.length && nh2.length <= 3) {
+        smartRank.last = { sig: { places: [], settings: [], features: [], text: [cq.q] }, fixes: cq.fixes, query: cq.q };
+        return nh2.map(function (h) { return h.p; });
+      }
+    }
+    return uniqProps([strong, nlRank(base, q)]);
+  }
+
+  // The intent search ("a beachfront villa in Florida for a family").
+  function nlRank(base, q) {
     var cq = correctQuery(q); q = cq.q;
     var sig = parseNL(q), cands;
     if (sig.places.length) {
       cands = base.filter(function (p) { return placeHit(p, sig); });
       if (!cands.length) cands = base.filter(function (p) { return textHit(p, sig.text.concat(q.toLowerCase())); });
     } else if (sig.settings.length || sig.features.length) {
-      cands = base.filter(function (p) { return traitHit(p, sig); });
+      // Setting/feature words also match hotels named with them ("Jumeirah Beach Hotel" for "beach").
+      var qw = nameWords(q);
+      cands = base.filter(function (p) { return traitHit(p, sig) || (p.kind !== "mo" && qw.length && qw.every(function (w) { return nameInfo(p).words.indexOf(w) !== -1; })); });
     } else if (sig.text.length) {
       // Prefer homes matching ALL the words ("four seasons amaala"), else ANY.
       cands = base.filter(function (p) { var h = nlHay(p); return sig.text.every(function (t) { return h.indexOf(t) !== -1; }); });
@@ -496,11 +599,21 @@
     }
     smartRank.last = { sig: sig, fixes: cq.fixes, query: q };
     if (!cands.length) return [];
+    var qWords = nameWords(q);
     return cands
-      .map(function (p) { return { p: p, s: scoreNL(p, sig) }; })
+      .map(function (p) {
+        var s = scoreNL(p, sig), nw = nameInfo(p).words;
+        // Named after what was typed ("Raffles Bali" for "bali") → a little higher.
+        if (qWords.length && qWords.every(function (w) { return nw.indexOf(w) !== -1; })) s += 15;
+        return { p: p, s: s };
+      })
       .sort(function (a, b) { return b.s - a.s || ((b.p.featured ? 1 : 0) - (a.p.featured ? 1 : 0)) || a.p.name.localeCompare(b.p.name); })
       .map(function (x) { return x.p; });
   }
+
+  // Read-only hook for the search tests (tests/search-audit.cjs): the ids the search
+  // returns for a query, best first, across every property.
+  window.WAH_SEARCH = function (q) { return smartRank(PROPS.slice(), String(q || "")).map(function (p) { return p.id; }); };
 
   // Description: authoritative WhataHotel copy where available, else location line.
   function blurbText(p) {
