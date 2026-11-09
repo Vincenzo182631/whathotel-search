@@ -9,6 +9,7 @@
  * place and brand queries must include it somewhere in the results.
  *
  * Run: node tests/search-audit.cjs   (starts scripts/dev-server.mjs on PORT 8793)
+ *      node tests/search-audit.cjs --url=https://pro.whatahotel.com/homes   (checks a live page)
  */
 const { chromium } = require("playwright");
 const { spawn } = require("node:child_process");
@@ -27,12 +28,13 @@ function typo(name) {
 }
 
 (async () => {
-  const srv = spawn(process.execPath, [path.join(ROOT, "scripts/dev-server.mjs")], { env: { ...process.env, PORT: String(PORT) }, stdio: "ignore" });
-  await new Promise((r) => setTimeout(r, 1500));
+  const urlArg = (process.argv.find((a) => a.startsWith("--url=")) || "").slice(6);
+  const srv = urlArg ? null : spawn(process.execPath, [path.join(ROOT, "scripts/dev-server.mjs")], { env: { ...process.env, PORT: String(PORT) }, stdio: "ignore" });
+  if (srv) await new Promise((r) => setTimeout(r, 1500));
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.route(/tavus|leadconnectorhq|wsrv\.nl|whatahotel\.com\/content|googleapis|unpkg|jsdelivr/, (r) => r.abort());
-  await page.goto(`http://localhost:${PORT}/`, { waitUntil: "domcontentloaded" });
+  await page.goto(urlArg || `http://localhost:${PORT}/`, { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.waitForFunction(() => window.WAH_SEARCH);
   const props = await page.evaluate(() => (window.WAH_PROPERTIES || []).map((p) => ({ id: p.id, name: p.name, city: p.city, country: p.country, brand: p.brand }))
     .concat((window.WAH_MO_INDEX || []).map((h) => ({ id: h.id, name: h.name, city: (h.location || "").split(",")[0], country: h.country, brand: h.brand || "Mandarin Oriental" }))));
@@ -62,6 +64,6 @@ function typo(name) {
   console.log(`Properties: ${props.length}   queries: ${cases.length}   problems: ${fails.length}`);
   for (const k in byKind) console.log(`  ${k.padEnd(18)} ${byKind[k].total - byKind[k].fail}/${byKind[k].total}`);
   if (process.argv.includes("--list")) fails.forEach((f) => console.log(`FAIL [${f.kind}] "${f.q}" → ${f.p.name} (${f.p.id}) ${f.rank === -1 ? "not found" : "rank " + (f.rank + 1)} of ${f.n}`));
-  await browser.close(); srv.kill();
+  await browser.close(); if (srv) srv.kill();
   process.exitCode = fails.length ? 1 : 0;
 })();
