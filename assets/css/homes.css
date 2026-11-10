@@ -527,6 +527,46 @@ section[id], [id].search-shell { scroll-margin-top: 84px; }
 .ss-all:hover { background: #13263b; }
 .ss-empty { margin: .4rem .5rem; font-size: .88rem; color: var(--text-soft); }
 @media (prefers-reduced-motion: reduce) { .search-suggest { animation: none; } }
+
+/* ---------- Phones: full-screen search ----------
+   Tapping the search box (or "Search" in the menu) turns the search row into a
+   full-screen panel: the box and "Cancel" at the top, every result listed right
+   under it, so the keyboard never covers them and nothing scrolls far away. */
+.header-cta__ic { width: 1.05em; height: 1.05em; margin-right: .45em; vertical-align: -.15em; }
+.msearch-cancel { display: none; }
+.ss-picks { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0 .5rem .5rem; }
+.ss-pick { border: 1px solid var(--line-2); background: #fff; color: var(--ink); border-radius: 999px;
+  padding: .55rem .9rem; font: inherit; font-size: .9rem; cursor: pointer; }
+.ss-pick:active { background: #f7f2e7; }
+.ss-label--ideas { display: block; padding: .3rem .5rem .7rem; margin: 0; }
+.ss-count { margin: .1rem .5rem .5rem; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-mut); }
+@media (max-width: 899px) {
+  html.msearch-lock, html.msearch-lock body { overflow: hidden; }
+  body.msearch .search-shell { z-index: 300; }
+  /* the panel's scroll-in animation (transform / will-change) would trap the fixed search inside it */
+  body.msearch .search-panel, body.msearch .search-panel.reveal { transform: none !important; filter: none !important; will-change: auto !important; transition: none !important; animation: none !important; }
+  #search-form.is-msearch {
+    position: fixed; inset: 0; z-index: 300; margin: 0;
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto 1fr; gap: .6rem;
+    padding: max(12px, env(safe-area-inset-top)) 12px 0; background: var(--cream);
+  }
+  #search-form.is-msearch .search-field { grid-column: 1; grid-row: 1; background: var(--paper); }
+  #search-form.is-msearch > .btn { display: none; }               /* the keyboard's Search key submits */
+  #search-form.is-msearch .msearch-cancel {
+    display: block; grid-column: 2; grid-row: 1; align-self: center; border: 0; background: none;
+    color: var(--ink); font: inherit; font-weight: 600; font-size: .98rem; padding: .7rem .3rem; cursor: pointer;
+  }
+  #search-form.is-msearch .search-suggest {
+    position: static; grid-column: 1 / -1; grid-row: 2; max-height: none; min-height: 0; overflow-y: auto;
+    -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+    border: 0; border-radius: 0; box-shadow: none; background: transparent; padding: .2rem 0 calc(24px + env(safe-area-inset-bottom));
+    animation: none;
+  }
+  #search-form.is-msearch .ss-item { padding: .6rem .5rem; }
+  #search-form.is-msearch .ss-thumb { width: 64px; height: 50px; }
+  #search-form.is-msearch .ss-go { opacity: 1; transform: none; }
+  body.msearch .pmodal { z-index: 400; }                         /* a tapped result opens above the search */
+}
 /* While suggestions are open, the floating video and sticky mobile bar step aside. */
 .floating-video, .mobile-cta { transition: opacity .2s ease, transform .2s ease; }
 body.search-active .floating-video, body.search-active .mobile-cta { opacity: 0; transform: translateY(14px); pointer-events: none; }

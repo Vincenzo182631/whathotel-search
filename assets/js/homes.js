@@ -1359,8 +1359,18 @@
     if (sig.text.length) chips.push('<span class="ss-chip">' + esc(titleCase(sig.text.join(" "))) + '</span>');
     return chips;
   }
+  // Phones search full-screen (see wireSearch): every result is listed there,
+  // and an empty box offers a few ideas to tap.
+  var MSEARCH = { on: false };
+  var MSEARCH_MAX = 80;
+  var QUICK_PICKS = ["Maldives", "Caribbean", "Lake Como", "Four Seasons", "Hawaii", "Ski in Colorado", "Mandarin Oriental", "Villa with a private pool"];
   function renderSuggest(box, q) {
     if (!box) return;
+    if (q.length < 2 && MSEARCH.on) {
+      box.innerHTML = '<p class="ss-label ss-label--ideas">Popular searches</p><div class="ss-picks">' +
+        QUICK_PICKS.map(function (t) { return '<button type="button" class="ss-pick" data-pick="' + esc(t) + '">' + esc(t) + '</button>'; }).join("") + '</div>';
+      box.hidden = false; document.body.classList.add("search-active"); return;
+    }
     if (q.length < 2) { box.hidden = true; box.innerHTML = ""; document.body.classList.remove("search-active"); return; }
     var list = filtered(), info = smartRank.last || { sig: { places: [], settings: [], features: [], text: [] }, fixes: [] };
     var chips = understoodChips(info.sig);
@@ -1371,13 +1381,15 @@
     if (!list.length) {
       body = '<p class="ss-empty">No matching homes yet. Try a city or destination, like “Miami”, “Lake Como” or “Anguilla”.</p>';
     } else {
-      body = '<ul class="ss-list" role="listbox">' + list.slice(0, SUGGEST_MAX).map(function (p, i) {
+      var max = MSEARCH.on ? MSEARCH_MAX : SUGGEST_MAX;
+      body = (MSEARCH.on ? '<p class="ss-count">' + list.length + (list.length === 1 ? ' home' : ' homes') + '</p>' : '') +
+        '<ul class="ss-list" role="listbox">' + list.slice(0, max).map(function (p, i) {
         return '<li role="presentation"><button type="button" class="ss-item" role="option" id="ss-opt-' + i + '" data-action="detail" data-id="' + p.id + '">' +
           '<span class="ss-thumb">' + imgTag(p, 120, "ss-thumb__img", 'loading="lazy"') + '</span>' +
           '<span class="ss-text"><span class="ss-name">' + esc(p.name) + '</span><span class="ss-loc">' + esc(p.loc || p.region) + '</span></span>' +
           '<span class="ss-go">' + arrowSVG() + '</span></button></li>';
       }).join("") + '</ul>' +
-      '<button type="button" class="ss-all" data-ss-all>See all ' + list.length + (list.length === 1 ? ' home' : ' homes') + arrowSVG() + '</button>';
+      ((!MSEARCH.on || list.length > max) ? '<button type="button" class="ss-all" data-ss-all>See all ' + list.length + (list.length === 1 ? ' home' : ' homes') + arrowSVG() + '</button>' : '');
     }
     box.innerHTML = fix + head + body;
     box.hidden = false;
@@ -1395,10 +1407,45 @@
       if (input) { input.setAttribute("aria-controls", "search-suggest"); input.setAttribute("aria-autocomplete", "list"); }
       box.addEventListener("mousedown", function (e) { e.preventDefault(); }); // keep focus while clicking
       box.addEventListener("click", function (e) {
-        if (e.target.closest("[data-ss-all]")) { hideSuggest(); scrollToDirectory(); track("search_suggest_all", { search_term: state.query.trim() }); return; }
-        if (e.target.closest(".ss-item")) { hideSuggest(); track("search_suggest_pick", { search_term: state.query.trim() }); }
+        var pick = e.target.closest("[data-pick]");
+        if (pick && input) { input.value = pick.getAttribute("data-pick"); input.dispatchEvent(new Event("input", { bubbles: true })); input.focus(); track("search_quick_pick", { search_term: input.value }); return; }
+        if (e.target.closest("[data-ss-all]")) { closeMobileSearch(); hideSuggest(); scrollToDirectory(); track("search_suggest_all", { search_term: state.query.trim() }); return; }
+        if (e.target.closest(".ss-item")) { if (!MSEARCH.on) hideSuggest(); track("search_suggest_pick", { search_term: state.query.trim() }); }
       });
+      // Phones: the search opens full-screen — the box at the top, results right under
+      // it (never behind the keyboard), every match listed, and "Cancel" to go back.
+      var cancel = document.createElement("button");
+      cancel.type = "button"; cancel.className = "msearch-cancel"; cancel.textContent = "Cancel";
+      cancel.addEventListener("click", function () { closeMobileSearch(); });
+      form.appendChild(cancel);
+      if (PHONE_MQ && PHONE_MQ.addEventListener) PHONE_MQ.addEventListener("change", function () { if (!isPhone()) closeMobileSearch(); });
     }
+    if (input && isPhone()) input.setAttribute("placeholder", "Destination, hotel or brand…"); // the long example was cut off
+    var spacer = null;
+    function openMobileSearch() {
+      if (MSEARCH.on || !form || !isPhone()) return;
+      MSEARCH.on = true;
+      spacer = document.createElement("div");
+      spacer.className = "msearch-spacer"; spacer.style.height = form.offsetHeight + "px";
+      form.parentNode.insertBefore(spacer, form);
+      document.documentElement.classList.add("msearch-lock");
+      document.body.classList.add("msearch");
+      form.classList.add("is-msearch");
+      renderSuggest(box, input ? input.value.trim() : "");
+      track("search_opened", { layout: "phone" });
+    }
+    function closeMobileSearch() {
+      if (!MSEARCH.on) return;
+      MSEARCH.on = false;
+      form.classList.remove("is-msearch");
+      document.body.classList.remove("msearch");
+      document.documentElement.classList.remove("msearch-lock");
+      if (spacer && spacer.parentNode) spacer.parentNode.removeChild(spacer);
+      spacer = null;
+      hideSuggest();
+      if (input) input.blur();
+    }
+    wireSearch.openPhone = function () { if (input) input.focus(); openMobileSearch(); };
     function opts() { return box ? Array.prototype.slice.call(box.querySelectorAll(".ss-item")) : []; }
     function setActive(i) {
       var o = opts(); active = o.length ? (i + o.length) % o.length : -1;
@@ -1411,11 +1458,15 @@
         if (!box || box.hidden) return;
         if (e.key === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
         else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
-        else if (e.key === "Escape") { hideSuggest(); }
+        else if (e.key === "Escape") { if (MSEARCH.on) closeMobileSearch(); else hideSuggest(); }
         else if (e.key === "Enter" && active >= 0) { e.preventDefault(); var o = opts()[active]; hideSuggest(); if (o) o.click(); }
       });
-      input.addEventListener("focus", function () { if (input.value.trim().length >= 2) renderSuggest(box, input.value.trim()); });
-      input.addEventListener("blur", function () { setTimeout(hideSuggest, 120); });
+      input.addEventListener("focus", function () {
+        if (isPhone()) { openMobileSearch(); return; }
+        if (input.value.trim().length >= 2) renderSuggest(box, input.value.trim());
+      });
+      // On phones the keyboard closing (blur) must not close the results.
+      input.addEventListener("blur", function () { setTimeout(function () { if (!MSEARCH.on) hideSuggest(); }, 120); });
       input.addEventListener("input", function () {
         state.query = input.value;
         clearTimeout(searchTimer);
@@ -1434,6 +1485,12 @@
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         renderDirectory();
+        if (MSEARCH.on) {                    // phone: results are already listed; just close the keyboard
+          renderSuggest(box, input ? input.value.trim() : "");
+          if (input) input.blur();
+          track("search_initiated", { search_term: state.query.trim(), results: filtered().length, source: "submit", layout: "phone" });
+          return;
+        }
         hideSuggest();
         track("search_initiated", { search_term: state.query.trim(), results: filtered().length, source: "submit" });
         scrollToDirectory();
@@ -1451,7 +1508,9 @@
   function wireTypewriter() {
     var input = $("#search-input");
     if (!input || prefersReduced()) return;
-    var samples = ["“a beachfront villa in Florida”", "“luxury residence near Orlando”", "“a home with a pool for a family”", "“somewhere quiet near the beach”", "“a spacious villa in Anguilla”", "“ski residence in the mountains”"];
+    var samples = isPhone()
+      ? ["“Maldives”", "“Lake Como”", "“Four Seasons”", "“villa in Bali”", "“ski in Colorado”", "“Caribbean”"]
+      : ["“a beachfront villa in Florida”", "“luxury residence near Orlando”", "“a home with a pool for a family”", "“somewhere quiet near the beach”", "“a spacious villa in Anguilla”", "“ski residence in the mountains”"];
     var si = 0, ci = 0, deleting = false, active = true, tId;
     var PRE = "Try ", SUF = "…";
     function stop() { active = false; clearTimeout(tId); }
@@ -1680,9 +1739,31 @@
   /* -----------------------------------------------------------------
      Smooth scroll to directory / focus search
      ----------------------------------------------------------------- */
+  var PHONE_MQ = window.matchMedia ? window.matchMedia("(max-width: 899px)") : null;
+  function isPhone() { return !!(PHONE_MQ && PHONE_MQ.matches); }
+  /* Scroll a section to the top and make sure it gets there. Content above it can
+     still be loading (photos, the Exceptional Homes list), which pushes the target
+     down mid-scroll and leaves a long smooth scroll stranded partway; so check a
+     few times and finish the jump. Stops as soon as the visitor scrolls or taps. */
+  var scrollFix = { t: 0, user: false };
+  ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
+    window.addEventListener(ev, function () { scrollFix.user = true; }, { passive: true });
+  });
+  function scrollToSection(el, smooth) {
+    if (!el) return;
+    clearTimeout(scrollFix.t); scrollFix.user = false;
+    el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
+    var tries = 0, margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    (function check() {
+      scrollFix.t = setTimeout(function () {
+        if (scrollFix.user) return;
+        if (Math.abs(el.getBoundingClientRect().top - margin) > 48 && tries++ < 6) { el.scrollIntoView({ behavior: "auto", block: "start" }); check(); }
+      }, tries ? 400 : (smooth ? 1100 : 400));
+    })();
+  }
   function scrollToDirectory() {
-    var el = $("#directory");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Phones: jump straight there; desktop: smooth, then make sure it arrived.
+    scrollToSection($("#directory"), !isPhone());
   }
   function wireScrollLinks() {
     $$('[data-scroll]').forEach(function (a) {
@@ -1691,9 +1772,11 @@
         var el = $(sel);
         if (el) {
           e.preventDefault();
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (!(isPhone() && a.getAttribute("data-focus") === "search")) scrollToSection(el, true);
           if (a.getAttribute("data-focus") === "search") {
-            var input = $("#search-input"); if (input) setTimeout(function () { input.focus(); }, 500);
+            var input = $("#search-input");
+            if (isPhone() && wireSearch.openPhone) { el.scrollIntoView({ block: "start" }); wireSearch.openPhone(); return; }
+            if (input) setTimeout(function () { input.focus(); }, 500);
           }
         }
       });
