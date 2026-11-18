@@ -124,5 +124,8 @@ read back and said yes. The payload uses the form's field names (`subject`, `ema
 | `inquiry_id` | GREG-<Tavus tool call id> |
 | `conversation_id` | the Tavus conversation id (find the call in Greg's portal) |
 
+While sending, Greg says "One moment, I am sending that to our advisors now." and only confirms after GHL replies.
+Tested 2026-11-18 with one approved TEST request (GHL reference q4E8Cr8unBBoGaMbetBB).
+
 Details the visitor didn't give arrive as "Not given". `total_guests` is text here
 (e.g. "2 adults, 1 child"), not a number.
