@@ -104,3 +104,25 @@ To switch to it:
 1. Deploy one of the adapters.
 2. Empty the `wah-ghl-webhook` meta tag.
 3. Set `wah-inquiry-endpoint` to the deployed `/api/request-availability` URL.
+
+## Requests sent by the video guide (Greg)
+
+Greg's `ghl_webhook` tool (Tavus tool t04d8e837f8fe) posts to the same GHL inbound webhook,
+so the same workflow emails Reservations@WhataHotel.com. He sends only when a visitor asks
+for an advisor to contact them, gave their name and email in the call, heard the details
+read back and said yes. The payload uses the form's field names (`subject`, `email_text`,
+`email_html`, `full_name`, `first_name`, `email`, `phone`, `property_name`,
+`property_destination`, `check_in`, `check_out`, `total_guests`, `message`, `reply_to`,
+`notify_to`, `tags`), with:
+
+| Field | Value |
+|---|---|
+| `event` | `video_guide_inquiry` |
+| `subject` | New Video Guide Inquiry — <property> |
+| `tags` | `video-guide-inquiry` |
+| `lead_source` | Video guide (Greg) |
+| `inquiry_id` | GREG-<Tavus tool call id> |
+| `conversation_id` | the Tavus conversation id (find the call in Greg's portal) |
+
+Details the visitor didn't give arrive as "Not given". `total_guests` is text here
+(e.g. "2 adults, 1 child"), not a number.
