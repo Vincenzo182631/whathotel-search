@@ -150,6 +150,9 @@
         esc(o.label) + ' <span class="mo-chip__n">' + COUNTS[o.key] + '</span></button>';
     }).join("");
   }
+  // Pet-friendly homes (assets/js/pets.js: "This Home is Suitable For … Pets" on Mandarin Oriental).
+  var PAW = '<svg class="paw-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.8" r="2.2"/><circle cx="14.5" cy="5.8" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M12 11.5c-3 0-6 4.3-6 6.5 0 1.6 1.3 2.5 3 2.5 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.7 0 3-.9 3-2.5 0-2.2-3-6.5-6-6.5z"/></svg>';
+  function petOf(h) { var d = window.WAH_PETS; return (d && d[h.id] && d[h.id].ok) ? d[h.id] : null; }
   function cardHTML(h) {
     var img = h.imageAssets && h.imageAssets[0];
     return '<article class="mo-card" data-id="' + esc(h.id) + '" aria-labelledby="moc-' + esc(h.id) + '">' +
@@ -161,6 +164,7 @@
         '<p class="mo-card__brand">' + esc(h.brand || "Mandarin Oriental") + '</p>' +
         '<h4 class="mo-card__name" id="moc-' + esc(h.id) + '">' + esc(h.name) + '</h4>' +
         '<p class="mo-card__loc">' + ICON.pin + esc(placeLine(h)) + '</p>' +
+        (petOf(h) ? '<p class="mo-card__pet">' + PAW + 'Pet-friendly</p>' : '') +
         specs(h, "mo-specs") +
         rateHTML(h, "mo-rate") +
         (PERK_CARD_LINE ? '<p class="mo-card__perks"><span aria-hidden="true">✦</span> ' + esc(PERK_CARD_LINE) + '</p>' : '') +
@@ -237,7 +241,7 @@
       document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
         kind: "home", id: h.id, name: h.name, brand: h.brand || "Mandarin Oriental", location: placeLine(h),
         bedrooms: n(h.bedroomsDisplay), bathrooms: n(h.bathroomsDisplay), guests: n(h.maxGuestsDisplay),
-        description: blocksText(h.details), activities: [blocksText(h.activitiesNearby)].filter(Boolean), perks: perks, perkNote: perkNote
+        description: blocksText(h.details), activities: [blocksText(h.activitiesNearby)].filter(Boolean), perks: perks, perkNote: perkNote, pets: petOf(h) ? "Pet-friendly. " + petOf(h).text : ""
       } }));
     } catch (e) {}
   }
@@ -263,6 +267,7 @@
           rateHTML(h, "mo-rate mo-rate--lg") +
           '<p class="mo-fine">*Indicative starting rate published by Mandarin Oriental, subject to confirmation. Not bookable online; your advisor confirms availability and the final rate.</p>' +
           '<div class="mo-detail__cta"><button type="button" class="btn btn-primary btn-lg" data-mo-request="' + esc(h.id) + '">Request Availability</button></div>' +
+          (petOf(h) ? '<p class="mo-detail__pet">' + PAW + '<span><b>Pet-friendly.</b> Mandarin Oriental lists this home as suitable for pets. Mention your pet in the request so the advisor can confirm the details.</span></p>' : '') +
           perksBoxHTML() +
           sectionHTML("mo-det", "Details", h.details) +
           sectionHTML("mo-act", "Activities Nearby", h.activitiesNearby) +

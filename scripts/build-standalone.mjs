@@ -19,21 +19,30 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import vm from "node:vm";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(root, p), "utf8");
+// Data files (window.X = {...}) are kept readable in the repo; in the GoHighLevel build
+// they are re-serialised without indentation (same data, ~37 KB smaller).
+const readData = (p) => {
+  const sb = { window: {} };
+  vm.runInNewContext(read(p), sb);
+  return Object.keys(sb.window).map((k) => "window." + k + "=" + JSON.stringify(sb.window[k]) + ";").join("\n");
+};
 
 let html = read("index.html");
 
 // Inline every local stylesheet/script (leave third-party CDN/config alone).
 const inlines = [
   ['<link rel="stylesheet" href="assets/css/homes.css">', () => "<style>\n" + read("assets/css/homes.css") + "\n</style>"],
-  ['<script src="assets/js/data.js"></script>', () => "<script>\n" + read("assets/js/data.js") + "\n</script>"],
-  ['<script src="assets/js/images.js"></script>', () => "<script>\n" + read("assets/js/images.js") + "\n</script>"],
-  ['<script src="assets/js/descriptions.js"></script>', () => "<script>\n" + read("assets/js/descriptions.js") + "\n</script>"],
-  ['<script src="assets/js/characteristics.js"></script>', () => "<script>\n" + read("assets/js/characteristics.js") + "\n</script>"],
-  ['<script src="assets/js/mo-homes-index.js"></script>', () => "<script>\n" + read("assets/js/mo-homes-index.js") + "\n</script>"],
-  ['<script src="assets/js/details.js"></script>', () => "<script>\n" + read("assets/js/details.js") + "\n</script>"],
+  ['<script src="assets/js/data.js"></script>', () => "<script>\n" + readData("assets/js/data.js") + "\n</script>"],
+  ['<script src="assets/js/images.js"></script>', () => "<script>\n" + readData("assets/js/images.js") + "\n</script>"],
+  ['<script src="assets/js/descriptions.js"></script>', () => "<script>\n" + readData("assets/js/descriptions.js") + "\n</script>"],
+  ['<script src="assets/js/pets.js"></script>', () => "<script>\n" + readData("assets/js/pets.js") + "\n</script>"],
+  ['<script src="assets/js/characteristics.js"></script>', () => "<script>\n" + readData("assets/js/characteristics.js") + "\n</script>"],
+  ['<script src="assets/js/mo-homes-index.js"></script>', () => "<script>\n" + readData("assets/js/mo-homes-index.js") + "\n</script>"],
+  ['<script src="assets/js/details.js"></script>', () => "<script>\n" + readData("assets/js/details.js") + "\n</script>"],
   ['<script src="assets/js/homes-inventory-filter.js"></script>', () => "<script>\n" + read("assets/js/homes-inventory-filter.js") + "\n</script>"],
   ['<script src="assets/js/homes.js" defer></script>', () => "<script>\n" + read("assets/js/homes.js") + "\n</script>"],
   ['<link rel="stylesheet" href="assets/css/mo-homes.css">', () => "<style>\n" + read("assets/css/mo-homes.css") + "\n</style>"],

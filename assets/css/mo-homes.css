@@ -226,3 +226,11 @@ html.mo-lock .floating-video, html.mo-lock .mobile-cta, html.mo-lock .concierge 
 .mo-qa { max-width: 860px; margin: clamp(30px, 4vw, 48px) auto 0; display: grid; gap: 10px; }
 .mo-qa__title { margin: 0 0 .4rem; text-align: center; font-family: var(--serif); font-weight: 500; font-size: clamp(1.3rem, 2.2vw, 1.6rem); color: var(--ink); }
 .seo-faq__item > summary h4 { flex: 1; margin: 0; font: 600 1.02rem/1.4 var(--sans); color: var(--ink); }
+
+/* Pet-friendly homes ("This Home is Suitable For … Pets" on Mandarin Oriental) */
+.mo-card__pet { display: inline-flex; align-self: flex-start; width: fit-content; align-items: center; gap: .3rem; margin: -.4rem 0 .7rem; padding: .18rem .6rem; border-radius: 999px;
+  background: #eaf3ec; color: #2f5d46; border: 1px solid #c9dfcf; font: 600 .78rem/1.3 var(--sans); }
+.mo-card__pet .paw-ic, .mo-detail__pet .paw-ic { width: .9rem; height: .9rem; flex: none; }
+.mo-detail__pet { display: flex; gap: .5rem; align-items: flex-start; margin: .2rem 0 1rem; padding: .7rem .85rem; border-radius: 12px;
+  background: #f1f7f2; border: 1px solid #d3e6d8; color: var(--text-soft, #4d5f70); font: 400 .9rem/1.45 var(--sans); }
+.mo-detail__pet .paw-ic { margin-top: .2rem; color: #2f5d46; }

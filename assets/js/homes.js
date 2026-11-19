@@ -282,13 +282,14 @@
     marina:           ["marina", "yachting", "yacht", "sailing", "boating", "harbour", "harbor"],
     "family-friendly":["family-friendly", "kid-friendly", "family", "families", "kids", "kid", "children", "child"],
     historic:         ["historic", "historical", "heritage", "old-world"],
-    culinary:         ["culinary", "fine dining", "dining", "chef", "gastronomy", "michelin", "restaurant"]
+    culinary:         ["culinary", "fine dining", "dining", "chef", "gastronomy", "michelin", "restaurant"],
+    "pet-friendly":   ["pet-friendly", "pet friendly", "pets allowed", "pets welcome", "dog-friendly", "dog friendly", "dogs allowed", "dogs welcome", "with my dog", "with my cat", "with a dog", "with a cat", "with our dog", "with our cat", "cat-friendly", "cat friendly", "pets", "pet", "dogs", "dog", "puppy", "furry"]
   };
   var GROUP_WORDS = ["group", "groups", "party", "people", "guests", "persons", "adults", "everyone", "big", "large", "spacious", "roomy"];
   var QUIET_WORDS = ["quiet", "secluded", "peaceful", "tranquil", "serene", "private", "hideaway", "retreat", "escape", "romantic", "intimate", "off the beaten"];
   var LUX_WORDS   = ["luxury", "luxurious", "five-star", "5-star", "five star", "premium", "exclusive", "opulent", "high-end", "prestige"];
   var STOP_WORDS = {};
-  ("a an the in at on of for with and or to near around close nearby by my our we i me you your it that this these those is are be need want looking find get search searching show me somewhere someplace some any place home homes house houses villa villas residence residences estate estates property properties stay stays staying accommodation accommodations trip trips vacation holiday getaway weekend week month long longer extended nights night day days perfect nice great good best lovely beautiful amazing stunning kind type sort where want would like really very just more most people person kitchen kitchens honeymoon anniversary wedding couple couples friends friend dog dogs pet pets view views sunset sunsets relax relaxing adventure cheap affordable budget stay"
+  ("a an the in at on of for with and or to near around close nearby by my our we i me you your it that this these those is are be need want looking find get search searching show me somewhere someplace some any place home homes house houses villa villas residence residences estate estates property properties stay stays staying accommodation accommodations trip trips vacation holiday getaway weekend week month long longer extended nights night day days perfect nice great good best lovely beautiful amazing stunning kind type sort where want would like really very just more most people person kitchen kitchens honeymoon anniversary wedding couple couples friends friend view views sunset sunsets relax relaxing adventure cheap affordable budget stay"
     .split(" ")).forEach(function (w) { STOP_WORDS[w] = 1; });
 
   var CARIB = {};
@@ -597,6 +598,9 @@
       var refined = cands.filter(function (p) { var h = nlHay(p); return sig.text.every(function (t) { return h.indexOf(t) !== -1; }); });
       if (refined.length) cands = refined;
     }
+    // Pets are a must-have, not a preference: only pet-friendly properties
+    // ("pet friendly villa in mexico", "dog friendly hotel in florida").
+    if (sig.features.indexOf("pet-friendly") !== -1) cands = cands.filter(petOK);
     smartRank.last = { sig: sig, fixes: cq.fixes, query: q };
     if (!cands.length) return [];
     var qWords = nameWords(q);
@@ -748,11 +752,15 @@
   var FEATURE_LABELS = {
     golf: "Golf", spa: "Spa", "private-pool": "Private pool", overwater: "Overwater",
     vineyard: "Vineyard", marina: "Marina", "family-friendly": "Family-friendly",
-    historic: "Historic", culinary: "Culinary"
+    historic: "Historic", culinary: "Culinary", "pet-friendly": "Pet-friendly"
   };
+  // Pet policies (assets/js/pets.js, word for word from WhataHotel / Mandarin Oriental).
+  function petInfo(p) { var d = window.WAH_PETS; return (d && d[p.id]) || null; }
+  function petOK(p) { var x = petInfo(p); return !!(x && x.ok); }
+  function pawSVG() { return '<svg class="paw-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.8" r="2.2"/><circle cx="14.5" cy="5.8" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M12 11.5c-3 0-6 4.3-6 6.5 0 1.6 1.3 2.5 3 2.5 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.7 0 3-.9 3-2.5 0-2.2-3-6.5-6-6.5z"/></svg>'; }
   function traitsFor(p) { return TRAITS[p.id] || null; }
   function settingsFor(p) { var t = traitsFor(p); return (t && t.settings) || []; }
-  function featuresFor(p) { var t = traitsFor(p); return (t && t.features) || []; }
+  function featuresFor(p) { var t = traitsFor(p), f = (t && t.features) || []; return petOK(p) ? f.concat("pet-friendly") : f; }
   function primarySetting(p) { var t = traitsFor(p); return t && t.primary; }
   function settingLabel(k) { return SETTING_LABELS[k] || k; }
 
@@ -770,6 +778,7 @@
     var pset = primarySetting(p);
     if (pset) tags.push('<span class="tag-pill tag-pill--setting">' + (SETTING_ICON[pset] || "") + esc(settingLabel(pset)) + '</span>');
     if (p.kind === "mo") tags.push('<span class="tag-pill tag-pill--mo">Exceptional Home</span>');
+    if (petOK(p)) tags.push('<span class="tag-pill tag-pill--pet">' + pawSVG() + 'Pet-friendly</span>');
     tags.push('<span class="tag-pill">' + esc(REGION_BADGE[p.regionKey] || p.region) + '</span>');
     if (p.country) tags.push('<span class="tag-pill">' + esc(p.country) + '</span>');
     if (p.kind === "mo" && p.mo.bedroomsDisplay) tags.push('<span class="tag-pill">' + esc(p.mo.bedroomsDisplay) + ' bedrooms</span>');
@@ -1363,7 +1372,7 @@
   // and an empty box offers a few ideas to tap.
   var MSEARCH = { on: false };
   var MSEARCH_MAX = 80;
-  var QUICK_PICKS = ["Maldives", "Caribbean", "Lake Como", "Four Seasons", "Hawaii", "Ski in Colorado", "Mandarin Oriental", "Villa with a private pool"];
+  var QUICK_PICKS = ["Maldives", "Caribbean", "Lake Como", "Four Seasons", "Hawaii", "Ski in Colorado", "Pet-friendly", "Mandarin Oriental", "Villa with a private pool"];
   function renderSuggest(box, q) {
     if (!box) return;
     if (q.length < 2 && MSEARCH.on) {
@@ -1421,6 +1430,21 @@
       if (PHONE_MQ && PHONE_MQ.addEventListener) PHONE_MQ.addEventListener("change", function () { if (!isPhone()) closeMobileSearch(); });
     }
     if (input && isPhone()) input.setAttribute("placeholder", "Destination, hotel or brand…"); // the long example was cut off
+    // "Traveling with a pet?" — one tap runs the pet-friendly search.
+    var petBtn = $("[data-pet-search]");
+    if (petBtn && input) {
+      var nPets = PROPS.filter(petOK).length;
+      if (nPets) {
+        $("[data-pet-count]", petBtn).textContent = nPets;
+        petBtn.hidden = false;
+        petBtn.addEventListener("click", function () {
+          input.value = "Pet-friendly"; state.query = input.value;
+          track("search_pet_friendly", { results: nPets });
+          if (isPhone()) { input.focus(); openMobileSearch(); renderSuggest(box, input.value); renderDirectory(); return; }
+          renderDirectory(); hideSuggest(); scrollToDirectory();
+        });
+      }
+    }
     var spacer = null;
     function openMobileSearch() {
       if (MSEARCH.on || !form || !isPhone()) return;
@@ -1682,6 +1706,7 @@
         (traitMeta ? '<div class="pmodal__tags pmodal__tags--traits">' + traitMeta + '</div>' : "") +
         '<p class="pmodal__desc">' + esc(desc) + '</p>' +
         ((d && d.stay) ? '<div class="pmodal__stay"><h4>Accommodations</h4><p>' + esc(d.stay) + '</p></div>' : "") +
+        petBlock(p) +
         '<div class="pmodal__cols">' +
           '<div class="pmodal__col"><h4>' + (d && d.highlights ? "Highlights" : "At a glance") + '</h4><ul class="pmodal__list">' + chipList(highlights, "hl") + '</ul></div>' +
           (perks ? '<div class="pmodal__col pmodal__col--perks"><h4>WhataHotel Signature perks</h4><ul class="pmodal__list">' + chipList(perks, "perk") + '</ul></div>' : "") +
@@ -1720,11 +1745,19 @@
       document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
         kind: "hotel", id: p.id, name: p.name, brand: p.brand || "", collection: (d && d.collection) || p.collection || "",
         location: locFull, setting: tr && tr.settings ? tr.settings.map(settingLabel).join(", ") : "",
-        description: desc, highlights: (d && d.highlights) || []
+        description: desc, highlights: (d && d.highlights) || [],
+        pets: petInfo(p) ? (petInfo(p).ok ? "Pet-friendly. " : "Pets not allowed. ") + petInfo(p).text : ""
       } }));
     } catch (e) {}
   }
 
+  // Pet policy in the details view, quoted from the property's WhataHotel page.
+  function petBlock(p) {
+    var x = petInfo(p);
+    if (!x) return "";
+    return '<div class="pmodal__pets' + (x.ok ? '' : ' is-no') + '"><h4>' + pawSVG() + (x.ok ? 'Pet-friendly' : 'Pets') + '</h4>' +
+      '<p>' + esc(x.text) + '</p><p class="pmodal__pets-note">From the property’s WhataHotel page. Policies can change, so please confirm when booking.</p></div>';
+  }
   function closeDetail() {
     if (!modalEl) return;
     if (modalEl.classList.contains("is-open")) { try { document.dispatchEvent(new CustomEvent("wah:property-closed")); } catch (e) {} }

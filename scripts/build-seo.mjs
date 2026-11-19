@@ -33,7 +33,8 @@ function loadWindow(...files) { const w = {}; for (const f of files) new Functio
 export const PAGE_URL = "https://pro.whatahotel.com/homes";
 const ORG_ID = "https://www.whatahotel.com/#org";
 
-const W = loadWindow("assets/js/data.js", "assets/js/mo-homes-index.js");
+const W = loadWindow("assets/js/data.js", "assets/js/mo-homes-index.js", "assets/js/pets.js");
+const PETS = W.WAH_PETS || {};
 const MO_CFG = JSON.parse(read("scripts/mo-homes.config.json"));
 const PERKS = MO_CFG.guestPerks, MO_FAQ = MO_CFG.guestFaq || [];
 const HOTELS = W.WAH_PROPERTIES || [];
@@ -58,6 +59,8 @@ const homeCountries = [...new Set(HOMES.map((h) => h.country))];
 const placeOf = (p) => { const c = p.city || ""; return c && c.toLowerCase().indexOf(String(p.country).toLowerCase()) === -1 ? `${c}, ${p.country}` : (c || p.country); };
 const listJoin = (a) => a.length < 2 ? a.join("") : a.slice(0, -1).join(", ") + " and " + a[a.length - 1];
 
+const PET_OK = ALL.filter((p) => PETS[p.id] && PETS[p.id].ok).sort(byName);
+
 /* ---------- FAQ (answer-first; facts only from the page / data) ---------- */
 const FAQ = [
   ["What is a hotel residence, villa or home-style stay?",
@@ -72,6 +75,8 @@ const FAQ = [
     `They are ${HOMES.length} private villas and estates from Mandarin Oriental's Exceptional Homes collection, in ${listJoin(homeCountries)}. Each home lists its bedrooms, bathrooms, guest capacity and an indicative starting rate where Mandarin Oriental publishes one.`],
   ["Can I book a Mandarin Oriental Exceptional Home online?",
     "No. These homes are not bookable online. Select Request Availability, share your preferred dates and party size, and a WhataHotel! travel advisor will contact you about availability and rates. Submitting a request does not confirm a reservation, and published rates are indicative and subject to confirmation."],
+  ["Which homes and villas are pet-friendly?",
+    `${PET_OK.length} properties welcome pets: ${listJoin(PET_OK.map((p) => p.name))}. Each shows a Pet-friendly tag, and its details give the pet policy from its WhataHotel! page — limits on number, size and fees vary, so confirm when booking. Search "pet friendly" to see them all.`],
   ["Are these homes good for families and groups?",
     "Yes. With multiple bedrooms and separate living and dining areas, everyone can stay together in one home instead of booking several hotel rooms. Guest capacity varies by property."],
   ["Who is WhataHotel!?",
@@ -85,6 +90,7 @@ function itemLd(p, i) {
   const item = { "@type": p.kind === "hotel" ? "Hotel" : "LodgingBusiness", name: p.name, address };
   if (p.url) item.url = p.url;
   if (p.brand) item.brand = { "@type": "Brand", name: p.brand };
+  if (PETS[p.id]) item.petsAllowed = !!PETS[p.id].ok;   // from the property's own page
   if (p.kind === "home") item.description = "Mandarin Oriental Exceptional Home (private villa). Not bookable online; availability on request.";
   return { "@type": "ListItem", position: i + 1, item };
 }

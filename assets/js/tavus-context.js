@@ -30,6 +30,7 @@
       if (spec) lines.push("Size: " + spec + ".");
       if (p.description) lines.push("About it: " + clip(p.description, 700));
       if (p.activities && p.activities.length) lines.push("Nearby: " + clip(p.activities.join("; "), 350));
+      if (p.pets) lines.push("Pets (from the property's page): " + clip(p.pets, 420));
       if (p.perks && p.perks.length) lines.push("Included with every Exceptional Home: " + p.perks.join(", ") + "." + (p.perkNote ? " " + clip(p.perkNote, 300) : ""));
       lines.push("Not bookable online: the Request Availability button opens the inquiry form; View Details shows photos, Details and Activities Nearby.");
     } else {
@@ -37,6 +38,7 @@
       if (p.collection && p.collection !== p.brand) lines.push("Collection: " + p.collection + ".");
       if (p.setting) lines.push("Setting: " + p.setting + ".");
       if (p.description) lines.push("About it: " + clip(p.description, 700));
+      if (p.pets) lines.push("Pets (from the property's page): " + clip(p.pets, 420));
       if (p.highlights && p.highlights.length) lines.push("Highlights: " + clip(p.highlights.join("; "), 350));
       lines.push("In its details, Check Availability opens live villa and residence availability on WhataHotel.com; View full property on WhataHotel.com opens its full page.");
     }
