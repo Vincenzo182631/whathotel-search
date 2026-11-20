@@ -860,6 +860,8 @@ body.search-active .floating-video { animation: none; visibility: hidden; } /* i
   background: #eaf3ec; color: #2f5d46; font: inherit; font-size: .86rem; font-weight: 600; cursor: pointer; }
 .pet-cta:hover { background: #dcecdf; }
 .pet-cta .paw-ic { width: 1rem; height: 1rem; }
+.pet-link { display: inline-block; margin: .7rem 0 0 .6rem; font-size: .88rem; font-weight: 600; color: #2f5d46; text-decoration: none; }
+.pet-link:hover { text-decoration: underline; }
 .tag-pill--setting { display: inline-flex; align-items: center; gap: .3rem; color: var(--gold-deep); background: #f4ecda; border-color: #e4d3ab; background: color-mix(in srgb, var(--gold) 12%, var(--paper)); border-color: color-mix(in srgb, var(--gold) 32%, var(--line-2)); }
 .set-ic { width: .95em; height: .95em; flex: none; }
 .pmodal__tag--trait .set-ic { width: 1rem; height: 1rem; }

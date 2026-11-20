@@ -7,6 +7,9 @@
  *     the FAQ on each property's WhataHotel page).
  *   Mandarin Oriental Exceptional Homes: assets/js/mo-homes.js, a home whose
  *     "This Home is Suitable For" list on Mandarin Oriental includes "Pets".
+ *   WhataHotel's Pet-Friendly Luxury Hotels collection (scripts/pet-collection.json, from
+ *     scripts/fetch-pet-collection.mjs): a property listed there whose own page has no pet
+ *     answer is marked pet-friendly with that listing as the source.
  *
  * Output: window.WAH_PETS = { "<id>": { ok: 1|0, text: "<policy>", src: "whatahotel"|"mo" } }
  */
@@ -56,6 +59,15 @@ for (const h of homes) {
     }
   }
 }
+
+// Listed in WhataHotel's pet-friendly collection but no pet FAQ on its own page.
+try {
+  const coll = JSON.parse(readFileSync(join(__dirname, "pet-collection.json"), "utf8"));
+  for (const h of coll.hotels) {
+    const id = String(h.id);
+    if (ids.has(id) && !out[id]) out[id] = { ok: 1, text: "Listed in WhataHotel's Pet-Friendly Luxury Hotels collection. Pet rules are set by the hotel and can change; an advisor confirms the fee, weight limit, number of pets and room types before you book.", src: "collection" };
+  }
+} catch (e) { console.warn("  (no scripts/pet-collection.json — run npm run pets:collection)"); }
 
 const yes = Object.values(out).filter((v) => v.ok).length;
 writeFileSync(join(root, "assets", "js", "pets.js"),

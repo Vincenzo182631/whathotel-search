@@ -109,6 +109,11 @@ window.WAH_PETS = {
   "text": "Guests can bring their furry companions with some restrictions. For stays of 1-6 nights, a $150 non-refundable pet fee applies, while stays of 7-30 nights incur a $300 non-refundable pet fee. Only dogs weighing 50 pounds and under are permitted, with two dogs allowed if their combined weight doesn't exceed 75 pounds. Service animals are exempt from all fees.",
   "src": "whatahotel"
  },
+ "2741": {
+  "ok": 1,
+  "text": "Listed in WhataHotel's Pet-Friendly Luxury Hotels collection. Pet rules are set by the hotel and can change; an advisor confirms the fee, weight limit, number of pets and room types before you book.",
+  "src": "collection"
+ },
  "2760": {
   "ok": 1,
   "text": "The resort also welcomes small pets, with one pet per room allowed (lap size up to 25 lbs), making it perfect for travelers who want to bring their beloved companions.",

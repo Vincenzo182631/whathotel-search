@@ -1,0 +1,6769 @@
+{
+ "source": "https://www.whatahotel.com/collection/pet-friendly-luxury-hotels.html",
+ "fetched": "2026-11-20",
+ "intro": [
+  "Your dog or cat doesn't have to stay home. These 751 luxury hotels welcome pets, from Kimpton and Thompson to Four Seasons, The Ritz-Carlton, St. Regis, Park Hyatt and independent country houses across Europe. You'll find them in more than 60 countries, with the most in New York, San Francisco, Paris, London, Chicago, Washington DC, Rome and Milan.",
+  "Book through WhataHotel! and you pay the hotel's own rate, with our preferred-partner perks added where the hotel offers them. Pet rules are set by each hotel, and they change. Before you book, a Lorraine Travel advisor will confirm the details for your pet: the fee, the weight limit, how many pets are allowed and which room types qualify."
+ ],
+ "hotels": [
+  {
+   "id": 3801,
+   "slug": "grand-bohemian-hotel-mountain-brook-autograph-collection",
+   "name": "Grand Bohemian Hotel Mountain Brook, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Alabama",
+   "city": "Birmingham"
+  },
+  {
+   "id": 2400,
+   "slug": "the-ritz-carlton-dove-mountain",
+   "name": "The Ritz-Carlton Dove Mountain",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Marana"
+  },
+  {
+   "id": 3257,
+   "slug": "jw-marriott-phoenix-desert-ridge-resort-and-spa",
+   "name": "JW Marriott Phoenix Desert Ridge Resort and Spa",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Phoenix"
+  },
+  {
+   "id": 1063,
+   "slug": "royal-palms-resort-and-spa-",
+   "name": "Royal Palms Resort and Spa",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Phoenix"
+  },
+  {
+   "id": 6863,
+   "slug": "the-camby",
+   "name": "The Camby",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Phoenix"
+  },
+  {
+   "id": 5011,
+   "slug": "the-westin-phoenix-downtown",
+   "name": "The Westin Phoenix Downtown",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Phoenix"
+  },
+  {
+   "id": 6718,
+   "slug": "adero-scottsdale-resort",
+   "name": "Adero Scottsdale Resort",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 3231,
+   "slug": "andaz-scottsdale-resort-spa",
+   "name": "Andaz Scottsdale Resort & Spa",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 3456,
+   "slug": "hyatt-regency-scottsdale-resort-spa",
+   "name": "Hyatt Regency Scottsdale Resort & Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 3255,
+   "slug": "jw-marriott-scottsdale-camelback-inn-resort-and-spa",
+   "name": "JW Marriott Scottsdale Camelback Inn Resort and Spa",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 2395,
+   "slug": "the-canyon-suites-at-the-phoenician",
+   "name": "The Canyon Suites at The Phoenician",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 2816,
+   "slug": "the-phoenician",
+   "name": "The Phoenician",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 2204,
+   "slug": "w-scottsdale-hotel",
+   "name": "W Scottsdale Hotel",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Scottsdale"
+  },
+  {
+   "id": 1672,
+   "slug": "enchantment-resort-",
+   "name": "Enchantment Resort",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Sedona"
+  },
+  {
+   "id": 7079,
+   "slug": "omni-tempe-hotel-at-asu",
+   "name": "Omni Tempe Hotel at ASU",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Tempe"
+  },
+  {
+   "id": 6441,
+   "slug": "the-westin-tempe",
+   "name": "The Westin Tempe",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Tempe"
+  },
+  {
+   "id": 957,
+   "slug": "canyon-ranch-tucson-br-all-inclusive-",
+   "name": "Canyon Ranch, Tucson **All Inclusive**",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Tucson"
+  },
+  {
+   "id": 7080,
+   "slug": "omni-tucson-national-resort-spa",
+   "name": "Omni Tucson National Resort & Spa",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Arizona",
+   "city": "Tucson"
+  },
+  {
+   "id": 1453,
+   "slug": "beverly-wilshire-a-four-seasons-hotel",
+   "name": "Beverly Wilshire, A Four Seasons Hotel",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "Beverly Hills"
+  },
+  {
+   "id": 2294,
+   "slug": "sls-hotel-at-beverly-hills",
+   "name": "SLS Hotel at Beverly Hills",
+   "program": "SLS Hotels & Resorts under Accor HERA Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Beverly Hills"
+  },
+  {
+   "id": 2225,
+   "slug": "w-los-angeles-west-beverly-hills",
+   "name": "W Los Angeles, West Beverly Hills",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Beverly Hills"
+  },
+  {
+   "id": 3235,
+   "slug": "waldorf-astoria-beverly-hills",
+   "name": "Waldorf Astoria Beverly Hills",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Beverly Hills"
+  },
+  {
+   "id": 2556,
+   "slug": "carmel-valley-ranch",
+   "name": "Carmel Valley Ranch",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "Carmel"
+  },
+  {
+   "id": 3852,
+   "slug": "avenue-of-the-arts-costa-mesa",
+   "name": "Avenue of the Arts Costa Mesa",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Costa Mesa"
+  },
+  {
+   "id": 948,
+   "slug": "the-ritz-carlton-laguna-niguel",
+   "name": "The Ritz-Carlton, Laguna Niguel",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Dana Point"
+  },
+  {
+   "id": 1213,
+   "slug": "waldorf-astoria-monarch-beach",
+   "name": "Waldorf Astoria Monarch Beach",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Dana Point"
+  },
+  {
+   "id": 4614,
+   "slug": "alila-marea-beach-resort-encinitas",
+   "name": "Alila Marea Beach Resort Encinitas",
+   "program": "ALiLa",
+   "country": "United States",
+   "region": "California",
+   "city": "Encinitas"
+  },
+  {
+   "id": 4997,
+   "slug": "the-glenmark-glendale-a-tribute-portfolio-hotel",
+   "name": "The Glenmark, Glendale, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Glendale"
+  },
+  {
+   "id": 1168,
+   "slug": "the-ritz-carlton-half-moon-bay",
+   "name": "The Ritz-Carlton, Half Moon Bay",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Half Moon Bay"
+  },
+  {
+   "id": 3076,
+   "slug": "w-hollywood",
+   "name": "W Hollywood",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Hollywood"
+  },
+  {
+   "id": 2082,
+   "slug": "hyatt-regency-huntington-beach-",
+   "name": "Hyatt Regency Huntington Beach",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Huntington Beach"
+  },
+  {
+   "id": 1674,
+   "slug": "grand-hyatt-indian-wells-resort-villas",
+   "name": "Grand Hyatt Indian Wells Resort & Villas",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "California",
+   "city": "Indian Wells"
+  },
+  {
+   "id": 3259,
+   "slug": "renaissance-esmeralda-resort-spa-at-indian-wells",
+   "name": "Renaissance Esmeralda Resort & Spa at Indian Wells",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Indian Wells"
+  },
+  {
+   "id": 1471,
+   "slug": "la-quinta-resort-club",
+   "name": "La Quinta Resort & Club",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "La Quinta"
+  },
+  {
+   "id": 2402,
+   "slug": "the-ritz-carlton-lake-tahoe",
+   "name": "The Ritz-Carlton, Lake Tahoe",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Lake Tahoe"
+  },
+  {
+   "id": 6276,
+   "slug": "conrad-los-angeles",
+   "name": "Conrad Los Angeles",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "United States",
+   "region": "California",
+   "city": "Los Angeles"
+  },
+  {
+   "id": 6208,
+   "slug": "hotel-figueroa",
+   "name": "Hotel Figueroa",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Los Angeles"
+  },
+  {
+   "id": 3332,
+   "slug": "intercontinental-los-angeles-downtown",
+   "name": "Intercontinental Los Angeles Downtown",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Los Angeles"
+  },
+  {
+   "id": 3548,
+   "slug": "kimpton-la-peer-hotel",
+   "name": "Kimpton La Peer Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Los Angeles"
+  },
+  {
+   "id": 6207,
+   "slug": "the-shay-hotel",
+   "name": "The Shay Hotel",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Los Angeles"
+  },
+  {
+   "id": 6209,
+   "slug": "thompson-hollywood",
+   "name": "Thompson Hollywood",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Los Angeles"
+  },
+  {
+   "id": 971,
+   "slug": "the-ritz-carlton-marina-del-rey",
+   "name": "The Ritz-Carlton, Marina del Rey",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Marina del Rey"
+  },
+  {
+   "id": 3831,
+   "slug": "hotel-nia-autograph-collection",
+   "name": "Hotel Nia, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Menlo Park"
+  },
+  {
+   "id": 2194,
+   "slug": "hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course",
+   "name": "Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Monterey"
+  },
+  {
+   "id": 4689,
+   "slug": "monterey-marriott",
+   "name": "Monterey Marriott",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Monterey"
+  },
+  {
+   "id": 3382,
+   "slug": "andaz-napa-",
+   "name": "Andaz Napa",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Napa Valley"
+  },
+  {
+   "id": 3617,
+   "slug": "four-seasons-napa-valley",
+   "name": "Four Seasons Napa Valley",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "Napa Valley"
+  },
+  {
+   "id": 6626,
+   "slug": "pendry-newport-beach",
+   "name": "Pendry Newport Beach",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "Newport Beach"
+  },
+  {
+   "id": 2674,
+   "slug": "the-resort-at-pelican-hill-",
+   "name": "The Resort at Pelican Hill",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "Newport Beach"
+  },
+  {
+   "id": 3328,
+   "slug": "kimpton-rowan-palm-springs-hotel",
+   "name": "Kimpton Rowan Palm Springs Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Palm Springs"
+  },
+  {
+   "id": 6618,
+   "slug": "thompson-palm-springs",
+   "name": "Thompson Palm Springs",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "Palm Springs"
+  },
+  {
+   "id": 6582,
+   "slug": "le-m-ridien-pasadena-arcadia",
+   "name": "Le Méridien Pasadena Arcadia",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "California",
+   "city": "Pasadena"
+  },
+  {
+   "id": 7092,
+   "slug": "the-westin-pasadena",
+   "name": "The Westin Pasadena",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Pasadena"
+  },
+  {
+   "id": 2224,
+   "slug": "omni-rancho-las-palmas-resort",
+   "name": "Omni Rancho Las Palmas Resort",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "Rancho Mirage"
+  },
+  {
+   "id": 1212,
+   "slug": "the-ritz-carlton-rancho-mirage",
+   "name": "The Ritz-Carlton Rancho Mirage",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Rancho Mirage"
+  },
+  {
+   "id": 2146,
+   "slug": "the-westin-mission-hills-resort-spa",
+   "name": "The Westin Mission Hills Resort & Spa",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Rancho Mirage"
+  },
+  {
+   "id": 6116,
+   "slug": "hyatt-centric-downtown-sacramento",
+   "name": "Hyatt Centric Downtown Sacramento",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "California",
+   "city": "Sacramento"
+  },
+  {
+   "id": 3380,
+   "slug": "andaz-san-diego",
+   "name": "Andaz San Diego",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego"
+  },
+  {
+   "id": 2097,
+   "slug": "manchester-grand-hyatt-san-diego",
+   "name": "Manchester Grand Hyatt San Diego",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego"
+  },
+  {
+   "id": 2096,
+   "slug": "omni-la-costa-resort",
+   "name": "Omni La Costa Resort",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego"
+  },
+  {
+   "id": 3477,
+   "slug": "pendry-san-diego",
+   "name": "Pendry San Diego",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego"
+  },
+  {
+   "id": 3900,
+   "slug": "the-guild-hotel-san-diego-a-tribute-portfolio-hotel",
+   "name": "The Guild Hotel, San Diego, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego"
+  },
+  {
+   "id": 1757,
+   "slug": "the-us-grant-",
+   "name": "THE US GRANT",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego"
+  },
+  {
+   "id": 2543,
+   "slug": "four-seasons-aviara-residence-club",
+   "name": "Four Seasons Aviara Residence Club",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego, Aviara"
+  },
+  {
+   "id": 1020,
+   "slug": "park-hyatt-aviara-resort-golf-club-spa",
+   "name": "Park Hyatt Aviara Resort, Golf Club & Spa",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Diego, Aviara"
+  },
+  {
+   "id": 1197,
+   "slug": "four-seasons-hotel-san-francisco-",
+   "name": "Four Seasons Hotel San Francisco",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 4076,
+   "slug": "four-seasons-san-francisco-at-embarcadero-",
+   "name": "Four Seasons San Francisco at Embarcadero",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 2997,
+   "slug": "grand-hyatt-san-francisco",
+   "name": "Grand Hyatt San Francisco",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 3068,
+   "slug": "hotel-zeppelin",
+   "name": "Hotel Zeppelin",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 3640,
+   "slug": "hyatt-regency-san-francisco",
+   "name": "Hyatt Regency San Francisco",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 6401,
+   "slug": "hyatt-regency-san-francisco-downtown-soma",
+   "name": "Hyatt Regency San Francisco Downtown SOMA",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 3588,
+   "slug": "intercontinental-san-francisco",
+   "name": "InterContinental San Francisco",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 3732,
+   "slug": "jw-marriott-san-francisco-union-square",
+   "name": "JW Marriott San Francisco Union Square",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 6123,
+   "slug": "kissel-uptown-oakland",
+   "name": "Kissel Uptown Oakland",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 2793,
+   "slug": "palace-hotel-san-francisco",
+   "name": "Palace Hotel, San Francisco",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 6404,
+   "slug": "san-francisco-airport-marriott-waterfront",
+   "name": "San Francisco Airport Marriott Waterfront",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 1480,
+   "slug": "st-regis-hotel-san-francisco",
+   "name": "St. Regis Hotel, San Francisco",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 4701,
+   "slug": "the-clancy-autograph-collection",
+   "name": "The Clancy, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 6572,
+   "slug": "the-jay-autograph-collection",
+   "name": "The Jay, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 953,
+   "slug": "the-ritz-carlton-san-francisco",
+   "name": "The Ritz-Carlton, San Francisco",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 3770,
+   "slug": "the-westin-st-francis-san-francisco-on-union-square",
+   "name": "The Westin St. Francis San Francisco on Union Square",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 2839,
+   "slug": "w-san-francisco",
+   "name": "W San Francisco",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Francisco"
+  },
+  {
+   "id": 6939,
+   "slug": "tetra-hotel",
+   "name": "Tetra Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Jose CA"
+  },
+  {
+   "id": 4065,
+   "slug": "inn-at-the-mission-autograph-collection",
+   "name": "Inn at the Mission, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "California",
+   "city": "San Juan Capistrano"
+  },
+  {
+   "id": 2667,
+   "slug": "el-encanto",
+   "name": "El Encanto",
+   "program": "Belmond Bellini Club",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Barbara"
+  },
+  {
+   "id": 1424,
+   "slug": "four-seasons-santa-barbara-the-biltmore",
+   "name": "Four Seasons Santa Barbara, The Biltmore",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Barbara"
+  },
+  {
+   "id": 2021,
+   "slug": "kimpton-canary-hotel-",
+   "name": "Kimpton Canary Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Barbara"
+  },
+  {
+   "id": 4221,
+   "slug": "mar-monte-hotel",
+   "name": "Mar Monte Hotel",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Barbara"
+  },
+  {
+   "id": 1726,
+   "slug": "san-ysidro-ranch",
+   "name": "San Ysidro Ranch",
+   "program": "Leading Hotels of the World",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Barbara"
+  },
+  {
+   "id": 3294,
+   "slug": "the-ritz-carlton-bacara",
+   "name": "The Ritz-Carlton Bacara",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Barbara"
+  },
+  {
+   "id": 6686,
+   "slug": "regent-santa-monica-beach",
+   "name": "Regent Santa Monica Beach",
+   "program": "Regent Hotels",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Monica"
+  },
+  {
+   "id": 3650,
+   "slug": "hyatt-regency-sonoma-wine-country",
+   "name": "Hyatt Regency Sonoma Wine Country",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Santa Rosa"
+  },
+  {
+   "id": 2254,
+   "slug": "andaz-west-hollywood-",
+   "name": "Andaz West Hollywood",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "West Hollywood"
+  },
+  {
+   "id": 3375,
+   "slug": "the-west-hollywood-edition",
+   "name": "The West Hollywood EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "United States",
+   "region": "California",
+   "city": "West Hollywood"
+  },
+  {
+   "id": 1790,
+   "slug": "four-seasons-hotel-westlake-village",
+   "name": "Four Seasons Hotel Westlake Village",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "California",
+   "city": "Westlake Village"
+  },
+  {
+   "id": 3968,
+   "slug": "hyatt-regency-westlake",
+   "name": "Hyatt Regency Westlake",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "California",
+   "city": "Westlake Village"
+  },
+  {
+   "id": 1272,
+   "slug": "hotel-jerome-auberge-collection",
+   "name": "Hotel Jerome, Auberge Collection",
+   "program": "Auberge Collection",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Aspen"
+  },
+  {
+   "id": 2835,
+   "slug": "st-regis-residence-aspen-resort",
+   "name": "St Regis Residence Aspen Resort",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Aspen"
+  },
+  {
+   "id": 4195,
+   "slug": "the-sky-residences-at-w-aspen",
+   "name": "The Sky Residences at W Aspen",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Aspen"
+  },
+  {
+   "id": 984,
+   "slug": "the-st-regis-aspen",
+   "name": "The St. Regis Aspen",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Aspen"
+  },
+  {
+   "id": 4057,
+   "slug": "w-aspen",
+   "name": "W Aspen",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Aspen"
+  },
+  {
+   "id": 1254,
+   "slug": "the-ritz-carlton-bachelor-gulch",
+   "name": "The Ritz-Carlton, Bachelor Gulch",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Beaver Creek"
+  },
+  {
+   "id": 3865,
+   "slug": "the-westin-riverfront-resort-spa-at-beaver-creek-mountain",
+   "name": "The Westin Riverfront Resort & Spa at Beaver Creek Mountain",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Beaver Creek"
+  },
+  {
+   "id": 6484,
+   "slug": "gaylord-rockies-resort-convention-center",
+   "name": "Gaylord Rockies Resort & Convention Center",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 2042,
+   "slug": "grand-hyatt-denver",
+   "name": "Grand Hyatt Denver",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 6200,
+   "slug": "hotel-clio-a-luxury-collection-hotel-denver-cherry-creek-",
+   "name": "Hotel Clio, A Luxury Collection Hotel, Denver Cherry Creek",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 3851,
+   "slug": "the-jacquard",
+   "name": "The Jacquard",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 1858,
+   "slug": "the-ritz-carlton-denver",
+   "name": "The Ritz-Carlton, Denver",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 6944,
+   "slug": "the-westin-denver-downtown",
+   "name": "The Westin Denver Downtown",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 6228,
+   "slug": "thompson-denver",
+   "name": "Thompson Denver",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Denver"
+  },
+  {
+   "id": 6980,
+   "slug": "viewline-resort-snowmass",
+   "name": "Viewline Resort Snowmass",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Snowmass Village"
+  },
+  {
+   "id": 6981,
+   "slug": "the-hythe-a-luxury-collection-resort",
+   "name": "The Hythe , A Luxury Collection Resort",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Colorado",
+   "city": "Vail"
+  },
+  {
+   "id": 3558,
+   "slug": "intercontinental-washington-d-c-the-wharf",
+   "name": "InterContinental Washington D.C. - The Wharf",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 6905,
+   "slug": "marriott-marquis-washington-dc",
+   "name": "Marriott Marquis Washington, DC",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1205,
+   "slug": "park-hyatt-washington-d-c-",
+   "name": "Park Hyatt Washington D.C.",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 3092,
+   "slug": "rosewood-washington-d-c-",
+   "name": "Rosewood Washington, D.C.",
+   "program": "Rosewood Hotels & Resorts",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1377,
+   "slug": "the-jefferson-washington-dc",
+   "name": "The Jefferson Washington DC",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1607,
+   "slug": "the-ritz-carlton-georgetown",
+   "name": "The Ritz-Carlton Georgetown",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1610,
+   "slug": "the-ritz-carlton-washington-d-c-",
+   "name": "The Ritz-Carlton, Washington D.C.",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1417,
+   "slug": "the-st-regis-hotel-washington-d-c-",
+   "name": "The St. Regis Hotel Washington D.C.",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 6492,
+   "slug": "the-ven-at-embassy-row-washington-dc",
+   "name": "The Ven at Embassy Row, Washington, DC",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1365,
+   "slug": "the-willard-intercontinental-",
+   "name": "The Willard InterContinental",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 4196,
+   "slug": "thompson-washington-d-c-",
+   "name": "Thompson Washington D.C.",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 6887,
+   "slug": "washington-marriott-capitol-hill",
+   "name": "Washington Marriott Capitol Hill",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 6622,
+   "slug": "yours-truly-dc-vignette-collection",
+   "name": "Yours Truly DC Vignette Collection",
+   "program": "Vignette Collection Hotels under the IHG Destined Program",
+   "country": "United States",
+   "region": "District of Columbia",
+   "city": "Washington DC"
+  },
+  {
+   "id": 1432,
+   "slug": "the-ritz-carlton-amelia-island",
+   "name": "The Ritz-Carlton, Amelia Island",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Amelia Island"
+  },
+  {
+   "id": 3393,
+   "slug": "hyatt-regency-coconut-point-resort-spa-",
+   "name": "Hyatt Regency Coconut Point Resort & Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Bonita Springs"
+  },
+  {
+   "id": 6426,
+   "slug": "westin-cape-coral-at-marina-village",
+   "name": "Westin Cape Coral at Marina Village",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Cape Coral"
+  },
+  {
+   "id": 6429,
+   "slug": "jw-marriott-clearwater-beach-resort-spa",
+   "name": "JW Marriott Clearwater Beach Resort & Spa",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Clearwater"
+  },
+  {
+   "id": 6638,
+   "slug": "hotel-colonnade-coral-gables-autograph-collection",
+   "name": "Hotel Colonnade Coral Gables, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Coral Gables"
+  },
+  {
+   "id": 6257,
+   "slug": "loews-coral-gables-hotel",
+   "name": "Loews Coral Gables Hotel",
+   "program": "Loews Hotels",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Coral Gables"
+  },
+  {
+   "id": 4574,
+   "slug": "hawks-cay-resort",
+   "name": "Hawks Cay Resort",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Duck Key"
+  },
+  {
+   "id": 5002,
+   "slug": "le-m-ridien-dania-beach-at-fort-lauderdale-airport",
+   "name": "Le Méridien Dania Beach at Fort Lauderdale Airport",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Fort Lauderdale"
+  },
+  {
+   "id": 2401,
+   "slug": "the-ritz-carlton-fort-lauderdale-",
+   "name": "The Ritz-Carlton, Fort Lauderdale",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Fort Lauderdale"
+  },
+  {
+   "id": 2430,
+   "slug": "w-fort-lauderdale-",
+   "name": "W Fort Lauderdale",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Fort Lauderdale"
+  },
+  {
+   "id": 6777,
+   "slug": "marriott-hutchinson-island-beach-resort",
+   "name": "Marriott Hutchinson Island Beach Resort",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Hutchinson Island"
+  },
+  {
+   "id": 3808,
+   "slug": "playa-largo-resort-spa",
+   "name": "Playa Largo Resort & Spa",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Key Largo"
+  },
+  {
+   "id": 4820,
+   "slug": "hotel-indigo-miami-brickell",
+   "name": "Hotel Indigo Miami Brickell",
+   "program": "Hotel Indigo under IHG'S Destined Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 3933,
+   "slug": "hyatt-centric-brickell-miami",
+   "name": "Hyatt Centric Brickell Miami",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 3639,
+   "slug": "hyatt-regency-coral-gables",
+   "name": "Hyatt Regency Coral Gables",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 3561,
+   "slug": "intercontinental-miami",
+   "name": "InterContinental Miami",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 3269,
+   "slug": "jw-marriott-miami-turnberry-resort",
+   "name": "JW Marriott Miami Turnberry Resort",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 2708,
+   "slug": "kimpton-epic-miami",
+   "name": "Kimpton EPIC Miami",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 6770,
+   "slug": "thompson-miami-beach",
+   "name": "Thompson Miami Beach",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 2625,
+   "slug": "w-miami",
+   "name": "W Miami",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami"
+  },
+  {
+   "id": 6768,
+   "slug": "andaz-miami-beach",
+   "name": "Andaz Miami Beach",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami Beach"
+  },
+  {
+   "id": 3883,
+   "slug": "cadillac-hotel-beach-club-autograph-collection",
+   "name": "Cadillac Hotel & Beach Club, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami Beach"
+  },
+  {
+   "id": 2962,
+   "slug": "the-miami-beach-edition",
+   "name": "The Miami Beach EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami Beach"
+  },
+  {
+   "id": 1954,
+   "slug": "the-ritz-carlton-bal-harbour",
+   "name": "The Ritz-Carlton, Bal Harbour",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami Beach"
+  },
+  {
+   "id": 2539,
+   "slug": "the-st-regis-bal-harbour-resort",
+   "name": "The St. Regis Bal Harbour Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miami Beach"
+  },
+  {
+   "id": 4576,
+   "slug": "hotel-effie-sandestin",
+   "name": "Hotel Effie Sandestin",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Miramar Beach"
+  },
+  {
+   "id": 6643,
+   "slug": "the-ritz-carlton-naples-tiburon",
+   "name": "The Ritz-Carlton Naples, Tiburon",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Naples FL"
+  },
+  {
+   "id": 4223,
+   "slug": "jw-marriott-orlando-bonnet-creek",
+   "name": "JW Marriott Orlando Bonnet Creek",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Orlando and Disney World"
+  },
+  {
+   "id": 3268,
+   "slug": "jw-marriott-orlando-grande-lakes",
+   "name": "JW Marriott Orlando Grande Lakes",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Orlando and Disney World"
+  },
+  {
+   "id": 3270,
+   "slug": "renaissance-orlando-at-seaworld",
+   "name": "Renaissance Orlando at SeaWorld",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Orlando and Disney World"
+  },
+  {
+   "id": 1286,
+   "slug": "ritz-carlton-orlando-grande-lakes",
+   "name": "Ritz Carlton Orlando, Grande Lakes",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Orlando and Disney World"
+  },
+  {
+   "id": 6967,
+   "slug": "the-alfond-inn",
+   "name": "The Alfond Inn",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Orlando and Disney World"
+  },
+  {
+   "id": 2322,
+   "slug": "waldorf-astoria-orlando",
+   "name": "Waldorf Astoria Orlando",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Orlando and Disney World"
+  },
+  {
+   "id": 1433,
+   "slug": "eau-palm-beach-resort-spa",
+   "name": "Eau Palm Beach Resort & Spa",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Palm Beach"
+  },
+  {
+   "id": 1314,
+   "slug": "the-ritz-carlton-sarasota",
+   "name": "The Ritz-Carlton, Sarasota",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Sarasota"
+  },
+  {
+   "id": 6660,
+   "slug": "the-sarasota-modern",
+   "name": "The Sarasota Modern",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Sarasota"
+  },
+  {
+   "id": 6659,
+   "slug": "the-st-regis-longboat-key-resort",
+   "name": "The St. Regis Longboat Key Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Sarasota"
+  },
+  {
+   "id": 4686,
+   "slug": "marriott-stanton-south-beach-",
+   "name": "Marriott Stanton South Beach",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "South Beach, Miami"
+  },
+  {
+   "id": 2415,
+   "slug": "the-ritz-carlton-south-beach-",
+   "name": "The Ritz-Carlton, South Beach",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "South Beach, Miami"
+  },
+  {
+   "id": 3264,
+   "slug": "casa-monica-resort-spa-autograph-collection",
+   "name": "Casa Monica Resort & Spa, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "St. Augustine"
+  },
+  {
+   "id": 4728,
+   "slug": "the-vinoy-resort-golf-club-",
+   "name": "The Vinoy® Resort & Golf Club",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "St. Petersburg"
+  },
+  {
+   "id": 2048,
+   "slug": "grand-hyatt-tampa-bay",
+   "name": "Grand Hyatt Tampa Bay",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Tampa"
+  },
+  {
+   "id": 6594,
+   "slug": "le-m-ridien-tampa-the-courthouse",
+   "name": "Le Méridien Tampa, The Courthouse",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Tampa"
+  },
+  {
+   "id": 4719,
+   "slug": "tampa-marriott-water-street",
+   "name": "Tampa Marriott Water Street",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Tampa"
+  },
+  {
+   "id": 6239,
+   "slug": "the-tampa-edition",
+   "name": "The Tampa EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "Tampa"
+  },
+  {
+   "id": 6811,
+   "slug": "the-belgrove-resort-spa",
+   "name": "The Belgrove Resort & Spa",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "West Palm Beach"
+  },
+  {
+   "id": 4995,
+   "slug": "the-ben-autograph-collection",
+   "name": "The Ben, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Florida",
+   "city": "West Palm Beach"
+  },
+  {
+   "id": 3396,
+   "slug": "grand-hyatt-atlanta-in-buckhead-",
+   "name": "Grand Hyatt Atlanta in Buckhead",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 4729,
+   "slug": "hotel-colee-autograph-collection",
+   "name": "Hotel Colee, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 1688,
+   "slug": "intercontinental-buckhead-atlanta",
+   "name": "InterContinental Buckhead Atlanta",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 7123,
+   "slug": "jw-marriott-atlanta-downtown",
+   "name": "JW Marriott Atlanta Downtown",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 1587,
+   "slug": "ritz-carlton-atlanta",
+   "name": "Ritz Carlton Atlanta",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 2240,
+   "slug": "the-st-regis-atlanta",
+   "name": "The St. Regis Atlanta",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 3557,
+   "slug": "the-whitley-a-luxury-collection-hotel",
+   "name": "The Whitley, a Luxury Collection Hotel",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 3813,
+   "slug": "twelve-atlantic-station",
+   "name": "Twelve Atlantic Station",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Atlanta"
+  },
+  {
+   "id": 3505,
+   "slug": "the-ritz-carlton-reynolds-lake-oconee",
+   "name": "The Ritz-Carlton Reynolds, Lake Oconee",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Greensboro"
+  },
+  {
+   "id": 6268,
+   "slug": "thompson-savannah",
+   "name": "Thompson Savannah",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Savanna"
+  },
+  {
+   "id": 2974,
+   "slug": "andaz-savannah",
+   "name": "Andaz Savannah",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Savannah"
+  },
+  {
+   "id": 3272,
+   "slug": "bohemian-hotel-savannah-riverfront-autograph-collection",
+   "name": "Bohemian Hotel Savannah Riverfront, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Savannah"
+  },
+  {
+   "id": 4062,
+   "slug": "jw-marriott-savannah-plant-riverside-district-",
+   "name": "JW Marriott Savannah Plant Riverside District",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Savannah"
+  },
+  {
+   "id": 3476,
+   "slug": "perry-lane-hotel-savannah",
+   "name": "Perry Lane Hotel Savannah",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Savannah"
+  },
+  {
+   "id": 3899,
+   "slug": "the-alida-savannah-a-tribute-portfolio-hotel-",
+   "name": "The Alida Savannah, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Savannah"
+  },
+  {
+   "id": 1150,
+   "slug": "sea-island-resort",
+   "name": "Sea Island Resort",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Georgia",
+   "city": "Sea Island"
+  },
+  {
+   "id": 3911,
+   "slug": "hyatt-centric-waikiki-beach",
+   "name": "Hyatt Centric Waikiki Beach",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Honolulu"
+  },
+  {
+   "id": 2086,
+   "slug": "hyatt-regency-waikiki-beach-",
+   "name": "Hyatt Regency Waikiki Beach",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Honolulu"
+  },
+  {
+   "id": 7096,
+   "slug": "ka-la-i-waikiki-beach",
+   "name": "Ka La'i Waikiki Beach",
+   "program": "LXR",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Honolulu"
+  },
+  {
+   "id": 2141,
+   "slug": "ritz-carlton-oahu-turtle-bay-",
+   "name": "Ritz Carlton Oahu, Turtle Bay",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Honolulu"
+  },
+  {
+   "id": 3291,
+   "slug": "the-laylow-autograph-collection",
+   "name": "The Laylow - Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Honolulu"
+  },
+  {
+   "id": 2706,
+   "slug": "andaz-maui-at-wailea",
+   "name": "Andaz Maui at Wailea",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Maui"
+  },
+  {
+   "id": 2246,
+   "slug": "grand-wailea-a-waldorf-astoria-resort",
+   "name": "Grand Wailea, A Waldorf Astoria Resort",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Maui"
+  },
+  {
+   "id": 2084,
+   "slug": "hyatt-regency-maui-resort-and-spa",
+   "name": "Hyatt Regency Maui Resort and Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Hawaii",
+   "city": "Maui"
+  },
+  {
+   "id": 3202,
+   "slug": "chicago-athletic-association-hotel",
+   "name": "Chicago Athletic Association Hotel",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 3525,
+   "slug": "intercontinental-chicago-magnificent-mile",
+   "name": "InterContinental Chicago Magnificent Mile",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 3660,
+   "slug": "kimpton-gray-hotel-chicago",
+   "name": "Kimpton Gray Hotel Chicago",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 4710,
+   "slug": "le-meridien-chicago-oakbrook-center",
+   "name": "Le Meridien Chicago - Oakbrook Center",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 1123,
+   "slug": "park-hyatt-chicago",
+   "name": "Park Hyatt Chicago",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 4714,
+   "slug": "renaissance-chicago-downtown-hotel",
+   "name": "Renaissance Chicago Downtown Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 6405,
+   "slug": "st-regis-chicago",
+   "name": "St. Regis Chicago",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 3042,
+   "slug": "the-gwen",
+   "name": "The GWEN",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 6352,
+   "slug": "the-lasalle-chicago",
+   "name": "The Lasalle Chicago",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 1843,
+   "slug": "the-ritz-carlton-chicago",
+   "name": "The Ritz-Carlton, Chicago",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 2162,
+   "slug": "the-westin-michigan-avenue",
+   "name": "The Westin Michigan Avenue",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 2912,
+   "slug": "thompson-chicago",
+   "name": "Thompson Chicago",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 2698,
+   "slug": "waldorf-astoria-chicago",
+   "name": "Waldorf Astoria Chicago",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "Illinois",
+   "city": "Chicago"
+  },
+  {
+   "id": 1842,
+   "slug": "conrad-indianapolis-",
+   "name": "Conrad Indianapolis",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "United States",
+   "region": "Indiana",
+   "city": "Indianapolis"
+  },
+  {
+   "id": 4980,
+   "slug": "hotel-distil",
+   "name": "Hotel Distil",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Kentucky",
+   "city": "Louisville"
+  },
+  {
+   "id": 6783,
+   "slug": "omni-louisville-hotel",
+   "name": "Omni Louisville Hotel",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Kentucky",
+   "city": "Louisville"
+  },
+  {
+   "id": 6170,
+   "slug": "the-grady-hotel",
+   "name": "The Grady Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United States",
+   "region": "Kentucky",
+   "city": "Louisville"
+  },
+  {
+   "id": 3926,
+   "slug": "hyatt-centric-french-quarter-new-orleans",
+   "name": "Hyatt Centric French Quarter New Orleans",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Louisiana",
+   "city": "New Orleans"
+  },
+  {
+   "id": 3922,
+   "slug": "le-meridien-new-orleans",
+   "name": "Le Meridien New Orleans",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "Louisiana",
+   "city": "New Orleans"
+  },
+  {
+   "id": 6884,
+   "slug": "maison-metier",
+   "name": "Maison Metier",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Louisiana",
+   "city": "New Orleans"
+  },
+  {
+   "id": 3976,
+   "slug": "the-eliza-jane",
+   "name": "The Eliza Jane",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Louisiana",
+   "city": "New Orleans"
+  },
+  {
+   "id": 1143,
+   "slug": "the-ritz-carlton-new-orleans",
+   "name": "The Ritz-Carlton, New Orleans",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Louisiana",
+   "city": "New Orleans"
+  },
+  {
+   "id": 2514,
+   "slug": "the-roosevelt-new-orleans-",
+   "name": "The Roosevelt New Orleans",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "Louisiana",
+   "city": "New Orleans"
+  },
+  {
+   "id": 4191,
+   "slug": "inn-by-the-sea",
+   "name": "Inn by the Sea",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Maine",
+   "city": "Cape Elizabeth"
+  },
+  {
+   "id": 2340,
+   "slug": "hidden-pond-resort-tree-spa",
+   "name": "Hidden Pond Resort & Tree Spa",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Maine",
+   "city": "Kennebunkport"
+  },
+  {
+   "id": 3800,
+   "slug": "the-press-hotel-autograph-collection",
+   "name": "The Press Hotel, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Maine",
+   "city": "Portland"
+  },
+  {
+   "id": 3805,
+   "slug": "annapolis-waterfront-hotel-autograph-collection",
+   "name": "Annapolis Waterfront Hotel, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Maryland",
+   "city": "Annapolis"
+  },
+  {
+   "id": 2551,
+   "slug": "four-seasons-hotel-baltimore",
+   "name": "Four Seasons Hotel Baltimore",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "Maryland",
+   "city": "Baltimore"
+  },
+  {
+   "id": 2540,
+   "slug": "hyatt-regency-chesapeake-bay-",
+   "name": "Hyatt Regency Chesapeake Bay",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Maryland",
+   "city": "Cambridge"
+  },
+  {
+   "id": 4197,
+   "slug": "hyatt-regency-boston",
+   "name": "Hyatt Regency Boston",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 7071,
+   "slug": "omni-boston-hotel-at-the-seaport",
+   "name": "Omni Boston Hotel at the Seaport",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 2806,
+   "slug": "the-liberty",
+   "name": "The Liberty",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 5069,
+   "slug": "the-newbury-boston",
+   "name": "The Newbury Boston",
+   "program": "Leading Hotels of the World",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 1590,
+   "slug": "the-ritz-carlton-boston-common",
+   "name": "The Ritz-Carlton, Boston Common",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 2845,
+   "slug": "w-boston",
+   "name": "W Boston",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 1133,
+   "slug": "xv-beacon-hotel",
+   "name": "XV Beacon Hotel",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "United States",
+   "region": "Massachusetts",
+   "city": "Boston"
+  },
+  {
+   "id": 3858,
+   "slug": "the-westin-edina-galleria",
+   "name": "The Westin Edina Galleria",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Minnesota",
+   "city": "Edina"
+  },
+  {
+   "id": 4681,
+   "slug": "elliott-park-hotel-autograph-collection",
+   "name": "Elliott Park Hotel, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Minnesota",
+   "city": "Minneapolis"
+  },
+  {
+   "id": 2219,
+   "slug": "hotel-ivy-a-luxury-collection-hotel-minneapolis",
+   "name": "Hotel Ivy, a Luxury Collection Hotel, Minneapolis",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Minnesota",
+   "city": "Minneapolis"
+  },
+  {
+   "id": 4796,
+   "slug": "intercontinental-minneapolis-st-paul-airport",
+   "name": "InterContinental Minneapolis – St Paul Airport",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "Minnesota",
+   "city": "Minneapolis"
+  },
+  {
+   "id": 5030,
+   "slug": "rand-tower-minneapolis-a-tribute-portfolio-hotel",
+   "name": "Rand Tower Minneapolis, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Minnesota",
+   "city": "Minneapolis"
+  },
+  {
+   "id": 3771,
+   "slug": "the-hotel-emery-minneapolis-autograph-collection",
+   "name": "The Hotel Emery Minneapolis, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Minnesota",
+   "city": "Minneapolis"
+  },
+  {
+   "id": 4732,
+   "slug": "the-westin-jackson",
+   "name": "The Westin Jackson",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Mississippi",
+   "city": "Jackson"
+  },
+  {
+   "id": 4629,
+   "slug": "hotel-kansas-city",
+   "name": "Hotel Kansas City",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Missouri",
+   "city": "Kansas City"
+  },
+  {
+   "id": 1931,
+   "slug": "four-seasons-hotel-st-louis",
+   "name": "Four Seasons Hotel St. Louis",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "Missouri",
+   "city": "St. Louis"
+  },
+  {
+   "id": 4673,
+   "slug": "le-meridien-st-louis-clayton",
+   "name": "Le Meridien St. Louis Clayton",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "Missouri",
+   "city": "St. Louis"
+  },
+  {
+   "id": 2928,
+   "slug": "the-ritz-carlton-st-louis",
+   "name": "The Ritz-Carlton, St. Louis",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Missouri",
+   "city": "St. Louis"
+  },
+  {
+   "id": 4354,
+   "slug": "riverview-ranch",
+   "name": "RiverView Ranch",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United States",
+   "region": "Montana",
+   "city": "Alberton"
+  },
+  {
+   "id": 4665,
+   "slug": "kimpton-armory-hotel",
+   "name": "Kimpton Armory Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Montana",
+   "city": "Bozeman"
+  },
+  {
+   "id": 6063,
+   "slug": "kimpton-cottonwood-hotel",
+   "name": "Kimpton Cottonwood Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Nebraska",
+   "city": "Omaha"
+  },
+  {
+   "id": 1781,
+   "slug": "hyatt-regency-lake-tahoe-resort",
+   "name": "Hyatt Regency Lake Tahoe Resort",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Lake Tahoe"
+  },
+  {
+   "id": 1327,
+   "slug": "bellagio",
+   "name": "Bellagio",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 6320,
+   "slug": "crockfords-las-vegas-lxr-hotels-resorts",
+   "name": "Crockfords Las Vegas, LXR Hotels & Resorts",
+   "program": "LXR",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 3048,
+   "slug": "mandalay-bay-resort-casino",
+   "name": "Mandalay Bay Resort & Casino",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 2101,
+   "slug": "mgm-grand-hotel-casino",
+   "name": "MGM Grand Hotel & Casino",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 3555,
+   "slug": "park-mgm-las-vegas",
+   "name": "Park MGM Las Vegas",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 2473,
+   "slug": "the-cosmopolitan-of-las-vegas",
+   "name": "The Cosmopolitan of Las Vegas",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 3848,
+   "slug": "the-westin-lake-las-vegas-resort-spa",
+   "name": "The Westin Lake Las Vegas Resort & Spa",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 6657,
+   "slug": "vdara-hotel-spa-",
+   "name": "Vdara Hotel & Spa",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 6793,
+   "slug": "w-las-vegas",
+   "name": "W Las Vegas",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Las Vegas"
+  },
+  {
+   "id": 7021,
+   "slug": "renaissance-reno-downtown-hotel-spa",
+   "name": "Renaissance Reno Downtown Hotel & Spa",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "United States",
+   "region": "Nevada",
+   "city": "Reno"
+  },
+  {
+   "id": 4073,
+   "slug": "envue-autograph-collection",
+   "name": "Envue, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "New Jersey",
+   "city": "Weehawken"
+  },
+  {
+   "id": 1796,
+   "slug": "hyatt-regency-tamaya-resort-",
+   "name": "Hyatt Regency Tamaya Resort",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "New Mexico",
+   "city": "Santa Ana Pueblo"
+  },
+  {
+   "id": 1907,
+   "slug": "rosewood-inn-of-the-anasazi",
+   "name": "Rosewood Inn of the Anasazi",
+   "program": "Rosewood Hotels & Resorts",
+   "country": "United States",
+   "region": "New Mexico",
+   "city": "Santa Fe"
+  },
+  {
+   "id": 6586,
+   "slug": "ehp-resort-marina",
+   "name": "EHP Resort & Marina",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "New York",
+   "city": "Hamptons"
+  },
+  {
+   "id": 3381,
+   "slug": "andaz-5th-avenue",
+   "name": "Andaz 5th Avenue",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 4145,
+   "slug": "conrad-new-york-downtown",
+   "name": "Conrad New York Downtown",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 1838,
+   "slug": "four-seasons-hotel-new-york",
+   "name": "Four Seasons Hotel New York",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3916,
+   "slug": "gild-hall-",
+   "name": "Gild Hall",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3562,
+   "slug": "intercontinental-new-york-barclay",
+   "name": "InterContinental New York Barclay",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 1977,
+   "slug": "jw-marriott-essex-house-new-york",
+   "name": "JW Marriott Essex House New York",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 7055,
+   "slug": "kimpton-era-midtown",
+   "name": "Kimpton Era Midtown",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3921,
+   "slug": "le-meridien-central-park-new-york",
+   "name": "Le Meridien Central Park New York",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2896,
+   "slug": "park-hyatt-new-york",
+   "name": "Park Hyatt New York",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3769,
+   "slug": "renaissance-new-york-times-square-hotel",
+   "name": "Renaissance New York Times Square Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 1214,
+   "slug": "ritz-carlton-central-park-",
+   "name": "Ritz-Carlton Central Park",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2278,
+   "slug": "soho-grand-hotel-",
+   "name": "Soho Grand Hotel",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2791,
+   "slug": "the-chatwal-new-york-",
+   "name": "The Chatwal, New York",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3324,
+   "slug": "the-james-nomad-",
+   "name": "The James NoMad",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2006,
+   "slug": "the-london-new-york-city",
+   "name": "The London, New York City",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 6883,
+   "slug": "the-manner",
+   "name": "The Manner",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2992,
+   "slug": "the-new-york-edition",
+   "name": "The New York EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 1048,
+   "slug": "the-peninsula-new-york-",
+   "name": "The Peninsula New York",
+   "program": "Peninsula Hotels under the Peninsula Pen Club Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3373,
+   "slug": "the-times-square-edition",
+   "name": "The Times Square EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2419,
+   "slug": "the-waldorf-astoria-new-york",
+   "name": "The Waldorf Astoria New York",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 6088,
+   "slug": "thompson-central-park-new-york",
+   "name": "Thompson Central Park New York",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 1147,
+   "slug": "w-new-york-union-square",
+   "name": "W New York - Union Square",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 2860,
+   "slug": "w-new-york-times-square",
+   "name": "W New York Times Square",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "New York",
+   "city": "New York"
+  },
+  {
+   "id": 3775,
+   "slug": "grand-bohemian-hotel-asheville",
+   "name": "Grand Bohemian Hotel Asheville",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "North Carolina",
+   "city": "Asheville"
+  },
+  {
+   "id": 2446,
+   "slug": "the-ritz-carlton-charlotte",
+   "name": "The Ritz Carlton Charlotte",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "North Carolina",
+   "city": "Charlotte"
+  },
+  {
+   "id": 6439,
+   "slug": "the-westin-charlotte",
+   "name": "The Westin Charlotte",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "North Carolina",
+   "city": "Charlotte"
+  },
+  {
+   "id": 5005,
+   "slug": "the-lytle-park-hotel",
+   "name": "The Lytle Park Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Ohio",
+   "city": "Cincinnati"
+  },
+  {
+   "id": 1600,
+   "slug": "the-ritz-carlton-cleveland",
+   "name": "The Ritz Carlton, Cleveland",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Ohio",
+   "city": "Cleveland"
+  },
+  {
+   "id": 3876,
+   "slug": "hotel-leveque-autograph-collection",
+   "name": "Hotel LeVeque, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Ohio",
+   "city": "Columbus"
+  },
+  {
+   "id": 4712,
+   "slug": "le-meridien-columbus-the-joseph",
+   "name": "Le Meridien Columbus, The Joseph",
+   "program": "Le Meridien",
+   "country": "United States",
+   "region": "Ohio",
+   "city": "Columbus"
+  },
+  {
+   "id": 6674,
+   "slug": "fordson-hotel",
+   "name": "Fordson Hotel",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Oklahoma",
+   "city": "Oklahoma City"
+  },
+  {
+   "id": 3513,
+   "slug": "-the-duniway-hotel",
+   "name": "The Duniway Hotel",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Oregon",
+   "city": "Portland"
+  },
+  {
+   "id": 6720,
+   "slug": "hyatt-centric-portland",
+   "name": "Hyatt Centric Portland",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Oregon",
+   "city": "Portland"
+  },
+  {
+   "id": 4019,
+   "slug": "kimpton-riverplace-hotel-",
+   "name": "Kimpton Riverplace Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Oregon",
+   "city": "Portland"
+  },
+  {
+   "id": 2305,
+   "slug": "the-nines",
+   "name": "The Nines",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Oregon",
+   "city": "Portland"
+  },
+  {
+   "id": 6434,
+   "slug": "the-ritz-carlton-portland",
+   "name": "The Ritz-Carlton, Portland",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Oregon",
+   "city": "Portland"
+  },
+  {
+   "id": 6784,
+   "slug": "omni-bedford-springs-resort-spa",
+   "name": "Omni Bedford Springs Resort & Spa",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Bedford Springs"
+  },
+  {
+   "id": 4205,
+   "slug": "hyatt-centric-center-city-philadelphia",
+   "name": "Hyatt Centric Center City Philadelphia",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 4017,
+   "slug": "kimpton-hotel-monaco-philadelphia-",
+   "name": "Kimpton Hotel Monaco Philadelphia",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 4018,
+   "slug": "kimpton-hotel-palomar-philadelphia-",
+   "name": "Kimpton Hotel Palomar Philadelphia",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 1894,
+   "slug": "the-bellevue-hotel",
+   "name": "The Bellevue Hotel",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 4041,
+   "slug": "the-notary-hotel",
+   "name": "The Notary Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 1601,
+   "slug": "the-ritz-carlton-philadelphia",
+   "name": "The Ritz Carlton Philadelphia",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 3853,
+   "slug": "the-westin-philadelphia",
+   "name": "The Westin Philadelphia",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 5009,
+   "slug": "w-philadelphia",
+   "name": "W Philadelphia",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Philadelphia"
+  },
+  {
+   "id": 4697,
+   "slug": "the-industrialist-hotel-",
+   "name": "The Industrialist Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Pittsburgh"
+  },
+  {
+   "id": 3826,
+   "slug": "the-oaklander-hotel-autograph-collection",
+   "name": "The Oaklander Hotel, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Pennsylvania",
+   "city": "Pittsburgh"
+  },
+  {
+   "id": 6066,
+   "slug": "emeline-hotel",
+   "name": "Emeline Hotel",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "South Carolina",
+   "city": "Charleston"
+  },
+  {
+   "id": 3786,
+   "slug": "grand-bohemian-hotel-charleston-autograph-collection",
+   "name": "Grand Bohemian Hotel Charleston, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "South Carolina",
+   "city": "Charleston"
+  },
+  {
+   "id": 7077,
+   "slug": "omni-hilton-head-oceanfront-resort",
+   "name": "Omni Hilton Head Oceanfront Resort",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "South Carolina",
+   "city": "Hilton Head"
+  },
+  {
+   "id": 6241,
+   "slug": "grand-bohemian-lodge-greenville",
+   "name": "Grand Bohemian Lodge Greenville",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "South Carolina",
+   "city": "NULL"
+  },
+  {
+   "id": 4996,
+   "slug": "the-edwin-hotel-autograph-collection",
+   "name": "The Edwin Hotel, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Chattanooga"
+  },
+  {
+   "id": 4577,
+   "slug": "bobby-hotel",
+   "name": "Bobby Hotel",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 4202,
+   "slug": "grand-hyatt-nashville",
+   "name": "Grand Hyatt Nashville",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 3912,
+   "slug": "holston-house-nashville",
+   "name": "Holston House Nashville",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 3549,
+   "slug": "jw-marriott-nashville",
+   "name": "JW Marriott Nashville",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 2949,
+   "slug": "omni-nashville-hotel-",
+   "name": "Omni Nashville Hotel",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 6483,
+   "slug": "renaissance-nashville-hotel",
+   "name": "Renaissance Nashville Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 4251,
+   "slug": "the-joseph-nashville",
+   "name": "The Joseph Nashville",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 3927,
+   "slug": "thompson-nashville",
+   "name": "Thompson Nashville",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 3766,
+   "slug": "union-station-hotel-nashville-autograph-collection",
+   "name": "Union Station Hotel Nashville, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 5018,
+   "slug": "virgin-hotels-nashville",
+   "name": "Virgin Hotels Nashville",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 4736,
+   "slug": "w-nashville",
+   "name": "W Nashville",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Nashville"
+  },
+  {
+   "id": 4839,
+   "slug": "blackberry-farm",
+   "name": "Blackberry Farm",
+   "program": "Relais & Châteaux",
+   "country": "United States",
+   "region": "Tennessee",
+   "city": "Walland"
+  },
+  {
+   "id": 1544,
+   "slug": "four-seasons-hotel-austin",
+   "name": "Four Seasons Hotel Austin",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 7124,
+   "slug": "hotel-trinity-autograph-collection",
+   "name": "Hotel Trinity, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 3226,
+   "slug": "hotel-van-zandt",
+   "name": "Hotel Van Zandt",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 2457,
+   "slug": "hyatt-regency-austin",
+   "name": "Hyatt Regency Austin",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 3436,
+   "slug": "hyatt-regency-lost-pines-resort-spa",
+   "name": "Hyatt Regency Lost Pines Resort & Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 2018,
+   "slug": "omni-barton-creek-resort-spa",
+   "name": "Omni Barton Creek Resort & Spa",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 2002,
+   "slug": "the-driskill-hotel",
+   "name": "The Driskill Hotel",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 5007,
+   "slug": "the-otis-hotel-autograph-collection",
+   "name": "The Otis Hotel, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 7020,
+   "slug": "the-westin-austin-downtown",
+   "name": "The Westin Austin Downtown",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 6277,
+   "slug": "thompson-austin",
+   "name": "Thompson Austin",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 2559,
+   "slug": "w-austin",
+   "name": "W Austin",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Austin"
+  },
+  {
+   "id": 3875,
+   "slug": "adolphus-hotel",
+   "name": "Adolphus Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 6808,
+   "slug": "hall-park-hotel",
+   "name": "HALL Park Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 4713,
+   "slug": "hotel-paso-del-norte",
+   "name": "Hotel Paso Del Norte",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 4807,
+   "slug": "kimpton-pittman-hotel",
+   "name": "Kimpton Pittman Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 6580,
+   "slug": "omni-pga-frisco-resort",
+   "name": "Omni PGA Frisco Resort",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 1836,
+   "slug": "ritz-carlton-dallas-las-colinas-resort-",
+   "name": "Ritz Carlton Dallas, Las Colinas Resort",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 1851,
+   "slug": "the-ritz-carlton-dallas",
+   "name": "The Ritz-Carlton, Dallas",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 4626,
+   "slug": "thompson-dallas",
+   "name": "Thompson Dallas",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 2732,
+   "slug": "w-dallas-victory-",
+   "name": "W Dallas Victory",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Dallas"
+  },
+  {
+   "id": 6068,
+   "slug": "kimpton-harper-hotel",
+   "name": "Kimpton Harper Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Fort Worth"
+  },
+  {
+   "id": 1546,
+   "slug": "four-seasons-hotel-houston",
+   "name": "Four Seasons Hotel Houston",
+   "program": "Four Seasons",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Houston"
+  },
+  {
+   "id": 1968,
+   "slug": "hotel-icon-autograph-collection",
+   "name": "Hotel ICON, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Houston"
+  },
+  {
+   "id": 3322,
+   "slug": "jw-marriott-houston-downtown",
+   "name": "JW Marriott Houston Downtown",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Houston"
+  },
+  {
+   "id": 6240,
+   "slug": "westin-galleria-houston",
+   "name": "Westin Galleria Houston",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "Houston"
+  },
+  {
+   "id": 1604,
+   "slug": "hyatt-regency-hill-country-resort-spa",
+   "name": "Hyatt Regency Hill Country Resort & Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "San Antonio"
+  },
+  {
+   "id": 6717,
+   "slug": "kimpton-santo",
+   "name": "Kimpton Santo",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "San Antonio"
+  },
+  {
+   "id": 2978,
+   "slug": "the-st-anthony",
+   "name": "The St. Anthony",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "San Antonio"
+  },
+  {
+   "id": 2203,
+   "slug": "the-westin-riverwalk",
+   "name": "The Westin Riverwalk",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Texas",
+   "city": "San Antonio"
+  },
+  {
+   "id": 6773,
+   "slug": "grand-hyatt-deer-valley",
+   "name": "Grand Hyatt Deer Valley",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Utah",
+   "city": "Deer Valley"
+  },
+  {
+   "id": 6774,
+   "slug": "the-residences-at-grand-hyatt-deer-valley",
+   "name": "The Residences at Grand Hyatt Deer Valley",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Utah",
+   "city": "Deer Valley"
+  },
+  {
+   "id": 2349,
+   "slug": "the-st-regis-deer-valley",
+   "name": "The St. Regis Deer Valley",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "United States",
+   "region": "Utah",
+   "city": "Deer Valley"
+  },
+  {
+   "id": 4209,
+   "slug": "hyatt-centric-park-city",
+   "name": "Hyatt Centric Park City",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Utah",
+   "city": "Park City"
+  },
+  {
+   "id": 2422,
+   "slug": "waldorf-astoria-park-city-",
+   "name": "Waldorf Astoria Park City",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "United States",
+   "region": "Utah",
+   "city": "Park City"
+  },
+  {
+   "id": 6814,
+   "slug": "asher-adams-autograph-collection",
+   "name": "Asher Adams, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Utah",
+   "city": "Salt Lake City"
+  },
+  {
+   "id": 4994,
+   "slug": "the-advenire-autograph-collection",
+   "name": "The Advenire, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Utah",
+   "city": "St. George"
+  },
+  {
+   "id": 6400,
+   "slug": "hyatt-centric-old-town-alexandria",
+   "name": "Hyatt Centric Old Town Alexandria",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "United States",
+   "region": "Virginia",
+   "city": "Alexandria"
+  },
+  {
+   "id": 4986,
+   "slug": "morrison-house-old-town-alexandria-autograph-collection",
+   "name": "Morrison House Old Town Alexandria, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Virginia",
+   "city": "Alexandria"
+  },
+  {
+   "id": 3880,
+   "slug": "w-bellevue",
+   "name": "W Bellevue",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Washington",
+   "city": "Bellevue"
+  },
+  {
+   "id": 4633,
+   "slug": "hyatt-regency-lake-washington",
+   "name": "Hyatt Regency Lake Washington",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "United States",
+   "region": "Washington",
+   "city": "Renton"
+  },
+  {
+   "id": 1227,
+   "slug": "grand-hyatt-seattle",
+   "name": "Grand Hyatt Seattle",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Washington",
+   "city": "Seattle"
+  },
+  {
+   "id": 3203,
+   "slug": "thompson-seattle",
+   "name": "Thompson Seattle",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "United States",
+   "region": "Washington",
+   "city": "Seattle"
+  },
+  {
+   "id": 4774,
+   "slug": "hotel-indigo-spokane",
+   "name": "Hotel Indigo Spokane",
+   "program": "Hotel Indigo under IHG'S Destined Program",
+   "country": "United States",
+   "region": "Washington",
+   "city": "Spokane"
+  },
+  {
+   "id": 3950,
+   "slug": "caldera-house",
+   "name": "Caldera House",
+   "program": "The Signature Collection",
+   "country": "United States",
+   "region": "Wyoming",
+   "city": "Jackson Hole"
+  },
+  {
+   "id": 4726,
+   "slug": "the-cloudveil",
+   "name": "The Cloudveil",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United States",
+   "region": "Wyoming",
+   "city": "Jackson Hole"
+  },
+  {
+   "id": 6792,
+   "slug": "st-regis-aruba-resort",
+   "name": "St. Regis Aruba Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Aruba",
+   "region": null,
+   "city": "Palm Beach Aruba"
+  },
+  {
+   "id": 2754,
+   "slug": "the-ritz-carlton-aruba",
+   "name": "The Ritz-Carlton, Aruba",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Aruba",
+   "region": null,
+   "city": "Palm Beach Aruba"
+  },
+  {
+   "id": 3533,
+   "slug": "w-brisbane",
+   "name": "W Brisbane",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Australia",
+   "region": null,
+   "city": "Brisbane"
+  },
+  {
+   "id": 5010,
+   "slug": "w-melbourne-",
+   "name": "W Melbourne",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Australia",
+   "region": null,
+   "city": "Melbourne"
+  },
+  {
+   "id": 1166,
+   "slug": "four-seasons-hotel-sydney",
+   "name": "Four Seasons Hotel Sydney",
+   "program": "Four Seasons",
+   "country": "Australia",
+   "region": null,
+   "city": "Sydney"
+  },
+  {
+   "id": 3996,
+   "slug": "intercontinental-sydney-double-bay-",
+   "name": "InterContinental Sydney Double Bay",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Australia",
+   "region": null,
+   "city": "Sydney"
+  },
+  {
+   "id": 6965,
+   "slug": "arabella-jagdhof-resort-am-fuschlsee",
+   "name": "Arabella Jagdhof Resort am Fuschlsee",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "Austria",
+   "region": null,
+   "city": "Hof bei Salzburg"
+  },
+  {
+   "id": 3635,
+   "slug": "andaz-vienna-am-belvedere-",
+   "name": "Andaz Vienna Am Belvedere",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Austria",
+   "region": null,
+   "city": "Vienna"
+  },
+  {
+   "id": 966,
+   "slug": "hotel-imperial-vienna",
+   "name": "Hotel Imperial, Vienna",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Austria",
+   "region": null,
+   "city": "Vienna"
+  },
+  {
+   "id": 3518,
+   "slug": "intercontinental-vienna",
+   "name": "InterContinental Vienna",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Austria",
+   "region": null,
+   "city": "Vienna"
+  },
+  {
+   "id": 3756,
+   "slug": "le-m-ridien-vienna",
+   "name": "Le Méridien Vienna",
+   "program": "Le Meridien",
+   "country": "Austria",
+   "region": null,
+   "city": "Vienna"
+  },
+  {
+   "id": 2905,
+   "slug": "park-hyatt-vienna-",
+   "name": "Park Hyatt Vienna",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "Austria",
+   "region": null,
+   "city": "Vienna"
+  },
+  {
+   "id": 2664,
+   "slug": "the-ritz-carlton-vienna",
+   "name": "The Ritz-Carlton, Vienna",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Austria",
+   "region": null,
+   "city": "Vienna"
+  },
+  {
+   "id": 2596,
+   "slug": "four-seasons-hotel-baku",
+   "name": "Four Seasons Hotel Baku",
+   "program": "Four Seasons",
+   "country": "Azerbaijan",
+   "region": null,
+   "city": "Baku"
+  },
+  {
+   "id": 6678,
+   "slug": "jw-marriott-absheron-baku",
+   "name": "JW Marriott Absheron Baku",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Azerbaijan",
+   "region": null,
+   "city": "Baku"
+  },
+  {
+   "id": 6679,
+   "slug": "ritz-carlton-baku",
+   "name": "Ritz Carlton Baku",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Azerbaijan",
+   "region": null,
+   "city": "Baku"
+  },
+  {
+   "id": 3298,
+   "slug": "the-cove-eleuthera",
+   "name": "The Cove Eleuthera",
+   "program": "The Signature Collection",
+   "country": "Bahamas",
+   "region": null,
+   "city": "Eleuthera"
+  },
+  {
+   "id": 1132,
+   "slug": "the-ocean-club-a-four-seasons-resort-bahamas",
+   "name": "The Ocean Club, A Four Seasons Resort, Bahamas",
+   "program": "Four Seasons",
+   "country": "Bahamas",
+   "region": null,
+   "city": "Nassau"
+  },
+  {
+   "id": 7170,
+   "slug": "the-residences-at-the-st-regis-bermuda",
+   "name": "The Residences at The St. Regis Bermuda",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Bermuda",
+   "region": null,
+   "city": "St. George's"
+  },
+  {
+   "id": 942,
+   "slug": "belmond-copacabana-palace",
+   "name": "Belmond Copacabana Palace",
+   "program": "Belmond Bellini Club",
+   "country": "Brazil",
+   "region": null,
+   "city": "Rio de Janeiro"
+  },
+  {
+   "id": 3416,
+   "slug": "grand-hyatt-rio-de-janeiro",
+   "name": "Grand Hyatt Rio de Janeiro",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "Brazil",
+   "region": null,
+   "city": "Rio de Janeiro"
+  },
+  {
+   "id": 2958,
+   "slug": "grand-hyatt-sao-paulo",
+   "name": "Grand Hyatt Sao Paulo",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "Brazil",
+   "region": null,
+   "city": "Sao Paulo"
+  },
+  {
+   "id": 3522,
+   "slug": "intercontinental-sao-paulo",
+   "name": "InterContinental Sao Paulo",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Brazil",
+   "region": null,
+   "city": "Sao Paulo"
+  },
+  {
+   "id": 6069,
+   "slug": "rosewood-sao-paulo",
+   "name": "Rosewood Sao Paulo",
+   "program": "Rosewood Hotels & Resorts",
+   "country": "Brazil",
+   "region": null,
+   "city": "Sao Paulo"
+  },
+  {
+   "id": 3420,
+   "slug": "hyatt-regency-calgary",
+   "name": "Hyatt Regency Calgary",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Canada",
+   "region": "Alberta",
+   "city": "Calgary"
+  },
+  {
+   "id": 3924,
+   "slug": "jw-marriott-edmonton-ice-disctrict",
+   "name": "JW Marriott Edmonton ICE Disctrict",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Canada",
+   "region": "Alberta",
+   "city": "Edmonton"
+  },
+  {
+   "id": 3810,
+   "slug": "jw-marriott-parq-vancouver",
+   "name": "JW Marriott Parq Vancouver",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Canada",
+   "region": "British Columbia",
+   "city": "Vancouver"
+  },
+  {
+   "id": 3573,
+   "slug": "the-douglas-autograph-collection",
+   "name": "The DOUGLAS, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Canada",
+   "region": "British Columbia",
+   "city": "Vancouver"
+  },
+  {
+   "id": 1354,
+   "slug": "four-seasons-resort-whistler",
+   "name": "Four Seasons Resort Whistler",
+   "program": "Four Seasons",
+   "country": "Canada",
+   "region": "British Columbia",
+   "city": "Whistler"
+  },
+  {
+   "id": 3379,
+   "slug": "andaz-ottawa-byward-market",
+   "name": "Andaz Ottawa Byward Market",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Canada",
+   "region": "Ontario",
+   "city": "Ottawa"
+  },
+  {
+   "id": 2595,
+   "slug": "four-seasons-hotel-toronto-",
+   "name": "Four Seasons Hotel Toronto",
+   "program": "Four Seasons",
+   "country": "Canada",
+   "region": "Ontario",
+   "city": "Toronto"
+  },
+  {
+   "id": 1362,
+   "slug": "park-hyatt-toronto",
+   "name": "Park Hyatt Toronto",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "Canada",
+   "region": "Ontario",
+   "city": "Toronto"
+  },
+  {
+   "id": 2487,
+   "slug": "the-ritz-carlton-toronto",
+   "name": "The Ritz-Carlton, Toronto",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Canada",
+   "region": "Ontario",
+   "city": "Toronto"
+  },
+  {
+   "id": 4735,
+   "slug": "humaniti-hotel-montreal-autograph-collection",
+   "name": "Humaniti Hotel Montreal, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Canada",
+   "region": "Quebec",
+   "city": "Montreal"
+  },
+  {
+   "id": 2647,
+   "slug": "ritz-carlton-montreal",
+   "name": "Ritz Carlton Montreal",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Canada",
+   "region": "Quebec",
+   "city": "Montreal"
+  },
+  {
+   "id": 2861,
+   "slug": "w-montreal",
+   "name": "W Montreal",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Canada",
+   "region": "Quebec",
+   "city": "Montreal"
+  },
+  {
+   "id": 6789,
+   "slug": "warwick-le-crystal",
+   "name": "Warwick Le Crystal",
+   "program": "The Signature Collection",
+   "country": "Canada",
+   "region": "Quebec",
+   "city": "Montreal"
+  },
+  {
+   "id": 3738,
+   "slug": "renaissance-santiago-hotel",
+   "name": "Renaissance Santiago Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "Chile",
+   "region": null,
+   "city": "Santiago"
+  },
+  {
+   "id": 3347,
+   "slug": "the-ritz-carlton-santiago",
+   "name": "The Ritz-Carlton, Santiago",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Chile",
+   "region": null,
+   "city": "Santiago"
+  },
+  {
+   "id": 2634,
+   "slug": "w-santiago-",
+   "name": "W Santiago",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Chile",
+   "region": null,
+   "city": "Santiago"
+  },
+  {
+   "id": 6744,
+   "slug": "six-senses-qing-cheng-mountain",
+   "name": "Six Senses Qing Cheng Mountain",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "China",
+   "region": "California",
+   "city": "Chengdu"
+  },
+  {
+   "id": 4058,
+   "slug": "w-chengdu",
+   "name": "W Chengdu",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "China",
+   "region": "California",
+   "city": "Chengdu"
+  },
+  {
+   "id": 2862,
+   "slug": "w-guangzhou",
+   "name": "W Guangzhou",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "China",
+   "region": "California",
+   "city": "Guangzhou"
+  },
+  {
+   "id": 4129,
+   "slug": "conrad-hangzhou-tonglu",
+   "name": "Conrad Hangzhou Tonglu",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "China",
+   "region": "California",
+   "city": "Hangzhou"
+  },
+  {
+   "id": 6988,
+   "slug": "kimpton-tsim-sha-tsui-hong-kong",
+   "name": "Kimpton Tsim Sha Tsui Hong Kong",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "China",
+   "region": "California",
+   "city": "Hong Kong"
+  },
+  {
+   "id": 2863,
+   "slug": "w-hong-kong",
+   "name": "W Hong Kong",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "China",
+   "region": "California",
+   "city": "Hong Kong"
+  },
+  {
+   "id": 6331,
+   "slug": "conrad-jiuzhaigou",
+   "name": "Conrad Jiuzhaigou",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "China",
+   "region": "California",
+   "city": "NULL"
+  },
+  {
+   "id": 6552,
+   "slug": "four-seasons-hotel-suzhou-",
+   "name": "Four Seasons Hotel Suzhou",
+   "program": "Four Seasons",
+   "country": "China",
+   "region": "California",
+   "city": "Suzhou"
+  },
+  {
+   "id": 3069,
+   "slug": "four-seasons-hotel-bogota",
+   "name": "Four Seasons Hotel Bogota",
+   "program": "Four Seasons",
+   "country": "Colombia",
+   "region": null,
+   "city": "Bogota"
+  },
+  {
+   "id": 3043,
+   "slug": "four-seasons-hotel-casa-medina-bogota",
+   "name": "Four Seasons Hotel Casa Medina Bogota",
+   "program": "Four Seasons",
+   "country": "Colombia",
+   "region": null,
+   "city": "Bogota"
+  },
+  {
+   "id": 3637,
+   "slug": "grand-hyatt-bogota",
+   "name": "Grand Hyatt Bogota",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "Colombia",
+   "region": null,
+   "city": "Bogota"
+  },
+  {
+   "id": 2973,
+   "slug": "w-bogota-hotel",
+   "name": "W Bogota Hotel",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Colombia",
+   "region": null,
+   "city": "Bogota"
+  },
+  {
+   "id": 3648,
+   "slug": "hyatt-regency-cartagena",
+   "name": "Hyatt Regency Cartagena",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Colombia",
+   "region": null,
+   "city": "Cartagena"
+  },
+  {
+   "id": 2760,
+   "slug": "andaz-costa-rica-resort-at-peninsula-papagayo",
+   "name": "Andaz Costa Rica Resort at Peninsula Papagayo",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Costa Rica",
+   "region": null,
+   "city": "Peninsula Papagayo"
+  },
+  {
+   "id": 2616,
+   "slug": "jw-marriott-guanacaste-resort-spa",
+   "name": "JW Marriott Guanacaste Resort & Spa",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Costa Rica",
+   "region": null,
+   "city": "Peninsula Papagayo"
+  },
+  {
+   "id": 6781,
+   "slug": "nekajui-a-ritz-carlton-reserve",
+   "name": "Nekajui, A Ritz Carlton Reserve",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Costa Rica",
+   "region": null,
+   "city": "Peninsula Papagayo"
+  },
+  {
+   "id": 7172,
+   "slug": "nekajui-a-ritz-carlton-reserve-residences",
+   "name": "Nekajui, a Ritz Carlton Reserve Residences",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Costa Rica",
+   "region": null,
+   "city": "Peninsula Papagayo"
+  },
+  {
+   "id": 3896,
+   "slug": "w-costa-rica-reserva-conchal",
+   "name": "W Costa Rica - Reserva Conchal",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Costa Rica",
+   "region": null,
+   "city": "Peninsula Papagayo"
+  },
+  {
+   "id": 6633,
+   "slug": "meneghetti-wine-hotel-winery",
+   "name": "Meneghetti Wine Hotel & Winery",
+   "program": "Relais & Châteaux",
+   "country": "Croatia",
+   "region": null,
+   "city": "Bale"
+  },
+  {
+   "id": 6989,
+   "slug": "-hyatt-regency-zadar",
+   "name": "Hyatt Regency Zadar",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Croatia",
+   "region": null,
+   "city": "NULL"
+  },
+  {
+   "id": 1926,
+   "slug": "le-meridien-lav-split",
+   "name": "Le Meridien Lav, Split",
+   "program": "Le Meridien",
+   "country": "Croatia",
+   "region": null,
+   "city": "Podstrana"
+  },
+  {
+   "id": 7168,
+   "slug": "parklane",
+   "name": "Parklane",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Cyprus",
+   "region": null,
+   "city": "Limassol"
+  },
+  {
+   "id": 6413,
+   "slug": "casale-panayiotis",
+   "name": "Casale Panayiotis",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Cyprus",
+   "region": null,
+   "city": "Nicosia"
+  },
+  {
+   "id": 6096,
+   "slug": "andaz-prague",
+   "name": "Andaz Prague",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Czech Republic",
+   "region": null,
+   "city": "Prague"
+  },
+  {
+   "id": 2279,
+   "slug": "augustine-a-luxury-collection-hotel-prague",
+   "name": "Augustine, a Luxury Collection Hotel, Prague",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Czech Republic",
+   "region": null,
+   "city": "Prague"
+  },
+  {
+   "id": 4677,
+   "slug": "prague-marriott-hotel",
+   "name": "Prague Marriott Hotel",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Czech Republic",
+   "region": null,
+   "city": "Prague"
+  },
+  {
+   "id": 7127,
+   "slug": "the-residences-at-the-st-regis-cap-cana-resort",
+   "name": "The Residences at The St. Regis Cap Cana Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Dominican Republic",
+   "region": null,
+   "city": "Cap Cana"
+  },
+  {
+   "id": 4055,
+   "slug": "the-ocean-club-costa-norte",
+   "name": "The Ocean Club, Costa Norte",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Dominican Republic",
+   "region": null,
+   "city": "Puerto Plata"
+  },
+  {
+   "id": 6702,
+   "slug": "st-regis-cap-cana",
+   "name": "St. Regis Cap Cana",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Dominican Republic",
+   "region": null,
+   "city": "Punta Cana"
+  },
+  {
+   "id": 3015,
+   "slug": "the-westin-punta-cana-resort-club-",
+   "name": "The Westin Punta Cana Resort & Club",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Dominican Republic",
+   "region": null,
+   "city": "Punta Cana"
+  },
+  {
+   "id": 6922,
+   "slug": "renaissance-cairo-mirage-city-hotel",
+   "name": "Renaissance Cairo Mirage City Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "Egypt",
+   "region": null,
+   "city": "Cairo"
+  },
+  {
+   "id": 3218,
+   "slug": "the-nile-ritz-carlton-cairo",
+   "name": "The Nile Ritz Carlton, Cairo",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Egypt",
+   "region": null,
+   "city": "Cairo"
+  },
+  {
+   "id": 6920,
+   "slug": "hotel-u14-autograph-collection",
+   "name": "Hotel U14, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Finland",
+   "region": null,
+   "city": "Helsinki"
+  },
+  {
+   "id": 3402,
+   "slug": "hotel-martinez-",
+   "name": "Hotel Martinez",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "France",
+   "region": null,
+   "city": "Cannes"
+  },
+  {
+   "id": 3246,
+   "slug": "jw-marriott-cannes",
+   "name": "JW Marriott Cannes",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "France",
+   "region": null,
+   "city": "Cannes"
+  },
+  {
+   "id": 2731,
+   "slug": "intercontinental-marseille-hotel-dieu",
+   "name": "InterContinental Marseille - Hotel Dieu",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "France",
+   "region": null,
+   "city": "Marseille"
+  },
+  {
+   "id": 3288,
+   "slug": "four-seasons-hotel-megeve",
+   "name": "Four Seasons Hotel Megeve",
+   "program": "Four Seasons",
+   "country": "France",
+   "region": null,
+   "city": "Megeve"
+  },
+  {
+   "id": 2613,
+   "slug": "hotel-le-negresco",
+   "name": "Hotel Le Negresco",
+   "program": "Leading Hotels of the World",
+   "country": "France",
+   "region": null,
+   "city": "Nice"
+  },
+  {
+   "id": 4702,
+   "slug": "le-meridien-nice",
+   "name": "Le Meridien Nice",
+   "program": "Le Meridien",
+   "country": "France",
+   "region": null,
+   "city": "Nice"
+  },
+  {
+   "id": 4054,
+   "slug": "bvlgari-hotel-paris",
+   "name": "Bvlgari Hotel Paris",
+   "program": "Bvlgari under The Marriott STARS Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 1096,
+   "slug": "four-seasons-paris-george-v",
+   "name": "Four Seasons Paris, George V",
+   "program": "Four Seasons",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 6724,
+   "slug": "hotel-de-berri-champs-elysees",
+   "name": "Hotel de Berri Champs-Elysees",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 3537,
+   "slug": "hotel-de-berri-luxury-collection-hotel",
+   "name": "Hotel De Berri, Luxury Collection Hotel",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 3641,
+   "slug": "hotel-du-louvre",
+   "name": "Hotel Du Louvre",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 2801,
+   "slug": "hotel-prince-de-galles",
+   "name": "Hotel Prince de Galles",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 3541,
+   "slug": "intercontinental-paris-avenue-marceau",
+   "name": "Intercontinental Paris - Avenue Marceau",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 6300,
+   "slug": "kimpton-st-honore-paris",
+   "name": "Kimpton St Honore Paris",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 6919,
+   "slug": "le-parchamp-paris-boulogne-a-tribute-portfolio-hotel",
+   "name": "Le Parchamp, Paris Boulogne, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 3757,
+   "slug": "paris-marriott-champs-elysees-hotel",
+   "name": "Paris Marriott Champs Elysees Hotel",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 6502,
+   "slug": "paris-marriott-opera-ambassador-hotel",
+   "name": "Paris Marriott Opera Ambassador Hotel",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 1259,
+   "slug": "park-hyatt-paris-vendome",
+   "name": "Park Hyatt Paris-Vendome",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 3761,
+   "slug": "renaissance-paris-arc-de-triomphe-hotel",
+   "name": "Renaissance Paris Arc de Triomphe Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 4988,
+   "slug": "renaissance-paris-nobel-tour-eiffel-hotel",
+   "name": "Renaissance Paris Nobel Tour Eiffel Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 3763,
+   "slug": "renaissance-paris-vendome-hotel",
+   "name": "Renaissance Paris Vendome Hotel",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 2214,
+   "slug": "the-westin-paris-vendome",
+   "name": "The Westin Paris Vendome",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Paris"
+  },
+  {
+   "id": 4999,
+   "slug": "la-caserne-chanzy-hotel-spa-autograph-collection",
+   "name": "La Caserne Chanzy Hotel & Spa, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Reims"
+  },
+  {
+   "id": 3719,
+   "slug": "hotel-de-bourgtheroulde-autograph-collection-",
+   "name": "Hotel de Bourgtheroulde, Autograph Collection®",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "France",
+   "region": null,
+   "city": "Rouen"
+  },
+  {
+   "id": 4174,
+   "slug": "waldorf-versailles-trianon-palace",
+   "name": "Waldorf Versailles Trianon Palace",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "France",
+   "region": null,
+   "city": "Versailles"
+  },
+  {
+   "id": 6440,
+   "slug": "sheraton-grand-tbilisi-metechi-palace",
+   "name": "Sheraton Grand Tbilisi Metechi Palace",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Georgia",
+   "region": null,
+   "city": "Tbilisi"
+  },
+  {
+   "id": 3857,
+   "slug": "roomers-baden-baden",
+   "name": "Roomers Baden-Baden",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Baden-Baden"
+  },
+  {
+   "id": 6504,
+   "slug": "berlin-marriott-hotel",
+   "name": "Berlin Marriott Hotel",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Berlin"
+  },
+  {
+   "id": 3401,
+   "slug": "grand-hyatt-berlin-",
+   "name": "Grand Hyatt Berlin",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "Germany",
+   "region": null,
+   "city": "Berlin"
+  },
+  {
+   "id": 3773,
+   "slug": "hotel-am-steinplatz-autograph-collection",
+   "name": "Hotel am Steinplatz Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Berlin"
+  },
+  {
+   "id": 1412,
+   "slug": "the-ritz-carlton-berlin",
+   "name": "The Ritz Carlton, Berlin",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Berlin"
+  },
+  {
+   "id": 3394,
+   "slug": "hyatt-regency-cologne",
+   "name": "Hyatt Regency Cologne",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Cologne"
+  },
+  {
+   "id": 3422,
+   "slug": "hyatt-regency-dusseldorf",
+   "name": "Hyatt Regency Dusseldorf",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Dusseldorf"
+  },
+  {
+   "id": 6590,
+   "slug": "jw-marriott-hotel-frankfurt",
+   "name": "JW Marriott Hotel Frankfurt",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Germany",
+   "region": null,
+   "city": "Frankfurt"
+  },
+  {
+   "id": 4695,
+   "slug": "le-meridien-frankfurt",
+   "name": "Le Meridien Frankfurt",
+   "program": "Le Meridien",
+   "country": "Germany",
+   "region": null,
+   "city": "Frankfurt"
+  },
+  {
+   "id": 3816,
+   "slug": "le-meridien-hamburg",
+   "name": "Le Meridien Hamburg",
+   "program": "Le Meridien",
+   "country": "Germany",
+   "region": null,
+   "city": "Hamburg"
+  },
+  {
+   "id": 4675,
+   "slug": "the-westin-hamburg",
+   "name": "The Westin Hamburg",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Hamburg"
+  },
+  {
+   "id": 6508,
+   "slug": "falkenstein-grand-autograph-collection",
+   "name": "Falkenstein Grand, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Hessen"
+  },
+  {
+   "id": 4992,
+   "slug": "schloss-lieser-autograph-collection",
+   "name": "Schloss Lieser, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Lieser"
+  },
+  {
+   "id": 3437,
+   "slug": "hyatt-regency-mainz",
+   "name": "Hyatt Regency Mainz",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Mainz"
+  },
+  {
+   "id": 3634,
+   "slug": "andaz-munich-schwabinger-tor",
+   "name": "Andaz Munich Schwabinger Tor",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Munich"
+  },
+  {
+   "id": 1762,
+   "slug": "hotel-vier-jahreszeiten-kempinski-munich-",
+   "name": "Hotel Vier Jahreszeiten Kempinski Munich",
+   "program": "Kempinski Hotels under The Kempinski Club 1897 Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Munich"
+  },
+  {
+   "id": 6505,
+   "slug": "le-m-ridien-grand-hotel-nuremberg",
+   "name": "Le Méridien Grand Hotel Nuremberg",
+   "program": "Le Meridien",
+   "country": "Germany",
+   "region": null,
+   "city": "Nuremberg"
+  },
+  {
+   "id": 3814,
+   "slug": "le-meridien-stuttgart",
+   "name": "Le Meridien Stuttgart",
+   "program": "Le Meridien",
+   "country": "Germany",
+   "region": null,
+   "city": "Stuttgart"
+  },
+  {
+   "id": 1622,
+   "slug": "the-ritz-carlton-wolfsburg",
+   "name": "The Ritz-Carlton, Wolfsburg",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Germany",
+   "region": null,
+   "city": "Wolfsburg"
+  },
+  {
+   "id": 4979,
+   "slug": "grand-cayman-marriott-beach-resort",
+   "name": "Grand Cayman Marriott Beach Resort",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Grand Cayman",
+   "region": null,
+   "city": "Grand Cayman"
+  },
+  {
+   "id": 6861,
+   "slug": "hotel-indigo-grand-cayman",
+   "name": "Hotel Indigo Grand Cayman",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Grand Cayman",
+   "region": null,
+   "city": "Grand Cayman"
+  },
+  {
+   "id": 3214,
+   "slug": "kimpton-seafire-resort-",
+   "name": "Kimpton Seafire Resort",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Grand Cayman",
+   "region": null,
+   "city": "Grand Cayman"
+  },
+  {
+   "id": 1512,
+   "slug": "ritz-carlton-grand-cayman-",
+   "name": "Ritz Carlton, Grand Cayman",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Grand Cayman",
+   "region": null,
+   "city": "Grand Cayman"
+  },
+  {
+   "id": 3788,
+   "slug": "the-westin-grand-cayman-seven-mile-beach-resort-spa",
+   "name": "The Westin Grand Cayman Seven Mile Beach Resort & Spa",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Grand Cayman",
+   "region": null,
+   "city": "Grand Cayman"
+  },
+  {
+   "id": 7088,
+   "slug": "conrad-athens-the-ilisian",
+   "name": "Conrad Athens the Ilisian",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "Greece",
+   "region": null,
+   "city": "Athens"
+  },
+  {
+   "id": 3692,
+   "slug": "domes-miramare-corfu",
+   "name": "Domes Miramare Corfu",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Corfu"
+  },
+  {
+   "id": 6579,
+   "slug": "domes-of-corfu",
+   "name": "Domes of Corfu",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Corfu"
+  },
+  {
+   "id": 2786,
+   "slug": "the-romanos",
+   "name": "The Romanos",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Costa Navarino"
+  },
+  {
+   "id": 5028,
+   "slug": "the-westin-resort-costa-navarino",
+   "name": "The Westin Resort, Costa Navarino",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Costa Navarino"
+  },
+  {
+   "id": 6428,
+   "slug": "w-costa-navarino",
+   "name": "W Costa Navarino",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Costa Navarino"
+  },
+  {
+   "id": 3872,
+   "slug": "domes-noruz-chania",
+   "name": "Domes Noruz Chania",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Crete Island"
+  },
+  {
+   "id": 3802,
+   "slug": "domes-of-elounda",
+   "name": "Domes of Elounda",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Crete Island"
+  },
+  {
+   "id": 6576,
+   "slug": "domes-zeen-chania",
+   "name": "Domes Zeen Chania",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Crete Island"
+  },
+  {
+   "id": 6809,
+   "slug": "jw-marriott-crete-resort-spa",
+   "name": "JW Marriott Crete Resort & Spa",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Greece",
+   "region": null,
+   "city": "Crete Island"
+  },
+  {
+   "id": 6946,
+   "slug": "domes-novos-santorini",
+   "name": "Domes Novos Santorini",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Oia"
+  },
+  {
+   "id": 6419,
+   "slug": "andronis-minois",
+   "name": "Andronis Minois",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Greece",
+   "region": null,
+   "city": "Paros"
+  },
+  {
+   "id": 7122,
+   "slug": "orosea-paros-autograph-collection",
+   "name": "Orosea Paros, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Paros"
+  },
+  {
+   "id": 6795,
+   "slug": "patmos-aktis-a-luxury-collection-resort-spa",
+   "name": "Patmos Aktis, a Luxury Collection Resort & Spa",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Patmos"
+  },
+  {
+   "id": 1409,
+   "slug": "vedema-resort",
+   "name": "Vedema Resort",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Santorini"
+  },
+  {
+   "id": 3461,
+   "slug": "hyatt-regency-thessaloniki",
+   "name": "Hyatt Regency Thessaloniki",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Thermi"
+  },
+  {
+   "id": 6916,
+   "slug": "monasty-thessaloniki-autograph-collection",
+   "name": "MonAsty, Thessaloniki, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Thessaloniki"
+  },
+  {
+   "id": 6262,
+   "slug": "on-residence",
+   "name": "ON Residence",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Greece",
+   "region": null,
+   "city": "Thessaloniki"
+  },
+  {
+   "id": 6360,
+   "slug": "domes-aulus-zante-",
+   "name": "Domes Aulus Zante",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Greece",
+   "region": null,
+   "city": "Zante"
+  },
+  {
+   "id": 6423,
+   "slug": "kimpton-grand-roatan-resort-spa",
+   "name": "Kimpton Grand Roatan Resort & Spa",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Honduras",
+   "region": null,
+   "city": "West Bay Beach"
+  },
+  {
+   "id": 4727,
+   "slug": "budapest-marriott-hotel",
+   "name": "Budapest Marriott Hotel",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Hungary",
+   "region": null,
+   "city": "Budapest"
+  },
+  {
+   "id": 6914,
+   "slug": "dorothea-hotel-budapest-autograph-collection",
+   "name": "Dorothea Hotel, Budapest, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Hungary",
+   "region": null,
+   "city": "Budapest"
+  },
+  {
+   "id": 4256,
+   "slug": "kempinski-hotel-corvinus-budapest",
+   "name": "Kempinski Hotel Corvinus Budapest",
+   "program": "Kempinski Hotels under The Kempinski Club 1897 Program",
+   "country": "Hungary",
+   "region": null,
+   "city": "Budapest"
+  },
+  {
+   "id": 6303,
+   "slug": "matild-palace-a-luxury-collection-hotel-budapest",
+   "name": "Matild Palace,a Luxury Collection Hotel, Budapest",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Hungary",
+   "region": null,
+   "city": "Budapest"
+  },
+  {
+   "id": 3915,
+   "slug": "parisi-udvar-hotel-budapest",
+   "name": "Parisi Udvar Hotel Budapest",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "Hungary",
+   "region": null,
+   "city": "Budapest"
+  },
+  {
+   "id": 6915,
+   "slug": "w-budapest",
+   "name": "W Budapest",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Hungary",
+   "region": null,
+   "city": "Budapest"
+  },
+  {
+   "id": 3453,
+   "slug": "park-hyatt-chennai",
+   "name": "Park Hyatt Chennai",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "India",
+   "region": null,
+   "city": "Chennai"
+  },
+  {
+   "id": 3378,
+   "slug": "andaz-delhi",
+   "name": "Andaz Delhi",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "India",
+   "region": null,
+   "city": "Delhi"
+  },
+  {
+   "id": 3827,
+   "slug": "w-goa",
+   "name": "W Goa",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "India",
+   "region": null,
+   "city": "Goa"
+  },
+  {
+   "id": 3412,
+   "slug": "grand-hyatt-mumbai-",
+   "name": "Grand Hyatt Mumbai",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "India",
+   "region": null,
+   "city": "Mumbai"
+  },
+  {
+   "id": 6742,
+   "slug": "six-senses-vana",
+   "name": "Six Senses Vana",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "India",
+   "region": null,
+   "city": "Uttaranchal"
+  },
+  {
+   "id": 2206,
+   "slug": "castlemartyr-resort",
+   "name": "Castlemartyr Resort",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "Ireland",
+   "region": null,
+   "city": "County Cork"
+  },
+  {
+   "id": 4125,
+   "slug": "conrad-dublin",
+   "name": "Conrad Dublin",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "Ireland",
+   "region": null,
+   "city": "Dublin"
+  },
+  {
+   "id": 7002,
+   "slug": "furore-grand-hotel",
+   "name": "Furore Grand Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Amalfi Coast"
+  },
+  {
+   "id": 6762,
+   "slug": "hotel-miramalfi-",
+   "name": "Hotel Miramalfi",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Amalfi Coast"
+  },
+  {
+   "id": 4229,
+   "slug": "hotel-la-perla",
+   "name": "Hotel La Perla",
+   "program": "Leading Hotels of the World",
+   "country": "Italy",
+   "region": null,
+   "city": "Corvara in Badia"
+  },
+  {
+   "id": 4612,
+   "slug": "hotel-villa-soligo",
+   "name": "Hotel Villa Soligo",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Fara di Soligo"
+  },
+  {
+   "id": 6908,
+   "slug": "w-florence",
+   "name": "W Florence",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Firenze"
+  },
+  {
+   "id": 1927,
+   "slug": "four-seasons-hotel-florence",
+   "name": "Four Seasons Hotel Florence",
+   "program": "Four Seasons",
+   "country": "Italy",
+   "region": null,
+   "city": "Florence"
+  },
+  {
+   "id": 3952,
+   "slug": "grand-hotel-minerva-florence-",
+   "name": "Grand Hotel Minerva Florence",
+   "program": "The Signature Collection",
+   "country": "Italy",
+   "region": null,
+   "city": "Florence"
+  },
+  {
+   "id": 6182,
+   "slug": "hotel-lupaia",
+   "name": "Hotel Lupaia",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Florence"
+  },
+  {
+   "id": 2571,
+   "slug": "the-st-regis-florence-",
+   "name": "The St. Regis Florence",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Florence"
+  },
+  {
+   "id": 4703,
+   "slug": "sheraton-lake-como-hotel",
+   "name": "Sheraton Lake Como Hotel",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Lake Como"
+  },
+  {
+   "id": 6909,
+   "slug": "the-lake-como-edition",
+   "name": "The Lake Como EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Lake Como"
+  },
+  {
+   "id": 7103,
+   "slug": "principessa-forte-dei-marmi-autograph-collection",
+   "name": "Principessa Forte dei Marmi, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Lucca"
+  },
+  {
+   "id": 1295,
+   "slug": "bvlgari-hotel-milano",
+   "name": "Bvlgari Hotel, Milano",
+   "program": "Bvlgari under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 6806,
+   "slug": "casa-brera-a-luxury-collection-hotel",
+   "name": "Casa Brera, a Luxury Collection Hotel",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 6544,
+   "slug": "duo-milan-porta-nuova-a-tribute-portfolio-hotel",
+   "name": "Duo Milan Porta Nuova, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 2977,
+   "slug": "excelsior-hotel-gallia",
+   "name": "Excelsior Hotel Gallia",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 995,
+   "slug": "four-seasons-hotel-milano",
+   "name": "Four Seasons Hotel Milano",
+   "program": "Four Seasons",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 6514,
+   "slug": "galleria-vik-milano",
+   "name": "Galleria Vik Milano",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 4210,
+   "slug": "hyatt-centric-milan-centrale",
+   "name": "Hyatt Centric Milan Centrale",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 7143,
+   "slug": "nemi-hotel-milan",
+   "name": "Nemi Hotel Milan",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 1320,
+   "slug": "park-hyatt-milan",
+   "name": "Park Hyatt Milan",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 4034,
+   "slug": "rosa-grand-milano-starhotels-collezione",
+   "name": "Rosa Grand Milano – Starhotels Collezione",
+   "program": "The Signature Collection",
+   "country": "Italy",
+   "region": null,
+   "city": "Milan"
+  },
+  {
+   "id": 4667,
+   "slug": "hotel-le-fontanelle",
+   "name": "Hotel Le Fontanelle",
+   "program": "The Signature Collection",
+   "country": "Italy",
+   "region": null,
+   "city": "Pianella"
+  },
+  {
+   "id": 6925,
+   "slug": "cervo-hotel-costa-smeralda-resort",
+   "name": "Cervo Hotel, Costa Smeralda Resort",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Porto Cervo"
+  },
+  {
+   "id": 6415,
+   "slug": "cph-pevero-hotel",
+   "name": "CPH Pevero Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Porto Cervo"
+  },
+  {
+   "id": 6924,
+   "slug": "argentario-golf-wellness-resort-autograph-collection",
+   "name": "Argentario Golf & Wellness Resort, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Porto Ercole"
+  },
+  {
+   "id": 6592,
+   "slug": "bvlgari-hotel-roma",
+   "name": "Bvlgari Hotel Roma",
+   "program": "Bvlgari under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 6566,
+   "slug": "cardo-roma",
+   "name": "Cardo Roma",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 6625,
+   "slug": "palazzo-ripetta",
+   "name": "Palazzo Ripetta",
+   "program": "The Signature Collection",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 2332,
+   "slug": "rome-cavalieri",
+   "name": "Rome Cavalieri",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 2169,
+   "slug": "sina-bernini-bristol",
+   "name": "Sina Bernini Bristol",
+   "program": "The Signature Collection",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 6305,
+   "slug": "six-senses-rome",
+   "name": "Six Senses Rome",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 4052,
+   "slug": "the-rome-edition",
+   "name": "The Rome EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 1087,
+   "slug": "the-st-regis-rome-",
+   "name": "The St. Regis Rome",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 1038,
+   "slug": "the-westin-excelsior-rome",
+   "name": "The Westin Excelsior Rome",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 6831,
+   "slug": "w-roma",
+   "name": "W Roma",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Rome"
+  },
+  {
+   "id": 6893,
+   "slug": "w-sardinia-poltu-quatu",
+   "name": "W Sardinia, Poltu Quatu",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Sardinia"
+  },
+  {
+   "id": 4607,
+   "slug": "hotel-zur-goldenen-rose",
+   "name": "Hotel Zur Goldenen Rose",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Schnals"
+  },
+  {
+   "id": 6957,
+   "slug": "donna-carmela-resort-lodge",
+   "name": "Donna Carmela Resort & Lodge",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Sicily"
+  },
+  {
+   "id": 6548,
+   "slug": "ortea-palace-hotel",
+   "name": "Ortea Palace Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Sicily"
+  },
+  {
+   "id": 4504,
+   "slug": "villa-neri-resort-spa",
+   "name": "Villa Neri Resort & Spa",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Sicily"
+  },
+  {
+   "id": 7099,
+   "slug": "grotta-giusti-thermal-spa-resort-tuscany-autograph-collection",
+   "name": "Grotta Giusti Thermal Spa Resort Tuscany, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Tuscany"
+  },
+  {
+   "id": 3247,
+   "slug": "renaissance-tuscany-il-ciocco-resort-spa",
+   "name": "Renaissance Tuscany Il Ciocco Resort & Spa",
+   "program": "Renaissance Hotels under The Marriott Luminous Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Tuscany"
+  },
+  {
+   "id": 943,
+   "slug": "belmond-hotel-cipriani-",
+   "name": "Belmond Hotel Cipriani",
+   "program": "Belmond Bellini Club",
+   "country": "Italy",
+   "region": null,
+   "city": "Venice"
+  },
+  {
+   "id": 6070,
+   "slug": "ca-di-dio",
+   "name": "Ca' di Dio",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Italy",
+   "region": null,
+   "city": "Venice"
+  },
+  {
+   "id": 4776,
+   "slug": "hotel-indigo-venice-sant-elena",
+   "name": "Hotel Indigo Venice Sant Elena",
+   "program": "Hotel Indigo under IHG'S Destined Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Venice"
+  },
+  {
+   "id": 3138,
+   "slug": "splendid-venice",
+   "name": "Splendid Venice",
+   "program": "The Signature Collection",
+   "country": "Italy",
+   "region": null,
+   "city": "Venice"
+  },
+  {
+   "id": 1027,
+   "slug": "st-regis-venice",
+   "name": "St. Regis Venice",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Venice"
+  },
+  {
+   "id": 4778,
+   "slug": "hotel-indigo-verona-grand-hotel-",
+   "name": "Hotel Indigo Verona Grand Hotel",
+   "program": "Hotel Indigo under IHG'S Destined Program",
+   "country": "Italy",
+   "region": null,
+   "city": "Verona"
+  },
+  {
+   "id": 3424,
+   "slug": "hyatt-regency-hakone-resort-spa",
+   "name": "Hyatt Regency Hakone Resort & Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Japan",
+   "region": null,
+   "city": "Gora"
+  },
+  {
+   "id": 3866,
+   "slug": "iraph-sui",
+   "name": "IRAPH SUI",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Japan",
+   "region": null,
+   "city": "Miyako Jima"
+  },
+  {
+   "id": 4121,
+   "slug": "park-hyatt-niseko-hanazono",
+   "name": "Park Hyatt Niseko Hanazono",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "Japan",
+   "region": null,
+   "city": "Niseko"
+  },
+  {
+   "id": 4711,
+   "slug": "w-osaka",
+   "name": "W Osaka",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Japan",
+   "region": null,
+   "city": "Osaka"
+  },
+  {
+   "id": 6765,
+   "slug": "kimpton-shinjuku-tokyo",
+   "name": "Kimpton Shinjuku Tokyo",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Japan",
+   "region": null,
+   "city": "Tokyo"
+  },
+  {
+   "id": 3529,
+   "slug": "w-amman",
+   "name": "W Amman",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Jordan",
+   "region": null,
+   "city": "Amman"
+  },
+  {
+   "id": 3863,
+   "slug": "al-manara",
+   "name": "Al Manara",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Jordan",
+   "region": null,
+   "city": "Aqaba"
+  },
+  {
+   "id": 2929,
+   "slug": "the-ritz-carlton-almaty",
+   "name": "The Ritz-Carlton, Almaty",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Kazakhstan",
+   "region": null,
+   "city": "Almaty"
+  },
+  {
+   "id": 3544,
+   "slug": "intercontinental-malta",
+   "name": "InterContinental Malta",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Malta",
+   "region": null,
+   "city": "St. Julians"
+  },
+  {
+   "id": 6911,
+   "slug": "hacienda-del-mar-los-cabos",
+   "name": "Hacienda del Mar Los Cabos",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cabo San Lucas"
+  },
+  {
+   "id": 6856,
+   "slug": "me-cabo-by-melia-",
+   "name": "ME Cabo by Melia",
+   "program": "The Signature Collection",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cabo San Lucas"
+  },
+  {
+   "id": 3539,
+   "slug": "solaz",
+   "name": "Solaz",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cabo San Lucas"
+  },
+  {
+   "id": 3013,
+   "slug": "the-cape",
+   "name": "The Cape",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cabo San Lucas"
+  },
+  {
+   "id": 7171,
+   "slug": "the-residences-at-solaz-los-cabos",
+   "name": "The Residences at Solaz, Los Cabos",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cabo San Lucas"
+  },
+  {
+   "id": 3703,
+   "slug": "zadun-a-ritz-carlton-reserve-",
+   "name": "Zadun, a Ritz-Carlton Reserve",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cabo San Lucas"
+  },
+  {
+   "id": 3589,
+   "slug": "intercontinental-presidente-cancun-resort",
+   "name": "InterContinental Presidente Cancun Resort",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cancun"
+  },
+  {
+   "id": 6222,
+   "slug": "waldorf-astoria-cancun",
+   "name": "Waldorf Astoria Cancun",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cancun"
+  },
+  {
+   "id": 6859,
+   "slug": "waldorf-astoria-riviera-maya",
+   "name": "Waldorf Astoria Riviera Maya",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cancun"
+  },
+  {
+   "id": 3590,
+   "slug": "intercontinental-presidente-cozumel-resort-",
+   "name": "Intercontinental Presidente Cozumel Resort",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Cozumel"
+  },
+  {
+   "id": 6337,
+   "slug": "secrets-impression-isla-mujeres-",
+   "name": "Secrets Impression Isla Mujeres",
+   "program": "The Signature Collection",
+   "country": "Mexico",
+   "region": null,
+   "city": "Isla Mujeres"
+  },
+  {
+   "id": 6547,
+   "slug": "the-riviera-maya-edition-at-kanai",
+   "name": "The Riviera Maya EDITION at Kanai",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Kanai"
+  },
+  {
+   "id": 6290,
+   "slug": "the-st-regis-kanai-resort-riviera-maya",
+   "name": "The St. Regis Kanai Resort, Riviera Maya",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Kanai"
+  },
+  {
+   "id": 1516,
+   "slug": "four-seasons-hotel-mexico-d-f-",
+   "name": "Four Seasons Hotel Mexico, D.F.",
+   "program": "Four Seasons",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 3720,
+   "slug": "jw-marriott-hotel-mexico-city",
+   "name": "JW Marriott Hotel Mexico City",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 6468,
+   "slug": "mondrian-mexico-city-condesa",
+   "name": "Mondrian Mexico City Condesa",
+   "program": "The Signature Collection",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 2458,
+   "slug": "presidente-intercontinental-mexico-city",
+   "name": "Presidente InterContinental Mexico City",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 6890,
+   "slug": "sheraton-mexico-city-maria-isabel",
+   "name": "Sheraton Mexico City Maria Isabel",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 6706,
+   "slug": "the-ritz-carlton-residences-mexico-city",
+   "name": "The Ritz-Carlton Residences Mexico City",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 2241,
+   "slug": "the-st-regis-mexico-city",
+   "name": "The St Regis Mexico City",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 2079,
+   "slug": "w-mexico-city",
+   "name": "W Mexico City",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 6891,
+   "slug": "westin-santa-fe-mexico-city",
+   "name": "Westin Santa Fe Mexico City",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Mexico City"
+  },
+  {
+   "id": 7026,
+   "slug": "alila-mayakoba",
+   "name": "Alila Mayakoba",
+   "program": "ALiLa",
+   "country": "Mexico",
+   "region": null,
+   "city": "Playa del Carmen"
+  },
+  {
+   "id": 2212,
+   "slug": "the-st-regis-punta-mita-resort",
+   "name": "The St. Regis Punta Mita Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Punta Mita"
+  },
+  {
+   "id": 3111,
+   "slug": "w-punta-de-mita",
+   "name": "W Punta de Mita",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Mexico",
+   "region": null,
+   "city": "Punta Mita"
+  },
+  {
+   "id": 6561,
+   "slug": "numu-boutique-hotel-san-miguel-de-allende",
+   "name": "Numu Boutique Hotel San Miguel de Allende",
+   "program": "Hyatt",
+   "country": "Mexico",
+   "region": null,
+   "city": "San Miguel de Allende"
+  },
+  {
+   "id": 3931,
+   "slug": "thompson-zihuatanejo",
+   "name": "Thompson Zihuatanejo",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "Mongolia",
+   "region": null,
+   "city": "Zihuatanejo"
+  },
+  {
+   "id": 4757,
+   "slug": "regent-porto-montenegro",
+   "name": "Regent Porto Montenegro",
+   "program": "Regent Hotels",
+   "country": "Montenegro",
+   "region": null,
+   "city": "Tivat"
+  },
+  {
+   "id": 6503,
+   "slug": "st-regis-la-bahia-blanca-resort-tamuda-bay",
+   "name": "St. Regis La Bahia Blanca Resort, Tamuda Bay",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Morocco",
+   "region": null,
+   "city": "Tamuda Bay"
+  },
+  {
+   "id": 3377,
+   "slug": "andaz-amsterdam-prinsengracht",
+   "name": "Andaz Amsterdam, Prinsengracht",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Netherlands",
+   "region": null,
+   "city": "Amsterdam"
+  },
+  {
+   "id": 2729,
+   "slug": "de-l-europe-",
+   "name": "De L’Europe",
+   "program": "Leading Hotels of the World",
+   "country": "Netherlands",
+   "region": null,
+   "city": "Amsterdam"
+  },
+  {
+   "id": 4024,
+   "slug": "kimpton-de-witt-amsterdam-",
+   "name": "Kimpton De Witt Amsterdam",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Netherlands",
+   "region": null,
+   "city": "Amsterdam"
+  },
+  {
+   "id": 3823,
+   "slug": "w-amsterdam",
+   "name": "W Amsterdam",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Netherlands",
+   "region": null,
+   "city": "Amsterdam"
+  },
+  {
+   "id": 3242,
+   "slug": "waldorf-astoria-amsterdam",
+   "name": "Waldorf Astoria Amsterdam",
+   "program": "Waldorf Astoria Hotels Under the Hilton for Luxury Program",
+   "country": "Netherlands",
+   "region": null,
+   "city": "Amsterdam"
+  },
+  {
+   "id": 3856,
+   "slug": "hotel-nassau-breda",
+   "name": "Hotel Nassau Breda",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Netherlands",
+   "region": null,
+   "city": "Breda"
+  },
+  {
+   "id": 6874,
+   "slug": "w-muscat",
+   "name": "W Muscat",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Oman",
+   "region": null,
+   "city": "Muscat"
+  },
+  {
+   "id": 4687,
+   "slug": "jw-marriott-panama",
+   "name": "JW Marriott Panama",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Panama",
+   "region": null,
+   "city": "Panama City"
+  },
+  {
+   "id": 2737,
+   "slug": "westin-lima-hotel-convention-center",
+   "name": "Westin Lima Hotel & Convention Center",
+   "program": "The Signature Collection",
+   "country": "Peru",
+   "region": null,
+   "city": "Lima"
+  },
+  {
+   "id": 2805,
+   "slug": "hotel-bristol-warsaw",
+   "name": "Hotel Bristol, Warsaw",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Poland",
+   "region": null,
+   "city": "Warsaw"
+  },
+  {
+   "id": 7101,
+   "slug": "kimpton-atlantico-algarve",
+   "name": "Kimpton Atlantico Algarve",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Algarve"
+  },
+  {
+   "id": 6842,
+   "slug": "marriott-residences-salgados-resort",
+   "name": "Marriott Residences Salgados Resort",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Algarve"
+  },
+  {
+   "id": 6836,
+   "slug": "marriott-salgados-golf-conference-center",
+   "name": "Marriott Salgados Golf & Conference Center",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Algarve"
+  },
+  {
+   "id": 6835,
+   "slug": "the-westin-salgados-beach-resort-algarve",
+   "name": "The Westin Salgados Beach Resort , Algarve",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Algarve"
+  },
+  {
+   "id": 4709,
+   "slug": "w-algarve-hotel-residences",
+   "name": "W Algarve Hotel & Residences",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Algarve"
+  },
+  {
+   "id": 3596,
+   "slug": "intercontinental-cascais-estoril",
+   "name": "InterContinental Cascais-Estoril",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Estoril"
+  },
+  {
+   "id": 6934,
+   "slug": "andaz-lisbon",
+   "name": "Andaz Lisbon",
+   "program": "Andaz Hotels under the Hyatt Prive' Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Lisbon"
+  },
+  {
+   "id": 3200,
+   "slug": "intercontinental-lisbon",
+   "name": "InterContinental Lisbon",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Lisbon"
+  },
+  {
+   "id": 4597,
+   "slug": "the-lumiares-hotel-spa",
+   "name": "The Lumiares Hotel & Spa",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Portugal",
+   "region": null,
+   "city": "Lisbon"
+  },
+  {
+   "id": 6751,
+   "slug": "casa-da-companhia",
+   "name": "Casa da Companhia",
+   "program": "Vignette Collection Hotels under the IHG Destined Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Porto"
+  },
+  {
+   "id": 2767,
+   "slug": "intercontinental-porto-palacio-das-cardosas",
+   "name": "InterContinental Porto-Palacio das Cardosas",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Porto"
+  },
+  {
+   "id": 3584,
+   "slug": "six-senses-douro-valley",
+   "name": "Six Senses Douro Valley",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Porto"
+  },
+  {
+   "id": 6519,
+   "slug": "the-rebello-hotel",
+   "name": "The Rebello Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Portugal",
+   "region": null,
+   "city": "Porto"
+  },
+  {
+   "id": 6074,
+   "slug": "hotel-casa-palmela",
+   "name": "Hotel Casa Palmela",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Portugal",
+   "region": null,
+   "city": "Setubal"
+  },
+  {
+   "id": 1625,
+   "slug": "ritz-penha-longa-resort",
+   "name": "Ritz Penha Longa Resort",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Portugal",
+   "region": null,
+   "city": "Sintra"
+  },
+  {
+   "id": 2705,
+   "slug": "dorado-beach-a-ritz-carlton-reserve-",
+   "name": "Dorado Beach, a Ritz Carlton Reserve",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Puerto Rico",
+   "region": null,
+   "city": "Dorado"
+  },
+  {
+   "id": 2426,
+   "slug": "the-st-regis-bahia-beach-resort-",
+   "name": "The St. Regis Bahia Beach Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Puerto Rico",
+   "region": null,
+   "city": "Rio Grande"
+  },
+  {
+   "id": 6897,
+   "slug": "sheraton-puerto-rico-resort-casino",
+   "name": "Sheraton Puerto Rico Resort & Casino",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Puerto Rico",
+   "region": null,
+   "city": "San Juan"
+  },
+  {
+   "id": 2876,
+   "slug": "w-doha-hotel-residences",
+   "name": "W Doha Hotel & Residences",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Qatar",
+   "region": null,
+   "city": "Doha"
+  },
+  {
+   "id": 3252,
+   "slug": "jw-marriott-bucharest",
+   "name": "JW Marriott Bucharest",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Romania",
+   "region": null,
+   "city": "Bucharest"
+  },
+  {
+   "id": 1195,
+   "slug": "belmond-grand-hotel-europe",
+   "name": "Belmond Grand Hotel Europe",
+   "program": "Belmond Bellini Club",
+   "country": "Russia",
+   "region": null,
+   "city": "St. Petersburg"
+  },
+  {
+   "id": 1780,
+   "slug": "isle-of-eriska-hotel-spa-and-island-",
+   "name": "Isle of Eriska Hotel, Spa and Island",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Scotland",
+   "region": null,
+   "city": "Argyll"
+  },
+  {
+   "id": 4787,
+   "slug": "intercontinental-edinburgh-the-george",
+   "name": "InterContinental Edinburgh The George",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Scotland",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 3610,
+   "slug": "kimpton-charlotte-square",
+   "name": "Kimpton Charlotte Square",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Scotland",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 2758,
+   "slug": "the-caledonian-edinburgh",
+   "name": "The Caledonian Edinburgh",
+   "program": "The Signature Collection",
+   "country": "Scotland",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 6631,
+   "slug": "virgin-hotels-edinburgh",
+   "name": "Virgin Hotels Edinburgh",
+   "program": "The Signature Collection",
+   "country": "Scotland",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 3606,
+   "slug": "kimpton-blythswood-square-hotel",
+   "name": "Kimpton Blythswood Square Hotel",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Scotland",
+   "region": null,
+   "city": "Glasgow"
+  },
+  {
+   "id": 1652,
+   "slug": "greywalls-hotel",
+   "name": "Greywalls Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Scotland",
+   "region": null,
+   "city": "Gullane"
+  },
+  {
+   "id": 4459,
+   "slug": "saint-ten-hotel",
+   "name": "Saint Ten Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Serbia",
+   "region": null,
+   "city": "Belgrade"
+  },
+  {
+   "id": 3990,
+   "slug": "intercontinental-singapore",
+   "name": "InterContinental Singapore",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Singapore",
+   "region": null,
+   "city": "Singapore"
+  },
+  {
+   "id": 3035,
+   "slug": "grand-hotel-river-park",
+   "name": "Grand Hotel River Park",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Slovakia",
+   "region": null,
+   "city": "Bratislava"
+  },
+  {
+   "id": 7023,
+   "slug": "sheraton-bratislava-hotel",
+   "name": "Sheraton Bratislava Hotel",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Slovakia",
+   "region": null,
+   "city": "NULL"
+  },
+  {
+   "id": 3979,
+   "slug": "intercontinental-ljubljana",
+   "name": "InterContinental Ljubljana",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Slovenia",
+   "region": null,
+   "city": "Ljubljana"
+  },
+  {
+   "id": 4136,
+   "slug": "conrad-seoul",
+   "name": "Conrad Seoul",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "South Korea",
+   "region": null,
+   "city": "Seoul"
+  },
+  {
+   "id": 2429,
+   "slug": "el-palace-hotel",
+   "name": "El Palace Hotel",
+   "program": "Leading Hotels of the World",
+   "country": "Spain",
+   "region": null,
+   "city": "Barcelona"
+  },
+  {
+   "id": 3913,
+   "slug": "grand-hyatt-barcelona",
+   "name": "Grand Hyatt Barcelona",
+   "program": "Grand Hyatt under The Hyatt Prive' Prorgam",
+   "country": "Spain",
+   "region": null,
+   "city": "Barcelona"
+  },
+  {
+   "id": 6258,
+   "slug": "kimpton-vividora-barcelona-",
+   "name": "Kimpton Vividora Barcelona",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Barcelona"
+  },
+  {
+   "id": 6902,
+   "slug": "labtwentytwo-barcelona-a-tribute-portfolio-hotel",
+   "name": "Labtwentytwo Barcelona, a Tribute Portfolio Hotel",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Barcelona"
+  },
+  {
+   "id": 2221,
+   "slug": "le-meridien-barcelona-",
+   "name": "Le Meridien Barcelona",
+   "program": "Le Meridien",
+   "country": "Spain",
+   "region": null,
+   "city": "Barcelona"
+  },
+  {
+   "id": 4079,
+   "slug": "hotel-ercilla-de-bilbao-autograph-collection",
+   "name": "Hotel Ercilla de Bilbao, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Bilbao"
+  },
+  {
+   "id": 6378,
+   "slug": "seda-club-hotel",
+   "name": "Seda Club Hotel",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Granada"
+  },
+  {
+   "id": 4741,
+   "slug": "la-torre-del-canonigo",
+   "name": "La Torre del Canonigo",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Spain",
+   "region": null,
+   "city": "Ibiza"
+  },
+  {
+   "id": 6245,
+   "slug": "six-senses-ibiza",
+   "name": "Six Senses Ibiza",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Ibiza"
+  },
+  {
+   "id": 3978,
+   "slug": "w-ibiza",
+   "name": "W Ibiza",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Ibiza"
+  },
+  {
+   "id": 6489,
+   "slug": "palacio-tondon-la-rioja-brinas",
+   "name": "Palacio Tondon, La Rioja Brinas",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "La Rioja"
+  },
+  {
+   "id": 4112,
+   "slug": "hyatt-regency-hesperia-madrid",
+   "name": "Hyatt Regency Hesperia Madrid",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Madrid"
+  },
+  {
+   "id": 1383,
+   "slug": "intercontinental-madrid",
+   "name": "InterContinental Madrid",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Madrid"
+  },
+  {
+   "id": 1487,
+   "slug": "santo-mauro-a-luxury-collection-hotel",
+   "name": "Santo Mauro, a Luxury Collection Hotel",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Madrid"
+  },
+  {
+   "id": 6213,
+   "slug": "the-madrid-edition",
+   "name": "The Madrid EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Madrid"
+  },
+  {
+   "id": 1011,
+   "slug": "the-palace-madrid",
+   "name": "The Palace Madrid",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Madrid"
+  },
+  {
+   "id": 6118,
+   "slug": "thompson-madrid",
+   "name": "Thompson Madrid",
+   "program": "Thompson Hotels, under Hyatt Prive' Prorgam",
+   "country": "Spain",
+   "region": null,
+   "city": "Madrid"
+  },
+  {
+   "id": 6126,
+   "slug": "hotel-la-zambra",
+   "name": "Hotel La Zambra",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Malaga"
+  },
+  {
+   "id": 7069,
+   "slug": "hacienda-son-antem-golf-resort",
+   "name": "Hacienda Son Antem Golf Resort",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Mallorca"
+  },
+  {
+   "id": 1382,
+   "slug": "the-st-regis-mardavall-mallorca-resort",
+   "name": "The St Regis Mardavall Mallorca Resort",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Mallorca"
+  },
+  {
+   "id": 7167,
+   "slug": "kimpton-los-monteros-marbella",
+   "name": "Kimpton Los Monteros Marbella",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Marbella"
+  },
+  {
+   "id": 6546,
+   "slug": "the-westin-la-quinta-golf-resort-spa",
+   "name": "The Westin La Quinta Golf Resort & Spa",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Marbella"
+  },
+  {
+   "id": 2782,
+   "slug": "hotel-maria-cristina",
+   "name": "Hotel Maria Cristina",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Spain",
+   "region": null,
+   "city": "San Sebastian"
+  },
+  {
+   "id": 6865,
+   "slug": "grand-hotel-centenari-valenica",
+   "name": "Grand Hotel Centenari, Valenica",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Valencia"
+  },
+  {
+   "id": 6639,
+   "slug": "palacio-santa-clara-autograph-collection",
+   "name": "Palacio Santa Clara, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Valencia"
+  },
+  {
+   "id": 1827,
+   "slug": "the-westin-valencia-",
+   "name": "The Westin Valencia",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "Spain",
+   "region": null,
+   "city": "Valencia"
+  },
+  {
+   "id": 3629,
+   "slug": "le-barthelemy-hotel-spa",
+   "name": "Le Barthelemy Hotel & Spa",
+   "program": "The Signature Collection",
+   "country": "St. Barts",
+   "region": null,
+   "city": "St. Barth"
+  },
+  {
+   "id": 4585,
+   "slug": "hotel-diplomat-stockholm",
+   "name": "Hotel Diplomat Stockholm",
+   "program": "Preferred Hotels & Resorts under The Preferred Platinum Program",
+   "country": "Sweden",
+   "region": null,
+   "city": "Stockholm"
+  },
+  {
+   "id": 7095,
+   "slug": "hotel-reisen",
+   "name": "Hotel Reisen",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "Sweden",
+   "region": null,
+   "city": "Stockholm"
+  },
+  {
+   "id": 6336,
+   "slug": "six-senses-crans-montana",
+   "name": "Six Senses Crans-Montana",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Crans-Montana"
+  },
+  {
+   "id": 5022,
+   "slug": "kempinski-palace-engelberg",
+   "name": "Kempinski Palace Engelberg",
+   "program": "The Signature Collection",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Engelberg"
+  },
+  {
+   "id": 2512,
+   "slug": "hotel-president-wilson",
+   "name": "Hotel President Wilson",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Geneva"
+  },
+  {
+   "id": 3981,
+   "slug": "intercontinental-geneve-",
+   "name": "InterContinental Geneve",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Geneva"
+  },
+  {
+   "id": 3485,
+   "slug": "the-ritz-carlton-hotel-de-la-paix",
+   "name": "The Ritz-Carlton Hotel de la Paix",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Geneva"
+  },
+  {
+   "id": 4830,
+   "slug": "bergwelt-grindelwald",
+   "name": "Bergwelt Grindelwald",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Grindelwald"
+  },
+  {
+   "id": 2873,
+   "slug": "w-verbier",
+   "name": "W Verbier",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Verbier"
+  },
+  {
+   "id": 6767,
+   "slug": "hyatt-regency-zurich-airport-the-circle",
+   "name": "Hyatt Regency Zurich Airport The Circle",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Zurich"
+  },
+  {
+   "id": 4038,
+   "slug": "la-r-serve-eden-au-lac-zurich",
+   "name": "La Réserve Eden au Lac Zurich",
+   "program": "Leading Hotels of the World",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Zurich"
+  },
+  {
+   "id": 1500,
+   "slug": "park-hyatt-zurich",
+   "name": "Park Hyatt Zurich",
+   "program": "Park Hyatt Hotels under The Hyatt PRIVE' Program",
+   "country": "Switzerland",
+   "region": null,
+   "city": "Zurich"
+  },
+  {
+   "id": 4666,
+   "slug": "kimpton-maa-lai-bangkok",
+   "name": "Kimpton Maa-Lai Bangkok",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Bangkok"
+  },
+  {
+   "id": 2832,
+   "slug": "sheraton-grande-sukhumvit",
+   "name": "Sheraton Grande Sukhumvit",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Bangkok"
+  },
+  {
+   "id": 3607,
+   "slug": "the-athenee-hotel",
+   "name": "The Athenee Hotel",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Bangkok"
+  },
+  {
+   "id": 3428,
+   "slug": "hyatt-regency-hua-hin-barai-spa",
+   "name": "Hyatt Regency Hua Hin & Barai Spa",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Hua Hin"
+  },
+  {
+   "id": 3993,
+   "slug": "intercontinental-resort-hua-hin",
+   "name": "InterContinental Resort Hua Hin",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Hua Hin"
+  },
+  {
+   "id": 6318,
+   "slug": "kimpton-kitalay-samui",
+   "name": "Kimpton Kitalay Samui",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Koh Samui"
+  },
+  {
+   "id": 3759,
+   "slug": "w-koh-samui",
+   "name": "W Koh Samui",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "Thailand",
+   "region": null,
+   "city": "Koh Samui"
+  },
+  {
+   "id": 6472,
+   "slug": "la-miniera-pool-villas-pattaya",
+   "name": "La Miniera Pool Villas Pattaya",
+   "program": "Small Luxury Hotels of The World",
+   "country": "Thailand",
+   "region": null,
+   "city": "Pattaya"
+  },
+  {
+   "id": 6307,
+   "slug": "six-senses-kaplankaya",
+   "name": "Six Senses Kaplankaya",
+   "program": "Six Senses Hotels & Resorts under IHG's Destined Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Bodrum"
+  },
+  {
+   "id": 4653,
+   "slug": "susona-bodrum",
+   "name": "Susona Bodrum",
+   "program": "LXR",
+   "country": "Turkey",
+   "region": null,
+   "city": "Bodrum"
+  },
+  {
+   "id": 3371,
+   "slug": "the-bodrum-edition",
+   "name": "The Bodrum EDITION",
+   "program": "EDITION Hotels under The Marriott STARS Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Bodrum"
+  },
+  {
+   "id": 6361,
+   "slug": "adahan-decamondo-pera",
+   "name": "Adahan Decamondo Pera",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 6362,
+   "slug": "decamondo-galata",
+   "name": "Decamondo Galata",
+   "program": "Tribute Portfolio Hotels under the Marriott Luminous Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 1095,
+   "slug": "four-seasons-istanbul-sultanahmet",
+   "name": "Four Seasons Istanbul, Sultanahmet",
+   "program": "Four Seasons",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 4984,
+   "slug": "jw-marriott-istanbul-bosphorus",
+   "name": "JW Marriott Istanbul Bosphorus",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 1376,
+   "slug": "ritz-carlton-istanbul",
+   "name": "Ritz-Carlton, Istanbul",
+   "program": "Ritz Carlton Hotels & Resorts under Marriott's STARS Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 7108,
+   "slug": "sheraton-istanbul-levent",
+   "name": "Sheraton Istanbul Levent",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 2971,
+   "slug": "st-regis-istanbul",
+   "name": "St. Regis Istanbul",
+   "program": "St. Regis Hotels & Resorts under The Marriott STARS Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Istanbul"
+  },
+  {
+   "id": 6317,
+   "slug": "izmir-marriott-hotel",
+   "name": "Izmir Marriott Hotel",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "Turkey",
+   "region": null,
+   "city": "Izmir"
+  },
+  {
+   "id": 3432,
+   "slug": "hyatt-regency-kiev",
+   "name": "Hyatt Regency Kiev",
+   "program": "Hyatt Regency Hotels under The Hyatt Prive' Program",
+   "country": "Ukraine",
+   "region": null,
+   "city": "Kiev"
+  },
+  {
+   "id": 3520,
+   "slug": "intercontinental-kyiv",
+   "name": "InterContinental Kyiv",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "Ukraine",
+   "region": null,
+   "city": "Kiev"
+  },
+  {
+   "id": 2741,
+   "slug": "jumeirah-zabeel-saray",
+   "name": "Jumeirah Zabeel Saray",
+   "program": "Jumeirah Hotels under The Jumeirah Passport to Luxury Program",
+   "country": "United Arab Emirates",
+   "region": null,
+   "city": "Dubai"
+  },
+  {
+   "id": 5061,
+   "slug": "me-dubai",
+   "name": "ME Dubai",
+   "program": "The Signature Collection",
+   "country": "United Arab Emirates",
+   "region": null,
+   "city": "Dubai"
+  },
+  {
+   "id": 6344,
+   "slug": "w-dubai-mina-seyahi",
+   "name": "W Dubai - Mina Seyahi",
+   "program": "Marriott Hotels & Resorts Under Marriott's Luminous Program",
+   "country": "United Arab Emirates",
+   "region": null,
+   "city": "Dubai"
+  },
+  {
+   "id": 3892,
+   "slug": "w-dubai-the-palm",
+   "name": "W Dubai - The Palm",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United Arab Emirates",
+   "region": null,
+   "city": "Dubai"
+  },
+  {
+   "id": 6185,
+   "slug": "rothay-manor-boutique-hotel",
+   "name": "Rothay Manor Boutique Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Ambleside"
+  },
+  {
+   "id": 4636,
+   "slug": "university-arms",
+   "name": "University Arms",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Cambridge"
+  },
+  {
+   "id": 7057,
+   "slug": "the-fish-hotel",
+   "name": "The Fish Hotel",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Cotswolds"
+  },
+  {
+   "id": 6960,
+   "slug": "old-town-chambers",
+   "name": "Old Town Chambers",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 6961,
+   "slug": "the-edinburgh-grand",
+   "name": "The Edinburgh Grand",
+   "program": "The Luxury Collection under the Marriott STARS Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 4827,
+   "slug": "the-roseate-edinburgh",
+   "name": "The Roseate Edinburgh",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Edinburgh"
+  },
+  {
+   "id": 4458,
+   "slug": "great-fosters",
+   "name": "Great Fosters",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Egham"
+  },
+  {
+   "id": 1315,
+   "slug": "four-seasons-hotel-hampshire",
+   "name": "Four Seasons Hotel Hampshire",
+   "program": "Four Seasons",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Hampshire"
+  },
+  {
+   "id": 4476,
+   "slug": "tylney-hall-hotel-gardens",
+   "name": "Tylney Hall Hotel & Gardens",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Hook"
+  },
+  {
+   "id": 3833,
+   "slug": "bankside-autograph-collection",
+   "name": "Bankside, Autograph Collection",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 2940,
+   "slug": "bvlgari-hotel-london",
+   "name": "Bvlgari Hotel London",
+   "program": "Bvlgari under The Marriott STARS Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 4140,
+   "slug": "conrad-london-st-james",
+   "name": "Conrad London St. James",
+   "program": "Conrad Hotels & Resorts under The Hilton for Luxury Porgram",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 3909,
+   "slug": "great-scotland-yard",
+   "name": "Great Scotland Yard",
+   "program": "The Unbound Collection under Hyatt Prive' Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 3983,
+   "slug": "intercontinental-london-park-lane-",
+   "name": "InterContinental London Park Lane",
+   "program": "InterContinental Hotels & Resorts under The IHG Destined Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 3710,
+   "slug": "jw-marriott-grosvenor-house-london",
+   "name": "JW Marriott Grosvenor House London",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 5060,
+   "slug": "kimpton-fitzroy-london",
+   "name": "Kimpton Fitzroy London",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 6889,
+   "slug": "montcalm-mayfair",
+   "name": "Montcalm Mayfair",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 4641,
+   "slug": "sheraton-grand-london-park-lane",
+   "name": "Sheraton Grand London Park Lane",
+   "program": "Sheraton Hotels & Resorts under The Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 2781,
+   "slug": "st-pancras-london",
+   "name": "St Pancras London",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 3776,
+   "slug": "st-ermin-s-hotel",
+   "name": "St. Ermin's Hotel",
+   "program": "Autograph Collection under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 1950,
+   "slug": "the-chesterfield-mayfair-hotel",
+   "name": "The Chesterfield Mayfair Hotel",
+   "program": "The Signature Collection",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 2153,
+   "slug": "the-langham-london-",
+   "name": "The Langham, London",
+   "program": "Langham Hotels under Langham's Couture Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 5029,
+   "slug": "the-westin-london-city",
+   "name": "The Westin London City",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 2875,
+   "slug": "w-london-leicester-square",
+   "name": "W London-Leicester Square",
+   "program": "W Hotels under the Marriott Luminous Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "London"
+  },
+  {
+   "id": 6713,
+   "slug": "kimpton-clocktower-manchester",
+   "name": "Kimpton Clocktower, Manchester",
+   "program": "Kimpton Hotels under IHG's Destined Program",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Manchester"
+  },
+  {
+   "id": 6094,
+   "slug": "the-retreat-elcot-park",
+   "name": "The Retreat Elcot Park",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Newbury"
+  },
+  {
+   "id": 6091,
+   "slug": "bishopstrow-hotel-spa",
+   "name": "Bishopstrow Hotel & Spa",
+   "program": "Small Luxury Hotels of The World",
+   "country": "United Kingdom",
+   "region": null,
+   "city": "Warminster"
+  },
+  {
+   "id": 3904,
+   "slug": "hyatt-centric-montevideo",
+   "name": "Hyatt Centric Montevideo",
+   "program": "Hyatt Centric Hotels under The Hyatt Prive' Prorgram",
+   "country": "Uruguay",
+   "region": null,
+   "city": "Montevideo"
+  },
+  {
+   "id": 6658,
+   "slug": "the-westin-beach-resort-spa-at-frenchman-s-reef-",
+   "name": "The Westin Beach Resort & Spa at Frenchman’s Reef",
+   "program": "Westin Hotels & Resorts under the Marriott Luminous Program",
+   "country": "US Virgin Islands",
+   "region": null,
+   "city": "St. Thomas"
+  },
+  {
+   "id": 7022,
+   "slug": "jw-marriott-hotel-tashkent",
+   "name": "JW Marriott Hotel Tashkent",
+   "program": "JW Marriott Hotel under Marriott's Luminous Progam",
+   "country": "Uzbekistan",
+   "region": null,
+   "city": "Tashkent"
+  }
+ ]
+}
