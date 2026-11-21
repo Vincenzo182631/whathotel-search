@@ -63,7 +63,13 @@ const BRAND_DOMAINS = ["hyatt.com", "marriott.com", "ritzcarlton.com", "fourseas
   "sofitel.com", "raffles.com", "editionhotels.com", "thompsonhotels.com", "andaz.com", "parkhyatt.com", "whotels.com", "stregis.com",
   "theluxurycollection.com", "jwmarriott.com", "lemeridien.com", "westin.com", "sheratonhotels.com", "autographcollection.com", "tributeportfolio.com",
   "regenthotels.com", "vignettecollection.com", "hotelindigo.com", "intercontinental.com", "bulgarihotels.com", "lxrhotels.com", "alilahotels.com",
-  "slh.com", "lhw.com", "relaischateaux.com", "preferredhotels.com", "oetkercollection.com", "dorchestercollection.com", "roccofortehotels.com"];
+  "slh.com", "lhw.com", "relaischateaux.com", "preferredhotels.com", "oetkercollection.com", "dorchestercollection.com", "roccofortehotels.com",
+  "omnihotels.com", "pendry.com", "montage.com", "viceroyhotelsandresorts.com", "1hotels.com", "nobuhotels.com", "destinationhotels.com", "curiocollection.com",
+  "fairmont.com", "swissotel.com", "mgallery.com", "proper.com", "thehoxton.com", "grandbohemianhotels.com",
+  "kesslercollection.com", "noblehousehotels.com", "salamanderhotels.com", "acehotel.com", "graduatehotels.com", "virginhotels.com", "thecapitalhotel.com",
+  "fairmontsanfrancisco.com", "omnihotels.com", "lottehotel.com", "shangri-la.com", "rosewood.com", "capellahotels.com", "anantara.com", "oberoihotels.com", "tajhotels.com",
+  "melia.com", "barcelo.com", "iberostar.com", "hyattinclusivecollection.com", "nh-hotels.com", "nh-collection.com", "radissonhotels.com", "steigenberger.com",
+  "lindner.de", "falkensteiner.com", "lafayette-hotels.com", "gleneagles.com"];
 const THIRD_PARTY_LOW = /(^|\.)(tripadvisor\.|booking\.com|expedia\.|hotels\.com|kayak\.|trivago\.|agoda\.|priceline\.|yelp\.|reddit\.com|facebook\.com|instagram\.com|tiktok\.com|youtube\.com|h-rez\.com)/i;
 const GENERIC = new Set("hotel hotels resort resorts spa the and collection autograph luxury residence residences suites club golf beach house inn lodge palace grand park city".split(" "));
 function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, "").toLowerCase(); } catch { return ""; } }
@@ -181,10 +187,13 @@ function ruleFields(md, h, official) {
       put("weight_limit", `up to ${m[1]} ${m[2].toLowerCase()}`, s0);
     else if (/\bno (?:pet )?(?:weight|size) (?:limit|restriction)s?\b|\bany size\b|\ball sizes\b/i.test(s0)) put("weight_limit", "No weight limit", s0);
     const amt = s0.match(AMOUNT);
-    if (/\b(deposit|pre-?authori[sz]ation|hold)\b/i.test(s0) && amt) put("deposit", (s0.match(/\b(non-?)?refundable\b/i) ? s0.match(/\b(non-?)?refundable\b/i)[0].toLowerCase() + " " : "") + amt[1], s0);
+    const nAmt = (s0.match(new RegExp(AMOUNT.source, "gi")) || []).length;
+    if (/\bno (?:[a-z-]+ )?deposit\b|\bdeposit (?:is )?not required\b|\bwithout (?:a )?deposit\b/i.test(s0)) put("deposit", "No deposit", s0);
+    else if (/\b(deposit|pre-?authori[sz]ation|hold)\b/i.test(s0) && amt) put("deposit", (s0.match(/\b(non-?)?refundable\b/i) ? s0.match(/\b(non-?)?refundable\b/i)[0].toLowerCase() + " " : "") + amt[1], s0);
     else if (/\b(fee|charge|surcharge|supplement|cost|rate)\b/i.test(s0) && amt) {
       const basis = [...new Set((s0.match(BASIS) || []).map((x) => x.toLowerCase()))].slice(0, 2).join(", ");
-      put("fee", amt[1].replace(/\s+/g, " ") + (basis ? " " + basis.toLowerCase() : ""), s0);
+      if (nAmt > 1) put("fee", s0.replace(/^(?:pet )?fees?:\s*/i, "").replace(/\s+/g, " ").slice(0, 140), s0);
+      else put("fee", amt[1].replace(/\s+/g, " ") + (basis ? " " + basis.toLowerCase() : ""), s0);
     } else if (/\b(no (?:additional |extra )?(?:pet )?(?:fee|charge)|free of charge|complimentary for pets|at no (?:extra |additional )?(?:cost|charge))\b/i.test(s0)) put("fee", "No pet fee", s0);
     if (/\b(dogs and cats|cats and dogs)\b/i.test(s0)) put("species", "Dogs and cats", s0);
     else if (/\b(dogs only|only dogs|cats are not (?:permitted|allowed)|no cats)\b/i.test(s0)) put("species", "Dogs only", s0);
