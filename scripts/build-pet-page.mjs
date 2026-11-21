@@ -290,7 +290,7 @@ const CSS = String.raw`
 /* 02 destinations */
 .pf-dest-nav{display:flex;align-items:end;gap:1.8rem}.pf-arrows{display:flex;gap:.6rem}
 .pf-arrow{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);transition:background .3s,color .3s,border-color .3s}
-.pf-arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}.pf-arrow svg{width:18px;height:18px}.pf-arrow[data-dir="-1"] svg{transform:rotate(180deg)}
+.pf-arrow:hover:not(:disabled){background:var(--ink);color:#fff;border-color:var(--ink)}.pf-arrow:disabled{opacity:.3;cursor:default}.pf-arrow svg{width:18px;height:18px}.pf-arrow[data-dir="-1"] svg{transform:rotate(180deg)}
 .pf-dests{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(230px,23.5%,300px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 20px;margin:0 -24px;scrollbar-width:none}
 .pf-dests::-webkit-scrollbar{display:none}
 .pf-dest{position:relative;scroll-snap-align:start;height:380px;border-radius:var(--r);overflow:hidden;border:0;padding:0;background:var(--ink);text-align:left;color:#fff}
@@ -519,7 +519,9 @@ sel.addEventListener("change",apply);br.addEventListener("change",apply);
 reset.addEventListener("click",function(){q.value="";sel.value="";br.value="";apply()});
 D.getElementById("pf-form").addEventListener("submit",function(ev){ev.preventDefault();apply();go()});
 secs.forEach(function(s){s.querySelector(".pf-more").addEventListener("click",function(){open[s.id]=1;s.classList.add("is-open");apply()})});
-var dl=D.querySelector(".pf-dests");[].forEach.call(D.querySelectorAll(".pf-arrow"),function(x){x.addEventListener("click",function(){dl.scrollBy({left:(+x.getAttribute("data-dir"))*dl.clientWidth*.8,behavior:"smooth"})})});
+var destList=D.querySelector(".pf-dests");[].forEach.call(D.querySelectorAll(".pf-arrow"),function(x){x.addEventListener("click",function(){destList.scrollBy({left:(+x.getAttribute("data-dir"))*destList.clientWidth*.8,behavior:"smooth"})})});
+function arrowState(){var mx=destList.scrollWidth-destList.clientWidth-30;[].forEach.call(D.querySelectorAll(".pf-arrow"),function(x){var d=+x.getAttribute("data-dir");x.disabled=d<0?destList.scrollLeft<=30:destList.scrollLeft>=mx})}
+destList.addEventListener("scroll",function(){clearTimeout(destList._t);destList._t=setTimeout(arrowState,60)},{passive:true});window.addEventListener("resize",arrowState);arrowState();
 var hf=D.getElementById("pf-find");hf.addEventListener("submit",function(ev){ev.preventDefault();q.value=hf.querySelector("input").value;sel.value="";br.value="";apply();go()});
 [].forEach.call(D.querySelectorAll("[data-q]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value=x.getAttribute("data-q");sel.value="";br.value="";apply();go()})});
 [].forEach.call(D.querySelectorAll("[data-brand]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value="";sel.value="";br.value=x.getAttribute("data-brand");apply();go()})});
@@ -532,9 +534,9 @@ D.body.appendChild(modal);
 var form=D.getElementById("pf-ask-form"),errBox=D.getElementById("pf-ask-err"),sendBtn=D.getElementById("pf-ask-send"),lastFocus=null,openedAt=0,subId="",busy=false;
 function $i(id){return D.getElementById(id)}function val(id){return($i(id).value||"").trim()}
 function escH(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-var HOTELS={},dl=$i("pf-hotels");
+var HOTELS={},hotelList=$i("pf-hotels");
 cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),n=nm.textContent;HOTELS[norm(n)]={id:li.getAttribute("data-id"),name:n,loc:li.querySelector(".pf-card__loc").textContent,country:li.closest(".pf-country").getAttribute("data-country"),url:nm.href.split("?")[0]};
- var o=D.createElement("option");o.value=n;dl.appendChild(o)});
+ var o=D.createElement("option");o.value=n;hotelList.appendChild(o)});
 /* ---------- researched pet policies (loaded on demand) ---------- */
 var POL_NOTE="Pet policies are set by each hotel and may change without prior notice. Please ask your travel advisor to confirm the details for your pet before you book.";
 var LABELS={fee:"Pet fee",max_pets:"Number of pets",weight_limit:"Weight limit",species:"Which pets",deposit:"Deposit",rooms:"Rooms",areas:"Where pets can go",amenities:"Pet amenities",rules:"House rules",service_animals:"Service animals"};
