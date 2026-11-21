@@ -400,10 +400,6 @@ background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 .pf-polrow dt{font:600 .62rem/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--champ);padding-top:.25rem}
 .pf-polrow dd{margin:0}.pf-polrow b{display:block;font:400 1.08rem/1.35 var(--serif);color:var(--ink)}
 .pf-polrow q{display:block;margin-top:.35rem;font:italic 300 .9rem/1.5 var(--serif);color:var(--soft);quotes:"“" "”"}
-.pf-src{display:inline-flex;align-items:center;gap:.35rem;margin-top:.35rem;font:500 .72rem/1.3 var(--sans);color:var(--mut)}
-.pf-src a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-.pf-src i{font-style:normal;padding:.15rem .45rem;border-radius:999px;font-weight:600;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
-.pf-src i.is-off{background:var(--mint);color:var(--sage)}.pf-src i.is-3rd{background:#f6ede0;color:#8a6a35}
 .pf-polnote{margin:1.2rem 0 0!important;padding:.85rem 1rem;border-radius:12px;background:#fff;border:1px solid var(--hair);font-size:.86rem;color:var(--soft)}
 .pf-polact{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
 @media (max-width:600px){.pf-polrow{grid-template-columns:1fr;gap:.2rem}.pf-polbox{padding-top:30px}}
@@ -531,20 +527,21 @@ var HOTELS={},dl=$i("pf-hotels");
 cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),n=nm.textContent;HOTELS[norm(n)]={id:li.getAttribute("data-id"),name:n,loc:li.querySelector(".pf-card__loc").textContent,country:li.closest(".pf-country").getAttribute("data-country"),url:nm.href.split("?")[0]};
  var o=D.createElement("option");o.value=n;dl.appendChild(o)});
 /* ---------- researched pet policies (loaded on demand) ---------- */
+var POL_NOTE="Pet policies are set by each hotel and may change without prior notice. Please ask your travel advisor to confirm the details for your pet before you book.";
 var LABELS={fee:"Pet fee",max_pets:"Number of pets",weight_limit:"Weight limit",species:"Which pets",deposit:"Deposit",rooms:"Rooms",areas:"Where pets can go",amenities:"Pet amenities",rules:"House rules",service_animals:"Service animals"};
 var pdWait=[];function loadPD(cb){if(window.WAH_PET_DETAILS){cb&&cb(true);return}if(!PD_URL){cb&&cb(false);return}pdWait.push(cb||function(){});if(pdWait.length>1)return;
  var sc=D.createElement("script");sc.src=PD_URL;sc.async=true;sc.onload=function(){var w=pdWait;pdWait=[];w.forEach(function(f){f(!!window.WAH_PET_DETAILS)})};sc.onerror=function(){var w=pdWait;pdWait=[];w.forEach(function(f){f(false)})};D.head.appendChild(sc)}
 function host(u){try{return new URL(u).hostname.replace(/^www\./,"")}catch(x){return u}}
 var pol=D.getElementById("pf-pol");D.body.appendChild(pol);var polCard=null,polLast=null;
 function openPol(li){polCard=li;polLast=D.activeElement;var id=li.getAttribute("data-id"),nm=li.querySelector(".pf-card__name a").textContent;
- $i("pf-pol-t").textContent=nm;$i("pf-pol-sub").textContent=li.querySelector(".pf-card__loc").textContent;$i("pf-pol-body").innerHTML='<p class="pf-modal__lead">Loading\u2026</p>';$i("pf-pol-note").textContent="";
+ $i("pf-pol-t").textContent=nm;$i("pf-pol-sub").textContent=li.querySelector(".pf-card__loc").textContent;$i("pf-pol-body").innerHTML='<p class="pf-modal__lead">Loading\u2026</p>';$i("pf-pol-note").textContent=POL_NOTE;
  $i("pf-pol-rates").href=li.querySelector(".pf-card__act .pf-btn--gold").href;pol.hidden=false;D.documentElement.classList.add("pf-lock");setTimeout(function(){pol.querySelector(".pf-modal__box").focus()},40);
  loadPD(function(ok){var r=ok&&window.WAH_PET_DETAILS[id];if(!r){$i("pf-pol-body").innerHTML='<p class="pf-modal__lead">The detailed policy could not be loaded. An advisor can confirm it for you.</p>';return}
-  var order=["fee","max_pets","weight_limit","species","deposit","rooms","areas","amenities","rules","service_animals"],h="",anyThird=false;
-  order.forEach(function(k){var v=r.f[k];if(!v)return;var s=r.s[v[1]]||["",0];if(!s[1])anyThird=true;
-   h+='<div class="pf-polrow"><dt>'+LABELS[k]+'</dt><dd><b>'+escH(v[0])+'</b>'+(v[2]&&norm(v[2]).replace(/[.\s]+$/,"")!==norm(v[0]).replace(/[.\s]+$/,"")?'<q>'+escH(v[2])+'</q>':"")+'<span class="pf-src"><i class="'+(s[1]?"is-off":"is-3rd")+'">'+(s[1]?"Hotel website":"Third-party")+'</i><a href="'+escH(s[0])+'" target="_blank" rel="noopener nofollow">'+escH(host(s[0]))+"</a></span></dd></div>"});
+  var order=["fee","max_pets","weight_limit","species","deposit","rooms","areas","amenities","rules","service_animals"],h="";
+  order.forEach(function(k){var v=r.f[k];if(!v)return;
+   h+='<div class="pf-polrow"><dt>'+LABELS[k]+'</dt><dd><b>'+escH(v[0])+'</b>'+(v[2]&&norm(v[2]).replace(/[.\s]+$/,"")!==norm(v[0]).replace(/[.\s]+$/,"")?'<q>'+escH(v[2])+'</q>':"")+"</dd></div>"});
   $i("pf-pol-body").innerHTML="<dl>"+h+"</dl>";
-  $i("pf-pol-note").textContent="Researched from the sources shown on "+r.c+(anyThird?". Details marked third-party come from pet-travel or booking sites and may be out of date":"")+". Hotels change their pet rules, so your advisor confirms everything before you book.";
+  $i("pf-pol-note").textContent=POL_NOTE;
   track("pet_page_policy_open",{hotel_id:id})})}
 function closePol(){pol.hidden=true;D.documentElement.classList.remove("pf-lock");if(polLast&&polLast.focus)try{polLast.focus({preventScroll:true})}catch(x){}}
 D.addEventListener("click",function(ev){var t=ev.target.closest&&ev.target.closest("[data-pol-open],[data-close-pol],#pf-pol-ask");if(!t)return;ev.preventDefault();
