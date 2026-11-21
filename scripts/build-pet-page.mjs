@@ -149,10 +149,18 @@ const FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><pat
 
 /* ---------- hotel cards, grouped by country (WhataHotel's order) ---------- */
 const short = (v, n = 38) => { v = String(v).replace(/\s+/g, " ").trim(); return v.length > n ? v.slice(0, n - 1).replace(/[\s,;]+\S*$/, "") + "…" : v; };
+// Long fee sentences: the first amount and its basis on the card; the full sentence is in the policy panel.
+function cardFee(v) {
+  if (v.length <= 36) return v;
+  const a = v.match(/((?:[A-Z]{1,3}\s?)?[$€£¥฿₹]\s?\d[\d,.]*|\b(?:USD|EUR|GBP|CAD|AUD|AED|CHF|JPY|INR|THB|MXN)\s?\d[\d,.]*|\b\d[\d,.]*\s?(?:USD|EUR|GBP|CAD|AUD|AED|CHF|JPY|INR|THB|MXN|€))/);
+  if (!a) return v;
+  const b = v.slice(a.index).match(/\b(per (?:pet,? )?(?:night|day|stay|pet|room)|nightly|one[- ]time)\b/i);
+  return a[1].trim() + (b ? " " + b[1].toLowerCase() : "") + " …";
+}
 function polLine(h) {
   const r = PD[h.id]; if (!r) return "";
   const items = [];
-  if (r.fee) items.push(["Fee", tidy(r.fee, "fee")]);
+  if (r.fee) items.push(["Fee", cardFee(tidy(r.fee, "fee"))]);
   if (r.max_pets) items.push(["Pets", tidy(r.max_pets, "max_pets")]);
   if (r.weight_limit) items.push(["Weight", tidy(r.weight_limit, "weight_limit")]);
   if (!items.length && r.species) items.push(["Pets", r.species]);

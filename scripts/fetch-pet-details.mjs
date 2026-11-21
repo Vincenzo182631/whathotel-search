@@ -158,9 +158,10 @@ async function extract(h, sources) {
 }
 
 /* ---------- rule-based reading of policy sentences (exact, repeatable) ---------- */
-const CUR = String.raw`(?:[$€£]|USD|US\$|EUR|GBP|CHF|AED|CAD|AUD|MXN|SGD|JPY|THB)`;
-const AMOUNT = new RegExp(String.raw`(${CUR}\s?\d[\d,]*(?:\.\d{1,2})?|\d[\d,]*(?:\.\d{1,2})?\s?${CUR})`, "i");
-const BASIS = /\b(per (?:pet,? )?(?:per )?(?:night|day|stay|visit|pet)|each night|a night|nightly|one[- ]time|for stays? of (?:up to )?[\w-]+(?: (?:to|through) [\w-]+)? nights?)\b/gi;
+const CODE = String.raw`(?:USD|US|CAD|C|AUD|A|EUR|GBP|CHF|AED|MXN|SGD|JPY|THB|INR|KZT|BRL|ZAR|NZD|HKD|TRY)`;
+const NUM = String.raw`\d[\d,.]*\d|\d`;
+const AMOUNT = new RegExp(String.raw`((?:${CODE}\s?)?[$€£¥฿₹]\s?(?:${NUM})|${CODE}\s?(?:${NUM})|(?:${NUM})\s?(?:${CODE}(?![a-z])|€|eur(?:os?)?(?![a-z])))`, "i");
+const BASIS = /\b(?<!not )(per (?:pet,? )?(?:per )?(?:room\/night|room per night|room,? per night|night|day|stay|visit|pet|room)|\/night|each night|a night|nightly|one[- ]time|for stays? of (?:up to )?[\w-]+(?: (?:to|through) [\w-]+)? nights?)/gi;
 function sentencesOf(md) {
   return clean(md).split(/\n+/).flatMap((l) => l.split(/(?<=[.!?])\s+(?=[A-Z0-9$€£])/)).map((x) => x.replace(/^[-*•\s]+/, "").trim()).filter((x) => x.length > 6 && x.length < 400);
 }
@@ -178,12 +179,12 @@ function ruleFields(md, h, official) {
   for (const s0 of sentencesOf(md)) {
     if (!/\b(pets?|dogs?|cats?|animals?|canine)\b/i.test(s0) && !/\b(pet fee|per pet)\b/i.test(s0)) continue;
     if (!aboutThisHotel(s0, h, official)) continue;
-    if (/\bservice animals?\b/i.test(s0) && !/\bpets?\b/i.test(s0)) continue;
+    if (/\b(guide dogs?|service (?:animals?|dogs?)|assistance (?:animals?|dogs?)|emotional support)\b/i.test(s0)) continue;
     let m;
     if ((m = s0.match(/\bup to (\d+|one|two|three|four) (?:pets?|dogs?|cats?|animals?)\b/i)) || (m = s0.match(/maximum (?:number of )?pets?(?: in (?:the )?room| per room)?\s*[:\-]?\s*(\d+)/i)) ||
         (m = s0.match(/\b(\d+|one|two|three) (?:pets?|dogs?) (?:per room|maximum|max\.?)\b/i)) || (m = s0.match(/\b(?:welcomes?|accepts?|allows?)\s+(\d+|one|two|three|four)\s+(?:pets?|dogs?)\b/i)))
       put("max_pets", m[1], s0);
-    if ((m = s0.match(/\b(\d+(?:[.,]\d+)?)\s?(lbs?|pounds|kg|kgs|kilograms?|kilos)\b/i)) && /\b(weigh|weight|up to|under|maximum|max|limit|less than|not exceed)\b/i.test(s0))
+    if ((m = s0.match(/\b(\d+(?:[.,]\d+)?)\s?(lbs?|pounds|kg|kgs|kilograms?|kilos)\b/i)) && parseFloat(m[1].replace(",", ".")) > 0 && /\b(weigh|weight|up to|under|maximum|max|limit|less than|not exceed)\b/i.test(s0))
       put("weight_limit", `up to ${m[1]} ${m[2].toLowerCase()}`, s0);
     else if (/\bno (?:pet )?(?:weight|size) (?:limit|restriction)s?\b|\bany size\b|\ball sizes\b/i.test(s0)) put("weight_limit", "No weight limit", s0);
     const amt = s0.match(AMOUNT);
@@ -191,7 +192,8 @@ function ruleFields(md, h, official) {
     if (/\bno (?:[a-z-]+ )?deposit\b|\bdeposit (?:is )?not required\b|\bwithout (?:a )?deposit\b/i.test(s0)) put("deposit", "No deposit", s0);
     else if (/\b(deposit|pre-?authori[sz]ation|hold)\b/i.test(s0) && amt) put("deposit", (s0.match(/\b(non-?)?refundable\b/i) ? s0.match(/\b(non-?)?refundable\b/i)[0].toLowerCase() + " " : "") + amt[1], s0);
     else if (/\b(fee|charge|surcharge|supplement|cost|rate)\b/i.test(s0) && amt) {
-      const basis = [...new Set((s0.match(BASIS) || []).map((x) => x.toLowerCase()))].slice(0, 2).join(", ");
+      const bs = [...new Set((s0.match(BASIS) || []).map((x) => x.toLowerCase()))];
+      const basis = bs.filter((b) => !bs.some((o) => o !== b && o.startsWith(b))).slice(0, 2).join(", ");
       if (nAmt > 1) put("fee", s0.replace(/^(?:pet )?fees?:\s*/i, "").replace(/\s+/g, " ").slice(0, 140), s0);
       else put("fee", amt[1].replace(/\s+/g, " ") + (basis ? " " + basis.toLowerCase() : ""), s0);
     } else if (/\b(no (?:additional |extra )?(?:pet )?(?:fee|charge)|free of charge|complimentary for pets|at no (?:extra |additional )?(?:cost|charge))\b/i.test(s0)) put("fee", "No pet fee", s0);
@@ -243,7 +245,7 @@ const NUMWORD = /\b(\d+|one|two|three|four|five|single|no (limit|maximum|restric
 const SHAPE = {
   species: (v) => /\b(dogs?|cats?|pets?|animals?|canine|feline|birds?)\b/i.test(v),
   max_pets: (v) => NUMWORD.test(v) && !/\b(fee|charge|cost|price|eur|usd|\$|€|£)\b/i.test(v),
-  weight_limit: (v) => (/\d/.test(v) && /\b(kg|kgs|kilo|kilos|kilograms?|lb|lbs|pounds?)\b/i.test(v)) || /\b(no weight|any size|all sizes|no size)\b/i.test(v),
+  weight_limit: (v) => (/[1-9]/.test(v) && /\b(kg|kgs|kilo|kilos|kilograms?|lb|lbs|pounds?)\b/i.test(v)) || /\b(no weight|any size|all sizes|no size)\b/i.test(v),
   fee: (v) => /\d|[$€£]|\b(free|no (additional |extra |pet )?(fee|charge)|complimentary|without charge|at no (extra |additional )?(cost|charge))\b/i.test(v),
   deposit: (v) => /\d|[$€£]|\bno deposit\b/i.test(v),
 };
@@ -303,12 +305,17 @@ async function work(h) {
   const cacheFile = join(CACHE, `${h.id}.json`);
   let raw;
   if (existsSync(cacheFile) && !REFRESH) raw = JSON.parse(readFileSync(cacheFile, "utf8"));
-  else {
-    const q = `${h.name} ${h.city || ""} pet policy`.replace(/\s+/g, " ").trim();
-    const r = await firecrawlSearch(q);
-    credits += r.credits;
-    raw = { query: q, fetched: new Date().toISOString(), results: r.results.map((x) => ({ url: x.url, title: x.title || "", markdown: x.markdown || "" })) };
-    writeFileSync(cacheFile, JSON.stringify(raw));
+  if (!raw || !raw.results || !raw.results.length) {
+    // The city is left out when it is already in the hotel's name ("The St. Regis Rome").
+    const city = h.city && !h.name.toLowerCase().includes(h.city.toLowerCase()) ? h.city : "";
+    const queries = [`${h.name} ${city} pet policy`, `${h.name} ${city || h.country} pets allowed dogs`].map((q) => q.replace(/\s+/g, " ").trim());
+    for (const q of queries) {
+      const r = await firecrawlSearch(q);
+      credits += r.credits;
+      raw = { query: q, fetched: new Date().toISOString(), results: r.results.map((x) => ({ url: x.url, title: x.title || "", markdown: x.markdown || "" })) };
+      if (raw.results.length) break;
+    }
+    if (raw.results.length) writeFileSync(cacheFile, JSON.stringify(raw));   // never cache an empty search
   }
   const sources = raw.results
     .map((x) => ({ url: x.url, official: isOfficial(x.url, h), text: petPassages(x.markdown) }))
