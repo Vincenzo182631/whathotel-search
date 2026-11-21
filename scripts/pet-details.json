@@ -1,0 +1,5198 @@
+{
+ "948": {
+  "name": "The Ritz-Carlton, Laguna Niguel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "No weight limit",
+  "fee": "$350.00 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Pets not permitted in Club Lounge except to access guestrooms.",
+  "amenities": "pet beds, bowls, or treats, subject to availability",
+  "rules": null,
+  "service_animals": "Travel with your support animal - no pet fees, ever.",
+  "from": {
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "areas": "official",
+   "amenities": "third-party",
+   "service_animals": "third-party",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ritzcarlton.com/en/hotels/snarz-the-ritz-carlton-laguna-niguel/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/the-ritz-carlton-laguna-niguel",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Cats/dogs only.",
+    "url": "https://www.ritzcarlton.com/en/hotels/snarz-the-ritz-carlton-laguna-niguel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.ritzcarlton.com/en/hotels/snarz-the-ritz-carlton-laguna-niguel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $350.00 per stay applies.",
+    "url": "https://www.ritzcarlton.com/en/hotels/snarz-the-ritz-carlton-laguna-niguel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets not permitted in Club Lounge except to access guestrooms.",
+    "url": "https://www.ritzcarlton.com/en/hotels/snarz-the-ritz-carlton-laguna-niguel/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "The Ritz Carlton Laguna Niguel provides pet beds, bowls, or treats, subject to availability.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/the-ritz-carlton-laguna-niguel",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Travel with your support animal - no pet fees, ever.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/the-ritz-carlton-laguna-niguel",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "No pet weight restrictions",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/the-ritz-carlton-laguna-niguel",
+    "how": "rule"
+   }
+  ]
+ },
+ "957": {
+  "name": "Canyon Ranch, Tucson **All Inclusive**",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": null,
+  "max_pets": null,
+  "weight_limit": null,
+  "fee": null,
+  "deposit": null,
+  "rooms": "Limited pet-friendly rooms available",
+  "areas": "Not in dining areas or pools",
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "areas": "third-party",
+   "rooms": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.roomertravel.com/featured/canyon-ranch-tucson.h857688",
+    "official": false
+   },
+   {
+    "url": "https://www.whatahotel.com/hotels/957/canyon-ranch-tucson-br-all-inclusive-.html",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "areas",
+    "quote": "Yes, it is pet-friendly, but there are restrictions on where they can go (not in dining areas or pools).",
+    "url": "https://www.roomertravel.com/featured/canyon-ranch-tucson.h857688",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Limited pet-friendly rooms are available...",
+    "url": "https://www.whatahotel.com/hotels/957/canyon-ranch-tucson-br-all-inclusive-.html",
+    "how": "ai"
+   }
+  ]
+ },
+ "971": {
+  "name": "The Ritz-Carlton, Marina del Rey",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "up to 30.0 lbs",
+  "fee": "$150.00 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "fee": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ritzcarlton.com/en/hotels/laxmd-the-ritz-carlton-marina-del-rey/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/66849",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.ritzcarlton.com/en/hotels/laxmd-the-ritz-carlton-marina-del-rey/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 30.0 lbs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/laxmd-the-ritz-carlton-marina-del-rey/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $150.00 per stay applies.",
+    "url": "https://www.ritzcarlton.com/en/hotels/laxmd-the-ritz-carlton-marina-del-rey/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are allowed, but four-legged guests may not be left in rooms unattended.",
+    "url": "https://www.bringfido.com/lodging/66849",
+    "how": "rule"
+   }
+  ]
+ },
+ "984": {
+  "name": "The St. Regis Aspen",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "No weight limit",
+  "fee": "$150",
+  "deposit": null,
+  "rooms": null,
+  "areas": "designated walking areas",
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "species": "official",
+   "fee": "official",
+   "max_pets": "official",
+   "areas": "official",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/asexr-the-st-regis-aspen-resort/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/en-us/destinations/united-states/colorado/aspen/pet-friendly-hotels.mi",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/69190",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Dogs only.",
+    "url": "https://www.marriott.com/en-us/hotels/asexr-the-st-regis-aspen-resort/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "Dog fee is $150/stay plus an additional cleaning fee of $25/night.",
+    "url": "https://www.marriott.com/en-us/hotels/asexr-the-st-regis-aspen-resort/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/asexr-the-st-regis-aspen-resort/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "...including designated walking areas...",
+    "url": "https://www.marriott.com/en-us/destinations/united-states/colorado/aspen/pet-friendly-hotels.mi",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Regis Aspen Resort allows dogs of any size for an additional fee of $75 for the first night and $25 for each additional night.",
+    "url": "https://www.bringfido.com/lodging/69190",
+    "how": "rule"
+   }
+  ]
+ },
+ "1063": {
+  "name": "Royal Palms Resort and Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "one",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$150.00 for stays of up to six nights, for stays of seven through 30 nights",
+  "deposit": "refundable $150",
+  "rooms": null,
+  "areas": "Dogs are welcomed on the sidewalks, grass, public spaces and patio areas; dogs are not allowed in restaurants or pool areas",
+  "amenities": "dog menu, plush branded bed, bowl mat, tennis balls",
+  "rules": "Please inform us that you will be bringing your dog(s) with you prior to arrival",
+  "service_animals": "Service animals are not pets and are not subject to this Pet Policy",
+  "from": {
+   "fee": "official",
+   "weight_limit": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official",
+   "service_animals": "official",
+   "max_pets": "third-party",
+   "deposit": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/64861",
+    "official": false
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/arizona/phoenix/royal-palms-resort-and-spa-part-of-hyatt",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "For stays of up to six nights, we assess a $150.00 pet fee, and for stays of seven through 30 nights, an additional $100.00 deep-cleaning fee will be included.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Pets must weigh 50 pounds and under or two pets must weigh 75 pounds combined at most to be permitted to stay at Royal Palms Resort and Spa.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "Dogs are welcomed on the sidewalks, grass, public spaces and patio areas.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "The program features a dog menu, in addition to a plush branded bed, bowl mat and tennis balls for use during the stay.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Please inform us that you will be bringing your dog(s) with you prior to arrival.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/phxub-royal-palms-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Royal Palms Resort and Spa Part of Hyatt welcomes one dog up to 50 lbs or two dogs with a combined weight up to 75 lbs for an additional fee of $150 per stay, plus a $100 refundable deposit.",
+    "url": "https://www.bringfido.com/lodging/64861",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Royal Palms Resort and Spa Part of Hyatt welcomes one dog up to 50 lbs or two dogs with a combined weight up to 75 lbs for an additional fee of $150 per stay, plus a $100 refundable deposit.",
+    "url": "https://www.bringfido.com/lodging/64861",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/arizona/phoenix/royal-palms-resort-and-spa-part-of-hyatt",
+    "how": "rule"
+   }
+  ]
+ },
+ "1096": {
+  "name": "Four Seasons Paris, George V",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "small and medium-size pets",
+  "max_pets": "1",
+  "weight_limit": "up to 11 kilograms",
+  "fee": null,
+  "deposit": "EUR 250 per room or EUR 520 per suite",
+  "rooms": null,
+  "areas": "not allowed in the food area",
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "deposit": "official",
+   "areas": "third-party",
+   "max_pets": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.fourseasons.com/paris/accommodations/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/32069",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Our Hotel welcomes small and medium-size pets weighing up to 11 kilograms (24 pounds).",
+    "url": "https://www.fourseasons.com/paris/accommodations/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "small and medium-size pets weighing up to 11 kilograms (24 pounds)",
+    "url": "https://www.fourseasons.com/paris/accommodations/",
+    "how": "ai"
+   },
+   {
+    "field": "deposit",
+    "quote": "an additional pre-authorization of EUR 250 per room or EUR 520 per suite will be taken",
+    "url": "https://www.fourseasons.com/paris/accommodations/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "pets are assigned to their rooms and can go to the lobby to go outside but they are not allowed in the food area.",
+    "url": "https://www.bringfido.com/lodging/32069",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Four Seasons Hotel George v Paris allows 1 dog up to 12 kg for no additional fee.",
+    "url": "https://www.bringfido.com/lodging/32069",
+    "how": "rule"
+   }
+  ]
+ },
+ "1168": {
+  "name": "The Ritz-Carlton, Half Moon Bay",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 40.0 lbs",
+  "fee": "250USD per pet, per stay",
+  "deposit": null,
+  "rooms": "Dog-friendly rooms in the residence area of the property",
+  "areas": null,
+  "amenities": null,
+  "rules": "No unattended pets",
+  "service_animals": null,
+  "from": {
+   "max_pets": "official",
+   "fee": "official",
+   "weight_limit": "official",
+   "species": "official",
+   "rules": "official",
+   "rooms": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/",
+    "official": true
+   },
+   {
+    "url": "https://hellorubydoodle.com/dog-friendly-stay-at-ritz-carlton-half-moon-bay/",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Up to 2 dogs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "250USD non-refundable fee per pet, per stay.",
+    "url": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 40.0 lbs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Up to 2 dogs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "No unattended pets.",
+    "url": "https://www.ritzcarlton.com/en/hotels/hafrz-the-ritz-carlton-half-moon-bay/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "you’ll be in the residence area of the property that is separated from the main hotel.",
+    "url": "https://hellorubydoodle.com/dog-friendly-stay-at-ritz-carlton-half-moon-bay/",
+    "how": "ai"
+   }
+  ]
+ },
+ "1197": {
+  "name": "Four Seasons Hotel San Francisco",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "No weight limit",
+  "fee": "No pet fee",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Only service animals are permitted inside MKT Restaurant & Bar.",
+  "amenities": "curated selection of pet treats, plush pet beds, and dedicated food and water bowls",
+  "rules": "Pets must be kept on a leash at all times when outside of your room or suite.",
+  "service_animals": "Only service animals are permitted inside MKT Restaurant & Bar.",
+  "from": {
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "weight_limit": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Enjoy a pet-friendly stay at Four Seasons Hotel San Francisco on Market Street, where dogs and cats are welcome in all guest rooms and suites.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Bring up to two pets per room, with no additional pet fee and no size or breed restrictions.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "Bring up to two pets per room, with no additional pet fee and no size or breed restrictions.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Up to two pets per room are permitted with no weight limit, and pet amenities, including food and water bowls, a pet bed, and a chew toy, are available upon request.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "Only service animals are permitted inside MKT Restaurant & Bar.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Each stay includes a curated selection of pet treats, plush pet beds, and dedicated food and water bowls upon arrival.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets must be kept on a leash at all times when outside of your room or suite.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Only service animals are permitted inside MKT Restaurant & Bar.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   }
+  ]
+ },
+ "1212": {
+  "name": "The Ritz-Carlton Rancho Mirage",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "up to 35.0 lbs",
+  "fee": "$350.00 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": "designated grassy pet relief area with waste station",
+  "amenities": null,
+  "rules": "pets may not be left unattended in the guest rooms",
+  "service_animals": "Service Animals are welcome without a fee or documentation",
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "fee": "official",
+   "service_animals": "official",
+   "species": "third-party",
+   "areas": "third-party",
+   "rules": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ritzcarlton.com/en/hotels/pspps-the-ritz-carlton-rancho-mirage/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/281196",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.ritzcarlton.com/en/hotels/pspps-the-ritz-carlton-rancho-mirage/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 35.0 lbs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/pspps-the-ritz-carlton-rancho-mirage/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $350.00 per stay applies.",
+    "url": "https://www.ritzcarlton.com/en/hotels/pspps-the-ritz-carlton-rancho-mirage/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.ritzcarlton.com/en/hotels/pspps-the-ritz-carlton-rancho-mirage/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are allowed, but pets may not be left unattended in the guest rooms.",
+    "url": "https://www.bringfido.com/lodging/281196",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "There is a designated grassy pet relief area with waste station on the property.",
+    "url": "https://www.bringfido.com/lodging/281196",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "but pets may not be left unattended in the guest rooms.",
+    "url": "https://www.bringfido.com/lodging/281196",
+    "how": "ai"
+   }
+  ]
+ },
+ "1213": {
+  "name": "Waldorf Astoria Monarch Beach",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 40 pounds",
+  "fee": "$200 pet fee per pet, per stay",
+  "deposit": null,
+  "rooms": "Main lobby and guest rooms",
+  "areas": "Not permitted where food or beverages are being served, around the pool, on the tram, at the beach, at Monarch Bay Beach Club, or at the golf course",
+  "amenities": "pet beds, bowls, or treats, subject to availability",
+  "rules": null,
+  "service_animals": "Service animals are always exempt from fees.",
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "rooms": "official",
+   "areas": "official",
+   "fee": "third-party",
+   "amenities": "third-party",
+   "service_animals": "third-party",
+   "max_pets": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.waldorfastoriamonarchbeach.com/faqs",
+    "official": true
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/waldorf-astoria-monarch-beach-resort-club",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Dogs should be well-mannered, free of contagious conditions or illness, and weigh no more than 40 pounds.",
+    "url": "https://www.waldorfastoriamonarchbeach.com/faqs",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Dogs are allowed to visit the resort with their owners",
+    "url": "https://www.waldorfastoriamonarchbeach.com/faqs",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Dog-friendly areas include the main lobby and guest rooms.",
+    "url": "https://www.waldorfastoriamonarchbeach.com/faqs",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are not permitted where food or beverages are being served, around the pool, on the tram, at the beach, at Monarch Bay Beach Club, or at the golf course.",
+    "url": "https://www.waldorfastoriamonarchbeach.com/faqs",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "Waldorf Astoria Monarch Beach Resort & Club has a $200 per pet, per stay pet fee.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/waldorf-astoria-monarch-beach-resort-club",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Waldorf Astoria Monarch Beach Resort & Club provides pet beds, bowls, or treats, subject to availability.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/waldorf-astoria-monarch-beach-resort-club",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are always exempt from fees.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/waldorf-astoria-monarch-beach-resort-club",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "2 pet maximum per reservation",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/dana-point/waldorf-astoria-monarch-beach-resort-club",
+    "how": "rule"
+   }
+  ]
+ },
+ "1453": {
+  "name": "Beverly Wilshire, A Four Seasons Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "up to 30 pounds",
+  "fee": "No additional fee for pets",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Outdoor patios at any of our dining outlets",
+  "amenities": "Plush bedding, freshly filled water bowls, Bone Appétit menu",
+  "rules": "Pets may not be left alone in rooms; must be kept on a leash when not in the guest’s room; owners are responsible for property damage and personal injury.",
+  "service_animals": "Weight limit does not apply to service animals.",
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.fourseasons.com/beverlywilshire/accommodations/",
+    "official": true
+   },
+   {
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "At Beverly Wilshire, Beverly Hills, A Four Seasons Hotel, we welcome dogs and cats weighing 30 pounds (14 kilograms) and under.",
+    "url": "https://www.fourseasons.com/beverlywilshire/accommodations/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "At Beverly Wilshire, Beverly Hills, A Four Seasons Hotel, we welcome dogs and cats weighing 30 pounds (14 kilograms) and under.",
+    "url": "https://www.fourseasons.com/beverlywilshire/accommodations/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "A maximum of two pets per room is allowed, provided they each weigh no more than 60 pounds (27 kilograms), are fully house-trained and are at least 6 months old (for non-service animals).",
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "does not charge an additional fee for pets.",
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are permitted on our outdoor patios at any of our dining outlets.",
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Plush bedding, freshly filled water bowls and thoughtful in-room touches create a cozy retreat for every pet.",
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets may not be left alone in our guest rooms... must be kept on a leash when not in the guest’s room.",
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "This limitation does not apply to service animals.",
+    "url": "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   }
+  ]
+ },
+ "1471": {
+  "name": "La Quinta Resort & Club",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": null,
+  "weight_limit": null,
+  "fee": "$150",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Dogs are not allowed inside restaurants, pools, or pool areas",
+  "amenities": "PupJoy welcome amenity with treats and toys",
+  "rules": "Dogs must be leashed at all times in public areas; pet owners must sign a waiver upon arrival; complete pet policy will be provided at check-in.",
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "species": "official",
+   "areas": "official",
+   "rules": "official",
+   "amenities": "official"
+  },
+  "sources": [
+   {
+    "url": "https://laquintaresort.com/faq/",
+    "official": true
+   },
+   {
+    "url": "https://laquintaresort.com/stay-with-your-dog/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "## Dogs allowed: $150 non-refundable pet fee",
+    "url": "https://laquintaresort.com/faq/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Dogs are the only animals permitted under this policy.",
+    "url": "https://laquintaresort.com/stay-with-your-dog/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "No dogs are permitted in pools or pool areas in accordance with Riverside County Health Code.",
+    "url": "https://laquintaresort.com/stay-with-your-dog/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Dogs must be leashed at all times in public areas.",
+    "url": "https://laquintaresort.com/stay-with-your-dog/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Our PAWS La Quinta Canine Experience includes a curated PupJoy welcome amenity with treats and toys to help pamper your pup during your stay.",
+    "url": "https://laquintaresort.com/faq/",
+    "how": "ai"
+   }
+  ]
+ },
+ "1500": {
+  "name": "Park Hyatt Zurich",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": null,
+  "weight_limit": "No weight limit",
+  "fee": "CHF 45/day, per dog",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Dog bed, water bowl, and small treats",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "amenities": "official",
+   "fee": "official",
+   "weight_limit": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/park-hyatt/en-US/zurph-park-hyatt-zurich/faqs",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/park-hyatt/en-US/zurph-park-hyatt-zurich/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/9405",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "amenities",
+    "quote": "Rooms can be prepared with a dog bed, water bowl and small treats to make your pet comfortable.",
+    "url": "https://www.hyatt.com/park-hyatt/en-US/zurph-park-hyatt-zurich/faqs",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "CHF 45/day, per dog",
+    "url": "https://www.hyatt.com/park-hyatt/en-US/zurph-park-hyatt-zurich/policies",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Park Hyatt Zurich allows dogs of any size in designated rooms for no additional fee.",
+    "url": "https://www.bringfido.com/lodging/9405",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/9405",
+    "how": "rule"
+   }
+  ]
+ },
+ "1672": {
+  "name": "Enchantment Resort",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "75 lbs",
+  "fee": "$150 per pet, per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Pets are not permitted in the public areas including restaurants, pool areas, lobby, meeting space, tennis courts, and spa or fitness center.",
+  "amenities": null,
+  "rules": "Pets cannot be left unattended in rooms. Sorry, no cats.",
+  "service_animals": "Confirmed with the resort. They don’t allow cats.",
+  "from": {
+   "areas": "official",
+   "weight_limit": "third-party",
+   "fee": "third-party",
+   "rules": "third-party",
+   "service_animals": "third-party",
+   "max_pets": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.enchantmentresort.com/pet-friendly-program/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "areas",
+    "quote": "Pets are not permitted in the public areas including restaurants, pool areas, lobby, meeting space, tennis courts, and spa or fitness center.",
+    "url": "https://www.enchantmentresort.com/pet-friendly-program/",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "up to 75 lbs.",
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "for an additional fee of $150 per pet, per stay.",
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets cannot be left unattended in rooms.",
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Confirmed with the resort. They don’t allow cats.",
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Enchantment Resort allows 2 dogs up to 75 lbs for an additional fee of $150 per pet, per stay.",
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/1138679",
+    "how": "rule"
+   }
+  ]
+ },
+ "1674": {
+  "name": "Grand Hyatt Indian Wells Resort & Villas",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 75 pounds",
+  "fee": "$175 per stay of 1–6 nights; additional $175 for every subsequent 6-night block",
+  "deposit": "refundable $25",
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Service animals are exempt from the dog fee.",
+  "service_animals": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+  "from": {
+   "weight_limit": "official",
+   "deposit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "rules": "official",
+   "service_animals": "official",
+   "fee": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "One pet weighing 75 pounds (34 kilograms) or less; two pets with a combined weight of 100 pounds (45.3 kilograms) or less.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas/policies",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Pets must be registered with the front desk and wear a dog ID tag; other items will be provided with a refundable $25 deposit",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas/policies",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "dogs are welcome",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum number of pets is 2.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Service animals are exempt from the dog fee.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "We welcome guests with disabilities traveling with their service animals.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "$175 per stay of 1–6 nights; additional $175 for every subsequent 6-night block.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/champ-grand-hyatt-indian-wells-resort-and-villas/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "1757": {
+  "name": "THE US GRANT",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "1",
+  "weight_limit": "up to 35.0 lbs",
+  "fee": "$150",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "complimentary treats, beds, and bowls",
+  "rules": "dogs may not be left in the room unattended",
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "official",
+   "species": "third-party",
+   "amenities": "third-party",
+   "rules": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/sanlc-the-us-grant-a-luxury-collection-hotel-san-diego/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/68064",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "A $150 non-refundable pet fee is required.",
+    "url": "https://www.marriott.com/en-us/hotels/sanlc-the-us-grant-a-luxury-collection-hotel-san-diego/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 1",
+    "url": "https://www.marriott.com/en-us/hotels/sanlc-the-us-grant-a-luxury-collection-hotel-san-diego/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "One pet is allowed per room, with a maximum weight of 35.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/sanlc-the-us-grant-a-luxury-collection-hotel-san-diego/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Cats are not permitted, and dogs may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/68064",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "All four-legged guests receive complimentary treats, beds, and bowls at check-in.",
+    "url": "https://www.bringfido.com/lodging/68064",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "dogs may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/68064",
+    "how": "ai"
+   }
+  ]
+ },
+ "2082": {
+  "name": "Hyatt Regency Huntington Beach",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "up to 50 lbs",
+  "fee": "$175 per stay up to six nights; additional $175 charge from day seven through 30",
+  "deposit": null,
+  "rooms": "Specific designated rooms have been assigned as pet friendly",
+  "areas": "Dogs are not allowed in restaurants or pool areas",
+  "amenities": "Includes water bowls, a pet pillow and a pet-friendly door hanger",
+  "rules": null,
+  "service_animals": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "rooms": "official",
+   "areas": "official",
+   "amenities": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/faqs",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Only dogs weighing 50 lbs or under will be permitted.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Only dogs weighing 50 lbs or under will be permitted.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Our policy allows up to two dogs (individual max weight 50 lbs, combined weight 75 lbs).",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/faqs",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "There is a $175 charge per stay up to six nights. An additional $175 service charge will apply from day seven through 30.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Specific designated rooms have been assigned as pet friendly.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Dogs are not allowed in restaurants or pool areas (service dogs excluded).",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Your room has been thoughtfully prepared for our special pet guest and includes water bowls, a pet pillow and a pet-friendly door hanger.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hunrh-hyatt-regency-huntington-beach-resort-and-spa",
+    "how": "ai"
+   }
+  ]
+ },
+ "2096": {
+  "name": "Omni La Costa Resort",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "2",
+  "weight_limit": "No weight limit",
+  "fee": "$75 per reservation",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Allowed on restaurant patios if leashed",
+  "amenities": "Treats and bowls available upon request",
+  "rules": "Well-behaved pets may be left unattended in rooms, but housekeeping will not enter a room with an unattended pet. No cats, Pit bulls, Pit mixes, Dobermans, Rottweilers, Chows or Chow mixes.",
+  "service_animals": "Service animals accompanied by guests with disabilities are always welcome and will not be required to pay the one time pet charge (no documentation necessary).",
+  "from": {
+   "max_pets": "third-party",
+   "areas": "third-party",
+   "amenities": "third-party",
+   "rules": "third-party",
+   "service_animals": "third-party",
+   "species": "third-party",
+   "fee": "third-party",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/65730",
+    "official": false
+   },
+   {
+    "url": "https://www.omnihotels.com/hotels/san-diego-la-costa/property-details/policies",
+    "official": false
+   },
+   {
+    "url": "https://www.omnihotels.com/hotels/san-diego-la-costa",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Omni La Costa Resort & Spa Carlsbad allows 2 dogs of any size for an additional fee of $75 per stay in Standard rooms, and $150 per stay in Suites and Villas.",
+    "url": "https://www.bringfido.com/lodging/65730",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Dogs are also allowed on restaurant patios as long as they are leashed.",
+    "url": "https://www.bringfido.com/lodging/65730",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Treats and bowls are available upon request.",
+    "url": "https://www.bringfido.com/lodging/65730",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Well-behaved pets may be left unattended in rooms, but housekeeping will not enter a room with an unattended pet.",
+    "url": "https://www.bringfido.com/lodging/65730",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals accompanying guests with disabilities are always welcome and will not be required to pay the one time pet charge (no documentation necessary).",
+    "url": "https://www.omnihotels.com/hotels/san-diego-la-costa/property-details/policies",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Yes, Omni La Costa Resort & Spa is a pet friendly resort for dogs.",
+    "url": "https://www.omnihotels.com/hotels/san-diego-la-costa",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "There is a one-time non-refundable pet fee of $75 per reservation for up to 2 pets.",
+    "url": "https://www.omnihotels.com/hotels/san-diego-la-costa",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Omni La Costa Resort & Spa Carlsbad allows 2 dogs of any size for an additional fee of $75 per stay in Standard rooms, and $150 per stay in Suites and Villas.",
+    "url": "https://www.bringfido.com/lodging/65730",
+    "how": "rule"
+   }
+  ]
+ },
+ "2097": {
+  "name": "Manchester Grand Hyatt San Diego",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 50 lbs",
+  "fee": "$100 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+  "from": {
+   "fee": "official",
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "$100 pet cleaning fee will apply per stay for up to 6 nights.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego/policies",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Only dogs weighing 50 lbs (22.68 kg) or under will be permitted.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego/policies",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Only dogs weighing 50 lbs (22.68 kg) or under will be permitted.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego/policies",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum number of pets is 2.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sanrs-manchester-grand-hyatt-san-diego",
+    "how": "ai"
+   }
+  ]
+ },
+ "2146": {
+  "name": "The Westin Mission Hills Resort & Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "two (2)",
+  "weight_limit": "up to 50.0 lbs",
+  "fee": "$50.00 per night",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Monte Luna, Golf cart paths, Walkways, Non-enclosed grass areas (not including the golf course)",
+  "amenities": null,
+  "rules": "Pets must be leashed, caged, or firmly held in all common areas; remain on the ground at all times, not on furniture; pet waste must be disposed of properly",
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "species": "official",
+   "max_pets": "official",
+   "areas": "official",
+   "rules": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/pspwi-the-westin-rancho-mirage-golf-resort-and-spa/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/content/dam/marriott-digital/wi/us-canada/hws/p/pspwi/en_us/document/assets/wi-pspwi-pet-policy-29070.pdf",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Yes, pets are welcome at The Westin Rancho Mirage Golf Resort & Spa. with a maximum weight of 50.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/pspwi-the-westin-rancho-mirage-golf-resort-and-spa/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $50.00 per night applies.",
+    "url": "https://www.marriott.com/en-us/hotels/pspwi-the-westin-rancho-mirage-golf-resort-and-spa/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "We welcome well mannered dogs.",
+    "url": "https://www.marriott.com/content/dam/marriott-digital/wi/us-canada/hws/p/pspwi/en_us/document/assets/wi-pspwi-pet-policy-29070.pdf",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "No more than two (2) pets may occupy a guestroom.",
+    "url": "https://www.marriott.com/content/dam/marriott-digital/wi/us-canada/hws/p/pspwi/en_us/document/assets/wi-pspwi-pet-policy-29070.pdf",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are allowed only in the following areas: Monte Luna, Golf cart paths, Walkways, Non- enclosed grass areas (not including the golf course). Pets are **not** allowed in the pool areas.",
+    "url": "https://www.marriott.com/content/dam/marriott-digital/wi/us-canada/hws/p/pspwi/en_us/document/assets/wi-pspwi-pet-policy-29070.pdf",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets must be leashed, caged, or firmly held when they are in all common areas of the hotel.",
+    "url": "https://www.marriott.com/content/dam/marriott-digital/wi/us-canada/hws/p/pspwi/en_us/document/assets/wi-pspwi-pet-policy-29070.pdf",
+    "how": "ai"
+   }
+  ]
+ },
+ "2194": {
+  "name": "Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course",
+  "checked": "2026-11-21",
+  "status": "restricted",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$100 per stay",
+  "deposit": null,
+  "rooms": "Only predetermined, designated rooms are pet friendly.",
+  "areas": "Dogs are not allowed in restaurants or pool areas",
+  "amenities": null,
+  "rules": "Dogs must always be kept on a leash while on the property. Pets cannot be left in the guest room unattended for any period of time.",
+  "service_animals": "Service dogs excluded.",
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "rooms": "official",
+   "areas": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/faqs",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Only dogs weighing 50 pounds or under will be permitted.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Only dogs weighing 50 pounds or under will be permitted.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Our policy allows up to two dogs (individual max weight 50 lbs, combined weight 75 lbs).",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/faqs",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "There is a $100 charge per stay for up to six nights.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Only predetermined, designated rooms are pet friendly.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Dogs are not allowed in restaurants or pool areas (service dogs excluded).",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Be advised your dog(s) must always be kept on a leash while on the property. Pets cannot be left in the guest room unattended for any period of time.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "(service dogs excluded)",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/mrydm-hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "2204": {
+  "name": "W Scottsdale Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "one",
+  "weight_limit": "up to 40 lbs",
+  "fee": "$25",
+  "deposit": "refundable $120",
+  "rooms": null,
+  "areas": null,
+  "amenities": "Welcome amenity including dog treats, bowl for water and food, pet clean-up bags, elevated dog beds available on loan",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "official",
+   "species": "official",
+   "amenities": "official",
+   "deposit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxwh-w-scottsdale/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/64980",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "\\*Please be advised that the room rate with a pet is $25 above the room charge, plus a nonrefundable $100 cleaning fee.",
+    "url": "https://www.marriott.com/en-us/hotels/phxwh-w-scottsdale/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "We allow one pet per room, weighing no more than 40 pounds.",
+    "url": "https://www.marriott.com/en-us/hotels/phxwh-w-scottsdale/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Non-refundable pet fee: $120; max pet size: 40 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/phxwh-w-scottsdale/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Mountain Shadows will make cats and dogs alike feel at home with a bed, food and water bowls, bottled water, clean-up bags and a complimentary pet amenity upon request.",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "Guests will receive a welcome pet amenity including dog treats, a bowl for water and food, pet clean-up bags...",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "ai"
+   },
+   {
+    "field": "deposit",
+    "quote": "W Scottsdale allows pets up to 40 lbs for an additional fee of $120 per night, plus a one-time $20 cleaning fee plus a $100 refundable deposit per stay.",
+    "url": "https://www.bringfido.com/lodging/64980",
+    "how": "rule"
+   }
+  ]
+ },
+ "2224": {
+  "name": "Omni Rancho Las Palmas Resort",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": null,
+  "weight_limit": "50 lbs",
+  "fee": "$150 per pet, per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Dog areas",
+  "amenities": "Dog beds, bowls, and treats provided",
+  "rules": "Pets may not be left unattended in rooms.",
+  "service_animals": null,
+  "from": {
+   "weight_limit": "third-party",
+   "fee": "third-party",
+   "amenities": "third-party",
+   "rules": "third-party",
+   "areas": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/67581",
+    "official": false
+   },
+   {
+    "url": "https://www.buzzfeed.com/laraparker/ranchos-las-palmas-resort-palm-springs-review",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "...up to 50 lbs.",
+    "url": "https://www.bringfido.com/lodging/67581",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "...an additional fee of $150 per pet, per stay.",
+    "url": "https://www.bringfido.com/lodging/67581",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Dog beds, bowls, and treats are provided.",
+    "url": "https://www.bringfido.com/lodging/67581",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "...but pets may not be left unattended in rooms.",
+    "url": "https://www.bringfido.com/lodging/67581",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "there were only a couple of small designated areas where you were supposed to walk your dog.",
+    "url": "https://www.buzzfeed.com/laraparker/ranchos-las-palmas-resort-palm-springs-review",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are permitted, but pets may not be left unattended in rooms.",
+    "url": "https://www.bringfido.com/lodging/67581",
+    "how": "rule"
+   }
+  ]
+ },
+ "2225": {
+  "name": "W Los Angeles, West Beverly Hills",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "up to 60 lbs",
+  "fee": "$100 one-time cleaning fee",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "well-behaved pets may be left unattended if a Do-Not-Disturb sign is placed on the door",
+  "service_animals": null,
+  "from": {
+   "rules": "third-party",
+   "fee": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/66764",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "rules",
+    "quote": "well-behaved pets may be left unattended if a Do-Not-Disturb sign is placed on the door.",
+    "url": "https://www.bringfido.com/lodging/66764",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "plus a $100 one-time cleaning fee.",
+    "url": "https://www.bringfido.com/lodging/66764",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "W Los Angeles - West Beverly Hills welcomes two pets up to 60 lbs for an additional fee of $50 per night, plus a $100 one-time cleaning fee.",
+    "url": "https://www.bringfido.com/lodging/66764",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "W Los Angeles - West Beverly Hills welcomes two pets up to 60 lbs for an additional fee of $50 per night, plus a $100 one-time cleaning fee.",
+    "url": "https://www.bringfido.com/lodging/66764",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are allowed, and well-behaved pets may be left unattended if a Do-Not-Disturb sign is placed on the door.",
+    "url": "https://www.bringfido.com/lodging/66764",
+    "how": "rule"
+   }
+  ]
+ },
+ "2294": {
+  "name": "SLS Hotel at Beverly Hills",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "up to 100.0 lbs",
+  "fee": "$120",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Dogs are kept on a leash at all times while on hotel property, except when they are in their room, and are not left unattended.",
+  "service_animals": "Service animals require proper documentation.",
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "official",
+   "service_animals": "official",
+   "rules": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/laxls-sls-hotel-a-luxury-collection-hotel-beverly-hills/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/pets",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/66747",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "$120 pet fee applies per room.",
+    "url": "https://www.marriott.com/en-us/hotels/laxls-sls-hotel-a-luxury-collection-hotel-beverly-hills/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/laxls-sls-hotel-a-luxury-collection-hotel-beverly-hills/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 100.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/laxls-sls-hotel-a-luxury-collection-hotel-beverly-hills/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals require proper documentation.",
+    "url": "https://www.marriott.com/en-us/hotels/laxls-sls-hotel-a-luxury-collection-hotel-beverly-hills/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "ensure that dogs are kept on a leash at all times whilst on hotel property, except when they are in their room, and are not left unattended.",
+    "url": "https://www.dorchestercollection.com/los-angeles/the-beverly-hills-hotel/pets",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are allowed.",
+    "url": "https://www.bringfido.com/lodging/66747",
+    "how": "rule"
+   }
+  ]
+ },
+ "2395": {
+  "name": "The Canyon Suites at The Phoenician",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "up to 40 pounds",
+  "fee": "$150.00 per stay",
+  "deposit": null,
+  "rooms": "ground floors of the resort’s casita buildings",
+  "areas": "certain areas of the resort grounds are restricted from dogs, including all pool areas and restaurants",
+  "amenities": "Dog beds and bowls provided upon request",
+  "rules": "Pets must be leashed at all times when walking the resort grounds, and may not be left alone in guest rooms",
+  "service_animals": null,
+  "from": {
+   "species": "official",
+   "weight_limit": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "rooms": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxpc-the-canyon-suites-at-the-phoenician-a-luxury-collection-resort-scottsdale/overview/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Guests staying at the resort may visit with their dogs only.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Dogs must weigh less than 40 pounds.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Up to two pets per guest room are permitted.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $150.00 per stay applies.",
+    "url": "https://www.marriott.com/en-us/hotels/phxpc-the-canyon-suites-at-the-phoenician-a-luxury-collection-resort-scottsdale/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "rooms",
+    "quote": "Dogs and their owners are accommodated on the ground floors of the resort’s casita buildings.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Certain areas of the resort grounds are restricted from dogs, including all pool areas and restaurants.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Dog beds and bowls are provided upon request.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets must be leashed at all times when walking the resort grounds, and may not be left alone in guest rooms.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   }
+  ]
+ },
+ "2400": {
+  "name": "The Ritz-Carlton Dove Mountain",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 80.0 lbs",
+  "fee": "$250.00 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Service Animals are welcome without a fee or documentation",
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "fee": "official",
+   "service_animals": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ritzcarlton.com/en/hotels/tusrz-the-ritz-carlton-dove-mountain/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/118907",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.ritzcarlton.com/en/hotels/tusrz-the-ritz-carlton-dove-mountain/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 80.0 lbs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/tusrz-the-ritz-carlton-dove-mountain/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $250.00 per stay applies.",
+    "url": "https://www.ritzcarlton.com/en/hotels/tusrz-the-ritz-carlton-dove-mountain/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.ritzcarlton.com/en/hotels/tusrz-the-ritz-carlton-dove-mountain/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Cats are not permitted.",
+    "url": "https://www.bringfido.com/lodging/118907",
+    "how": "rule"
+   }
+  ]
+ },
+ "2402": {
+  "name": "The Ritz-Carlton, Lake Tahoe",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 80.0 lbs",
+  "fee": "$200 per stay",
+  "deposit": null,
+  "rooms": "Dog-friendly rooms on the first floor",
+  "areas": null,
+  "amenities": "Comfy beds, treats, bowls, custom ID tags",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "max_pets": "official",
+   "fee": "official",
+   "weight_limit": "official",
+   "rooms": "official",
+   "amenities": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ritzcarlton.com/en/hotels/rnorz-the-ritz-carlton-lake-tahoe/overview/",
+    "official": true
+   },
+   {
+    "url": "https://laketahoetravel.com/blog/top-10-dog-friendly-lodgings-at-tahoe/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/119034",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Pet-friendly; maximum of 2 pets per room; $200 pet cleaning fee per stay",
+    "url": "https://www.ritzcarlton.com/en/hotels/rnorz-the-ritz-carlton-lake-tahoe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "Pet-friendly; maximum of 2 pets per room; $200 pet cleaning fee per stay",
+    "url": "https://www.ritzcarlton.com/en/hotels/rnorz-the-ritz-carlton-lake-tahoe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 80.0 lbs.",
+    "url": "https://www.ritzcarlton.com/en/hotels/rnorz-the-ritz-carlton-lake-tahoe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "rooms",
+    "quote": "Dog-friendly rooms are on the first floor for easy access.",
+    "url": "https://laketahoetravel.com/blog/top-10-dog-friendly-lodgings-at-tahoe/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Pets enjoy comfy beds, treats, bowls, and custom ID tags.",
+    "url": "https://laketahoetravel.com/blog/top-10-dog-friendly-lodgings-at-tahoe/",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, cats are not permitted.",
+    "url": "https://www.bringfido.com/lodging/119034",
+    "how": "rule"
+   }
+  ]
+ },
+ "2556": {
+  "name": "Carmel Valley Ranch",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": null,
+  "max_pets": "1",
+  "weight_limit": null,
+  "fee": "$80",
+  "deposit": null,
+  "rooms": "suites",
+  "areas": "restricted from The Lodge Pool and Cabanas, Spa Aiyana, Valley Kitchen main dining area, the Organic Garden, the Clubhouse, and River Ranch",
+  "amenities": "ceramic food and water bowls, one bottle of water, a dog treat, and a memory-foam bed",
+  "rules": null,
+  "service_animals": "For additional information about service animals, kindly contact cvrreservations@carmelvalleyranch.com",
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "rooms": "official",
+   "areas": "official",
+   "amenities": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Enjoy all of the amenities in the Basic Pup package, plus Fable’s amazing Magic Link leash and a Falcon Toy to take home! (Package price: $80 plus standard pet fee.)",
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "A non-refundable one-time fee of $195 per pet will be charged to your suite.",
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Owners must be present, or remove pets from the room, for housekeeping to freshen the suite.",
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are restricted from the following areas of The Ranch: The Lodge Pool and Cabanas, Spa Aiyana, Valley Kitchen main dining area, the Organic Garden, the Clubhouse, and River Ranch.",
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "this package features ceramic food and water bowls, one bottle of water, a dog treat, and a comfortable memory-foam bed for your pooch to use during your stay.",
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "For additional information about service animals, kindly contact cvrreservations@carmelvalleyranch.com.",
+    "url": "https://carmelvalleyranch.com/pet-friendly/",
+    "how": "ai"
+   }
+  ]
+ },
+ "2674": {
+  "name": "The Resort at Pelican Hill",
+  "checked": "2026-11-21",
+  "status": "restricted",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$350.00 per stay",
+  "deposit": null,
+  "rooms": "Bungalows or Villas",
+  "areas": "Pets are allowed at Coliseum Pool & Grill upper patio and Villa Clubhouse terrace; not permitted in pool areas, golf courses, or indoor public areas.",
+  "amenities": null,
+  "rules": "Dogs must be leashed and under owner’s control at all times.",
+  "service_animals": "Service animals are welcome in all outlets.",
+  "from": {
+   "weight_limit": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "species": "official",
+   "rooms": "official",
+   "areas": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://pelicanhill.com/policies/",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Each Bungalow or Villa is limited to (1) dog up to 50 pounds, or (2) dogs up to a combined 75 pounds.",
+    "url": "https://pelicanhill.com/policies/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "The Resort at Pelican Hill warmly welcomes you and up to two dogs with a combined weight of no more than 75 pounds to our Bungalows or Villas with the addition of a non-refundable pet fee.",
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $350.00 per stay applies.",
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "We welcome well-mannered, house-trained, disease-free dogs.",
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "to our Bungalows or Villas with the addition of a non-refundable pet fee.",
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are not permitted in pool areas, at golf practice facilities, on golf courses or indoor public areas at any time.",
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets must be leashed and under their owner’s control at all times in outdoor public areas on property.",
+    "url": "https://www.marriott.com/en-us/hotels/laxnq-the-resort-at-pelican-hill/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are welcome in all outlets.",
+    "url": "https://pelicanhill.com/policies/",
+    "how": "ai"
+   }
+  ]
+ },
+ "2741": {
+  "name": "Jumeirah Zabeel Saray",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "1",
+  "weight_limit": "up to 20 kg",
+  "fee": "AED 350 per pet, per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "dog bed and food & water bowls",
+  "rules": "Dogs on leash or in carriers, designated pet-friendly areas, request to pick up after your pet",
+  "service_animals": null,
+  "from": {
+   "species": "third-party",
+   "fee": "third-party",
+   "amenities": "third-party",
+   "rules": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/142387",
+    "official": false
+   },
+   {
+    "url": "https://www.petwithit.com/our-pawesome-petcation-at-jumeirah-zabeel-saray/",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome.",
+    "url": "https://www.bringfido.com/lodging/142387",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "for an additional fee of AED 350 per pet, per stay.",
+    "url": "https://www.bringfido.com/lodging/142387",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "A dog bed and food & water bowls are provided for four-legged guests.",
+    "url": "https://www.bringfido.com/lodging/142387",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Dogs on leash or in carriers, designated pet-friendly areas, and a request to pick up after your pet ensure a harmonious stay for all guests.",
+    "url": "https://www.petwithit.com/our-pawesome-petcation-at-jumeirah-zabeel-saray/",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Jumeirah Zabeel Saray allows 1 pet of any size or 2 pets with a combined weight up to 20 kg in designated rooms for an additional fee of AED 350 per pet, per stay.",
+    "url": "https://www.bringfido.com/lodging/142387",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Jumeirah Zabeel Saray allows 1 pet of any size or 2 pets with a combined weight up to 20 kg in designated rooms for an additional fee of AED 350 per pet, per stay.",
+    "url": "https://www.bringfido.com/lodging/142387",
+    "how": "rule"
+   }
+  ]
+ },
+ "2816": {
+  "name": "The Phoenician",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "up to 40 pounds",
+  "fee": "$150.00 per stay",
+  "deposit": null,
+  "rooms": "Ground floors of the resort’s casita buildings",
+  "areas": "Certain areas of the resort grounds are restricted from dogs, including all pool areas and restaurants",
+  "amenities": "Dog beds and bowls are provided upon request",
+  "rules": "Pets must be leashed at all times when walking the resort grounds, and may not be left alone in guest rooms.",
+  "service_animals": null,
+  "from": {
+   "species": "official",
+   "weight_limit": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "rooms": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxlc-the-phoenician-a-luxury-collection-resort-scottsdale/overview/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Guests staying at the resort may visit with their dogs only.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Dogs must weigh less than 40 pounds.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Up to two pets per guest room are permitted.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $150.00 per stay applies.",
+    "url": "https://www.marriott.com/en-us/hotels/phxlc-the-phoenician-a-luxury-collection-resort-scottsdale/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "rooms",
+    "quote": "Dogs and their owners are accommodated on the ground floors of the resort’s casita buildings.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Certain areas of the resort grounds are restricted from dogs, including all pool areas and restaurants.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Dog beds and bowls are provided upon request.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets must be leashed at all times when walking the resort grounds, and may not be left alone in guest rooms.",
+    "url": "https://www.thephoenician.com/resort-fee/",
+    "how": "ai"
+   }
+  ]
+ },
+ "2940": {
+  "name": "Bvlgari Hotel London",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "1",
+  "weight_limit": "33 kg",
+  "fee": "£100 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Yes, cats may also be allowed by request.",
+  "from": {
+   "species": "third-party",
+   "weight_limit": "third-party",
+   "fee": "third-party",
+   "service_animals": "third-party",
+   "max_pets": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/59919",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Cats may also be allowed by request.",
+    "url": "https://www.bringfido.com/lodging/59919",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "up to 33 kg.",
+    "url": "https://www.bringfido.com/lodging/59919",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "for an additional fee of £100 per stay.",
+    "url": "https://www.bringfido.com/lodging/59919",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Yes! Bvlgari Hotel London welcomes cats by request.",
+    "url": "https://www.bringfido.com/lodging/59919",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Bvlgari Hotel London allows 1 pet up to 33 kg for an additional fee of £100 per stay.",
+    "url": "https://www.bringfido.com/lodging/59919",
+    "how": "rule"
+   }
+  ]
+ },
+ "3076": {
+  "name": "W Hollywood",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "1",
+  "weight_limit": "up to 40.0 lbs",
+  "fee": "No pet fee",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "fee": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/laxwh-w-hollywood/overview/",
+    "official": true
+   },
+   {
+    "url": "https://res.vacations.universalstudioshollywood.com/hotelinformation/hotelinformation.aspx?VendorCode=UNH&DestinationCode=LAX&RemoteSourceCode=LtmsHotel&HotelId=LAXUWHH&Location=Hotels",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/118957",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 1",
+    "url": "https://www.marriott.com/en-us/hotels/laxwh-w-hollywood/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "One pet is allowed per room, with a maximum weight of 40.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/laxwh-w-hollywood/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "W Hollywood welcomes pets at no additional cost (subject to change)",
+    "url": "https://res.vacations.universalstudioshollywood.com/hotelinformation/hotelinformation.aspx?VendorCode=UNH&DestinationCode=LAX&RemoteSourceCode=LtmsHotel&HotelId=LAXUWHH&Location=Hotels",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are permitted, but pets may not be left in rooms unattended.",
+    "url": "https://www.bringfido.com/lodging/118957",
+    "how": "rule"
+   }
+  ]
+ },
+ "3231": {
+  "name": "Andaz Scottsdale Resort & Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$100",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Welcome amenity including dog treats, bowl for water and food, pet clean-up bags, elevated dog beds available on loan",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "amenities": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/andaz/en-US/phxaz-andaz-scottsdale-resort-and-bungalows",
+    "official": true
+   },
+   {
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Individual pet weight limit:  50Pounds",
+    "url": "https://www.hyatt.com/andaz/en-US/phxaz-andaz-scottsdale-resort-and-bungalows",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Mountain Shadows will make cats and dogs alike feel at home with a bed, food and water bowls, bottled water, clean-up bags and a complimentary pet amenity upon request.",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Pets must weigh no more than 30 pounds and only two pets per room are allowed.",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "The Westin Kierland Resort & Spa welcomes two pets (dogs and cats) up to 40 pounds for a fee of $100.",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "Guests will receive a welcome pet amenity including dog treats, a bowl for water and food, pet clean-up bags...",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "ai"
+   }
+  ]
+ },
+ "3235": {
+  "name": "Waldorf Astoria Beverly Hills",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "Up to two small dogs per guest/room",
+  "weight_limit": "up to 25 lb",
+  "fee": "$25 per night",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Dogs must be accompanied by an owner of 14 years or older",
+  "service_animals": "Service animals with proper paperwork are complimentary",
+  "from": {
+   "fee": "official",
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Pet fee: $25 per night (service animals with proper paperwork",
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Pet weight Limit: 25lb",
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "At this newly refurbished hotel, dogs and cats up to 15 pounds",
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "up to two small dogs per guest/room",
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Dogs must be accompanied by an owner of 14 years or older",
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "service animals with proper paperwork are complimentary",
+    "url": "https://lovebeverlyhills.com/uploads/plugins/blockfeaturedblock/pdf/id/138/663119%20_%20Beverly%20Hills%20Conference%20and%20Visitors%20Bureau%20_%20Beverly%20Howls%20Guide%20V8.pdf",
+    "how": "ai"
+   }
+  ]
+ },
+ "3255": {
+  "name": "JW Marriott Scottsdale Camelback Inn Resort and Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 75 lbs",
+  "fee": "$150.00 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Service animals are always exempt from fees.",
+  "from": {
+   "max_pets": "official",
+   "fee": "official",
+   "service_animals": "third-party",
+   "weight_limit": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxcb-jw-marriott-scottsdale-camelback-inn-resort-and-spa/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/az/scottsdale/jw-marriott-camelback-inn-scottsdale-resort-spa",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "2 pets per room; USD 150 per room per stay, plus a signed pet agreement.",
+    "url": "https://www.marriott.com/en-us/hotels/phxcb-jw-marriott-scottsdale-camelback-inn-resort-and-spa/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $150.00 per stay applies.",
+    "url": "https://www.marriott.com/en-us/hotels/phxcb-jw-marriott-scottsdale-camelback-inn-resort-and-spa/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are always exempt from fees.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/az/scottsdale/jw-marriott-camelback-inn-scottsdale-resort-spa",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "JW Marriott Camelback Inn Scottsdale Resort & Spa welcomes 2 dogs up to 75 lbs. with a pet fee of $250 per stay.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/az/scottsdale/jw-marriott-camelback-inn-scottsdale-resort-spa",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Cats are not permitted.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/az/scottsdale/jw-marriott-camelback-inn-scottsdale-resort-spa",
+    "how": "rule"
+   }
+  ]
+ },
+ "3257": {
+  "name": "JW Marriott Phoenix Desert Ridge Resort and Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 50 lbs",
+  "fee": "150 USD per stay, nightly",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxdr-jw-marriott-phoenix-desert-ridge-resort-and-spa/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/64831",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "150 USD non-refundable pet fee per stay, plus 20 USD nightly charge per pet",
+    "url": "https://www.marriott.com/en-us/hotels/phxdr-jw-marriott-phoenix-desert-ridge-resort-and-spa/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/phxdr-jw-marriott-phoenix-desert-ridge-resort-and-spa/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "JW Marriott Phoenix Desert Ridge Resort Spa welcomes one dog up to 50 lbs for an additional fee of $150 per stay.",
+    "url": "https://www.bringfido.com/lodging/64831",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Cats are not allowed.",
+    "url": "https://www.bringfido.com/lodging/64831",
+    "how": "rule"
+   }
+  ]
+ },
+ "3259": {
+  "name": "Renaissance Esmeralda Resort & Spa at Indian Wells",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "No weight limit",
+  "fee": "$50 per night, per pet",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Restaurants, cafes, fitness center, spa and pool areas are not pet friendly. Dogs are welcome on CAVA and GLO patios.",
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Yes, cats may also be allowed by request.",
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "species": "third-party",
+   "areas": "third-party",
+   "service_animals": "third-party",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/pspsr-renaissance-esmeralda-resort-and-spa-indian-wells/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/66409",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Upon check-in, a pet acceptance agreement must be signed, and a non-refundable $50 fee per night/per pet (max of $150 per stay) will be applied to your bill prior to check-out.",
+    "url": "https://www.marriott.com/en-us/hotels/pspsr-renaissance-esmeralda-resort-and-spa-indian-wells/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/pspsr-renaissance-esmeralda-resort-and-spa-indian-wells/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Cats may also be allowed by request.",
+    "url": "https://www.bringfido.com/lodging/66409",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "The restaurants, cafes, fitness center, spa and pool areas are not pet friendly. Dogs are welcome on CAVA and GLO patios.",
+    "url": "https://www.bringfido.com/lodging/66409",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Yes! Renaissance Esmeralda Resort & Spa Indian Wells welcomes cats by request.",
+    "url": "https://www.bringfido.com/lodging/66409",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Renaissance Esmeralda Resort & Spa Indian Wells allows 2 dogs of any size for an additional fee of $50 per night (not to exceed $150 per stay).",
+    "url": "https://www.bringfido.com/lodging/66409",
+    "how": "rule"
+   }
+  ]
+ },
+ "3328": {
+  "name": "Kimpton Rowan Palm Springs Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "No weight limit",
+  "fee": "No pet fee",
+  "deposit": "0 USD",
+  "rooms": null,
+  "areas": "Rooftop is not allowed for pets",
+  "amenities": "complimentary access to WAG! PREMIUM",
+  "rules": "Pets must be caged or out of the room during housekeeping service.",
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "deposit": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official",
+   "weight_limit": "third-party",
+   "species": "third-party",
+   "max_pets": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.rowanpalmsprings.com/pet-friendly/",
+    "official": true
+   },
+   {
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/rowan-palm-springs-hotel-ca/pspnp/hoteldetail/amenities",
+    "official": true
+   },
+   {
+    "url": "https://www.rowanpalmsprings.com/faq/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/city/palm_springs_ca_us/",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "No additional charge for pets, no deposit required",
+    "url": "https://www.rowanpalmsprings.com/pet-friendly/",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Pet damage deposit: 0 USD",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/rowan-palm-springs-hotel-ca/pspnp/hoteldetail/amenities",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "we don't allow them on the rooftop.",
+    "url": "https://www.rowanpalmsprings.com/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Enjoy complimentary access to WAG! PREMIUM during your stay (including 10% off all services booked, waived booking fees, and 24/7 vet chat).",
+    "url": "https://www.rowanpalmsprings.com/faq/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "However, we request that during check in a pet form is completed and that the pet is caged or out of the room during housekeeping service.",
+    "url": "https://www.rowanpalmsprings.com/faq/",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "110 charge no pet fee, 563 welcome two or more pets, and 500 have no weight limit.",
+    "url": "https://www.bringfido.com/lodging/city/palm_springs_ca_us/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome and can be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/city/palm_springs_ca_us/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "2 pets max",
+    "url": "https://www.bringfido.com/lodging/city/palm_springs_ca_us/",
+    "how": "rule"
+   }
+  ]
+ },
+ "3332": {
+  "name": "Intercontinental Los Angeles Downtown",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": null,
+  "weight_limit": "up to 40 lbs",
+  "fee": "125 USD per stay",
+  "deposit": "125 USD",
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "A waiver must to be signed by the guest for all animals.",
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "deposit": "official",
+   "service_animals": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail",
+    "official": true
+   },
+   {
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail/amenities",
+    "official": true
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/intercontinental-los-angeles-downtown-an-ihg-hotel",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "We simply ask that pets be under 40 lbs. and that a waiver is signed at check-in.",
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A pet fee of 125 USD, per stay, is applicable unless it's a service animal.",
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Pet damage deposit: 125 USD",
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "service_animals",
+    "quote": "A waiver must to be signed by the guest for all animals.",
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail/amenities",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/intercontinental-los-angeles-downtown-an-ihg-hotel",
+    "how": "rule"
+   }
+  ]
+ },
+ "3380": {
+  "name": "Andaz San Diego",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$50 per night",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "dog beds, Andaz bowls, treats at the front desk",
+  "rules": "Service animals are not pets and are not subject to this Pet Policy",
+  "service_animals": "Service animals are welcomed and are not considered pets and are not subject to this Pet Policy.",
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "service_animals": "official",
+   "max_pets": "official",
+   "amenities": "official",
+   "rules": "official",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/68060",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "One dog under 50 pounds is allowed in guest rooms or two dogs with a combined weight of 75 pounds.",
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego/policies",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A $50 pet fee per night will be applied to your folio.",
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego/policies",
+    "how": "rule"
+   },
+   {
+    "field": "service_animals",
+    "quote": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego/policies",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum number of pets is 2.",
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Your canine companion can lounge in one of our cozy dog beds, stay hydrated with water from our Andaz bowls and get energized from a treat at the front desk before you go exploring through the Gaslamp District.",
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/andaz/en-US/sanas-andaz-san-diego",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/68060",
+    "how": "rule"
+   }
+  ]
+ },
+ "3382": {
+  "name": "Andaz Napa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 75 pounds",
+  "fee": "$150.00 one-time",
+  "deposit": "$50",
+  "rooms": null,
+  "areas": null,
+  "amenities": "doggy bed, two bowls, and treats",
+  "rules": "dogs not left unattended and must be secured during servicing of your guest room",
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "weight_limit": "official",
+   "amenities": "official",
+   "rules": "official",
+   "max_pets": "official",
+   "species": "third-party",
+   "deposit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/112422",
+    "official": false
+   },
+   {
+    "url": "https://www.napavalleyjourneys.com/best-pet-friendly-hotels-napa-valley.html",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Pets are welcome with a one-time, nonrefundable fee of $150.00 charged to your guestroom.",
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa/policies",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Combined pets weight limit: 75Pounds",
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "we will gladly provide a doggy bed, two bowls, and treats for your pup(s).",
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "we respectfully request that dogs not be left unattended and must be secured during servicing of your guest room.",
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa/policies",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum number of pets is 2.",
+    "url": "https://www.hyatt.com/andaz/en-US/apcrn-andaz-napa",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/112422",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "A $50 pet deposit is required.",
+    "url": "https://www.napavalleyjourneys.com/best-pet-friendly-hotels-napa-valley.html",
+    "how": "rule"
+   }
+  ]
+ },
+ "3402": {
+  "name": "Hotel Martinez",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "one",
+  "weight_limit": "up to 20 kg",
+  "fee": "€70 per pet, per day",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Pets are welcome at La Plage du Martinez as well as at Le Sud restaurant and bar from noon onwards, except during Brunch service.",
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "areas": "official",
+   "species": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/unbound-collection/en-US/jcagh-hotel-martinez/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hotelswithpets.com/en/hotels/grand-hyatt-cannes-hotel-martinez",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Please note that a fee of €70 per pet and per day applies at our ideal pet-friendly hotel in Cannes.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/jcagh-hotel-martinez/policies",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are welcome at La Plage du Martinez as well as at Le Sud restaurant and bar from noon onwards, except during Brunch service.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/jcagh-hotel-martinez/policies",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Grand Hyatt Cannes Hôtel Martinez welcomes dogs and cats in designated pet-friendly rooms on the Croisette.",
+    "url": "https://www.hotelswithpets.com/en/hotels/grand-hyatt-cannes-hotel-martinez",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Pets up to 20 kg are accepted; one pet per room. …",
+    "url": "https://www.hotelswithpets.com/en/hotels/grand-hyatt-cannes-hotel-martinez",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Pets up to 20 kg are accepted; one pet per room. …",
+    "url": "https://www.hotelswithpets.com/en/hotels/grand-hyatt-cannes-hotel-martinez",
+    "how": "rule"
+   }
+  ]
+ },
+ "3456": {
+  "name": "Hyatt Regency Scottsdale Resort & Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$150 / STAY",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "complimentary amenities in your room, suite, or casita",
+  "rules": "guests with disabilities traveling with their service animals",
+  "service_animals": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "amenities": "official",
+   "rules": "official",
+   "service_animals": "official",
+   "fee": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/scott-hyatt-regency-scottsdale-resort-and-spa?src=corp_lclb_gmb_seo_scott",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Individual pet weight limit:  50Pounds",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "dogs are part of the family",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum number of pets is 2.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "complimentary amenities in your room, suite, or casita.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "We welcome guests with disabilities traveling with their service animals.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/scott-grand-hyatt-scottsdale-resort",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "1–6 nights: $150 / STAY",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/scott-hyatt-regency-scottsdale-resort-and-spa?src=corp_lclb_gmb_seo_scott",
+    "how": "ai"
+   }
+  ]
+ },
+ "3477": {
+  "name": "Pendry San Diego",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "No weight limit",
+  "fee": "$100 per stay",
+  "deposit": "$100",
+  "rooms": null,
+  "areas": "pets are not permitted indoors where food and drinks are served",
+  "amenities": "dog bowls, beds and treats",
+  "rules": "No cats or other pets allowed",
+  "service_animals": "Sorry, cats are not accepted",
+  "from": {
+   "fee": "official",
+   "species": "official",
+   "areas": "official",
+   "amenities": "official",
+   "rules": "official",
+   "service_animals": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party",
+   "deposit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.pendry.com/san-diego/faqs/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/281221",
+    "official": false
+   },
+   {
+    "url": "https://rochdog.com/dog-friendly-hotel/pendry-san-diego",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Pendry San Diego welcomes all domestic dogs, for a fee of $100 + tax per stay.",
+    "url": "https://www.pendry.com/san-diego/faqs/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "No cats or other pets allowed.",
+    "url": "https://www.pendry.com/san-diego/faqs/",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "Due to health code, pets are not permitted indoors where food and drinks are served.",
+    "url": "https://www.pendry.com/san-diego/faqs/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "we also offer amenities for pets such as dog bowls, beds and treats.",
+    "url": "https://www.pendry.com/san-diego/faqs/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "No cats or other pets allowed.",
+    "url": "https://www.pendry.com/san-diego/faqs/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Sorry, cats are not accepted.",
+    "url": "https://www.bringfido.com/lodging/281221",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Pendry San Diego welcomes two dogs of any size for an additional fee of $100 per stay.",
+    "url": "https://www.bringfido.com/lodging/281221",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Pendry San Diego welcomes two dogs of any size for an additional fee of $100 per stay.",
+    "url": "https://www.bringfido.com/lodging/281221",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "There is no damage deposit beyond the dog fee, which is $100 per stay, a fair figure given everything included.",
+    "url": "https://rochdog.com/dog-friendly-hotel/pendry-san-diego",
+    "how": "rule"
+   }
+  ]
+ },
+ "3548": {
+  "name": "Kimpton La Peer Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": null,
+  "weight_limit": "No weight limit",
+  "fee": "No pet fee",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Indoor dining not permitted; outdoor patios welcome",
+  "amenities": "A selection of hotel amenities and extras including plush pet-bed loaners in your guest room, food, water bowls and mats.",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "weight_limit": "official",
+   "amenities": "official",
+   "species": "third-party",
+   "areas": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/la-peer-hotel-los-angeles-ca/laxwe/hoteldetail/amenities",
+    "official": true
+   },
+   {
+    "url": "https://www.lapeerhotel.com/los-angeles-luxury-hotel-amenities/pet-friendly/",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "We invite you to bring your pet no matter their size, weight, or breed, all at no extra charge.",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/la-peer-hotel-los-angeles-ca/laxwe/hoteldetail/amenities",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Pet weight limit: No weight limit per pet",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/la-peer-hotel-los-angeles-ca/laxwe/hoteldetail/amenities",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "A selection of hotel amenities and extras including plush pet-bed loaners in your guest room, food, water bowls and mats.",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/la-peer-hotel-los-angeles-ca/laxwe/hoteldetail/amenities",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "It’s a dog’s (or cat’s, or feathery or scaly family member’s) life in LA.",
+    "url": "https://www.lapeerhotel.com/los-angeles-luxury-hotel-amenities/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are not permitted in the indoor dining areas at Kimpton La Peer Hotel.",
+    "url": "https://www.lapeerhotel.com/los-angeles-luxury-hotel-amenities/pet-friendly/",
+    "how": "ai"
+   }
+  ]
+ },
+ "3617": {
+  "name": "Four Seasons Napa Valley",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "two",
+  "weight_limit": "up to 70 pounds",
+  "fee": "No pet fee",
+  "deposit": null,
+  "rooms": "Well behaved dogs may also join you poolside and walk with you through their gardens",
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Napa Valley properties welcome you with world-class hospitality, including service animals.",
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "rooms": "official",
+   "service_animals": "official",
+   "fee": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.fourseasons.com/napavalley/accommodations/",
+    "official": true
+   },
+   {
+    "url": "https://www.visitnapavalley.com/things-to-do/trip-ideas/pet-friendly/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/1145471",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Four Seasons Resort and Residences Napa Valley welcomes up to two dogs, totalling 70 pounds (31.7 kilograms) or less, per room.",
+    "url": "https://www.fourseasons.com/napavalley/accommodations/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Four Seasons Resort and Residences Napa Valley welcomes up to two dogs, totalling 70 pounds (31.7 kilograms) or less, per room.",
+    "url": "https://www.fourseasons.com/napavalley/accommodations/",
+    "how": "rule"
+   },
+   {
+    "field": "rooms",
+    "quote": "Well behaved dogs may also join you poolside and walk with you through their gardens.",
+    "url": "https://www.visitnapavalley.com/things-to-do/trip-ideas/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Napa Valley properties welcome you with world-class hospitality.",
+    "url": "https://www.visitnapavalley.com/things-to-do/trip-ideas/pet-friendly/",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "Four Seasons Resort and Residences Napa Valley allows 2 dogs with a combined weight up to 70 lbs in designated rooms for no additional fee.",
+    "url": "https://www.bringfido.com/lodging/1145471",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/1145471",
+    "how": "rule"
+   }
+  ]
+ },
+ "3801": {
+  "name": "Grand Bohemian Hotel Mountain Brook, Autograph Collection",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "1",
+  "weight_limit": "up to 40 pounds",
+  "fee": "USD 150 per stay",
+  "deposit": "refundable $25.00",
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Well-behaved dogs may be left in the room unattended",
+  "service_animals": "Sorry, no cats.",
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "max_pets": "official",
+   "rules": "third-party",
+   "service_animals": "third-party",
+   "species": "third-party",
+   "deposit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/bhmag-hotel-wildemont-autograph-collection/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/280609",
+    "official": false
+   },
+   {
+    "url": "https://www.hotelplanner.com/Hotels/12071-Pet-Friendly-Hotels-in-Mountain-Brook-AL",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "1 dog, 40 pounds max per room with USD 150 non-refundable fee per room per stay",
+    "url": "https://www.marriott.com/en-us/hotels/bhmag-hotel-wildemont-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "1 dog, 40 pounds max per room with USD 150 non-refundable fee per room per stay",
+    "url": "https://www.marriott.com/en-us/hotels/bhmag-hotel-wildemont-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 1",
+    "url": "https://www.marriott.com/en-us/hotels/bhmag-hotel-wildemont-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "rules",
+    "quote": "Well-behaved dogs may be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/280609",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/280609",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Sorry, no cats.",
+    "url": "https://www.bringfido.com/lodging/280609",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Pet Friendly Policy: $25.00 non refundable pet deposit",
+    "url": "https://www.hotelplanner.com/Hotels/12071-Pet-Friendly-Hotels-in-Mountain-Brook-AL",
+    "how": "rule"
+   }
+  ]
+ },
+ "3831": {
+  "name": "Hotel Nia, Autograph Collection",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "up to 75 pounds",
+  "fee": "$75 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "dog bed, bandana, room service menu featuring dog beer",
+  "rules": "pets may not be left in the room unattended",
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "max_pets": "official",
+   "amenities": "third-party",
+   "rules": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/sjcmn-hotel-nia-autograph-collection/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/472356",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Pets 75 pounds max allowed with non-refundable fee of USD $75 per room per stay",
+    "url": "https://www.marriott.com/en-us/hotels/sjcmn-hotel-nia-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "Pets 75 pounds max allowed with non-refundable fee of USD $75 per room per stay",
+    "url": "https://www.marriott.com/en-us/hotels/sjcmn-hotel-nia-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/sjcmn-hotel-nia-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "Pet amenities include a dog bed, bandana, and a room service menu featuring dog beer.",
+    "url": "https://www.bringfido.com/lodging/472356",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "but pets may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/472356",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are allowed in all rooms, but pets may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/472356",
+    "how": "rule"
+   }
+  ]
+ },
+ "3852": {
+  "name": "Avenue of the Arts Costa Mesa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "up to 35.0 lbs",
+  "fee": "$75 per stay",
+  "deposit": "$500",
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "official",
+   "species": "third-party",
+   "deposit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.avenueoftheartshotel.com/dog-friendly/",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/en-us/hotels/csmtx-avenue-of-the-arts-costa-mesa-a-tribute-portfolio-hotel/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/466665",
+    "official": false
+   },
+   {
+    "url": "https://www.live3400.com/faq.html",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "Please be aware that a non-refundable **pet cleaning fee of $75 per stay** will be charged to your account prior to check-out to cover the cost of additional and necessary cleaning in preparation for our next guest.",
+    "url": "https://www.avenueoftheartshotel.com/dog-friendly/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "A non-refundable fee of $75 per stay for up to two pets; cleaning is included.",
+    "url": "https://www.marriott.com/en-us/hotels/csmtx-avenue-of-the-arts-costa-mesa-a-tribute-portfolio-hotel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 35.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/csmtx-avenue-of-the-arts-costa-mesa-a-tribute-portfolio-hotel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome, but pets may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/466665",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "There is a one-time pet deposit of **$500** per dog and **$200** per cat.",
+    "url": "https://www.live3400.com/faq.html",
+    "how": "rule"
+   }
+  ]
+ },
+ "4076": {
+  "name": "Four Seasons San Francisco at Embarcadero",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "No weight limit",
+  "fee": "No pet fee",
+  "deposit": null,
+  "rooms": null,
+  "areas": "Only service animals are permitted inside MKT Restaurant & Bar",
+  "amenities": "Pet treats, plush pet beds, dedicated food and water bowls",
+  "rules": "Pets must be kept on a leash when not in the guest’s room; pets may not be left unattended in guest rooms",
+  "service_animals": "Only service animals are permitted inside MKT Restaurant & Bar.",
+  "from": {
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "weight_limit": "official",
+   "areas": "official",
+   "amenities": "official",
+   "service_animals": "official",
+   "rules": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.fourseasons.com/embarcadero/services-and-amenities/pet-friendly-stays/",
+    "official": true
+   },
+   {
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "We welcome dogs and cats that are fully vaccinated.",
+    "url": "https://www.fourseasons.com/embarcadero/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Bring up to two pets per room, with no additional pet fee and no size or breed restrictions.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "Bring up to two pets per room, with no additional pet fee and no size or breed restrictions.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Up to two pets per room are permitted with no weight limit, and pet amenities, including food and water bowls, a pet bed, and a chew toy, are available upon request.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "Only service animals are permitted inside MKT Restaurant & Bar.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Four Seasons Hotel San Francisco provides pet-friendly amenities including locally inspired chew toys shaped like the Golden Gate Bridge and cable cars, pet treats at check-in, dedicated food and water bowls, and in-room plush pet beds.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Only service animals are permitted inside MKT Restaurant & Bar.",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Each pet must be kept on a leash when not in the guest’s room.",
+    "url": "https://www.fourseasons.com/embarcadero/services-and-amenities/pet-friendly-stays/",
+    "how": "ai"
+   }
+  ]
+ },
+ "4614": {
+  "name": "Alila Marea Beach Resort Encinitas",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "two",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$150 per pet, per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Dogs may not exceed 50 pounds each or 75 pounds combined. Additional charges may apply for excessive damage or cleaning.",
+  "service_animals": "Service animals are not subject to this Pet Policy.",
+  "from": {
+   "weight_limit": "official",
+   "max_pets": "official",
+   "species": "official",
+   "fee": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas/policies",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Individual pet weight limit:  50Pounds",
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Fees are $150 per pet, per stay for up to two dogs per room.",
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas/policies",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "This pet-friendly hotel welcomes dogs.",
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas/policies",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "Fees are $150 per pet, per stay for up to two dogs per room.",
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Dogs may not exceed 50 pounds each or 75 pounds combined. Additional charges may apply for excessive damage or cleaning.",
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas/policies",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/alila-hotels-and-resorts/en-US/sanen-alila-marea-beach-resort-encinitas/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "4689": {
+  "name": "Monterey Marriott",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "up to 70 lbs",
+  "fee": "$70 per stay",
+  "deposit": "non-refundable $70.00",
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Travel with your support animal - no pet fees, ever.",
+  "from": {
+   "weight_limit": "official",
+   "deposit": "official",
+   "max_pets": "official",
+   "species": "third-party",
+   "fee": "third-party",
+   "service_animals": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/mryca-monterey-marriott/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/monterey/monterey-marriott",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "We welcome pets up to 70lbs with a non-refundable deposit of $70.00 + taxes",
+    "url": "https://www.marriott.com/en-us/hotels/mryca-monterey-marriott/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "We welcome pets up to 70lbs with a non-refundable deposit of $70.00 + taxes",
+    "url": "https://www.marriott.com/en-us/hotels/mryca-monterey-marriott/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/mryca-monterey-marriott/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/monterey/monterey-marriott",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "Monterey Marriott has a $70 per stay pet fee.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/monterey/monterey-marriott",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Travel with your support animal - no pet fees, ever.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/monterey/monterey-marriott",
+    "how": "ai"
+   }
+  ]
+ },
+ "4997": {
+  "name": "The Glenmark, Glendale, a Tribute Portfolio Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 60.0 lbs",
+  "fee": "$100",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Pets cannot be left in the room unattended. Sorry, no cats.",
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "official",
+   "species": "official",
+   "rules": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/laxtg-the-glenmark-glendale-a-tribute-portfolio-hotel/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/1255403",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "$100 taxable, non-refundable fee; 2nd dog +$50 (max 2 dogs).",
+    "url": "https://www.marriott.com/en-us/hotels/laxtg-the-glenmark-glendale-a-tribute-portfolio-hotel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/laxtg-the-glenmark-glendale-a-tribute-portfolio-hotel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 60.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/laxtg-the-glenmark-glendale-a-tribute-portfolio-hotel/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Yes, dogs are welcome at the Glenmark, Glendale, a Tribute Portfolio Hotel.",
+    "url": "https://www.marriott.com/en-us/hotels/laxtg-the-glenmark-glendale-a-tribute-portfolio-hotel/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets cannot be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/1255403",
+    "how": "ai"
+   }
+  ]
+ },
+ "5011": {
+  "name": "The Westin Phoenix Downtown",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "one",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$50.00 per night",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Beds and bowls available upon request",
+  "rules": "Pets cannot be left unattended at any time.",
+  "service_animals": null,
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "fee": "official",
+   "rules": "official",
+   "amenities": "third-party",
+   "species": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxiw-the-westin-phoenix-downtown/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/151982",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Please note our maximum of one pet per room at 50 pounds or less.",
+    "url": "https://www.marriott.com/en-us/hotels/phxiw-the-westin-phoenix-downtown/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Please note our maximum of one pet per room at 50 pounds or less.",
+    "url": "https://www.marriott.com/en-us/hotels/phxiw-the-westin-phoenix-downtown/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $50.00 per night applies.",
+    "url": "https://www.marriott.com/en-us/hotels/phxiw-the-westin-phoenix-downtown/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "rules",
+    "quote": "Pets cannot be left unattended at any time.",
+    "url": "https://www.marriott.com/en-us/hotels/phxiw-the-westin-phoenix-downtown/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Beds and bowls are available upon request.",
+    "url": "https://www.bringfido.com/lodging/151982",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are permitted, but pets may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/151982",
+    "how": "rule"
+   }
+  ]
+ },
+ "6116": {
+  "name": "Hyatt Centric Downtown Sacramento",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "two",
+  "weight_limit": "up to 75 lbs",
+  "fee": "$75",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Yes. Service animals are always welcome. No documentation is required under California law.",
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "max_pets": "official",
+   "species": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/faqs",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Maximum combined pet weight limit is 75 lbs.",
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/policies",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable $75 pet fee applies.",
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/faqs",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Up to two dogs with a combined weight of 75 lbs. are allowed.",
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/faqs",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Dogs are welcome at Hyatt Centric Downtown Sacramento.",
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/faqs",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Yes. Service animals are always welcome. No documentation is required under California law.",
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/smfct-hyatt-centric-downtown-sacramento/faqs",
+    "how": "ai"
+   }
+  ]
+ },
+ "6207": {
+  "name": "The Shay Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "two",
+  "weight_limit": "No weight limit",
+  "fee": "$100 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+  "service_animals": "For more information, please contact the hotel.",
+  "from": {
+   "max_pets": "official",
+   "fee": "official",
+   "weight_limit": "official",
+   "rules": "official",
+   "service_animals": "official",
+   "species": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "Explore The Shay, nearby neighborhoods and Ivy Station’s public green space with up to two dogs.",
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay/policies",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "The pet fee is $100 per stay, and $15 of that amount goes to a local dog rescue.",
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay/policies",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "There is no weight limit for pets.",
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay/policies",
+    "how": "rule"
+   },
+   {
+    "field": "rules",
+    "quote": "Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "For more information, please contact the hotel.",
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Explore The Shay, nearby neighborhoods and Ivy Station’s public green space with up to two dogs.",
+    "url": "https://www.hyatt.com/destination-by-hyatt/en-US/laxdi-the-shay/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "6208": {
+  "name": "Hotel Figueroa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs or cats",
+  "max_pets": "2",
+  "weight_limit": "up to 50 pounds",
+  "fee": "$50 per pet",
+  "deposit": null,
+  "rooms": null,
+  "areas": "The Pool Deck, restaurants/lounge, and fitness center are not great options for pets.",
+  "amenities": "leash, bowl, and disposable bags available upon request",
+  "rules": null,
+  "service_animals": "Only service animals as defined under the ADA are permitted in lounge/restaurant; emotional support animals are not permitted.",
+  "from": {
+   "max_pets": "official",
+   "fee": "official",
+   "weight_limit": "official",
+   "areas": "official",
+   "amenities": "official",
+   "species": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hotelfigueroa.com/las-most-pet-friendly-hotel/",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/unbound-collection/en-US/laxuf-hotel-figueroa/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hotelfigueroa.com/wp-content/uploads/2023/06/Updated-Pet-Policy.pdf",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "The pet owner is aware of a $50 non-refundable fee per pet for allowing the pet onto the property, as well as other fees that may apply to be charged in the event of damage (maximum 2 pets per room).When checking in, please submit a signed copy of our pet policy, linked here.",
+    "url": "https://www.hotelfigueroa.com/las-most-pet-friendly-hotel/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "The pet owner is aware of a $50 non-refundable fee per pet for allowing the pet onto the property, as well as other fees that may apply to be charged in the event of damage (maximum 2 pets per room).When checking in, please submit a signed copy of our pet policy, linked here.",
+    "url": "https://www.hotelfigueroa.com/las-most-pet-friendly-hotel/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "We allow up to two pets per room with a maximum weight of 50 pounds per pet.",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/laxuf-hotel-figueroa/policies",
+    "how": "rule"
+   },
+   {
+    "field": "areas",
+    "quote": "the Pool Deck, restaurants/lounge, and fitness center are not great options and will leave your pet with no room to roam freely.",
+    "url": "https://www.hotelfigueroa.com/las-most-pet-friendly-hotel/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "we recommend you bring your pet’s favorites along, like a leash, bowl, and disposable bags.",
+    "url": "https://www.hotelfigueroa.com/las-most-pet-friendly-hotel/",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Pets are defined as non-service animals (dogs or cats).",
+    "url": "https://www.hotelfigueroa.com/wp-content/uploads/2023/06/Updated-Pet-Policy.pdf",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Except for service animals, as defined under the Americans with Disabilities Act, we do not permit pets in the lounge/restaurant.",
+    "url": "https://www.hotelfigueroa.com/wp-content/uploads/2023/06/Updated-Pet-Policy.pdf",
+    "how": "ai"
+   }
+  ]
+ },
+ "6209": {
+  "name": "Thompson Hollywood",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "two",
+  "weight_limit": "up to 40 pounds",
+  "fee": "$150 per stay",
+  "deposit": "nonrefundable $40.00",
+  "rooms": null,
+  "areas": null,
+  "amenities": "pet beds, bowls, or treats, subject to availability",
+  "rules": null,
+  "service_animals": "Travel with your support animal - no pet fees, ever.",
+  "from": {
+   "species": "third-party",
+   "fee": "third-party",
+   "amenities": "third-party",
+   "service_animals": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party",
+   "deposit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/thompson-hollywood-by-hyatt",
+    "official": false
+   },
+   {
+    "url": "https://jetsetpets.com/thompson-hotels-pet-policy/",
+    "official": false
+   },
+   {
+    "url": "https://www.petswelcome.com/pet-friendly-hotels/california/los-angeles",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/thompson-hollywood-by-hyatt",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "The Hollywood Grande Autograph Collection has a $150 per stay pet fee.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/thompson-hollywood-by-hyatt",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "The Hollywood Grande Autograph Collection provides pet beds, bowls, or treats, subject to availability.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/thompson-hollywood-by-hyatt",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Travel with your support animal - no pet fees, ever.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/los-angeles/thompson-hollywood-by-hyatt",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "You’ll also love that this soulful hotel has _zero_ fees and a maximum weight limit of 40 pounds for a single dog or a combined total of 50 pounds for two (two dogs max per room).",
+    "url": "https://jetsetpets.com/thompson-hotels-pet-policy/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "You’ll also love that this soulful hotel has _zero_ fees and a maximum weight limit of 40 pounds for a single dog or a combined total of 50 pounds for two (two dogs max per room).",
+    "url": "https://jetsetpets.com/thompson-hotels-pet-policy/",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Pet Policy: Pets are allowed with a nonrefundable pet deposit of  $40.00 per pet.",
+    "url": "https://www.petswelcome.com/pet-friendly-hotels/california/los-angeles",
+    "how": "rule"
+   }
+  ]
+ },
+ "6276": {
+  "name": "Conrad Los Angeles",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "25 lbs",
+  "fee": "$100 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Food and water bowls; litter box for cats",
+  "rules": "Pets cannot be left in the room unattended.",
+  "service_animals": null,
+  "from": {
+   "species": "third-party",
+   "weight_limit": "third-party",
+   "fee": "third-party",
+   "amenities": "third-party",
+   "rules": "third-party",
+   "max_pets": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Both dogs and cats are welcome, but exotic pets are not allowed.",
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "...up to 25 lbs.",
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "for an additional fee of $100 per stay.",
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Food and water bowls are provided in the room.",
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Please note that pets cannot be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Conrad Los Angeles allows 2 pets up to 25 lbs for an additional fee of $100 per stay.",
+    "url": "https://www.bringfido.com/lodging/1299641",
+    "how": "rule"
+   }
+  ]
+ },
+ "6441": {
+  "name": "The Westin Tempe",
+  "checked": "2026-11-21",
+  "status": "restricted",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 75 pounds",
+  "fee": "$50.00 per night",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Complimentary amenities including bowls, mats, and toys available by request",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "species": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "amenities": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxwt-the-westin-tempe/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.tempetourism.com/blog/best-pet-friendly-hotels-in-tempe-az/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "Dogs only-maximum weight 75 pounds",
+    "url": "https://www.marriott.com/en-us/hotels/phxwt-the-westin-tempe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Dogs only-maximum weight 75 pounds",
+    "url": "https://www.marriott.com/en-us/hotels/phxwt-the-westin-tempe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/phxwt-the-westin-tempe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $50.00 per night applies.",
+    "url": "https://www.marriott.com/en-us/hotels/phxwt-the-westin-tempe/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "Complimentary amenities including bowls, mats, and toys available by request.",
+    "url": "https://www.tempetourism.com/blog/best-pet-friendly-hotels-in-tempe-az/",
+    "how": "ai"
+   }
+  ]
+ },
+ "6582": {
+  "name": "Le Méridien Pasadena Arcadia",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 40.0 lbs",
+  "fee": "$50 per night",
+  "deposit": "$250 refundable deposit",
+  "rooms": null,
+  "areas": "Not allowed in pool area",
+  "amenities": "pet relief area",
+  "rules": null,
+  "service_animals": "Travel with your support animal - no pet fees, ever.",
+  "from": {
+   "species": "official",
+   "max_pets": "official",
+   "weight_limit": "official",
+   "deposit": "official",
+   "areas": "official",
+   "fee": "third-party",
+   "amenities": "third-party",
+   "service_animals": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/laxme-le-meridien-pasadena-arcadia/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/arcadia/le-mridien-pasadena-arcadia",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Dogs only.",
+    "url": "https://www.marriott.com/en-us/hotels/laxme-le-meridien-pasadena-arcadia/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/laxme-le-meridien-pasadena-arcadia/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 40.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/laxme-le-meridien-pasadena-arcadia/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "$250 refundable deposit.",
+    "url": "https://www.marriott.com/en-us/hotels/laxme-le-meridien-pasadena-arcadia/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Not allowed in pool area.",
+    "url": "https://www.marriott.com/en-us/hotels/laxme-le-meridien-pasadena-arcadia/overview/",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "Le Méridien Pasadena Arcadia has a $50 per night pet fee.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/arcadia/le-mridien-pasadena-arcadia",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Yes, Le Méridien Pasadena Arcadia has a nearby pet relief area within walking distance.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/arcadia/le-mridien-pasadena-arcadia",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Travel with your support animal - no pet fees, ever.",
+    "url": "https://www.romingo.com/pet-friendly-hotel/california/arcadia/le-mridien-pasadena-arcadia",
+    "how": "ai"
+   }
+  ]
+ },
+ "6618": {
+  "name": "Thompson Palm Springs",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "2",
+  "weight_limit": "up to 40 pounds",
+  "fee": "No pet fee",
+  "deposit": null,
+  "rooms": "Guest rooms",
+  "areas": "Bars, restaurants, pool areas",
+  "amenities": null,
+  "rules": "Dogs must remain in their assigned guest room. A signed waiver is required for all pets.",
+  "service_animals": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+  "from": {
+   "fee": "official",
+   "weight_limit": "official",
+   "max_pets": "official",
+   "rooms": "official",
+   "areas": "official",
+   "species": "official",
+   "rules": "official",
+   "service_animals": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs/policies",
+    "official": true
+   },
+   {
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "We welcome dogs at no additional charge for stays less than 30 nights.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs/policies",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Individual pet weight limit:  40Pounds",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum number of pets is 2.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Pets must be leashed at all times in common areas and cannot be left unattended in guest rooms.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs",
+    "how": "ai"
+   },
+   {
+    "field": "areas",
+    "quote": "Pets are not allowed in our bars, restaurants or pool areas.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "We welcome dogs at no additional charge for stays less than 30 nights.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs/policies",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Dogs must remain in their assigned guest room. A signed waiver is required for all pets.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs/policies",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "We welcome guests with disabilities traveling with their service animals. Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/thompson-hotels/en-US/pspaz-thompson-palm-springs/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "6626": {
+  "name": "Pendry Newport Beach",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "1",
+  "weight_limit": "No weight limit",
+  "fee": "$150 per pet",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Food and water bowls are provided in the room",
+  "rules": null,
+  "service_animals": "Service Animals are Welcome",
+  "from": {
+   "fee": "official",
+   "species": "official",
+   "max_pets": "official",
+   "service_animals": "official",
+   "amenities": "third-party",
+   "weight_limit": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.pendry.com/newport-beach/faqs/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/1333612",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "We welcome all dogs and cats for a $150 fee (includes tax) per pet.",
+    "url": "https://www.pendry.com/newport-beach/faqs/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "We welcome all dogs and cats for a $150 fee (includes tax) per pet.",
+    "url": "https://www.pendry.com/newport-beach/faqs/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "We welcome all dogs and cats for a $150 fee (includes tax) per pet.",
+    "url": "https://www.pendry.com/newport-beach/faqs/",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service Animals are Welcome",
+    "url": "https://www.pendry.com/newport-beach/faqs/",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Food and water bowls are provided in the room.",
+    "url": "https://www.bringfido.com/lodging/1333612",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Pendry Newport Beach allows pets of any size for an additional fee of $150 per stay.",
+    "url": "https://www.bringfido.com/lodging/1333612",
+    "how": "rule"
+   }
+  ]
+ },
+ "6718": {
+  "name": "Adero Scottsdale Resort",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs and cats",
+  "max_pets": "2",
+  "weight_limit": "up to 25 lbs",
+  "fee": "$150.00 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": "Welcome amenity including dog treats, bowl for water and food, pet clean-up bags, elevated dog beds available on loan",
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "max_pets": "official",
+   "fee": "official",
+   "species": "official",
+   "amenities": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.aderoscottsdale.com/faq/hotel/are-pets-allowed",
+    "official": true
+   },
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxaf-adero-scottsdale-resort-autograph-collection/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "AADERO Scottsdale Resort welcomes dogs up to 25lbs, with a maximum of 2 per room.",
+    "url": "https://www.aderoscottsdale.com/faq/hotel/are-pets-allowed",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/phxaf-adero-scottsdale-resort-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "A non-refundable pet fee of $150.00 per stay applies.",
+    "url": "https://www.marriott.com/en-us/hotels/phxaf-adero-scottsdale-resort-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Mountain Shadows will make cats and dogs alike feel at home with a bed, food and water bowls, bottled water, clean-up bags and a complimentary pet amenity upon request.",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "rule"
+   },
+   {
+    "field": "amenities",
+    "quote": "Guests will receive a welcome pet amenity including dog treats, a bowl for water and food, pet clean-up bags...",
+    "url": "https://www.experiencescottsdale.com/media/research/fact-sheets/pet-friendly-scottsdale/",
+    "how": "ai"
+   }
+  ]
+ },
+ "6863": {
+  "name": "The Camby",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": null,
+  "max_pets": "2",
+  "weight_limit": "up to 25.0 lbs",
+  "fee": "USD 100 per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "fee": "official",
+   "max_pets": "official",
+   "weight_limit": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/phxak-the-camby-autograph-collection/overview/",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "2 pets 25 pounds or less allowed with USD 100 non-refundable fee per stay",
+    "url": "https://www.marriott.com/en-us/hotels/phxak-the-camby-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/phxak-the-camby-autograph-collection/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Each pet may weigh up to 25.0 lbs.",
+    "url": "https://www.marriott.com/en-us/hotels/phxak-the-camby-autograph-collection/overview/",
+    "how": "rule"
+   }
+  ]
+ },
+ "7002": {
+  "name": "Furore Grand Hotel",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": null,
+  "max_pets": null,
+  "weight_limit": null,
+  "fee": null,
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Pets are allowed. Charges may apply.",
+  "from": {
+   "service_animals": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.booking.com/hotel/it/furore-grand.html",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "service_animals",
+    "quote": "Pets are allowed. Charges may apply.",
+    "url": "https://www.booking.com/hotel/it/furore-grand.html",
+    "how": "ai"
+   }
+  ]
+ },
+ "7055": {
+  "name": "Kimpton Era Midtown",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "All pets allowed",
+  "max_pets": "two",
+  "weight_limit": "No weight limit",
+  "fee": "No pet fee",
+  "deposit": "0 USD",
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": null,
+  "from": {
+   "max_pets": "official",
+   "weight_limit": "official",
+   "fee": "official",
+   "deposit": "official",
+   "species": "official"
+  },
+  "sources": [
+   {
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/new-york/nycdd/hoteldetail",
+    "official": true
+   }
+  ],
+  "evidence": [
+   {
+    "field": "max_pets",
+    "quote": "The standard pet policy welcomes two pets of any size for no additional fee",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/new-york/nycdd/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "The standard pet policy welcomes two pets of any size for no additional fee",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/new-york/nycdd/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "The standard pet policy welcomes two pets of any size for no additional fee",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/new-york/nycdd/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "deposit",
+    "quote": "Pet damage deposit: 0 USD",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/new-york/nycdd/hoteldetail",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Pets are welcome at Kimpton Era Midtown New York.",
+    "url": "https://www.ihg.com/kimptonhotels/hotels/us/en/new-york/nycdd/hoteldetail",
+    "how": "ai"
+   }
+  ]
+ },
+ "7079": {
+  "name": "Omni Tempe Hotel at ASU",
+  "checked": "2026-11-21",
+  "status": "restricted",
+  "species": "Dogs only",
+  "max_pets": "1",
+  "weight_limit": "up to 25 lbs",
+  "fee": "USD 171.11 per accommodation, per stay",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": null,
+  "service_animals": "Registered Service animals traveling with are exempt from the pet policy.",
+  "from": {
+   "species": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party",
+   "fee": "third-party",
+   "service_animals": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.expedia.com/Phoenix-Hotels-Omni-Tempe-Hotel-At-Asu.h88188988.Hotel-Information",
+    "official": false
+   },
+   {
+    "url": "https://www.omnihotels.com/hotels/tempe-asu/property-details/policies",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "species",
+    "quote": "Yes, this property allows dogs (limit 1 total) with a maximum weight of up to 25 lbs per pet.",
+    "url": "https://www.expedia.com/Phoenix-Hotels-Omni-Tempe-Hotel-At-Asu.h88188988.Hotel-Information",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Yes, this property allows dogs (limit 1 total) with a maximum weight of up to 25 lbs per pet.",
+    "url": "https://www.expedia.com/Phoenix-Hotels-Omni-Tempe-Hotel-At-Asu.h88188988.Hotel-Information",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Yes, this property allows dogs (limit 1 total) with a maximum weight of up to 25 lbs per pet.",
+    "url": "https://www.expedia.com/Phoenix-Hotels-Omni-Tempe-Hotel-At-Asu.h88188988.Hotel-Information",
+    "how": "ai"
+   },
+   {
+    "field": "fee",
+    "quote": "there's a fee of USD 171.11 per accommodation, per stay.",
+    "url": "https://www.expedia.com/Phoenix-Hotels-Omni-Tempe-Hotel-At-Asu.h88188988.Hotel-Information",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Registered Service animals traveling with are exempt from the pet policy.",
+    "url": "https://www.omnihotels.com/hotels/tempe-asu/property-details/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "7080": {
+  "name": "Omni Tucson National Resort & Spa",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs",
+  "max_pets": "2",
+  "weight_limit": "50 lbs",
+  "fee": "$150 per stay",
+  "deposit": null,
+  "rooms": "Casitas or Haciendas",
+  "areas": null,
+  "amenities": "Food and water bowls provided in the room",
+  "rules": "Pets may not be left in the room unattended",
+  "service_animals": "Service animals accompanying guests with disabilities are always welcome and will not be required to pay the one time pet charge (no documentation necessary). ESA dogs will be required to pay pet fee.",
+  "from": {
+   "fee": "third-party",
+   "rooms": "third-party",
+   "amenities": "third-party",
+   "rules": "third-party",
+   "species": "third-party",
+   "max_pets": "third-party",
+   "weight_limit": "third-party",
+   "service_animals": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.bringfido.com/lodging/65175",
+    "official": false
+   },
+   {
+    "url": "https://www.omnihotels.com/hotels/tucson-national/property-details/policies",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "fee",
+    "quote": "for an additional fee of $150 per stay.",
+    "url": "https://www.bringfido.com/lodging/65175",
+    "how": "ai"
+   },
+   {
+    "field": "rooms",
+    "quote": "Guests with pets are assigned to either Casitas or Haciendas.",
+    "url": "https://www.bringfido.com/lodging/65175",
+    "how": "ai"
+   },
+   {
+    "field": "amenities",
+    "quote": "Food and water bowls are provided in the room.",
+    "url": "https://www.bringfido.com/lodging/65175",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "pets may not be left in the room unattended.",
+    "url": "https://www.bringfido.com/lodging/65175",
+    "how": "ai"
+   },
+   {
+    "field": "species",
+    "quote": "Dogs under 50 lbs. are allowed at the resort.",
+    "url": "https://www.omnihotels.com/hotels/tucson-national/property-details/policies",
+    "how": "ai"
+   },
+   {
+    "field": "max_pets",
+    "quote": "There is a limit of two (2) pets allowed room.",
+    "url": "https://www.omnihotels.com/hotels/tucson-national/property-details/policies",
+    "how": "ai"
+   },
+   {
+    "field": "weight_limit",
+    "quote": "Dogs under 50 lbs. are allowed at the resort.",
+    "url": "https://www.omnihotels.com/hotels/tucson-national/property-details/policies",
+    "how": "ai"
+   },
+   {
+    "field": "service_animals",
+    "quote": "Service animals accompanying guests with disabilities are always welcome and will not be required to pay the one time pet charge (no documentation necessary).",
+    "url": "https://www.omnihotels.com/hotels/tucson-national/property-details/policies",
+    "how": "ai"
+   }
+  ]
+ },
+ "7092": {
+  "name": "The Westin Pasadena",
+  "checked": "2026-11-21",
+  "status": "welcome",
+  "species": "Dogs only",
+  "max_pets": "2",
+  "weight_limit": "up to 40 lbs",
+  "fee": "$50 per day",
+  "deposit": null,
+  "rooms": null,
+  "areas": null,
+  "amenities": null,
+  "rules": "Dogs may not be left unattended in the guest rooms.",
+  "service_animals": null,
+  "from": {
+   "weight_limit": "official",
+   "fee": "official",
+   "max_pets": "official",
+   "species": "third-party",
+   "rules": "third-party"
+  },
+  "sources": [
+   {
+    "url": "https://www.marriott.com/en-us/hotels/laxpw-the-westin-pasadena/overview/",
+    "official": true
+   },
+   {
+    "url": "https://www.bringfido.com/lodging/67455",
+    "official": false
+   }
+  ],
+  "evidence": [
+   {
+    "field": "weight_limit",
+    "quote": "2 small pets max, 40 lbs limit, $50 non-refundable fee per day",
+    "url": "https://www.marriott.com/en-us/hotels/laxpw-the-westin-pasadena/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "fee",
+    "quote": "2 small pets max, 40 lbs limit, $50 non-refundable fee per day",
+    "url": "https://www.marriott.com/en-us/hotels/laxpw-the-westin-pasadena/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "max_pets",
+    "quote": "Maximum Number of Pets in Room: 2",
+    "url": "https://www.marriott.com/en-us/hotels/laxpw-the-westin-pasadena/overview/",
+    "how": "rule"
+   },
+   {
+    "field": "species",
+    "quote": "Dogs may not be left unattended in the guest rooms.",
+    "url": "https://www.bringfido.com/lodging/67455",
+    "how": "ai"
+   },
+   {
+    "field": "rules",
+    "quote": "Dogs may not be left unattended in the guest rooms.",
+    "url": "https://www.bringfido.com/lodging/67455",
+    "how": "ai"
+   }
+  ]
+ }
+}
