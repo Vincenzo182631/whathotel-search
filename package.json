@@ -20,6 +20,11 @@
     "test:search": "node tests/search-audit.cjs --list",
     "pets:fetch": "node scripts/fetch-pet-policies.mjs",
     "pets:collection": "node scripts/fetch-pet-collection.mjs",
-    "pets:images": "node scripts/fetch-pet-images.mjs"
+    "pets:images": "node scripts/fetch-pet-images.mjs",
+    "pets:details": "node scripts/fetch-pet-details.mjs"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^1.12.0",
+    "zod": "^4.6.7"
   }
 }

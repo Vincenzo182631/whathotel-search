@@ -20,3 +20,4 @@ data/.mo-cache/
 
 # Local working files
 scratchpad/
+scripts/.cache/

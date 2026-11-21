@@ -14,6 +14,7 @@
  * Run: node scripts/build-pet-page.mjs   (part of npm run build)
  */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import vm from "node:vm";
@@ -46,6 +47,27 @@ const COLL = JSON.parse(read("scripts/pet-collection.json"));
 const HOOK = process.env.GHL_WEBHOOK_URL || ((read("index.html").match(/<meta name="wah-ghl-webhook" content="([^"]*)"/) || [])[1] || "");
 if (HOOK && !/^https:\/\/(services|backend)\.leadconnectorhq\.com\/hooks\/[A-Za-z0-9_\-\/]+$/.test(HOOK)) throw new Error("GHL webhook URL must look like https://services.leadconnectorhq.com/hooks/…");
 if (!HOOK) console.warn("  ! No GHL webhook found — the Ask an advisor form will fall back to email links.");
+// Researched pet policies (scripts/fetch-pet-details.mjs). Short facts go on the cards; the
+// full policy with quotes and sources loads on demand from assets/js/pet-details.js.
+const PD = existsSync(join(root, "scripts/pet-details.json")) ? JSON.parse(read("scripts/pet-details.json")) : {};
+const tidy = (v, k) => { v = String(v).replace(/(\d)\.0+(?!\d)/g, "$1").replace(/\s+/g, " ").trim(); return k === "max_pets" && /^(\d+|one|two|three|four)$/i.test(v) ? "Up to " + v.toLowerCase() : v; };
+const POL_FIELDS = ["fee", "max_pets", "weight_limit", "species", "deposit", "rooms", "areas", "amenities", "rules", "service_animals"];
+{
+  const compact = {};
+  for (const [id, r] of Object.entries(PD)) {
+    const f = {};
+    for (const k of POL_FIELDS) if (r[k]) { const e = (r.evidence || []).find((x) => x.field === k) || {}; f[k] = [tidy(r[k], k), Math.max(0, (r.sources || []).findIndex((x) => x.url === e.url)), e.quote || ""]; }
+    if (Object.keys(f).length) compact[id] = { c: r.checked, f, s: (r.sources || []).map((x) => [x.url, x.official ? 1 : 0]) };
+  }
+  writeFileSync(join(root, "assets/js/pet-details.js"), "/* Pet policies researched from hotel and pet-travel websites (scripts/fetch-pet-details.mjs).\n * f: {field: [value, source index, exact quote]}, s: [[url, official 1/0]], c: date checked. AUTO-GENERATED. */\nwindow.WAH_PET_DETAILS = " + JSON.stringify(compact) + ";\n");
+}
+let PD_URL = process.env.PET_DETAILS_URL || "";
+if (!PD_URL) try {
+  const git = (...a) => execFileSync("git", a, { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  const sha = git("log", "-1", "--format=%H", "--", "assets/js/pet-details.js");
+  git("diff", "--quiet", sha, "--", "assets/js/pet-details.js");
+  if (sha) PD_URL = `https://cdn.jsdelivr.net/gh/Vincenzo182631/whathotel-search@${sha}/assets/js/pet-details.js`;
+} catch (e) { console.warn("  ! assets/js/pet-details.js has uncommitted changes — commit and push it, then rebuild, so the page can load full policies."); }
 const IMAGES = existsSync(join(root, "scripts/pet-images.json")) ? JSON.parse(read("scripts/pet-images.json")) : {};
 const W = load("assets/js/data.js", "assets/js/pets.js", "assets/js/images.js");
 const PETS = W.WAH_PETS || {};
@@ -126,6 +148,17 @@ const IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wi
 const FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>';
 
 /* ---------- hotel cards, grouped by country (WhataHotel's order) ---------- */
+const short = (v, n = 38) => { v = String(v).replace(/\s+/g, " ").trim(); return v.length > n ? v.slice(0, n - 1).replace(/[\s,;]+\S*$/, "") + "…" : v; };
+function polLine(h) {
+  const r = PD[h.id]; if (!r) return "";
+  const items = [];
+  if (r.fee) items.push(["Fee", tidy(r.fee, "fee")]);
+  if (r.max_pets) items.push(["Pets", tidy(r.max_pets, "max_pets")]);
+  if (r.weight_limit) items.push(["Weight", tidy(r.weight_limit, "weight_limit")]);
+  if (!items.length && r.species) items.push(["Pets", r.species]);
+  if (!items.length) return "";
+  return `<dl class="pf-pol">${items.slice(0, 3).map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(short(v))}</dd></div>`).join("")}</dl>`;
+}
 function card(h) {
   // Text and link only: the page script adds the photo, icons and buttons, which keeps
   // 751 cards under GoHighLevel's 1 MB custom-code limit (and the text stays readable by
@@ -133,8 +166,9 @@ function card(h) {
   const loc = [h.city, h.region && h.region !== h.city ? h.region : ""].filter(Boolean).join(", ");
   const pre = `https://www.whatahotel.com/content/hotels/${h.id}/`;
   const p = !h.photo ? "" : h.photo.startsWith(pre) ? h.photo.slice(pre.length) : h.photo;
-  return `<li class="pf-card" data-id="${h.id}"${p ? ` data-p="${esc(p)}"` : ""}><div class="pf-card__body"><span class="pf-card__brand">${esc(h.brand)}</span>` +
-    `<h3 class="pf-card__name"><a href="https://whatahotel.com/hotels/${h.id}/${h.slug}.html">${esc(h.name)}</a></h3><p class="pf-card__loc">${esc(loc)}</p>` +
+  const hasPol = PD[h.id] && POL_FIELDS.some((k) => PD[h.id][k]);
+  return `<li class="pf-card" data-id="${h.id}"${p ? ` data-p="${esc(p)}"` : ""}${hasPol ? " data-pol" : ""}><div class="pf-card__body"><span class="pf-card__brand">${esc(h.brand)}</span>` +
+    `<h3 class="pf-card__name"><a href="https://whatahotel.com/hotels/${h.id}/${h.slug}.html">${esc(h.name)}</a></h3><p class="pf-card__loc">${esc(loc)}</p>` + polLine(h) +
     `${homesIds.has(h.id) ? `<a class="pf-card__homes" href="${HOMES_URL}">Also villas &amp; residences</a>` : ""}</div></li>`;
 }
 const countrySection = (c) => `<section class="pf-country" id="${slug(c)}" data-country="${esc(c)}"><div class="pf-country__head"><h2>${esc(c)}</h2><span class="pf-count">${byCountry[c].length} ${byCountry[c].length === 1 ? "hotel" : "hotels"}</span></div>` +
@@ -347,6 +381,24 @@ background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 .pf-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
 .pf-social{display:flex;gap:.7rem}.pf-social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(232,214,168,.3);transition:background .3s,border-color .3s}.pf-social a:hover{background:rgba(255,255,255,.06);border-color:var(--gold-2)}.pf-social svg{width:18px;height:18px}
 .pf-legal{margin-top:2.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(244,239,230,.45)}
+/* researched pet policy: card facts + full policy panel */
+.pf-pol{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:.2rem 1.1rem;margin:.55rem 0 .1rem;padding:.65rem 0 0;border-top:1px solid var(--line)}
+.pf-pol div{min-width:0}.pf-pol dt{font:600 .56rem/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.pf-pol dd{margin:.15rem 0 0;font:400 .92rem/1.25 var(--serif);color:var(--ink)}
+.pf-card__links{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;margin-top:.35rem}
+.pf-polbox{width:min(720px,100%);padding-top:clamp(28px,4vw,42px)}
+.pf-polrow{display:grid;grid-template-columns:150px 1fr;gap:.3rem 1.2rem;padding:1rem 0;border-top:1px solid var(--line)}
+.pf-polrow:first-child{border-top:0}
+.pf-polrow dt{font:600 .62rem/1.4 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--champ);padding-top:.25rem}
+.pf-polrow dd{margin:0}.pf-polrow b{display:block;font:400 1.08rem/1.35 var(--serif);color:var(--ink)}
+.pf-polrow q{display:block;margin-top:.35rem;font:italic 300 .9rem/1.5 var(--serif);color:var(--soft);quotes:"“" "”"}
+.pf-src{display:inline-flex;align-items:center;gap:.35rem;margin-top:.35rem;font:500 .72rem/1.3 var(--sans);color:var(--mut)}
+.pf-src a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.pf-src i{font-style:normal;padding:.15rem .45rem;border-radius:999px;font-weight:600;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
+.pf-src i.is-off{background:var(--mint);color:var(--sage)}.pf-src i.is-3rd{background:#f6ede0;color:#8a6a35}
+.pf-polnote{margin:1.2rem 0 0!important;padding:.85rem 1rem;border-radius:12px;background:#fff;border:1px solid var(--hair);font-size:.86rem;color:var(--soft)}
+.pf-polact{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+@media (max-width:600px){.pf-polrow{grid-template-columns:1fr;gap:.2rem}.pf-polbox{padding-top:30px}}
 /* ask-an-advisor form (moved to <body> by the script, so it carries its own base styles) */
 .pf-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;font:400 16px/1.55 var(--sans);color:var(--text);text-align:left;-webkit-font-smoothing:antialiased}
 .pf-modal *{box-sizing:border-box}.pf-modal p{margin:0}.pf-modal h2{margin:0;letter-spacing:normal;text-transform:none}.pf-modal figure{margin:0}
@@ -427,7 +479,7 @@ cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),id=li.get
   im.src="https://wsrv.nl/?url="+encodeURIComponent(src.replace(/^https?:\/\//,""))+"&w=640&h=440&fit=cover&output=webp&q=70";im.alt=nm.textContent;im.loading="lazy";im.decoding="async";im.width=640;im.height=440;box.appendChild(im)}
  else box.innerHTML='<span class="pf-card__ph">'+PAWH+"</span>";
  box.insertAdjacentHTML("beforeend",'<span class="pf-card__pet">'+PAWH+"Pets welcome</span>");li.insertBefore(box,body);
- var loc=li.querySelector(".pf-card__loc");loc.insertAdjacentHTML("afterbegin",PINH);body.insertAdjacentHTML("beforeend",'<button type="button" class="pf-card__ask" data-ask-hotel>Ask about this hotel\u2019s pet rules</button>');
+ var loc=li.querySelector(".pf-card__loc");loc.insertAdjacentHTML("afterbegin",PINH);var hp=li.hasAttribute("data-pol");body.insertAdjacentHTML("beforeend",'<div class="pf-card__links">'+(hp?'<button type="button" class="pf-card__ask" data-pol-open>Full pet policy</button>':"")+'<button type="button" class="pf-card__ask" data-ask-hotel>'+(hp?"Ask an advisor":"Ask about this hotel\u2019s pet rules")+'</button></div>');
  var d=D.createElement("div");d.className="pf-card__act";
  d.appendChild(link("pf-btn pf-btn--gold","https://whatahotel.com/booking/showRates.cfm?hotelID="+id+"&checkIn="+ymd(a)+"&checkOut="+ymd(b)+"&guests=2&children=0&rooms=1&"+UTM,"View Rates"));
  d.appendChild(link("pf-btn",nm.href,"Details"));li.appendChild(d);
@@ -462,7 +514,7 @@ var hf=D.getElementById("pf-find");hf.addEventListener("submit",function(ev){ev.
 apply();
 
 /* ---------- Ask an advisor: form posted to the GoHighLevel webhook (same as the Homes page) ---------- */
-var HOOK="__HOOK__",NOTIFY="__EMAIL__",PHONE="__PHONE__",modal=D.getElementById("pf-ask");
+var HOOK="__HOOK__",NOTIFY="__EMAIL__",PHONE="__PHONE__",PD_URL="__PDURL__",modal=D.getElementById("pf-ask");
 D.body.appendChild(modal);
 var form=D.getElementById("pf-ask-form"),errBox=D.getElementById("pf-ask-err"),sendBtn=D.getElementById("pf-ask-send"),lastFocus=null,openedAt=0,subId="",busy=false;
 function $i(id){return D.getElementById(id)}function val(id){return($i(id).value||"").trim()}
@@ -470,8 +522,28 @@ function escH(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){retu
 var HOTELS={},dl=$i("pf-hotels");
 cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),n=nm.textContent;HOTELS[norm(n)]={id:li.getAttribute("data-id"),name:n,loc:li.querySelector(".pf-card__loc").textContent,country:li.closest(".pf-country").getAttribute("data-country"),url:nm.href.split("?")[0]};
  var o=D.createElement("option");o.value=n;dl.appendChild(o)});
+/* ---------- researched pet policies (loaded on demand) ---------- */
+var LABELS={fee:"Pet fee",max_pets:"Number of pets",weight_limit:"Weight limit",species:"Which pets",deposit:"Deposit",rooms:"Rooms",areas:"Where pets can go",amenities:"Pet amenities",rules:"House rules",service_animals:"Service animals"};
+var pdWait=[];function loadPD(cb){if(window.WAH_PET_DETAILS){cb&&cb(true);return}if(!PD_URL){cb&&cb(false);return}pdWait.push(cb||function(){});if(pdWait.length>1)return;
+ var sc=D.createElement("script");sc.src=PD_URL;sc.async=true;sc.onload=function(){var w=pdWait;pdWait=[];w.forEach(function(f){f(!!window.WAH_PET_DETAILS)})};sc.onerror=function(){var w=pdWait;pdWait=[];w.forEach(function(f){f(false)})};D.head.appendChild(sc)}
+function host(u){try{return new URL(u).hostname.replace(/^www\./,"")}catch(x){return u}}
+var pol=D.getElementById("pf-pol");D.body.appendChild(pol);var polCard=null,polLast=null;
+function openPol(li){polCard=li;polLast=D.activeElement;var id=li.getAttribute("data-id"),nm=li.querySelector(".pf-card__name a").textContent;
+ $i("pf-pol-t").textContent=nm;$i("pf-pol-sub").textContent=li.querySelector(".pf-card__loc").textContent;$i("pf-pol-body").innerHTML='<p class="pf-modal__lead">Loading\u2026</p>';$i("pf-pol-note").textContent="";
+ $i("pf-pol-rates").href=li.querySelector(".pf-card__act .pf-btn--gold").href;pol.hidden=false;D.documentElement.classList.add("pf-lock");setTimeout(function(){pol.querySelector(".pf-modal__box").focus()},40);
+ loadPD(function(ok){var r=ok&&window.WAH_PET_DETAILS[id];if(!r){$i("pf-pol-body").innerHTML='<p class="pf-modal__lead">The detailed policy could not be loaded. An advisor can confirm it for you.</p>';return}
+  var order=["fee","max_pets","weight_limit","species","deposit","rooms","areas","amenities","rules","service_animals"],h="",anyThird=false;
+  order.forEach(function(k){var v=r.f[k];if(!v)return;var s=r.s[v[1]]||["",0];if(!s[1])anyThird=true;
+   h+='<div class="pf-polrow"><dt>'+LABELS[k]+'</dt><dd><b>'+escH(v[0])+'</b>'+(v[2]&&norm(v[2]).replace(/[.\s]+$/,"")!==norm(v[0]).replace(/[.\s]+$/,"")?'<q>'+escH(v[2])+'</q>':"")+'<span class="pf-src"><i class="'+(s[1]?"is-off":"is-3rd")+'">'+(s[1]?"Hotel website":"Third-party")+'</i><a href="'+escH(s[0])+'" target="_blank" rel="noopener nofollow">'+escH(host(s[0]))+"</a></span></dd></div>"});
+  $i("pf-pol-body").innerHTML="<dl>"+h+"</dl>";
+  $i("pf-pol-note").textContent="Researched from the sources shown on "+r.c+(anyThird?". Details marked third-party come from pet-travel or booking sites and may be out of date":"")+". Hotels change their pet rules, so your advisor confirms everything before you book.";
+  track("pet_page_policy_open",{hotel_id:id})})}
+function closePol(){pol.hidden=true;D.documentElement.classList.remove("pf-lock");if(polLast&&polLast.focus)try{polLast.focus({preventScroll:true})}catch(x){}}
+D.addEventListener("click",function(ev){var t=ev.target.closest&&ev.target.closest("[data-pol-open],[data-close-pol],#pf-pol-ask");if(!t)return;ev.preventDefault();
+ if(t.hasAttribute("data-pol-open"))openPol(t.closest(".pf-card"));else if(t.id==="pf-pol-ask"){var li=polCard;closePol();if(li)openAsk(li.querySelector(".pf-card__name a").textContent)}else closePol()});
+D.addEventListener("keydown",function(ev){if(!pol.hidden&&ev.key==="Escape")closePol()});
 function track(ev,o){try{if(window.dataLayer)window.dataLayer.push(Object.assign({event:ev},o||{}))}catch(x){}}
-function openAsk(where){lastFocus=D.activeElement;$i("pf-ask-main").hidden=false;$i("pf-ask-ok").hidden=true;errBox.hidden=true;[].forEach.call(form.querySelectorAll("input,select,textarea"),function(x){if(x.id)fieldErr(x.id,"")});
+function openAsk(where){loadPD();lastFocus=D.activeElement;$i("pf-ask-main").hidden=false;$i("pf-ask-ok").hidden=true;errBox.hidden=true;[].forEach.call(form.querySelectorAll("input,select,textarea"),function(x){if(x.id)fieldErr(x.id,"")});
  if(where!=null)$i("pf-a-where").value=where;openedAt=Date.now();subId="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
  var t=new Date();var mn=t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());$i("pf-a-in").min=mn;$i("pf-a-out").min=mn;
  modal.hidden=false;D.documentElement.classList.add("pf-lock");
@@ -509,7 +581,9 @@ function build(){var where=val("pf-a-where"),h=HOTELS[norm(where)]||null,name=va
  var rows=[["Hotel or destination",dest]].concat(h?[["Hotel page",h.url]]:[]).concat([["Guest name",name],["Guest email",email],["Guest phone",phone||"Not provided"],
   ["Check-in",ci||"Not given"],["Check-out",co||"Not given"],["Nights",nights===""?"":String(nights)],["Guests",String(adults)],
   ["Pet",pet],["Number of pets",pets],["Approx. weight",weight||"Not given"],["Message",msg||"None"],["Submitted",at],["Inquiry ID",id]]);
- var note="Please confirm the hotel's pet rules (fee, weight limit, number of pets, room types) and reply to the guest.";
+ var known=h&&window.WAH_PET_DETAILS&&window.WAH_PET_DETAILS[h.id];
+ if(known){rows.push(["Researched pet policy","(checked "+known.c+"; confirm with the hotel)"]);["fee","max_pets","weight_limit","species","deposit","rooms","areas","amenities","rules"].forEach(function(k){var v=known.f[k];if(!v)return;var s=known.s[v[1]]||["",0];rows.push([" \u2022 "+LABELS[k],v[0]+"  ["+(s[1]?"hotel website":"third-party")+": "+s[0]+"]"])})}
+ var note=known?"Researched details are above with their sources. Please confirm them with the hotel and reply to the guest.":"Please confirm the hotel's pet rules (fee, weight limit, number of pets, room types) and reply to the guest.";
  var text=[subject,"","This is an inquiry from the Pet-Friendly Luxury Hotels page. Nothing has been booked or confirmed.",""].concat(rows.map(function(r){return r[0]+": "+r[1]})).concat(["",note,"Reply to the guest at "+email+"."]).join("\n");
  var html='<div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#0c1a2b"><p style="margin:0 0 4px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2f5d46">Pet-friendly hotels · Advisor request</p>'+
   '<h2 style="margin:0 0 12px;font-family:Georgia,serif;font-weight:normal">'+escH(h?h.name:where)+'</h2><p style="margin:0 0 14px;padding:8px 10px;background:#eaf3ec;border-left:3px solid #2f5d46">This is an <b>inquiry</b>. Nothing has been booked or confirmed. '+escH(note)+'</p>'+
@@ -541,7 +615,7 @@ window.addEventListener("scroll",onScroll,{passive:true});onScroll();
 var rv=[].slice.call(D.querySelectorAll(".pf-rv,.pf-rv-band"));
 if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});rv.forEach(function(x){io.observe(x)})}
 else rv.forEach(function(x){x.classList.add("is-in")});
-})();`.replace("__UTM__", UTM).replace("__HOOK__", HOOK).replace("__EMAIL__", EMAIL).replace("__PHONE__", PHONE);
+})();`.replace("__UTM__", UTM).replace("__HOOK__", HOOK).replace("__EMAIL__", EMAIL).replace("__PHONE__", PHONE).replace("__PDURL__", PD_URL);
 
 const topCountries = countries.slice().sort((x, y) => byCountry[y].length - byCountry[x].length).slice(0, 10);
 const knowItems = [
@@ -668,6 +742,18 @@ const html = `<!DOCTYPE html>
 </div></section>
 </main>
 
+<div class="pf-modal" id="pf-pol" hidden>
+  <div class="pf-modal__bg" data-close-pol></div>
+  <div class="pf-modal__box pf-polbox" role="dialog" aria-modal="true" aria-labelledby="pf-pol-t" tabindex="-1">
+    <button type="button" class="pf-modal__x" data-close-pol aria-label="Close">&times;</button>
+    <span class="pf-eyebrow">${PAW}Pet policy</span>
+    <h2 class="pf-modal__h" id="pf-pol-t"></h2>
+    <p class="pf-modal__lead" id="pf-pol-sub"></p>
+    <div id="pf-pol-body"></div>
+    <p class="pf-polnote" id="pf-pol-note"></p>
+    <div class="pf-polact"><a class="pf-btn pf-btn--gold" id="pf-pol-rates" target="_blank" rel="noopener">View Rates</a><button type="button" class="pf-btn pf-btn--ink" id="pf-pol-ask">Ask an advisor</button></div>
+  </div>
+</div>
 <div class="pf-modal" id="pf-ask" hidden>
   <div class="pf-modal__bg" data-close></div>
   <div class="pf-modal__box" role="dialog" aria-modal="true" aria-labelledby="pf-ask-t" tabindex="-1">
