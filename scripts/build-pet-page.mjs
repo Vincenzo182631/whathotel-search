@@ -6,14 +6,14 @@
  * Content comes only from WhataHotel:
  *   scripts/pet-collection.json — every hotel on whatahotel.com/collection/pet-friendly-luxury-hotels.html
  *     (name, brand program, country, state/region, city) and its intro paragraphs;
- *   assets/js/pets.js + data.js — the Homes-page properties that welcome pets (for the
- *     "villas & residences" callout and tags).
- * The hotel list is written into the HTML (readable without JavaScript and by search
- * engines); a small script adds search, a country filter and dated "View Rates" links.
+ *   scripts/pet-images.json — each hotel's main photo (og:image of its WhataHotel page);
+ *   assets/js/pets.js + data.js + images.js — the Homes-page properties that welcome pets.
+ * Every hotel card is written into the HTML (readable without JavaScript and by search
+ * engines); a small script adds filters, "show all" per country and dated "View Rates" links.
  *
  * Run: node scripts/build-pet-page.mjs   (part of npm run build)
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import vm from "node:vm";
@@ -27,13 +27,15 @@ const HOMES_URL = "https://pro.whatahotel.com/homes";
 const UTM = "utm_source=pet_friendly_page&utm_medium=referral&utm_campaign=pet_friendly";
 const PHONE = "+1-877-782-9281", EMAIL = "Reservations@WhataHotel.com";
 const SOCIAL = { instagram: "https://www.instagram.com/whatahotel/", facebook: "https://www.facebook.com/profile.php?id=100064053673563" };
-const HERO_IMG = "https://wsrv.nl/?url=" + encodeURIComponent("www.whatahotel.com/content/pets_header.jpg") + "&w=1800&output=webp&q=70";
 const LOGO = "https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rOoyKnY/media/6a237895da24932f122f104e.png&h=88&output=webp";
+const PET_PHOTO = "https://www.whatahotel.com/content/pets_header.jpg";
 
 const COLL = JSON.parse(read("scripts/pet-collection.json"));
-const W = load("assets/js/data.js", "assets/js/pets.js", "assets/js/mo-homes-index.js");
+const IMAGES = existsSync(join(root, "scripts/pet-images.json")) ? JSON.parse(read("scripts/pet-images.json")) : {};
+const W = load("assets/js/data.js", "assets/js/pets.js", "assets/js/images.js");
 const PETS = W.WAH_PETS || {};
-const homesIds = new Set((W.WAH_PROPERTIES || []).map((p) => p.id));
+const PROPS = W.WAH_PROPERTIES || [];
+const homesIds = new Set(PROPS.map((p) => p.id));
 const homesPetCount = Object.values(PETS).filter((v) => v.ok).length;
 
 const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -41,12 +43,41 @@ const slug = (s) => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,
 // "Autograph Collection under the Marriott Luminous Program" → "Autograph Collection"
 const brandOf = (program) => program.split(/\s+under\s+/i)[0].replace(/\s+(programs?|progams?)$/i, "").replace(/[\s,;]+$/, "").replace(/^ALiLa$/, "Alila").trim();
 const hotelUrl = (h) => `https://whatahotel.com/hotels/${h.id}/${h.slug}.html?${UTM}`;
+// Resized WebP through the same image CDN the Homes page uses.
+const img = (url, w, h) => url ? "https://wsrv.nl/?url=" + encodeURIComponent(url.replace(/^https?:\/\//, "").replace(/^whatahotel\.com\//, "www.whatahotel.com/")) + `&w=${w}` + (h ? `&h=${h}&fit=cover` : "") + "&output=webp&q=70" : "";
 
-const hotels = COLL.hotels;
+const hotels = COLL.hotels.map((h) => Object.assign({}, h, { brand: brandOf(h.program), photo: IMAGES[h.id] || "" }));
 const countries = [];
 hotels.forEach((h) => { if (!countries.includes(h.country)) countries.push(h.country); });
 const byCountry = Object.fromEntries(countries.map((c) => [c, hotels.filter((h) => h.country === c)]));
 const N = hotels.length, NC = countries.length;
+const brandCounts = {};
+hotels.forEach((h) => { brandCounts[h.brand] = (brandCounts[h.brand] || 0) + 1; });
+const brands = Object.keys(brandCounts).sort((a, b) => brandCounts[b] - brandCounts[a] || a.localeCompare(b));
+const NB = brands.length;
+const hayOf = (h) => [h.name, h.brand, h.city, h.region, h.country].filter(Boolean).join(" ").toLowerCase();
+
+/* ---------- picks for the visual sections (all real hotels from the list) ---------- */
+const FLAGSHIP = /four seasons|ritz|st\.? regis|park hyatt|bvlgari|rosewood|peninsula|mandarin|waldorf|edition|langham|six senses|w hotel|\bw\b/i;
+function photoFor(test) {
+  const list = hotels.filter((h) => h.photo && test(h));
+  return list.find((h) => FLAGSHIP.test(h.name)) || list[0] || null;
+}
+const DESTS = ["New York", "Paris", "London", "San Francisco", "Washington DC", "Chicago", "Rome", "Milan", "Miami", "Mexico City", "Nashville", "Austin"]
+  .map((city) => {
+    const q = city.toLowerCase();
+    const count = hotels.filter((h) => hayOf(h).includes(q)).length;
+    const pick = photoFor((h) => (h.city || "").toLowerCase().includes(q));
+    return pick && count ? { city, count, pick } : null;
+  }).filter(Boolean);
+const heroA = hotels.find((h) => h.id === 1453 && h.photo) || photoFor((h) => /four seasons/i.test(h.name));
+const heroB = hotels.find((h) => h.id === 984 && h.photo) || photoFor((h) => /st\.? regis/i.test(h.name));
+const MARQUEE = ["Four Seasons", "Ritz Carlton Hotels & Resorts", "St. Regis Hotels & Resorts", "Park Hyatt Hotels", "Kimpton Hotels", "W Hotels", "The Luxury Collection",
+  "Rosewood Hotels & Resorts", "Bvlgari", "EDITION Hotels", "Waldorf Astoria Hotels", "Six Senses Hotels & Resorts", "Andaz Hotels", "Small Luxury Hotels of The World", "Thompson Hotels"]
+  .filter((b) => brandCounts[b]);
+const niceBrand = (b) => b.replace(/^Ritz Carlton Hotels & Resorts$/, "The Ritz-Carlton").replace(/ Hotels & Resorts$| Hotels$/, "");
+const petHomes = [2706, 4839, 2206, 2760, 3231, 3692].map((id) => PROPS.find((p) => p.id === id))
+  .filter((p) => p && PETS[p.id] && PETS[p.id].ok && W.WAH_IMAGES[p.id] && W.WAH_IMAGES[p.id].hero).slice(0, 4);
 
 /* ---------- FAQ: WhataHotel's own statements, answer first ---------- */
 const FAQ = [
@@ -62,32 +93,37 @@ const FAQ = [
     `Find the hotel on this page and select View Rates to see live rates for your dates on WhataHotel.com, or contact an advisor at ${EMAIL} or ${PHONE}.`],
 ];
 
-/* ---------- the list, grouped country → state/region → city (as on WhataHotel) ---------- */
-function hotelRow(h) {
-  // One link per hotel in the HTML (the name — readable by search engines and without JS);
-  // the page script adds the View Rates / Hotel Details buttons from it, which keeps the
-  // file under GoHighLevel's 1 MB custom-code limit.
-  const inHomes = homesIds.has(h.id);
-  return `<li class="pf-hotel" data-id="${h.id}"><div class="pf-hotel__main"><a class="pf-hotel__name" href="${esc(hotelUrl(h))}">${esc(h.name)}</a>` +
-    `<span class="pf-hotel__meta">${esc(brandOf(h.program))}${inHomes ? ` · <a class="pf-tag" href="${HOMES_URL}">Villas &amp; residences</a>` : ""}</span></div></li>`;
+/* ---------- icons ---------- */
+const PAW = '<svg class="pf-paw" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.8" r="2.2"/><circle cx="14.5" cy="5.8" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M12 11.5c-3 0-6 4.3-6 6.5 0 1.6 1.3 2.5 3 2.5 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.7 0 3-.9 3-2.5 0-2.2-3-6.5-6-6.5z"/></svg>';
+const ic = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const ICONS = {
+  fee: ic('<rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.5"/><path d="M6.5 9.5v.01M17.5 14.5v.01"/>'),
+  weight: ic('<path d="M6.5 8h11l2 11h-15z"/><circle cx="12" cy="5.5" r="2"/><path d="M12 12v3.5l2 1"/>'),
+  count: PAW.replace('class="pf-paw" ', ''),
+  room: ic('<path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 18v2M21 18v2"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/>'),
+  search: ic('<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>'),
+  pin: ic('<path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'),
+  mail: ic('<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>'),
+  phone: ic('<path d="M5 3.5h3.5l1.8 4.5-2.3 1.4a11 11 0 0 0 6.6 6.6l1.4-2.3 4.5 1.8V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/>'),
+  arrow: ic('<path d="M5 12h14M13 6l6 6-6 6"/>'),
+};
+const IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
+const FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>';
+
+/* ---------- hotel cards, grouped by country (WhataHotel's order) ---------- */
+function card(h) {
+  // Text and link only: the page script adds the photo, icons and buttons, which keeps
+  // 751 cards under GoHighLevel's 1 MB custom-code limit (and the text stays readable by
+  // search engines and without JavaScript).
+  const loc = [h.city, h.region && h.region !== h.city ? h.region : ""].filter(Boolean).join(", ");
+  const pre = `https://www.whatahotel.com/content/hotels/${h.id}/`;
+  const p = !h.photo ? "" : h.photo.startsWith(pre) ? h.photo.slice(pre.length) : h.photo;
+  return `<li class="pf-card" data-id="${h.id}"${p ? ` data-p="${esc(p)}"` : ""}><div class="pf-card__body"><span class="pf-card__brand">${esc(h.brand)}</span>` +
+    `<h3 class="pf-card__name"><a href="https://whatahotel.com/hotels/${h.id}/${h.slug}.html">${esc(h.name)}</a></h3><p class="pf-card__loc">${esc(loc)}</p>` +
+    `${homesIds.has(h.id) ? `<a class="pf-card__homes" href="${HOMES_URL}">Also villas &amp; residences</a>` : ""}</div></li>`;
 }
-function countrySection(c) {
-  const list = byCountry[c];
-  const groups = [];
-  list.forEach((h) => {
-    const key = (h.region || "") + "|" + (h.city || "");
-    let g = groups.find((x) => x.key === key);
-    if (!g) groups.push((g = { key, region: h.region, city: h.city, items: [] }));
-    g.items.push(h);
-  });
-  let lastRegion = null;
-  const inner = groups.map((g) => {
-    const head = (g.region && g.region !== lastRegion ? `<h3 class="pf-region">${esc(g.region)}</h3>` : "") + `<h4 class="pf-city">${esc(g.city)}</h4>`;
-    lastRegion = g.region;
-    return `<div class="pf-group" data-hay="${esc([g.city, g.region, c].filter(Boolean).join(" "))}">${head}<ul class="pf-list">${g.items.map(hotelRow).join("")}</ul></div>`;
-  }).join("");
-  return `<section class="pf-country" id="${slug(c)}" data-country="${esc(c)}"><h2>${esc(c)} <span class="pf-count">${list.length} ${list.length === 1 ? "hotel" : "hotels"}</span></h2>${inner}</section>`;
-}
+const countrySection = (c) => `<section class="pf-country" id="${slug(c)}" data-country="${esc(c)}"><div class="pf-country__head"><h2>${esc(c)}</h2><span class="pf-count">${byCountry[c].length} ${byCountry[c].length === 1 ? "hotel" : "hotels"}</span></div>` +
+  `<ul class="pf-grid">${byCountry[c].map(card).join("")}</ul><button type="button" class="pf-more" hidden>Show all ${byCountry[c].length} hotels in ${esc(c)}</button></section>`;
 
 /* ---------- structured data ---------- */
 const ld = {
@@ -97,102 +133,252 @@ const ld = {
       description: `${N} luxury hotels in ${NC} countries that welcome pets, bookable through WhataHotel! by Lorraine Travel.`,
       isPartOf: { "@type": "WebSite", url: "https://pro.whatahotel.com", name: "WhataHotel!" },
       provider: { "@type": "TravelAgency", name: "WhataHotel! by Lorraine Travel", url: "https://www.whatahotel.com", telephone: PHONE, email: EMAIL },
-      dateModified: COLL.fetched, mainEntity: { "@id": PAGE_URL + "#hotels" } },
+      primaryImageOfPage: PET_PHOTO, dateModified: COLL.fetched, mainEntity: { "@id": PAGE_URL + "#hotels" } },
     { "@type": "ItemList", "@id": PAGE_URL + "#hotels", name: "Pet-friendly luxury hotels", numberOfItems: N,
-      itemListElement: hotels.map((h, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Hotel", name: h.name,
-        url: `https://whatahotel.com/hotels/${h.id}/${h.slug}.html`, petsAllowed: true,
-        address: Object.assign({ "@type": "PostalAddress", addressLocality: h.city, addressCountry: h.country }, h.region ? { addressRegion: h.region } : {}) } })) },
+      itemListElement: hotels.map((h, i) => ({ "@type": "ListItem", position: i + 1, item: Object.assign({ "@type": "Hotel", name: h.name,
+        url: `https://whatahotel.com/hotels/${h.id}/${h.slug}.html`, petsAllowed: true },
+        h.photo ? { image: h.photo } : {},
+        { address: Object.assign({ "@type": "PostalAddress", addressLocality: h.city, addressCountry: h.country }, h.region ? { addressRegion: h.region } : {}) }) })) },
     { "@type": "FAQPage", "@id": PAGE_URL + "#faq", mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
   ],
 };
 
-const intro = COLL.intro.length ? COLL.intro : [];
-const PAW = '<svg class="pf-paw" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="10" r="2.2"/><circle cx="9.5" cy="5.8" r="2.2"/><circle cx="14.5" cy="5.8" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M12 11.5c-3 0-6 4.3-6 6.5 0 1.6 1.3 2.5 3 2.5 1.2 0 2-.6 3-.6s1.8.6 3 .6c1.7 0 3-.9 3-2.5 0-2.2-3-6.5-6-6.5z"/></svg>';
+const intro = COLL.intro || [];
 
-const CSS = `
-:root{--ink:#0c1a2b;--ink-2:#12263d;--sand:#f6f1e7;--cream:#fbf9f4;--paper:#fff;--gold:#c6a35a;--gold-2:#e3c887;--gold-deep:#9c7c3a;--pet:#2f5d46;--pet-bg:#eaf3ec;--pet-line:#c9dfcf;
---line:rgba(12,26,43,.10);--text:#1b2b3a;--text-soft:#4d5f70;--text-mut:#728394;--serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-*{box-sizing:border-box}[hidden]{display:none!important}
-.pf-root{background:var(--cream);color:var(--text);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;text-align:left}
-.pf-root p{line-height:1.6;margin-top:0}.pf-root h1,.pf-root h2,.pf-root h3,.pf-root h4{letter-spacing:normal;text-transform:none}
-.pf-root .pf-region{text-transform:uppercase;letter-spacing:.14em}
+const CSS = String.raw`
+:root{--ink:#0c1a2b;--ink-2:#14283f;--cream:#fbf8f2;--sand:#f3ece0;--paper:#fff;--gold:#c6a35a;--gold-2:#e6cc8f;--gold-deep:#93733a;
+--sage:#2f5d46;--sage-2:#447a5e;--mint:#e7f1ea;--mint-line:#cfe2d5;--blush:#f6e9e1;--line:rgba(12,26,43,.09);--text:#1b2b3a;--soft:#4d5f70;--mut:#738394;
+--serif:"Fraunces",Georgia,"Times New Roman",serif;--sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+--r:22px;--shadow:0 1px 2px rgba(12,26,43,.05),0 12px 32px -12px rgba(12,26,43,.18);--shadow-lg:0 30px 60px -24px rgba(12,26,43,.35)}
+*{box-sizing:border-box}[hidden]{display:none!important}html{scroll-behavior:smooth}body{margin:0;background:var(--cream)}
+.pf-root{background:var(--cream);color:var(--text);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;text-align:left;overflow-x:clip}
+.pf-root p{line-height:1.6;margin:0}.pf-root h1,.pf-root h2,.pf-root h3,.pf-root h4{letter-spacing:normal;text-transform:none;margin:0}
+.pf-root a{color:inherit}.pf-root a.pf-btn{color:var(--ink)}.pf-root a.pf-btn--ink{color:#fff}.pf-root .pf-know__foot a.pf-btn:not(.pf-btn--gold){color:#fff}.pf-root img{max-width:100%}.pf-root button{font:inherit;cursor:pointer}
+.pf-root svg{flex:none}
 /* GoHighLevel wraps custom code in a section, row and column with padding: let the page run edge to edge. */
-.c-section:has(.pf-root),.c-row:has(.pf-root),.c-column:has(.pf-root),.c-custom-code:has(.pf-root){padding:0!important;margin:0!important;max-width:none!important}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--text);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:inherit}.pf-wrap{width:min(1120px,100% - 32px);margin-inline:auto}
-.pf-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
-.pf-header__in{display:flex;align-items:center;gap:1rem;min-height:64px}.pf-logo img{display:block;height:30px;width:auto}
-.pf-nav{display:flex;gap:1.2rem;margin-left:auto;font-size:.92rem}.pf-nav a{text-decoration:none;color:var(--text-soft)}.pf-nav a:hover{color:var(--ink)}
-.pf-cta{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1.1rem;border-radius:999px;background:linear-gradient(145deg,var(--gold-2),var(--gold));color:var(--ink);font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap}
-.pf-hero{position:relative;color:#fff;background:var(--ink) center/cover no-repeat;padding:clamp(56px,9vw,110px) 0 clamp(48px,7vw,80px)}
-.pf-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,26,.55),rgba(8,16,26,.78))}
-.pf-hero .pf-wrap{position:relative}.pf-eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-size:.76rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2)}
-.pf-eyebrow .pf-paw{width:1rem;height:1rem}.pf-hero h1{font:500 clamp(2.2rem,5.5vw,3.8rem)/1.08 var(--serif);margin:.5rem 0 1rem;max-width:16ch}
-.pf-hero p{max-width:68ch;margin:0 0 .9rem;color:rgba(255,255,255,.88);font-size:1.02rem}
-.pf-stats{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}.pf-stat{padding:.4rem .9rem;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);font-size:.88rem}
-.pf-tools{position:sticky;top:64px;z-index:15;background:rgba(251,249,244,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.pf-tools__in{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;padding:.8rem 0}
-.pf-search{flex:1 1 260px;display:flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 .9rem}
-.pf-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,163,90,.18)}.pf-search svg{width:18px;height:18px;color:var(--gold-deep);flex:none}
-.pf-search input{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:.75rem 0;min-width:0}
-.pf-select{flex:0 1 220px;font:inherit;font-size:16px;padding:.72rem .9rem;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text)}
-.pf-shown{font-size:.88rem;color:var(--text-mut);white-space:nowrap}
-.pf-callout{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1.2rem;margin:1.6rem 0 0;padding:1rem 1.2rem;border-radius:16px;background:var(--pet-bg);border:1px solid var(--pet-line);color:var(--pet)}
-.pf-callout .pf-paw{width:1.4rem;height:1.4rem;flex:none}.pf-callout p{margin:0;flex:1 1 320px}.pf-callout a{font-weight:700}
-.pf-index{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.6rem 0 .4rem}.pf-index a{padding:.3rem .7rem;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.82rem;text-decoration:none;color:var(--text-soft)}
-.pf-index a:hover{border-color:var(--gold);color:var(--ink)}.pf-index b{color:var(--ink);font-weight:600}
-.pf-country{margin:2.4rem 0 0;scroll-margin-top:140px}.pf-country h2{font:500 clamp(1.5rem,3vw,2rem)/1.2 var(--serif);color:var(--ink);margin:0 0 .4rem;padding-bottom:.6rem;border-bottom:1px solid var(--line)}
-.pf-count{font:500 .85rem var(--sans);color:var(--text-mut);margin-left:.4rem}
-.pf-region{font:700 .78rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin:1.4rem 0 .2rem}
-.pf-city{font:600 1rem var(--sans);color:var(--ink);margin:.9rem 0 .3rem}
-.pf-list{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
-.pf-hotel{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem 1rem;padding:.8rem 1rem;background:#fff;border:1px solid var(--line);border-radius:14px}
-.pf-hotel__main{flex:1 1 320px;min-width:0;display:flex;flex-direction:column}.pf-hotel__name{font-weight:600;color:var(--ink);text-decoration:none}.pf-hotel__name:hover{text-decoration:underline}
-.pf-hotel__meta{font-size:.85rem;color:var(--text-mut)}.pf-tag{color:var(--pet);font-weight:600;text-decoration:none}.pf-tag:hover{text-decoration:underline}
-.pf-hotel__actions{display:flex;gap:.45rem;flex:none}
-.pf-btn{display:inline-flex;align-items:center;padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:.85rem;font-weight:600;text-decoration:none;color:var(--ink);white-space:nowrap}
-.pf-btn:hover{border-color:var(--gold)}.pf-btn--gold{background:linear-gradient(145deg,var(--gold-2),var(--gold));border-color:transparent}
-.pf-empty{margin:2rem 0;padding:1.2rem;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--text-soft)}
-.pf-faq{margin:3.5rem 0 0;padding:clamp(28px,4vw,44px);background:#fff;border-radius:22px;border:1px solid var(--line)}
-.pf-faq h2{font:500 clamp(1.5rem,3vw,2rem)/1.2 var(--serif);margin:0 0 1rem;color:var(--ink)}
-.pf-faq details{border-top:1px solid var(--line);padding:.9rem 0}.pf-faq summary{cursor:pointer;list-style:none}.pf-faq summary::-webkit-details-marker{display:none}
-.pf-faq summary h3{display:inline;font:600 1.02rem var(--sans);color:var(--ink)}.pf-faq summary::after{content:"+";float:right;color:var(--gold-deep);font-weight:700}
-.pf-faq details[open] summary::after{content:"–"}.pf-faq p{margin:.6rem 0 0;color:var(--text-soft)}
-.pf-footer{margin-top:4rem;background:#081420;color:rgba(244,239,230,.72);padding:2.6rem 0 2rem;font-size:.9rem}
-.pf-footer__in{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;align-items:center;justify-content:space-between}.pf-footer a{color:#fff;text-decoration:none}.pf-footer a:hover{text-decoration:underline}
-.pf-social{display:flex;gap:.8rem}.pf-social a{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}.pf-social svg{width:18px;height:18px}
-.pf-filtering .pf-index,.pf-filtering .pf-callout,.pf-filtering .pf-count{display:none}
-@media (max-width:700px){.pf-nav{display:none}.pf-header__in{min-height:56px}.pf-cta{margin-left:auto;padding:.5rem .9rem;font-size:.85rem}.pf-hero p{font-size:.95rem}
-.pf-tools{position:static}.pf-tools__in{gap:.5rem;padding:.7rem 0}.pf-search{flex-basis:100%}.pf-select{flex:1 1 auto;padding:.6rem .8rem}
-.pf-hotel{padding:.75rem .85rem}.pf-hotel__actions{width:100%}.pf-hotel__actions .pf-btn{flex:1;justify-content:center}.pf-country{scroll-margin-top:70px}}
+.c-section:has(.pf-root),.c-row:has(.pf-root),.c-column:has(.pf-root),.c-custom-code:has(.pf-root){padding:0!important;margin:0!important;max-width:none!important}
+.pf-wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+.pf-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:700 .74rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep)}
+.pf-eyebrow .pf-paw{width:1rem;height:1rem}
+.pf-h2{font:500 clamp(2rem,4.2vw,3.1rem)/1.08 var(--serif);color:var(--ink);letter-spacing:-.01em}
+.pf-h2 em,.pf-hero h1 em{font-style:italic;color:var(--sage)}
+.pf-lead{color:var(--soft);font-size:1.06rem;max-width:62ch}
+.pf-sec{padding:clamp(64px,9vw,112px) 0}
+.pf-sec__head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:clamp(26px,4vw,40px)}
+.pf-sec__head>div{display:grid;gap:.8rem;max-width:720px}
+.pf-btn{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;padding:.72rem 1.25rem;border-radius:999px;border:1px solid var(--line);background:#fff;font:600 .9rem/1.2 var(--sans);text-decoration:none;color:var(--ink);white-space:nowrap;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.pf-btn:hover{transform:translateY(-1px);border-color:var(--gold);box-shadow:var(--shadow)}
+.pf-btn svg{width:1.05rem;height:1.05rem}
+.pf-btn--gold{background:linear-gradient(135deg,var(--gold-2),var(--gold));border-color:transparent}
+.pf-btn--ink{background:var(--ink);color:#fff;border-color:var(--ink)}.pf-btn--ink:hover{background:var(--ink-2)}
+/* header */
+.pf-header{position:sticky;top:0;z-index:30;background:rgba(251,248,242,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.pf-header.is-stuck{border-color:var(--line);box-shadow:0 8px 24px -18px rgba(12,26,43,.4)}
+.pf-header__in{display:flex;align-items:center;gap:1.2rem;min-height:70px}.pf-logo img{display:block;height:30px;width:auto}
+.pf-nav{display:flex;gap:1.6rem;margin-left:auto;font-size:.92rem;font-weight:500}.pf-nav a{text-decoration:none;color:var(--soft)}.pf-nav a:hover{color:var(--ink)}
+/* hero */
+.pf-hero{position:relative;padding:clamp(36px,6vw,72px) 0 clamp(56px,8vw,96px);overflow:hidden}
+.pf-hero::before{content:"";position:absolute;width:780px;height:780px;right:-220px;top:-260px;border-radius:50%;background:radial-gradient(circle at 40% 40%,var(--mint),rgba(231,241,234,0) 68%);pointer-events:none}
+.pf-hero::after{content:"";position:absolute;width:560px;height:560px;left:-260px;bottom:-280px;border-radius:50%;background:radial-gradient(circle,var(--blush),rgba(246,233,225,0) 70%);pointer-events:none}
+.pf-hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.pf-hero h1{font:500 clamp(2.7rem,6.4vw,5.1rem)/1.02 var(--serif);color:var(--ink);letter-spacing:-.02em;margin:1.1rem 0 1.3rem}
+.pf-hero h1 em{display:block}
+.pf-hero__lead{font-size:clamp(1.02rem,1.5vw,1.14rem);color:var(--soft);max-width:54ch}
+.pf-find{display:flex;align-items:center;gap:.4rem;margin:2rem 0 1rem;padding:.4rem .4rem .4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);max-width:560px}
+.pf-find:focus-within{border-color:var(--gold);box-shadow:0 0 0 5px rgba(198,163,90,.18),var(--shadow)}
+.pf-find svg{width:20px;height:20px;color:var(--gold-deep)}
+.pf-find input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:.7rem .3rem;color:var(--ink)}
+.pf-find .pf-btn{padding:.8rem 1.4rem}
+.pf-quick{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;font-size:.85rem;color:var(--mut)}
+.pf-chip{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .85rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.7);font:500 .85rem/1.1 var(--sans);color:var(--ink);text-decoration:none;transition:background .2s,border-color .2s}
+.pf-chip:hover,.pf-chip.is-on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pf-chip b{font-weight:600;opacity:.6}
+.pf-mosaic{position:relative;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:clamp(420px,46vw,580px)}
+.pf-mosaic figure{margin:0;position:relative;border-radius:26px;overflow:hidden;background:var(--sand);box-shadow:var(--shadow-lg)}
+.pf-mosaic figure:first-child{grid-row:1 / span 2}
+.pf-mosaic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.pf-mosaic figure:hover img{transform:scale(1.05)}
+.pf-mosaic figcaption{position:absolute;left:12px;bottom:12px;right:12px;padding:.45rem .7rem;border-radius:12px;background:rgba(12,26,43,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font:500 .78rem/1.3 var(--sans)}
+.pf-badge{position:absolute;z-index:2;display:flex;align-items:center;gap:.7rem;padding:.75rem 1rem;border-radius:18px;background:#fff;box-shadow:var(--shadow-lg);animation:pf-float 6s ease-in-out infinite}
+.pf-badge b{display:block;font:600 1.45rem/1 var(--serif);color:var(--ink)}.pf-badge span{display:block;font-size:.78rem;color:var(--mut)}
+.pf-badge i{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--mint);color:var(--sage)}.pf-badge i svg{width:22px;height:22px}
+.pf-badge--a{left:-26px;bottom:42px}.pf-badge--b{right:-14px;top:-18px;animation-delay:-3s}.pf-badge--b i{background:var(--blush);color:#b0573a}
+@keyframes pf-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+/* brand marquee */
+.pf-marquee{border-block:1px solid var(--line);background:#fff;overflow:hidden;padding:1.05rem 0;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pf-marquee__track{display:flex;gap:3rem;width:max-content;animation:pf-scroll 48s linear infinite}
+.pf-marquee:hover .pf-marquee__track{animation-play-state:paused}
+.pf-marquee button{display:inline-flex;align-items:center;gap:3rem;border:0;background:none;padding:0;font:500 1.25rem/1 var(--serif);color:var(--ink);white-space:nowrap;opacity:.78;transition:opacity .2s,color .2s}
+.pf-marquee button:hover{opacity:1;color:var(--sage)}.pf-marquee button::after{content:"✦";font-size:.7rem;color:var(--gold)}
+@keyframes pf-scroll{to{transform:translateX(-50%)}}
+/* destinations */
+.pf-dests{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(220px,23%,280px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;margin:0 -20px;scrollbar-width:thin}
+.pf-dest{position:relative;scroll-snap-align:start;height:340px;border-radius:var(--r);overflow:hidden;border:0;padding:0;background:var(--ink);text-align:left;color:#fff;box-shadow:var(--shadow)}
+.pf-dest img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pf-dest::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,16,26,0) 40%,rgba(8,16,26,.82))}
+.pf-dest:hover img{transform:scale(1.07)}
+.pf-dest__t{position:absolute;z-index:1;left:18px;right:18px;bottom:16px}.pf-dest__t b{display:block;font:500 1.55rem/1.1 var(--serif)}
+.pf-dest__t span{display:inline-flex;align-items:center;gap:.35rem;margin-top:.35rem;font-size:.84rem;opacity:.9}.pf-dest__t .pf-paw{width:.9rem;height:.9rem;color:var(--gold-2)}
+.pf-dest-nav{display:flex;align-items:end;gap:1.5rem}.pf-arrows{display:flex;gap:.5rem}
+.pf-arrow{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);transition:background .2s,color .2s}
+.pf-arrow:hover{background:var(--ink);color:#fff}.pf-arrow svg{width:20px;height:20px}.pf-arrow[data-dir="-1"] svg{transform:rotate(180deg)}
+/* before you book */
+.pf-know{background:var(--ink);color:#fff;border-radius:clamp(24px,3vw,36px);padding:clamp(36px,6vw,72px);position:relative;overflow:hidden}
+.pf-know::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(198,163,90,.28),rgba(198,163,90,0) 70%)}
+.pf-know .pf-h2{color:#fff}.pf-know .pf-h2 em{color:var(--gold-2)}.pf-know .pf-lead{color:rgba(255,255,255,.75)}.pf-know .pf-eyebrow{color:var(--gold-2)}
+.pf-know__grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(28px,4vw,44px)}
+.pf-know__item{padding:1.4rem 1.3rem;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);transition:background .3s,transform .3s}
+.pf-know__item:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.pf-know__item i{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:rgba(230,204,143,.15);color:var(--gold-2);margin-bottom:1rem}.pf-know__item i svg{width:24px;height:24px}
+.pf-know__item b{display:block;font:600 1.02rem/1.3 var(--sans);margin-bottom:.3rem}.pf-know__item p{font-size:.9rem;color:rgba(255,255,255,.68)}
+.pf-know__foot{position:relative;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:clamp(24px,3vw,36px)}
+.pf-know__foot .pf-btn:not(.pf-btn--gold){background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+/* browse */
+.pf-tools{position:sticky;top:70px;z-index:20;background:rgba(251,248,242,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:.8rem 0;border-bottom:1px solid var(--line)}
+.pf-tools__in{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.pf-search{flex:1 1 280px;display:flex;align-items:center;gap:.55rem;background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 .95rem}
+.pf-search:focus-within{border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,163,90,.18)}.pf-search svg{width:18px;height:18px;color:var(--gold-deep)}
+.pf-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;padding:.78rem 0;color:var(--ink)}
+.pf-select{flex:0 1 210px;min-width:0;font:inherit;font-size:16px;padding:.75rem 2.2rem .75rem .9rem;border:1px solid var(--line);border-radius:14px;color:var(--ink);appearance:none;-webkit-appearance:none;
+background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2393733a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right .8rem center/16px no-repeat}
+.pf-shown{font-size:.9rem;color:var(--mut);white-space:nowrap}.pf-shown b{color:var(--ink)}
+.pf-reset{border:0;background:none;color:var(--sage);font-weight:600;font-size:.88rem;padding:.4rem}.pf-reset:hover{text-decoration:underline}
+.pf-countries{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.6rem 0 0}
+.pf-country{margin-top:clamp(36px,5vw,56px);scroll-margin-top:150px}
+.pf-country__head{display:flex;align-items:baseline;gap:.8rem;margin-bottom:1.1rem}
+.pf-country__head h2{font:500 clamp(1.6rem,3vw,2.15rem)/1.15 var(--serif);color:var(--ink)}.pf-count{font-size:.9rem;color:var(--mut)}
+.pf-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:18px}
+.pf-card{display:flex;flex-direction:column;background:#fff;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);box-shadow:0 1px 2px rgba(12,26,43,.04);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.pf-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.pf-card__img{position:relative;aspect-ratio:16/11;background:linear-gradient(135deg,var(--mint),var(--sand));overflow:hidden}
+.pf-card__img img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s,transform 1s cubic-bezier(.2,.7,.2,1)}
+.pf-card__img img.is-in{opacity:1}.pf-card:hover .pf-card__img img{transform:scale(1.06)}
+.pf-card__ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--sage);opacity:.45}.pf-card__ph .pf-paw{width:46px;height:46px}
+.pf-card__pet{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:.35rem;padding:.32rem .65rem;border-radius:999px;background:rgba(255,255,255,.92);color:var(--sage);font:600 .72rem/1 var(--sans);letter-spacing:.02em;box-shadow:0 4px 14px -6px rgba(0,0,0,.3)}
+.pf-card__pet .pf-paw{width:.85rem;height:.85rem}
+.pf-card__body{flex:1;display:flex;flex-direction:column;gap:.35rem;padding:1.05rem 1.1rem 0}
+.pf-card__brand{font:700 .68rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep)}
+.pf-card__name{font:500 1.18rem/1.25 var(--serif)!important;color:var(--ink)}.pf-card__name a{text-decoration:none}.pf-card__name a:hover{text-decoration:underline;text-underline-offset:3px}
+.pf-card__loc{display:flex;align-items:center;gap:.35rem;font-size:.86rem;color:var(--mut)}.pf-card__loc svg{width:15px;height:15px;color:var(--gold-deep)}
+.pf-card__homes{align-self:flex-start;margin-top:.15rem;padding:.25rem .6rem;border-radius:999px;background:var(--mint);color:var(--sage);font:600 .74rem/1.2 var(--sans);text-decoration:none}
+.pf-card__act{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:1rem 1.1rem 1.1rem;margin-top:auto}
+.pf-card__act .pf-btn{padding:.62rem .5rem;font-size:.84rem}
+.pf-more{display:flex;align-items:center;gap:.5rem;margin:1.2rem auto 0;padding:.75rem 1.4rem;border-radius:999px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-weight:600;font-size:.9rem;transition:background .2s,color .2s}
+.pf-more:hover{background:var(--ink);color:#fff}
+.pf-empty{margin:2.4rem 0;padding:2rem;border-radius:var(--r);background:#fff;border:1px dashed var(--mint-line);text-align:center;color:var(--soft)}
+.pf-filtering .pf-countries{display:none}
+/* homes band */
+.pf-homes{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(32px,5vw,56px);border-radius:clamp(24px,3vw,36px);background:var(--mint);border:1px solid var(--mint-line)}
+.pf-homes .pf-h2 em{color:var(--sage-2)}
+.pf-homes__pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pf-homes__pics a{position:relative;display:block;aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:var(--sand);box-shadow:var(--shadow)}
+.pf-homes__pics a:nth-child(2){transform:translateY(22px)}.pf-homes__pics a:nth-child(4){transform:translateY(22px)}
+.pf-homes__pics img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s}.pf-homes__pics a:hover img{transform:scale(1.06)}
+.pf-homes__pics span{position:absolute;left:10px;right:10px;bottom:10px;padding:.35rem .6rem;border-radius:10px;background:rgba(255,255,255,.92);font:600 .76rem/1.3 var(--sans);color:var(--ink)}
+.pf-homes .pf-btn{margin-top:1.6rem}
+/* faq */
+.pf-faq{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,72px);align-items:start}
+.pf-advisor{margin-top:1.6rem;padding:1.5rem;border-radius:var(--r);background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);display:grid;gap:.7rem}
+.pf-advisor b{font:500 1.3rem/1.2 var(--serif);color:var(--ink)}.pf-advisor p{color:var(--soft);font-size:.92rem}
+.pf-advisor a{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:600;color:var(--ink)}.pf-advisor a svg{width:20px;height:20px;color:var(--gold-deep)}
+.pf-advisor a:hover{color:var(--sage)}
+.pf-qa details{border-bottom:1px solid var(--line);padding:1.25rem 0}.pf-qa details:first-child{border-top:1px solid var(--line)}
+.pf-qa summary{display:flex;justify-content:space-between;gap:1rem;cursor:pointer;list-style:none}.pf-qa summary::-webkit-details-marker{display:none}
+.pf-qa summary h3{font:500 1.15rem/1.35 var(--serif)!important;color:var(--ink)}
+.pf-qa summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c1a2b' stroke-width='2'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .3s}
+.pf-qa details[open] summary::after{transform:rotate(45deg)}.pf-qa details p{margin-top:.7rem;color:var(--soft)}
+/* footer */
+.pf-footer{background:#081420;color:rgba(244,239,230,.7);padding:clamp(44px,6vw,64px) 0 2rem;font-size:.92rem}
+.pf-footer__in{display:grid;grid-template-columns:1.4fr 1fr auto;gap:2rem;align-items:start}
+.pf-footer a{color:#fff;text-decoration:none}.pf-footer a:hover{text-decoration:underline}.pf-footer b{color:#fff;font:500 1.3rem/1.2 var(--serif);display:block;margin-bottom:.6rem}
+.pf-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.pf-social{display:flex;gap:.7rem}.pf-social a{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.22);transition:background .2s}.pf-social a:hover{background:rgba(255,255,255,.1)}.pf-social svg{width:19px;height:19px}
+.pf-legal{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem;color:rgba(244,239,230,.5)}
+/* reveal */
+.pf-js .pf-rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.pf-js .pf-rv.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.pf-js .pf-rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+/* responsive */
+@media (max-width:1000px){.pf-hero__grid,.pf-homes,.pf-faq{grid-template-columns:1fr}.pf-know__grid{grid-template-columns:1fr 1fr}.pf-mosaic{height:440px}.pf-badge--a{left:10px}.pf-badge--b{right:10px}
+.pf-footer__in{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.pf-wrap{width:calc(100% - 32px)}.pf-nav{display:none}.pf-header__in{min-height:60px;justify-content:space-between}.pf-logo img{height:26px}.pf-header .pf-btn{padding:.55rem 1rem;font-size:.84rem}
+.pf-hero{padding-top:24px}.pf-hero h1{font-size:2.6rem}.pf-find{margin-top:1.5rem}.pf-find .pf-btn span{display:none}.pf-find .pf-btn{padding:.8rem}
+.pf-mosaic{height:360px;grid-template-columns:1.3fr 1fr;gap:10px}.pf-mosaic figure{border-radius:20px}.pf-badge{padding:.55rem .75rem}.pf-badge b{font-size:1.15rem}.pf-badge i{width:32px;height:32px}.pf-badge--b{top:-12px}
+.pf-mosaic figcaption{display:none}.pf-arrows{display:none}.pf-dests{grid-auto-columns:72%;padding-inline:16px;margin-inline:-16px}.pf-dest{height:300px}
+.pf-know__grid{grid-template-columns:1fr}.pf-know__item{display:grid;grid-template-columns:auto 1fr;gap:0 1rem;padding:1.1rem}.pf-know__item i{margin:0;grid-row:span 2}
+.pf-tools{position:static;padding:.6rem 0}.pf-search{flex-basis:100%}.pf-select{flex:1 1 0;padding:.65rem 2rem .65rem .8rem}.pf-shown{flex:1}
+.pf-grid{grid-template-columns:1fr;gap:14px}.pf-homes__pics span{font-size:.7rem;padding:.3rem .5rem}
+.pf-root:not(.pf-filtering) .pf-country:not(.is-open) .pf-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:2px 16px 12px;scroll-padding:0 16px;scrollbar-width:none}
+.pf-root:not(.pf-filtering) .pf-country:not(.is-open) .pf-grid::-webkit-scrollbar{display:none}
+.pf-root:not(.pf-filtering) .pf-country:not(.is-open) .pf-card{scroll-snap-align:start}.pf-homes{padding:22px}.pf-homes__pics a:nth-child(2n){transform:translateY(14px)}.pf-footer__in{grid-template-columns:1fr}.pf-country{scroll-margin-top:76px}}
 `;
 
-const JS = `(function(){"use strict";
-try{if(!(window.CSS&&CSS.supports&&CSS.supports("selector(:has(*))"))){var e=document.querySelector(".pf-root");while(e&&e.parentElement&&e.parentElement!==document.body){e=e.parentElement;if(/\\bc-(section|row|column|custom-code)\\b/.test(e.className)){e.style.padding="0";e.style.margin="0";e.style.maxWidth="none"}}}}catch(x){}
-var UTM=${JSON.stringify(UTM)};
+const JS = String.raw`(function(){"use strict";
+var D=document,root=D.querySelector(".pf-root");root.classList.add("pf-js");
+try{if(!(window.CSS&&CSS.supports&&CSS.supports("selector(:has(*))"))){var e=root;while(e&&e.parentElement&&e.parentElement!==D.body){e=e.parentElement;if(/\bc-(section|row|column|custom-code)\b/.test(e.className)){e.style.padding="0";e.style.margin="0";e.style.maxWidth="none"}}}}catch(x){}
+var UTM="__UTM__",LIMIT=6,hd=D.querySelector(".pf-header");
 function pad(n){return(n<10?"0":"")+n}function ymd(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
 var a=new Date();a.setDate(a.getDate()+21);var b=new Date();b.setDate(b.getDate()+23);
-function btn(cls,href,label){var x=document.createElement("a");x.className=cls;x.href=href;x.target="_blank";x.rel="noopener";x.textContent=label;return x}
-[].forEach.call(document.querySelectorAll(".pf-hotel"),function(li){var nm=li.querySelector(".pf-hotel__name"),id=li.getAttribute("data-id");nm.target="_blank";nm.rel="noopener";
-var d=document.createElement("div");d.className="pf-hotel__actions";
-d.appendChild(btn("pf-btn pf-btn--gold","https://whatahotel.com/booking/showRates.cfm?hotelID="+id+"&checkIn="+ymd(a)+"&checkOut="+ymd(b)+"&guests=2&children=0&rooms=1&"+UTM,"View Rates"));
-d.appendChild(btn("pf-btn",nm.href,"Hotel Details"));li.appendChild(d)});
-var input=document.getElementById("pf-q"),sel=document.getElementById("pf-country"),shown=document.getElementById("pf-shown"),empty=document.getElementById("pf-empty");
-var rows=[].slice.call(document.querySelectorAll(".pf-hotel")),groups=[].slice.call(document.querySelectorAll(".pf-group")),secs=[].slice.call(document.querySelectorAll(".pf-country"));
-function norm(s){s=String(s||"").toLowerCase();return s.normalize?s.normalize("NFD").replace(/[\\u0300-\\u036f]/g,""):s}
-rows.forEach(function(r){r._hay=norm(r.querySelector(".pf-hotel__main").textContent+" "+r.closest(".pf-group").getAttribute("data-hay"))});
-function apply(){var words=norm(input.value).split(/\\s+/).filter(Boolean),c=sel.value,n=0;
-secs.forEach(function(s){s._show=!c||s.getAttribute("data-country")===c});
-rows.forEach(function(r){var sec=r.closest(".pf-country");var ok=sec._show&&words.every(function(w){return r._hay.indexOf(w)!==-1});r.hidden=!ok;if(ok)n++});
-groups.forEach(function(g){g.hidden=!g.querySelector(".pf-hotel:not([hidden])")});
-secs.forEach(function(s){s.hidden=!s.querySelector(".pf-hotel:not([hidden])")});
-shown.textContent=n+(n===1?" hotel":" hotels");empty.hidden=n!==0;document.body.classList.toggle("pf-filtering",!!(words.length||c));
-try{if(window.dataLayer&&words.length)window.dataLayer.push({event:"pet_page_search",results:n})}catch(e){}}
-var t;input.addEventListener("input",function(){clearTimeout(t);t=setTimeout(apply,120)});sel.addEventListener("change",function(){apply();if(sel.value){var s=document.getElementById(sel.options[sel.selectedIndex].getAttribute("data-id"));if(s)s.scrollIntoView({block:"start"})}});
-document.getElementById("pf-form").addEventListener("submit",function(e){e.preventDefault();apply();var first=document.querySelector(".pf-hotel:not([hidden])");if(first)first.closest(".pf-country").scrollIntoView({block:"start"})});
-})();`;
+function link(cls,href,label){var x=D.createElement("a");x.className=cls;x.href=href;x.target="_blank";x.rel="noopener";x.textContent=label;return x}
+function norm(s){s=String(s||"").toLowerCase();return s.normalize?s.normalize("NFD").replace(/[̀-ͯ]/g,""):s}
+var cards=[].slice.call(D.querySelectorAll(".pf-card")),secs=[].slice.call(D.querySelectorAll(".pf-country"));
+var PAWH=root.querySelector(".pf-paw").outerHTML,PINH=D.getElementById("pf-pin").innerHTML;
+cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),id=li.getAttribute("data-id"),p=li.getAttribute("data-p"),body=li.querySelector(".pf-card__body");
+ nm.href=nm.href+(nm.href.indexOf("?")<0?"?":"&")+UTM;nm.target="_blank";nm.rel="noopener";
+ var box=D.createElement("div");box.className="pf-card__img";
+ if(p){var src=/^https?:/.test(p)?p:"https://www.whatahotel.com/content/hotels/"+id+"/"+p;var im=D.createElement("img");
+  im.src="https://wsrv.nl/?url="+encodeURIComponent(src.replace(/^https?:\/\//,""))+"&w=640&h=440&fit=cover&output=webp&q=70";im.alt=nm.textContent;im.loading="lazy";im.decoding="async";im.width=640;im.height=440;box.appendChild(im)}
+ else box.innerHTML='<span class="pf-card__ph">'+PAWH+"</span>";
+ box.insertAdjacentHTML("beforeend",'<span class="pf-card__pet">'+PAWH+"Pets welcome</span>");li.insertBefore(box,body);
+ var loc=li.querySelector(".pf-card__loc");loc.insertAdjacentHTML("afterbegin",PINH);
+ var d=D.createElement("div");d.className="pf-card__act";
+ d.appendChild(link("pf-btn pf-btn--gold","https://whatahotel.com/booking/showRates.cfm?hotelID="+id+"&checkIn="+ymd(a)+"&checkOut="+ymd(b)+"&guests=2&children=0&rooms=1&"+UTM,"View Rates"));
+ d.appendChild(link("pf-btn",nm.href,"Details"));li.appendChild(d);
+ li._hay=norm(body.textContent+" "+li.closest(".pf-country").getAttribute("data-country"));li._b=li.querySelector(".pf-card__brand").textContent});
+// photos fade in; a photo that fails to load falls back to the original file, then to the paw placeholder
+function shown(im){im.classList.add("is-in")}
+[].forEach.call(D.querySelectorAll(".pf-card__img img,.pf-mosaic img,.pf-dest img,.pf-homes__pics img"),function(im){if(im.complete&&im.naturalWidth)shown(im);else im.addEventListener("load",function(){shown(im)})});
+D.addEventListener("error",function(ev){var im=ev.target;if(!im||im.tagName!=="IMG"||!root.contains(im))return;
+ var m=/[?&]url=([^&]+)/.exec(im.src);if(m&&!im._fb){im._fb=1;im.src="https://"+decodeURIComponent(m[1]);return}
+ var box=im.parentNode;im.remove();if(box&&box.classList.contains("pf-card__img")){var s=D.createElement("span");s.className="pf-card__ph";s.innerHTML=root.querySelector(".pf-paw").outerHTML;box.insertBefore(s,box.firstChild)}},true);
+// filters
+var q=D.getElementById("pf-q"),sel=D.getElementById("pf-country"),br=D.getElementById("pf-brand"),out=D.getElementById("pf-shown"),empty=D.getElementById("pf-empty"),reset=D.getElementById("pf-reset"),open={};
+function apply(){var words=norm(q.value).split(/\s+/).filter(Boolean),c=sel.value,bb=br.value,filt=!!(words.length||c||bb),n=0;
+ secs.forEach(function(s){var ok=!c||s.getAttribute("data-country")===c,k=0,tot=0,more=s.querySelector(".pf-more");
+  [].forEach.call(s.querySelectorAll(".pf-card"),function(li){var m=ok&&(!bb||li._b===bb)&&words.every(function(w){return li._hay.indexOf(w)!==-1});
+   if(m)tot++;li.hidden=!m||(!filt&&!open[s.id]&&tot>LIMIT);if(m)n++});
+  s.hidden=!tot;more.hidden=filt||open[s.id]||tot<=LIMIT;var cn=s.querySelector(".pf-count");if(cn._t==null)cn._t=cn.textContent;cn.textContent=filt?tot+(tot===1?" match":" matches"):cn._t});
+ out.innerHTML="<b>"+n+"</b> "+(n===1?"hotel":"hotels");empty.hidden=n!==0;reset.hidden=!filt;root.classList.toggle("pf-filtering",filt);
+ [].forEach.call(D.querySelectorAll("[data-q]"),function(x){x.classList.toggle("is-on",!!words.length&&norm(x.getAttribute("data-q"))===words.join(" "))});
+ try{if(window.dataLayer&&filt)window.dataLayer.push({event:"pet_page_filter",results:n})}catch(x){}}
+function go(){var t=D.querySelector(".pf-tools");if(!t)return;var hh=(hd.getBoundingClientRect().height||0),wide=innerWidth>700;var y=t.getBoundingClientRect().top+(window.scrollY||0)-(wide?0:hh)-(wide?-1:6);if(wide){var f=D.querySelector(".pf-country:not([hidden])");if(f)y=f.getBoundingClientRect().top+(window.scrollY||0)-hh-t.offsetHeight-12}window.scrollTo({top:Math.max(0,y),behavior:"smooth"})}
+var t;q.addEventListener("input",function(){clearTimeout(t);t=setTimeout(apply,120)});
+sel.addEventListener("change",apply);br.addEventListener("change",apply);
+reset.addEventListener("click",function(){q.value="";sel.value="";br.value="";apply()});
+D.getElementById("pf-form").addEventListener("submit",function(ev){ev.preventDefault();apply();go()});
+secs.forEach(function(s){s.querySelector(".pf-more").addEventListener("click",function(){open[s.id]=1;s.classList.add("is-open");apply()})});
+var dl=D.querySelector(".pf-dests");[].forEach.call(D.querySelectorAll(".pf-arrow"),function(x){x.addEventListener("click",function(){dl.scrollBy({left:(+x.getAttribute("data-dir"))*dl.clientWidth*.8,behavior:"smooth"})})});
+var hf=D.getElementById("pf-find");hf.addEventListener("submit",function(ev){ev.preventDefault();q.value=hf.querySelector("input").value;sel.value="";br.value="";apply();go()});
+[].forEach.call(D.querySelectorAll("[data-q]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value=x.getAttribute("data-q");sel.value="";br.value="";apply();go()})});
+[].forEach.call(D.querySelectorAll("[data-brand]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value="";sel.value="";br.value=x.getAttribute("data-brand");apply();go()})});
+[].forEach.call(D.querySelectorAll("[data-country-pick]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value="";br.value="";sel.value=x.getAttribute("data-country-pick");apply();go()})});
+apply();
+// header shadow + reveal on scroll
+function onScroll(){hd.classList.toggle("is-stuck",hd.getBoundingClientRect().top<=0&&(window.scrollY||0)>8)}
+window.addEventListener("scroll",onScroll,{passive:true});onScroll();
+var rv=[].slice.call(D.querySelectorAll(".pf-rv"));
+if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});rv.forEach(function(x){io.observe(x)})}
+else rv.forEach(function(x){x.classList.add("is-in")});
+})();`.replace("__UTM__", UTM);
 
-const IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
-const FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg>';
+const topCountries = countries.slice().sort((x, y) => byCountry[y].length - byCountry[x].length).slice(0, 10);
+const knowItems = [
+  ["fee", "The pet fee", "Per night or per stay, and any deposit."],
+  ["weight", "The weight limit", "Some hotels welcome dogs of any size; others set a limit."],
+  ["count", "How many pets", "One, two, or more — and whether cats are included."],
+  ["room", "Which rooms qualify", "Pets are often limited to certain room types."],
+];
+const marqueeItems = MARQUEE.map((b) => `<button type="button" data-brand="${esc(b)}">${esc(niceBrand(b))}</button>`).join("");
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -203,59 +389,106 @@ const html = `<!DOCTYPE html>
 <meta name="description" content="${esc(`${N} luxury hotels in ${NC} countries that welcome dogs and cats, from Four Seasons and The Ritz-Carlton to Kimpton and Park Hyatt. Live rates and preferred-partner perks through WhataHotel!.`)}">
 <link rel="canonical" href="${PAGE_URL}">
 <meta property="og:type" content="website"><meta property="og:url" content="${PAGE_URL}"><meta property="og:title" content="Pet-Friendly Luxury Hotels | WhataHotel!">
-<meta property="og:description" content="${esc(`${N} luxury hotels in ${NC} countries that welcome pets.`)}"><meta property="og:image" content="https://www.whatahotel.com/content/pets_header.jpg">
+<meta property="og:description" content="${esc(`${N} luxury hotels in ${NC} countries that welcome pets.`)}"><meta property="og:image" content="${PET_PHOTO}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://wsrv.nl">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>${CSS}</style>
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 </head>
 <body>
 <div class="pf-root">
+<template id="pf-pin">${ICONS.pin}</template>
 <!-- Generated by scripts/build-pet-page.mjs from WhataHotel's Pet-Friendly Luxury Hotels collection (${COLL.source}, read ${COLL.fetched}). Do not edit by hand. -->
 <header class="pf-header"><div class="pf-wrap pf-header__in">
   <a class="pf-logo" href="${HOMES_URL}" aria-label="WhataHotel! Homes"><img src="${LOGO}" alt="WhataHotel!" width="133" height="30"></a>
-  <nav class="pf-nav" aria-label="Primary"><a href="${HOMES_URL}">Homes &amp; Villas</a><a href="#hotels">Pet-friendly hotels</a><a href="#faq">FAQ</a></nav>
-  <a class="pf-cta" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">Ask an advisor</a>
+  <nav class="pf-nav" aria-label="Primary"><a href="#destinations">Destinations</a><a href="#browse">All hotels</a><a href="#homes">Villas &amp; homes</a><a href="#faq">FAQ</a></nav>
+  <a class="pf-btn pf-btn--ink" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">Ask an advisor</a>
 </div></header>
 
 <main>
-<section class="pf-hero" style="background-image:url('${HERO_IMG}')"><div class="pf-wrap">
-  <span class="pf-eyebrow">${PAW}Travel with your pet</span>
-  <h1>Pet-Friendly Luxury Hotels</h1>
-  ${intro.map((p) => `<p>${esc(p)}</p>`).join("\n  ")}
-  <div class="pf-stats"><span class="pf-stat"><b>${N}</b> hotels</span><span class="pf-stat"><b>${NC}</b> countries</span><span class="pf-stat"><b>${homesPetCount}</b> pet-friendly villas &amp; residences</span></div>
+<section class="pf-hero"><div class="pf-wrap pf-hero__grid">
+  <div class="pf-rv">
+    <span class="pf-eyebrow">${PAW}Travel with your pet</span>
+    <h1>Pet-Friendly <em>Luxury Hotels</em></h1>
+    ${intro[0] ? `<p class="pf-hero__lead">${esc(intro[0])}</p>` : ""}
+    <form class="pf-find" id="pf-find" role="search"><span>${ICONS.search}</span><label style="position:absolute;left:-9999px" for="pf-find-q">Search pet-friendly hotels</label>
+      <input id="pf-find-q" type="search" placeholder="Where are you going with your pet?" autocomplete="off" enterkeyhint="search">
+      <button class="pf-btn pf-btn--gold" type="submit" aria-label="Search">${ICONS.arrow}<span>Search</span></button></form>
+    <div class="pf-quick"><span>Popular:</span>${DESTS.slice(0, 5).map((d) => `<a class="pf-chip" href="#browse" data-q="${esc(d.city)}">${esc(d.city)}</a>`).join("")}</div>
+  </div>
+  <div class="pf-mosaic pf-rv" aria-hidden="true">
+    <figure><img src="${esc(img(PET_PHOTO, 900, 1100))}" alt="" width="900" height="1100" fetchpriority="high"></figure>
+    ${heroA ? `<figure><img src="${esc(img(heroA.photo, 640, 480))}" alt="" width="640" height="480"><figcaption>${esc(heroA.name)}</figcaption></figure>` : ""}
+    ${heroB ? `<figure><img src="${esc(img(heroB.photo, 640, 480))}" alt="" width="640" height="480"><figcaption>${esc(heroB.name)}</figcaption></figure>` : ""}
+    <div class="pf-badge pf-badge--a"><i>${PAW}</i><div><b>${N}</b><span>hotels welcome pets</span></div></div>
+    <div class="pf-badge pf-badge--b"><i>${ICONS.pin}</i><div><b>${NC}</b><span>countries</span></div></div>
+  </div>
 </div></section>
 
-<div class="pf-tools" id="hotels"><div class="pf-wrap"><form class="pf-tools__in" id="pf-form" role="search">
-  <label class="pf-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-    <span class="visually-hidden" style="position:absolute;left:-9999px">Search pet-friendly hotels</span>
-    <input id="pf-q" type="search" placeholder="Hotel, city, country or brand" autocomplete="off" enterkeyhint="search"></label>
-  <select id="pf-country" class="pf-select" aria-label="Country"><option value="">All ${NC} countries</option>${countries.map((c) => `<option value="${esc(c)}" data-id="${slug(c)}">${esc(c)} (${byCountry[c].length})</option>`).join("")}</select>
-  <span class="pf-shown" id="pf-shown" aria-live="polite">${N} hotels</span>
-</form></div></div>
+<div class="pf-marquee" aria-label="Brands"><div class="pf-marquee__track">${marqueeItems}<span aria-hidden="true" style="display:contents">${marqueeItems.replace(/<button /g, '<button tabindex="-1" ')}</span></div></div>
 
-<div class="pf-wrap">
-  <div class="pf-callout">${PAW}<p>Prefer a villa or residence? <b>${homesPetCount}</b> homes, villas and residences in the WhataHotel! Homes collection welcome pets, each with its pet policy.</p><a href="${HOMES_URL}">See pet-friendly homes →</a></div>
-  <nav class="pf-index" aria-label="Countries">${countries.map((c) => `<a href="#${slug(c)}">${esc(c)} <b>${byCountry[c].length}</b></a>`).join("")}</nav>
-  <p class="pf-empty" id="pf-empty" hidden>No pet-friendly hotels match that search. Try a city, country or brand, or <a href="mailto:${EMAIL}">ask an advisor</a>.</p>
-  ${countries.map(countrySection).join("\n")}
+<section class="pf-sec" id="destinations"><div class="pf-wrap">
+  <div class="pf-sec__head pf-rv"><div><span class="pf-eyebrow">${PAW}Top destinations</span><h2 class="pf-h2">Where pets are <em>most welcome</em></h2></div>
+    <div class="pf-dest-nav"><p class="pf-lead" style="max-width:36ch">The cities with the most pet-friendly hotels in the collection. Tap one to see them all.</p>
+    <div class="pf-arrows"><button type="button" class="pf-arrow" data-dir="-1" aria-label="Previous destinations">${ICONS.arrow}</button><button type="button" class="pf-arrow" data-dir="1" aria-label="Next destinations">${ICONS.arrow}</button></div></div></div>
+  <div class="pf-dests pf-rv">${DESTS.map((d) => `<button type="button" class="pf-dest" data-q="${esc(d.city)}"><img src="${esc(img(d.pick.photo, 560, 700))}" alt="${esc(d.pick.name)}" loading="lazy" decoding="async" width="560" height="700"><span class="pf-dest__t"><b>${esc(d.city)}</b><span>${PAW}${d.count} pet-friendly ${d.count === 1 ? "hotel" : "hotels"}</span></span></button>`).join("")}</div>
+</div></section>
 
-  <section class="pf-faq" id="faq" aria-labelledby="pf-faq-t"><h2 id="pf-faq-t">Frequently asked questions</h2>
-  ${FAQ.map(([q, a]) => `<details><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join("\n  ")}
-  </section>
-</div>
+<section class="pf-wrap"><div class="pf-know pf-rv">
+  <span class="pf-eyebrow">${PAW}Before you book</span>
+  <h2 class="pf-h2" style="margin-top:.9rem;max-width:18ch">Every pet rule, <em>confirmed for you</em></h2>
+  ${intro[1] ? `<p class="pf-lead" style="margin-top:1rem">${esc(intro[1])}</p>` : ""}
+  <div class="pf-know__grid">${knowItems.map(([k, t, d]) => `<div class="pf-know__item"><i>${ICONS[k]}</i><b>${t}</b><p>${d}</p></div>`).join("")}</div>
+  <div class="pf-know__foot"><a class="pf-btn pf-btn--gold" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">${ICONS.mail}Email an advisor</a><a class="pf-btn" href="tel:${PHONE.replace(/[^+\d]/g, "")}">${ICONS.phone}${PHONE}</a></div>
+</div></section>
+
+<section class="pf-sec" id="browse" style="padding-bottom:0">
+  <div class="pf-wrap pf-sec__head pf-rv"><div><span class="pf-eyebrow">${PAW}The full collection</span><h2 class="pf-h2">All ${N} <em>pet-friendly hotels</em></h2></div>
+    <p class="pf-lead" style="max-width:44ch">Search by hotel, city, country or brand. View Rates opens live rates on WhataHotel.com.</p></div>
+  <div class="pf-tools"><div class="pf-wrap"><form class="pf-tools__in" id="pf-form" role="search">
+    <label class="pf-search">${ICONS.search}<span style="position:absolute;left:-9999px">Search pet-friendly hotels</span><input id="pf-q" type="search" placeholder="Hotel, city, country or brand" autocomplete="off" enterkeyhint="search"></label>
+    <select id="pf-country" class="pf-select" aria-label="Country"><option value="">All ${NC} countries</option>${countries.slice().sort().map((c) => `<option value="${esc(c)}">${esc(c)} (${byCountry[c].length})</option>`).join("")}</select>
+    <select id="pf-brand" class="pf-select" aria-label="Brand"><option value="">All ${NB} brands</option>${brands.map((b) => `<option value="${esc(b)}">${esc(b)} (${brandCounts[b]})</option>`).join("")}</select>
+    <span class="pf-shown" id="pf-shown" aria-live="polite"><b>${N}</b> hotels</span><button type="button" class="pf-reset" id="pf-reset" hidden>Clear filters</button>
+  </form></div></div>
+  <div class="pf-wrap">
+    <div class="pf-countries">${topCountries.map((c) => `<a class="pf-chip" href="#${slug(c)}" data-country-pick="${esc(c)}">${esc(c)} <b>${byCountry[c].length}</b></a>`).join("")}</div>
+    <div class="pf-empty" id="pf-empty" hidden><p>No pet-friendly hotels match that search. Try a city, country or brand, or <a href="mailto:${EMAIL}">ask an advisor</a>.</p></div>
+    ${countries.map(countrySection).join("\n")}
+  </div>
+</section>
+
+<section class="pf-sec" id="homes"><div class="pf-wrap"><div class="pf-homes pf-rv">
+  <div><span class="pf-eyebrow" style="color:var(--sage)">${PAW}Villas, residences &amp; homes</span>
+    <h2 class="pf-h2" style="margin:.9rem 0 1rem">Prefer a villa? <em>Bring the whole family.</em></h2>
+    <p class="pf-lead">${homesPetCount} villas, residences and homes in the WhataHotel! Homes collection welcome pets, each with its pet policy from the property's own page.</p>
+    <a class="pf-btn pf-btn--ink" href="${HOMES_URL}">See pet-friendly homes ${ICONS.arrow}</a></div>
+  <div class="pf-homes__pics">${petHomes.map((p) => `<a href="${HOMES_URL}"><img src="${esc(img(W.WAH_IMAGES[p.id].hero, 520, 390))}" alt="${esc(p.name)}" loading="lazy" decoding="async" width="520" height="390"><span>${esc(p.name)}</span></a>`).join("")}</div>
+</div></div></section>
+
+<section class="pf-sec" id="faq" style="padding-top:0"><div class="pf-wrap pf-faq">
+  <div class="pf-rv"><span class="pf-eyebrow">${PAW}Good to know</span><h2 class="pf-h2" style="margin-top:.9rem">Questions, <em>answered</em></h2>
+    <div class="pf-advisor"><b>Talk to an advisor</b><p>We'll confirm the pet rules for your dates and your pet before you book.</p>
+      <a href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">${ICONS.mail}${EMAIL}</a><a href="tel:${PHONE.replace(/[^+\d]/g, "")}">${ICONS.phone}${PHONE}</a></div></div>
+  <div class="pf-qa pf-rv">${FAQ.map(([q, a], i) => `<details${i === 0 ? " open" : ""}><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join("")}</div>
+</div></section>
 </main>
 
-<footer class="pf-footer"><div class="pf-wrap pf-footer__in">
-  <div><b style="color:#fff">WhataHotel! by Lorraine Travel</b><br><a href="mailto:${EMAIL}">${EMAIL}</a> · <a href="tel:${PHONE.replace(/[^+\d]/g, "")}">${PHONE}</a><br><a href="${HOMES_URL}">Homes &amp; Villas</a> · <a href="#hotels">Pet-friendly hotels</a></div>
-  <div class="pf-social"><a href="${SOCIAL.instagram}" target="_blank" rel="noopener" aria-label="WhataHotel! on Instagram">${IG}</a><a href="${SOCIAL.facebook}" target="_blank" rel="noopener" aria-label="WhataHotel! on Facebook">${FB}</a></div>
-  <div style="width:100%;font-size:.8rem">© ${new Date().getFullYear()} WhataHotel! by Lorraine Travel. Pet rules are set by each hotel and can change; an advisor confirms the details for your pet before you book.</div>
+<footer class="pf-footer"><div class="pf-wrap">
+  <div class="pf-footer__in">
+    <div><b>WhataHotel! by Lorraine Travel</b><p>Luxury hotels, villas and homes, with preferred-partner perks.</p></div>
+    <ul><li><a href="${HOMES_URL}">Homes &amp; Villas</a></li><li><a href="#browse">Pet-friendly hotels</a></li><li><a href="mailto:${EMAIL}">${EMAIL}</a></li><li><a href="tel:${PHONE.replace(/[^+\d]/g, "")}">${PHONE}</a></li></ul>
+    <div class="pf-social"><a href="${SOCIAL.instagram}" target="_blank" rel="noopener" aria-label="WhataHotel! on Instagram">${IG}</a><a href="${SOCIAL.facebook}" target="_blank" rel="noopener" aria-label="WhataHotel! on Facebook">${FB}</a></div>
+  </div>
+  <p class="pf-legal">© ${new Date().getFullYear()} WhataHotel! by Lorraine Travel. Pet rules are set by each hotel and can change; an advisor confirms the details for your pet before you book.</p>
 </div></footer>
 </div>
 <script>${JS}</script>
 </body>
 </html>
 `;
+const BYTES = Buffer.byteLength(html);
+if (BYTES > 950000) throw new Error(`pet-friendly.html would be ${BYTES} bytes — over the 950,000-byte safety limit (GoHighLevel truncates at 1,000,000).`);
 writeFileSync(join(root, "pet-friendly.html"), html);
-console.log(`Wrote pet-friendly.html (${Buffer.byteLength(html)} bytes): ${N} hotels in ${NC} countries; ${homesPetCount} pet-friendly homes on /homes`);
+console.log(`Wrote pet-friendly.html (${BYTES} bytes): ${N} hotels in ${NC} countries, ${Object.keys(IMAGES).length} with photos; ${DESTS.length} destinations; ${petHomes.length} home photos; ${homesPetCount} pet-friendly homes on /homes`);
