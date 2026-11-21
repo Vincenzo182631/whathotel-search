@@ -31,6 +31,11 @@ const LOGO = "https://wsrv.nl/?url=ssl:assets.cdn.filesafe.space/fBHK0xDUEFQL6rO
 const PET_PHOTO = "https://www.whatahotel.com/content/pets_header.jpg";
 
 const COLL = JSON.parse(read("scripts/pet-collection.json"));
+// Same GoHighLevel Inbound Webhook as the Homes "Request Availability" form (and Greg's
+// advisor requests): the GHL workflow emails Reservations@WhataHotel.com.
+const HOOK = process.env.GHL_WEBHOOK_URL || ((read("index.html").match(/<meta name="wah-ghl-webhook" content="([^"]*)"/) || [])[1] || "");
+if (HOOK && !/^https:\/\/(services|backend)\.leadconnectorhq\.com\/hooks\/[A-Za-z0-9_\-\/]+$/.test(HOOK)) throw new Error("GHL webhook URL must look like https://services.leadconnectorhq.com/hooks/…");
+if (!HOOK) console.warn("  ! No GHL webhook found — the Ask an advisor form will fall back to email links.");
 const IMAGES = existsSync(join(root, "scripts/pet-images.json")) ? JSON.parse(read("scripts/pet-images.json")) : {};
 const W = load("assets/js/data.js", "assets/js/pets.js", "assets/js/images.js");
 const PETS = W.WAH_PETS || {};
@@ -294,6 +299,40 @@ background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 .pf-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
 .pf-social{display:flex;gap:.7rem}.pf-social a{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.22);transition:background .2s}.pf-social a:hover{background:rgba(255,255,255,.1)}.pf-social svg{width:19px;height:19px}
 .pf-legal{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.1);font-size:.8rem;color:rgba(244,239,230,.5)}
+/* ask-an-advisor form (moved to <body> by the script, so it carries its own base styles) */
+.pf-card__ask{align-self:flex-start;margin-top:.2rem;padding:0;border:0;background:none;color:var(--sage);font:600 .8rem/1.3 var(--sans);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pf-card__ask:hover{color:var(--ink)}
+.pf-modal{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;padding:20px;font:400 16px/1.55 var(--sans);color:var(--text);text-align:left;-webkit-font-smoothing:antialiased}
+.pf-modal *{box-sizing:border-box}.pf-modal p{margin:0}.pf-modal h2{margin:0;letter-spacing:normal;text-transform:none}
+.pf-modal__bg{position:absolute;inset:0;background:rgba(8,16,26,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:pf-fade .25s ease}
+.pf-modal__box{position:relative;width:min(640px,100%);max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow:auto;overscroll-behavior:contain;background:var(--cream);border-radius:26px;padding:clamp(24px,4vw,38px);box-shadow:0 40px 80px -30px rgba(0,0,0,.5);animation:pf-pop .3s cubic-bezier(.2,.7,.2,1)}
+@keyframes pf-fade{from{opacity:0}}@keyframes pf-pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.pf-modal__x{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;font:400 24px/1 var(--sans);color:var(--ink);cursor:pointer}
+.pf-modal__x:hover{background:var(--ink);color:#fff}
+.pf-modal__h{font:500 clamp(1.6rem,4vw,2.1rem)/1.15 var(--serif)!important;color:var(--ink);margin:.7rem 0 .6rem!important}
+.pf-modal__lead{color:var(--soft);font-size:.95rem}
+#pf-ask-form{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;margin-top:1.4rem}
+.pf-f{display:grid;gap:.3rem;min-width:0}.pf-f--full{grid-column:1 / -1}
+.pf-f label,.pf-pet legend{font:600 .82rem/1.3 var(--sans);color:var(--ink)}.pf-f label i{color:#b0573a;font-style:normal}.pf-f label span{font-weight:400;color:var(--mut)}
+.pf-f input,.pf-f select,.pf-f textarea{width:100%;font:inherit;font-size:16px;padding:.7rem .85rem;border:1px solid rgba(12,26,43,.16);border-radius:12px;background:#fff;color:var(--ink);outline:0;margin:0;box-shadow:none;height:auto}
+.pf-f input:focus,.pf-f select:focus,.pf-f textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(198,163,90,.18)}
+.pf-f textarea{resize:vertical;min-height:80px}.pf-f input[type=date]{min-width:0;max-width:100%;-webkit-appearance:none;appearance:none;min-height:46px;display:block}
+.pf-f small{min-height:0;font-size:.78rem;color:#b0573a}.pf-f small:empty{display:none}
+.pf-f.is-bad input,.pf-f.is-bad select{border-color:#c8735a}
+.pf-pet{display:grid;grid-template-columns:1fr .7fr 1fr;gap:12px;margin:0;padding:14px;border:1px solid var(--mint-line);border-radius:16px;background:var(--mint)}
+.pf-pet legend{display:inline-flex;align-items:center;gap:.4rem;padding:0 .4rem;color:var(--sage)}.pf-pet legend .pf-paw{width:1rem;height:1rem}
+.pf-consent label{display:flex;gap:.6rem;align-items:flex-start;font-weight:400;color:var(--soft);font-size:.86rem;cursor:pointer}
+.pf-consent input{width:18px;height:18px;margin:.15rem 0 0;flex:none;accent-color:var(--sage);padding:0}
+.pf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.pf-form-err{grid-column:1 / -1;padding:.8rem 1rem;border-radius:12px;background:#fbece6;color:#8a3a22;font-size:.9rem}.pf-form-err a{color:inherit;font-weight:600}
+.pf-submit{grid-column:1 / -1;padding:.95rem 1.4rem!important;font-size:1rem!important;color:var(--ink)}.pf-submit[disabled]{opacity:.7;cursor:progress}
+.pf-modal__alt{grid-column:1 / -1;text-align:center;font-size:.85rem;color:var(--mut)}.pf-modal__alt a{color:var(--ink);font-weight:600}
+.pf-ok{text-align:center;display:grid;justify-items:center;gap:.4rem;padding:1rem 0}
+.pf-ok__ic{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--mint);color:var(--sage)}.pf-ok__ic .pf-paw{width:32px;height:32px}
+.pf-ok__ref{font-size:.85rem;color:var(--mut);margin:.2rem 0 1rem!important}
+html.pf-lock,html.pf-lock body{overflow:hidden}
+@media (max-width:600px){.pf-modal{padding:0;place-items:end stretch}.pf-modal__box{width:100%;max-height:94vh;max-height:94dvh;border-radius:24px 24px 0 0;padding:26px 18px calc(22px + env(safe-area-inset-bottom))}
+#pf-ask-form{grid-template-columns:1fr 1fr;gap:12px}.pf-f:not(.pf-f--full):nth-of-type(n+4){grid-column:1 / -1}.pf-pet{grid-template-columns:1fr 1fr}.pf-pet .pf-f:last-child{grid-column:1 / -1}}
 /* reveal */
 .pf-js .pf-rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .pf-js .pf-rv.is-in{opacity:1;transform:none}
@@ -330,7 +369,7 @@ cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),id=li.get
   im.src="https://wsrv.nl/?url="+encodeURIComponent(src.replace(/^https?:\/\//,""))+"&w=640&h=440&fit=cover&output=webp&q=70";im.alt=nm.textContent;im.loading="lazy";im.decoding="async";im.width=640;im.height=440;box.appendChild(im)}
  else box.innerHTML='<span class="pf-card__ph">'+PAWH+"</span>";
  box.insertAdjacentHTML("beforeend",'<span class="pf-card__pet">'+PAWH+"Pets welcome</span>");li.insertBefore(box,body);
- var loc=li.querySelector(".pf-card__loc");loc.insertAdjacentHTML("afterbegin",PINH);
+ var loc=li.querySelector(".pf-card__loc");loc.insertAdjacentHTML("afterbegin",PINH);body.insertAdjacentHTML("beforeend",'<button type="button" class="pf-card__ask" data-ask-hotel>Ask about this hotel\u2019s pet rules</button>');
  var d=D.createElement("div");d.className="pf-card__act";
  d.appendChild(link("pf-btn pf-btn--gold","https://whatahotel.com/booking/showRates.cfm?hotelID="+id+"&checkIn="+ymd(a)+"&checkOut="+ymd(b)+"&guests=2&children=0&rooms=1&"+UTM,"View Rates"));
  d.appendChild(link("pf-btn",nm.href,"Details"));li.appendChild(d);
@@ -363,13 +402,88 @@ var hf=D.getElementById("pf-find");hf.addEventListener("submit",function(ev){ev.
 [].forEach.call(D.querySelectorAll("[data-brand]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value="";sel.value="";br.value=x.getAttribute("data-brand");apply();go()})});
 [].forEach.call(D.querySelectorAll("[data-country-pick]"),function(x){x.addEventListener("click",function(ev){ev.preventDefault();q.value="";br.value="";sel.value=x.getAttribute("data-country-pick");apply();go()})});
 apply();
+
+/* ---------- Ask an advisor: form posted to the GoHighLevel webhook (same as the Homes page) ---------- */
+var HOOK="__HOOK__",NOTIFY="__EMAIL__",PHONE="__PHONE__",modal=D.getElementById("pf-ask");
+D.body.appendChild(modal);
+var form=D.getElementById("pf-ask-form"),errBox=D.getElementById("pf-ask-err"),sendBtn=D.getElementById("pf-ask-send"),lastFocus=null,openedAt=0,subId="",busy=false;
+function $i(id){return D.getElementById(id)}function val(id){return($i(id).value||"").trim()}
+function escH(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+var HOTELS={},dl=$i("pf-hotels");
+cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),n=nm.textContent;HOTELS[norm(n)]={id:li.getAttribute("data-id"),name:n,loc:li.querySelector(".pf-card__loc").textContent,country:li.closest(".pf-country").getAttribute("data-country"),url:nm.href.split("?")[0]};
+ var o=D.createElement("option");o.value=n;dl.appendChild(o)});
+function track(ev,o){try{if(window.dataLayer)window.dataLayer.push(Object.assign({event:ev},o||{}))}catch(x){}}
+function openAsk(where){lastFocus=D.activeElement;$i("pf-ask-main").hidden=false;$i("pf-ask-ok").hidden=true;errBox.hidden=true;[].forEach.call(form.querySelectorAll("input,select,textarea"),function(x){if(x.id)fieldErr(x.id,"")});
+ if(where!=null)$i("pf-a-where").value=where;openedAt=Date.now();subId="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+ var t=new Date();var mn=t.getFullYear()+"-"+pad(t.getMonth()+1)+"-"+pad(t.getDate());$i("pf-a-in").min=mn;$i("pf-a-out").min=mn;
+ modal.hidden=false;D.documentElement.classList.add("pf-lock");
+ setTimeout(function(){var f=where?$i("pf-a-name"):$i("pf-a-where");try{f.focus({preventScroll:true})}catch(x){f.focus()}},60);track("pet_page_ask_open",{prefilled:!!where})}
+function closeAsk(){modal.hidden=true;D.documentElement.classList.remove("pf-lock");if(lastFocus&&lastFocus.focus)try{lastFocus.focus({preventScroll:true})}catch(x){}}
+D.addEventListener("click",function(ev){var t=ev.target.closest&&ev.target.closest("[data-ask],[data-ask-hotel],[data-close]");if(!t)return;
+ if(t.hasAttribute("data-close")){ev.preventDefault();closeAsk();return}
+ if(!HOOK)return; // no webhook configured: let the email link work
+ ev.preventDefault();if(t.hasAttribute("data-ask-hotel")){var c=t.closest(".pf-card");openAsk(c.querySelector(".pf-card__name a").textContent)}else openAsk(null)});
+D.addEventListener("keydown",function(ev){if(modal.hidden)return;if(ev.key==="Escape"){closeAsk();return}
+ if(ev.key==="Tab"){var f=[].filter.call(modal.querySelectorAll("button,input,select,textarea,a[href]"),function(x){return!x.disabled&&x.offsetParent&&x.tabIndex>=0});if(!f.length)return;
+  var a1=f[0],z=f[f.length-1];if(ev.shiftKey&&D.activeElement===a1){ev.preventDefault();z.focus()}else if(!ev.shiftKey&&D.activeElement===z){ev.preventDefault();a1.focus()}}});
+form.addEventListener("input",function(ev){var t=ev.target;if(t.id&&t.closest(".pf-f.is-bad"))fieldErr(t.id,"")});form.addEventListener("change",function(ev){var t=ev.target;if(t.id&&t.closest(".pf-f.is-bad"))fieldErr(t.id,"")});
+function fieldErr(id,msg){var box=$i(id).closest(".pf-f");if(!box)return;box.classList.toggle("is-bad",!!msg);var sm=box.querySelector("small");if(sm)sm.textContent=msg||"";$i(id).setAttribute("aria-invalid",msg?"true":"false")}
+function dParse(x){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(x||"");return m?Date.UTC(+m[1],+m[2]-1,+m[3]):null}
+function validate(){var e={},today=dParse(ymd(new Date()));
+ if(!val("pf-a-where"))e["pf-a-where"]="Please tell us the hotel or destination.";
+ if(!val("pf-a-name"))e["pf-a-name"]="Please enter your name.";
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("pf-a-email")))e["pf-a-email"]="Please enter a valid email address.";
+ var ci=dParse(val("pf-a-in")),co=dParse(val("pf-a-out"));
+ if(val("pf-a-in")&&(ci==null||ci<today))e["pf-a-in"]="Please choose a date from today on.";
+ if(val("pf-a-out")&&(co==null||(ci!=null&&co<=ci)))e["pf-a-out"]="Check-out must be after check-in.";
+ var ad=parseInt(val("pf-a-adults")||"0",10);if(!(ad>=1&&ad<=20))e["pf-a-adults"]="Please enter 1 to 20 guests.";
+ if(!$i("pf-a-consent").checked)e["pf-a-consent"]="Please confirm we may contact you about this inquiry.";
+ ["pf-a-where","pf-a-name","pf-a-email","pf-a-in","pf-a-out","pf-a-adults","pf-a-consent"].forEach(function(id){fieldErr(id,e[id])});return e}
+var SEND_KEY="wah_pet_sends";function recent(){try{return(JSON.parse(localStorage.getItem(SEND_KEY)||"[]")||[]).filter(function(t){return Date.now()-t<6e5})}catch(x){return[]}}
+function noteSend(){try{var r=recent();r.push(Date.now());localStorage.setItem(SEND_KEY,JSON.stringify(r))}catch(x){}}
+function showErr(html){errBox.innerHTML=html;errBox.hidden=!html;if(html)errBox.focus()}
+function contact(){return' Please try again, or email <a href="mailto:'+NOTIFY+'">'+NOTIFY+'</a> or call <a href="tel:'+PHONE.replace(/[^+\d]/g,"")+'">'+PHONE+"</a>."}
+function inquiryId(){var d=new Date(),c="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",r="";for(var i=0;i<6;i++)r+=c.charAt(Math.floor(Math.random()*c.length));return"PET-"+d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"-"+r}
+function build(){var where=val("pf-a-where"),h=HOTELS[norm(where)]||null,name=val("pf-a-name"),parts=name.split(/\s+/),email=val("pf-a-email"),phone=val("pf-a-phone"),
+ ci=val("pf-a-in"),co=val("pf-a-out"),nights=(dParse(ci)!=null&&dParse(co)!=null)?Math.round((dParse(co)-dParse(ci))/864e5):"",adults=parseInt(val("pf-a-adults"),10)||2,
+ pet=val("pf-a-pet"),pets=val("pf-a-pets"),weight=val("pf-a-weight"),msg=val("pf-a-msg"),id=inquiryId(),at=new Date().toISOString(),
+ dest=h?(h.name+" ("+h.loc+", "+h.country+")"):where,subject="New Pet-Friendly Hotel Inquiry — "+(h?h.name:where);
+ var rows=[["Hotel or destination",dest]].concat(h?[["Hotel page",h.url]]:[]).concat([["Guest name",name],["Guest email",email],["Guest phone",phone||"Not provided"],
+  ["Check-in",ci||"Not given"],["Check-out",co||"Not given"],["Nights",nights===""?"":String(nights)],["Guests",String(adults)],
+  ["Pet",pet],["Number of pets",pets],["Approx. weight",weight||"Not given"],["Message",msg||"None"],["Submitted",at],["Inquiry ID",id]]);
+ var note="Please confirm the hotel's pet rules (fee, weight limit, number of pets, room types) and reply to the guest.";
+ var text=[subject,"","This is an inquiry from the Pet-Friendly Luxury Hotels page. Nothing has been booked or confirmed.",""].concat(rows.map(function(r){return r[0]+": "+r[1]})).concat(["",note,"Reply to the guest at "+email+"."]).join("\n");
+ var html='<div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#0c1a2b"><p style="margin:0 0 4px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2f5d46">Pet-friendly hotels · Advisor request</p>'+
+  '<h2 style="margin:0 0 12px;font-family:Georgia,serif;font-weight:normal">'+escH(h?h.name:where)+'</h2><p style="margin:0 0 14px;padding:8px 10px;background:#eaf3ec;border-left:3px solid #2f5d46">This is an <b>inquiry</b>. Nothing has been booked or confirmed. '+escH(note)+'</p>'+
+  '<table cellpadding="0" cellspacing="0" style="border-collapse:collapse">'+rows.map(function(r){var v=r[0]==="Guest email"?'<a href="mailto:'+escH(r[1])+'">'+escH(r[1])+"</a>":r[0]==="Hotel page"?'<a href="'+escH(r[1])+'">'+escH(r[1])+"</a>":escH(r[1]).replace(/\n/g,"<br>");
+  return'<tr><td style="padding:4px 14px 4px 0;color:#728394;vertical-align:top;white-space:nowrap">'+escH(r[0])+'</td><td style="padding:4px 0">'+v+"</td></tr>"}).join("")+"</table></div>";
+ var pmsg="Pet: "+pet+" · "+pets+(weight?" · approx. "+weight:"")+(msg?"\n"+msg:"");
+ return{event:"pet_friendly_hotel_inquiry",inquiry_id:id,submitted_at:at,submission_id:subId,source_page:location.href.split(/[?#]/)[0],notify_to:NOTIFY,reply_to:email,subject:subject,email_text:text,email_html:html,
+  property_id:h?h.id:"",property_name:h?h.name:where,property_country:h?h.country:"",property_location:h?h.loc:"",property_destination:dest,property_source_url:h?h.url:"",
+  full_name:name,first_name:parts[0]||"",last_name:parts.slice(1).join(" "),email:email,phone:phone,check_in:ci,check_out:co,nights:nights,adults:adults,children:0,infants:0,total_guests:adults,
+  pet_type:pet,pet_count:pets,pet_weight:weight,message:pmsg,over_published_capacity:"No",consent:"Yes",tags:"pet-friendly-inquiry"}}
+function post(body,attempt){attempt=attempt||0;var ctrl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctrl)ctrl.abort()},2e4);
+ return fetch(HOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),signal:ctrl?ctrl.signal:undefined})
+  .then(function(r){clearTimeout(tm);return{ok:r.ok,status:r.status}},function(){clearTimeout(tm);return{ok:false,status:0}})
+  .then(function(r){if(!r.ok&&(r.status===0||r.status===429||r.status>=500)&&attempt<2)return new Promise(function(z){setTimeout(z,800*Math.pow(3,attempt))}).then(function(){return post(body,attempt+1)});return r})}
+form.addEventListener("submit",function(ev){ev.preventDefault();if(busy)return;showErr("");
+ var e=validate(),k=Object.keys(e);if(k.length){$i(k[0]).focus();return}
+ if($i("pf-a-website").value){done("",val("pf-a-email"));return} // honeypot: look normal, send nothing
+ if(Date.now()-openedAt<1500){showErr("Please take a moment to review your details, then send again.");return}
+ if(recent().length>=3){showErr("You've sent several requests in the last few minutes."+contact());return}
+ var body=build();busy=true;sendBtn.disabled=true;sendBtn.textContent="Sending…";
+ post(body).then(function(r){if(r.ok){noteSend();done(body.inquiry_id,body.email);track("pet_page_ask_sent",{matched_hotel:!!body.property_id})}
+  else{showErr("We couldn't send your request just now."+contact());track("pet_page_ask_failed",{status:r.status})}})
+ .then(function(){busy=false;sendBtn.disabled=false;sendBtn.textContent="Send request"})});
+function done(ref,email){$i("pf-ok-email").textContent=email;$i("pf-ok-ref").textContent=ref?"Reference: "+ref:"";$i("pf-ask-main").hidden=true;var ok=$i("pf-ask-ok");ok.hidden=false;ok.focus();
+ form.reset();$i("pf-a-adults").value="2";[].forEach.call(form.querySelectorAll(".pf-f"),function(b){b.classList.remove("is-bad")})}
 // header shadow + reveal on scroll
 function onScroll(){hd.classList.toggle("is-stuck",hd.getBoundingClientRect().top<=0&&(window.scrollY||0)>8)}
 window.addEventListener("scroll",onScroll,{passive:true});onScroll();
 var rv=[].slice.call(D.querySelectorAll(".pf-rv"));
 if("IntersectionObserver"in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});rv.forEach(function(x){io.observe(x)})}
 else rv.forEach(function(x){x.classList.add("is-in")});
-})();`.replace("__UTM__", UTM);
+})();`.replace("__UTM__", UTM).replace("__HOOK__", HOOK).replace("__EMAIL__", EMAIL).replace("__PHONE__", PHONE);
 
 const topCountries = countries.slice().sort((x, y) => byCountry[y].length - byCountry[x].length).slice(0, 10);
 const knowItems = [
@@ -403,7 +517,7 @@ const html = `<!DOCTYPE html>
 <header class="pf-header"><div class="pf-wrap pf-header__in">
   <a class="pf-logo" href="${HOMES_URL}" aria-label="WhataHotel! Homes"><img src="${LOGO}" alt="WhataHotel!" width="133" height="30"></a>
   <nav class="pf-nav" aria-label="Primary"><a href="#destinations">Destinations</a><a href="#browse">All hotels</a><a href="#homes">Villas &amp; homes</a><a href="#faq">FAQ</a></nav>
-  <a class="pf-btn pf-btn--ink" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">Ask an advisor</a>
+  <a class="pf-btn pf-btn--ink" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry" data-ask>Ask an advisor</a>
 </div></header>
 
 <main>
@@ -440,7 +554,7 @@ const html = `<!DOCTYPE html>
   <h2 class="pf-h2" style="margin-top:.9rem;max-width:18ch">Every pet rule, <em>confirmed for you</em></h2>
   ${intro[1] ? `<p class="pf-lead" style="margin-top:1rem">${esc(intro[1])}</p>` : ""}
   <div class="pf-know__grid">${knowItems.map(([k, t, d]) => `<div class="pf-know__item"><i>${ICONS[k]}</i><b>${t}</b><p>${d}</p></div>`).join("")}</div>
-  <div class="pf-know__foot"><a class="pf-btn pf-btn--gold" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">${ICONS.mail}Email an advisor</a><a class="pf-btn" href="tel:${PHONE.replace(/[^+\d]/g, "")}">${ICONS.phone}${PHONE}</a></div>
+  <div class="pf-know__foot"><a class="pf-btn pf-btn--gold" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry" data-ask>${ICONS.mail}Ask an advisor</a><a class="pf-btn" href="tel:${PHONE.replace(/[^+\d]/g, "")}">${ICONS.phone}${PHONE}</a></div>
 </div></section>
 
 <section class="pf-sec" id="browse" style="padding-bottom:0">
@@ -454,7 +568,7 @@ const html = `<!DOCTYPE html>
   </form></div></div>
   <div class="pf-wrap">
     <div class="pf-countries">${topCountries.map((c) => `<a class="pf-chip" href="#${slug(c)}" data-country-pick="${esc(c)}">${esc(c)} <b>${byCountry[c].length}</b></a>`).join("")}</div>
-    <div class="pf-empty" id="pf-empty" hidden><p>No pet-friendly hotels match that search. Try a city, country or brand, or <a href="mailto:${EMAIL}">ask an advisor</a>.</p></div>
+    <div class="pf-empty" id="pf-empty" hidden><p>No pet-friendly hotels match that search. Try a city, country or brand, or <a href="mailto:${EMAIL}" data-ask>ask an advisor</a>.</p></div>
     ${countries.map(countrySection).join("\n")}
   </div>
 </section>
@@ -470,11 +584,50 @@ const html = `<!DOCTYPE html>
 <section class="pf-sec" id="faq" style="padding-top:0"><div class="pf-wrap pf-faq">
   <div class="pf-rv"><span class="pf-eyebrow">${PAW}Good to know</span><h2 class="pf-h2" style="margin-top:.9rem">Questions, <em>answered</em></h2>
     <div class="pf-advisor"><b>Talk to an advisor</b><p>We'll confirm the pet rules for your dates and your pet before you book.</p>
+      <a class="pf-btn pf-btn--gold" href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry" data-ask style="justify-self:start;color:var(--ink)">${ICONS.mail}Send a request</a>
       <a href="mailto:${EMAIL}?subject=Pet-friendly%20hotel%20inquiry">${ICONS.mail}${EMAIL}</a><a href="tel:${PHONE.replace(/[^+\d]/g, "")}">${ICONS.phone}${PHONE}</a></div></div>
   <div class="pf-qa pf-rv">${FAQ.map(([q, a], i) => `<details${i === 0 ? " open" : ""}><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join("")}</div>
 </div></section>
 </main>
 
+<div class="pf-modal" id="pf-ask" hidden>
+  <div class="pf-modal__bg" data-close></div>
+  <div class="pf-modal__box" role="dialog" aria-modal="true" aria-labelledby="pf-ask-t" tabindex="-1">
+    <button type="button" class="pf-modal__x" data-close aria-label="Close">&times;</button>
+    <div id="pf-ask-main">
+      <span class="pf-eyebrow">${PAW}Ask an advisor</span>
+      <h2 class="pf-modal__h" id="pf-ask-t">Traveling with your pet?</h2>
+      <p class="pf-modal__lead">Tell us where you're going and about your pet. A Lorraine Travel advisor will confirm the hotel's pet rules (the fee, the weight limit, how many pets and which rooms qualify) and reply by email. Nothing is booked yet.</p>
+      <form id="pf-ask-form" novalidate>
+        <div class="pf-f pf-f--full"><label for="pf-a-where">Hotel or destination <i>*</i></label><input id="pf-a-where" list="pf-hotels" autocomplete="off" placeholder="e.g. Four Seasons Paris, or Napa Valley"><datalist id="pf-hotels"></datalist><small></small></div>
+        <div class="pf-f"><label for="pf-a-in">Check-in</label><input id="pf-a-in" type="date"><small></small></div>
+        <div class="pf-f"><label for="pf-a-out">Check-out</label><input id="pf-a-out" type="date"><small></small></div>
+        <div class="pf-f"><label for="pf-a-name">Full name <i>*</i></label><input id="pf-a-name" autocomplete="name"><small></small></div>
+        <div class="pf-f"><label for="pf-a-email">Email <i>*</i></label><input id="pf-a-email" type="email" autocomplete="email" inputmode="email"><small></small></div>
+        <div class="pf-f"><label for="pf-a-phone">Phone <span>(optional)</span></label><input id="pf-a-phone" type="tel" autocomplete="tel"><small></small></div>
+        <div class="pf-f"><label for="pf-a-adults">Guests</label><input id="pf-a-adults" type="number" min="1" max="20" value="2" inputmode="numeric"><small></small></div>
+        <fieldset class="pf-f--full pf-pet"><legend>${PAW}Your pet</legend>
+          <div class="pf-f"><label for="pf-a-pet">Pet</label><select id="pf-a-pet"><option>Dog</option><option>Cat</option><option>Dog and cat</option><option>Other</option></select></div>
+          <div class="pf-f"><label for="pf-a-pets">How many</label><select id="pf-a-pets"><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+          <div class="pf-f"><label for="pf-a-weight">Approx. weight <span>(optional)</span></label><input id="pf-a-weight" placeholder="e.g. 25 lb"></div>
+        </fieldset>
+        <div class="pf-f pf-f--full"><label for="pf-a-msg">Anything else? <span>(optional)</span></label><textarea id="pf-a-msg" rows="3" placeholder="Breed, room preferences, special occasions…"></textarea></div>
+        <div class="pf-hp" aria-hidden="true"><label for="pf-a-website">Website</label><input id="pf-a-website" tabindex="-1" autocomplete="off"></div>
+        <div class="pf-f pf-f--full pf-consent"><label><input id="pf-a-consent" type="checkbox"> I agree to be contacted by WhataHotel! / Lorraine Travel about this inquiry.</label><small></small></div>
+        <p class="pf-form-err" id="pf-ask-err" role="alert" tabindex="-1" hidden></p>
+        <button type="submit" class="pf-btn pf-btn--gold pf-submit" id="pf-ask-send">Send request</button>
+        <p class="pf-modal__alt">Prefer to call? <a href="tel:${PHONE.replace(/[^+\d]/g, "")}">${PHONE}</a> · <a href="mailto:${EMAIL}">${EMAIL}</a></p>
+      </form>
+    </div>
+    <div id="pf-ask-ok" class="pf-ok" hidden tabindex="-1">
+      <span class="pf-ok__ic">${PAW}</span>
+      <h2 class="pf-modal__h">Request sent</h2>
+      <p class="pf-modal__lead">Thank you. An advisor will confirm the pet rules and reply to <b id="pf-ok-email"></b>, usually within one business day.</p>
+      <p class="pf-ok__ref" id="pf-ok-ref"></p>
+      <button type="button" class="pf-btn pf-btn--ink" data-close>Close</button>
+    </div>
+  </div>
+</div>
 <footer class="pf-footer"><div class="pf-wrap">
   <div class="pf-footer__in">
     <div><b>WhataHotel! by Lorraine Travel</b><p>Luxury hotels, villas and homes, with preferred-partner perks.</p></div>
