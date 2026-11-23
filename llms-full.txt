@@ -1,8 +1,8 @@
 # WhataHotel! Homes — full collection
 
-> Every property on https://pro.whatahotel.com/homes (376 total): 334 hotels and resorts with villas, residences and homes, and 42 Mandarin Oriental Exceptional Homes (not bookable online; availability on request via the page's Request Availability form). Generated 2026-11-20 from the page data.
+> Every property on https://pro.whatahotel.com/homes (379 total): 337 hotels and resorts with villas, residences and homes, and 42 Mandarin Oriental Exceptional Homes (not bookable online; availability on request via the page's Request Availability form). Generated 2026-11-23 from the page data.
 
-## North America (94)
+## North America (96)
 
 ### Canada
 
@@ -19,6 +19,7 @@
 - [Auberge du Soleil](https://whatahotel.com/hotels/7163/auberge-du-soleil.html): Napa Valley, United States — Auberge Resorts
 - [Bishop's Lodge, Auberge Collection](https://whatahotel.com/hotels/6102/bishop-s-lodge-auberge-collection.html): Santa Fe, United States — Auberge Resorts
 - [Blackberry Farm](https://whatahotel.com/hotels/4839/blackberry-farm.html): Walland, United States — Relais & Châteaux
+- [Caribe Royale Orlando](https://whatahotel.com/hotels/7174/caribe-royale-orlando.html): Orlando and Disney World, United States — Signature Collection
 - [Carneros Resort & Spa](https://whatahotel.com/hotels/1636/carneros-resort-spa.html): Napa Valley, United States — Preferred
 - [Chatham Bars Inn](https://whatahotel.com/hotels/1783/chatham-bars-inn.html): Cape Cod, United States — Leading Hotels of the World
 - [Conrad Fort Lauderdale Beach](https://whatahotel.com/hotels/3333/conrad-fort-lauderdale-beach.html): Fort Lauderdale, United States — Hilton
@@ -42,6 +43,7 @@
 - [Hyatt Regency Monterey Hotel and Spa on Del Monte Golf Course](https://whatahotel.com/hotels/2194/hyatt-regency-monterey-hotel-and-spa-on-del-monte-golf-course.html): Monterey, United States — Hyatt
 - [JW Marriott Clearwater Beach Resort & Spa](https://whatahotel.com/hotels/6429/jw-marriott-clearwater-beach-resort-spa.html): Clearwater, United States — JW Marriott
 - [JW Marriott Scottsdale Camelback Inn Resort and Spa](https://whatahotel.com/hotels/3255/jw-marriott-scottsdale-camelback-inn-resort-and-spa.html): Scottsdale, United States — JW Marriott
+- [Kona Village, A Rosewood Resort](https://whatahotel.com/hotels/6370/kona-village-a-rosewood-resort.html): Big Island, United States — Rosewood
 - [L'Ermitage Beverly Hills](https://whatahotel.com/hotels/1211/l-ermitage-beverly-hills.html): Beverly Hills, United States — Signature Collection
 - [Lido House, Autograph Collection](https://whatahotel.com/hotels/3887/lido-house-autograph-collection.html): Newport Beach, United States — Autograph Collection
 - [Madeline Hotel & Residences, Auberge Collection](https://whatahotel.com/hotels/4226/madeline-hotel-residences-auberge-collection.html): Telluride, United States — Auberge Resorts
@@ -493,7 +495,7 @@
 - [JW Marriott Phu Quoc Emerald Bay Resort & Spa](https://whatahotel.com/hotels/3870/jw-marriott-phu-quoc-emerald-bay-resort-spa.html): Phu Quoc, Vietnam — JW Marriott
 - [Regent Phu Quoc](https://whatahotel.com/hotels/4751/regent-phu-quoc.html): Phu Quoc, Vietnam — Regent
 
-## Middle East & Africa (25)
+## Middle East & Africa (26)
 
 ### Egypt
 
@@ -506,6 +508,7 @@
 ### Morocco
 
 - [Mandarin Oriental, Marrakech](https://whatahotel.com/hotels/6194/mandarin-oriental-marrakech.html): Marrakech, Morocco — Mandarin Oriental
+- [Royal Mansour Marrakech](https://whatahotel.com/hotels/2378/royal-mansour-marrakech-.html): Marrakech, Morocco — Leading Hotels of the World
 
 ### Qatar
 

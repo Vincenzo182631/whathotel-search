@@ -276,6 +276,9 @@ window.WAH_IMAGES = {
   "2349": {
     "hero": "https://whatahotel.com/content/hotels/2349/st.-regis-home-page.jpg"
   },
+  "2378": {
+    "hero": "https://www.whatahotel.com/content/hotels/2378/mansour.jpg"
+  },
   "2390": {
     "hero": "https://whatahotel.com/content/hotels/2390/Vail-Four-Seasons-Outside-1920x1080.jpg"
   },
@@ -819,6 +822,9 @@ window.WAH_IMAGES = {
   "6367": {
     "hero": "https://whatahotel.com/content/hotels/6367/mc-dadmr-pool-1-27003_Feature-Hor.jpeg"
   },
+  "6370": {
+    "hero": "https://www.whatahotel.com/content/hotels/6370/0-rwklvdiningmoanadelivery.jpeg"
+  },
   "6379": {
     "hero": "https://whatahotel.com/content/hotels/6379/7.jpg"
   },
@@ -1004,5 +1010,8 @@ window.WAH_IMAGES = {
   },
   "7173": {
     "hero": "https://www.whatahotel.com/content/hotels/7173/MIralago.jpg"
+  },
+  "7174": {
+    "hero": "https://www.whatahotel.com/content/hotels/7174/Caribe-Royale_Suites_Villas.jpg"
   }
 };

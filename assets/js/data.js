@@ -20,7 +20,7 @@ window.WAH_REGIONS = [
     "label": "North America",
     "blurb": "Villas, residences & estates across the U.S. and Canada.",
     "scene": "mountain",
-    "count": 94
+    "count": 96
   },
   {
     "key": "latam-caribbean",
@@ -48,7 +48,7 @@ window.WAH_REGIONS = [
     "label": "Middle East & Africa",
     "blurb": "Desert residences & island villas across the region.",
     "scene": "desert",
-    "count": 25
+    "count": 26
   },
   {
     "key": "pacific",
@@ -61,7 +61,7 @@ window.WAH_REGIONS = [
 window.WAH_BRANDS = [
   {
     "label": "Signature Collection",
-    "count": 36
+    "count": 37
   },
   {
     "label": "Four Seasons",
@@ -73,7 +73,7 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Leading Hotels of the World",
-    "count": 20
+    "count": 21
   },
   {
     "label": "Ritz-Carlton",
@@ -85,7 +85,7 @@ window.WAH_BRANDS = [
   },
   {
     "label": "Rosewood",
-    "count": 12
+    "count": 13
   },
   {
     "label": "Auberge Resorts",
@@ -1031,6 +1031,21 @@ window.WAH_PROPERTIES = [
     "brand": "Leading Hotels of the World",
     "scene": "beach",
     "blurb": "In Mallorca, Spain.",
+    "featured": false
+  },
+  {
+    "id": 7174,
+    "url": "https://whatahotel.com/hotels/7174/caribe-royale-orlando.html",
+    "name": "Caribe Royale Orlando",
+    "loc": "Orlando and Disney World, United States",
+    "city": "Orlando and Disney World",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "The Signature Collection",
+    "brand": "Signature Collection",
+    "scene": "city",
+    "blurb": "In Orlando and Disney World, United States.",
     "featured": false
   },
   {
@@ -2534,6 +2549,21 @@ window.WAH_PROPERTIES = [
     "featured": false
   },
   {
+    "id": 6370,
+    "url": "https://whatahotel.com/hotels/6370/kona-village-a-rosewood-resort.html",
+    "name": "Kona Village, A Rosewood Resort",
+    "loc": "Big Island, United States",
+    "city": "Big Island",
+    "country": "United States",
+    "region": "North America",
+    "regionKey": "north-america",
+    "collection": "Rosewood Hotels & Resorts",
+    "brand": "Rosewood",
+    "scene": "tropical",
+    "blurb": "In Big Island, United States.",
+    "featured": false
+  },
+  {
     "id": 1211,
     "url": "https://whatahotel.com/hotels/1211/l-ermitage-beverly-hills.html",
     "name": "L'Ermitage Beverly Hills",
@@ -3866,6 +3896,21 @@ window.WAH_PROPERTIES = [
     "brand": "Signature Collection",
     "scene": "tropical",
     "blurb": "In Montego Bay, Jamaica.",
+    "featured": false
+  },
+  {
+    "id": 2378,
+    "url": "https://whatahotel.com/hotels/2378/royal-mansour-marrakech-.html",
+    "name": "Royal Mansour Marrakech",
+    "loc": "Marrakech, Morocco",
+    "city": "Marrakech",
+    "country": "Morocco",
+    "region": "Middle East & Africa",
+    "regionKey": "mea",
+    "collection": "Leading Hotels of the World",
+    "brand": "Leading Hotels of the World",
+    "scene": "desert",
+    "blurb": "In Marrakech, Morocco.",
     "featured": false
   },
   {

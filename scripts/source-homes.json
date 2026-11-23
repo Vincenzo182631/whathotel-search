@@ -2670,5 +2670,29 @@
   "collection": "The Luxury Collection under the Marriott STARS Program",
   "city": "Limassol",
   "country": "Cyprus"
+ },
+ {
+  "id": 2378,
+  "slug": "royal-mansour-marrakech-",
+  "name": "Royal Mansour Marrakech",
+  "collection": "Leading Hotels of the World",
+  "city": "Marrakech",
+  "country": "Morocco"
+ },
+ {
+  "id": 6370,
+  "slug": "kona-village-a-rosewood-resort",
+  "name": "Kona Village, A Rosewood Resort",
+  "collection": "Rosewood Hotels & Resorts",
+  "city": "Big Island",
+  "country": "United States"
+ },
+ {
+  "id": 7174,
+  "slug": "caribe-royale-orlando",
+  "name": "Caribe Royale Orlando",
+  "collection": "The Signature Collection",
+  "city": "Orlando and Disney World",
+  "country": "United States"
  }
 ]
