@@ -9,7 +9,7 @@
  *   scripts/pet-images.json — each hotel's main photo (og:image of its WhataHotel page);
  *   assets/js/pets.js + data.js + images.js — the Homes-page properties that welcome pets.
  * Every hotel card is written into the HTML (readable without JavaScript and by search
- * engines); a small script adds filters, "show all" per country and dated "View Rates" links.
+ * engines); a small script adds filters, "show all" per country and dated "Check Availability" links.
  *
  * Run: node scripts/build-pet-page.mjs   (part of npm run build)
  */
@@ -50,6 +50,26 @@ if (!HOOK) console.warn("  ! No GHL webhook found — the Ask an advisor form wi
 // Researched pet policies (scripts/fetch-pet-details.mjs). Short facts go on the cards; the
 // full policy with quotes and sources loads on demand from assets/js/pet-details.js.
 const PD = existsSync(join(root, "scripts/pet-details.json")) ? JSON.parse(read("scripts/pet-details.json")) : {};
+// Reviewed corrections. They win over the researched data, so re-running fetch-pet-details.mjs keeps them.
+// {"<hotel id>": {"set": {"<field>": "value" or {"value","url","quote"}}, "remove": ["<field>"], "drop_sources": ["<url>"]}}
+const OVERRIDES = existsSync(join(root, "scripts/pet-details-overrides.json")) ? JSON.parse(read("scripts/pet-details-overrides.json")) : {};
+for (const [id, o] of Object.entries(OVERRIDES)) {
+  const r = PD[id];
+  if (!r) throw new Error(`pet-details-overrides.json: unknown hotel ${id}`);
+  for (const k of o.remove || []) { r[k] = null; r.evidence = (r.evidence || []).filter((x) => x.field !== k); }
+  for (const [k, v] of Object.entries(o.set || {})) {
+    if (typeof v === "string") { r[k] = v; continue; }
+    r[k] = v.value;
+    r.evidence = (r.evidence || []).filter((x) => x.field !== k).concat({ field: k, url: v.url, quote: v.quote || "" });
+    r.sources = r.sources || [];
+    if (!r.sources.some((x) => x.url === v.url)) r.sources.push({ url: v.url, official: true });
+  }
+  for (const url of o.drop_sources || []) {
+    if ((r.evidence || []).some((x) => x.url === url && r[x.field])) throw new Error(`pet-details-overrides.json: hotel ${id} still uses ${url}`);
+    r.evidence = (r.evidence || []).filter((x) => x.url !== url);
+    r.sources = (r.sources || []).filter((x) => x.url !== url);
+  }
+}
 const tidy = (v, k) => { v = String(v).replace(/(\d)\.0+(?!\d)/g, "$1").replace(/\s+/g, " ").trim(); return k === "max_pets" && /^(\d+|one|two|three|four)$/i.test(v) ? "Up to " + v.toLowerCase() : v; };
 const POL_FIELDS = ["fee", "max_pets", "weight_limit", "species", "deposit", "rooms", "areas", "amenities", "rules", "service_animals"];
 {
@@ -127,7 +147,7 @@ const FAQ = [
   ["Are there pet-friendly villas and residences?",
     `Yes. ${homesPetCount} villas, residences and homes in the WhataHotel! Homes collection welcome pets. Each shows a Pet-friendly tag and its pet policy on the Homes page.`],
   ["How do I book a pet-friendly hotel?",
-    `Find the hotel on this page and select View Rates to see live rates for your dates on WhataHotel.com, or contact an advisor at ${EMAIL} or ${PHONE}.`],
+    `Find the hotel on this page and select Check Availability to see live rates for your dates on WhataHotel.com, or contact an advisor at ${EMAIL} or ${PHONE}.`],
 ];
 
 /* ---------- icons ---------- */
@@ -356,7 +376,7 @@ background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 .pf-card__homes{align-self:flex-start;margin-top:.2rem;padding:.3rem .65rem;border-radius:999px;background:var(--mint);color:var(--sage);font:600 .6rem/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
 .pf-card__ask{align-self:flex-start;margin-top:.35rem;padding:0 0 .15rem;border:0;border-bottom:1px solid var(--hair);background:none;color:var(--ink);font:500 .8rem/1.3 var(--sans);cursor:pointer;transition:border-color .3s,color .3s}
 .pf-card__ask:hover{color:var(--champ);border-color:var(--champ)}
-.pf-card__act{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;padding:1.2rem 1.35rem 1.35rem;margin-top:auto}
+.pf-card__act{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.7rem),1fr));gap:.55rem;padding:1.2rem 1.35rem 1.35rem;margin-top:auto}
 .pf-card__act .pf-btn{padding:.75rem .5rem;font-size:.66rem}
 .pf-more{display:flex;align-items:center;gap:.6rem;margin:1.6rem auto 0;padding:.9rem 1.8rem;border-radius:999px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:600 .72rem/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;transition:background .3s,color .3s}
 .pf-more:hover{background:var(--ink);color:#fff}
@@ -494,8 +514,8 @@ cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),id=li.get
  box.insertAdjacentHTML("beforeend",'<span class="pf-card__pet">'+PAWH+"Pets welcome</span>");li.insertBefore(box,body);
  var loc=li.querySelector(".pf-card__loc");loc.insertAdjacentHTML("afterbegin",PINH);var hp=li.hasAttribute("data-pol");body.insertAdjacentHTML("beforeend",'<div class="pf-card__links">'+(hp?'<button type="button" class="pf-card__ask" data-pol-open>Full pet policy</button>':"")+'<button type="button" class="pf-card__ask" data-ask-hotel>'+(hp?"Ask an advisor":"Ask about this hotel\u2019s pet rules")+'</button></div>');
  var d=D.createElement("div");d.className="pf-card__act";
- d.appendChild(link("pf-btn pf-btn--gold","https://whatahotel.com/booking/showRates.cfm?hotelID="+id+"&checkIn="+ymd(a)+"&checkOut="+ymd(b)+"&guests=2&children=0&rooms=1&"+UTM,"View Rates"));
- d.appendChild(link("pf-btn",nm.href,"Details"));li.appendChild(d);
+ d.appendChild(link("pf-btn pf-btn--gold","https://whatahotel.com/booking/showRates.cfm?hotelID="+id+"&checkIn="+ymd(a)+"&checkOut="+ymd(b)+"&guests=2&children=0&rooms=1&"+UTM,"Check Availability"));
+ d.appendChild(link("pf-btn",nm.href,"About the Hotel"));li.appendChild(d);
  li._hay=norm(body.textContent+" "+li.closest(".pf-country").getAttribute("data-country"));li._b=li.querySelector(".pf-card__brand").textContent});
 // photos fade in; a photo that fails to load falls back to the original file, then to the paw placeholder
 function shown(im){im.classList.add("is-in")}
@@ -538,7 +558,7 @@ var HOTELS={},hotelList=$i("pf-hotels");
 cards.forEach(function(li){var nm=li.querySelector(".pf-card__name a"),n=nm.textContent;HOTELS[norm(n)]={id:li.getAttribute("data-id"),name:n,loc:li.querySelector(".pf-card__loc").textContent,country:li.closest(".pf-country").getAttribute("data-country"),url:nm.href.split("?")[0]};
  var o=D.createElement("option");o.value=n;hotelList.appendChild(o)});
 /* ---------- researched pet policies (loaded on demand) ---------- */
-var POL_NOTE="Pet policies are set by each hotel and may change without prior notice. Please ask your travel advisor to confirm the details for your pet before you book.";
+var POL_NOTE="Pet policies are set by each hotel and may change without prior notice. You can validate the current pet policy by searching for the pet policy across the official website of the Hotel.";
 var LABELS={fee:"Pet fee",max_pets:"Number of pets",weight_limit:"Weight limit",species:"Which pets",deposit:"Deposit",rooms:"Rooms",areas:"Where pets can go",amenities:"Pet amenities",rules:"House rules",service_animals:"Service animals"};
 var pdWait=[];function loadPD(cb){if(window.WAH_PET_DETAILS){cb&&cb(true);return}if(!PD_URL){cb&&cb(false);return}pdWait.push(cb||function(){});if(pdWait.length>1)return;
  var sc=D.createElement("script");sc.src=PD_URL;sc.async=true;sc.onload=function(){var w=pdWait;pdWait=[];w.forEach(function(f){f(!!window.WAH_PET_DETAILS)})};sc.onerror=function(){var w=pdWait;pdWait=[];w.forEach(function(f){f(false)})};D.head.appendChild(sc)}
@@ -748,7 +768,7 @@ const html = `<!DOCTYPE html>
 
 <section class="pf-sec" id="browse" style="padding-bottom:0">
   <div class="pf-wrap pf-sec__head pf-rv"><div><span class="pf-eyebrow"><b class="pf-n">04</b>The full collection</span><h2 class="pf-h2">All ${N} <em>pet-friendly hotels</em></h2></div>
-    <p class="pf-lead" style="max-width:44ch">Search by hotel, city, country or brand. View Rates opens live rates on WhataHotel.com.</p></div>
+    <p class="pf-lead" style="max-width:44ch">Search by hotel, city, country or brand. Check Availability opens live rates on WhataHotel.com.</p></div>
   <div class="pf-tools"><div class="pf-wrap"><form class="pf-tools__in" id="pf-form" role="search">
     <label class="pf-search">${ICONS.search}<span style="position:absolute;left:-9999px">Search pet-friendly hotels</span><input id="pf-q" type="search" placeholder="Hotel, city, country or brand" autocomplete="off" enterkeyhint="search"></label>
     <select id="pf-country" class="pf-select" aria-label="Country"><option value="">All ${NC} countries</option>${countries.slice().sort().map((c) => `<option value="${esc(c)}">${esc(c)} (${byCountry[c].length})</option>`).join("")}</select>
@@ -789,7 +809,7 @@ const html = `<!DOCTYPE html>
     <p class="pf-modal__lead" id="pf-pol-sub"></p>
     <div id="pf-pol-body"></div>
     <p class="pf-polnote" id="pf-pol-note"></p>
-    <div class="pf-polact"><a class="pf-btn pf-btn--gold" id="pf-pol-rates" target="_blank" rel="noopener">View Rates</a><button type="button" class="pf-btn pf-btn--ink" id="pf-pol-ask">Ask an advisor</button></div>
+    <div class="pf-polact"><a class="pf-btn pf-btn--gold" id="pf-pol-rates" target="_blank" rel="noopener">Check Availability</a></div>
   </div>
 </div>
 <div class="pf-modal" id="pf-ask" hidden>

@@ -1,0 +1,1203 @@
+{
+ "1048": {
+  "drop_sources": [
+   "https://www.peninsula.com/en/chicago/pet-friendly-accommodations"
+  ],
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "1063": {
+  "set": {
+   "deposit": "refundable $100"
+  }
+ },
+ "1150": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "1197": {
+  "drop_sources": [
+   "https://www.fourseasons.com/embarcadero/services-and-amenities/pet-friendly-stays/"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Pets must be kept on a leash at all times when outside",
+    "url": "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/",
+    "value": "Keep pets on a leash outside the room and do not leave them unattended"
+   }
+  }
+ },
+ "1286": {
+  "drop_sources": [
+   "https://www.visitorlando.com/blog/post/pet-friendly-hotels-orlando/"
+  ],
+  "remove": [
+   "deposit",
+   "rooms"
+  ]
+ },
+ "1453": {
+  "drop_sources": [
+   "https://www.fourseasons.com/losangeles/services-and-amenities/pet-friendly-stays/"
+  ],
+  "remove": [
+   "areas",
+   "fee",
+   "max_pets",
+   "rules",
+   "service_animals"
+  ],
+  "set": {
+   "amenities": {
+    "quote": "special in-room amenities such as water bowls, piddle pads and a luxurious BW bed",
+    "url": "https://press.fourseasons.com/beverlywilshire/trending-now/the-pampered-pet/",
+    "value": "Water bowls, piddle pads and a BW bed"
+   }
+  }
+ },
+ "1487": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "1610": {
+  "drop_sources": [
+   "https://www.ritzcarlton.com/en/hotels/wasgo-the-ritz-carlton-georgetown-washington-d-c/overview/"
+  ],
+  "remove": [
+   "max_pets"
+  ],
+  "set": {
+   "fee": {
+    "quote": "fee per stay: $250 for rooms, $500 for suites",
+    "url": "https://www.ritzcarlton.com/en/hotels/wasrt-the-ritz-carlton-washington-d-c/overview/",
+    "value": "$250 per stay for rooms, $500 per stay for suites"
+   },
+   "species": {
+    "quote": "Only dogs allowed, under 40 lbs",
+    "url": "https://www.ritzcarlton.com/en/hotels/wasrt-the-ritz-carlton-washington-d-c/overview/",
+    "value": "Dogs only"
+   },
+   "weight_limit": {
+    "quote": "Maximum Pet Weight: 40.0lbs",
+    "url": "https://www.ritzcarlton.com/en/hotels/wasrt-the-ritz-carlton-washington-d-c/overview/",
+    "value": "40 lbs maximum"
+   }
+  }
+ },
+ "1672": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "1726": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "1827": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "1836": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "1838": {
+  "drop_sources": [
+   "https://www.fourseasons.com/neworleans/services-and-amenities/pet-friendly-stays/"
+  ],
+  "remove": [
+   "areas"
+  ]
+ },
+ "1842": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Cats may be permitted with prior approval.",
+    "url": "https://www.bringfido.com/lodging/77710",
+    "value": "Cats may be permitted with prior approval"
+   }
+  }
+ },
+ "1851": {
+  "drop_sources": [
+   "https://www.ritzcarlton.com/en/hotels/dalil-the-ritz-carlton-dallas-las-colinas/overview/"
+  ],
+  "remove": [
+   "rules"
+  ]
+ },
+ "1954": {
+  "drop_sources": [
+   "https://www.ritzcarlton.com/en/hotels/miasb-the-ritz-carlton-south-beach/overview/"
+  ],
+  "set": {
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.ritzcarlton.com/en/hotels/miami/bal-harbour/hotel-overview/pet-friendly-features",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "1977": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2006": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2021": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2086": {
+  "drop_sources": [
+   "https://www.hyattplacewaikikibeach.com/pets"
+  ],
+  "remove": [
+   "fee"
+  ],
+  "set": {
+   "species": {
+    "quote": "traveling dog or cat companions",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/hnlrw-hyatt-regency-waikiki-beach-resort-and-spa",
+    "value": "Dogs and cats"
+   }
+  }
+ },
+ "2204": {
+  "set": {
+   "deposit": "refundable $100"
+  }
+ },
+ "2240": {
+  "set": {
+   "deposit": "non-refundable 100 USD"
+  }
+ },
+ "2254": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "2349": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "deposit": "refundable $50"
+  }
+ },
+ "2422": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2429": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "2430": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2487": {
+  "set": {
+   "species": "Dogs and cats"
+  }
+ },
+ "2596": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2616": {
+  "drop_sources": [
+   "https://www.marriott.com/content/dam/marriott-digital/ri/emea/hws/l/lhrri/en_us/document/assets/ri-lhrri-pet-policy--13645.pdf"
+  ],
+  "remove": [
+   "areas",
+   "deposit",
+   "rules"
+  ],
+  "set": {
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/sjojw-jw-marriott-guanacaste-resort-and-spa/overview/",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "2706": {
+  "drop_sources": [
+   "https://www.grandwailea.com/stay/more-info/pet-policy"
+  ],
+  "remove": [
+   "areas",
+   "fee"
+  ],
+  "set": {
+   "max_pets": {
+    "quote": "two dogs under a combined weight of 75 pounds",
+    "url": "https://www.hyatt.com/andaz/en-US/oggaw-andaz-maui-at-wailea-resort/policies",
+    "value": "Up to 2 dogs"
+   },
+   "rules": {
+    "quote": "All dogs must be housebroken and comply with state animal quarantine laws.",
+    "url": "https://www.hyatt.com/andaz/en-US/oggaw-andaz-maui-at-wailea-resort/policies",
+    "value": "Dogs must be housebroken and comply with state animal quarantine laws"
+   },
+   "service_animals": {
+    "quote": "Service animals are not pets and are not subject to this Pet Policy.",
+    "url": "https://www.hyatt.com/andaz/en-US/oggaw-andaz-maui-at-wailea-resort",
+    "value": "Service animals are not pets and are not subject to the pet policy"
+   }
+  }
+ },
+ "2758": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2760": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2791": {
+  "drop_sources": [
+   "https://newyorknewyork.mgmresorts.com/en/hotel/dog-friendly.html"
+  ],
+  "remove": [
+   "areas",
+   "fee"
+  ],
+  "set": {
+   "amenities": {
+    "quote": "a special dog‑treat menu, dog beds, toys, New York-themed red food bowls",
+    "url": "https://www.thechatwalny.com/dog-friendly/",
+    "value": "Dog treat menu, dog beds, toys and New York-themed red food bowls"
+   }
+  }
+ },
+ "2801": {
+  "remove": [
+   "service_animals",
+   "max_pets"
+  ]
+ },
+ "2863": {
+  "set": {
+   "fee": "HK$800 per room, per pet per night"
+  }
+ },
+ "2940": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Yes! Bvlgari Hotel London welcomes cats by request.",
+    "url": "https://www.bringfido.com/lodging/59919",
+    "value": "Cats may be allowed by request"
+   }
+  }
+ },
+ "2949": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "2958": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2977": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "2992": {
+  "drop_sources": [
+   "https://newyorknewyork.mgmresorts.com/en/hotel/dog-friendly.html"
+  ],
+  "remove": [
+   "weight_limit"
+  ]
+ },
+ "2997": {
+  "drop_sources": [
+   "https://www.hyatt.com/grand-hyatt/en-US/sfogh-grand-hyatt-at-sfo"
+  ],
+  "set": {
+   "rules": {
+    "quote": "inform the hotel at least three days before arrival",
+    "url": "https://www.hyatt.com/grand-hyatt/en-US/sfous-grand-hyatt-san-francisco/policies",
+    "value": "Tell the hotel at least three days before arrival"
+   }
+  }
+ },
+ "3069": {
+  "drop_sources": [
+   "https://www.fourseasons.com/casamedina/accommodations/"
+  ],
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "areas": {
+    "quote": "Pets are not allowed in The Spa areas",
+    "url": "https://www.fourseasons.com/bogota/accommodations/",
+    "value": "Not allowed in the spa areas"
+   },
+   "species": {
+    "quote": "Our Hotel allows cats, dogs and other domesticated animals weighing less than 60 pounds",
+    "url": "https://www.fourseasons.com/bogota/accommodations/",
+    "value": "Cats, dogs and other domesticated animals"
+   }
+  }
+ },
+ "3092": {
+  "drop_sources": [
+   "https://www.fairmont-washington-dc.com/stay/pet-friendly/"
+  ],
+  "set": {
+   "species": {
+    "quote": "welcomes one dog per room",
+    "url": "https://www.rosewoodhotels.com/en/washington-dc/hotel-policy",
+    "value": "Dogs"
+   }
+  }
+ },
+ "3246": {
+  "drop_sources": [
+   "https://www.marriott.com/content/dam/marriott-digital/ri/emea/hws/l/lhrri/en_us/document/assets/ri-lhrri-pet-policy--13645.pdf"
+  ],
+  "remove": [
+   "areas",
+   "deposit",
+   "rules",
+   "species"
+  ],
+  "set": {
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/ncejw-jw-marriott-cannes/overview/",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "3247": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3252": {
+  "drop_sources": [
+   "https://www.marriott.com/content/dam/marriott-digital/ri/emea/hws/l/lhrri/en_us/document/assets/ri-lhrri-pet-policy--13645.pdf"
+  ],
+  "remove": [
+   "deposit",
+   "rules",
+   "service_animals",
+   "species"
+  ],
+  "set": {
+   "areas": {
+    "quote": "not allowed in restaurants",
+    "url": "https://www.marriott.com/en-us/hotels/buhro-jw-marriott-bucharest-grand-hotel/overview/",
+    "value": "Not allowed in restaurants"
+   }
+  }
+ },
+ "3259": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Yes! Renaissance Esmeralda Resort & Spa Indian Wells welcomes cats by request.",
+    "url": "https://www.bringfido.com/lodging/66409",
+    "value": "Cats may be allowed by request"
+   }
+  }
+ },
+ "3264": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "deposit": "USD 50"
+  }
+ },
+ "3269": {
+  "drop_sources": [
+   "https://www.marriott.com/content/dam/marriott-digital/ri/emea/hws/l/lhrri/en_us/document/assets/ri-lhrri-pet-policy--13645.pdf"
+  ],
+  "remove": [
+   "deposit",
+   "rules",
+   "species"
+  ],
+  "set": {
+   "areas": {
+    "quote": "Only service animals are permitted in the Restaurants, Lounges, or Tidal Cove",
+    "url": "https://www.marriott.com/en-us/hotels/miajt-jw-marriott-miami-turnberry-resort-and-spa/overview/",
+    "value": "Not allowed in restaurants, lounges, or Tidal Cove"
+   },
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/miajt-jw-marriott-miami-turnberry-resort-and-spa/overview/",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "3332": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "A waiver must to be signed by the guest for all animals.",
+    "url": "https://www.ihg.com/intercontinental/hotels/us/en/los-angeles/laxhc/hoteldetail/amenities",
+    "value": "A waiver must be signed by the guest for all animals"
+   }
+  }
+ },
+ "3347": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3377": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3379": {
+  "set": {
+   "fee": "CA$50"
+  }
+ },
+ "3432": {
+  "drop_sources": [
+   "https://www.hyatt.com/content/dam/hotel/propertysites/assets/regency/ctgrc/documents/en_us/policies/Pet_Policy_website_ENG_FINAL.pdf"
+  ],
+  "remove": [
+   "amenities",
+   "areas",
+   "rooms",
+   "rules",
+   "species"
+  ],
+  "set": {
+   "max_pets": {
+    "quote": "Maximum number of pets is 1.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/kievh-hyatt-regency-kyiv",
+    "value": "Up to 1"
+   },
+   "service_animals": {
+    "quote": "Service animals are welcome in accordance with applicable regulations.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/kievh-hyatt-regency-kyiv/faqs",
+    "value": "Welcome in accordance with applicable regulations"
+   }
+  }
+ },
+ "3477": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3544": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3596": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3606": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3610": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3640": {
+  "drop_sources": [
+   "https://www.hyatt.com/hyatt-regency/en-US/sford-hyatt-regency-san-francisco-downtown-soma/policies"
+  ],
+  "set": {
+   "fee": {
+    "quote": "A $100 non-refundable fee applies for stays up to six nights.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/sfors-hyatt-regency-san-francisco/faqs",
+    "value": "$100 non-refundable for stays up to 6 nights, plus $100 for 7 or more nights"
+   }
+  }
+ },
+ "3660": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3759": {
+  "drop_sources": [
+   "https://www.ihg.com/koh-samui-thailand/pet-friendly-hotels"
+  ],
+  "remove": [
+   "areas"
+  ]
+ },
+ "3769": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3786": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3800": {
+  "set": {
+   "deposit": "refundable $250"
+  }
+ },
+ "3801": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "deposit": "non-refundable $25"
+  }
+ },
+ "3802": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3823": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Cats may also be allowed by request.",
+    "url": "https://www.bringfido.com/lodging/142882",
+    "value": "Cats may be allowed by request"
+   }
+  }
+ },
+ "3880": {
+  "drop_sources": [
+   "https://www.thebellevuehotel.com/faq/"
+  ],
+  "remove": [
+   "deposit",
+   "species"
+  ]
+ },
+ "3904": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3911": {
+  "drop_sources": [
+   "https://www.hyattplacewaikikibeach.com/pets"
+  ],
+  "remove": [
+   "fee"
+  ],
+  "set": {
+   "species": {
+    "quote": "welcomes dogs up to 50 pounds, or two dogs with a combined weight",
+    "url": "https://www.hyatt.com/hyatt-centric/en-US/hnlct-hyatt-centric-waikiki-beach/faqs",
+    "value": "Dogs"
+   }
+  }
+ },
+ "3924": {
+  "set": {
+   "deposit": "refundable CA$75"
+  }
+ },
+ "3968": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "3990": {
+  "set": {
+   "fee": "S$10 per day"
+  }
+ },
+ "3996": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "4018": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4019": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4024": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4054": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4058": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4076": {
+  "drop_sources": [
+   "https://www.fourseasons.com/sanfrancisco/services-and-amenities/pet-friendly-stays/"
+  ],
+  "remove": [
+   "fee",
+   "max_pets",
+   "weight_limit"
+  ],
+  "set": {
+   "amenities": {
+    "quote": "including a plush bed, food and water bowls, and a selection of gourmet treats",
+    "url": "https://press.fourseasons.com/embarcadero/hotel-news/2024/pet-friendly-hotel/",
+    "value": "Welcome amenity with plush bed, food and water bowls, and gourmet treats"
+   },
+   "areas": {
+    "quote": "With the exception of guide dogs, pets are not permitted in the hotel restaurant.",
+    "url": "https://www.fourseasons.com/embarcadero/accommodations/",
+    "value": "Not permitted in the hotel restaurant, except guide dogs"
+   },
+   "service_animals": {
+    "quote": "With the exception of guide dogs, pets are not permitted in the hotel restaurant.",
+    "url": "https://www.fourseasons.com/embarcadero/accommodations/",
+    "value": "Guide dogs are allowed in the hotel restaurant"
+   }
+  }
+ },
+ "4136": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4140": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "We warmly welcome the entire family, including beloved pets and service animals.",
+    "url": "https://www.hilton.com/en/hotels/loncoci-conrad-london-st-james/amenities/",
+    "value": "Pets are welcome"
+   }
+  }
+ },
+ "4174": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4191": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4223": {
+  "drop_sources": [
+   "https://www.visitorlando.com/blog/post/pet-friendly-hotels-orlando/"
+  ],
+  "remove": [
+   "deposit",
+   "rooms"
+  ]
+ },
+ "4251": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4574": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4577": {
+  "drop_sources": [
+   "https://www.bringfido.com/lodging/459516"
+  ],
+  "remove": [
+   "fee",
+   "max_pets",
+   "rules",
+   "service_animals",
+   "species"
+  ]
+ },
+ "4597": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "4612": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "4629": {
+  "drop_sources": [
+   "https://www.bringfido.com/lodging/city/kansas_city_mo_us/",
+   "https://www.loewshotels.com/kansas-city-hotel/loews-loves-pets"
+  ],
+  "remove": [
+   "deposit",
+   "fee",
+   "rules",
+   "service_animals",
+   "species",
+   "weight_limit"
+  ],
+  "set": {
+   "max_pets": {
+    "quote": "no more than two pets per room",
+    "url": "https://www.hyatt.com/unbound-collection/en-US/mcijd-hotel-kansas-city/policies",
+    "value": "Up to 2"
+   }
+  }
+ },
+ "4710": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4711": {
+  "drop_sources": [
+   "https://www.bringfido.com/lodging/city/osaka_jp/"
+  ],
+  "remove": [
+   "deposit",
+   "amenities",
+   "rules"
+  ]
+ },
+ "4727": {
+  "drop_sources": [
+   "https://www.bringfido.com/lodging/city/budapest_hu/"
+  ],
+  "remove": [
+   "deposit"
+  ]
+ },
+ "4757": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "4979": {
+  "drop_sources": [
+   "https://www.marriott.com/en-us/hotels/gcmmi-the-westin-grand-cayman-seven-mile-beach-resort-and-spa/overview/"
+  ],
+  "set": {
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/gcmgc-grand-cayman-marriott-beach-resort/overview/",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "5002": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "5010": {
+  "drop_sources": [
+   "https://www.1hotels.com/melbourne/pet-friendly"
+  ],
+  "remove": [
+   "areas",
+   "fee"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Only 'Pets Are Welcome' Package can be booked to allow pets to stay.",
+    "url": "https://www.marriott.com/en-us/hotels/melwh-w-melbourne/overview/",
+    "value": "Pets can stay only when the Pets Are Welcome package is booked"
+   },
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/melwh-w-melbourne/overview/",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "5018": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "5060": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "5061": {
+  "drop_sources": [
+   "https://www.marriott.com/en-us/destinations/united-arab-emirates/dubai/pet-friendly-hotels.mi"
+  ],
+  "remove": [
+   "max_pets"
+  ],
+  "set": {
+   "amenities": {
+    "quote": "Pet bowls, Pet grooming services, Food and water bowls",
+    "url": "https://www.melia.com/en/hotels/united-arab-emirates/dubai/me-dubai",
+    "value": "Pet bowls, food and water bowls, pet grooming services"
+   }
+  }
+ },
+ "6063": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6066": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "species": {
+    "quote": "we’re unable to accommodate your sweet kitties.",
+    "url": "https://www.hotelemeline.com/pet-friendly/",
+    "value": "Dogs only"
+   }
+  }
+ },
+ "6068": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6088": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6182": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6207": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6222": {
+  "set": {
+   "amenities": {
+    "quote": "from gourmet treats and plush beds to an exclusive in-room dining menu",
+    "url": "https://www.hilton.com/en/hotels/cunwawa-waldorf-astoria-riviera-maya/resort/",
+    "value": "Gourmet treats, plush beds and an exclusive in-room dining menu"
+   }
+  }
+ },
+ "6239": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6258": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6290": {
+  "drop_sources": [
+   "https://www.bringfido.com/lodging/1351623"
+  ],
+  "remove": [
+   "species"
+  ]
+ },
+ "6300": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Pets are welcome, no restriction as long as they fit in our lifts.",
+    "url": "https://kimptonsthonoreparis.com/faq/",
+    "value": "No restrictions as long as they fit in the lifts"
+   }
+  }
+ },
+ "6352": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6401": {
+  "drop_sources": [
+   "https://www.hyatt.com/hyatt-regency/en-US/sfors-hyatt-regency-san-francisco/policies"
+  ],
+  "remove": [
+   "species"
+  ]
+ },
+ "6413": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6419": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "6423": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6426": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6428": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6439": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6492": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6504": {
+  "drop_sources": [
+   "https://www.marriott.com/content/dam/marriott-digital/ri/emea/hws/l/lhrri/en_us/document/assets/ri-lhrri-pet-policy--13645.pdf"
+  ],
+  "remove": [
+   "areas",
+   "deposit",
+   "rules"
+  ],
+  "set": {
+   "service_animals": {
+    "quote": "without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/bermc-berlin-marriott-hotel/overview/",
+    "value": "Welcome without a fee or documentation"
+   },
+   "species": {
+    "quote": "one dog only",
+    "url": "https://www.marriott.com/en-us/hotels/bermc-berlin-marriott-hotel/overview/",
+    "value": "Dogs only"
+   }
+  }
+ },
+ "6547": {
+  "drop_sources": [
+   "https://www.bringfido.com/lodging/1351623"
+  ],
+  "remove": [
+   "species"
+  ]
+ },
+ "6622": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "6626": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "6713": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6783": {
+  "remove": [
+   "max_pets"
+  ]
+ },
+ "6835": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6836": {
+  "set": {
+   "deposit": "non-refundable €50"
+  }
+ },
+ "6842": {
+  "set": {
+   "deposit": "non-refundable €50"
+  }
+ },
+ "6905": {
+  "remove": [
+   "rules"
+  ]
+ },
+ "6911": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "6989": {
+  "drop_sources": [
+   "https://www.hyatt.com/content/dam/hotel/propertysites/assets/regency/ctgrc/documents/en_us/policies/Pet_Policy_website_ENG_FINAL.pdf"
+  ],
+  "remove": [
+   "amenities",
+   "rooms",
+   "species"
+  ],
+  "set": {
+   "areas": {
+    "quote": "not permitted in the indoor or outdoor pools, or in the wellness areas",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/zadrz-hyatt-regency-zadar/policies",
+    "value": "Not allowed in pools or wellness areas (fitness center, sauna, steam room). Welcome on the terrace and in the restaurant and bar."
+   },
+   "fee": {
+    "quote": "A supplementary charge of €40 per night applies, with no weight limit.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/zadrz-hyatt-regency-zadar/policies",
+    "value": "€40 per night"
+   },
+   "max_pets": {
+    "quote": "a maximum of one dog is allowed per room",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/zadrz-hyatt-regency-zadar/policies",
+    "value": "Up to 1 dog per room"
+   },
+   "rules": {
+    "quote": "Rooms can only be cleaned when the dog is not present.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/zadrz-hyatt-regency-zadar/policies",
+    "value": "Rooms are cleaned only when the dog is not present. Display the Do Not Disturb sign if the dog is left alone."
+   },
+   "service_animals": {
+    "quote": "Service dogs are always welcome free of charge.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/zadrz-hyatt-regency-zadar/policies",
+    "value": "Service dogs welcome free of charge"
+   },
+   "weight_limit": {
+    "quote": "A supplementary charge of €40 per night applies, with no weight limit.",
+    "url": "https://www.hyatt.com/hyatt-regency/en-US/zadrz-hyatt-regency-zadar/policies",
+    "value": "No weight limit"
+   }
+  }
+ },
+ "7002": {
+  "remove": [
+   "service_animals"
+  ],
+  "set": {
+   "rules": {
+    "quote": "Pets are allowed. Charges may apply.",
+    "url": "https://www.booking.com/hotel/it/furore-grand.html",
+    "value": "Pets are allowed. Charges may apply."
+   }
+  }
+ },
+ "7022": {
+  "drop_sources": [
+   "https://www.marriott.com/content/dam/marriott-digital/ri/emea/hws/l/lhrri/en_us/document/assets/ri-lhrri-pet-policy--13645.pdf"
+  ],
+  "remove": [
+   "areas",
+   "deposit",
+   "rules",
+   "species"
+  ],
+  "set": {
+   "service_animals": {
+    "quote": "Service Animals are welcome without a fee or documentation",
+    "url": "https://www.marriott.com/en-us/hotels/tasjw-jw-marriott-hotel-tashkent/overview/",
+    "value": "Welcome without a fee or documentation"
+   }
+  }
+ },
+ "7026": {
+  "drop_sources": [
+   "https://www.fairmont-mayakoba.com/offers/pet-friendly-escape/"
+  ],
+  "remove": [
+   "amenities",
+   "areas",
+   "fee"
+  ]
+ },
+ "7069": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "7122": {
+  "remove": [
+   "service_animals"
+  ]
+ },
+ "7171": {
+  "set": {
+   "deposit": "refundable MXN 400 per night"
+  }
+ },
+ "942": {
+  "set": {
+   "fee": "R$750 per day"
+  }
+ },
+ "948": {
+  "set": {
+   "species": "Dogs and cats"
+  }
+ },
+ "995": {
+  "remove": [
+   "service_animals"
+  ]
+ }
+}
