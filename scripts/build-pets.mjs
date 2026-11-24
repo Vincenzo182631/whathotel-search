@@ -11,7 +11,10 @@
  *     scripts/fetch-pet-collection.mjs): a property listed there whose own page has no pet
  *     answer is marked pet-friendly with that listing as the source.
  *
- * Output: window.WAH_PETS = { "<id>": { ok: 1|0, text: "<policy>", src: "whatahotel"|"mo" } }
+ *   Hotels' official websites: scripts/pet-policies-official.json, for properties whose
+ *     WhataHotel page has no pet answer (copied word for word, with the page URL).
+ *
+ * Output: window.WAH_PETS = { "<id>": { ok: 1|0, text: "<policy>", src: "whatahotel"|"mo"|"official"|"collection" } }
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -59,6 +62,12 @@ for (const h of homes) {
     }
   }
 }
+
+// The hotel's official website, where its WhataHotel page says nothing about pets.
+try {
+  const off = JSON.parse(readFileSync(join(__dirname, "pet-policies-official.json"), "utf8"));
+  for (const [id, v] of Object.entries(off)) if (/^\d+$/.test(id) && ids.has(id) && !out[id]) out[id] = { ok: 1, text: v.text, src: "official" };
+} catch (e) { /* optional file */ }
 
 // Listed in WhataHotel's pet-friendly collection but no pet FAQ on its own page.
 try {

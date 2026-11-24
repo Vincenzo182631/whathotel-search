@@ -1756,7 +1756,7 @@
     var x = petInfo(p);
     if (!x) return "";
     return '<div class="pmodal__pets' + (x.ok ? '' : ' is-no') + '"><h4>' + pawSVG() + (x.ok ? 'Pet-friendly' : 'Pets') + '</h4>' +
-      '<p>' + esc(x.text) + '</p><p class="pmodal__pets-note">From the property’s WhataHotel page. Policies can change, so please confirm when booking.</p></div>';
+      '<p>' + esc(x.text) + '</p><p class="pmodal__pets-note">' + (x.src === "official" ? "From the hotel’s official website." : x.src === "collection" ? "From WhataHotel’s Pet-Friendly collection." : x.src === "mo" ? "From Mandarin Oriental." : "From the property’s WhataHotel page.") + ' Policies can change, so please confirm when booking.</p></div>';
   }
   function closeDetail() {
     if (!modalEl) return;

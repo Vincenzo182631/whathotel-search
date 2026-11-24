@@ -249,6 +249,11 @@ window.WAH_PETS = {
   "text": "The St. Regis Kanai Resort welcomes one pet per room with a non-refundable fee of $200 USD per stay, allowing you to enjoy this luxury experience alongside your beloved companion.",
   "src": "whatahotel"
  },
+ "6370": {
+  "ok": 1,
+  "text": "Pets are allowed up to 40 lb. Pets on a leash are welcome throughout the property, except at the restaurant, spa, fitness center, beach and pool areas. Certified service animals are exempt. One pet per hale, or up to two smaller pets are allowed in a suite (maximum 30 lbs per pet). A one-time cleaning fee of 200 USD plus tax will be charged upon check-out per pet.",
+  "src": "official"
+ },
  "6423": {
   "ok": 1,
   "text": "Guests can enjoy bringing their beloved pets to Kimpton Grand Roatan Resort & Spa at no extra charge. The resort welcomes pets of any size, weight, or breed - if your pet fits through the door, they will be warmly welcomed. This pet-friendly policy ensures your entire family can experience this tropical paradise together.",
@@ -313,6 +318,11 @@ window.WAH_PETS = {
   "ok": 1,
   "text": "Nekajui, a Ritz Carlton Reserve Residences warmly welcomes well-behaved dogs as part of the family. Please note that only dogs are accepted — no other animals are permitted on property — and pets must not exceed a maximum weight of 34 kilograms. We recommend contacting the resort in advance to ensure all arrangements are made for a seamless and enjoyable stay for both you and your four-legged companion.",
   "src": "whatahotel"
+ },
+ "7174": {
+  "ok": 1,
+  "text": "Up to one (1) pet, cat or dog only, per suite. Pet must not weigh more than 50 pounds. A one-time, non-refundable Pet Cleaning Fee of $150.00 plus tax will be charged to your suite. Pet and pet owners are encouraged to stay in our “pet friendly” assigned suites. (Please inform the Reservations Department of your intention to bring a pet at the time of booking). Pets are not allowed in pool, restaurant or fitness center areas.",
+  "src": "official"
  },
  "mo-cirencester-estate": {
   "ok": 1,

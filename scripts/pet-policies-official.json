@@ -1,0 +1,15 @@
+{
+ "_note": "Pet policies copied word for word from each hotel's OFFICIAL website, for Homes properties whose WhataHotel page has no pet answer. Checked 2026-11-24. Used by scripts/build-pets.mjs (src: official).",
+ "6370": {
+  "name": "Kona Village, A Rosewood Resort",
+  "url": "https://www.rosewoodhotels.com/en/kona-village/hotel-policy",
+  "checked": "2026-11-24",
+  "text": "Pets are allowed up to 40 lb. Pets on a leash are welcome throughout the property, except at the restaurant, spa, fitness center, beach and pool areas. Certified service animals are exempt. One pet per hale, or up to two smaller pets are allowed in a suite (maximum 30 lbs per pet). A one-time cleaning fee of 200 USD plus tax will be charged upon check-out per pet."
+ },
+ "7174": {
+  "name": "Caribe Royale Orlando",
+  "url": "https://www.cariberoyale.com/faq",
+  "checked": "2026-11-24",
+  "text": "Up to one (1) pet, cat or dog only, per suite. Pet must not weigh more than 50 pounds. A one-time, non-refundable Pet Cleaning Fee of $150.00 plus tax will be charged to your suite. Pet and pet owners are encouraged to stay in our “pet friendly” assigned suites. (Please inform the Reservations Department of your intention to bring a pet at the time of booking). Pets are not allowed in pool, restaurant or fitness center areas."
+ }
+}
