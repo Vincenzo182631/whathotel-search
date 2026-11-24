@@ -457,7 +457,7 @@ window.WAH_IMAGES = {
     "hero": "https://whatahotel.com/content/hotels/3270/7.jpg"
   },
   "3287": {
-    "hero": "https://whatahotel.com/content/hotels/3287/ritz_waikiki.jpg"
+    "hero": "https://www.whatahotel.com/content/hotels/3287/ritz_waikiki.jpg"
   },
   "3289": {
     "hero": "https://whatahotel.com/content/hotels/3289/3-bed-villa.jpg"

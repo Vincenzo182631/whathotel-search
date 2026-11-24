@@ -85,7 +85,7 @@ const SETTINGS = {
       "algarve", "marbella", "costa smeralda", "amalfi", "positano", "taormina",
       "santa monica", "malibu", "laguna beach", "santa barbara", "naples", "captiva",
       "palm beach", "miami beach", "key west", "kiawah", "sea island", "amelia island",
-      "cabo san lucas", "san jose del cabo", "waikiki", "wailea", "kapalua", "kohala", "big island",
+      "cabo san lucas", "san jose del cabo", "waikiki", "honolulu", "wailea", "kapalua", "kohala", "big island",
       "costa navarino", "elounda", "dubrovnik", "corfu", "zakinthos", "limassol",
     ],
   },
