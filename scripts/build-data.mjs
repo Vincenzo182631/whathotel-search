@@ -201,6 +201,9 @@ const props = source.map((s) => {
     scene,
     blurb: "In " + loc + ".",   // factual fallback; real description overrides at runtime (WAH_DESC)
     featured: FEATURED.has(s.id),
+    // Not bookable online: the details view shows "Request Availability" (the
+    // Exceptional Homes inquiry form) instead of the live availability link.
+    ...(s.requestOnly ? { requestOnly: true } : {}),
   };
 });
 

@@ -1585,6 +1585,15 @@
         if (dp) openDetail(dp, detailBtn);
         return;
       }
+      // Request-only homes: same "Request Availability" form as the Exceptional Homes.
+      var reqBtn = e.target.closest && e.target.closest("[data-hotel-request]");
+      if (reqBtn) {
+        e.preventDefault();
+        var rid = String(reqBtn.getAttribute("data-hotel-request"));
+        var rp = PROPS.filter(function (x) { return String(x.id) === rid; })[0];
+        if (rp) requestHotel(rp);
+        return;
+      }
       // The availability CTA (inside the modal) leaves for the WhataHotel page.
       var propCta = e.target.closest && e.target.closest('[data-cta="explore-property"]');
       if (propCta) {
@@ -1711,10 +1720,14 @@
           '<div class="pmodal__col"><h4>' + (d && d.highlights ? "Highlights" : "At a glance") + '</h4><ul class="pmodal__list">' + chipList(highlights, "hl") + '</ul></div>' +
           (perks ? '<div class="pmodal__col pmodal__col--perks"><h4>WhataHotel Signature perks</h4><ul class="pmodal__list">' + chipList(perks, "perk") + '</ul></div>' : "") +
         '</div>' +
-        '<p class="pmodal__note">“Check Availability” opens this property’s live WhataHotel availability, filtered to its residential-style units (villas, residences &amp; homes) where offered.</p>' +
+        (p.requestOnly
+          ? '<p class="pmodal__note">This home can’t be booked online. “Request Availability” sends your preferred dates to our travel advisors, who check with the property and reply with availability and rates.</p>'
+          : '<p class="pmodal__note">“Check Availability” opens this property’s live WhataHotel availability, filtered to its residential-style units (villas, residences &amp; homes) where offered.</p>') +
         '<div class="pmodal__actions">' +
-          '<a class="btn btn-primary btn-lg" href="' + availUrl + '" target="_blank" rel="noopener" ' +
-             'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">Check Availability' + arrowSVG() + '</a>' +
+          (p.requestOnly
+            ? '<button class="btn btn-primary btn-lg" type="button" data-hotel-request="' + p.id + '">Request Availability</button>'
+            : '<a class="btn btn-primary btn-lg" href="' + availUrl + '" target="_blank" rel="noopener" ' +
+               'data-cta="explore-property" data-id="' + p.id + '" data-name="' + esc(p.name) + '">Check Availability' + arrowSVG() + '</a>') +
           '<button class="btn btn-outline btn-lg" type="button" data-close>Keep browsing</button>' +
         '</div>' +
         '<a class="pmodal__source" href="' + pageUrl + '" target="_blank" rel="noopener">View full property on WhataHotel.com ↗</a>' +
@@ -1743,7 +1756,7 @@
     // Tells Ava (tavus-context.js) which property is open. Facts only.
     try {
       document.dispatchEvent(new CustomEvent("wah:property-viewed", { detail: {
-        kind: "hotel", id: p.id, name: p.name, brand: p.brand || "", collection: (d && d.collection) || p.collection || "",
+        kind: "hotel", id: p.id, name: p.name, requestOnly: !!p.requestOnly, brand: p.brand || "", collection: (d && d.collection) || p.collection || "",
         location: locFull, setting: tr && tr.settings ? tr.settings.map(settingLabel).join(", ") : "",
         description: desc, highlights: (d && d.highlights) || [],
         pets: petInfo(p) ? (petInfo(p).ok ? "Pet-friendly. " : "Pets not allowed. ") + petInfo(p).text : ""
@@ -1767,6 +1780,23 @@
     setTimeout(function () { modalEl.setAttribute("hidden", ""); }, 260);
     if (modalLastFocus && modalLastFocus.focus) modalLastFocus.focus();
     resumeCarousels();
+  }
+
+  // Request-only homes (not bookable online) reuse the Exceptional Homes
+  // "Request Availability" form: mo-homes-ui.js → GoHighLevel → Reservations.
+  // Facts come from the property record only; capacity is never guessed.
+  function requestHotel(p) {
+    var raw = rawImageFor(p);
+    var rec = {
+      id: "wah-" + p.id, propertyId: String(p.id), kind: "hotel", program: "WhataHotel Homes",
+      name: p.name, country: p.country || "", location: p.loc || "", collection: p.collection || "",
+      sourceUrl: p.url || ("https://whatahotel.com/hotels/" + p.id + "/index.html"), maxGuests: null,
+      imageAssets: raw ? [{ url: raw, alt: p.name + (p.loc ? ", " + p.loc : "") }] : []
+    };
+    track("request_availability_clicked", { property_id: p.id });
+    closeDetail();
+    if (typeof window.WAH_MO_REQUEST === "function") window.WAH_MO_REQUEST(rec);
+    else location.href = "mailto:Reservations@WhataHotel.com?subject=" + encodeURIComponent("Availability request — " + p.name);
   }
 
   /* -----------------------------------------------------------------

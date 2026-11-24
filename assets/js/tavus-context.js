@@ -40,7 +40,8 @@
       if (p.description) lines.push("About it: " + clip(p.description, 700));
       if (p.pets) lines.push("Pets (from the property's page): " + clip(p.pets, 420));
       if (p.highlights && p.highlights.length) lines.push("Highlights: " + clip(p.highlights.join("; "), 350));
-      lines.push("In its details, Check Availability opens live villa and residence availability on WhataHotel.com; View full property on WhataHotel.com opens its full page.");
+      if (p.requestOnly) lines.push("Not bookable online: in its details, the Request Availability button opens the inquiry form, and an advisor replies with availability and rates. View full property on WhataHotel.com opens its full page.");
+      else lines.push("In its details, Check Availability opens live villa and residence availability on WhataHotel.com; View full property on WhataHotel.com opens its full page.");
     }
     return lines.join(" ");
   }

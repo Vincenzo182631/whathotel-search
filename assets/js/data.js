@@ -1946,7 +1946,8 @@ window.WAH_PROPERTIES = [
     "brand": "Signature Collection",
     "scene": "desert",
     "blurb": "In Taos, United States.",
-    "featured": false
+    "featured": false,
+    "requestOnly": true
   },
   {
     "id": 6280,
@@ -2876,7 +2877,8 @@ window.WAH_PROPERTIES = [
     "brand": "Signature Collection",
     "scene": "mountain",
     "blurb": "In Stowe, United States.",
-    "featured": false
+    "featured": false,
+    "requestOnly": true
   },
   {
     "id": 7173,
@@ -4001,7 +4003,8 @@ window.WAH_PROPERTIES = [
     "brand": "Luxury Collection",
     "scene": "beach",
     "blurb": "In Captiva Island, United States.",
-    "featured": false
+    "featured": false,
+    "requestOnly": true
   },
   {
     "id": 4177,
@@ -4016,7 +4019,8 @@ window.WAH_PROPERTIES = [
     "brand": "Luxury Collection",
     "scene": "beach",
     "blurb": "In Captiva Island, United States.",
-    "featured": false
+    "featured": false,
+    "requestOnly": true
   },
   {
     "id": 7166,

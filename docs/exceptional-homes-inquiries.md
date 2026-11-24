@@ -129,3 +129,25 @@ Tested 2026-11-18 with one approved TEST request (GHL reference q4E8Cr8unBBoGaMb
 
 Details the visitor didn't give arrive as "Not given". `total_guests` is text here
 (e.g. "2 adults, 1 child"), not a number.
+
+## Request-only homes in the main directory
+
+Some properties in the main Homes directory can't be booked online. They have
+`"requestOnly": true` in `scripts/source-homes.json`: Sea Palms Private Beachfront
+Estate (4177), Sea Oats Private Estate (4178), Meadowstone Manor (6732) and
+Gem Hacienda (6733). In their details view, "Check Availability" is replaced by
+"Request Availability", which opens this same form and posts to the same webhook.
+
+The payload is the same shape, with the same `event` and `tags`, so the existing
+workflow handles it. Differences:
+
+| Field | Value |
+|---|---|
+| `subject` | New Home Availability Request — <property> |
+| `inquiry_id` | `WAH-YYYYMMDD-XXXXXX` (Exceptional Homes keep `MOH-`) |
+| `property_program` | `WhataHotel Homes` (Exceptional Homes: `Mandarin Oriental Exceptional Homes`) |
+| `property_id` | the WhataHotel hotel ID, e.g. `4178` |
+| `property_source_url` | the property's WhataHotel page |
+
+The Exceptional Homes perks line is not shown for these homes, and no capacity
+is assumed (`over_published_capacity` is always `No`).

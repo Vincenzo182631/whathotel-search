@@ -23,6 +23,18 @@
   // The dataset (~350 KB) is fetched only when the section approaches the
   // viewport, unless it is already on the page (e.g. the inlined GHL build).
   var started = false;
+  // Other sections (request-only homes in homes.js) open the same form with a
+  // record shaped like an Exceptional Home: { id, propertyId, kind, program,
+  // name, country, location, sourceUrl, maxGuests, imageAssets }.
+  var openHotelRequest = null, pendingHotel = null;
+  function mailFallback(rec) {
+    location.href = "mailto:Reservations@WhataHotel.com?subject=" + encodeURIComponent("Availability request — " + rec.name);
+  }
+  window.WAH_MO_REQUEST = function (rec) {
+    if (!rec || !rec.id) return;
+    if (openHotelRequest) return openHotelRequest(rec);
+    pendingHotel = rec; boot();
+  };
   function boot() {
     if (started) return; started = true;
     if (window.WAH_MO_HOMES) return init();
@@ -34,6 +46,7 @@
     s.src = src; s.async = true;
     s.onload = init;
     s.onerror = function () {
+      if (pendingHotel) { var r = pendingHotel; pendingHotel = null; mailFallback(r); }
       var list = document.getElementById("mo-list");
       if (list) list.innerHTML = '<p class="mo-noscript">The Exceptional Homes collection could not be loaded. Please refresh the page, or email <a href="mailto:Reservations@WhataHotel.com">Reservations@WhataHotel.com</a>.</p>';
     };
@@ -51,7 +64,7 @@
 
   function init() {
   var DATA = window.WAH_MO_HOMES, F = window.WAH_MO_FORMAT;
-  if (!DATA || !DATA.homes || !F) return;
+  if (!DATA || !DATA.homes || !F) { if (pendingHotel) { var r0 = pendingHotel; pendingHotel = null; mailFallback(r0); } return; }
 
   var HOMES = DATA.homes.slice().sort(function (a, b) { return a.sortOrder - b.sortOrder; });
   var BY_ID = {}; HOMES.forEach(function (h) { BY_ID[h.id] = h; });
@@ -304,7 +317,10 @@
     $("#mo-f-source").value = h.sourceUrl;
     $("#mo-f-country").value = h.country;
     $("#mo-req-home").textContent = h.name;
-    var pl = document.getElementById("mo-req-perks"); if (pl) { pl.textContent = PERK_FORM_LINE; pl.hidden = !PERK_FORM_LINE; }
+    // Exceptional Homes perks apply only to Mandarin Oriental homes.
+    var isMo = h.kind !== "hotel";
+    var brand = $(".mo-dialog__brand", req); if (brand) brand.textContent = isMo ? "Exceptional Homes" : (h.program || "WhataHotel Homes");
+    var pl = document.getElementById("mo-req-perks"); if (pl) { pl.textContent = isMo ? PERK_FORM_LINE : ""; pl.hidden = !isMo || !PERK_FORM_LINE; }
     $("#mo-req-loc").textContent = placeLine(h);
     var img = h.imageAssets && h.imageAssets[0];
     $("#mo-req-thumb").innerHTML = img ? imgTag(img, 240, "mo-req__img", true) : "";
@@ -528,6 +544,10 @@
 
   // Test hooks (no behaviour): expose read-only helpers for automated checks.
   window.WAH_MO_UI = { open: openDetail, request: openRequest, setCountry: setCountry, mode: MODE };
+
+  // Request-only homes from the main directory use this same form and webhook.
+  openHotelRequest = function (rec) { BY_ID[rec.id] = rec; openRequest(rec.id); };
+  if (pendingHotel) { var p0 = pendingHotel; pendingHotel = null; openHotelRequest(p0); }
   try { document.dispatchEvent(new Event("wah:mo-ready")); } catch (e) {}
   }
 })();
